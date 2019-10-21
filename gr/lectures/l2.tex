@@ -1,0 +1,183 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 2: October 14}
+
+\section{Tangent Spaces}%
+\label{sec:tangent_spaces}
+
+So far, we have the idea of a manifold. It is a space that looks locally like $\mathbb{R}^n$, with a set of charts that allow us to map patches to $\mathbb{R}^n$ and differentiate (and later, integrate).
+
+Let $C^{\infty}(\mathcal{M})$ denote the set of all smooth functions that assign each point in the manifold $\mathcal{M}$ a real number in $\mathbb{R}$. We know how to differentiate on $\mathbb{R}^n$. Smooth functions allow us to differentiate in $\mathbb{R}^n$ before we map back onto the manifold.
+
+\begin{definition}[tangent vector]
+  A \emph{tangent vector} $X_p$ is an object that differentiates functions at some point $p \in \mathcal{M}$ on the manifold.
+  Specifically, it is a map $X_p: C^{\infty} (\mathcal{M}) \to \mathbb{R}$ with certain properties:
+  \begin{enumerate}
+    \item linearity: $X_p(f + g) = X_p(f) + X_p(g)$ for all $f, g \in C^{\infty} (\mathcal{M})$
+    \item constants vanish: $X_p(f) = 0$ when $f$ is constant
+    \item Leibniz rule: $X_p(fg) = f(p) X_p(g) + X_p(f) g(p)$ for all $f, g \in C^\infty(\mathcal{M})$
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[tangent space]
+  The set of all tangent vectors at $p$ is the \emph{tangent space} $T_p(\mathcal{M})$ at $p$.
+\end{definition}
+
+One of the early surprises of differential geometry is thinking of vectors as differential operators.
+In $\mathbb{R}^3$, we used position vectors as displacement. However, this does not generalise to curved spaces.
+The second idea of a vector in physics is the velocity of a particle. This change in time is analogous to the definition that we use here in differential geometry.
+By differentiating, the tangent vector tells us how things change when moving in a particular direction.
+
+\begin{description}
+  \item[Claim:] In a chart $\phi= (x^1, \cdots, x^n)$, we can write a tangent vector as
+    \begin{equation}
+      X_p = X^\mu \partial_\mu \rvert_p,
+    \end{equation}
+    with $X^\mu = x_p(x^\mu)$ and $\partial_\mu f = \pdv{(f \circ \phi^{-1})}{x^\mu}$ for all functions $f \in C^\infty(\mathcal{M})$. This definition of $\partial_\mu f$ uses the fact that we can differentiate on $\mathbb{R}^n$, which we map to via $f \circ \phi^{-1}$.
+\end{description}
+\begin{proof}
+  The idea is that given a function $f$, we use coordinates to push it to $\mathbb{R}^n$, and then we differentiate there.
+  A detailed proof is in the notes.
+\end{proof}
+
+\begin{leftbar}
+  \begin{remark}
+    We are going to use the summation convention with indices up/down.
+    The object with coefficients as superscripts are tangent vectors, different from objects with subscript coefficients. Hence, the position of the indices matter even more than in Special Relativity.
+  \end{remark}
+\end{leftbar}
+
+Writing $X_p = X^\mu \partial_\mu$ clearly depends on coordinates $x^\mu$. What would happen if we chose different coordinates?
+If we picked another set of coordinates $\widetilde x^\mu$, we could write
+\begin{equation}
+  X_p = X^\mu \pdv{}{x^\mu}\rvert_p = \widetilde X^\mu \pdv{}{\widetilde x^\mu} \rvert_p.
+\end{equation}
+\begin{description}
+  \item[Notation] We write $\partial_\mu \equiv \pdv{}{x^\mu}$.
+\end{description}
+Acting on a function $f$, (and dropping the implicit action of going to $\mathbb{R}^n$ via $\phi^{-1}$)
+\begin{equation}
+  X_p(f) = X^\mu \left.\pdv{f}{x^\mu} \right\rvert_p = X^\mu \left.\pdv{\widetilde x^\nu}{x^\mu} \right\rvert_{\phi(p)} \left.\pdv{f}{\widetilde x^\nu} \right\rvert_p.
+\end{equation}
+We can view this as a change of basis of $T_p(\mathcal{M})$
+\begin{equation}
+ \left. \pdv{}{x^\mu} \right\rvert_p = \left.\pdv{\widetilde x^\nu}{x^\mu}\right\rvert_p \left.\pdv{}{\widetilde x^\nu} \right\rvert_p.
+\end{equation}
+Alternatively, we can think of the change of components
+\begin{equation}
+  \widetilde X^\nu = X^\mu \left.\pdv{\widetilde x^\nu}{x^\mu} \right\rvert_{\phi(p)}.
+\end{equation}
+This is called a \emph{contravariant} transformation; the indices tell us which way things transform.
+
+To see why this is called a tangent vector, we are going to consider a path $\sigma(t): \mathbb{R} \to \mathcal{M}$ in the manifold such that $\sigma(0) = p$. We can think of the parameter as time for example.
+%F1
+Given coordinates, this becomes a path $x^\mu(t)$ in $\mathbb{R}^n$. The tangent in $\mathbb{R}^n$ is $X^\mu = \dv{x^\mu(t)}{t}\rvert_{t=0}$. We can then use this to define $X_p \in T_p(\mathcal{M})$ as
+\begin{equation}
+  X_p = \dv{x^\mu(t)}{t} \rvert_{t = 0 } \pdv{}{x^\mu} \rvert_p.
+\end{equation}
+In this sense, $T_p(\mathcal{M})$ is the space of all tangent vectors at $p$.
+By considering all possible paths, one can describe all possible tangent vectors. Physically, it is like the space of velocities of a particle.
+The way to think about this is as in fig
+% F2
+\begin{leftbar}
+  \begin{remark}
+    Tangent spaces at two different points are two different vector spaces. It is meaningless to try to add vectors of two different tangent spaces \ldots for now.
+  \end{remark}
+\end{leftbar}
+\begin{leftbar}
+  \begin{remark}
+    These manifolds have intrinsic meaning and do not depend on an embedding. Physically, the $3+1$-dimensional spacetime is a manifold that we do not think is embedded in any higher dimensional space.
+  \end{remark}
+\end{leftbar}
+
+\section{Vector Fields}%
+\label{sec:vector_fields}
+
+\begin{definition}[vector field]
+  A \emph{vector field} $X$ is a smooth assignment of tangent vectors at each point $p \in \mathcal{M}$:
+  \begin{equation}
+    X: C^\infty(\mathcal{M}) \to C^\infty(\mathcal{M})
+  \end{equation}
+  with $(Xf)(p) = X_p (f)$. In a given coordinate chart we can write
+  \begin{equation}
+    X = X^\mu (x) \partial_\mu.
+  \end{equation} 
+\end{definition}
+\begin{description}
+  \item[Notation:] We will denote the space of all vector fields as $\mathfrak{X} (\mathcal{M})$.
+\end{description}
+
+\begin{leftbar}
+  \begin{remark}
+    We will make the notion of \emph{smooth} more precise later. Intuitively, we want neighbouring tangent spaces to have similar directions.
+  \end{remark}
+\end{leftbar}
+
+Given two vector fields $X, Y \in \mathfrak{X}(\mathcal{M})$, we can define the \emph{commutator}.
+\begin{definition}[commutator]
+  The \emph{commutator} $[X, Y] \in \mathfrak{X}(\mathcal{M})$ is a map
+  \begin{equation}
+    [X, Y] f = X(Y f) - Y(Xf).
+  \end{equation}
+\end{definition}
+
+\begin{leftbar}
+  \begin{remark}
+    Both $X, Y$ are first order differential operator. Thus, each term on the RHS is a second order operator. However, by subtracting these terms from each other, the second order terms cancel by commutation of partial derivatives.
+    Thus, the commutator is a first order differential operator.
+  \end{remark}
+\end{leftbar}
+
+\begin{exercise}[]
+In a coordinate basis, you can check
+\begin{equation}
+  [X, Y] = \left( X^\mu \pdv{Y^\nu}{x^\mu} - Y^\mu \pdv{X^\nu}{x^\mu} \right) \pdv{}{x^\nu}.
+\end{equation}
+\end{exercise}
+
+\begin{leftbar}
+  \begin{remark}
+    As the course progresses, we will see connections with the \emph{Symmetries, Field and Particles} course and its treatment of Lie algebras though these commutators.
+  \end{remark}
+\end{leftbar}
+
+\begin{exercise}
+  Check that the \emph{Jacobi identity} holds:
+  \begin{equation}
+    [X, [Y, Z] ] + [Y, [Z, X] ] +  [Z, [X, Y] ] = 0
+  \end{equation}
+\end{exercise}
+
+\section{Integral Curves}%
+\label{sec:integral_curves}
+
+There is a relationship between vector fields and streamlines, also known as flows, on a manifold $\mathcal{M}$.
+
+\begin{definition}[flow]
+  A \emph{flow} on $\mathcal{M}$ is a one-parameter family of diffeomorphisms $\sigma_t: \mathcal{M} \to \mathcal{M}$, labelled by $t \in \mathbb{R}$, such that $\sigma_{t = 0} = id$ and $\sigma_s \circ \sigma_t = \sigma_{s + t}.$ 
+\end{definition}
+This defines \emph{flow lines} on $\mathcal{M}$ as illustrated in 
+%F
+For each point on the manifold, there is a unique such streamline that flows through it.
+Each line has coordinates $x^\mu(t)$.
+
+\begin{definition}[vector field]
+We define a vector field $X$ by taking the tangent vector at each point:
+ \begin{equation}
+   \label{def:vecfield}
+   X^\mu(x(t)) = \dv{x^\mu(t)}{t}.
+\end{equation}
+\end{definition}
+\begin{definition}[integral curves]
+  Conversely, given a vector field $X^\mu(x)$, we can integrate \eqref{def:vecfield} to find $x^\mu(t)$.
+  These flow lines are called \emph{integral curves}.
+\end{definition}
+
+\begin{example}[]
+  On $S^2$, with $(\theta, \phi)$ polar coordinates, consider $X = \pdv{}{\phi}$.
+  From \eqref{def:vecfield}, $\dv{\theta}{t} = 0$ and $\dv{\phi}{t} = 1$. This means that we have constant $\theta = \theta$.
+  \begin{equation}
+    \phi = \phi_0 + t \implies \sigma_t (\theta, \phi) \rightarrow (\theta, \phi + t)
+  \end{equation}
+  The integral curves are lines of constant lattitude.
+\end{example}

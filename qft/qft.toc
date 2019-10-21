@@ -1,0 +1,17 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Classical Field Theory}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Dynamics of Fields}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}Lorentz Invariance}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Noether's theorem}{9}{section.2.3}
+\contentsline {chapter}{\numberline {3}Free Field Theory}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hamiltonian Formalism}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Canonical Quantisation}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}Review of SHO in 1d QM}{15}{section.3.3}
+\contentsline {section}{\numberline {3.4}The Free Scalar Field}{17}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}The Vacuum}{18}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Particles}{19}{subsection.3.4.2}
+\contentsline {subsubsection}{Properties of $\ket {\vb {p}}$}{20}{equation.3.4.20}
+\contentsline {subsubsection}{Multi-Particle States $\ket {\vb {p}_1, \ldots , \vb {p}_n}$}{20}{exercise.3.4.3}
+\contentsline {section}{\numberline {3.5}Relativistic Normalisation}{21}{section.3.5}
+\contentsline {section}{\numberline {3.6}Free Complex Scalar Field}{22}{section.3.6}
+\contentsline {section}{\numberline {3.7}The Heisenberg Picture}{23}{section.3.7}

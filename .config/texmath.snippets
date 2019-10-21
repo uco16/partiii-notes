@@ -1,0 +1,229 @@
+# Mathmode Snippets
+
+global !p
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+# If you have http://www.drchip.org/astronaut/vim/vbafiles/amsmath.vba.gz,
+# you want to add:
+texMathZones += ['texMathZone'+x for x in ['E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS']]
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+def isMath():
+    synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+    if not set(texIgnoreMathZoneIds).isdisjoint(synstackids):
+        return False
+    return not set(texMathZoneIds).isdisjoint(synstackids)
+    # isdisjoint() can short-circuit as soon as a match is found
+
+endglobal
+
+priority 100
+
+snippet map "Function Definition" b
+\begin{equation}
+  \begin{split}
+    ${1:f} \colon ${2:\mathbb{R}} &\to ${3:\mathbb{R}} \\\\
+    ${4:x} &\mapsto ${5:y}
+  \end{split}
+\end{equation}$0
+endsnippet
+
+snippet "[1-9]*e-?\d*" "Scientific notation" "isMath()" eri
+\SI{`!p snip.rv=match.group(0)`}{${1:\giga\electronvolt}}
+endsnippet
+
+snippet sub "subscipt text" "isMath()" ei
+_{\text{$1}}$0
+endsnippet
+
+priority 50
+
+snippet __ "subscript" "isMath()" eAi
+_{$1}$0
+endsnippet
+
+snippet ^^ "superscript" "isMath()" eAi
+^{$1}$0
+endsnippet
+
+snippet tt "text" "isMath()" weA
+\text{$1}$0
+endsnippet
+
+snippet int "Integration" "isMath()" ewA
+\int_{$1}^{$2} \\$3dd[$4]{$5} $0
+endsnippet
+
+snippet dv "differentiation" "isMath()" ewA
+\dv{$1}{${2:t}}$0
+endsnippet
+
+snippet pdv "partial differentiation" "isMath()" ewA
+\pdv{$1}{${2:t}}$0
+endsnippet
+
+snippet sqrt "square root" "isMath()" ewA
+\sqrt{$1}$0
+endsnippet
+
+snippet ind "tensor indices" "isMath()" ewA
+\indices{$1}$0
+endsnippet
+
+snippet mink "minkowski metric" "isMath()" ewA
+\eta\indices{${1:_\mu_\nu}}$0
+endsnippet
+
+snippet lt "lorentz transformation" "isMath()" ewA
+\Lambda\indices{${1:^\mu_\nu}}$0
+endsnippet
+
+snippet chri "christoffel symbol" "isMath()" ewA
+\Gamma\indices{^$1_{$2}}$0
+endsnippet
+
+snippet par "differential operator" "isMath()" ewA
+\partial
+endsnippet
+
+snippet ff "field phi" "isMath()" Aew
+\phi$0
+endsnippet
+
+snippet up "uparrow" "isMath()" Aew
+\uparrow$0
+endsnippet
+
+snippet down "downarrow" "isMath()" Aew
+\downarrow$0
+endsnippet
+
+snippet bra "bra" "isMath()" Aew
+\bra{$1}$0
+endsnippet
+
+snippet abs "absolute value" "isMath()" Aew
+\abs{$1}$0
+endsnippet
+
+snippet ket "ket" "isMath()" Aew
+\ket{$1}$0
+endsnippet
+
+snippet << "angular brackets" "isMath()" Awe
+\left\langle $1 \right\rangle
+endsnippet
+
+snippet dag "Hermitian conjugate" "isMath()" Aie
+^{\dagger}
+endsnippet
+
+snippet c. "dot product" "isMath()" Awe
+\cdot
+endsnippet
+
+priority -100
+
+snippet "\_([a-zA-Z0-9])" "sub-super swap" "isMath()" er
+`!p snip.rv="^" + match.group(1)`
+endsnippet
+
+snippet "\_(\\[a-z]*)" "sub-super swap: command" "isMath()" er
+`!p snip.rv="^" + match.group(1)`
+endsnippet
+
+snippet "\_({.*?})" "sub-super swap: braces" "isMath()" er
+`!p snip.rv="^" + match.group(1)`
+endsnippet
+
+snippet "\^([a-zA-Z0-9])" "super-sub swap" "isMath()" er
+`!p snip.rv="_" + match.group(1)`
+endsnippet
+
+snippet "\^(\\[a-z]*)" "super-sub swap: command" "isMath()" er
+`!p snip.rv="_" + match.group(1)`
+endsnippet
+
+snippet "\^({.*?})" "super-sub swap: braces" "isMath()" er
+`!p snip.rv="_" + match.group(1)`
+endsnippet
+
+snippet '(\D[a-zA-Z])(\d)' "Auto Index" "isMath()" eAr
+`!p snip.rv = match.group(1) + "_" + match.group(2)`
+endsnippet
+
+snippet '([a-zA-Z])_(\d\d)' "Auto Index" "isMath()" eAwr
+`!p snip.rv = match.group(1) + "_{" + match.group(2) + "}"`
+endsnippet
+
+snippet "([a-zA-Z])(,\.|\.,)" "Vector postfix" "isMath()" eriA
+\vb{`!p snip.rv=match.group(1)`}
+endsnippet
+
+# Greek indices with '.'
+
+snippet .l "subscipt lambda" "isMath()" eiA
+_\lambda
+endsnippet
+
+snippet .m "subscipt mu" "isMath()" eiA
+_\mu
+endsnippet
+
+snippet .n "subscipt nu" "isMath()" eiA
+_\nu
+endsnippet
+
+snippet .r "subscipt rho" "isMath()" eiA
+_\rho
+endsnippet
+
+snippet .s "subscipt sigma" "isMath()" eiA
+_\sigma
+endsnippet
+
+snippet .g "subscipt gamma" "isMath()" eiA
+_\gamma
+endsnippet
+
+snippet .a "subscipt alpha" "isMath()" eiA
+_\alpha
+endsnippet
+
+# Latin indices with ','
+
+snippet '\,([a-z])' "latin subscript" "isMath()" eAir
+`!p snip.rv = "_" + match.group(1)`
+endsnippet
+
+snippet '_([a-z]{2})' "latin subscipt" "isMath()" eAir
+`!p snip.rv = "_{" + match.group(1) + "}"`
+endsnippet
+
+snippet '(_\{[a-z]{2})}([a-z])' "latin subscipt" "isMath()" eAir
+`!p snip.rv = match.group(1) + match.group(2) + "}"`
+endsnippet
+
+# math fonts
+
+snippet '([A-Z])BB' "Blackboard Bold" "isMath()" eAr
+\mathbb{`!p snip.rv = match.group(1)`}
+endsnippet
+
+snippet '[a-zA-Z]CAL' "CALligraphic" "isMath()" erA
+\mathcal{`!p snip.rv=match.group(0)[0]`}
+endsnippet
+
+snippet '[a-zA-Z]SCR' "Super CuRly" "isMath()" erA
+\mathscr{`!p snip.rv=match.group(0)[0]`}
+endsnippet
+
+snippet '[a-zA-Z]FRA' "Fraktur" "isMath()" erA
+\mathfrak{`!p snip.rv=match.group(0)[0]`}
+endsnippet
+
+snippet '([a-zA-Z]{1,2})LA' "Lie Algebra" "isMath()" erA
+\mathfrak{`!p snip.rv=match.group(1)`}($1)$0
+endsnippet

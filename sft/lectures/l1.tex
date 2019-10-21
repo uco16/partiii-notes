@@ -1,0 +1,122 @@
+\lhead{October 11, 2019}
+\chapter{The Ising Model}%
+\label{cha:the_ising_model}
+
+The Ising model is a simple model for a magnet, which also forms a rich playground for SFT, QFT, etc\dots
+
+\section{Basics}%
+\label{sec:basics}
+
+We have a lattice of sites in any dimension $d$. At each lattice site, there is positioned a spin which can either point up or down.
+The energy of the entire system is
+\begin{equation}
+  E = -B \sum_i S_i - J \sum_{<ij>} S_i S_j.
+\end{equation}
+$B$ is a magnetic field and $<ij>$ denotes nearest neighbour interactions.
+\begin{description}
+  \item[If $J > 0$:] Spins favour alignment (Ferromagnet)
+  \item[If $J < 0$:] Misaligned (Anti-Ferromagnet)
+\end{description}
+
+\section{Finite Temperature}%
+\label{sec:finite_temperature}
+
+With finite temperature, this is where the \emph{statistical} bit of the course comes in. We introduced some entropy into the system so the spins can flip. We would expect that even for $J < 0$ this implies that the spins will tend to be misaligned, resulting in no magnetisation, at high temperatures.
+
+In the canonical ensemble:
+\begin{equation}
+  p[S_i] = \frac{e^{-\beta E[S_i]}}{Z}
+\end{equation}
+where $\beta = 1/T$ and the partition function is $Z = \sum_{\{S_i\}} e^{-\beta E [S_i]}$.
+
+\begin{example}[]
+  \begin{equation}
+    F_{\text{thermo}} (T; B) = \langle E \rangle - TS = -T \log Z
+  \end{equation}
+\end{example}
+
+\begin{definition}[Average Spin]
+  \begin{equation}
+    m = \frac{1}{N} \left\langle \sum_i S_i \right\rangle, \qquad m \in [-1, +1]
+  \end{equation}
+\end{definition}
+To calculate the average, we need the probabilities. We write this as
+\begin{equation}
+  m = \frac{1}{N} \sum_{\left\{ S_i \right\}} \underbrace{\frac{e^{-\beta E[S_i]}}{Z}}_{\text{probability}} 
+  \overbrace{\sum_i S_i}^{\text{spin}} = \frac{1}{N\beta} \pdv{\log Z}{\beta}.
+\end{equation}
+There are many numerical tools to calculate the partition function. For analytic tools, we work towards \emph{mean field theory} which makes the large number of degrees of freedom tractable.
+
+\section{Effective Free Energy}%
+\label{sec:effective_free_energy}
+
+\begin{description}
+  \item[Ising model:] ``Microscopic Degrees of Freedom'' (spins)
+  \item[Partition function:] ``Macroscopic'' (average spin) \\
+    The ansatz that we will use is to write the partition function $Z$ as a sum over the magnetisations $m = \frac{1}{N} \sum_i S_i$ of configurations, and then sum over all configuations that give this magnetisation:
+    \begin{equation}
+      Z = \sum_m \sum_{\left\{ S_i \right\} \rvert_m} e^{-\beta E[S_i]} \coloneqq \sum_m e^{-\beta F(m)}.
+    \end{equation}
+    In the large-$N$ limit: 
+    \begin{equation}
+      \sum e^{-\beta F(m)} \longrightarrow \frac{N}{2} \int_{-1}^{1} \dd[]{m} e^{-\beta F(m)}.
+    \end{equation}
+
+  \item[Saddle Point Approximation:] Define $f(m) = \frac{F(m)}{N}$
+    Ignoring normalisation factors, the partition function becomes
+    \begin{equation}
+      Z = \int_{-1}^{+1} \dd[]{m} e^{-\beta N f(m)} \approx e^{-\beta N f(m_{\text{min}})} \implies F_{\text{thermo}} \approx F(m_{\text{min}})
+    \end{equation}
+\end{description}
+
+\section{Mean Field Theory}%
+\label{sec:mean_field_theory}
+
+\subsection{Mean Field Approximation}%
+\label{sub:mean_field_approximation}
+
+One essentially replaces each spin variable by the mean variable that is the same everywhere:
+  \begin{equation}
+    S_i \rightarrow \langle S \rangle = m.
+  \end{equation}
+  The total energy is then
+  \begin{equation}
+    E = -B \sum_i m - J \sum_{\langle i j \rangle} m^2
+  \end{equation}
+  and the normalised energy
+  \begin{equation}
+    \frac{E}{N} = -B m - \frac{1}{2} J q m^2.
+  \end{equation}
+  Here, $q \sim 2d$ is the number of nearest neighbours. For a given magnetisation $m$, we need to count how many states there are.
+
+\subsection{Counting Microstates}%
+\label{sub:counting_microstates}
+
+\begin{equation}
+  m = \frac{N_\uparrow - N_\downarrow}{N} = \frac{2N_\uparrow - N}{N} \qquad \Omega = \frac{N!}{N_\uparrow ! (N-N_\uparrow)!}
+\end{equation}
+Use Stirling's formula (can plug this in as an ``illuminating'' exercise at home)
+\begin{align}
+  \log\Omega &= N \log N - N_{\uparrow} \log N_{\uparrow} - (N - N_{\uparrow}) \log (N - N_{\uparrow}) \\
+  \frac{\log\Omega}{N} &\approx \log 2 - \frac{1}{2}(1+m)\log(1+m) - \frac{1}{2}(1-m) \log(1-m).
+\end{align}
+
+Hence,
+\begin{align}
+  \sum_{\left\{ S_i \right\}_{m}} e^{-\beta E[S_i]} &\approx \Omega(m) e^{-\beta E(m)} \\
+  &\approx e^{\frac{N \log \Omega}{N}} e^{-\beta \left( -Bm - \frac{1}{2} Jqm^2 \right)}
+\end{align}
+This defines
+\begin{equation}
+  f(m) \approx - Bm - \frac{1}{2} Jq m^2 - T \left[ \log(2) - \frac{1}{2}(1+m)\log(1+m) - \frac{1}{2}(1-m) \log(1-m) \right].
+\end{equation}
+
+Minimised at
+\begin{align}
+  \pdv{f}{m} = 0 &\implies \beta (B + Jqm) = \frac{1}{2} \log \left( \frac{1 + m}{1 - m} \right) \\
+  &\implies m = \tanh(\beta B + \beta Jqm), \qquad (B_{\text{eff}} = B + Jqm)
+\end{align}
+
+Plotting left and right hand side, we see that at $T=\infty$ there is only one solution at $m=0$. At low temperature, we then obtain other solutions.
+
+%F1

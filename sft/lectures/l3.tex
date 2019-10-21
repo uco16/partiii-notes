@@ -1,0 +1,105 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 3: October 18}
+\chapter{Landau-Ginzburg Free Energy}%
+\label{cha:landau_ginzburg_free_energy}
+
+\section{Model Building}%
+\label{sec:model_building}
+
+This will be the first attempt of writing down a \emph{theory} by postulating a free energy. In the case of particle physics, this corresponds to the action.
+There are certain guiding principles that help construct such a theory. Such `common sense' principles include
+\begin{description}
+  \item[Locality] All interactions are \emph{local}. Only nearest neighbours matter.
+    This means the free energy functional is just one integral over one spatial component
+    \begin{equation}
+      F[m(x)] = \int_{}^{} \dd[d]{x} f[m(x)].
+    \end{equation}
+    In general, one could imagine non-local theories where we have terms of the form \[\int_{}^{} \dd[d]{x} \dd[d]{y} f[m(x), m(y)]. \]
+    In the continuum Ising model, we have some almost non-local terms. These are the gradient terms
+    \begin{equation}
+      \pdv{m(\vb{x})}{\vb{x}} \simeq \lim_{a \to 0} \frac{m(\vb{x} + a\hat{\vb{x}}) - m(\vb{x})}{a} . 
+    \end{equation}
+    There are certain pitfalls, such as causality violation, which arise when we can include non-local terms. For more information, see Weinberg Volume 1.
+  \item[Translational and Rotational Invariance] The symmetry of the continuum theory should reflect the symmetries of the lattice. The Ising model has a large-scale rotational symmetry, which will be recovered when going to the continuum limit.
+    Similarly, there is a discrete translational symmetry which will become a continuum symmetry.
+    This means, we have terms like $(\grad m)^2$, but not $\cancel{\vb{n} \cdot \grad m}$.
+
+    Moreover, the Ising model with $B = 0$ has a $\mathbb{Z}_2$ symmetry: $S_i \to -S_i$. Therefore, the continuum limit must have a symmetry under $m(\vb{x}) \to -m(\vb{x})$.
+  \item[Analyticity] We require the free energy $F$ to have a well-behaved Taylor expansion in the magnetisation field $m(\vb{x})$.
+    This allows terms like $m^2(\vb{x})$, $(\grad m(\vb{x}))^4$, \ldots, $m^8(\vb{x})$. However, we are not allowed to have non-analytic terms like $\sqrt{m(\vb{x})}$, $\log(m(\vb{x}))$, or $\frac{1}{m(\vb{x})}$.
+    \begin{leftbar}
+      \begin{remark}
+        Non-analyticities like these usually signal that we overlooked some important ingredient in the theory.
+      \end{remark}
+    \end{leftbar}
+  \item[Derivative Expansion] If the variation of the gradient is slow over the length scale $a$ of the lattice spacing, $(a \grad) \grad m(\vb{x}) \ll \grad m(\vb{x})$, then higher derivatives can be ignored.
+    As we go to higher number of derivatives, we go to more separated neighbour interactions.
+\end{description}
+
+\begin{leftbar}
+  \begin{remark}
+    The Higgs interaction, among many others, starts to generate logarithmic terms when we coarse-grain high-energy processes.
+  \end{remark}
+\end{leftbar}
+
+\section{Zero external field}%
+\label{sec:zero_external_field}
+
+When $B = 0$, the free energy is
+\begin{equation}
+  F[m(\vb{x})] = \int_{}^{} \dd[d]{x} \left[ \frac{1}{2} \alpha_2(T) m^2 + \frac{1}{4} \alpha_4(T)m^4 + \frac{1}{2} \gamma(T) (\grad m)^2 + \ldots \right],
+\end{equation}
+where $m = m(\vb{x})$, $\alpha_2(T) \simeq T - T_c$, and $\alpha_4(T) \sim \frac{1}{3}T$.
+
+\subsection{The Saddle Point Approximation}%
+\label{sub:the_saddle_point_approximation}
+
+We want to find minimise the free energy functional $F[m(\vb{x})]$.
+Consider a field configuration $m(\vb{x})$ and perturb it by $\delta m(\vb{x})$.
+The free energy then changes by
+\begin{align}
+  \delta F &= \int_{}^{} \dd[d]{x} \left[ \alpha_2 m \delta m + \alpha_4 m^3 \delta m + \gamma \grad m \cdot \grad \delta m \right] \\
+	   &= \int_{}^{} \dd[d]{x} \left[ \alpha_2 m + \alpha_4 m^3 - \gamma \laplacian m \right] \delta m
+\end{align}
+The implicit assumption here is that the variation vanishes at the boundaries of the integral.
+We can take this as a definition of the functional derivative
+\begin{equation}
+  \fdv{f}{m} = \alpha_2 m + \alpha_4 m^3 - \gamma \laplacian m.
+\end{equation}
+For an Extremum, $\left.\fdv{F}{m}\right\rvert_m = 0$ $\implies \gamma \laplacian m = \alpha_2 m + \alpha_4 m^3$. This is sometimes called the \emph{Euler-Lagrange equation} or the \emph{equation of motion}.
+
+\subsubsection{Solutions}%
+\label{subsub:solutions}
+
+The simplest solution is $m=\text{const}$. There are two cases:
+\begin{equation}
+  m = 
+  \begin{cases}
+    0 & \alpha_2 > 0 \\
+    \pm m_0 = \pm \sqrt{\frac{-\alpha_2}{\alpha_4}} & \alpha_2 < 0
+  \end{cases}
+\end{equation}
+This recovers the mean-field approximation, confirming that our original mean-field Ansatz was not so bad after all.
+Moreover, analysing the other solutions allows us to understand the mean-field solution better.
+The other solutions are called \emph{domain walls}.
+
+\subsubsection{Domain Walls}%
+\label{subsub:domain_walls}
+
+We can also imagine that different parts of the lattice take on different solutions, so that both $\pm m_0$ coexist. In that case, there will be an asymptotic transition function between the domain walls at spatial infinity. 
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{lectures/domainwall.pdf_tex}
+  \caption{The transition function asymptotes to the domain walls as $x = \abs{\vb{x}} \to \infty$}
+  \label{fig:domainwall}
+\end{figure}
+This transition function cannot just be a step function, since the derivative would be discontinuous, giving infinite energy.
+Solving $\gamma \dv[2]{m}{x} = \alpha_2 m + \alpha_4^2$ gives
+\begin{equation}
+  m = m_0 \tanh(\frac{x - x_0}{w}), \qquad w = \sqrt{\frac{-2\gamma}{\alpha}}.
+\end{equation}
+The energy associated with this solution can be calculated to give $F_{\text{DW}} - F_{\text{GS}} \sim L^{d-1} \sqrt{\frac{-\gamma \alpha_2^3}{\alpha_4}}$.
+Here we see something interesting happening; in one dimension, the free energy is independent of the size of the system, whereas in higher dimensions it does.
+This exponent $d-1$ will tell us about why the mean-field theory fails in one-dimension: the domain-walls completely take over and dominate over the mean-field theory contributions.

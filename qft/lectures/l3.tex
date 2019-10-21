@@ -1,0 +1,236 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 3: October 15}
+
+\begin{example}[Infinitesimal translations]
+In four vector notation, we write an infinitesimal spacetime translation as 
+\begin{equation}
+  x^\mu \to x^\mu - \alpha \varepsilon^\mu.
+\end{equation}
+By Taylor expansion, we know that the scalar field transforms as
+\begin{equation}
+  \phi(x) \to \phi(x) + \alpha \varepsilon^\mu \partial_\mu \phi(x).
+\end{equation}
+The derivatives $\partial_\mu \phi$ will also have a similar expansion.
+
+The Lagrangian density transforms as
+\begin{align}
+  \mathcal{L}(x) &\to \mathcal{L}(x) + \alpha \varepsilon^\mu \partial_\mu \mathcal{L}(x) \\
+  &= \mathcal{L}(x) + \alpha \varepsilon^\nu \partial_\mu \underbrace{(\delta \indices{^\mu_\nu} \mathcal{L})}_{X^\mu}.
+\end{align}
+We get one conserved current for each component of $\varepsilon^\nu$ :
+\begin{equation}
+  \label{eq:emtensor}
+  (j^\mu)_\nu = \pdv{\mathcal{L}}{(\partial_\mu \phi)} \partial_\nu \phi - \delta \indices{^\mu_\nu} \mathcal{L}
+\end{equation}
+since $\Delta \phi = \partial_\nu \phi$ for $ \varepsilon^\nu$ and $X^\mu = \delta \indices{^\mu_\nu} \mathcal{L}$.
+  We define this to be the \emph{energy-momentum tensor} $T \indices{^\mu _\nu}$. It has this name since it contains four conserved charges which are associated with
+  \begin{itemize}
+    \item Total energy: $E = \int_{}^{} \dd[3]{x} T^{00}$
+    \item Total momentum: $P^i = \int_{}^{} \dd[3]{x} T^{0i}$
+  \end{itemize}
+
+  Applying \eqref{eq:emtensor} to the free real valued scalar field theory
+  \begin{equation}
+    \mathcal{L} =  \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2,
+  \end{equation}
+  we obtain the energy momentum tensor
+  \begin{equation}
+    T \indices{^\mu^\nu} = \partial^\mu \phi ^\nu \phi - \eta\indices{^\mu^\nu} \mathcal{L}.
+  \end{equation}
+  This corresponds to an energy
+  \begin{equation}
+    E = \int_{}^{} \dd[3]{x}\left\{ \frac{1}{2} \dot \phi^2 + \frac{1}{2} (\grad \phi)^2 + \frac{1}{2} m^2 \phi^2 \right\}.
+  \end{equation}
+\end{example}
+
+Notice that in the case of a free scalar field, $T \indices{^\mu^\nu}$ is symmetric under interchange of $\mu \leftrightarrow \nu$.
+
+\begin{description}
+  \item[Prop:] If $T \indices{^\mu^\nu}$ is non-symmetric, we can massage it into a symmetric form.
+\end{description}
+\begin{proof}
+  Adding a term $\partial_\rho \Gamma\indices{^\rho_\mu_\nu}$ where $\Gamma\indices{^\rho^\mu^\nu} = -\Gamma\indices{^\mu^\rho^\nu} \implies \partial_\mu \partial_\rho \Gamma \indices{^\rho^\mu_\nu} = 0$, i.e.~it does not change conservation law. We pick it to make the $T \indices{^\mu^\nu}$ symmetric.
+\end{proof}
+\begin{leftbar}
+  \begin{remark}
+    This reparametrisation equivalence can be expressed as a gauge symmetry.
+  \end{remark}
+\end{leftbar}
+
+\begin{exercise}
+Do question 6 on problem sheet 1.
+\end{exercise}
+
+\chapter{Free Field Theory}%
+\label{cha:free_field_theory}
+
+\section{Hamiltonian Formalism}%
+\label{sec:hamiltonian_formalism}
+
+The Hamiltonian formulation also accommodates field theories.
+\begin{definition}[conjugate momentum]
+  We define the \emph{conjugate momentum}
+  \begin{equation}
+    \pi(x) = \pdv{\mathcal{L}(x)}{\dot \phi(x)}.
+  \end{equation}
+\end{definition}
+The Hamiltonian density is then
+\begin{equation}
+  \mathcal{H} = \pi(x) \dot \phi(x) - \mathcal{L}(x).
+\end{equation}
+As in classical mechanics, we eliminate $\dot \phi$ in favour of $\pi$ in our equations.
+Integrating over all space, we would obtain the Hamiltonian.
+
+\begin{example}[Scalar field with potential]
+  We add a potential $V(\phi)$ to our free Hamiltonian.
+  \begin{equation}
+    \mathcal{L} =  \frac{1}{2}\dot \phi^2 - \frac{1}{2}(\grad \phi)^2 - V(\phi).
+  \end{equation}
+  The conjugate momentum is $\pi = \dot \phi$, which means that the Hamiltonian density is
+  \begin{equation}
+    \mathcal{H} = \frac{1}{2}\pi^2 + \frac{1}{2}(\grad \phi)^2 + V(\phi).
+  \end{equation}
+  The Hamiltonian is
+  \begin{equation}
+    H = \int_{}^{} \dd[3]{x} \mathcal{H}.
+  \end{equation}
+  The equations of motion of the scalar field are given by Hamilton's equations:
+  \begin{equation}
+    \dot \phi = \fdv{H}{\pi} \qquad \dot \pi = -\fdv{H}{\phi}.
+  \end{equation}
+
+  \begin{leftbar}
+    \begin{remark}
+      In this case, the Hamiltonian is the same as the total energy $E$.
+    \end{remark}
+  \end{leftbar}
+\end{example}
+
+Since the physics remains unchanged when changing from the Lagrangian to the Hamiltonian formulation, the result is Lorentz invariant. However, since we picked out a preferred time, the Hamiltonian formulation is \emph{not} manifestly Lorentz invariant.
+
+\section{Canonical Quantisation}%
+\label{sec:canonical_quantisation}
+
+Recall that in transitioning from classical to quantum mechanics, canonical quantisation tells us to take a set of generalised coordinates $q_a$ and $p_a$ and promote them to operators. We replace Poisson brackets with commutators.
+\begin{equation}
+  [q_a, p^b] = i \delta_a^b \qquad (\hbar = 1).
+\end{equation}
+Now, in the transition from classical to quantum field theory, we do the analogous thing for the fields $\phi_a(\vb{x})$ and $\pi_b(\vb{x})$.
+
+\begin{definition}[quantum field]
+  A \emph{quantum field} is an operator valued function of space that obeys the following commutation relation:
+  Fields and momenta commute amongst themselves
+  \begin{equation}
+    [\phi_a(\vb{x}), \phi_b(\vb{y})] = 0 \qquad
+    [\pi^a(\vb{x}), \pi^b(\vb{y})] = 0.
+  \end{equation}
+  However, they do not commute between each other
+  \begin{equation}
+    [\phi_a(\vb{x}), \pi^b(\vb{y})] = i \delta^3(\vb{x} - \vb{y}) \delta_a^b.
+  \end{equation}
+\end{definition}
+
+We are in the Schrödinger picture, so the operators $\phi_a(\vb{x})$ and $\pi^a(\vb{x})$ are \emph{not} functions of $t$---all $t$ dependence is in states, which evolve according to the Schrödinger equation
+\begin{equation}
+  i \pdv{}{t} \ket{\psi} = H \ket{\psi}.
+\end{equation}
+As such, we wish to know the spectrum of $H$, but this is extremely hard due to the infinite number of degrees of freedom (at least 1 for each spatial coordinate $\vb{x}$ ).
+
+For free theories, coordinates evolve independently. These free theories have $\mathcal{L}$ quadratic in the fields $\phi$ or $\partial_\mu \phi$. As a consequence, this gives linear equations of motion.
+
+\begin{example}[Klein-Gordon]
+  We saw that the EL equations for the KG theory of a real scalar field $\phi(\vb{x}, t)$ are
+  \begin{equation}
+    \partial_\mu \partial^\mu \phi + m^2 \phi = 0.
+  \end{equation}
+  To see why, we take the Fourier transform
+  \begin{equation}
+    \phi(\vb{x}, t) = \int_{}^{} \frac{\dd[3]{\vb{p}} 
+  }{(2\pi)^3} e^{i \vb{p} \cdot \vb{x}} \phi(\vb{p}, t) .
+  \end{equation}
+  Then we see that the classical KG equation becomes
+  \begin{equation}
+    \left[\pdv[2]{}{t} + (\vb{p}^2 + m^2)\right] \phi(\vb{p}, t) = 0.
+  \end{equation}
+  This is the equation for the harmonic oscillator, vibrating at frequency $\omega_{\vb{p}} = \sqrt{\vb{p}^2 + m^2}$.
+  So the solution to the Klein-Gordon equation is a superposition of simple harmonic oscillators (SHOs) each vibrating at a different frequency and amplitude. To quantise $\phi(\vb{x}, t)$, we need to quantise this infinite number of SHOs.
+  \begin{leftbar}
+    \begin{remark}
+      These SHOs are not coupled since this is a free theory. If we include higher powers in the Lagrangian, these become coupled and very difficult to solve.
+    \end{remark}
+  \end{leftbar}
+\end{example}
+
+\section{Review of SHO in 1d QM}%
+\label{sec:review_of_sho_in_1d_qm}
+
+Writing the position as $q$ and momentum as $p$, the Lagrangian is for the simple harmonic oscillator in 1d quantum mechanics is
+\begin{equation}
+  \mathcal{L} = \frac{1}{2}\dot q^2 - \frac{1}{2} \omega^2 q^2.
+\end{equation}
+The Hamiltonian is then easily found to be
+\begin{equation}
+  H = p \dot q - L = \frac{1}{2}p^2 + \frac{1}{2} \omega^2 q^2.
+\end{equation}
+We recall that the canonical quantisation condition is enforced by requiring the position and momentum operators to satisfy the canonical commutation relation:
+\begin{equation}
+  [q, p] = i.
+\end{equation}
+
+We then define operators
+\begin{equation}
+  a^\dagger = \frac{-i}{\sqrt{2 \omega}} p + \sqrt{\frac{\omega}{2}} q \qquad a = \frac{+ip}{\sqrt{2\omega}} + \sqrt{\frac{\omega}{2}}q.
+\end{equation}
+
+In terms of these operators, we can write our original operators as
+\begin{equation}
+  q = \frac{a + a^\dagger}{\sqrt{2 \omega}}, \qquad p = -i \sqrt{\frac{\omega}{2}} (a - a^\dagger).
+\end{equation}
+And the commutation relation becomes 
+\begin{equation}
+  [a, a^\dagger] = 1.
+\end{equation}
+Similarly, we can rewrite the Hamiltonian as
+\begin{equation}
+  H = \frac{1}{2} \omega (a a^\dagger + a^\dagger a) = \omega(a^\dagger a + \frac{1}{2}),
+\end{equation}
+where we used the commutator in the last equality.
+
+The commutation relations between these ladder operators and the Hamiltonian are
+\begin{equation}
+  [H, a^\dagger] \omega a^\dagger, \qquad [H, a] = -\omega a.
+\end{equation} 
+\begin{exercise}
+Work these out!
+\end{exercise}
+These ensure that $a, a^\dagger$ take us between energy states:
+If $H \ket{E} = E \ket{E}$, then
+\begin{align}
+  H(a^\dagger \ket{E}) &= (E + \omega) (a^\dagger \ket{E}) \\
+  H(a \ket{ E}) &=(E - \omega) (a \ket{E}).
+\end{align}
+We ended up with a ladder of states with energy $\cdots, E-\omega, E, E + \omega, E + 2 \omega, \cdots$.
+To ensure a stable system, the energy must be bounded from below by the existence of a \emph{ground-state} $\ket{0}$ that is annihilated by the lowering operator: $a \ket{0} = 0$.
+Acting on this state with the Hamiltonian, we find the \emph{ground-state energy} $H \ket{0} = \frac{1}{2} \omega \ket{0}$.
+
+Excited states arise from a repeated application of $a^\dagger$:
+ \begin{equation}
+   \ket{n} \equiv (a^\dagger)^n \ket{0}, \qquad H \ket{n} = (n + \frac{1}{2}) \omega \ket{n}.
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    We have not normalised these states: $\bra{n} \ket{n} \neq 1$.
+  \end{remark}
+\end{leftbar}
+\begin{leftbar}
+  \begin{remark}
+    We are, in the absence of gravitational interactions, only interested in \emph{energy differences}, rather than absolute values. As a result, we want to set the ground state energy to zero.
+  \end{remark}
+\end{leftbar}
+
+\begin{definition}[normal ordering]
+  A \emph{normal ordered} operator $:\mathcal{O}:$, is one in which we put all the $a$ s on the right of all the $a^\dagger$s.
+\end{definition}
+
+The normal ordered Hamiltonian is $H = \omega a^\dagger a$. With this definition, the ground-state energy is $H \ket{0} = 0$.

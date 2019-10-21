@@ -1,0 +1,181 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 4: October 17}
+
+Recall the two defining properties of the orthogonal group $O(n)$ with respect to the matrix eigenvalue equation
+\begin{equation} \label{eq:evalue}
+  M \vb{v}_\lambda = \lambda \vb{v}_\lambda, \qquad M \in O(n):
+\end{equation}
+\begin{enumerate}
+  \item Complex conjugate: If $\lambda$ is an eigenvalue, then $\lambda^*$ is an eigenvalue as well.
+  \item Normalisation: $\abs{\lambda}^2 = 1$.
+\end{enumerate}
+\begin{proof}
+  \begin{enumerate}
+    \item Complex conjugating both sides of \eqref{eq:evalue} gives
+      \begin{equation}
+        M \vb{v}_\lambda^* = \lambda^* \vb{v}_\lambda^*
+      \end{equation}
+    \item First, note that we have \((M \vb{v}^*)^T \cdot M \vb{v} = \vb{v}^{\dagger} M^T M \vb{v} = \vb{v}^{\dagger} \cdot \vb{v}\).
+      Then, if $\vb{v} = \vb{v}_\lambda$:
+      \begin{equation}
+	(M \vb{v}_\lambda^*)^T \cdot M \vb{v}_\lambda = \abs{\lambda}^2 \vb{v}^{\dagger}_\lambda \vb{v}_\lambda = \vb{v}^{\dagger}_\lambda \vb{v}_\lambda \implies \abs{\lambda}^2 = 1.
+      \end{equation}
+  \end{enumerate}
+\end{proof}
+
+\begin{example}[G = SO(2)]
+  Let $M$ be a matrix in $SO(2)$. Then $M$ has eigenvalues $\lambda = e^{i\theta}, e^{-i\theta}$ for small $\theta \in \mathbb{R}$, with the identification $\theta \sim \theta + 2\pi$.
+  In a matrix representation, we write
+  \begin{equation}
+    M = M(\theta) = 
+    \begin{pmatrix}
+     \cos\theta & -\sin\theta \\
+     \sin\theta & \cos\theta \\
+    \end{pmatrix}.
+  \end{equation}
+  Although this is a real matrix, its eigenvalues are complex. Provided that we made the identification $\theta \sim \theta + 2\pi$, the matrix is uniquely specified by $\theta$.
+  Therefore, the manifold of this Lie group is $M(SO(2)) \cong S^1$.
+  Moreover, since the matrices are commutative, $M(\theta_1) M(\theta_2) = M(\theta_2) M(\theta_1) = M(\theta_1 + \theta_2)$, this is an Abelian Lie group.
+\begin{leftbar}
+  \begin{remark}
+    This is in fact the simplest compact Lie group.
+  \end{remark}
+\end{leftbar}
+\end{example}
+
+\begin{example}[G = SO(3)]
+  We consider now matrices $M$ in the three-dimensional special orthogonal group $SO(3)$. The eigenvalues are $\lambda = e^{+i \theta}, e^{-i\theta}, +1$, where we again have made the identification $\theta \sim \theta + 2\pi$.
+  To parametrise a rotation matrix in three dimensions, consider the normalised eigenvector corresponding to the  $\lambda = +1$ eigenvalue:
+  \begin{equation}
+    \hat{\vb{n}} \in \mathbb{R}^3, \qquad M \hat{\vb{n}} = \hat{\vb{n}}, \qquad \hat{\vb{n}} \cdot \hat{\vb{n}} = 1.
+  \end{equation}
+  The direction of $\hat{\vb{n}}$ parametrises the axis, and $\theta$ parametrises the angle of rotation.
+
+  \begin{exercise}
+    One can write a general group element of SO(3) as
+    \begin{equation}
+      M(\hat{\vb{n}}, \theta)_{ij} = \cos\theta \delta_{ij} + (1 - \cos\theta) n_i n_j - \sin\theta \varepsilon_{ijk} n_k.
+    \end{equation}
+  \end{exercise}
+
+  We want to specify the elements uniquely. Above, one needs to be careful about the uniqueness, due to two issues:
+  \begin{enumerate}
+    \item Identification: $M(\hat{\vb{n}}, 2\pi - \theta) = M(-\hat{\vb{n}}, \theta)$
+    \item If $\theta = 0$, then for all directions $\hat{\vb{n}}$, we have $M(\hat{\vb{n}}, 0) = I_3$,
+  \end{enumerate}
+
+  To be precise, we need to identify these rotations. To get a better parametrisation, define the parameter $\boldsymbol\omega = \theta \hat{\vb{n}}$.
+  Consider the ball $B_3 \subset \mathbb{R}^3 = \left\{ \boldsymbol\omega \in \mathbb{R}^3 \mid \abs{\boldsymbol\omega} \leqslant \pi \right\}$.
+  The group manifold associated with SO(3) is obtained by taking $B_3$ and identifying antipodal points on the boundary.
+
+  \begin{figure}[tbph]
+    \centering
+    \begin{subfigure}[t]{0.5\linewidth}
+      \centering
+      \def\svgwidth{0.5\columnwidth}
+      \input{lectures/ball.pdf_tex}
+      \caption{The ball $B_3$ with radius $\pi$.}
+      \label{fig:ball}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\linewidth}
+      \centering
+      \def\svgwidth{\columnwidth}
+      \input{lectures/identification.pdf_tex}
+      \caption{Identifying opposing edges of a sheet of paper gives a space topologically equivalent to a torus.}
+      \label{fig:identification}
+    \end{subfigure}
+    \caption{The group manifold associated with SO(3) is obtained by identifying antipodal points on the boundary $\partial B$ of the ball $B_3$.}
+  \end{figure}
+
+  \begin{leftbar}
+    \begin{remark}
+      In general, freely acting quotients give a manifold. Here, the group we quotiented out is the group of inversion $\mathbb{R}_2$.
+    \end{remark}
+  \end{leftbar}
+
+  The resulting manifold is connected, but not simply connected. This is because loops that come out and back via the identification cannot be contracted to a point; antipodal points are always antipodal. This is illustrated in Figure~\ref{fig:antipodal_loops}.
+  As such, we have
+  \begin{equation}
+    \pi_1(SO(3)) \neq \left\{ 0 \right\}, \qquad \pi_1(SO(3)) \simeq \mathbb{Z}_2 = \left\{ +1, -1 \right\}.
+  \end{equation}
+  \begin{figure}[bhtp]
+    \centering
+    \def\svgwidth{0.25\columnwidth}
+    \input{lectures/antipodal.pdf_tex}
+    \caption{Loops passing through the identification of antipodal points cannot be contracted to a point. Note that the purple loop is constructible. This can be seen by ``rotating'' one half of the loop until it matches up with the other.}
+    \label{fig:antipodal_loops}
+  \end{figure}
+\end{example}
+
+\subsection{Non-compact subgroups of \texorpdfstring{$GL(n, \mathbb{R})$}{GL(n, R)}}%
+\label{sub:non_compact_subgroups_of_gl_n_r}
+
+Orthogonal matrices obey $M M^T = I_n$. We can also read this as $M I_n M^T = I_n$; orthogonal transformations preserve the Euclidean metric $g = \text{diag}\underbrace{(1, \cdots, 1)}_{n \text{ times}}$ on $\mathbb{R}^n$.
+Similarly, we can generalise to say that $O(p, q)$ transformations preserve the metric of signature $p, q$ :
+\begin{equation}
+  O(p, q) = \big\{ M \in GL(n, \mathbb{R}) \mid M^T \eta M = \eta, \text{where } \eta = \text{diag}(\underbrace{-1, \ldots, -1}_{p \text{ times}}, \underbrace{+1, \ldots, +1}_{q \text{ times}}) \big\}
+\end{equation}
+
+\begin{description}
+  \item[SO(2)] 
+  $ \sim
+  \begin{pmatrix}
+   \cos\theta & -\sin\theta \\
+   \sin\theta & \cos\theta \\
+  \end{pmatrix}
+  $, with $\theta \sim \theta + 2\pi$
+  \item[SO(1, 1)] 
+  $ \sim
+  \begin{pmatrix}
+   \cosh\varphi & -\sinh\varphi \\
+   \sinh\varphi & \cosh\varphi \\
+  \end{pmatrix}
+    $, with $\varphi \in \mathbb{R}$, $M\big(SO(1, 1)\big) \simeq \mathbb{R}$.
+\end{description}
+
+\subsection{Subgroups of \texorpdfstring{$GL(n, \mathbb{C})$}{GL(n, C)}}%
+\label{sub:subgroups_of_gl_n_c}
+
+\begin{claim}
+  Let $U \in U(n) = \left\{ U \in GL(n, \mathbb{C}) \mid U^{\dagger} U = I_n \right\}$ be a matrix in the unitary group. Under such a unitary transformation, the length of a vector $\vb{v}$ is unchanged.
+\end{claim}
+\begin{proof}
+  The vector $\vb{v}$ transforms as \(\vb{v} \in \mathbb{C}^n \to \vb{v}' = U \vb{v} \in \mathbb{C}^n \).
+  Using the property $U U^{\dagger} = 1_n$ of unitary matrices, we have
+  \begin{equation}
+    \abs{\vb{v}'}^2 = \vb{v}'^{\dagger} \cdot \vb{v}' = (\vb{v}^{\dagger} U^{\dagger}) \cdot (U \vb{v}) = \vb{v}^{\dagger} \cdot \vb{v} = \abs{\vb{v}}^2
+  \end{equation}
+\end{proof}
+
+\begin{claim}
+  Let $U \in U(n)$ be an element of the group of unitary $n \times n$ matrices. Then $\det U = e^{i\delta}$, where $\delta \in \mathbb{R}$.
+\end{claim}
+\begin{proof}
+  $U^{\dagger}U = 1_n \implies \abs{\det U}^2 = 1 \implies \det U = e^{i\delta}$, $\delta \in \mathbb{R}$.
+\end{proof}
+\begin{leftbar}
+  \begin{remark}
+    Since $\delta \in \mathbb{R}$ is able to vary continuously, $U(n)$ is connected, whereas $O(n)$ was not.
+  \end{remark}
+\end{leftbar}
+
+\subsection{Special Unitary Groups}%
+\label{sub:special_unitary_groups}
+
+\begin{equation}
+  SU(n) = \left\{ U \in U(n) \mid \det U = 1 \right\}
+\end{equation}
+
+The groups $U(n)$ and $SU(n)$ are indeed Lie groups $\subset GL(n, \mathbb{C})$.
+\begin{claim}
+  Their dimensions are given by
+  \begin{equation}
+    \dim(U(n)) = 2n^2 - n^2 = n^2, \qquad \dim(SU(n)) = n^2 -1.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  To see this, take any matrix $M \in \text{Mat}(n, \mathbb{C}) \leftrightarrow \mathbb{R}^{2n^2}$ (real and complex components) and apply the embedding theorem.
+  The constraint for $U(n)$ is  $\mathcal{F} = U U^{\dagger} - I = 0$. This gives quadratic constraints in the matrix elements. Since $H = U U^{\dagger}$ is Hermitian, these are actually $n^2$ constraints instead of $2n^2$.
+  For $SU(n)$, we require $\mathcal{F} = \det U - 1 = 0$. Since $\det U = e^{i\varphi}$, this is only one additional constraint.
+\end{proof}

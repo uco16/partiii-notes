@@ -1,0 +1,106 @@
+% A shared preamble for the Part III Live-TeXing 2019
+
+% Mathematical Symbols
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{physics} 
+% If unicode-math is active, do not use the following packages
+% Instead, use \symxx for bold, italic, etc
+\usepackage{amssymb} % disable if unicode-math is used
+%\bm
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{tensor}
+
+% Graphics
+\usepackage{graphicx}
+\graphicspath{{lectures/}}
+
+\usepackage{xcolor}
+\usepackage{keyval}
+\usepackage{tcolorbox}
+\usepackage{subcaption}
+
+% Links
+\usepackage[hidelinks, pdfencoding=auto]{hyperref}
+\usepackage{bookmark} % faster updated bookmarks
+
+% Page and Line Formatting
+%\setlength\parindent{0pt}
+\usepackage[margin=35mm]{geometry}
+\renewcommand{\baselinestretch}{1.25}
+
+% Headers and Footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\coursetitle{}}
+\rhead{Page \thepage}
+%\lfoot{\leftmark}
+%\rfoot{\rightmark}
+\cfoot{\nouppercase\leftmark}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Chapter title formatting
+%\renewcommand{\thechapter}{\Roman{chapter}}
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\normalfont\huge\bfseries}{\thechapter}{1em}{}
+
+% Line Numbers (Pre-Publishing)
+%\usepackage{lineno}
+%\linenumbers
+
+% Numbering by Section
+\usepackage{placeins}
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+% Theorems and Definition
+\usepackage{amsthm}
+\newtheoremstyle{StandardStyle}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {:}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {}% Manually specify head
+\theoremstyle{StandardStyle}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{claim}{Claim}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary}{Corollary}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{notation}{Notation}
+
+\newtheorem*{example}{Example}
+\newtheorem{exercise}{Exercise}[section]
+
+\usepackage{framed} % for \leftbar next to remark
+\newtheorem*{remark}{Remark}
+
+% differential (upright d):
+\newcommand{\bdd}[2][]{\mathop{\mathrm{d\hspace*{-0.2em}\bar{}\hspace*{0.2em}}^{#1}\hspace*{-0.05em}{#2}}}
+
+% bar delta
+\newcommand{\bdelta}{\delta\hspace*{-0.2em}\bar{}\hspace*{0.2em}}
+
+% definition of path integral measure
+\newcommand*\pdd[1]{\mathop{\mathcal{D} #1}}
+
+\author{Umut C.~\"Ozer\\uco21@cam.ac.uk}
+\title{{\Huge \coursetitle{}}\\
+Part III \term{} 2019\\
+Lectures by \lecturer{}}

@@ -1,0 +1,77 @@
+extends texmath
+
+# --- Custom Snippets ---
+
+snippet def "Definition" b
+\begin{definition}[$1]
+	$2
+\end{definition}$0
+endsnippet
+
+snippet not "Notation" b
+\begin{notation}[$1]
+	$2
+\end{notation}$0
+endsnippet
+
+snippet thm "Theorem" b
+\begin{theorem}[$1]
+	$2
+\end{theorem}$0
+endsnippet
+
+snippet cor "Corollary" b
+\begin{corollary}
+	$1
+\end{corollary}$0
+endsnippet
+
+snippet prop "Proposition" b
+\begin{proposition}
+	$1
+\end{proposition}$0
+endsnippet
+
+snippet claim "Claim" b
+\begin{claim}
+	$1
+\end{claim}$0
+endsnippet
+
+snippet nb "Remark" b
+\begin{leftbar}
+	\begin{remark}
+		$1
+	\end{remark}$0
+\end{leftbar}
+endsnippet
+
+snippet exa "Example" b
+\begin{example}[$1]
+	$2
+\end{example}$0
+endsnippet
+
+snippet exe "Exercise" b
+\begin{exercise}
+	$1
+\end{exercise}$0
+endsnippet
+
+snippet ink "Inkscape Figure" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\def\svgwidth{${2:0.8}\columnwidth}
+	\input{lectures/${3:ink}.pdf_tex}
+	\caption{${3/(\w+)\.\w+/\u$1/}$0}
+	\label{fig:${3/(\w+)\.\w+/$1/}}
+\end{figure}
+endsnippet
+
+snippet eqref "cite an equation" 
+\eqref{eq:$1}$0
+endsnippet
+
+snippet FEM "emphasise" A
+\emph{$1}$0
+endsnippet
