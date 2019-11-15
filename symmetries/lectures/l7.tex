@@ -1,0 +1,178 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 7: October 24}
+\begin{example}[G = SO(n)]
+  Let $g(t) = R(t) \in SO(n)$ for all $t \in \mathcal{I} \subset \mathbb{R}$, with $R(0) = I_n$ be a curve on the group manifold $G = SO(n)$.
+  This implies that
+  \begin{equation}
+    R^T(t) R(t) = I_n \quad \forall t \in \mathcal{I}.
+  \end{equation}
+  Differentiating with respect to $t$, we have
+  \begin{equation}
+    \dot R^T (t) R(t) + R^T(t) \dot R(t) = 0, \qquad \forall t \in \mathcal{I}.
+  \end{equation}
+  If $x_i = \dot R(0)$, then at $t =0$ we get $x^T + x = 0$.
+  Since continuity automatically implies $\det R(t) = +1$, there is no further constraint from imposing this.
+  Therefore,
+  \begin{equation}
+    \mathscr{L}(O(n)) \simeq \mathscr{L}(SO(n)) = \{ X \in \text{Mat}_n(\mathbb{R}) \mid X^T = -X \}.
+  \end{equation}
+  Counting the parameters in these matrices, we then have 
+  \begin{equation}
+    \dim(\mathscr{L}(SO(n))) = \frac{1}{2} n (n - 1) = \dim(SO(n)).
+  \end{equation}
+\end{example}
+
+\begin{example}[G = SU(n)]
+  Let $g(t) = U(t) \in SU(n)$ be a curve passing through the origin, with $U(0) = I_n$.
+  As in the previous example, we differentiate the unitarity property $U^{\dagger}(t) U(t) = I_n$ with respect to $t$ and evaluate at $t = 0$ to give
+  \begin{equation}
+    Z^{\dagger} + Z = 0
+  \end{equation}
+  for the derivatives $Z = \dot U(0) = \mathscr{L}(SU(n))$.
+  Here, in contrast to the previous example, we \emph{will} get an additional constraint from $\det U(t) = 1$ $\forall t \in \mathbb{R}$.
+
+  \begin{exercise}
+    Show that $\det U(t) = 1 + t \Tr Z + O(t^2)$
+  \end{exercise}
+  Therefore, the constraint on the determinant imposes that the traces $\Tr Z$ vanish.
+  The higher order terms in the Taylor series will not impose any additional constraints.
+  Hence, we can use the same Lie algebra as $SO(n)$, except that we have to constrain the matrices be traceless:
+  \begin{equation}
+    \mathscr{L}(SU(n)) = \{Z \in \text{Mat}_n(\mathbb{C}) \mid Z^{\dagger} = -Z, \; \Tr Z = 0\}
+  \end{equation}
+  From this, we find that $\dim(\mathscr{L} (SU(n))) = 2n^2 - n^2 - 1 = n^2 - 1$; the dimension of the Lie algebra is the same as the dimension of the Lie group $\dim(SU(n))$.
+\end{example}
+
+\begin{example}[]
+  \begin{equation}
+    \dim SU(2) = \dim SO(3) = 3
+  \end{equation}
+  Let $G = SU(2)$, then from our considerations above we know that the Lie algebra $\mathscr{L}(SU(2))$ is the set of $2\times 2$ traceless anti-hermitian matrices.
+  The basis for the Lie algebra of $SU(2)$ can be built from the hermitian Pauli matrices: for $a = 1, 2, 3$, they satisfy
+  \begin{equation}
+    \sigma_a = \alpha_a^{\dagger} \qquad \text{and} \qquad \Tr \sigma_a = 0.
+  \end{equation}
+  A basis element in the Lie algebra of $SU(2)$ can then be written
+  \begin{equation}
+    T^a = -\frac{1}{2} i \alpha_a,
+  \end{equation}
+  where the $i$ guarantees that $T^a$ is anti-hermitian.
+  At the moment, the upper or lower placement of indices is purely notational at the moment, but will gain significance later.
+  In order to compute the structure constants, we recall that the Pauli matrices obey the following identity:
+  \begin{equation}
+    \sigma_a \sigma_b = \delta_{ab} I_2 + i \varepsilon_{abc} \sigma_c.
+  \end{equation}
+  Using this, the structure constants $f \indices{^{ab}_c}$ are, according to their definition, obtained from the commutator
+  \begin{equation}
+    [T^a, T^b] = -\frac{1}{4} [\sigma_a, \sigma_b] = -\frac{1}{2} i \varepsilon_{abc} \sigma_c = f \indices{^{ab}_c} T^c .
+  \end{equation}
+  Therefore, we simply read off
+  \begin{equation}
+    \boxed{f \indices{^{ab}_c} = \varepsilon_{abc}} \qquad a,b,c = 1,2,3.
+  \end{equation}
+\end{example}
+
+\begin{example}[G = SO(3)]
+  From our previous analysis, we know that the Lie algebra of $SO(3)$ consists of
+  \begin{equation}
+    \mathscr{L}(SO(3)) = \{ 3 \times 3 \text{ real anti-symmetric matrices} \}.
+  \end{equation}
+  We can write down a convenient basis as
+  \begin{equation}
+    \widetilde T^1 = 
+    \begin{pmatrix}
+     0 & 0 & 0 \\
+     0 & 0 & -1 \\
+     0 & 1 & 0 \\
+    \end{pmatrix},
+    \qquad
+    \widetilde T^2 = 
+    \begin{pmatrix}
+     0 & 0 & 1 \\
+     0 & 0 & 0 \\
+     -1 & 0 & 0 \\
+    \end{pmatrix},
+    \qquad
+    \widetilde T^3 = 
+    \begin{pmatrix}
+     0 & -1 & 0 \\
+     1 & 0 & 0 \\
+     0 & 0 & 0 \\
+    \end{pmatrix}
+  \end{equation}
+  This can be used to find the structure constants as
+  \begin{equation}
+    [\widetilde T^a, \widetilde T^b] = f \indices{^{ab}_c} \widetilde T^c
+  \end{equation}
+  with $f \indices{^{ab}_c} = \varepsilon_{abc}$ with $a,b,c = 1,2,3$.
+  We find that the Lie algebras are the same
+  \begin{equation}
+    \mathscr{L}(SO(3)) \cong \mathscr{L}(SU(2)).
+  \end{equation}
+  However, the Lie groups themselves are not isomorphic: 
+  \begin{equation}
+    SO(3) \not\cong SU(2).
+  \end{equation}
+  We learn that different Lie groups can lead to the same Lie algebra. However, we will see later that this degeneracy will be easy to deal with.
+  In fact, there is a relation between these two Lie groups:
+  \begin{equation}
+    SO(3) \simeq \frac{SU(2)}{\mathbb{Z}_2}.
+  \end{equation}
+  \begin{leftbar}
+    \begin{remark}
+      This is because there is a \emph{double cover}, or two-to-one, surjective homomorphism
+      \begin{equation}
+	\phi\colon \ SU(2) \to SO(3), \qquad \text{ker}(\phi) = \mathbb{Z}_2 = \{\pm 1\}.
+      \end{equation}
+    \end{remark}
+  \end{leftbar}
+\end{example}
+
+\chapter{Lie Algebras from Lie Groups II}%
+\label{cha:lie_algebras_from_lie_groups_ii}
+
+\section{Diffeomorphisms}%
+\label{sec:diffeomorphisms}
+
+A Lie group is a very special type of manifold. In particular, for each element $h$ in the Lie group $G$, we have two smooth maps from the group to itself that come from left and right group multiplication,
+\begin{align}
+  L_h &\colon G \to G \qquad g \in G \mapsto hg \in G, \\
+  R_h &\colon G \to G \qquad g \in G \mapsto gh \in G,
+\end{align}
+known as \emph{left-} and \emph{right-translations} respectively.
+
+\begin{claim}
+  These maps are \emph{surjective}, which means that for every $g' \in G$, there is an element $g \in G$, such that $L_h(g) = g'$. 
+\end{claim}
+\begin{proof}
+  To see this, set $g = h^{-1} g'$.
+\end{proof}
+
+\begin{claim}
+  These maps are also \emph{injective}, which means that for all $g, g' \in G$, we have that if $L_h(g) = L_h(g)$, then we must have $g = g'$.
+\end{claim}
+\begin{proof}
+  \(
+    L_h(g) = L_h(g') \implies gh = gh' \implies g = g'.
+    \)
+\end{proof}
+\begin{definition}[]
+  Since $L_h$ and $R_h$ are both surjective and injective---they are said to be \emph{one-to-one}, or \emph{diffeomorphisms} of $\mathcal{M}(G)$---the \emph{inverse map}$(L_h)^{-1} = L_{h^{-1}}$ exists and is smooth.
+\end{definition}
+
+\begin{wrapfigure}{L}{0.37\columnwidth}
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l8f1.pdf_tex}
+  \label{fig:l8f1}
+\end{wrapfigure}
+
+Now introduce coordinates $\{ \theta^i \}$, $i = 1, \dots, D$ in some region containing the identity element. We can then parametrise every $g = g(\theta) \in G$, and we can choose the parametrisation such that $g(0) = e$.
+Assuming that we map to an element $g'$ that is in the same coordinate patch as $g$, let $g' = g(\theta') = L_h(g) = h g(\theta)$.
+In coordinates, $L_h$ is specified by $D$ real functions $\theta'^i = \theta'^i(\theta)$, $i = 1, \dots, D$.
+Since $L_h$ is a diffeomorphism, the Jacobian matrix
+\begin{equation}
+  J \indices{^i_j}(\theta) = \pdv{\theta'^i}{\theta^j}
+\end{equation}
+exists and is invertible, which is equivalent to saying that $\det J \neq 0$.

@@ -179,3 +179,16 @@ The groups $U(n)$ and $SU(n)$ are indeed Lie groups $\subset GL(n, \mathbb{C})$.
   The constraint for $U(n)$ is  $\mathcal{F} = U U^{\dagger} - I = 0$. This gives quadratic constraints in the matrix elements. Since $H = U U^{\dagger}$ is Hermitian, these are actually $n^2$ constraints instead of $2n^2$.
   For $SU(n)$, we require $\mathcal{F} = \det U - 1 = 0$. Since $\det U = e^{i\varphi}$, this is only one additional constraint.
 \end{proof}
+
+% I added this myself when working on PS 1
+\section*{Span of Vectors}%
+\label{sec:span_of_vectors}
+
+To calculate the dimension of $O(n)$ and $U(n)$, it is useful to consider the span of a set of vectors.
+This is because the condition $O^T O = I$ implies that columns of $O$ are unit vectors, each successively orthogonal to the span of the preceding ones.
+\begin{definition}[span]
+  Let $\{v_i\}$, $i = 1, \dots, n$ be a set of vectors in a vector space $V$. The \emph{span of the set} $\{v_i\}$, denoted $\text{span}(v_1, \dots, v_n)$ is the et of all linear combinations of these vectors.
+\end{definition}
+\begin{example}[]
+  Let $V = \{v_1, v_2\}$. Then $\text{span}(V) = \{c_1 v_1 + c_2 v_2\}$, where $c_1, c_2$ are elements of the field over which the vector space is defined.
+\end{example}

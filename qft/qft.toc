@@ -1,17 +1,50 @@
-\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}Classical Field Theory}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Dynamics of Fields}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Lorentz Invariance}{7}{section.2.2}
-\contentsline {section}{\numberline {2.3}Noether's theorem}{9}{section.2.3}
-\contentsline {chapter}{\numberline {3}Free Field Theory}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hamiltonian Formalism}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}Canonical Quantisation}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Review of SHO in 1d QM}{15}{section.3.3}
-\contentsline {section}{\numberline {3.4}The Free Scalar Field}{17}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}The Vacuum}{18}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Particles}{19}{subsection.3.4.2}
-\contentsline {subsubsection}{Properties of $\ket {\vb {p}}$}{20}{equation.3.4.20}
-\contentsline {subsubsection}{Multi-Particle States $\ket {\vb {p}_1, \ldots , \vb {p}_n}$}{20}{exercise.3.4.3}
-\contentsline {section}{\numberline {3.5}Relativistic Normalisation}{21}{section.3.5}
-\contentsline {section}{\numberline {3.6}Free Complex Scalar Field}{22}{section.3.6}
-\contentsline {section}{\numberline {3.7}The Heisenberg Picture}{23}{section.3.7}
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
+\contentsline {chapter}{\numberline {2}Classical Field Theory}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Dynamics of Fields}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Lorentz Invariance}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Noether's theorem}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Free Field Theory}{14}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hamiltonian Formalism}{14}{section.3.1}
+\contentsline {section}{\numberline {3.2}Canonical Quantisation}{15}{section.3.2}
+\contentsline {section}{\numberline {3.3}Review of SHO in 1d QM}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}The Free Scalar Field}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}The Vacuum}{19}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Particles}{20}{subsection.3.4.2}
+\contentsline {subsubsection}{Properties of $\ket {\vb {p}}$}{21}{equation.3.4.44}
+\contentsline {subsubsection}{Multi-Particle States $\ket {\vb {p}_1, \ldots , \vb {p}_n}$}{21}{exercise.3.4}
+\contentsline {section}{\numberline {3.5}Relativistic Normalisation}{22}{section.3.5}
+\contentsline {section}{\numberline {3.6}Free Complex Scalar Field}{23}{section.3.6}
+\contentsline {section}{\numberline {3.7}The Heisenberg Picture}{24}{section.3.7}
+\contentsline {section}{\numberline {3.8}Causality}{26}{section.3.8}
+\contentsline {section}{\numberline {3.9}Propagators}{27}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Feynman Propagator}{27}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Retarded Green's functions}{28}{subsection.3.9.2}
+\contentsline {chapter}{\numberline {4}Interacting Fields}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Coupling Constants and Mass Dimension}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}The Interaction Picture}{30}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Relation to Schrödinger Picture}{31}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Relation to Heisenberg Picture}{31}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Scattering Amplitudes}{33}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Meson Decay}{34}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Wick's Theorem}{36}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Consequences of Wick's theorem}{37}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.5}Nucleon-Nucleon Scattering}{38}{section.4.5}
+\contentsline {section}{\numberline {4.6}Feynman Diagrams}{39}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Feynman Rules for $\phi ^4$ theory}{43}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Symmetry Factors}{43}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}$\phi ^4$ Feynman Rules with Momenta}{45}{subsection.4.6.3}
+\contentsline {subsection}{\numberline {4.6.4}Vacuum Bubbles and Connected Diagrams}{46}{subsection.4.6.4}
+\contentsline {section}{\numberline {4.7}Green's Functions and the Vacuum}{48}{section.4.7}
+\contentsline {section}{\numberline {4.8}Scattering}{50}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Kinematics}{50}{subsection.4.8.1}
+\contentsline {section}{\numberline {4.9}2 $\to $ 2 Scattering}{53}{section.4.9}
+\contentsline {section}{\numberline {4.10}Decay Rates}{54}{section.4.10}
+\contentsline {chapter}{\numberline {5}The Dirac Equation}{55}{chapter.5}
+\contentsline {subsection}{\numberline {5.0.1}The Algebra of the Lorentz group}{56}{subsection.5.0.1}
+\contentsline {section}{\numberline {5.1}the Spinor Representation}{57}{section.5.1}
+\contentsline {section}{\numberline {5.2}Constructing a Lorentz Invariant Action of $\psi $}{59}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Dirac Equation}{60}{section.5.3}
+\contentsline {section}{\numberline {5.4}Chiral Spinors}{61}{section.5.4}
+\contentsline {section}{\numberline {5.5}The Weyl Equation}{61}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}$\gamma ^5$-Matrix}{61}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Parity}{62}{subsection.5.5.2}

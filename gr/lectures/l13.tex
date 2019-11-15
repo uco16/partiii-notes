@@ -1,0 +1,201 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 13: November 11}
+
+\chapter{The Einstein Equations}%
+\label{cha:the_einstein_equations}
+
+It is time to do some physics!
+All of the mathematics that we developed will pay off quickly in that we will quickly understand why we have to write down the Einstein equations.
+
+We should think about gravity in much the same way as we think about other forces.
+Spacetime is a manifold $\mathcal{M}$, equipped with a Lorentzian metric $g$. This metric is a field, which tells us how gravity is to behave. This is similar to the fields in electromagnetism or other forces.
+The right way to describe a fundamental force in physics is with an action.
+
+\section{The Einstein-Hilbert Action}%
+\label{sec:the_einstein_hilbert_action}
+
+The dynamics is governed by the \emph{Einstein-Hilbert action},
+\begin{equation}
+  S = \int \dd[4]{x} \sqrt{-g} R
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    This is where we see the payoff: There is not very much that we can write down.
+    From differential geometry, we know that we need to cook up a top-form. Thankfully, given the metric, there is a natural volume form $\sqrt{-g}$ (minus sign for Lorentzian metric).
+
+    We then integrate over a scalar function. The simplest function---a constant function---gives us the volume of the manifold, but it is not quite the right thing to give dynamics.
+    The next simples thing that we can write down is the Ricci scalar $R$.
+    Note that $R \sim \partial\Gamma + \Gamma \Gamma$ and $\Gamma \sim g^{-1} \partial g$. Therefore, the Ricci scalar $R$ has two derivatives.
+    This is what we have come to expect from an action for a bosonic scalar field, or the Maxwell action.
+
+    There are other choices, like the square of the Riemann tensor, or others. However, these would be four-derivative terms. 
+    It turns out that with four derivatives we have exactly three options and at six derivatives we have even more.
+    We will only consider two-derivatives, like in the other action principles we use in theoretical physics.
+  \end{remark}
+\end{leftbar}
+\begin{leftbar}
+  \begin{remark}
+    This has to be the Levi-Civita connection, since we just have the metric. Other than $g$ and $\mathcal{M}$, there is nothing else to play with in this theory.
+  \end{remark}
+\end{leftbar}
+To derive the equations of motion, we vary the field, which in this case is simply the metric,
+\begin{equation}
+  g_{\mu\nu} \to g_{\mu\nu} + \delta g_{\mu\nu},
+\end{equation}
+in the usual way.
+We can also consider how the inverse of the metric changes
+\begin{align}
+  g_{\rho\mu} = \delta^{\nu}_{\rho} &\implies \delta g^{\rho\mu} + g_{\rho\mu} \delta g^{\mu\nu} = 0 \\
+	      &\implies \delta g^{\mu\nu} = - g^{\mu\rho} g^{\nu\sigma} \delta g_{\rho\sigma}.
+\end{align}
+It turns out that it is actually marginally simpler to look at how the inverse changes.
+We have
+\begin{equation}
+  \delta S = \int \dd[4]{x} \left[  \delta (\sqrt{-g}) g^{\mu\nu} R_{\mu\nu} + \sqrt{-g} \left( \delta g^{\mu\nu} R_{\mu\nu} + g^{\mu\nu} \delta R_{\mu\nu}\right) \right].
+\end{equation}
+
+\begin{claim}
+  $\delta \sqrt{-g} = \frac{-1}{2} \sqrt{-g} g_{\mu\nu} \delta g^{\mu\nu}$.
+\end{claim}
+\begin{proof}
+  We use $\log \det A = \tr \log A$
+  \begin{equation}
+    \implies \frac{1}{\det A} \delta(\det A) = \tr(A^{-1} \delta A).
+  \end{equation}
+  \begin{leftbar}
+    \begin{remark}
+      We vary the log of a matrix as
+      \begin{equation}
+        B = \log A \implies A = e^{B}
+      \end{equation}
+      \begin{align}
+	\implies \Tr(\delta A) &= \Tr(e^{B} \delta B) = \Tr(A \delta B) \\
+	\implies \Tr (\delta (\log A)) &= \Tr(A^{-1} \delta A)
+      \end{align}
+    \end{remark}
+  \end{leftbar}
+    \begin{align}
+      \implies \delta \sqrt{-g} &= \frac{1}{2} \frac{1}{\sqrt{-g}} (-g) g^{\mu\nu} \delta g_{\mu\nu} \\
+				&= \frac{1}{2} \sqrt{-g} g^{\mu\nu} \delta g_{\mu\nu}
+    \end{align}
+\end{proof}
+
+\begin{claim}
+  \begin{equation}
+  \delta \Gamma^{\rho}_{\mu\nu} = \frac{1}{2} g^{\rho\sigma} (\nabla_{\mu} \delta g_{\sigma\nu} + \nabla_{\nu} \delta g_{\sigma\mu} - \nabla_{\sigma} \delta g_{\mu\nu})
+  \end{equation}
+\end{claim}
+\begin{proof}
+  First, note that $\Gamma^{\mu}_{\rho\nu}$ is \emph{not} a tensor, but the variation $\delta \Gamma^{\mu}_{\rho\nu}$ is the difference between two connections and \emph{is} a tensor.
+  In normal coordinates, at some point, 
+  \begin{equation}
+    \delta\Gamma^{\rho}_{\mu\nu} = \frac{1}{2} g^{\rho\sigma} (\partial_{\mu} \delta g_{\sigma\nu} + \partial_{\nu} \delta g_{\sigma\mu} - \partial_{\sigma} \delta g_{\mu\nu})
+  \end{equation}
+  The $\delta g^{\rho\sigma}$ multiplies $\partial g$, which is $\partial g = 0$ in normal coordinates.
+  Moreover, in normal coordinates we have $\Gamma = 0$ and therefore $\partial \to \nabla$.
+  \begin{equation}
+    \dots = \frac{1}{2} g^{\rho\sigma} (\nabla_{\mu} \delta g_{\sigma\nu} + \nabla_{\nu} \delta g_{\sigma\mu} - \nabla_{\sigma} \delta g_{\mu\nu}).
+  \end{equation}
+  This is a tensor equation, and is therefore true in all coordinates.
+\end{proof}
+
+\begin{claim}
+  \begin{equation}
+    \delta R_{\mu\nu} = \nabla_{\rho} \delta \Gamma^{\rho}_{\mu\nu} - \nabla_{\nu} \delta \Gamma^{\rho}_{\mu\rho}
+  \end{equation}
+\end{claim}
+\begin{proof}
+  \begin{align}
+    R \indices{^{\sigma}_{\rho\mu\nu}} &= \partial_{\mu} \Gamma^{\sigma}_{\nu\rho} - \partial_{\nu} \Gamma^{\sigma}_{\mu\rho} \\
+   \implies \delta R \indices{^{\sigma}_{\rho\mu\nu}} &= \partial_{\mu} \delta \Gamma^{\sigma}_{\nu\rho} - \partial_{\nu} \delta \Gamma^{\sigma}_{\mu\nu} \\
+   &= \nabla_{\mu} \delta\Gamma^{\sigma}_{\nu\rho} - \nabla_{\nu} \delta\Gamma^{\sigma}_{\mu\nu}
+  \end{align}
+  as $\Gamma 0 0$ in normal coordinates.
+\end{proof}
+
+Therefore, the Einstein-Hilbert action becomes
+\begin{equation}
+  \delta S = \int \dd[4]{x} \sqrt{-g} \left[ R_{\mu\nu} - \frac{1}{2} R_{\gamma\mu\nu} \right] \delta g^{\mu\nu} + \nabla_{\mu} X^{\mu},
+\end{equation}
+with $X^{\mu} = g^{\rho\nu} \delta\Gamma^{\mu}_{\rho\nu} - g^{\mu\nu} \delta \Gamma^{\rho}_{\nu\rho}$. This last term is a total derivative and we will just drop it.
+\begin{leftbar}
+  \begin{remark}
+    Unlike in other field theories, you do not have to look too far to find situations where these boundary terms become important.
+    You can introduce the Gibbons-Hawking term to deal with these boundary terms. These might well become important in next term's \emph{Black Holes} course.
+  \end{remark}
+\end{leftbar}
+Requiring $\delta S = 0$ for all variations $\delta g^{\mu\nu}$, we obtain the \emph{Einstein equations}:
+\begin{equation}
+  G_{\mu\nu} \coloneqq R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} = 0
+\end{equation}
+In fact, we can simplify this by contracting on the right with $g^{\mu\nu}$: we get $R = 0$ which gives us
+\begin{equation}
+  R_{\mu\nu} = 0.
+\end{equation}
+These are the \emph{Einstein vacuum equations}.
+\begin{leftbar}
+  \begin{remark}
+    Note that this does not say that spacetime has no curvature! It is the more subtle type of curvature, which the Riemann tensor has and the Ricci scalar has not, that is relevant for spacetime.
+  \end{remark}
+\end{leftbar}
+
+\subsection*{Dimensional Analysis}%
+
+The action should have exactly the same dimension as $\hbar$, which is $(energy) \times (time) = ML^2 T^{-1}$.
+Meanwhile $[\dd[4]{x}] = L^4$ (or $L^3 T$) and $[\sqrt{-g}] = 0$ (which is sort-of-true) and $[R] = L^{-2}$. 
+\begin{leftbar}
+  \begin{remark}
+    We insist that in $ds^2 = g_{\mu\nu} dx^{\mu} dx^{\nu}$, the dimensions are hiding in the $dx^{\mu}$, and $g_{\mu\nu}$ is dimensionless.
+  \end{remark}
+\end{leftbar}
+Therefore, for dimensional consistency, we have
+\begin{equation}
+  S = \frac{c^3}{16 \pi G} \int \dd[4]{x} \sqrt{-g} R.
+\end{equation}
+At the moment, this does not change the equations of motion. However, once we introduce matter, this will have an effect.
+
+\begin{definition}[]
+  The \emph{Planck mass} is $M^2_{\text{pl}} = \frac{\hbar c}{8 \pi G}$ and $M_{\text{pl}} \sim 10^{18}$ GeV. 
+\end{definition}
+We work in units with $c = 1$ and $\hbar = 1$.
+In this case, the action can be written as
+\begin{equation}
+  S = \frac{1}{2} M^2_{\text{pl}} \int \dd[4]{x} \sqrt{-g} R.
+\end{equation}
+Depending on the physics that we are interested in, we use these different forms of the action.
+We will also keep $G$ in all the formulae; other relativists tend to set it to one, but we will try to keep gravity on an equal footing with the other forces in the universe.
+
+\subsection*{The Cosmological Constant}%
+
+We could add a further term to the action
+\begin{equation}
+  S = \frac{1}{2} M^2_{\text{pl}} \int \dd[4]{x} \sqrt{-g} \left( R - 2 \Lambda \right)
+\end{equation}
+We can think of this constant $\Lambda$ as a potential term for gravity.
+Doing the same variations as usual, we obtain
+\begin{equation}
+  R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} = - \Lambda g_{\mu\nu} \implies R = 4 \Lambda \implies R_{\mu\nu} = \Lambda g_{\mu\nu}.
+  \label{eq:13-1}
+\end{equation}
+We will study gravity by itself first. Only later we will try to understand how gravity couples to other fields, like masses.
+\begin{leftbar}
+  \begin{remark}
+    Einstein called $\Lambda$ to be his biggest mistake, since he picked it to balance out the expansion of the universe in the solutions he found, when compared against the redshift observed by Slyther (?) and Hubble.
+  \end{remark}
+\end{leftbar}
+
+\section{Diffeomorphisms Revisited}%
+\label{sec:diffeomorphisms_revisited}
+
+In part, we revisit this section to count the number of degrees of freedom of these equations.
+The metric has $\frac{1}{2} \times 4 \times 5 = 10$ components.
+But two metrics related by a change of coordinates $x^{\mu} \to \widetilde{x}x^{\mu}(x)$ are physically equivalent. Therefore, the metric contains $10 - 4 = 6$ degrees of freedom.
+You might worry that the $10$ equations of \eqref{eq:13-1} over-determine the metric; we will see that this is not true.
+The change of coordinates can be viewed as a diffeomorphism $\phi \colon \mathcal{M} \to \mathcal{M}$.
+\begin{leftbar}
+  \begin{remark}
+    This is a bit like the active vs passive transformation issue.
+  \end{remark}
+\end{leftbar}
+Such diffeomorphisms (diffeos) are the ``gauge symmetry'' of GR.

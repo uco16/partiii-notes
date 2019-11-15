@@ -4,31 +4,35 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{physics} 
-% If unicode-math is active, do not use the following packages
-% Instead, use \symxx for bold, italic, etc
 \usepackage{amssymb} % disable if unicode-math is used
-%\bm
+\usepackage{mathrsfs}
 \usepackage{cancel}
 \usepackage{siunitx}
 \usepackage{tensor}
+\usepackage{bbold}
+\usepackage{simpler-wick}
 
 % Graphics
 \usepackage{graphicx}
 \graphicspath{{lectures/}}
-
+\usepackage{wrapfig}
 \usepackage{xcolor}
 \usepackage{keyval}
 \usepackage{tcolorbox}
 \usepackage{subcaption}
+
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
 
 % Links
 \usepackage[hidelinks, pdfencoding=auto]{hyperref}
 \usepackage{bookmark} % faster updated bookmarks
 
 % Page and Line Formatting
-%\setlength\parindent{0pt}
+\setlength\parindent{1em}
+\setlength{\parskip}{0.8em}
 \usepackage[margin=35mm]{geometry}
-\renewcommand{\baselinestretch}{1.25}
+\renewcommand{\baselinestretch}{1.3}
 
 % Headers and Footers
 \usepackage{fancyhdr}
@@ -52,16 +56,16 @@
 %\linenumbers
 
 % Numbering by Section
-\usepackage{placeins}
-\let\Oldsection\section
-\renewcommand{\section}{\FloatBarrier\Oldsection}
-\let\Oldsubsection\subsection
-\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
-\let\Oldsubsubsection\subsubsection
-\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
-\numberwithin{equation}{section}
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
+%\usepackage{placeins}
+%\let\Oldsection\section
+%\renewcommand{\section}{\FloatBarrier\Oldsection}
+%\let\Oldsubsection\subsection
+%\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+%\let\Oldsubsubsection\subsubsection
+%\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+%\numberwithin{equation}{chapter}
+%\numberwithin{figure}{chapter}
+%\numberwithin{table}{chapter}
 
 % Theorems and Definition
 \usepackage{amsthm}
@@ -78,7 +82,7 @@
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{claim}{Claim}
+\newtheorem{claim}{Claim}
 \newtheorem*{proposition}{Proposition}
 \newtheorem*{corollary}{Corollary}
 
@@ -86,7 +90,7 @@
 \newtheorem*{notation}{Notation}
 
 \newtheorem*{example}{Example}
-\newtheorem{exercise}{Exercise}[section]
+\newtheorem{exercise}{Exercise}[chapter]
 
 \usepackage{framed} % for \leftbar next to remark
 \newtheorem*{remark}{Remark}
@@ -99,6 +103,9 @@
 
 % definition of path integral measure
 \newcommand*\pdd[1]{\mathop{\mathcal{D} #1}}
+
+% normal ordering : A B C :
+\newcommand{\normalorder}[1]{\mathop{:}\nolimits\!#1\!\mathop{:}\nolimits}
 
 \author{Umut C.~\"Ozer\\uco21@cam.ac.uk}
 \title{{\Huge \coursetitle{}}\\

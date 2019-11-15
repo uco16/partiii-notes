@@ -1,0 +1,111 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 3: October 16}
+\section{Lie Derivatives}%
+\label{sec:lie_derivatives}
+
+We have learned that vector fields differentiate scalar functions. But how can we differentiate vector fields?
+Given $X, Y \in \mathfrak{X}(\mathcal{M})$, is there some way to know how $Y$ changes in the direction of $X$?
+There is a problem here. For a function on $\mathbb{R}$:
+\begin{equation}
+\dv{f}{t} = \lim_{h \to 0} \left\{ \frac{f(t + h) - f(t)}{f(t)}{h} \right\}.
+\end{equation}
+Similarly, to differentiate $Y \in \mathfrak{X}(\mathcal{M})$, we need to compare $Y_p \in T_p \mathcal{M}$ with some neighbouring $Y_q \in T_q \mathcal{M}$. The problem is that these are in different vector spaces! As each vector space has different coordinates, simply working with component values gives us a bad definition of a derivative; one which is dependent of coordinate choice. We cannot just add or subtract one vector from another.
+To differentiate $Y$, we need to understand how to map vectors in $T_q (\mathcal{M})$ to vectors in $T_p(\mathcal{M})$, so we can compare them.
+
+\subsection{Push-Forward and Pull-Back}%
+\label{sub:push_forward_and_pull_back}
+
+First, we think more generally about maps of the form $\varphi: \mathcal{M} \to \mathcal{N}$, where $\mathcal{N}$ and $\mathcal{M}$ can be manifolds of different dimensions.
+\begin{definition}[pull-back]
+  Suppose $\varphi: \mathcal{M} \to \mathcal{N}$ is a smooth map between manifolds.
+  Given a smooth function $f : \mathcal{N} \to \mathbb{R}$ on $\mathcal{N}$, the \emph{pull-back} of $f$ by $\varphi$ is the smooth function $\varphi^* f$ on $\mathcal{M}$ defined by 
+  \begin{equation}
+    \begin{split}
+      (\varphi^* f) \colon \mathcal{M} &\to \mathbb{R} \\
+      (\varphi^* f)(p) &\mapsto f(\varphi(p)).
+    \end{split}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[push-forward]
+  If we have a vector field $Y \in \mathfrak{X}(\mathcal{M})$, then we can construct a new vector field $(\varphi_* Y) \in \mathfrak{X}(\mathcal{N})$ as
+  \begin{equation}
+    \left[ (\varphi_* Y)(f) \right](\varphi(p)) = \left[ Y(\varphi^*f) \right] (p).
+  \end{equation}
+  This is called the \emph{push-forward}.
+\end{definition}
+
+Let $x^\mu$ be coordinates on $\mathcal{M}$ and $y^\mu$ be coordinates on $Y$. If $\varphi(x) = y^\alpha(x)$ and $Y: Y^\mu \partial_\mu \in \mathfrak{X}(\mathcal{M})$ is the vector field on $\mathcal{M}$, then we can write the push-forward on $\mathcal{N}$ as 
+\begin{equation}
+  (\varphi_* Y) (f) = Y^\mu \pdv{f(y(x))}{x^\mu} = Y^\mu \pdv{y^\alpha}{x^\mu} \pdv{f(y)}{y^\alpha}.
+\end{equation}
+In components:
+\begin{equation}
+  \label{eq:push-forward-of-tangent-vector}
+  (\varphi_* Y)^\alpha = Y^\mu \pdv{y^\alpha}{x^\mu}.
+\end{equation}
+Some objects are naturally pulled back and some are pushed forward. Note that if we have a diffeomorphism $\varphi^{-1}$, we can go both ways.
+
+\subsection{Differentiation by Lie Derivative}%
+\label{sub:the_lie_derivative}
+
+Now we can use this to differentiate. The idea is that given a vector field $X \in \mathfrak{X}(\mathcal{M})$, we can define a flow $\sigma_t\colon \mathcal{M} \to \mathcal{M}$. We use this to push forward vectors at $T_p \mathcal{M}$ to $T_{\sigma_t (p)} \mathcal{M}$.
+This is called the \emph{Lie derivative}, denoted $\mathcal{L}_X$.
+Let us first look at functions:
+\begin{align}
+  \mathcal{L}_X f &= \lim_{t \to 0} \left\{ \frac{f(\sigma_t(x)) - f(x)}{t} \right\} \\
+		  &= \left.\dv{f(\sigma_t(x))}{t}\right\rvert_{t=0} = \left.\pdv{f}{x^\mu}\right. \left.\pdv{x^\mu}{t}\right\rvert_{t=0} \\
+		  &= X^\mu \left.\pdv{f}{x^\mu}\right. = X(f)
+\end{align}
+As $X^\mu = \left.\dv{x^\mu}{t}\right.$, we have
+\begin{equation}
+  \mathcal{L}_X f = X^\mu(x) \left.\pdv{f}{x^\mu}\right. = X(f).
+\end{equation}
+The action of the Lie derivative $\mathcal{L}_X$ on a function is the same as the action of the vector field $X$.
+Now we differentiate vector fields:
+\begin{figure}[htpb]
+  \centering
+  \def\svgwidth{0.85\columnwidth}
+  \input{lectures/liediffvf.pdf_tex}
+  \caption{The Lie derivative uses the push-forward $(\sigma_{-t})_*$ to be able to compare vectors at a point $p \in \mathcal{M}$ and a bit further along the flow at $\sigma_t(p)$ defined by the vector field $X$.}
+  \label{fig:liediffvf}
+\end{figure}
+The Lie derivative of a vector field is defined by
+\begin{equation}
+  \left.\mathcal{L}_X Y\right\rvert_p = \lim_{t\to 0} \left\{ \frac{((\sigma_{-t})_*Y_p - Y_p}{t} \right\}.
+\end{equation}
+The minus sign is needed to push with the inverse flow map, $\sigma_{-t}\colon \sigma_t(p) \mapsto p$.
+Let us calculate the action of the Lie derivative on a basis $\{ \partial_\mu = \left.\pdv*{}{x^\mu}\right. \}$:
+\begin{equation}
+  \mathcal{L}_X \partial_\mu = \lim_{t \to 0} \left\{ \frac{(\sigma_{-t})_* \partial_\mu - \partial_\mu}{t} \right\}.
+\end{equation}
+The components of the push-forward are
+\begin{equation}
+  (\varphi_* f)^\alpha = Y^\mu \left.\pdv{y^\alpha}{x^\mu}\right.
+\end{equation}
+Now, we use the expression for the push-forward of a tangent vector as given by Equation \eqref{eq:push-forward-of-tangent-vector}, except that we replace the coordinates $y^\alpha$ on $\mathcal{N}$ by the infinitesimal coordinate change induced by the flow $\sigma_t$:
+\begin{equation}
+  y^\mu = x^\mu -t X^\mu + \dots
+\end{equation}
+Therefore, we have for small $t$:
+\begin{equation}
+  (\sigma_{-t})_* \partial_\mu = (\delta^\nu_\mu -t \pdv{X^\nu}{x^\mu} + \dots) \partial_\nu.
+\end{equation}
+And finally, we see that the Lie derivative acts on a coordinate basis as
+\begin{equation}
+  \mathcal{L}_X \partial_\mu = -\pdv{X^\nu}{x^\mu} \partial_\nu.
+\end{equation}
+To find out how the $\mathcal{L}_X$ acts on a general vector field $Y = Y^\mu \partial_\mu$, we can use Leibniz' formula
+\begin{align}
+  \mathcal{L}_X Y &= \mathcal{L}_X (Y^\mu \partial_\mu) = \mathcal{L}_X (Y^\mu) \partial_\mu + Y^\mu \mathcal{L}_x \partial_\mu \\
+		  &= X^\nu \pdv{Y^\mu}{x^\nu} \partial_\mu - Y^\mu \pdv{X^\nu}{x^\mu} \partial_\nu \\
+		  &= [X, Y].
+\end{align}
+This is a surprising fact! We can think of the commutator as describing how $Y$ changes in the direction of $X$.
+\begin{corollary}
+  From the Jacobi identity of commutators, we have for vector fields $X, Y, Z$:
+  \begin{equation}
+    [\mathcal{L}_X, \mathcal{L}_Y] Z = \mathcal{L}_{[X, Y]}Z.
+  \end{equation}
+\end{corollary}

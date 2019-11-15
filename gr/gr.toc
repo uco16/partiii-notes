@@ -1,2 +1,36 @@
-\contentsline {chapter}{\numberline {1}Introducing Differential Geometry}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Manifolds}{2}{section.1.1}
+\contentsline {chapter}{\numberline {1}Introducing Differential Geometry}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Manifolds}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Tangent Spaces}{6}{section.1.2}
+\contentsline {section}{\numberline {1.3}Vector Fields}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Integral Curves}{9}{section.1.4}
+\contentsline {section}{\numberline {1.5}Lie Derivatives}{10}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Push-Forward and Pull-Back}{10}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Differentiation by Lie Derivative}{11}{subsection.1.5.2}
+\contentsline {section}{\numberline {1.6}Tensors}{13}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}One-Forms}{13}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}Lie Derivative of One-Forms}{15}{subsection.1.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Tensor operations}{16}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Differential Forms}{17}{subsection.1.6.4}
+\contentsline {section}{\numberline {1.7}The Exterior Derivative}{18}{section.1.7}
+\contentsline {section}{\numberline {1.8}Integration}{20}{section.1.8}
+\contentsline {chapter}{\numberline {2}Introducing Riemannian (and Lorentzian) Geometry}{23}{chapter.2}
+\contentsline {section}{\numberline {2.1}The Metric}{23}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Riemannian Metrics}{24}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Lorentzian Metrics}{24}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}The Joys of a Metric}{25}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Connections and Curvature}{29}{section.2.2}
+\contentsline {section}{\numberline {2.3}Levi-Civita Connection}{33}{section.2.3}
+\contentsline {section}{\numberline {2.4}Parallel Transport}{36}{section.2.4}
+\contentsline {section}{\numberline {2.5}Geodesics}{37}{section.2.5}
+\contentsline {section}{\numberline {2.6}Normal coordinates}{38}{section.2.6}
+\contentsline {section}{\numberline {2.7}Path Dependence and Curvature}{40}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Geodesic Deviation}{42}{subsection.2.7.1}
+\contentsline {section}{\numberline {2.8}More on the Riemann Tensor}{43}{section.2.8}
+\contentsline {section}{\numberline {2.9}Connection 1-forms}{44}{section.2.9}
+\contentsline {chapter}{\numberline {3}The Einstein Equations}{48}{chapter.3}
+\contentsline {section}{\numberline {3.1}The Einstein-Hilbert Action}{48}{section.3.1}
+\contentsline {section}{\numberline {3.2}Diffeomorphisms Revisited}{52}{section.3.2}
+\contentsline {section}{\numberline {3.3}Some Simple Solutions}{54}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}$\Lambda = 0$: Minkowski Spacetime}{54}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}$\Lambda > 0$: De Sitter Spacetime}{55}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}$\Lambda < 0$: Anti-de Sitter Spacetime}{59}{section.3.4}

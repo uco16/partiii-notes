@@ -1,0 +1,156 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 8: October 30}
+There are two more things we can do with a metric.
+The metric provides a map from $p$-forms $\omega \in \Lambda^p(\mathcal{M})$ to $n-p$-forms $(\star\omega) \in \Lambda^{n-p}(\mathcal{M})$, where $n = \dim \mathcal{M}$:
+\begin{equation}
+  (\star\omega)_{\mu_1 \dots \mu_{n-p}} = \frac{1}{p!} \sqrt{\abs{g}} \varepsilon_{\mu_1 \dots \mu_{n-p} \nu_1 \dots -n_p} \omega^{\nu_1 \dots \nu_p}.
+\end{equation}
+This map is the \emph{Hodge dual}. 
+\begin{exercise}
+  You can check that $\star(\star\omega) = \pm (-1)^{p(n-p)}\omega$, where the sign depends on the signature of the metric; $+$ for Riemannian and $-$ for Lorentzian metrics.
+\end{exercise}
+\begin{leftbar}
+  \begin{remark}
+    For $\mathbb{R}^3$, this is what is really going on when we were able to conflate 1-forms and 2-forms.
+  \end{remark}
+\end{leftbar}
+We can then define an inner product on forms.
+\begin{definition}[inner product on forms]
+  Given $\omega, \eta \in \Lambda^p(\mathcal{M})$, let
+  \begin{equation}
+    \langle \eta, \omega \rangle = \int_{\mathcal{M}} \underbrace{\eta \wedge \star\omega}_{\text{this is a top-form}}.
+  \end{equation}
+\end{definition}
+\begin{claim}
+  For $\omega \in \Lambda^p(\mathcal{M})$ and $\alpha \in \Lambda^{p-1}(\mathcal{M})$, then there exists an operation $d^{\dagger}: \Lambda^p(\mathcal{M}) \to \Lambda^{p-1}(\mathcal{M})$ such that
+  \begin{equation}
+    \langle d\alpha, \omega \rangle = \langle \alpha, d^{\dagger}\omega \rangle.
+  \end{equation}
+  This operation is given by $d^{\dagger} = \pm (-1)^{np + n -1} \star d \star$, where the sign again depends on the signature.
+\end{claim}
+\begin{leftbar}
+  \begin{remark}
+    This is integration by parts.
+    Compare this to the Hermitian conjugate of an operator in quantum mechanical inner products on a Hilbert space. Most of the time, we do not play with forms in QM.
+    However, there is a close relationship between forms in differential geometry and fermions in QFT; this relationship will be fleshed out in the Lent term's \emph{Supersymmetry} course.
+  \end{remark}
+\end{leftbar}
+\begin{proof}
+  On a closed manifold, Stokes' theorem implies that
+  \begin{align}
+    0 &= \int_{\mathcal{M}} d(\alpha \wedge \star\omega) = \int_{\mathcal{M}} \left[ d\alpha \wedge (\star \omega) + (-1)^{p-1} \alpha \wedge d(\star w) \right]   \\
+      &= \langle d\alpha, \omega + (-1)^{p-1} \text{sign} \langle \alpha, \star d\star\omega \rangle \rangle
+  \end{align}
+  Fixing the sign gives the result.
+\end{proof}
+
+\section{Connections and Curvature}%
+\label{sec:connections_and_curvature}
+
+We have met two derivatives so far. We will now meet the final, and ultimately most useful one.
+
+\begin{definition}
+  A \emph{connection} is a map $\nabla \colon \mathfrak{X}(\mathcal{M}) \times \mathfrak{X}(\mathcal{M}) \to \mathfrak{X}(\mathcal{M})$
+  We write this as $\nabla(X, Y) = \nabla_X Y$ to make it look more like differentiation.
+  Here, $\nabla_X$ is called the \emph{covariant derivative} and it satisfies the following properties:
+  \begin{itemize}
+    \item linearity on the first argument: $\nabla_{fX + gY} Z = f\nabla_X Z + g \nabla_Y Z $ for all functions $g, g$
+    \item some linearity on the second argument: $\nabla_X (Y + Z) = \nabla_X Y + \nabla_X Z$
+    \item but functions in the second argument obey the Leibniz rule: $\nabla_X (f Y) = f\nabla_X Y + (\nabla_X f) Y$, where $\nabla_X f \coloneqq X(f)$.
+  \end{itemize}
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    This last term in the Leibniz rule is the reason why this is not a linear map, and thus not a tensor.
+  \end{remark}
+\end{leftbar}
+\begin{leftbar}
+  \begin{remark}
+    We often refer to the abstract object and also its components both simply as the \emph{connection}.
+  \end{remark}
+\end{leftbar}
+On a basis $\{ e_\mu\}$ of vector fields, not necessarily a coordinate basis, we write
+\begin{equation}
+  \nabla_{e_\rho} e_\nu = \Gamma \indices{_{\rho\nu}^{\mu}} e_{\mu}.
+\end{equation}
+This defines $\Gamma$, but it is simply the most general form it can be.
+We also use the notation $\nabla_{e_\mu} = \nabla_\mu$ to make the connection look like a partial derivative.
+Then for a general vector
+\begin{align}
+  \nabla_X Y &= \nabla_X (Y^\mu e_\mu) = X (Y^\mu) e_\mu + Y^\mu \nabla_X e_\mu. \\
+	     &= X^\nu e_\nu (Y^\mu) e_\mu + Y^\mu X^\nu \nabla_\nu e_\mu = X^\nu (e_\nu (Y^\mu) + \Gamma \indices{^\mu_\nu_\rho} Y^\rho) e_\mu.
+\end{align}
+Because the components $X^\nu$ sits out front, we can write $\nabla_X Y = X^\nu \nabla_n Y$ with 
+\begin{equation}
+  \nabla_n Y = (e_\nu (Y^\mu) + \Gamma \indices{^\mu_{\nu\rho}} Y^\rho) e_\mu,
+\end{equation}
+or with a slightly slippery notation $(\nabla_\nu Y)^\mu \coloneqq \nabla_\nu Y^\mu = e_\nu (Y^\mu) + \Gamma \indices{^\mu_\nu_\rho} Y^\rho$.
+
+\begin{leftbar}
+  \begin{remark}
+    For $\mathcal{L}_X$ depends on $X$ and $\partial X$, so we cannot write something like ``$\mathcal{L}_X = X^\mu \mathcal{L}_\mu$''.
+    This is ultimately why the covariant derivative is more useful. The flip side is that the Lie derivative comes for free, while the numbers $\Gamma$ are extra structure that needs to be specified on the manifold.
+  \end{remark}
+\end{leftbar}
+If we take a coordinate basis $\{e_\mu\} = \{\partial_\mu\}$, then
+\begin{equation}
+  \nabla_\nu Y^\mu = \partial_\nu Y^\mu + \Gamma \indices{^\mu_\nu_\rho} Y^\rho.
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    This should be familiar from previous courses in GR or fluid dynamics.
+  \end{remark}
+\end{leftbar}
+\begin{notation}[]
+  We often write the covariant derivative as $\nabla_\nu Y^\mu \coloneqq Y \indices{^\mu_{; \nu}}$ with a semicolon and the partial derivative with a comma as $\partial_\nu Y^\mu \coloneqq Y \indices{^\mu_{, \nu}}$.
+\end{notation}
+\begin{leftbar}
+  \begin{remark}
+    The name \emph{connection} hints that we can use this to connect tangent spaces at different points in the manifold.
+  \end{remark}
+\end{leftbar}
+\begin{claim}
+  The connection is \emph{not} a tensor.
+\end{claim}
+\begin{proof}
+  Consider a change of basis $\tilde e_\nu = A \indices{^\mu_\nu} e_\mu$ with $A \indices{^\mu_\nu} = \pdv{x^\mu}{\tilde x^\nu}$ for a coordinate bases.
+  Then 
+  \begin{align}
+    \nabla_{\tilde e_\rho} \tilde e_\nu &= \tilde \Gamma \indices{^\mu_\rho_\nu} \tilde e_\mu \\
+					&= \nabla_{(A \indices{^\sigma_\rho} e_\sigma)} (A \indices{^\lambda_\nu} e_\lambda) \\
+					&= A \indices{^\sigma_\rho} \nabla_\sigma (A \indices{^\lambda_\nu} e_\lambda)
+  \end{align}
+  Using the Leibniz rule we have
+  \begin{align}
+    \dots &= A \indices{^\sigma_\rho} (A \indices{^\lambda_\nu} \Gamma \indices{^\tau_\sigma_\lambda} e_\tau + e_\lambda \partial_\sigma A \indices{^\lambda_\nu}) \\
+	  &= A \indices{^\sigma_\rho} (A \indices{^\lambda _\nu} \Gamma \indices{^\tau_\sigma_\lambda} + \partial_\sigma A \indices{^\tau_\nu}) e_\tau, \qquad e_\tau = (A^{-1}) \indices{^\mu_\tau} \tilde e_\mu\\
+	  &\implies \tilde\Gamma \indices{^\mu_\rho_\nu} = (A^{-1}) \indices{^\mu_\tau} A \indices{^\sigma_\rho} A \indices{^\lambda_\nu} \Gamma \indices{^\tau_\sigma_\lambda} + \underbrace{(A^{-1}) \indices{^\mu_\tau} A \indices{^\sigma_\rho} \partial_\sigma A \indices{^\tau_\nu}}_{\text{this is why it is not a tensor}}.
+  \end{align}
+\end{proof}
+\begin{leftbar}
+  \begin{remark}
+    There are other objects, where things transform as $\text{something} \to \text{something} + \partial\text{other}$. The Maxwell tensor and the Yang-Mills gauge potential are examples of these. 
+    Mathematicians actually call both of these objects \emph{connections}, precisely because of this property. The connections will become more obvious in the Lent term's \emph{Applications of Differential Geometry to Physics} course.
+  \end{remark}
+\end{leftbar}
+
+We can also use the connection to differentiate other tensors. We simply ask that it obeys the Leibniz rule.
+\begin{example}[]
+  We can use the covariant derivative to differentiate a function. Let us think of a one-form $\omega \in \Lambda^1(\mathcal{M})$ acting on a vector field $Y \in \mathfrak{X}(\mathcal{M})$ as that function. Using the Leibniz rule,
+  \begin{align}
+    \nabla_X (\omega(Y)) &= X(\omega(Y)) = (\nabla_X \omega)(Y) + \omega (\nabla_X Y) \\
+    \implies (\nabla_X \omega) (Y) &= (\omega(Y)) -\omega \nabla_X (Y).
+  \end{align}
+  In terms of coordinates, we have
+  \begin{align}
+    X^\mu(\nabla_\mu \omega_\nu) Y^\nu &= X^\mu \partial_\mu (\omega_\nu X^\nu) - \omega_\nu X^\mu (\partial_\mu Y^\nu + \Gamma \indices{^\nu_\mu_\rho} Y^\rho \\
+				       &= X^\mu (\partial_\mu \omega_\rho - \Gamma \indices{^\nu_\mu_\rho} \omega_\nu) Y^\rho \\
+				       \implies \nabla^\mu \omega_\rho &= \partial_\mu \omega_\rho - \Gamma \indices{^\nu_\mu_\rho} \omega_\nu.
+  \end{align}
+\end{example}
+For a general $(p, q)$-tensor, we have one term for each index:
+\begin{equation}
+  \nabla_\rho T \indices{^{\mu_1 \dots \mu_p}_{\nu_1 \dots \nu_q}} = \partial_\rho T \indices{^{\mu_1 \dots \mu_p}_{\nu_1 \dots \nu_q}} + \Gamma \indices{^{\mu_1}_\rho_\sigma} T \indices{^{\sigma \mu_2 \dots \mu_p}_{\nu_1 \dots \nu_q}} + \dots - \Gamma^{^\sigma_{\rho \nu_1}} T \indices{^{\mu_1 \dots \mu_p}_{\sigma \nu_2 \dots \nu_q}} - \dots.
+\end{equation}
+

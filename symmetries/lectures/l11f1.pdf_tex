@@ -1,0 +1,66 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'l11f1.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{142.96824063bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.15767089)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.24622356,1.09639686){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.70454538}\smash{\begin{tabular}[t]{c}basis vectors\end{tabular}}}}%
+    \put(0.86737595,1.0992144){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.70454538}\smash{\begin{tabular}[t]{c}weight\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{l11f1.pdf}}%
+    \put(0.39194251,0.95388444){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_\Lambda$\end{tabular}}}}%
+    \put(0.40777513,0.48223506){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 2}$\end{tabular}}}}%
+    \put(0.41826698,0.01204664){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 4}$\end{tabular}}}}%
+    \put(0.870488,0.9442651){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda$\end{tabular}}}}%
+    \put(0.87573385,0.46688642){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda - 2$\end{tabular}}}}%
+    \put(0.865242,0.0104913){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda - 4$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

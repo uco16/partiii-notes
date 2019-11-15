@@ -17,7 +17,7 @@ The Hilbert space $\mathbb{C}^2$ is spanned by
   1 \\
   \end{pmatrix}
 \end{equation}
-  They correspond to the $2d$ representation $\mathcal{L}(SO(3))$. In place of the angular momentum operators, we have 3 $2\times 2$ matrices $\Sigma_i$, $i = 1,2,3$, which obey the same commutation relations
+  They correspond to the $2d$ representation $\mathscr{L}(SO(3))$. In place of the angular momentum operators, we have 3 $2\times 2$ matrices $\Sigma_i$, $i = 1,2,3$, which obey the same commutation relations
   \begin{equation}
     \left\langle \Sigma_i , \Sigma_i \right\rangle = i \hbar \Sigma_k.
   \end{equation}
@@ -25,12 +25,32 @@ The Hilbert space $\mathbb{C}^2$ is spanned by
   \begin{equation}
     \Sigma_i = \frac{1}{2} \hbar \sigma_i.
   \end{equation}
+  Recall that the Pauli matrices are
+  \begin{equation}
+    \sigma_x = 
+    \begin{pmatrix}
+     0 & 1 \\
+     1 & 0 \\
+    \end{pmatrix}
+    \qquad
+    \sigma_y = 
+    \begin{pmatrix}
+     0 & -i \\
+     i & 0 \\
+    \end{pmatrix}
+    \qquad
+    \sigma_z = 
+    \begin{pmatrix}
+     1 & 0 \\
+     0 & -1 \\
+    \end{pmatrix}
+  \end{equation}
 \end{example}
 
 \begin{definition}[Representation]
-  A \emph{representation} of a Lie algebra $\mathcal{L}(G)$ is a map
+  A \emph{representation} of a Lie algebra $\mathscr{L}(G)$ is a map
   \begin{equation}
-    R \colon \mathcal{L}(G) \to \text{Mat}_n (\mathbb{C})
+    R \colon \mathscr{L}(G) \to \text{Mat}_n (\mathbb{C})
   \end{equation}
   which preserves the bracket of the Lie algebra.
 \end{definition}
@@ -46,7 +66,7 @@ In Quantum mechanics, a rotational symmetry manifests itself in the commutation 
 \begin{equation}
   \left\langle \hat{\mathcal{H}}, \hat L_i \right\rangle = 0
 \end{equation}
-with the Hamiltonian $\mathcal{H}$. The fact that the angular momentum generators, which move you around in the Hilbert space, commute with the Hamiltonian means that states in any representation of $\mathcal{L}(SO(3))$ have the same energy.
+with the Hamiltonian $\mathcal{H}$. The fact that the angular momentum generators, which move you around in the Hilbert space, commute with the Hamiltonian means that states in any representation of $\mathscr{L}(SO(3))$ have the same energy.
 
 \begin{example}[]
 The spin vectors $\ket{\uparrow}$ and $\ket{\downarrow}$ have the same energy in a rotationally invariant system.
@@ -164,7 +184,7 @@ In terms of these coordinates, the condition of \emph{compatibility} between a g
 \label{sub:inversion}
 
 Group inversion also defines a smooth map, this time from $G$ to itself.
-For all elements $g(\theta) \in G$, where $\theta$ describes the position in the coordinate patch $\mathcal{P}$, the group axioms imply that there exists an inverse element $g^{-1}(\theta)$. Assuming that this is still in the same coordinate patch, we can write this as $g^{-1(\theta)} = g(\widetilde \theta)$. If it is not, we simply apply the relevant transition function.
+For all elements $g(\theta) \in G$, where $\theta$ describes the position in the coordinate patch $\mathcal{P}$, the group axioms imply that there exists an inverse element $g^{-1}(\theta)$. Assuming that this is still in the same coordinate patch, we can write this as $g^{-1}(\theta) = g(\widetilde \theta)$. If it is not, we simply apply the relevant transition function.
 \begin{equation}
   g(\theta) g(\widetilde \theta) = g(\widetilde \theta) g(\theta) = e
 \end{equation}

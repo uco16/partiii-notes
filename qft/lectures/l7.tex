@@ -1,0 +1,144 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 7: October 24}
+\chapter{Interacting Fields}%
+\label{cha:interacting_fields}
+
+For free theories, we have a quadratic Lagrangian.
+This means that the equations of motion are linear.
+We can get multi-particle states, but they do not scatter off of each other.
+We can also exactly quantise the theory.
+
+\emph{Interactions} are written as higher order terms in the Lagrangian.
+\begin{example}[]
+  For a real scalar field, a general interacting Lagrangian is
+  \begin{equation}
+    \mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2 - \sum_{n = 3}^\infty \frac{\lambda_n \phi^n}{n!}.
+  \end{equation}
+\end{example}
+
+\section{Coupling Constants and Mass Dimension}%
+\label{sec:coupling_constants_and_mass_dimension}
+
+The factors $\lambda_n$ are called the \emph{coupling constants}; their values determine the strength of the interactions.
+We wish those interaction terms to be `small', so that we can develop a perturbation expansion around the free theory.
+We might naively require $\lambda_n \ll 1$. However, this equation only makes sense if $\lambda_n$ is dimensionless.
+We can work out the dimensionality of $\lambda_n$ in the following way:
+Recall that the mass dimension of the action is $[S] = 0$, because it has dimensions of angular momentum and we have set $\hbar = 1$. Since $S = \int_{}^{} \dd[4]{x} \mathcal{L}$ and $[\dd[4]{x}] = -4$, the Lagrangian must have $[\mathcal{L}] = 4$.
+For the first, kinetic term, we have $[\partial_\mu] = 1$, so that $[\phi] = 1$.
+For the second term, we therefore have $[m] = 1$ (as expected if we interpret $m$ as the mass of the particle) and for the higher order terms we have $[\lambda_n] = 4-n$.
+The interaction terms of coupling constant $\lambda_n$ can be arranged into three classes according to their high and low energy behaviour:
+\begin{enumerate}
+  \item $[\lambda_3] = 1 > 0$: The dimensionless parameter is $\lambda_3 / E$, where $E$ is the energy-scale of the configuration and $[E] = 1$. Think of this as the scattering energy, say, at the LHC.
+    At high energies, when $E \gg \lambda_3$, the term $\frac{1}{3!}\lambda_3 \phi^3$ is a small perturbation to the free Lagrangian.
+    This perturbation is called \emph{relevant} (c.f.~renormalisation group), since it is relevant at the low energies that we can measure. These relevant perturbations are renormalisable .
+    In a relativistic setting, $E > m$; we can therefore make any relevant perturbations small by taking $\lambda_3 \ll m$.
+  \item $[\lambda_4] = 0$: the term $\frac{1}{4!}\lambda_4 \phi^4$ is small if $\lambda_4 \ll 1$. We call this a \emph{marginal} perturbation. These are also renormalisable.
+  \item $[\lambda_{n > 4}] < 0$: The dimensionless parameters $\lambda_n E^{n-4}$ are small at low energies, but large at high energies. We call $\frac{1}{n!} \lambda_n \phi^n$ \emph{irrelevant} perturbations; these are non-renormalisable.
+\end{enumerate}
+In this course, we will only ever consider \emph{weakly-coupled} QFTs.
+But the study of \emph{strongly-coupled} QFTs, often using computational techniques, is a lively contemporary research area.
+We also know about interesting phenomena like the `confinement' of quarks in QCD, whose understanding is a major research goal.
+
+\begin{example}[$\phi^4$ theory]
+  In scalar $\phi^4$ theory, the Lagrangian is
+  \begin{equation}
+    \mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4,
+  \end{equation}
+  where $\lambda \ll 1$.
+  We can already take a guess at the effects of the last term. We expect that the extra terms cause $[H, N] \neq 0$, so that particle number will \emph{not} be conserved.
+  Intuitively, interactions will create or destroy particles.
+  Expanding the last term in the Lagrangian, we get some twelve-dimensional integral, including some terms
+  \begin{equation}
+    \int \dots (a_{\vb{p}}^{\dagger} a_{\vb{p}'}^{\dagger} a_{\vb{p}''}^{\dagger} a_{\vb{p}'''}^{\dagger} + \dots)
+    + \int \dots (a_{\vb{p}}^{\dagger} a_{\vb{p}'}^{\dagger} a_{\vb{p}''}^{\dagger} a_{\vb{p}'''} + \dots ) + \dots
+  \end{equation}
+  creating and destroying particles.
+\end{example}
+
+\begin{example}[Scalar Yukawa Theory]
+  Let $\psi \in \mathbb{C}$, $\phi \in \mathbb{R}$. Then 
+  \begin{equation}
+    \mathcal{L} = \partial_\mu \psi^* \partial^\mu \psi - \mu^2 \psi^* \psi + \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2}m^2 \phi^2 - g \psi^* \psi \phi
+  \end{equation}
+  This theory has historical significance, since it can model mesons to some degree.
+  In this case, we now know that $\psi$ and $\phi$ are not fundamental particles, but composite ones. (c.f.~effective field theory)
+  This is a relevant perturbation, so provided that $g \ll m$ and $ g \ll \mu$, we can use perturbation theory.
+  This theory has the same phase-rotation symmetry of the complex field; the theory is invariant under
+  \begin{equation}
+  \psi \to e^{i \alpha} \psi, \quad \psi^* \to e^{-i \alpha} \psi^*, \quad \phi \to \phi.
+  \end{equation}
+  The conserved charge associated with this Noether symmetry is the number of particles $\psi$ minus the number of anti-particles $\psi^*$.
+  However, there is no conservation for the number of $\phi$ particles.
+\end{example}
+
+\section{The Interaction Picture}%
+\label{sec:the_interaction_picture}
+
+In QM, have the Schrödinger picture, where the operators $O_S$ are independent of time and states evolve according to 
+\begin{equation}
+  i \dv{\ket{\psi}_S}{t} = H \ket{\psi}_S,
+\end{equation}
+and we also have the Heisenberg picture, which is related to the former by the unitary transformations
+\begin{equation}
+  O_H(t) = e^{iH t} O_S e^{-i H t}, \qquad \ket{\psi}_H = e^{iHt} \ket{ \psi}_S.
+\end{equation}
+The \emph{interaction picture} is a hybrid of the Schrödinger and Heisenberg pictures.
+We write
+\begin{equation}
+  H = H_0 + H_{\text{int}}.
+\end{equation}
+where $H_0$ is the free part of the Hamiltonian.
+\begin{example}[$\phi^4$ theory]
+  The interaction Lagrangian is $\mathcal{L}_{\text{int}} = -\frac{1}{4!} \lambda \phi^4$. The free Hamiltonian is
+  \begin{equation}
+    H_0 = \int_{}^{} \dd[3]{x} \left( \frac{1}{2} \pi^2 + \frac{1}{2} (\grad \phi)^2 + \frac{1}{2} m^2 \phi^2 \right),
+  \end{equation}
+  whereas the interacting Hamiltonian is
+  \begin{equation}
+    H_{\text{int}} = - \int_{}^{} \dd[3]{x} \mathcal{L}_I = \int_{}^{} \dd[3]{x} \frac{\lambda \phi^4}{4!}.
+  \end{equation}
+\end{example}
+
+\subsection{Relation to Schrödinger Picture}%
+\label{sub:relation_to_schrodinger_picture}
+
+In the interaction picture, the operators are related to the Schrödinger operators as
+\begin{equation}
+  O_I(t) = e^{i H_0 t} O_S e^{-i H_0 t},
+\end{equation}
+so e.g.
+\begin{equation}
+  \phi_I(x) = e^{i H_0 t}\phi'(\vb{x}) e^{-iH_0 t},
+\end{equation}
+where $O'(\vb{x})$ is the Schrödinger picture field operator.
+
+We can use the same reasoning as in the Heisenberg picture (free theory) to derive that $\phi_I$ obeys the Klein-Gordon equation $(\partial^2 + m^2) \phi_I(x) = 0$ with solutions
+\begin{equation}
+  \phi_I(x) = \int_{}^{} \bdd[3]{p} \frac{1}{\sqrt{2E_p}} \left( a_{\vb{p}} e^{-i p \cdot x} a_{\vb{p}}^{\dagger} e^{i p \cdot x} \right),
+\end{equation}
+just like in the free theory. Strictly speaking, we should use indices on the operators $a_{\vb{p}}$.
+We have $\phi(t = 0, \vb{x}) = \phi_S(\vb{x})$. 
+As before, $[ a_{\vb{p}}, a_{\vb{p}'}^{\dagger}] = \bdelta^3 (\vb{p} - \vb{p}')$ with other brackets vanishing.
+Moreover, the vacuum $\ket{0}$ is the vacuum of the free theory and satisfies $a_{\vb{p}} \ket{0} = 0$.
+
+\subsection{Relation to Heisenberg Picture}%
+\label{sub:relation_to_heisenberg_picture}
+
+We use our knowledge of the relation between Schrödinger and Heisenberg pictures to find that the interaction picture fields are related to the Heisenberg ones by
+\begin{equation}
+  \phi_H(t , \vb{x}) = e^{iH t} \underbrace{e^{-i H_0 t} \phi_I (t, \vb{x}) e^{i H_0 t}}_{\phi_S(\vb{x})} e^{-i H t}.
+\end{equation}
+We will write this as $U(t, t_0)^{\dagger} \phi_I(x) U(t, t_0)$, were $U(t, t_0) = e^{i H_0 t} e^{-i H(t-t_0)} e^{-i H_0 t}$ is the unitary time-evolution operator. It has the properties that $U(t_1, t_2) U(t_2, t_3) = U(t_1, t_3)$ and $U(t, t) = 1$.
+\begin{leftbar}
+  \begin{remark}
+    \begin{align}
+      i \dv{U(t, t_0)}{t} &= i \left[ e^{i H_0 t} (i H_0) e^{-i H(t - t_0)} e^{-i H_0 t_0} + e^{i H_0 t} (-iH) e^{-i H(t - t_0)}e^{-i H_0 t_0} \right] \\
+			  &= e^{i H_0 t} (H_{\text{int}})_S e^{i H(t-t_0)} e^{-i H_0 t_0} \\
+			  &= \underbrace{e^{iH_0 t} (H_I)_S e^{-i H_0 t}}_{(H_{\text{int}})_I} \underbrace{e^{iH_0 t} e^{-i H(t-t_0)} e^{-iH_0 t_0}}_{U(t, t_0)},
+			  \label{eq:interaction-operators}
+    \end{align}
+    where $(H_{\text{int}})_I$ is the interaction Hamiltonian written in the interaction picture.
+
+  \end{remark}
+\end{leftbar}

@@ -1,0 +1,192 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 7: October 28}
+\chapter{Introducing Riemannian (and Lorentzian) Geometry}%
+\label{cha:introducing_riemannian_geometry}
+
+Riemannian geometry is differential geometry with a metric. You can tell that the metric is important, because it literally changes the name of the whole subject.
+As we will see, we should differentiate between Riemannian and Lorentzian manifolds, but one should be aware that people often just refer to a manifold with metric as a Riemannian manifold.
+
+\section{The Metric}%
+\label{sec:the_metric}
+
+The metric defines an inner product on the space of tangent vectors.
+It has a few properties, which guarantee that the metric is a good inner product.
+\begin{definition}[metric]
+  A \emph{metric} $g$ is a $(0,2)$-tensor that is
+  \begin{itemize}
+    \item symmetric: $g(X, Y) = g(Y, X)$
+    \item non-degenerate: if $g(X, Y)_p = 0$ for all $Y_p \in T_p(\mathcal{M})$, then $X_p = 0$
+  \end{itemize}
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    The non-degeneracy ensures that the metric is invertible.
+  \end{remark}
+\end{leftbar}
+In a particular coordinate basis, the metric gets two indices $g = g \indices{_\mu_\nu} dx^\mu \otimes dx^\nu$, with $g_{\mu \nu} = g \left( \pdv{}{x^\mu}, \pdv{}{x^\nu} \right)$.
+\begin{notation}[]
+  We often write this as a \emph{line element} $ds^2 = g_{\mu\nu} dx^\mu dx^\nu$.
+\end{notation}
+\begin{definition}[signature]
+  If we diagonalise $g_{\mu\nu}$, it has positive and negative elements (non are zero, since it is non-degenerate). The number of negative elements is called the \emph{signature} of the metric.
+\end{definition}
+
+\begin{leftbar}
+  \begin{remark}
+    There is a theorem (Sylvester's law of inertia) in matrix algebra that says that the signature is unchanged under a change of basis.
+  \end{remark}
+\end{leftbar}
+
+There are two metrics that are going to be of interest to us.
+
+\subsection{Riemannian Metrics}%
+\label{sub:riemannian_metrics}
+
+\begin{definition}
+  A \emph{Riemannian manifold} is a manifold with metric with signature $(+ + \dots +)$.
+\end{definition}
+\begin{example}[]
+  Euclidean space is $\mathbb{R}^n$ with $g = dx^1 \otimes dx^1 + \dots + dx^n \otimes dx^n$.
+\end{example}
+
+A metric gives us a way to measure 
+\begin{itemize}
+  \item the length of a vector $X \in T_p(\mathcal{M})$
+  \begin{equation}
+    \abs{X} = \sqrt{g(X, X)},
+  \end{equation}
+  \item the angle between vectors
+  \begin{equation}
+    g(X, Y) = \abs{X} \abs{Y} \cos\theta,
+  \end{equation}
+\item the distance between two points $p$ and $q$ along a curve $\sigma\colon [a, b] \to \mathcal{M}$, with end points $\sigma(a) = p$ and $\sigma(b) = q$
+  \begin{equation}
+    \text{distance} = \int_{a}^{b} \dd[]{t} \sqrt{g(X, X) \rvert_{\sigma(t)}},
+  \end{equation}
+  where $X$ is tangent to the curve.
+  If the curve has coordinates $x^\mu(t)$, this is
+  \begin{equation}
+    \text{distance} = \int_{a}^{b} \dd[]{t} \sqrt{g_{\mu\nu}(t) \dv{x^\mu}{t} \dv{x^\nu}{t}}
+  \end{equation}
+\end{itemize}
+
+\subsection{Lorentzian Metrics}%
+\label{sub:lorentzian_metrics}
+
+\begin{definition}
+  A \emph{Lorentzian manifold} is a manifold equipped with a metric of signature $(- + + \dots +)$.
+\end{definition}
+\begin{example}[]
+  \emph{Minkowski space} is $\mathbb{R}^n$ with metric
+  \begin{equation}
+    \eta = -dx⁰ \otimes dx^0 + dx^1 \otimes dx^1 + \dots + dx^{n-1} \otimes dx^{n-1}
+  \end{equation}
+  with components $\eta\indices{_\mu_\nu} = \text{diag}(-1, +1, \dots, +1)$.
+\end{example}
+Because of this minus sign in the metric, `lengths' and `distances'---in the sense of inner products of vectors, can be negative.
+We classify vectors $X \in T_p(\mathcal{M})$ as
+\begin{equation}
+  g(X, X) 
+  \begin{cases}
+    < 0 & \text{timelike} \\
+    = 0 & \text{null} \\
+    > 0 & \text{spacelike}
+  \end{cases}.
+\end{equation}
+At each point $p \in \mathcal{M}$, we can draw null tangent vectors called \emph{lightcones}.
+%F1
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.2\columnwidth}
+  \input{lectures/l7f1.pdf_tex}
+  \caption{The causal structure around a point $p$ in a Lorentzian manifold.}
+  \label{fig:causal-structure-M4}
+\end{figure}
+\begin{definition}[]
+  A curve is called \emph{timelike} if its tangent vector is everywhere timelike.
+\end{definition}
+
+\begin{definition}[proper time]
+  In this case, we can measure the distance between two points
+  \begin{equation}
+    \tau = \int_{a}^{b} \dd[]{t} \sqrt{-g_{\mu\nu} \dv{x^\mu}{t} \dv{x^\nu}{t}}.
+  \end{equation}
+  This is the \emph{proper time} between $a$ and $b$.
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    The parametrisation $t$ is arbitrary.
+  \end{remark}
+\end{leftbar}
+
+\subsection{The Joys of a Metric}%
+\label{sub:the_joys_of_a_metric}
+
+The metric gives a natural (basis independent) isomorphism at every point
+\begin{equation}
+  \begin{split}
+    g \colon T_p(\mathcal{M}) &\to T^*_{p}(\mathcal{M}) \\
+    X &\mapsto g(X, \bullet).
+  \end{split}
+\end{equation}
+Given a vector field $X \in \mathfrak{X}(\mathcal{M})$, we can construct $g(X, \bullet) \in \Lambda^1(\mathcal{M})$.
+If $X = X^\mu \partial_\mu$, then the corresponding 1-form is
+\begin{equation}
+  g \indices{_\mu_\nu} X^\mu dx^\nu \coloneqq X_\nu dx^\nu.
+\end{equation}
+Because $g$ is non-degenerate, there is an inverse. In components, $g^{\mu\nu} g \indices{_\nu_\rho} = \delta^\mu_\rho$.
+This defines a rank $(2, 0)$ tensor $\hat g = g \indices{^\mu^\nu} \partial_\mu \otimes \partial_\nu$. We use this to raise indices
+\begin{equation}
+  X^\mu \coloneqq g \indices{^\mu^\nu} X_\nu.
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    As physicists, we often say that we can use the metric to \emph{raise} and \emph{lower} indices.
+    This is what we really mean with that; the covariant and contravariant vectors really live in different mathematical spaces, and the \emph{lowering} of an index is the statement that the metric provides a natural isomorphism.
+    This isomorphism allowed us to jump between vectors and 1-forms without even worrying about the fact that they are different objects. In spaces other than Euclidean space, their difference becomes important.
+  \end{remark}
+\end{leftbar}
+
+The metric also gives a natural volume form. 
+\begin{itemize}
+  \item On a Riemannian manifold, 
+  \begin{equation}
+    v = \sqrt{\text{det}g_{\mu\nu}} dx^1 \wedge \dots \wedge dx^n.
+  \end{equation}
+  We usually write $g = \det g_{\mu\nu}$.
+  \item On a Lorentzian manifold, 
+    \begin{equation}
+      v = \sqrt{-g} dx^0 \wedge dx^1 \wedge \dots \wedge dx^{n-1}.
+    \end{equation}
+\end{itemize}
+
+\begin{claim}
+  This is independent of coordinates.
+\end{claim}
+\begin{proof}
+  In new coordinates, $dx^\mu = A \indices{^\mu_\nu} d \tilde x^\nu$ with $A \indices{^\mu_\nu} = \pdv{x^\mu}{\tilde x^\nu}$, 
+  \begin{align}
+    dx^1 \wedge \dots \wedge dx^n &= A \indices{^1_{\mu_1}} \dots A \indices{^1_{\mu_n}} \underbrace{d\tilde x^{\mu_1} \wedge \dots \wedge d \tilde x^{\mu_n}}_{\text{rearrange to } d\tilde x^1 \wedge \dots \wedge d\tilde x^n} \\
+				  &= \sum_{\text{perm }\pi} \text{sign}(\pi) A \indices{^1_{\pi(1)}} \dots A \indices{^n_{\pi(n)}} d \tilde x^1 \wedge \dots \wedge d \tilde x^n \\
+				  &= \text{det}(A) d\tilde x^1 \wedge \dots \wedge d\tilde x^n.
+  \end{align}
+  The determinant $\det A > 0$ if the coordinate change preserves orientation.
+  Meanwhile, 
+  \begin{align}
+    g_{\mu\nu} &= \pdv{\tilde x^\rho}{x^\mu} \pdv{\tilde x^\sigma}{x^\nu} \tilde g_{\rho\sigma} \\
+	       &= (A^{-1}) \indices{^\rho_\mu} (A^{-1}) \indices{^\sigma_\nu} \tilde g_{\rho\sigma} \\
+	       &\implies \det g_{\mu\nu} = (\det A^{-1})^2 \det \tilde g_{\rho\sigma} = \frac{\det \tilde g_{\rho\sigma}}{(\det A)^2} \\
+	       &\implies v = \sqrt{\abs{\tilde g}} d\tilde x^1 \wedge \dots \wedge d\tilde x^n.
+  \end{align}
+\end{proof}
+In components, $v = \frac{1}{n!} v_{\mu_1 \dots \mu_n} d x^{\mu_1} \wedge \dots \wedge d x^{\mu_n}$, with
+\begin{equation}
+  v_{\mu_1 \dots \mu_n} = \sqrt{ \abs{g}} \varepsilon_{\mu_1 \dots \mu_n},
+\end{equation}
+where $\varepsilon$ is the totally anti-symmetric tensor.
+We can then integrate any function as
+\begin{equation}
+  \int_{\mathcal{M}} f v = \int_{\mathcal{M}} \dd[n]{x} \sqrt{\abs{g}} f(x).
+\end{equation}
+So the metric provides the measure in the form of $\sqrt{\abs{g}}$.

@@ -2,6 +2,10 @@ extends texmath
 
 # --- Custom Snippets ---
 
+snippet ß "backslash" Ai
+\
+endsnippet
+
 snippet def "Definition" b
 \begin{definition}[$1]
 	$2
@@ -17,7 +21,10 @@ endsnippet
 snippet thm "Theorem" b
 \begin{theorem}[$1]
 	$2
-\end{theorem}$0
+\end{theorem}
+\begin{proof}
+	$3
+\end{proof}$0
 endsnippet
 
 snippet cor "Corollary" b
@@ -35,7 +42,10 @@ endsnippet
 snippet claim "Claim" b
 \begin{claim}
 	$1
-\end{claim}$0
+\end{claim}
+\begin{proof}
+	$2
+\end{proof}$0
 endsnippet
 
 snippet nb "Remark" b
@@ -59,19 +69,61 @@ snippet exe "Exercise" b
 endsnippet
 
 snippet ink "Inkscape Figure" b
-\begin{figure}[${1:htpb}]
+\begin{figure}[${1:tbhp}]
 	\centering
-	\def\svgwidth{${2:0.8}\columnwidth}
+	\def\svgwidth{${2:0.6}\columnwidth}
 	\input{lectures/${3:ink}.pdf_tex}
 	\caption{${3/(\w+)\.\w+/\u$1/}$0}
 	\label{fig:${3/(\w+)\.\w+/$1/}}
 \end{figure}
 endsnippet
 
+snippet tex "mathmode in section title" w
+\texorpdfstring{$$1$}{$2}$0
+endsnippet
+
+# Feynman diagrams
+
+snippet vfeyn "Vertical Feynman Diagram" b
+\begin{figure}[${1:htbp}]
+	\centering
+	\feynmandiagram [vertical=b to a] {
+		$3,
+	};
+	\caption{$0}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
+snippet hfeyn "Horizontal Feynman Diagram" b
+\begin{figure}[${1:htbp}]
+	\centering
+	\feynmandiagram [horizontal=a to b] {
+		$3,
+	};
+	\caption{$0}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
+snippet pt "Particle" w
+${1:node} [particle=\(${2:\phi}\)]$0
+endsnippet
+
+snippet ln "Line"
+-- [${1:fermion}${2:, edge label=\(${3:\phi}\)}${4:,  momentum=\(${5:k}\)}]$0
+endsnippet
+
+# Citations
+
 snippet eqref "cite an equation" 
 \eqref{eq:$1}$0
 endsnippet
 
-snippet FEM "emphasise" A
-\emph{$1}$0
+snippet fref "cite a figure"
+\ref{fig:$1}$0
+endsnippet
+
+snippet EM "emphasise" A
+\emph{${1:${VISUAL}}}$0
 endsnippet

@@ -1,0 +1,125 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 11: November 06}
+
+\section{RG with interactions}%
+\label{sec:rg_with_interactions}
+
+Recall the action for $\phi^4$ theory:
+\begin{equation}
+  F[\phi] = \int \dd[d]{x} \left[ \frac{1}{2} (\grad \phi)^2 + \frac{1}{2} \mu_0^2 \phi^2 + g_0 \phi^4 \right].
+\end{equation}
+Splitting into $\phi_{\vb{k}} =  \phi^-_{\vb{k}} + \phi^+_{\vb{k}}$ gives
+\begin{equation}
+  F[\phi] = F_0 [\phi^-] + F_0 [\phi^+] + F_I [\phi^-, \phi^+].
+\end{equation}
+So now the Wilsonian effective action is obtained via the integral
+\begin{align}
+  e^{-F'[\phi^-]} &= e^{-F_0 [\phi_{\vb{k}}^-]} \int \pdd{\phi^+_{\vb{k}}} e^{-F_0 [\phi^+_{\vb{k}}]} e^{-F_I[\phi^-_{\vb{k}}, \phi^+_{\vb{k}}]} \\
+		  &\coloneqq e^{-F_0 [\phi^-_{\vb{k}}]} \left\langle e^{-F_i[\phi^-_{\vb{k}}, \phi^+_{\vb{k}}]} \right\rangle]_+.
+\end{align}
+Taking logarithms, we can expand
+\begin{equation}
+  \log \left\langle e^{-F_I[\phi^-_{\vb{k}}, \phi^+_{\vb{k}}]} \right\rangle] \simeq - \langle F_I \rangle_+ + \frac{1}{2}[\langle F^2 \rangle_+ - \langle F_I \rangle_+^2] + \dots
+\end{equation}
+
+\subsection*{First Order Expansion}%
+
+To first order in $g_0$, we have
+\begin{equation}
+  F_I[\phi^-_{\vb{k}}, \phi^+_{\vb{k}}] = g_0 \int \left[ \prod_{i=1}^4 \bdd[d]{k_i} \right] (\text{terms with $\phi$}) \times \bdelta^d (\sum \vb{k}_i)
+\end{equation}
+When splitting the fields $\phi_{\vb{k}}$ into UV and IR modes, we get various possible products of four fields.
+The possibilities are
+\begin{enumerate}
+  \item All UV ($\phi^-_{\vb{k}_1}\phi^-_{\vb{k}_2}\phi^-_{\vb{k}_3}\phi^-_{\vb{k}_4}$): This is trivial since the integral does not affect any of the UV fields.
+  \item One IR ($4 \phi^-_{\vb{k}_1} \phi^-_{\vb{k}_2}\phi^-_{\vb{k}_3}\phi^+_{\vb{k}_4}$): Odd number of IR fields vanish when integrated over the Gaussian ensemble.
+  \item Two IR ($6\phi^-_{\vb{k}_1} \phi^-_{\vb{k}_2}\phi^+_{\vb{k}_3}\phi^+_{\vb{k}_4}$): This is the interesting term, which is discussed below.
+  \item Three IR: Vanishes as above.
+  \item All IR ($\phi^+_{\vb{k}_1}\phi^+_{\vb{k}_2}\phi^+_{\vb{k}_3}\phi^+_{\vb{k}_4}$): The integral gets rid of all the fields; this contributes only a constant to the action, which does not change any of the connected correlation functions, and therefore does not alter any of the physics.
+\end{enumerate}
+
+We thus only have to calculate the contribution of the third term. That is
+\begin{equation}
+  6 g_0 \int \left[ \prod_{i=1}^4 \bdd[d]{k_i} \right] \phi^-_{\vb{k}_1} \phi^-_{\vb{k}_2} \langle \phi^+_{\vb{k}_3}\phi^+_{\vb{k}_4} \rangle_+ \bdelta^d (\sum \vb{k}_i)
+\end{equation}
+Since $\langle \dots \rangle_+$ is an integral over the Gaussian ensemble only, we can now use our previous result for the free propagator $G_0$ of a Gaussian path integral:
+\begin{equation}
+  \langle \phi^+_{\vb{k}_3}\phi^+_{\vb{k}_4} \rangle_+ = \bdelta^d(\vb{k}_3 + \vb{k}_4) G_0 (\vb{k}_3), \qquad G_0(k) = \frac{1}{k^2 + \mu_0^2},
+\end{equation}
+where we write as always $k^2 \coloneqq \abs{\vb{k}}^2$.
+Inserting this and using the $\bdelta$-function, and relabelling the integral over the $\phi^+$ fields as $\vb{k} \to \vb{q}$, we have
+\begin{equation}
+  \dots = 6g_0 \int_0^{\Lambda/\zeta} \bdd[d]{k} \phi^-_{\vb{k}}\phi^-_{-\vb{k}} \int_{\Lambda/\zeta}^{\Lambda} \frac{\bdd[d]{q}}{q^2 + \mu_0^2}.
+\end{equation}
+We see that this is term is quadratic in $\phi^-$ and therefore changes the value of the mass term $\mu_0$ to 
+\begin{equation}
+  \mu_0^2 \to \mu'^2 = \mu_0^2+ 12 g_0 \int_{\Lambda/\zeta}^{\Lambda} \frac{\bdd[d]{q}}{q^2 + \mu_0^2}
+\end{equation}
+Finally, we conclude the RG transformations by rescaling $\vb{k}' = \zeta \vb{k}$ and $\phi'_{\vb{k}} = \zeta^{-\omega} \phi^+_{\vb{k}/\zeta}$, $\omega = (d+2)/2$. Restoring the form of the action, this means that we have to absorb an overall scaling of $\zeta^2$ to the mass term. In particular, we end up with a renormalised mass coupling constant
+\begin{equation}
+  \mu^2(\zeta) = \zeta^2 \left[ \mu^2_0 + 12 g_0 \int_{\Lambda/\zeta}^{\Lambda} \frac{\bdd[d]{q}}{q^2 + \mu_0^2} \right].
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    This is related to the \emph{hierarchy problem} in particle physics: for the Higgs mass, we do not know why the $\mu_0$ term is so small.
+    In particle physics, we do not know what the macroscopic modes are. It is then surprising that $\mu^2(\zeta)$ is small, although we expect the $\gamma_0$ terms to contribute; there are theories like \emph{Supersymmetry}, where these interaction contributions precisely cancel.
+  \end{remark}
+\end{leftbar}
+We find that even if at some length scale $\mu_0 = 0$, then in the presence of the interaction term $g_0 \phi^4$, this is not RG stable; it will become non-zero in the large-scale theory.
+
+\subsection*{Second Order Expansion}%
+
+The second term $\frac{1}{2} [\langle F_I^2 \rangle_+ - \langle F_I \rangle_+^2]$ contributes $256$ terms! However, thankfully most of these will cancel.
+Let us consider a non-vanishing term: Inside $\frac{1}{2} \langle F_I^2 \rangle_+$ there are terms of the form
+\begin{equation}
+  \label{eq:11-order-2}
+  \frac{1}{2} \frac{4!}{2!} g_0^2 \int_0^{\Lambda/\zeta} \left[ \prod_{i=1}^4 \bdd[d]{k_i} \phi_{\vb{k}_i}^- \right] 
+  \int _{\Lambda/\zeta}^\Lambda \left\langle \left[ \prod_{j=1}^4 \bdd[d]{q_j} \phi^+_{\vb{q}_j} \right] \right\rangle_+ 
+  \bdelta^d (\vb{k}_1 + \vb{k}_2 + \vb{q}_1 + \vb{q}_2) \bdelta^d(\vb{k}_3 + \vb{k}_4 + \vb{q}_3 + \vb{q}_4)
+\end{equation}
+To deal with the term $\langle \phi^+_{\vb{q}_1} \phi^+_{\vb{q}_2} \phi^+_{\vb{q}_3} \phi^+_{\vb{q}_4} \rangle$, we will introduce Wick's theorem (as we have seen in \emph{Quantum Field Theory}).
+
+\subsection{Wick's Theorem}%
+\label{sub:wick_s_theorem}
+
+To prove Wick's theorem, we will first introduce a Lemma.
+\begin{lemma}
+  Let $\phi$ be a vector of $n$ variables and let $G$ be an $n \times x$ matrix. We then define $\langle \dots \rangle_G$ to mean
+  \begin{equation}
+    \langle f(\phi) \rangle_G \coloneqq \frac{1}{N} \int_{-\infty}^{\infty}  \dd[n]{\phi} f(\phi) e^{-\frac{1}{2} \phi^T G ^{-1} \phi},
+  \end{equation}
+  where $N = \sqrt{\det(2\pi G)}$.
+  Under this definition, we have
+  \begin{equation}
+    \langle e^{B_a \phi_a} \rangle = e^{\frac{1}{2} B_a \langle \phi_a \phi_b \rangle B_b},
+  \end{equation}
+  where we use the Einstein summation convention.
+\end{lemma}
+\begin{proof}
+  We will complete the square in the exponential
+  \begin{align}
+    \langle e^{B_a \phi_a} \rangle &= \frac{1}{N} \int_{-\infty}^{\infty}  \dd[n]{\phi}^T e^{-\frac{1}{2} \phi G^{-1} \phi + B \phi} \\
+				   &= \frac{1}{N} \int_{-\infty}^{\infty}  \dd[n]{\phi} e^{-\frac{1}{2} (\phi - G B)^T G^{-1} (\phi - G B)} e^{\frac{1}{2} B^T G B} \\
+				   &= e^{\frac{1}{2} B^T G B} \\
+				   &= e^{\frac{1}{2} B_a \langle \phi_a \phi_b \rangle B_b},
+  \end{align}
+  where we used that $\langle \phi_a \phi_b \rangle = G_{ab}$.
+\end{proof}
+\begin{theorem}[Wick's Theorem]
+  Any $n$-point correlation function can be decomposed into the sum of all possible two-point correlation functions that can be formed with the string of fields.
+\end{theorem}
+\begin{leftbar}
+  \begin{remark}
+    These two-point functions correspond to the contractions used in the \emph{Quantum Field Theory} course.
+  \end{remark}
+\end{leftbar}
+\begin{proof}
+  Let us Taylor expand the result from the previous lemma:
+  \begin{align}
+    \langle e^{B_a \phi_a} \rangle &= 1 + B_a \langle \phi_a \rangle + \frac{1}{2} B_a B_b \langle \phi_a \phi_b \rangle + \frac{1}{3!} B_a B_b B_c \langle \phi_a \phi_b \phi_c \rangle + \dots \\
+    e^{B_a \langle \phi_a \phi_b \rangle B_b} &= 1 + \frac{1}{2} B_a B_b \langle \phi_a \phi_b \rangle + \frac{1}{8} B_a B_b B_c B_d \langle \phi_a \phi_b \rangle \langle \phi_c \phi_d \rangle + \text{symmetrise} \dots \\
+    \implies \langle \phi_a \phi_b \phi_c \phi_d \rangle &= \langle \phi_a \phi_b \rangle \langle \phi_c \phi_d \rangle + \langle \phi_a \phi_c \rangle \langle \phi_b \phi_d \rangle + \text{symmetrise} \dots
+    \label{eq:11-wick}
+  \end{align}
+\end{proof}

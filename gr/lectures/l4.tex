@@ -1,152 +1,113 @@
 % lecture notes by Umut Özer
 % course: gr
-\lhead{Lecture 4: October 21}
+\lhead{Lecture 4: October 22}
+% I deleted this file and lost my lecture notes for that day :'( 
+% These notes are adapted from Prof Tong's lecture notes.
 
 \section{Tensors}%
 \label{sec:tensors}
 
-\begin{definition}[Dual Space]
-  Given a vector space $V$, there exists a dual vector space $V^*$ which is the space of all linear maps $V \to \mathbb{R}$.
+\subsection*{Dual Spaces}%
+
+\begin{definition}[dual space]
+  Let $V$ be a vector space. The \emph{dual vector space} $V^*$ is the space of all linear maps from $V$ to $\mathbb{R}$.
 \end{definition}
 
-The easiest way to define $V^*$ is to come up with basis.
-Given a basis $ \left\{ e_\mu: \mu = 1, \ldots, n \right\}$ of the first vector space $V$, we have a dual basis
-$\left\{ f^\mu \right\}$ of $V^*$ defined by
+The easiest way to define the dual space is to work with a given basis $\{e_\mu\}$, $\mu = 1, \dots, n$ of $V$.
+We can then introduce a dual basis $\{f^\mu\}$, $\mu = 1, \dots, n$ for $V^*$, defined by
 \begin{equation}
-  f^\mu(e_\nu) = \delta^\mu_\nu.
+  f^\nu (e_\mu) = \delta^\nu_\mu.
 \end{equation}
-Given a general element $X = X^\mu e_\mu \in V$, the linearity property means that we have $f^\nu(X) = X^\mu f^\nu (e_\mu) = X^\nu$.
-\begin{leftbar}
-  \begin{remark}
-    Given a basis of $V$, this means that we have a natural basis of $V^*$, giving an isomorphism from $V$ to $V^*$. But the map defining this isomorphism depends on the basis.
-  \end{remark}
-\end{leftbar}
+The dual basis elements $f^\mu$ are linear maps which pick out their corresponding basis element $e_\mu$ and send it to unity. 
+By definition, a general vector $X \in V$ can be decomposed in this basis as $X = X^\mu e_\mu$.
+Since the maps are linear, the dual basis elements act on a general vector hence as $f^\nu(X) = X^\mu f^\nu (e_\mu) = X^\nu$.
+For a given basis, the correspondence between the bases provides an isomorphism between $V$ and $V^*$. In particular, this means that $\dim V = \dim V^*$. However, this map $e_\mu \mapsto f^\mu$ depends on the basis and is thus a bad isomorphism to work with in a coordinate invariant theory.
+We can repeat the construction to show that there is a natural isomorphism $(V^*)^* \to V$, which is independent of the choice of basis.
 
-\begin{leftbar}
-  \begin{remark}
-    Most vector spaces that we meet in physics come endowed with an inner product. The vector space $V$ does not (yet) have an inner product structure.
-    If you do have an inner product, defined by a metric, then there is a natural basis-independent isomorphism between $V$ and $V^*$.
-  \end{remark}
-\end{leftbar}
+\subsection{One-Forms}%
+\label{sub:one_forms}
 
-\begin{leftbar}
-  \begin{remark}
-    $V^{* *} = V$
-  \end{remark}
-\end{leftbar}
-
-\begin{definition}[cotangent space]
-  At each point $p \in \mathcal{M}$, the tangent space $T_p(\mathcal{M})$ is a vector space. The dual space $T^*_p (\mathcal{M})$ is called the \emph{cotangent space}.
+\begin{definition}[cotangent space and vector]
+  The \emph{cotangent space} $T_p^*(\mathcal{M})$ at a point $p \in \mathcal{M}$ is the dual space to the tangent space $T_p(\mathcal{M})$ at $p$. Elements of the cotangent space are called \emph{cotangent vectors} or \emph{covectors}.
 \end{definition}
+Given a basis $\{ e_\mu \}$ of the tangent space $T_p(\mathcal{M})$, we can introduce a dual basis $\{f^\mu\}$ for $T_p^*(\mathcal{M})$ and expand any covector as $\omega = \omega_\mu f^\mu$.
 
-\begin{definition}[1-forms]
-  A smooth assignment of cotangent vectors at each point is called a \emph{cotangent field}. However, most people just call this a \emph{1-form}.
+\begin{definition}[one-form]
+  A \emph{one-form} or \emph{cotangent field} is a smooth assignment of cotangent vectors taken from the cotangent spaces across all points in the manifold.
+  These one-forms are maps from vector fields to real numbers.
 \end{definition}
-
-\begin{notation}
-  We denote the space of all 1-forms over $\mathcal{M}$ as $\Lambda^i (\mathcal{M})$.
+\begin{notation}[]
+  The set of all one-forms on $\mathcal{M}$ is denoted $\Lambda^1(M)$.
 \end{notation}
 
-\begin{definition}[]
-  Given a smooth function $f \in C^\infty (\mathcal{M})$, there is a natural 1-form that we call $df \in \Lambda^1 (\mathcal{M})$, defined by
+\begin{definition}[differential]
+  The \emph{differential} $df$ of a smooth function $f$ on $\mathcal{M}$ is a special one-form. It is defined by its action on a vector field $X$:
   \begin{equation}
-    \underbrace{df}_{\text{1-form}}(\overbrace{X}^{\text{vector-field}}) = \overbrace{\underbrace{X}_{\text{vector field}} (\underbrace{f}_{\text{function}})}^{\text{function}}
+    \label{eq:def_differential}
+    \begin{split}
+      df \in \Lambda^1(\mathcal{M}) \colon \mathfrak{X} &\to \mathbb{R} \\
+      X &\mapsto X(f).
+    \end{split}
   \end{equation}
 \end{definition}
-
-\begin{example}[]
-  Suppose we have coordinates $x^\mu$. These define a basis $e_\mu = \pdv*{}{x^\mu}$ of vector fields.
-  Taking a particular $f = x^\mu$ (this $f$ is a function) gives $dx^\mu(\pdv*{}{x^\nu}) = \pdv*{}{x^\nu} (x^\mu) = \delta^\mu_\nu$.
-  So $f^\mu = dx^\mu$ (this $f^\mu$ is a basis element) provides a basis for $\Lambda^1(\mathcal{M})$. In general, $\omega \in \Lambda^1 (\mathcal{M})$ can be written (in a given chart) as 
+These differentials can be used to find a basis for the space $\lambda^1(\mathcal{M})$ of all one-forms on $\mathcal{M}$:
+Let $\{x^\mu\}$ be coordinates on $\mathcal{M}$. This defines a coordinate basis $\{\pdv{}{x^\mu} = \partial_\mu \}$ of vector fields.
+Then, for each value of $\mu$, we take the function $f$ that we used to build the differential to simply be that coordinate $x^\mu$ to give a one-form $dx^\mu$. By definition, this acts on the basis of vector fields as
+\begin{equation}
+  dx^\mu (\partial^\nu) = \partial^\nu(x^\mu) = \delta^\mu_\nu.
+\end{equation}
+Therefore, the set $\{dx^\mu\}$ provides a basis for $\Lambda^1 (\mathcal{M})$ that is dual to the coordinate basis $\{\partial_\mu\}$.
+In general, an arbitrary one-form $\omega \in \Lambda^1(\mathcal{M})$ can hence be expanded as $\omega = \omega_\mu dx^\mu$.
+\begin{claim}
+  In this basis, the coefficients $\omega_\mu$ are the partial derivatives; the differential can be expanded as
   \begin{equation}
-    \omega = \omega_\mu(x) dx^\mu.
+    df = \pdv{f}{x^\mu} dx^\mu.
   \end{equation}
-  \begin{leftbar}
-    \begin{remark}
-      Note that this only holds locally, not necessarily globally.
-    \end{remark}
-  \end{leftbar}
-
-  In this basis, the 1-form is $df = \pdv{f}{x^\mu} dx^\mu$, so that we have
+\end{claim}
+\begin{proof}
+  We can check that this expansion satisfies Equation \eqref{eq:def_differential} by acting with it on a vector field $X$:
   \begin{equation}
-    df(X) = \pdv{f}{x^\mu} dx^\mu (X^\nu \partial_\nu) = X^\mu \pdv{f}{x^\mu} = X(f), \qquad \partial_\nu \coloneqq \pdv{}{x^\nu},
+    df(X) = \pdv{f}{x^\mu} dx^\mu (X^\nu \partial_\nu) = X^\mu \pdv{f}{x^\mu} = X(f).
   \end{equation}
-  as expected.
-\end{example}
-
-If we change coordinates from $x^\mu$ to $\tilde x^\mu(x)$, we have seen previously that the basis of vector fields changes as
+\end{proof}
+How do one-forms transform under a change of coordinates?
+Recall that given two charts $\phi = (x^1, \dots, x^n)$ and $\widetilde\phi = (\tilde x^1, \dots, \tilde x^n)$, the partial derivatives, which form the basis of vector fields, are related via the chain rule:
 \begin{equation}
   \pdv{}{\tilde x^\mu} = \pdv{x^\nu}{\tilde x^\mu} \pdv{}{x^\nu}.
 \end{equation}
-The basis of 1-forms changes as
+Since the differentials form the corresponding dual basis, they transform in the inverse manner
 \begin{equation}
-  d\tilde x^\mu = \pdv{\tilde x^\mu}{x^\nu} d x^\nu.
+  d\tilde x^\mu = \pdv{\tilde x^\mu}{x^\nu} dx^\nu.
 \end{equation}
-These are called \emph{covariant} transformations.
-
-This ensures that
-\begin{equation}
-  d\tilde x^\mu \left( \pdv{}{\tilde x^\nu} \right) = \pdv{\tilde x^\mu}{x^\rho} dx^\rho \left( \pdv{x^\sigma}{\tilde x^\nu} \pdv{}{x^\sigma} \right) = \pdv{\tilde x^\mu}{x^\rho} \pdv{x^\sigma}{\tilde x^\nu} dx^\rho \left( \pdv{}{x^\sigma} \right) = \pdv{\tilde x^\mu}{x^\rho} \pdv{x^\rho}{x^\nu} = \delta^\mu_\nu
-\end{equation}
-as required.
-\begin{leftbar}
-  \begin{remark}
-    This transformation looks very much like the Jacobian incurred by a change of variables in a multi-variate integral. We will see the relation between 1-forms and integration in the future.
-  \end{remark}
-\end{leftbar}
-
-The question is now, how do we differentiate 1-forms?
-Given a vector field $X \in \mathfrak{X}(\mathcal{M})$ and $\omega \in \Lambda^1 (\mu)$, we can take the Lie derivative $\mathcal{L}_X \omega$. \par
-First, note that 1-forms are pulled-back: If $\varphi: \mathcal{M} \to \mathcal{N}$ and $\omega \in \Lambda^1(\mathcal{N})$, then $\varphi^* \omega \in \Lambda^1(\mathcal{M})$ with
-\begin{equation}
-  (\varphi^* \omega) X = \omega (\varphi_* X), \qquad \varphi_* X \in \mathfrak{X}(\mathcal{N}),
-\end{equation}
-with $(\varphi^* \omega)_\mu = \omega_\alpha \pdv{y^\alpha}{x^\mu}$, where $y^\alpha$ are coordinates on $\mathcal{N}$ and $x^\mu$ are coordinates on $\mathcal{M}$.
-
-Now we have the Lie derivative
-\begin{equation}
-  \mathcal{L}_X \omega = \lim_{t \to 0} \left[ \frac{(\sigma_t^* \omega)_p - \omega_p}{t} \right].
-\end{equation}
-% F1
-
-Now $x_\mu(t) = x^\mu(0) + X^\mu(x) t + \ldots$, which means that the push-forward of a 1-form
-\begin{equation}
-  \sigma_t^* dx^\mu = \left( \delta^\mu_\nu + t \pdv{X^\mu}{x^\nu} + \ldots \right) dx^\nu
-\end{equation}
-and the Lie derivative takes the form
-\begin{equation}
-  \mathcal{L}_X \omega = (X^\nu \partial_\nu \omega_\mu + \omega_\nu \partial_\mu X^\nu) dx^\mu.
-\end{equation}
-This is the \emph{Lie derivative} of a 1-form.
-
-\subsection{Tensor Fields}%
-\label{sub:tensor_fields}
-
-\begin{definition}[tensor]
-  A \emph{tensor} of rank $(r, s)$, $r, s \in \mathbb{N}_0^+$, at a point $p \in \mathcal{M}$ is a multi-linear map
-  \begin{equation}
-    T: \underbrace{T^*_p(\mathcal{M}) \times \cdots \times T_p^*(\mathcal{M})}_{r}
-    \underbrace{T_p(\mathcal{M}) \times \cdots \times T_p(\mathcal{M})}_{s}
-    \to \mathbb{R}.
-  \end{equation}
-\end{definition}
-
-\begin{definition}[rank]
-  The \emph{total rank} of the tensor is $r + s$.
-\end{definition}
-
-\begin{example}[]
-  A cotangent vector has rank $(0, 1)$.\par
-  A tangent vector has rank $(1, 0)$ (since $T^{**}_p(\mathcal{M}) = T_p(\mathcal{M})$)
-\end{example}
-
-\begin{definition}[tensor field]
-  A \emph{tensor field} is a smooth assignment of an $(r, s)$ tensor to each point $p \in \mathcal{M}$.
-\end{definition}
-
 \begin{claim}
-  Given a basis $\left\{ e_\mu \right\}$ for tangent vectors and a dual basis $\left\{ f^\mu \right\}$, a tensor has components
-  \begin{equation}
-    T \indices{^{\mu_1 \cdots \mu_r}_{\mu_1 \cdots \mu_s}} = T(f^{\mu_1}, \ldots, f^{\mu_r}, e_{\nu_1}, \ldots, e_{\nu_s}).
-  \end{equation}
+  This transformation law ensures that the new basis $\{d \tilde x^\mu\}$ is also dual to the new chart $\widetilde \phi$.
 \end{claim}
+\begin{proof}
+  This is an exercise in definitions and symbol manipulation:
+  We need to show that 
+  \begin{equation}
+    d \tilde x^\mu \left( \pdv{}{\tilde x^\nu} \right) = \delta^\mu_\nu.
+  \end{equation}
+  Starting from the left hand side, we first use the two transformation laws
+  \begin{equation}
+    d \tilde x^\mu \left( \pdv{}{\tilde x^\nu} \right) = \pdv{\tilde x^\mu}{x^\rho} dx^\rho \left( \pdv{x^\sigma}{\tilde x^\nu} \pdv{}{x^\sigma} \right)
+  \end{equation}
+  Then we can pull out the factor $\pdv*{x^\sigma}{\tilde x^\nu}$ since the one-form $dx^\rho$ only acts on the vector field $\partial^\sigma$:
+  \begin{equation}
+    \dots = \pdv{\tilde x^\mu}{x^\rho} \pdv{x^\sigma}{\tilde x^\nu} dx^\rho \left( \pdv{}{x^\sigma} \right) = \pdv{\tilde x^\mu}{x^\rho} \pdv{x^\sigma}{\tilde x^\nu} \delta^\rho_\sigma = \pdv{\tilde x^\mu}{x^\rho} \pdv{x^\sigma}{\tilde x^\rho}.
+  \end{equation}
+  Lastly, we use the fact that these change of variable matrices are inverses
+  \begin{equation}
+    \dots =\pdv{\tilde x^\mu}{x^\rho} \pdv{x^\rho}{\tilde x^\nu} = \delta^\mu_\nu.
+  \end{equation}
+\end{proof}
+Therefore, we can expand a one-form $\omega$ in the new basis as well
+\begin{equation}
+  \omega = \omega_\mu dx^\mu = \tilde \omega _\mu d\tilde x^\mu \quad \text{with} \quad \tilde \omega_\mu = \pdv{x^\nu}{\tilde x^\mu} \omega_\nu.
+\end{equation}
+We say that these transformations of covectors are \emph{covariant} transformations.
+
+\subsection{Lie Derivative of One-Forms}%
+\label{sub:lie_derivative_of_one_forms}
+
+
