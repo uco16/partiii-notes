@@ -68,7 +68,7 @@ Consider $\bra{0} T \left\{ \phi_1 \dots \phi_m S \right\} \ket{0}$, where $\phi
 This is an example of a \emph{correlation function}.
 The $n$\textsuperscript{th} term in the perturbation expansion for $S$ gives us 
 \begin{equation}
-  \frac{1}{n!} \left( \frac{-i\lambda}{4!} \right)^n \int \dd[4]{y_n} \dots \dd[4]{y_n} \bra{0} T \left\{ \phi_1 \dots \phi_m \phi^4 (y_1) \dots \phi^4 (y_n) \right\} \ket{0}
+  \frac{1}{n!} \left( \frac{-i\lambda}{4!} \right)^n \int \dd[4]{y_1} \dots \dd[4]{y_n} \bra{0} T \left\{ \phi_1 \dots \phi_m \phi^4 (y_1) \dots \phi^4 (y_n) \right\} \ket{0}
 \end{equation}
 For example, the $n = 1$ and $m = 4$ term is
 \begin{equation}
@@ -80,13 +80,12 @@ From Wick's theorem, we get many terms:
       \dots &= \frac{-i \lambda}{4!} \int \dd[4]{x} \wick{\c1 \phi_1 \c2 \phi_2 \c3 \phi_3 \c4 \phi_4 \c1 \phi_x \c2 \phi_x \c3 \phi_x \c4 \phi_x} + (\text{perms of contractions between } \phi_i \text{ and } \phi_x) \\
     	& +\frac{(-i \lambda)}{4!} \int \dd[4]{x} \wick{\c1 \phi_1 \c1 \phi_2} \wick{ \c1 \phi_3 \c2 \phi_4 \c1 \phi_x \c2 \phi_x } \wick{\c \phi_x \c \phi_x} + (\text{perms where we only contract two } \phi_i \text{'s}) \\
     	& +\frac{(-i \lambda)}{4!} \int \dd[4]{x} \wick{\c \phi_1 \c \phi_2} \wick{\c \phi_3 \c \phi_4} \wick{ \c \phi_x \c \phi_x } \wick{\c \phi_x \c \phi_x} + (\text{perms where we contract all pairs } \phi_x)
-  \end{split}
-  \\
+  \end{split}\\[2ex]
   \begin{split} \label{eq:11-n1m4}
     &= -i \lambda \int \dd[4]{x} \Delta_F (x_1 - x) \Delta_F (x_2 - x) \Delta_F (x_3 - x) \Delta_F (x_4 - x) \\
-    & \underbrace{\frac{-i \Lambda}{2}} \int \dd[4]{x} \Delta_F (x_1 - x_2) \Delta_F (x_3 - x) \Delta_F (x_4 - x) \Delta_F (x - x) + (\text{similar}) \\
+    & +\underbrace{\frac{(-i \lambda)}{2}} \int \dd[4]{x} \Delta_F (x_1 - x_2) \Delta_F (x_3 - x) \Delta_F (x_4 - x) \Delta_F (x - x) + (\text{similar}) \\
     &\text{factor 2 since there are 12 ways of pairing $\phi_3$, $\phi_4$ with $\phi_x$} \\
-    & \underbrace{\frac{-i\lambda}{8}} \int \dd[4]{x} \Delta_F(x_1 - x_1) \Delta_F( x_3 - x_4) \Delta_F(x - x) \Delta_F(x - x) + (\text{perms}) \\
+    & +\underbrace{\frac{(-i\lambda)}{8}} \int \dd[4]{x} \Delta_F(x_1 - x_1) \Delta_F( x_3 - x_4) \Delta_F(x - x) \Delta_F(x - x) + (\text{perms}) \\
     &\text{factor 8 due to 3 ways of pairing $\phi_x$'s}.
   \end{split}
 \end{align}

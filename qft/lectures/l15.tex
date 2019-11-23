@@ -77,7 +77,7 @@ Recall that we defined $\psi_{L/R} \coloneqq \frac{1}{2} (\mathbb{1} \mp \gamma^
 \begin{equation}
   P\colon \quad \psi_{L/R} (\vb{x,} t) \to \psi_{R/L} (-\vb{x,} t), \qquad \text{i.e. }\; P \colon \quad \psi(\vb{x,} t) \to \gamma^0 \psi(-\vb{x,} t).
 \end{equation}
-Terms in $\mathcal{L}$:
+Terms that we might want to add to $\mathcal{L}$ include:
 \begin{align}
   \overline{\psi}\psi(\vb{x}, t) &\xrightarrow{P} \overline{\psi}\psi(-\vb{x}, t) \qquad &\text{scalar} \\
   \overline{\psi}\gamma^{\mu} \psi(\vb{x} , t) &\xrightarrow{P} 
@@ -95,16 +95,38 @@ Terms in $\mathcal{L}$:
 					    & \text{axial vector}
 \end{align}
 
-\begin{table}[htpb]
+The spinor bilinears are summarised in \ref{tab:15-1}, showing that the total number of bilinears is $1 + 4 + (4 \times 3 / 2) + 4 + 1 = 16$, and therefore the maximal number for a $4$-component object.
+
+\begin{table}[tbph]
   \centering
-  \caption{}
-  \label{tab:15-1}
-  \begin{tabular}{c  c}
-    Summary: & #\\
-    $\overline{\psi}\psi$ & 1 \\
-    $\overline{\psi} \gamma^{\mu} \psi$ & 4 \\
-    $\overline{\psi} \delta^{\mu\nu} \psi$ & 6 \\
-    $\overline{\psi} \gamma^5\psi$ & 1 \\
-    $\overline{\psi}\gamma^5 \gamma^{\mu} \psi$ & 4 \\
+  \begin{tabular}{c c c}
+    Spinor Bilinear & Transforms as\dots & \#\\
+    $\overline{\psi}\psi$ & scalar & 1 \\
+    $\overline{\psi} \gamma^{\mu} \psi$ & vector & 4 \\
+    $\overline{\psi} S^{\mu\nu} \psi$ & tensor & 6 \\
+    $\overline{\psi} \gamma^5\psi$ & pseudo scalar & 1 \\
+    $\overline{\psi}\gamma^5 \gamma^{\mu} \psi$ & axial vector & 4 \\
   \end{tabular}
+  \caption{Spinor bilinears}
+  \label{tab:15-1}
 \end{table}
+
+We can now add these extra terms to $\mathcal{L}$ that involve $\gamma^5$. These terms can break parity invariance of our theories!
+One example of this is $\mathcal{L} = g W_{\mu} \overline{\psi} \gamma^{\mu} \frac{1 - \gamma^5}{2} \psi$, which describes a $W$-boson vector field coupling only to left-handed $\psi$'s.
+However, they do not always break parity; considet the term $\phi \overline{\psi} \gamma^5 \psi$, which does not break partiy if $\psi$ is a pseudo scalar.
+\begin{definition}[]
+  If $\mathcal{L}$ treats $\psi_L$ and $\psi_R$ equally, it is called a \emph{vector-like} theory. If they appear differently, it is called a \emph{chiral theory}.
+\end{definition}
+
+\section{Symmetries \& currents of Spinors}%
+\label{sec:symmetries_&_currents_of_spinors}
+
+\begin{description}
+  \item[Spacetime translations] $x^{\mu} \to x^{\mu}-\epsilon^{\mu}$ \par
+    The spinor transforms as $\delta \psi = \epsilon^{\mu} \partial^{\mu}$. Now the Lagrangian $\mathcal{L}_D$ \eqref{eq:14-dirac-lagrangian} depends on $\partial_{\mu}$ but not on $\partial_{\mu} \overline{\psi}$. Using \eqref{eq:emtensor}, we calculate the energy-momentum tensor to be
+    \begin{equation}
+      T^{\mu\nu} = i \overline{\psi} \gamma^{\mu} \partial^{\nu} \psi - \eta^{\mu\nu} \mathcal{L}.
+    \end{equation}
+    The fact that the current is conserved implies that the equations of motion are obeyed, so we can impose them on $T^{\mu\nu}$. For scalar fields, the equations of motion are second order in derivatives, which does not teach us anything about the first order energy-momentum tensor. However, for spinor fields, the Lagrangian is $\mathcal{L}_D = \overline{\psi} (i \cancel{\partial} - m) \psi =0$, which vanishes due to the equations of motion. We therefore have $T^{\mu\nu} = i \overline{\psi} \gamma^{\mu} \partial^{\nu} \psi$.
+\end{description}
+

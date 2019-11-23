@@ -1,0 +1,255 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 16: November 16}
+
+\begin{description}
+  \item[Lorentz Transformations] $x \to \Lambda x$ \par
+    The Dirac spinor transforms as
+    $\psi^{\alpha} \to S[\Lambda] \indices{^{\alpha}_{\beta}} \psi^{\beta} (x^{\mu} - \omega \indices{^{\mu}_{\nu}} x^{\nu})$, where $\omega \indices{^{\mu}_{\nu}} = \frac{1}{2} \Omega_{\rho\sigma} (M^{\rho\sigma}) \indices{^{\mu}_{\nu}}$ and $(M^{\sigma\rho})\indices{^{\mu}^{\nu}}$ are the generators of the Lorentz algebra, given by \eqref{eq:13-lorentz-generators}.
+    Substituting these into the above, we have $\omega^{\mu\nu} = \Omega^{\mu\nu}$, which means that under infinitesimal Lorentz transformation we have
+    \begin{align}
+      \delta \psi^{\alpha} &= - \omega \indices{^{\mu}_{\nu}} x^{\nu} \partial_{\mu} \psi^{\alpha} + \frac{1}{2} \Omega_{\rho\sigma} (S^{\rho\sigma}) \indices{^{\alpha}_{\beta}} \psi^{\beta} \\
+			   &= - \omega^{\mu\nu} \left[ x_{\nu} \partial_{\mu} \psi_{\alpha} - \frac{1}{2} (S_{\mu\nu}) \indices{^{\alpha}_{\beta}} \psi^{\beta} \right] \\
+      \delta \overline{\psi}_{\alpha} &= -\omega^{\mu\nu} \left[ x_{\nu} \partial_{\mu} \overline{\psi}_{\alpha} + \frac{1}{2} \overline{\psi}_{\beta} (S_{\mu\nu}) \indices{^{\beta}_{\alpha}} \right].
+    \end{align}
+    Again, the spinor equations of motion set $\mathcal{L} = 0$ and the conserved current can be calculated to be
+    \begin{equation}
+      (\mathcal{J}^{\mu})^{\rho\sigma} = \underbrace{x^{\rho} T^{\mu\sigma} - x^{\sigma} T^{\mu\rho}}_{\text{looks like } \mathbb{R} \text{ scalar}} -i \overline{\psi} \gamma^{\mu} S^{\rho\sigma} \psi.
+    \end{equation}
+    After quantisation, the last term will give rise to the internal angular momentum of spin-$\frac{1}{2}$ single particle states.
+    \begin{equation}
+      (\mathcal{J}^0)^{ij} = -i \overline{\psi} \gamma^0 S^{ij} \psi = \frac{1}{2} \varepsilon^{ijk} \psi^{\dagger}
+      \begin{pmatrix}
+       \sigma^{k} & 0 \\
+       0 & \sigma^{k} \\
+      \end{pmatrix} \psi
+    \end{equation}
+  \item[Internal Vector Symmetry]
+    The Dirac Lagrangian is symmetric under rotation of the spinor phase
+    \begin{equation}
+      \psi \to e^{i\alpha} \psi \quad \implies \quad \delta \psi = i \alpha \psi
+    \end{equation}
+    By Noether's theorem, this implies the existence of the conserved current $j^{\mu}_V = \overline{\psi} \eta^{\mu} \psi$.
+    Here, the index $V$ for \emph{vector} emphasises the fact that $\psi_L$ and $\psi_R$ transform the same way under this symmetry.
+    The associated conserved charge is 
+    \begin{equation}
+      Q = \int \dd[3]{x} \overline{\psi} \gamma^0 \psi = \int \dd[3]{x} \psi^{\dagger} \psi.
+    \end{equation}
+    As we will see soon, this will be interpreted as electric charge.
+  \item[Axial Symmetry]
+    When $m = 0$, the Dirac Lagrangian is invariant under the axial symmetry transformation
+    \begin{equation}
+      \psi_{\alpha} \to (e^{i\alpha \gamma^5}) \indices{_{\alpha}^{\beta}} \psi_{\beta},
+    \end{equation}
+    which rotates left-handed and right-handed spinors in opposite directions. We have a conserved axial vector current $j^{\mu}_{A} = \overline{\psi} \gamma^{\mu} \gamma^5 \psi$.
+    \begin{leftbar}
+      \begin{remark}
+	Once we couple this theory to gauge fields, we will see that this is the first example of an \emph{anomaly}---a symmetry that is present in the classical theory, but ceases to hold once we perform quantisation.
+      \end{remark}
+    \end{leftbar}
+\end{description}
+
+\subsection{Plane Wave Solutions}%
+\label{sub:plane_wave_solutions}
+
+We want to find solutions to the Dirac equation $(i \cancel{\partial} - m) \psi = 0$. Consider the plane wave ansatz $\psi = u_{\vb{p}} e^{-i p \cdot x}$, where $u_{\vb{p}}$ is a constant spinor depending on the three-momentum $\vb{p}$.
+Substituting this into the Dirac equation (using the chiral representation of $\gamma^{\mu}$), we have
+\begin{equation}
+  \label{eq:16-star}
+  (\gamma^{\mu} p_{\mu} - m) u_{\vb{p}} =  
+  \begin{pmatrix}
+   -m & p^{\mu}\sigma^{\mu} \\
+   p_{\mu} \overline{\sigma}^{\mu} & -m \\
+  \end{pmatrix}
+  u_{\vb{p}} = 0.
+\end{equation}
+We have again used the definition that $\sigma^{\mu} = (1, \sigma^{i})$ and $\overline{\sigma}^{\mu} = (1, - \sigma^{i})$.
+
+\begin{claim}
+  The solution is $u_{\vb{p}} = 
+  \begin{pmatrix}
+  \sqrt{p \cdot \sigma} \xi \\
+  \sqrt{p \cdot \overline{\sigma}} \xi \\
+  \end{pmatrix}$ for any two-component spinor $\xi$, which is normalised such that $\xi^{\dagger} \xi = 1$.
+\end{claim}
+\begin{proof}
+  Let us write $u_{\vb{p}} = 
+  \begin{pmatrix}
+  u^1 \\
+  u^2\\
+  \end{pmatrix}$, and sub into \eqref{eq:16-star}:
+  \begin{subequations}
+    \label{eq:16-doublestar}
+    \begin{align}
+      (p \cdot \sigma) u_2 &= m u_2 \\
+      (p \cdot \overline{\sigma}) u_1 &= m u_2.
+    \end{align}
+  \end{subequations}
+  Either of these implies the other, since
+  \begin{align}
+    (p \cdot \sigma) (p \cdot \overline{\sigma}) &= p_0^2 - p_{i} p_{j} \sigma^{i} \sigma^{j} \\
+						 &= p_0^2 - p_{i} p_{j} \underbrace{\frac{1}{2} \left\{ \sigma^{i}, \sigma^{j} \right\}}_{\delta^{ij}} \\
+						 &= p_{\mu} p^{\mu} = m^2.
+  \end{align}
+  Now we try the ansatz $u_1 = (p \cdot \sigma) \xi'$ for a two-component spinor $\xi'$. Sub into \eqref{eq:16-doublestar} to give $u_2 = \frac{1}{m} (p \cdot \overline{\sigma}) (p \cdot \sigma) \chi' = m \xi'$. So any vector of form $u_{\vb{p}} = A
+  \begin{pmatrix}
+    (p \cdot \sigma) \xi' \\
+    m \xi' \\
+  \end{pmatrix}
+  $, where $A$ is constant.
+  To make this look more symmetric, choose $A = \frac{1}{m}$ and $\xi' \coloneqq \sqrt{p \cdot \overline{\sigma}}$, with $\xi$ constant. Then $u_{\vb{p}} = 
+  \begin{pmatrix}
+  \sqrt{p \cdot \sigma} \xi \\
+  \sqrt{p \cdot \overline{\sigma}} \xi \\
+  \end{pmatrix}
+  $.
+\end{proof}
+
+\begin{example}[$\vb{p} = 0$]
+  Have $u_{\vb{p} = 0} = \sqrt{m}
+  \begin{pmatrix}
+  \xi \\
+  \xi \\
+  \end{pmatrix}
+  $ for any $\xi$. Under spatial rotations, $\xi \to e^{i \boldsymbol\sigma \cdot \boldsymbol \phi / 2} \xi$. After quantisation, $\xi$ describes the \emph{spin} of the spinor, e.g.~$\xi = 
+  \begin{pmatrix}
+  1 \\
+  0 \\
+  \end{pmatrix}
+  $ is spin-$\uparrow$ along $x^3$-axis: to see this, consider the particle boosted along the $x^3$-direction.
+  \begin{equation} \label{eq:16-m1}
+    u_{\vb{p}} =
+    \begin{pmatrix}
+    \sqrt{E - p^3}
+    \begin{pmatrix}
+    1 \\
+    0 \\
+    \end{pmatrix}
+    \\
+    \sqrt{E + p^3}
+    \begin{pmatrix}
+    1 \\
+    0 \\
+    \end{pmatrix}
+    \\
+    \end{pmatrix}
+    \xrightarrow[E \to p^3]{m \to 0} \sqrt{2 E} 
+    \begin{pmatrix}
+    0 \\
+    0 \\
+    1 \\
+    0 \\
+    \end{pmatrix}
+  \end{equation}
+  For $\xi = 
+  \begin{pmatrix}
+  0 \\
+  1 \\
+  \end{pmatrix}
+  $, 
+  \begin{equation}
+    u_{\vb{p}} = 
+    \begin{pmatrix}
+    \sqrt{E + p^3}
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    \end{pmatrix}
+    \\
+    \sqrt{E - p^3}
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    \end{pmatrix}
+    \\
+    \end{pmatrix}
+    \xrightarrow{m \to 0}
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    0 \\
+    0 \\
+    \end{pmatrix} \sqrt{2 E}.
+    \label{eq:16-m2}
+  \end{equation}
+\end{example}
+
+\begin{definition}[helicity]
+  The \emph{helicity} operator $h$ projects the angular momentum along the direction of motion.
+  \begin{equation}
+    h = \hat{\vb{p}} \cdot \vb{s} = \frac{1}{2} \hat p_{k}
+    \begin{pmatrix}
+     \sigma^{k} & 0 \\
+     0 & \sigma^{k} \\
+    \end{pmatrix}.
+  \end{equation}
+\end{definition}
+A massless spin-$\uparrow$ operator has $h = + \frac{1}{2}$, whereas a massless spin-$\downarrow$ has $h = -\frac{1}{2}$.
+
+\subsection{Negative Frequency Solutions}%
+\label{sub:negative_frequency_solutions}
+
+\begin{equation}
+  \psi = v_{\vb{p}} e^{+i p \cdot x}
+\end{equation}
+Dirac equation also has a negative frequency solution
+\begin{equation}
+  v_{\vb{p}} = 
+  \begin{pmatrix}
+  \sqrt{p \cdot \sigma} \eta \\
+  - \sqrt{p \cdot \overline{\sigma}} \eta \\
+  \end{pmatrix},
+\end{equation}
+where $\eta^{\dagger} \eta = 1$ and $\eta$ is a constant two-spinor.
+\begin{exercise}
+  Go through the same derivation as above, but with the negative frequency solution.
+\end{exercise}
+
+\subsection{Quantising the Dirac Field}%
+\label{sub:quantising_the_dirac_field}
+
+In the Schrödinger picture, where the fields are not functions of time, we have
+\begin{align}
+  \psi(\vb{x}) &= \sum_{s=1}^{2} \int \frac{\bdd[3]{p}}{\sqrt{2E_{p}}} \left[ b_{\vb{p}}^{s} u^{s}_{\vb{p}} e^{+i \vb{p} \cdot \vb{x}} + (c_{\vb{p}}^{s})^{\dagger} v_{\vb{p}}^{s} e^{-i \vb{p} \cdot \vb{x}} \right] \\
+  \psi^{\dagger}(\vb{x}) &= \sum_{s=1}^{2} \int \frac{\bdd[3]{p}}{\sqrt{2E_{p}}} \left[ (b_{\vb{p}}^{s})^{\dagger} (u^{s}_{\vb{p}})^{\dagger} e^{-i \vb{p} \cdot \vb{x}} + c_{\vb{p}}^{s} (v_{\vb{p}}^{s})^{\dagger} e^{+i \vb{p} \cdot \vb{x}} \right] \\
+\end{align}
+In the Heisenberg picture, specify these at an initial time and use the Dirac equation to determine the full evolution.
+
+At this stage, we would usually specify commutation relations. However, as we will illustrate a bit later, something pathological would go wrong if we did that.
+It turns out that in spinor quantisation, we require \emph{anti-}commutation relations, $\left\{ A, B \right\} = AB + BA$, such as those we have already seen in the Clifford algebra.
+We have
+\begin{subequations} \label{eq:16-anticommrels}
+  \begin{gather}
+    \left\{ \psi_{\alpha}(\vb{x}), \psi_{\beta}(\vb{y}) \right\} = 0 = \left\{ \psi^{\dagger}_{\alpha}(\vb{x}), \psi^{\dagger}_{\beta}(\vb{y}) \right\} \\
+    \left\{ \psi_{\alpha}(\vb{x}) , \psi^{\dagger}_{\beta}(\vb{y}) \right\} = \delta_{\alpha\beta} \delta^3 (\vb{x} - \vb{y}).
+  \end{gather}
+\end{subequations}
+\begin{claim}
+  These are equivalent to
+  \begin{equation}
+    \left\{ b_{\vb{p}}^{r}, (b^{s}_{\vb{q}})^{\dagger} \right\} = \bdelta^3(\vb{p} - \vb{q}) \delta^{rs} = \left\{ c^{r}_{\vb{p}}, (c_{\vb{q}}^{s})^{\dagger} \right\}
+  \end{equation}
+  and all other anti-commutators vanish.
+\end{claim}
+
+\subsection*{Hamiltonian}%
+
+\begin{align}
+  \mathcal{H} &= \pi \dot{\psi} - \mathcal{L} \\
+ &= \cancel{i \psi^{\dagger} \dot{\psi}} - \cancel{i \overline{\psi} \gamma^0 \partial_0 \psi} - i \overline{\psi} \gamma^{i} \partial_{i} \psi + m \overline{\psi} \psi \\
+ &= \overline{\psi} (-i \gamma^{i} \partial_{i} + m) \psi
+\end{align}
+Plug in $\psi, \overline{\psi}$ from above, use anti-commutation relations and some results on the inner product of spinors, namely:
+\begin{subequations}
+  \begin{align}
+    (u_{\vb{p}}^{r})^{\dagger} u_{\vb{p}}^{s} &= (v_{\vb{p}}^{r})^{\dagger} v_{\vb{p}}^{s} = 2 p_0 \delta^{rs} \\
+    (u_{\vb{p}}^{r})^{\dagger} v_{\vb{p}}^{s} &= 0 = (v_{\vb{p}}^{r})^{\dagger} u_{\vb{p}}^{s}
+  \end{align}
+\end{subequations}
+to obtain
+\begin{equation}
+  H = \int \bdd[3]{p} E_p \sum_{s=1}^{2} \left( (b_{\vb{p}}^{s})^{\dagger} b^{s}_{\vb{p}} + (c_{\vb{p}}^{s})^{\dagger} c^{s}_{\vb{p}} \right).
+\end{equation}
+This is where the difference between commutation and anti-commutation relations comes in; had we specified commutation relations instead of the anti-commutation relations \eqref{eq:16-anticommrels}, then we would have a minus sign in this Hamiltonian: $H= \dots b_{\vb{p}}^{s} - (c_{\vb{p}}^{s})^{\dagger} \dots$.
+This would then mean that we can lower the energy indefinitely by creating anti-particles, thus making the theory unstable.
+This is a first glimpse of how the spin-statistics theorem follows from QFT: scalars and vectors obey commutation relations, whereas spinors obey anti-commutation relations.

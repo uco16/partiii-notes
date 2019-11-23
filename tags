@@ -1,0 +1,402 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+cha:classical_field_theory	qft/lectures/l1.tex	/^\\label{cha:classical_field_theory}$/;"	l
+cha:free_field_theory	qft/lectures/l3.tex	/^\\label{cha:free_field_theory}$/;"	l
+cha:interacting_fields	qft/lectures/l7.tex	/^\\label{cha:interacting_fields}$/;"	l
+cha:introducing_riemannian_geometry	gr/lectures/l7.tex	/^\\label{cha:introducing_riemannian_geometry}$/;"	l
+cha:introduction	symmetries/lectures/l1.tex	/^\\label{cha:introduction}$/;"	l
+cha:landau_approach_to_phase_transitions	sft/lectures/l2.tex	/^\\label{cha:landau_approach_to_phase_transitions}$/;"	l
+cha:landau_ginzburg_free_energy	sft/lectures/l3.tex	/^\\label{cha:landau_ginzburg_free_energy}$/;"	l
+cha:lecture_1	qft/lectures/l1.tex	/^\\label{cha:lecture_1}$/;"	l
+cha:lie_algebras	symmetries/lectures/l5.tex	/^\\label{cha:lie_algebras}$/;"	l
+cha:lie_algebras_from_lie_groups	symmetries/lectures/l6.tex	/^\\label{cha:lie_algebras_from_lie_groups}$/;"	l
+cha:lie_algebras_from_lie_groups_ii	symmetries/lectures/l7.tex	/^\\label{cha:lie_algebras_from_lie_groups_ii}$/;"	l
+cha:lie_groups	symmetries/lectures/l2.tex	/^\\label{cha:lie_groups}$/;"	l
+cha:representations_of_lie_algebras	symmetries/lectures/l10.tex	/^\\label{cha:representations_of_lie_algebras}$/;"	l
+cha:the_dirac_equation	qft/lectures/l13.tex	/^\\label{cha:the_dirac_equation}$/;"	l
+cha:the_einstein_equations	gr/lectures/l13.tex	/^\\label{cha:the_einstein_equations}$/;"	l
+cha:the_ising_model	sft/lectures/l1.tex	/^\\label{cha:the_ising_model}$/;"	l
+cha:the_killing_form	symmetries/lectures/l14.tex	/^\\label{cha:the_killing_form}$/;"	l
+cha:the_renormalisation_group	sft/lectures/l8.tex	/^\\label{cha:the_renormalisation_group}$/;"	l
+check_identity	symmetries/examples/e1q8.py	/^def check_identity():$/;"	f
+cl:19-4	symmetries/lectures/l19.tex	/^  \\label{cl:19-4}$/;"	l
+cl:19-5	symmetries/lectures/l19.tex	/^  \\label{cl:19-5}$/;"	l
+claim:14-metric-change-diffeo	gr/lectures/l14.tex	/^\\begin{claim} \\label{claim:14-metric-change-diffeo}$/;"	l
+claim:16-inverse-root-is-root	symmetries/lectures/l16.tex	/^\\begin{claim} \\label{claim:16-inverse-root-is-root}$/;"	l
+claim:19-1	symmetries/lectures/l19.tex	/^  \\label{claim:19-1}$/;"	l
+cyclic_perms	symmetries/examples/e1q8.py	/^def cyclic_perms(array):$/;"	f
+def:lie_algebra	symmetries/lectures/l5.tex	/^\\begin{definition}[Lie algebra] \\label{def:lie_algebra}$/;"	l
+def:vecfield	gr/lectures/l2.tex	/^   \\label{def:vecfield}$/;"	l
+delta	symmetries/examples/e1q8.py	/^def delta(a, b):$/;"	f
+epsilon	symmetries/examples/e1q8.py	/^def epsilon(a, b, c, d):$/;"	f
+eq:10-vf	gr/lectures/l10.tex	/^    \\label{eq:10-vf}$/;"	l
+eq:10-vfcoords	gr/lectures/l10.tex	/^    \\label{eq:10-vfcoords}$/;"	l
+eq:11-1	gr/lectures/l11.tex	/^    \\label{eq:11-1}$/;"	l
+eq:11-alpha	symmetries/lectures/l11.tex	/^    \\label{eq:11-alpha}$/;"	l
+eq:11-alpha-2	symmetries/lectures/l11.tex	/^    \\label{eq:11-alpha-2}$/;"	l
+eq:11-n1m4	qft/lectures/l11.tex	/^  \\begin{split} \\label{eq:11-n1m4}$/;"	l
+eq:11-order-2	sft/lectures/l11.tex	/^  \\label{eq:11-order-2}$/;"	l
+eq:11-star	symmetries/lectures/l11.tex	/^	  \\label{eq:11-star}$/;"	l
+eq:11-wick	sft/lectures/l11.tex	/^    \\label{eq:11-wick}$/;"	l
+eq:12-star	symmetries/lectures/l11.tex	/^    \\label{eq:12-star}$/;"	l
+eq:13-1	gr/lectures/l13.tex	/^  \\label{eq:13-1}$/;"	l
+eq:13-1	qft/lectures/l13.tex	/^  \\label{eq:13-1}$/;"	l
+eq:13-1	sft/lectures/l13.tex	/^  \\label{eq:13-1}$/;"	l
+eq:13-2	sft/lectures/l13.tex	/^  \\label{eq:13-2}$/;"	l
+eq:13-lorentz-generators	qft/lectures/l13.tex	/^  \\label{eq:13-lorentz-generators}$/;"	l
+eq:13-star	qft/lectures/l13.tex	/^  \\label{eq:13-star}$/;"	l
+eq:14-1	qft/lectures/l14.tex	/^    \\label{eq:14-1}$/;"	l
+eq:14-1	symmetries/lectures/l14.tex	/^    \\label{eq:14-1}$/;"	l
+eq:14-2star	qft/lectures/l14.tex	/^									  &=\\frac{1}{2} \\gamma^{\\rho} \\gamma^{\\sigma} - \\frac{1}{2} \\eta^{\\rho\\sigma} \\mathbb{1} \\label{eq:14-2star}$/;"	l
+eq:14-3	qft/lectures/l14.tex	/^      \\label{eq:14-3}$/;"	l
+eq:14-dirac-lagrangian	qft/lectures/l14.tex	/^  \\label{eq:14-dirac-lagrangian}$/;"	l
+eq:14-metric	gr/lectures/l14.tex	/^  \\label{eq:14-metric}$/;"	l
+eq:15-1	qft/lectures/l15.tex	/^\\begin{equation} \\label{eq:15-1}$/;"	l
+eq:15-AdS-new	gr/lectures/l15.tex	/^  \\label{eq:15-AdS-new}$/;"	l
+eq:15-hash	gr/lectures/l15.tex	/^    \\label{eq:15-hash}$/;"	l
+eq:15-star	symmetries/lectures/l15.tex	/^  \\label{eq:15-star}$/;"	l
+eq:15-star2	symmetries/lectures/l15.tex	/^    \\label{eq:15-star2}$/;"	l
+eq:16-1	symmetries/lectures/l16.tex	/^  \\label{eq:16-1}$/;"	l
+eq:16-2	symmetries/lectures/l16.tex	/^      \\label{eq:16-2}$/;"	l
+eq:16-3	symmetries/lectures/l16.tex	/^  \\label{eq:16-3}$/;"	l
+eq:16-4	symmetries/lectures/l16.tex	/^  \\label{eq:16-4}$/;"	l
+eq:16-6	symmetries/lectures/l16.tex	/^  \\label{eq:16-6}$/;"	l
+eq:16-alpha	symmetries/lectures/l16.tex	/^      \\label{eq:16-alpha}$/;"	l
+eq:16-anticommrels	qft/lectures/l16.tex	/^\\begin{subequations} \\label{eq:16-anticommrels}$/;"	l
+eq:16-beta	symmetries/lectures/l16.tex	/^      \\label{eq:16-beta}$/;"	l
+eq:16-delta	symmetries/lectures/l16.tex	/^      \\label{eq:16-delta}$/;"	l
+eq:16-doublestar	qft/lectures/l16.tex	/^    \\label{eq:16-doublestar}$/;"	l
+eq:16-m1	qft/lectures/l16.tex	/^  \\begin{equation} \\label{eq:16-m1}$/;"	l
+eq:16-m2	qft/lectures/l16.tex	/^    \\label{eq:16-m2}$/;"	l
+eq:16-star	qft/lectures/l16.tex	/^  \\label{eq:16-star}$/;"	l
+eq:17-10	symmetries/lectures/l17.tex	/^     \\label{eq:17-10}$/;"	l
+eq:17-11	symmetries/lectures/l17.tex	/^  \\label{eq:17-11}$/;"	l
+eq:17-12	symmetries/lectures/l17.tex	/^								      &= \\qty( \\frac{2 (\\alpha, \\beta)}{(\\alpha, \\alpha)} + 2 \\rho) e^{\\beta + \\rho \\alpha} \\label{eq:17-12}$/;"	l
+eq:17-15	symmetries/lectures/l17.tex	/^  \\label{eq:17-15}$/;"	l
+eq:17-7	symmetries/lectures/l17.tex	/^  \\label{eq:17-7}$/;"	l
+eq:17-metric-dS	gr/lectures/l17.tex	/^  \\label{eq:17-metric-dS}$/;"	l
+eq:17-star	symmetries/lectures/l17.tex	/^  \\label{eq:17-star}$/;"	l
+eq:18-17	symmetries/lectures/l18.tex	/^		  &= \\frac{1}{\\mathcal{N}} \\sum_{\\delta \\in \\Phi} \\alpha_{i} \\delta^{i} \\delta^{j} \\beta_{j} = \\frac{1}{\\mathcal{N}} \\sum_{\\delta \\in \\Phi} (\\alpha, \\delta) (\\beta,\\delta) \\label{eq:18-17}$/;"	l
+eq:19-20	symmetries/lectures/l19.tex	/^    \\label{eq:19-20}$/;"	l
+eq:19a	symmetries/lectures/l18.tex	/^    \\frac{2 (\\alpha, \\beta)}{(\\alpha, \\alpha)} &= \\frac{2 \\abs{\\beta}}{\\abs{ \\alpha}} \\cos \\theta_{\\alpha, \\beta} \\in \\mathbb{R} \\label{eq:19a} \\\\$/;"	l
+eq:19b	symmetries/lectures/l18.tex	/^    \\frac{2 (\\beta , \\alpha)}{(\\beta, \\beta)} &= \\frac{2 \\abs{\\alpha}}{\\abs{\\beta}} \\cos \\theta_{\\alpha, \\beta} \\label{eq:19b}$/;"	l
+eq:BCH-formula	symmetries/lectures/l9.tex	/^  \\label{eq:BCH-formula}$/;"	l
+eq:EL	qft/lectures/l1.tex	/^  \\label{eq:EL}$/;"	l
+eq:Lchange	qft/lectures/l2.tex	/^    \\label{eq:Lchange}$/;"	l
+eq:Lchange_2	qft/lectures/l2.tex	/^    \\label{eq:Lchange_2}$/;"	l
+eq:a-ccr	qft/lectures/l4.tex	/^    \\begin{equation} \\label{eq:a-ccr}$/;"	l
+eq:action	gr/lectures/l10.tex	/^  \\label{eq:action}$/;"	l
+eq:beta-functions	sft/lectures/l13.tex	/^  \\label{eq:beta-functions}$/;"	l
+eq:broken-action	sft/lectures/l10.tex	/^  \\label{eq:broken-action}$/;"	l
+eq:def_differential	gr/lectures/l4.tex	/^    \\label{eq:def_differential}$/;"	l
+eq:einstein	gr/lectures/l18.tex	/^  \\label{eq:einstein}$/;"	l
+eq:eintein-hilbert-action	gr/lectures/l13.tex	/^  \\label{eq:eintein-hilbert-action}$/;"	l
+eq:emtensor	qft/lectures/l3.tex	/^  \\label{eq:emtensor}$/;"	l
+eq:evalue	symmetries/lectures/l4.tex	/^\\begin{equation} \\label{eq:evalue}$/;"	l
+eq:field-ccr	qft/lectures/l4.tex	/^  \\begin{equation} \\label{eq:field-ccr}$/;"	l
+eq:four-field-tordered-product	qft/lectures/l9.tex	/^    \\label{eq:four-field-tordered-product}$/;"	l
+eq:general-action	sft/lectures/l8.tex	/^  \\label{eq:general-action}$/;"	l
+eq:geodesic	gr/lectures/l10.tex	/^  \\label{eq:geodesic}$/;"	l
+eq:h	symmetries/lectures/l6.tex	/^    \\label{eq:h}$/;"	l
+eq:interaction-operators	qft/lectures/l7.tex	/^			  \\label{eq:interaction-operators}$/;"	l
+eq:killing	gr/lectures/l16.tex	/^  \\label{eq:killing}$/;"	l
+eq:l10gauss	sft/lectures/l10.tex	/^  \\label{eq:l10gauss}$/;"	l
+eq:l10star	symmetries/lectures/l10.tex	/^    \\label{eq:l10star}$/;"	l
+eq:l8ode	symmetries/lectures/l8.tex	/^  \\label{eq:l8ode}$/;"	l
+eq:l9e1	gr/lectures/l9.tex	/^	  &= g(\\nabla_{X}Y, Z) + g(Y, \\nabla_{X}Z) \\label{eq:l9e1}$/;"	l
+eq:l_7_operator	sft/lectures/l7.tex	/^      \\label{eq:l_7_operator}$/;"	l
+eq:mark	qft/lectures/l6.tex	/^		&= \\int_{}^{} \\frac{\\bdd[3]{p}}{2E_p} \\left\\{ e^{-i p \\cdot (x - y)} - e^{i p \\cdot (x - y)} \\right\\} \\label{eq:mark}$/;"	l
+eq:mark2	qft/lectures/l6.tex	/^      \\label{eq:mark2}$/;"	l
+eq:null-15	gr/lectures/l15.tex	/^  \\label{eq:null-15}$/;"	l
+eq:one	gr/lectures/l9.tex	/^    \\label{eq:one}$/;"	l
+eq:push-forward-of-tangent-vector	gr/lectures/l3.tex	/^  \\label{eq:push-forward-of-tangent-vector}$/;"	l
+eq:result	qft/lectures/l10.tex	/^			\\label{eq:result}$/;"	l
+eq:scat-diag	qft/lectures/l10.tex	/^    \\label{eq:scat-diag}$/;"	l
+eq:three	gr/lectures/l9.tex	/^    \\label{eq:three}$/;"	l
+eq:time-ordered-product-wicks-theorem-sandwiched	qft/lectures/l9.tex	/^    \\label{eq:time-ordered-product-wicks-theorem-sandwiched}$/;"	l
+eq:top	qft/lectures/l17.tex	/^  \\label{eq:top}$/;"	l
+eq:total_energy	qft/lectures/l3.tex	/^    \\text{Total Energy:} \\qquad P^0 &\\coloneqq E = \\int \\dd[3]{x} T^{00} \\label{eq:total_energy} \\\\$/;"	l
+eq:total_momentum	qft/lectures/l3.tex	/^    \\text{Total Momentum:} \\qquad P^{i} &= \\int \\dd[3]{x} T^{0i}, \\quad i = 1,2,3 \\label{eq:total_momentum}$/;"	l
+eq:two	gr/lectures/l9.tex	/^    \\label{eq:two}$/;"	l
+eq:variation in S	qft/lectures/l1.tex	/^  \\label{eq:variation in S}$/;"	l
+fig:	qft/lectures/l10.tex	/^    \\label{fig:}$/;"	l
+fig:12-1	qft/lectures/l12.tex	/^  \\label{fig:12-1}$/;"	l
+fig:12-2	qft/lectures/l12.tex	/^  \\label{fig:12-2}$/;"	l
+fig:L1F2	gr/lectures/l1.tex	/^  \\label{fig:L1F2}$/;"	l
+fig:angmombar	gr/lectures/l14.tex	/^  \\label{fig:angmombar}$/;"	l
+fig:angmombar2	gr/lectures/l15.tex	/^  \\label{fig:angmombar2}$/;"	l
+fig:angmombar3	gr/lectures/l15.tex	/^  \\label{fig:angmombar3}$/;"	l
+fig:antipodal_loops	symmetries/lectures/l4.tex	/^    \\label{fig:antipodal_loops}$/;"	l
+fig:ball	symmetries/lectures/l4.tex	/^      \\label{fig:ball}$/;"	l
+fig:beta1	sft/lectures/l8.tex	/^      \\label{fig:beta1}$/;"	l
+fig:beta2	sft/lectures/l8.tex	/^      \\label{fig:beta2}$/;"	l
+fig:causal-structure-M4	gr/lectures/l7.tex	/^  \\label{fig:causal-structure-M4}$/;"	l
+fig:domainwall	sft/lectures/l3.tex	/^  \\label{fig:domainwall}$/;"	l
+fig:eightfold	symmetries/lectures/l2.tex	/^    \\label{fig:eightfold}$/;"	l
+fig:hairyball	symmetries/lectures/l8.tex	/^  \\label{fig:hairyball}$/;"	l
+fig:identification	symmetries/lectures/l4.tex	/^      \\label{fig:identification}$/;"	l
+fig:l10f1	gr/lectures/l10.tex	/^    \\label{fig:l10f1}$/;"	l
+fig:l10f2	gr/lectures/l10.tex	/^    \\label{fig:l10f2}$/;"	l
+fig:l11f1	gr/lectures/l11.tex	/^  \\label{fig:l11f1}$/;"	l
+fig:l11f1	symmetries/lectures/l11.tex	/^  \\label{fig:l11f1}$/;"	l
+fig:l11f2	gr/lectures/l11.tex	/^  \\label{fig:l11f2}$/;"	l
+fig:l17f1	gr/lectures/l17.tex	/^    \\label{fig:l17f1}$/;"	l
+fig:l17f2	gr/lectures/l17.tex	/^    \\label{fig:l17f2}$/;"	l
+fig:l17f3	gr/lectures/l17.tex	/^    \\label{fig:l17f3}$/;"	l
+fig:l17f4	gr/lectures/l17.tex	/^    \\label{fig:l17f4}$/;"	l
+fig:l17f5	gr/lectures/l17.tex	/^  \\label{fig:l17f5}$/;"	l
+fig:l17f6	gr/lectures/l17.tex	/^    \\label{fig:l17f6}$/;"	l
+fig:l17f7	gr/lectures/l17.tex	/^    \\label{fig:l17f7}$/;"	l
+fig:l17f8	gr/lectures/l17.tex	/^    \\label{fig:l17f8}$/;"	l
+fig:l18f1	gr/lectures/l18.tex	/^  \\label{fig:l18f1}$/;"	l
+fig:l18f1	symmetries/lectures/l18.tex	/^  \\label{fig:l18f1}$/;"	l
+fig:l18f2	gr/lectures/l18.tex	/^  \\label{fig:l18f2}$/;"	l
+fig:l18f2	symmetries/lectures/l18.tex	/^  \\label{fig:l18f2}$/;"	l
+fig:l1f1	symmetries/lectures/l1.tex	/^  \\label{fig:l1f1}$/;"	l
+fig:l8f1	qft/lectures/l8.tex	/^  \\label{fig:l8f1}$/;"	l
+fig:l8f1	sft/lectures/l8.tex	/^  \\label{fig:l8f1}$/;"	l
+fig:l8f1	symmetries/lectures/l7.tex	/^  \\label{fig:l8f1}$/;"	l
+fig:l8f2	symmetries/lectures/l8.tex	/^  \\label{fig:l8f2}$/;"	l
+fig:l8f4	symmetries/lectures/l8.tex	/^  \\label{fig:l8f4}$/;"	l
+fig:l8f5	symmetries/lectures/l8.tex	/^  \\label{fig:l8f5}$/;"	l
+fig:l9f1	symmetries/lectures/l9.tex	/^  \\label{fig:l9f1}$/;"	l
+fig:l9f2	sft/lectures/l9.tex	/^  \\label{fig:l9f2}$/;"	l
+fig:liediffvf	gr/lectures/l3.tex	/^  \\label{fig:liediffvf}$/;"	l
+fig:manifold	gr/lectures/l1.tex	/^  \\label{fig:manifold}$/;"	l
+fig:manifold	symmetries/lectures/l2.tex	/^    \\label{fig:manifold}$/;"	l
+fig:meson-decay	qft/lectures/l8.tex	/^      \\label{fig:meson-decay}$/;"	l
+fig:mfdwboundary	gr/lectures/l6.tex	/^  \\label{fig:mfdwboundary}$/;"	l
+fig:nucleon-scattering	qft/lectures/l8.tex	/^      \\label{fig:nucleon-scattering}$/;"	l
+fig:oneloop	qft/lectures/l10.tex	/^    \\label{fig:oneloop}$/;"	l
+fig:penrose-diagrams	gr/lectures/l17.tex	/^  \\label{fig:penrose-diagrams}$/;"	l
+fig:so3	symmetries/lectures/l1.tex	/^  \\label{fig:so3}$/;"	l
+fig:sytv	qft/lectures/l10.tex	/^        \\label{fig:sytv}$/;"	l
+fig:tangentcurve	symmetries/lectures/l6.tex	/^  \\label{fig:tangentcurve}$/;"	l
+fig:tangentspace	symmetries/lectures/l6.tex	/^  \\label{fig:tangentspace}$/;"	l
+fig:twoloop	qft/lectures/l10.tex	/^    \\label{fig:twoloop}$/;"	l
+isPerm	symmetries/examples/e1q8.py	/^def isPerm(x, y):$/;"	f
+isSame	symmetries/examples/e1q8.py	/^def isSame(i, l, q, p, j, m):$/;"	f
+lem:chri	gr/lectures/l9.tex	/^  \\label{lem:chri}$/;"	l
+sec:2_$to$_to_2_scattering	qft/lectures/l13.tex	/^\\label{sec:2_$to$_to_2_scattering}$/;"	l
+sec:algebra_in_cartan_weyl_basis	symmetries/lectures/l16.tex	/^\\label{sec:algebra_in_cartan_weyl_basis}$/;"	l
+sec:asymptotic_freedom_and_dimension_two_plus_epsilon	sft/lectures/l16.tex	/^\\label{sec:asymptotic_freedom_and_dimension_two_plus_epsilon}$/;"	l
+sec:asymptotics_of_spacetime	gr/lectures/l17.tex	/^\\label{sec:asymptotics_of_spacetime}$/;"	l
+sec:basic_introduction	sft/lectures/l8.tex	/^\\label{sec:basic_introduction}$/;"	l
+sec:basics	sft/lectures/l1.tex	/^\\label{sec:basics}$/;"	l
+sec:canonical_quantisation	qft/lectures/l3.tex	/^\\label{sec:canonical_quantisation}$/;"	l
+sec:cartan_classification	symmetries/lectures/l15.tex	/^\\label{sec:cartan_classification}$/;"	l
+sec:causality	qft/lectures/l6.tex	/^\\label{sec:causality}$/;"	l
+sec:chiral_spinors	qft/lectures/l15.tex	/^\\label{sec:chiral_spinors}$/;"	l
+sec:classical_physics	symmetries/lectures/l1.tex	/^\\label{sec:classical_physics}$/;"	l
+sec:complexification	symmetries/lectures/l15.tex	/^\\label{sec:complexification}$/;"	l
+sec:connection_1_forms	gr/lectures/l12.tex	/^\\label{sec:connection_1_forms}$/;"	l
+sec:connections_and_curvature	gr/lectures/l8.tex	/^\\label{sec:connections_and_curvature}$/;"	l
+sec:constructing_a_lorentz_invariant_action_of_psi_	qft/lectures/l14.tex	/^\\label{sec:constructing_a_lorentz_invariant_action_of_psi_}$/;"	l
+sec:continuous_symmetries	sft/lectures/l14.tex	/^\\label{sec:continuous_symmetries}$/;"	l
+sec:correlation_functions	sft/lectures/l5.tex	/^\\label{sec:correlation_functions}$/;"	l
+sec:coupling_constants_and_mass_dimension	qft/lectures/l7.tex	/^\\label{sec:coupling_constants_and_mass_dimension}$/;"	l
+sec:coupling_matter	gr/lectures/l18.tex	/^\\label{sec:coupling_matter}$/;"	l
+sec:critical_exponents	sft/lectures/l2.tex	/^\\label{sec:critical_exponents}$/;"	l
+sec:critical_exponents_againldots_	sft/lectures/l7.tex	/^\\label{sec:critical_exponents_againldots_}$/;"	l
+sec:decay_rates	qft/lectures/l13.tex	/^\\label{sec:decay_rates}$/;"	l
+sec:definitions	symmetries/lectures/l2.tex	/^\\label{sec:definitions}$/;"	l
+sec:diffeomorphisms	symmetries/lectures/l7.tex	/^\\label{sec:diffeomorphisms}$/;"	l
+sec:diffeomorphisms_revisited	gr/lectures/l13.tex	/^\\label{sec:diffeomorphisms_revisited}$/;"	l
+sec:dirac_hole_interpretation	qft/lectures/l17.tex	/^\\label{sec:dirac_hole_interpretation}$/;"	l
+sec:dynamics	qft/lectures/l1.tex	/^\\label{sec:dynamics}$/;"	l
+sec:effective_free_energy	sft/lectures/l1.tex	/^\\label{sec:effective_free_energy}$/;"	l
+sec:embedded submanifolds	symmetries/lectures/l3.tex	/^\\label{sec:embedded submanifolds}$/;"	l
+sec:fermi_dirac_statistics	qft/lectures/l17.tex	/^\\label{sec:fermi_dirac_statistics}$/;"	l
+sec:fermionic_yukawa_theory	qft/lectures/l17.tex	/^\\label{sec:fermionic_yukawa_theory}$/;"	l
+sec:feynman_diagrams	qft/lectures/l10.tex	/^\\label{sec:feynman_diagrams}$/;"	l
+sec:finite_temperature	sft/lectures/l1.tex	/^\\label{sec:finite_temperature}$/;"	l
+sec:flowing_to_the_ir	sft/lectures/l8.tex	/^\\label{sec:flowing_to_the_ir}$/;"	l
+sec:free_complex_scalar_field	qft/lectures/l5.tex	/^\\label{sec:free_complex_scalar_field}$/;"	l
+sec:geodesics	gr/lectures/l10.tex	/^\\label{sec:geodesics}$/;"	l
+sec:green_s_functions	sft/lectures/l7.tex	/^\\label{sec:green_s_functions}$/;"	l
+sec:green_s_functions_and_the_vacuum	qft/lectures/l12.tex	/^\\label{sec:green_s_functions_and_the_vacuum}$/;"	l
+sec:groups_and_lie_groups	symmetries/lectures/l1.tex	/^\\label{sec:groups_and_lie_groups}$/;"	l
+sec:hamiltonian_formalism	qft/lectures/l3.tex	/^\\label{sec:hamiltonian_formalism}$/;"	l
+sec:integral_curves	gr/lectures/l2.tex	/^\\label{sec:integral_curves}$/;"	l
+sec:integration	gr/lectures/l6.tex	/^\\label{sec:integration}$/;"	l
+sec:introduction	symmetries/lectures/l1.tex	/^\\label{sec:introduction}$/;"	l
+sec:key_idea	symmetries/lectures/l2.tex	/^\\label{sec:key_idea}$/;"	l
+sec:key_result_cartan_classification	symmetries/lectures/l1.tex	/^\\label{sec:key_result_cartan_classification}$/;"	l
+sec:kosterlitz_thouless_transition_n_2	sft/lectures/l16.tex	/^\\label{sec:kosterlitz_thouless_transition_n_2}$/;"	l
+sec:lie_algebra_of_su_2_subalgebra	symmetries/lectures/l17.tex	/^\\label{sec:lie_algebra_of_su_2_subalgebra}$/;"	l
+sec:lie_derivatives	gr/lectures/l3.tex	/^\\label{sec:lie_derivatives}$/;"	l
+sec:lorentz_invariance	qft/lectures/l2.tex	/^\\label{sec:lorentz_invariance}$/;"	l
+sec:lower_critical_dimension	sft/lectures/l4.tex	/^\\label{sec:lower_critical_dimension}$/;"	l
+sec:manifolds	gr/lectures/l1.tex	/^\\label{sec:manifolds}$/;"	l
+sec:matrix_lie_groups	symmetries/lectures/l3.tex	/^\\label{sec:matrix_lie_groups}$/;"	l
+sec:matrix_lie_groups-again	symmetries/lectures/l8.tex	/^\\label{sec:matrix_lie_groups-again}$/;"	l
+sec:mean_field_theory	sft/lectures/l1.tex	/^\\label{sec:mean_field_theory}$/;"	l
+sec:model_building	sft/lectures/l3.tex	/^\\label{sec:model_building}$/;"	l
+sec:momentum_rescaling	sft/lectures/l8.tex	/^\\label{sec:momentum_rescaling}$/;"	l
+sec:momentum_space_feynman_rules_for_fermionic_amplitudes	qft/lectures/l18.tex	/^\\label{sec:momentum_space_feynman_rules_for_fermionic_amplitudes}$/;"	l
+sec:more_on_the_riemann_tensor	gr/lectures/l11.tex	/^\\label{sec:more_on_the_riemann_tensor}$/;"	l
+sec:my_first_path_integral	sft/lectures/l4.tex	/^\\label{sec:my_first_path_integral}$/;"	l
+sec:new_representations_from_old	symmetries/lectures/l12.tex	/^\\label{sec:new_representations_from_old}$/;"	l
+sec:noether_s_theorem	qft/lectures/l2.tex	/^\\label{sec:noether_s_theorem}$/;"	l
+sec:non_zero_magnetic_field	sft/lectures/l2.tex	/^\\label{sec:non_zero_magnetic_field}$/;"	l
+sec:normal_coordinates	gr/lectures/l10.tex	/^\\label{sec:normal_coordinates}$/;"	l
+sec:nucleon_nucleon_scattering	qft/lectures/l9.tex	/^\\label{sec:nucleon_nucleon_scattering}$/;"	l
+sec:o_n_models	sft/lectures/l14.tex	/^\\label{sec:o_n_models}$/;"	l
+sec:parallel_transport	gr/lectures/l10.tex	/^\\label{sec:parallel_transport}$/;"	l
+sec:partition_function	sft/lectures/l8.tex	/^\\label{sec:partition_function}$/;"	l
+sec:path_dependence_and_curvature	gr/lectures/l11.tex	/^\\label{sec:path_dependence_and_curvature}$/;"	l
+sec:path_integral_measure	sft/lectures/l4.tex	/^\\label{sec:path_integral_measure}$/;"	l
+sec:penrose_diagrams	gr/lectures/l17.tex	/^\\label{sec:penrose_diagrams}$/;"	l
+sec:phase_transition_in_the_ising_model	sft/lectures/l2.tex	/^\\label{sec:phase_transition_in_the_ising_model}$/;"	l
+sec:preliminaries	symmetries/lectures/l6.tex	/^\\label{sec:preliminaries}$/;"	l
+sec:propagators	qft/lectures/l6.tex	/^\\label{sec:propagators}$/;"	l
+sec:quantum_phyiscs	symmetries/lectures/l1.tex	/^\\label{sec:quantum_phyiscs}$/;"	l
+sec:real_geometry_of_roots	symmetries/lectures/l18.tex	/^\\label{sec:real_geometry_of_roots}$/;"	l
+sec:reconstructing_g_from_l_g	symmetries/lectures/l8.tex	/^\\label{sec:reconstructing_g_from_l_g}$/;"	l
+sec:reducibility	symmetries/lectures/l13.tex	/^\\label{sec:reducibility}$/;"	l
+sec:relativistic_normalisation	qft/lectures/l5.tex	/^\\label{sec:relativistic_normalisation}$/;"	l
+sec:representation_theory_of_texorpdfstring	symmetries/lectures/l11.tex	/^\\label{sec:representation_theory_of_texorpdfstring}$/;"	l
+sec:representations	symmetries/lectures/l9.tex	/^\\label{sec:representations}$/;"	l
+sec:resources	symmetries/lectures/l1.tex	/^\\label{sec:resources}$/;"	l
+sec:review_of_sho_in_1d_qm	qft/lectures/l3.tex	/^\\label{sec:review_of_sho_in_1d_qm}$/;"	l
+sec:rg_with_interactions	sft/lectures/l11.tex	/^\\label{sec:rg_with_interactions}$/;"	l
+sec:scattering	qft/lectures/l12.tex	/^\\label{sec:scattering}$/;"	l
+sec:scattering_amplitudes	qft/lectures/l8.tex	/^\\label{sec:scattering_amplitudes}$/;"	l
+sec:simple_roots	symmetries/lectures/l18.tex	/^\\label{sec:simple_roots}$/;"	l
+sec:some_simple_solutions	gr/lectures/l14.tex	/^\\label{sec:some_simple_solutions}$/;"	l
+sec:span_of_vectors	symmetries/lectures/l4.tex	/^\\label{sec:span_of_vectors}$/;"	l
+sec:spontaneous_symmetry_breaking	sft/lectures/l2.tex	/^\\label{sec:spontaneous_symmetry_breaking}$/;"	l
+sec:structure_constants	symmetries/lectures/l5.tex	/^\\label{sec:structure_constants}$/;"	l
+sec:su_2_vs_so_3_	symmetries/lectures/l9.tex	/^\\label{sec:su_2_vs_so_3_}$/;"	l
+sec:symmetries	gr/lectures/l16.tex	/^\\label{sec:symmetries}$/;"	l
+sec:symmetries_&_currents_of_spinors	qft/lectures/l15.tex	/^\\label{sec:symmetries_&_currents_of_spinors}$/;"	l
+sec:tangent_spaces	gr/lectures/l2.tex	/^\\label{sec:tangent_spaces}$/;"	l
+sec:tensor_product	symmetries/lectures/l13.tex	/^\\label{sec:tensor_product}$/;"	l
+sec:tensor_product_of_su2_reps	symmetries/lectures/l13.tex	/^\\label{sec:tensor_product_of_su2_reps}$/;"	l
+sec:tensors	gr/lectures/l4.tex	/^\\label{sec:tensors}$/;"	l
+sec:the_dirac_equation	qft/lectures/l14.tex	/^\\label{sec:the_dirac_equation}$/;"	l
+sec:the_einstein_hilbert_action	gr/lectures/l13.tex	/^\\label{sec:the_einstein_hilbert_action}$/;"	l
+sec:the_exterior_derivative	gr/lectures/l5.tex	/^\\label{sec:the_exterior_derivative}$/;"	l
+sec:the_free_scalar_field	qft/lectures/l4.tex	/^\\label{sec:the_free_scalar_field}$/;"	l
+sec:the_gaussian_path_integral	sft/lectures/l6.tex	/^\\label{sec:the_gaussian_path_integral}$/;"	l
+sec:the_heisenberg_picture	qft/lectures/l5.tex	/^\\label{sec:the_heisenberg_picture}$/;"	l
+sec:the_interaction_picture	qft/lectures/l7.tex	/^\\label{sec:the_interaction_picture}$/;"	l
+sec:the_lie_algebra_of_G	symmetries/lectures/l6.tex	/^\\label{sec:the_lie_algebra_of_G}$/;"	l
+sec:the_metric	gr/lectures/l7.tex	/^\\label{sec:the_metric}$/;"	l
+sec:the_spinor_representation	qft/lectures/l14.tex	/^\\label{sec:the_spinor_representation}$/;"	l
+sec:the_weyl_equation	qft/lectures/l15.tex	/^\\label{sec:the_weyl_equation}$/;"	l
+sec:towards_conformal_symmetry	sft/lectures/l13.tex	/^\\label{sec:towards_conformal_symmetry}$/;"	l
+sec:translating_to_qft	sft/lectures/l7.tex	/^\\label{sec:translating_to_qft}$/;"	l
+sec:two_particle_states	symmetries/lectures/l13.tex	/^\\label{sec:two_particle_states}$/;"	l
+sec:units_in_qft	qft/lectures/l1.tex	/^\\label{sec:units_in_qft}$/;"	l
+sec:universality	sft/lectures/l9.tex	/^\\label{sec:universality}$/;"	l
+sec:validity_of_mean_field_theory	sft/lectures/l2.tex	/^\\label{sec:validity_of_mean_field_theory}$/;"	l
+sec:vector_fields	gr/lectures/l2.tex	/^\\label{sec:vector_fields}$/;"	l
+sec:wick_s_theorem	qft/lectures/l9.tex	/^\\label{sec:wick_s_theorem}$/;"	l
+sec:wilson_fischer_fixed_point	sft/lectures/l13.tex	/^\\label{sec:wilson_fischer_fixed_point}$/;"	l
+sec:zero_external_field	sft/lectures/l3.tex	/^\\label{sec:zero_external_field}$/;"	l
+sub:$lambda > 0$_positive_cosmological_constant_de_sitter_spacetime	gr/lectures/l14.tex	/^\\label{sub:$lambda > 0$_positive_cosmological_constant_de_sitter_spacetime}$/;"	l
+sub:$phi^4$_phi_four_feynman_rules_with_momenta	qft/lectures/l11.tex	/^\\label{sub:$phi^4$_phi_four_feynman_rules_with_momenta}$/;"	l
+sub:angular_momentum_in_quantum_mechanics	symmetries/lectures/l12.tex	/^\\label{sub:angular_momentum_in_quantum_mechanics}$/;"	l
+sub:anti_de_sitter_space_penrose	gr/lectures/l18.tex	/^\\label{sub:anti_de_sitter_space_penrose}$/;"	l
+sub:anti_de_sitter_spacetime	gr/lectures/l15.tex	/^\\label{sub:anti_de_sitter_spacetime}$/;"	l
+sub:beta_functions	sft/lectures/l12.tex	/^\\label{sub:beta_functions}$/;"	l
+sub:cartan_basis	symmetries/lectures/l11.tex	/^\\label{sub:cartan_basis}$/;"	l
+sub:combinatoric_factors	qft/lectures/l11.tex	/^\\label{sub:combinatoric_factors}$/;"	l
+sub:computing_correlation_functions	sft/lectures/l5.tex	/^\\label{sub:computing_correlation_functions}$/;"	l
+sub:connection_to_susceptibility	sft/lectures/l7.tex	/^\\label{sub:connection_to_susceptibility}$/;"	l
+sub:consequences	symmetries/lectures/l8.tex	/^\\label{sub:consequences}$/;"	l
+sub:consequences_of_wick_s_theorem	qft/lectures/l9.tex	/^\\label{sub:consequences_of_wick_s_theorem}$/;"	l
+sub:conserved_quantities	gr/lectures/l16.tex	/^\\label{sub:conserved_quantities}$/;"	l
+sub:counting_microstates	sft/lectures/l1.tex	/^\\label{sub:counting_microstates}$/;"	l
+sub:critical_exponent	sft/lectures/l14.tex	/^\\label{sub:critical_exponent}$/;"	l
+sub:critical_exponents	sft/lectures/l16.tex	/^\\label{sub:critical_exponents}$/;"	l
+sub:critical_exponents_again	sft/lectures/l13.tex	/^\\label{sub:critical_exponents_again}$/;"	l
+sub:de_sitter	gr/lectures/l17.tex	/^\\label{sub:de_sitter}$/;"	l
+sub:differential_forms	gr/lectures/l5.tex	/^\\label{sub:differential_forms}$/;"	l
+sub:epsilon_expansion	sft/lectures/l13.tex	/^\\label{sub:epsilon_expansion}$/;"	l
+sub:epsilon_expansion_in_o_n_models	sft/lectures/l15.tex	/^\\label{sub:epsilon_expansion_in_o_n_models}$/;"	l
+sub:feynman_diagrams	sft/lectures/l12.tex	/^\\label{sub:feynman_diagrams}$/;"	l
+sub:feynman_propagator	qft/lectures/l6.tex	/^\\label{sub:feynman_propagator}$/;"	l
+sub:feynman_rules_for_phi^4_phi_four_theory	qft/lectures/l11.tex	/^\\label{sub:feynman_rules_for_phi^4_phi_four_theory}$/;"	l
+sub:fluids	gr/lectures/l18.tex	/^\\label{sub:fluids}$/;"	l
+sub:fourier_space	sft/lectures/l4.tex	/^\\label{sub:fourier_space}$/;"	l
+sub:gamma_five_matrix	qft/lectures/l15.tex	/^\\label{sub:gamma_five_matrix}$/;"	l
+sub:gauge_symmetries	symmetries/lectures/l2.tex	/^\\label{sub:gauge_symmetries}$/;"	l
+sub:geodesic_deviation	gr/lectures/l11.tex	/^\\label{sub:geodesic_deviation}$/;"	l
+sub:goldstone_bosons	sft/lectures/l14.tex	/^\\label{sub:goldstone_bosons}$/;"	l
+sub:goldstone_bosons_in_d_2	sft/lectures/l15.tex	/^\\label{sub:goldstone_bosons_in_d_2}$/;"	l
+sub:heat_capacity	sft/lectures/l5.tex	/^\\label{sub:heat_capacity}$/;"	l
+sub:inversion	symmetries/lectures/l2.tex	/^\\label{sub:inversion}$/;"	l
+sub:ising_model_critical_points	sft/lectures/l9.tex	/^\\label{sub:ising_model_critical_points}$/;"	l
+sub:kinematics	qft/lectures/l12.tex	/^\\label{sub:kinematics}$/;"	l
+sub:levi_civita_connection	gr/lectures/l9.tex	/^\\label{sub:levi_civita_connection}$/;"	l
+sub:lie_derivative_of_one_forms	gr/lectures/l4.tex	/^\\label{sub:lie_derivative_of_one_forms}$/;"	l
+sub:lorentzian_metrics	gr/lectures/l7.tex	/^\\label{sub:lorentzian_metrics}$/;"	l
+sub:manufacturing_a_phase_transition	sft/lectures/l2.tex	/^\\label{sub:manufacturing_a_phase_transition}$/;"	l
+sub:maxwell_theory	gr/lectures/l18.tex	/^\\label{sub:maxwell_theory}$/;"	l
+sub:mean_field_approximation	sft/lectures/l1.tex	/^\\label{sub:mean_field_approximation}$/;"	l
+sub:meson_decay	qft/lectures/l8.tex	/^\\label{sub:meson_decay}$/;"	l
+sub:minkowski_space	gr/lectures/l17.tex	/^\\label{sub:minkowski_space}$/;"	l
+sub:motivation	gr/lectures/l5.tex	/^\\label{sub:motivation}$/;"	l
+sub:multiplication	symmetries/lectures/l2.tex	/^\\label{sub:multiplication}$/;"	l
+sub:negative_frequency_solutions	qft/lectures/l16.tex	/^\\label{sub:negative_frequency_solutions}$/;"	l
+sub:non_compact_subgroups_of_gl_n_r	symmetries/lectures/l4.tex	/^\\label{sub:non_compact_subgroups_of_gl_n_r}$/;"	l
+sub:one_forms	gr/lectures/l4.tex	/^\\label{sub:one_forms}$/;"	l
+sub:parity	qft/lectures/l15.tex	/^\\label{sub:parity}$/;"	l
+sub:particles	qft/lectures/l4.tex	/^\\label{sub:particles}$/;"	l
+sub:plane_wave_solutions	qft/lectures/l16.tex	/^\\label{sub:plane_wave_solutions}$/;"	l
+sub:push_forward_and_pull_back	gr/lectures/l3.tex	/^\\label{sub:push_forward_and_pull_back}$/;"	l
+sub:quantising_the_dirac_field	qft/lectures/l16.tex	/^\\label{sub:quantising_the_dirac_field}$/;"	l
+sub:relation_to_heisenberg_picture	qft/lectures/l7.tex	/^\\label{sub:relation_to_heisenberg_picture}$/;"	l
+sub:relation_to_schrodinger_picture	qft/lectures/l7.tex	/^\\label{sub:relation_to_schrodinger_picture}$/;"	l
+sub:relevant_irrelevant_marginal	sft/lectures/l9.tex	/^\\label{sub:relevant_irrelevant_marginal}$/;"	l
+sub:relevant_irrelevant_marginal_again	sft/lectures/l10.tex	/^\\label{sub:relevant_irrelevant_marginal_again}$/;"	l
+sub:retarded_green_s_functions	qft/lectures/l6.tex	/^\\label{sub:retarded_green_s_functions}$/;"	l
+sub:return_to_critical_exponents	sft/lectures/l9.tex	/^\\label{sub:return_to_critical_exponents}$/;"	l
+sub:rg_in_the_o_n_model	sft/lectures/l14.tex	/^\\label{sub:rg_in_the_o_n_model}$/;"	l
+sub:riemannian_metrics	gr/lectures/l7.tex	/^\\label{sub:riemannian_metrics}$/;"	l
+sub:scaling	sft/lectures/l9.tex	/^\\label{sub:scaling}$/;"	l
+sub:simple_roots	symmetries/lectures/l19.tex	/^\\label{sub:simple_roots}$/;"	l
+sub:special_unitary_groups	symmetries/lectures/l4.tex	/^\\label{sub:special_unitary_groups}$/;"	l
+sub:step_operators	symmetries/lectures/l11.tex	/^\\label{sub:step_operators}$/;"	l
+sub:su2-reps-from-lsu2-reps	symmetries/lectures/l12.tex	/^\\label{sub:su2-reps-from-lsu2-reps}$/;"	l
+sub:subgroup_of_gl_n_r_	symmetries/lectures/l3.tex	/^%\\label{sub:subgroup_of_gl_n_r_}$/;"	l
+sub:subgroups_of_gl_n_c	symmetries/lectures/l4.tex	/^\\label{sub:subgroups_of_gl_n_c}$/;"	l
+sub:symmetry_breaking	sft/lectures/l10.tex	/^\\label{sub:symmetry_breaking}$/;"	l
+sub:tensor_operations	gr/lectures/l5.tex	/^\\label{sub:tensor_operations}$/;"	l
+sub:the_algebra_of_the_lorentz_group	qft/lectures/l13.tex	/^\\label{sub:the_algebra_of_the_lorentz_group}$/;"	l
+sub:the_exponential_map	symmetries/lectures/l8.tex	/^\\label{sub:the_exponential_map}$/;"	l
+sub:the_feynman_propagator	qft/lectures/l17.tex	/^\\label{sub:the_feynman_propagator}$/;"	l
+sub:the_gaussian_fixed_point	sft/lectures/l10.tex	/^\\label{sub:the_gaussian_fixed_point}$/;"	l
+sub:the_joys_of_a_metric	gr/lectures/l7.tex	/^\\label{sub:the_joys_of_a_metric}$/;"	l
+sub:the_lie_derivative	gr/lectures/l3.tex	/^\\label{sub:the_lie_derivative}$/;"	l
+sub:the_saddle_point_approximation	sft/lectures/l3.tex	/^\\label{sub:the_saddle_point_approximation}$/;"	l
+sub:the_vacuum	qft/lectures/l4.tex	/^\\label{sub:the_vacuum}$/;"	l
+sub:upper_critical_dimension	sft/lectures/l7.tex	/^\\label{sub:upper_critical_dimension}$/;"	l
+sub:vacuum_bubbles_and_connected_diagrams	qft/lectures/l11.tex	/^\\label{sub:vacuum_bubbles_and_connected_diagrams}$/;"	l
+sub:vortices	sft/lectures/l16.tex	/^\\label{sub:vortices}$/;"	l
+sub:wick_s_theorem	sft/lectures/l11.tex	/^\\label{sub:wick_s_theorem}$/;"	l
+sub:zero_cosmological_constant_minkowski_spacetime	gr/lectures/l14.tex	/^\\label{sub:zero_cosmological_constant_minkowski_spacetime}$/;"	l
+subsub:domain_walls	sft/lectures/l3.tex	/^\\label{subsub:domain_walls}$/;"	l
+subsub:multi_particle_states	qft/lectures/l4.tex	/^\\label{subsub:multi_particle_states}$/;"	l
+subsub:properties_of_p_m_	qft/lectures/l4.tex	/^\\label{subsub:properties_of_p_m_}$/;"	l
+subsub:solutions	sft/lectures/l3.tex	/^\\label{subsub:solutions}$/;"	l
+tab:12-reps	symmetries/lectures/l12.tex	/^  \\label{tab:12-reps}$/;"	l
+tab:14-1	sft/lectures/l14.tex	/^  \\label{tab:14-1}$/;"	l
+tab:15-1	qft/lectures/l15.tex	/^  \\label{tab:15-1}$/;"	l
+tab:16-exp	sft/lectures/l16.tex	/^  \\label{tab:16-exp}$/;"	l
+tab:18-1	qft/lectures/l18.tex	/^  \\label{tab:18-1}$/;"	l
+tab:18-1	symmetries/lectures/l18.tex	/^  \\label{tab:18-1}$/;"	l
+tab:analogy	sft/lectures/l7.tex	/^  \\label{tab:analogy}$/;"	l
+tab:critexp	sft/lectures/l10.tex	/^  \\label{tab:critexp}$/;"	l
+tab:critexpvals	sft/lectures/l10.tex	/^  \\label{tab:critexpvals}$/;"	l
+tab:criticalexp	sft/lectures/l2.tex	/^  \\label{tab:criticalexp}$/;"	l
+tab:epsilon-1	sft/lectures/l13.tex	/^  \\label{tab:epsilon-1}$/;"	l
+tab:label	sft/lectures/l7.tex	/^  \\label{tab:label}$/;"	l
+thm:divergence	gr/lectures/l9.tex	/^  \\label{thm:divergence}$/;"	l
+thm:mermin-wagner	sft/lectures/l15.tex	/^\\begin{theorem}[Mermin-Wagner Theorem] \\label{thm:mermin-wagner}$/;"	l

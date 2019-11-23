@@ -50,10 +50,10 @@ By differentiating, the tangent vector tells us how things change when moving in
 Writing $X_p = X^\mu \partial_\mu$ clearly depends on coordinates $x^\mu$. What would happen if we chose different coordinates?
 If we picked another set of coordinates $\widetilde x^\mu$, we could write
 \begin{equation}
-  X_p = X^\mu \pdv{}{x^\mu}\rvert_p = \widetilde X^\mu \pdv{}{\widetilde x^\mu} \rvert_p.
+  X_p = X^\mu \left.\pdv{}{x^\mu}\right\rvert_p = \widetilde X^\mu \left.\pdv{}{\widetilde x^\mu}\right\rvert_p.
 \end{equation}
 \begin{description}
-  \item[Notation] We write $\partial_\mu \equiv \pdv{}{x^\mu}$.
+  \item[Notation] We write $\partial_\mu \coloneqq \pdv{}{x^\mu}$.
 \end{description}
 Acting on a function $f$, (and dropping the implicit action of going to $\mathbb{R}^n$ via $\phi^{-1}$)
 \begin{equation}
@@ -73,7 +73,7 @@ To see why this is called a tangent vector, we are going to consider a path $\si
 %F1
 Given coordinates, this becomes a path $x^\mu(t)$ in $\mathbb{R}^n$. The tangent in $\mathbb{R}^n$ is $X^\mu = \dv{x^\mu(t)}{t}\rvert_{t=0}$. We can then use this to define $X_p \in T_p(\mathcal{M})$ as
 \begin{equation}
-  X_p = \dv{x^\mu(t)}{t} \rvert_{t = 0 } \pdv{}{x^\mu} \rvert_p.
+  X_p = \left.\dv{x^\mu(t)}{t}\right\rvert_{t = 0 } \left.\pdv{}{x^\mu}\right\rvert_p.
 \end{equation}
 In this sense, $T_p(\mathcal{M})$ is the space of all tangent vectors at $p$.
 By considering all possible paths, one can describe all possible tangent vectors. Physically, it is like the space of velocities of a particle.

@@ -1,0 +1,133 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 17: November 19}
+Therefore, if $\alpha + \beta \in \Phi$, $\alpha + \beta \neq 0$,
+ \begin{equation}
+   [E^{\alpha} E^{\beta}] =
+   \begin{cases}
+     N_{\alpha, \beta} E^{\alpha + \beta} & \text{if } \alpha + \beta \in \Phi \\
+     0 & \text{otherwise} \\
+   \end{cases}
+\end{equation}
+
+If $\alpha + \beta = 0$, then
+ \begin{equation}
+   [H^{i}, [E^{\alpha} , E^{-a}]]  =0 \quad \forall i = 1, \dots, r \quad\implies\quad [E^{\alpha} , E^{-\alpha}] \in \mathfrak{h}.
+\end{equation}
+We will define an element
+\begin{equation}
+  H^{\alpha} \coloneqq \frac{E^{\alpha} , E^{-\alpha}}{\kappa ( E^{\alpha} , E^{-\alpha})}.
+\end{equation}
+Consider the Killing form $\kappa(H^{\alpha} , H)$ for all $H \in \mathfrak{h}$. This is
+\begin{align}
+  \kappa(H^{\alpha} , H) &= \frac{1}{\kappa(E^{\alpha} , E^{-\alpha})} \kappa([E^{\alpha} , E^{-\alpha} H]) \\
+			 &\stackrel{\eqref{eq:16-delta}}{=} \frac{1}{\kappa(E^{\alpha}, E^{-\alpha})} \kappa (E^{\alpha}, [E^{-\alpha}, H]) \\
+			 &\stackrel{\eqref{eq:16-3}}{=} \alpha(H) \cancel{\frac{\kappa(E^{\alpha}, E^{-\alpha})}{\kappa(E^{\alpha}, E^{-\alpha})}}.
+\end{align}
+Solve
+\begin{equation}
+  \label{eq:17-star}
+  \kappa(H^{\alpha}, H) = \alpha(H) \quad \forall H \in \mathfrak{h}.
+\end{equation}
+
+In components, $H^{\alpha} = e\indices{_{i}^{\alpha}} H^{i}$, where $H = e_{i} H^{i} \in \mathfrak{h}$.
+Using \eqref{eq:17-star}, we have that $\kappa^{ij} = e\indices{_{i}^{\alpha}} e\indices{_{j}} = \alpha^{j} e_{j}$ $\implies \kappa^{ij} e\indices{_{i}^{\alpha}}  = \alpha^{j}$ $\implies e\indices{_{i}^{\alpha}} = (\kappa^{-1})_{ij} \alpha^{j}$
+\begin{equation}
+  \label{eq:17-7}
+  \implies \boxed{H^{\alpha} = e\indices{_{i}^{\alpha}} H^{i} = (\kappa^{-1})_{i} \alpha^{j} H^{i}}.
+\end{equation}
+
+\subsection*{Cartan-Weyl basis}%
+
+\begin{equation}
+  \left\{ H^{i}, E^{\alpha} \mid i = i, \dots, r \quad \alpha \in \Phi \subset \mathfrak{h}^* \right\}
+\end{equation}
+\begin{align}
+  [H^{i}, H^{j}] &= 0 \quad \forall i, {j} = 1, \dots, r \\
+  [H^{i}, E^{\alpha}] &= \alpha^{i} E^{\alpha} \quad \forall \in \Phi \\
+  [E^{\alpha}, E^{\beta}] &= N_{\alpha, \beta} E^{\alpha + \beta} \qquad \alpha + \beta \in \Phi \\
+  &= 
+  \begin{cases}
+    \kappa(E^{\alpha}, E^{-\alpha}) H^{\alpha} & \alpha + \beta = 0 \\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{align}
+
+Consider bracket  $H^{\alpha} \in \mathfrak{h}$ for all $\alpha, \beta \in \Phi$,
+ \begin{align}
+   [H^{\alpha}, E^{\beta}] &\stackrel{\eqref{eq:17-7}}{=} (\kappa^{-1})_{ij} \alpha^{j} [H^{j}, E^{\beta}] \\
+			   &\stackrel{\eqref{eq:16-2}}{=} (\kappa^{-1})_{ij} \alpha^{i} \beta^{j} E^{\beta} \\
+			   &\stackrel{\eqref{eq:16-6}}= (\alpha, \beta) E^{\beta}
+\end{align}
+Now $\forall \alpha \in \Phi$, we have
+\begin{equation}
+  e^{\alpha} = \sqrt{\frac{2}{(\alpha, \alpha)\kappa(E^{\alpha}, E^{-\alpha})}}, \qquad \mathfrak{h}^{\alpha} = \frac{2}{(\alpha, \alpha)} H^{\alpha}.
+\end{equation}
+We have not proven that $(\alpha, \alpha) \neq 0$, but this is true (see for example Fuchs \& Schweigert pp.87).
+Then $\forall \alpha, \beta \in \Phi$, $(\alpha, \beta) = (\kappa^{-1})_{ij} \alpha^{i} \beta^{j}$, 
+ \begin{align}
+   \begin{split}
+   [h^{\alpha}, h^{\beta}] = 0 \qquad [h^{\alpha}, e^{\beta}] = \frac{2 (\alpha, \beta) e^{\beta}}{(\alpha, \alpha)}
+   \end{split} \\
+   \begin{split}
+     \label{eq:17-10}
+     [e^{\alpha}, e^{\beta}] &= n_{\alpha, \beta} e^{\alpha + \beta} \qquad \alpha + \beta \in \Phi \\
+     &=
+     \begin{cases}
+       h^{\alpha} & \alpha + \beta = 0 \\
+       0 & \text{otherwise}.
+     \end{cases}
+   \end{split}
+\end{align}
+
+\section{\texorpdfstring{$\mathfrak{su}(2)$}{Lie algebra of SU(2)} subalgebra}%
+\label{sec:lie_algebra_of_su_2_subalgebra}
+
+We know from Claim \ref{claim:16-inverse-root-is-root} that $\alpha \in \Phi \iff -\alpha \in \Phi$. Hence for each pair $\pm \alpha \in \Phi$, we have an $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra of $\mathfrak{g}$ with basis $\left\{ h^{\alpha}, e^{\alpha}, e^{-\alpha} \right\}$. From \eqref{eq:17-10}, 
+\begin{equation}
+  \label{eq:17-11}
+  [h^{\alpha}, e^{\pm \alpha}] = \pm 2 e^{\pm \alpha} \qquad [e^{\alpha}, e^{-\alpha}] = h\alpha
+\end{equation}
+This subalgebra is called $\mathfrak{sl}(2)_{\alpha}$.
+Here, we have an $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra for each root.
+
+\subsection{Consequences: `Root Strings'}%
+
+\begin{definition}[]
+  For $\alpha, \beta \in \Phi$, where $\alpha \neq \beta$, the \emph{$\alpha$-string passing through $\beta$} is the set of all roots of the form $\beta + \rho {\alpha}$ for some $\rho \in \mathbb{Z}$:
+  \begin{equation}
+    S_{\alpha, \beta} = \left\{ \beta + \rho \alpha \in \Phi \mid \rho \in \mathbb{Z} \right\}
+  \end{equation}
+\end{definition}
+The corresponding vector subspace of $\mathfrak{g}$ is
+\begin{equation}
+  V_{\alpha, \beta} = \text{Span}_{\mathbb{C}}\left\{ e^{\beta + \rho \alpha} \mid \beta + \rho \alpha \in S_{\alpha, \beta}\right\}.
+\end{equation}
+Now consider the action of $\mathfrak{sl}(2)_{\alpha}$ on $V_{\alpha, \beta}$.
+\begin{align}
+  [h^{\alpha}, e^{\beta + \rho \alpha}] &\stackrel{\eqref{eq:17-10}}{=} \frac{2 (\alpha, \beta + \rho \alpha)}{(\alpha, \alpha)} e^{\beta + \rho \alpha} \\
+								      &= \qty( \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} + 2 \rho) e^{\beta + \rho \alpha} \label{eq:17-12}
+\end{align}
+\begin{equation}
+  \text{and} \qquad [e^{\pm \alpha}, e^{\beta + \rho \alpha}] 
+  \begin{cases}
+    \propto e^{\beta + (\rho  \pm 1)\alpha} & \text{if } \beta + (\rho \pm 1) \alpha \in \Phi \\
+    = 0 &  \text{otherwise}
+  \end{cases}
+\end{equation}
+The root string has a set of operators that carry you up or down the root string. 
+This means that the vector space $V_{\alpha, \beta}$ is \emph{closed} or \emph{invariant} under the ajoint action of the subalgebra $\mathfrak{sl}(2)_{\alpha}$.
+Therefore, $V_{\alpha, \beta}$ is the representation space for some representation $R$ of $\mathfrak{sl}(2)_{\alpha}$. 
+Moreover, \eqref{eq:17-12} tells us that the weight set of $R$ is
+\begin{equation}
+  S_R = \left\{ \frac{2 (\alpha, \beta)}{(\alpha ,\alpha)} + 2 \rho \suchthat \beta + \rho \alpha \in \Phi \right\}
+\end{equation}
+$R$ is finite-dimensional. The fact that we do not have multiplicities in the weight set, this tells us that it must be a single irreducible representation.
+Therefore, we must have $R \simeq R_{\Lambda}$ for some $\Lambda \in \mathbb{Z}_{\geq 0}$.
+The set of $\rho = n \in \mathbb{Z}$ has to form as string $n_{-} \leq n \leq n_{+}$ for some $n_{\pm} \in \mathbb{Z}$. By comparing the lower limit we get $-\Lambda = \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} + 2 n_{-}$ and the upper limit gives $+\Lambda = \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} + 2 n_{+}$. Adding these, we get that
+\begin{equation}
+  \label{eq:17-15}
+  \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} = -(n_{+}+ n_{-}) \in \mathbb{Z}.
+\end{equation}
+
+We end up with weight vectors whose angles are such that their inner products are quantised in integer units.

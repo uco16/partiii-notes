@@ -16,10 +16,13 @@ We can also apply the Bianchi identity to get
 \end{equation}
 
 \begin{definition}[]
-  We define the \emph{Einstein tensor} $G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} Rg_{\mu\nu}$.
+  The \emph{Einstein tensor} $G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} Rg_{\mu\nu}$.
 \end{definition}
-The whole point of building this tensor is that, using the Bianchi identity, these two tensors cancel to give $\nabla^{\mu} G_{\mu\nu} = 0$.
-Proving the Bianchi identity is a pain; we will prove this identity instead.
+The whole point of building this tensor is that, using the Riemann tensor's Bianchi identity, these two tensors cancel to give a Bianchi identity for the Einstein tensor: 
+\begin{equation}
+  \nabla^{\mu} G_{\mu\nu} = 0.
+\end{equation}
+Proving the Bianchi identity for the Riemann tensor is a pain, but in Section \ref{sec:diffeomorphisms_revisited} we will show that the Bianchi identity of the Einstein tensor follows from the diffeomorphism invariance of the Einstein-Hilbert action.
 
 \section{Connection 1-forms}%
 \label{sec:connection_1_forms}
@@ -42,8 +45,8 @@ On a Riemannian / Lorentzian manifold, we pick a basis such that when we evaluat
 \end{equation}
 Note that this is not the metric in a set of coordinates (such as in Riemann normal coordinates). This is rather a diagonalised version of the metric.
 The components $e \indices{_a^{\mu}}$ are called \emph{vielbeins}.
-In general, having an $n$-component basis is called an $n$-bein (where we use the German word for $n$, e.g. $n=2$: zweibein).
-We reise/lower $\mu, \nu$ indices using $g_{\mu\nu}$ and $a, b$ using $\delta_{ab}$.
+In general, having an $n$-component basis is called an $n$-bein (where we use the German word for $n$, e.g. $n=2$: zweibeins).
+We raise and lower greek indices with $g_{\mu\nu}$ and latin indices using $\delta_{ab}$.
 The basis of one-forms $\left\{ \hat\theta^a \right\}$ obey 
 \begin{equation}
   \hat \theta^a (\hat e_b) = \delta^a_b.
@@ -147,7 +150,7 @@ Proceed in the same way to find that the only non-vanishing ones are
 \end{align}
 Now the curvature tensor is
 \begin{align}
-  \mathcal{R} \indices{^0_1} &= d \omega \indices{^0_1} + \overbrace{\omega \indices{^0_c} \wedge \omega \indices{^c_1}}^{\text{In this case, these vanish}} \\
+  \mathcal{R} \indices{^0_1} &= d \omega \indices{^0_1} + \overbrace{\omega \indices{^0_c} \wedge \omega \indices{^c_1}}^{\mathclap{\text{In this case, these vanish}}} \\
 			     &= f' d\hat\theta^0 + f'' dr \wedge \hat\theta_0 \\
 			     &= ((f')^2 + f'' f) dr \wedge dt \\
 			     &= -((f')^2 + f'' f) \hat\theta^0 \wedge \hat\theta^1 \\

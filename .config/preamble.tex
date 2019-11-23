@@ -1,22 +1,15 @@
 % A shared preamble for the Part III Live-TeXing 2019
 
-% Mathematical Symbols
-\usepackage{amsmath}
-\usepackage{mathtools}
-\usepackage{physics} 
-\usepackage{amssymb} % disable if unicode-math is used
-\usepackage{mathrsfs}
-\usepackage{cancel}
-\usepackage{siunitx}
-\usepackage{tensor}
-\usepackage{bbold}
-\usepackage{simpler-wick}
+% Font
+\usepackage[upint]{stix2}
 
 % Graphics
+\usepackage[dvipsnames]{xcolor}
+\definecolor{Aqua}{rgb}{0.0, 1.0, 1.0}
+\definecolor{CambridgeBlue}{RGB}{163, 193, 173}
 \usepackage{graphicx}
 \graphicspath{{lectures/}}
 \usepackage{wrapfig}
-\usepackage{xcolor}
 \usepackage{keyval}
 \usepackage{tcolorbox}
 \usepackage{subcaption}
@@ -24,8 +17,34 @@
 \usepackage{tikz}
 \usepackage[compat=1.1.0]{tikz-feynman}
 
+% Mathematical Symbols
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{physics} 
+%\usepackage{amssymb} % made redundant by STIX2
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{tensor}
+\usepackage{bbold}
+\usepackage{simpler-wick}
+\usepackage[shortlabels]{enumitem}
+
 % Links
-\usepackage[hidelinks, pdfencoding=auto]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+  %hidelinks,
+  pdfencoding=auto,
+  pdfauthor={Umut \"Ozer},
+  pdfsubject={\coursetitle{}},
+  pdfcreator={Umut \"Ozer},
+  pdfproducer={Umut \"Ozer},
+  pdfkeywords={\coursetitle{},\term{},\lecturer{},Umut \"Ozer},
+  colorlinks=true,
+  linkcolor=MidnightBlue!50!BlueViolet,
+  linktoc=all,
+  urlcolor=blue,
+}
 \usepackage{bookmark} % faster updated bookmarks
 
 % Page and Line Formatting
@@ -94,6 +113,7 @@
 
 \usepackage{framed} % for \leftbar next to remark
 \newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
 
 % differential (upright d):
 \newcommand{\bdd}[2][]{\mathop{\mathrm{d\hspace*{-0.2em}\bar{}\hspace*{0.2em}}^{#1}\hspace*{-0.05em}{#2}}}
@@ -107,7 +127,10 @@
 % normal ordering : A B C :
 \newcommand{\normalorder}[1]{\mathop{:}\nolimits\!#1\!\mathop{:}\nolimits}
 
-\author{Umut C.~\"Ozer\\uco21@cam.ac.uk}
+% Set delimiter | that resizes to \left\{ \right}:
+\newcommand{\suchthat}{\ifnum\currentgrouptype=16 \;\middle|\;\else\mid\fi}
+
+\author{Report typos to: uco21@cam.ac.uk\\More notes at: uco21.user.srcf.net}
 \title{{\Huge \coursetitle{}}\\
 Part III \term{} 2019\\
 Lectures by \lecturer{}}

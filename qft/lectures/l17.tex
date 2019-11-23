@@ -1,0 +1,136 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 17: November 19}
+
+\section*{Dirac Hole Interpretation}%
+\label{sec:dirac_hole_interpretation}
+
+\begin{equation}
+  i \frac{\partial \psi}{\partial t} = (-i \boldsymbol\alpha \cdot \grad + m \beta) \psi \qquad \boldsymbol\alpha = - \gamma^0 \boldsymbol \gamma \quad \beta = \gamma^0.
+\end{equation}
+This was interpreted as a 1-particle Hamiltonian $\hat{H}$. This is a very different view to ours; we see $\psi$ as a field that we need to quantise.
+If we interpret this as a 1-particle Hamiltonian, we get positive and negative energy solutions. And of course, the negative energy solutions create instabilities in the system. Dirac's solution was to postulate all negative energy states to be filled.
+The only thing we could then measure is charge difference. This lead to the prediction of the positron, although we now realise that the idea of the Dirac sea is flawed.
+In field theory, we understand that the Dirac equation applies to fields, and the particles, which arise from quantisation of this field, correspond to electrons and positrons.
+
+\section{Fermi-Dirac Statistics}%
+\label{sec:fermi_dirac_statistics}
+
+We had operators $b$ and $c$ with spin indices $s$. These annihilate the vacuum
+\begin{equation}
+  b^{i}_{\vb{p}} \ket{0} = 0 = c^{s}_{\vb{p}} \ket{0}.
+\end{equation}
+These obey anti-commutation relations.
+However, from these, one can derive that the Hamiltonian $H$ has the usual commutation relations
+\begin{equation}
+  [H, (b^{r}_{\vb{p}})^{\dagger}] = E_{p} (b^{r}_{\vb{p}})^{\dagger} \qquad [H, b^{r}_{\vb{p}}] = - E_{p} b^{r}_{\vb{p}},
+\end{equation}
+ \begin{notation}[]
+   We define $\ket{\vb{p}_1, r_1} \coloneqq (b^{r^1}_{\vb{p}_1}) \ket{0}$.
+\end{notation}
+The anti-commutation relations give us, e.g.
+\begin{equation}
+  \ket{\vb{p}_1, r_1; \vb{p}_2, r_2} = -\ket{\vb{p}_2, r_2; \vb{p}_1, r_1}.
+\end{equation}
+
+\subsection*{Heisenberg Picture}%
+The field is now a function of spacetime $\psi(x)$ satisfying $\frac{\partial \psi}{\partial t} = i [H, \psi]$. It is solved by
+\begin{equation}
+  \psi_{\alpha}(x) = \sum_{s=1}^{2} \int \frac{\bdd[3]{p}}{\sqrt{2E_{p}}} \left( b^{s}_{\vb{p}} (u^{s}_{\vb{p}})\alpha e^{-ip \cdot x} + (c^{s}_{\vb{p}})^{\dagger} (v^{s}_{\vb{p}})_{\alpha} e^{+i p \cdot x} \right),
+\end{equation}
+with $\alpha$ denoting the spinor index.
+There is also an analogous expression for $\psi^{\dagger}_{\alpha}$.
+For real scalars, we wrote down a propagator. In analogy with $\Delta(x - y) = [\phi(x), \phi(y)]$, we define for spinors the anti-commutator
+\begin{equation}
+  i S_{\alpha\beta} (x - y) = \left\{ \psi_{\alpha}(x), \overline{\psi}_{\beta}(y) \right\}.
+\end{equation}
+$S$ is a $4 \times 4$ matrix; however, we will often drop the indices $\alpha, \beta$. 
+Substitute in the field expansion in terms of creation and annihilation operators 
+\begin{align}
+  i S( x - y) &= \sum_{r, s} \int  \frac{\bdd[3]{p}}{\sqrt{2E_{p}}} \frac{\bdd[3]{q}}{\sqrt{2E_{q}}} \left[ \left\{ b^{s}_{\vb{p}}, (b^{r}_{\vb{q}})^{\dagger} \right\} e^{-i (p \cdot x - q \cdot y)} u^{s}_{\vb{p}} \overline{u}^{r}_{\vb{q}}
+  + \left\{ (c_{\vb{p}}^{s})^{\dagger} , c^{r}_{\vb{q}} \right\} v^{s}_{\vb{p}} \overline{v}^{r}_{\vb{q}} e^{+i (p \cdot x - q \cdot y)} \right] \\
+	      &= \int \frac{\bdd[3]{p}}{2E_{p}} \left[ \sum_{s} \underbrace{(u^{s}_{\vb{p}})_{\alpha} (\overline{u}^{s}_{\vb{p}})_{\beta}}_{\mathclap{(\cancel{p} + m)}} e^{-i p \cdot (x - y)} 
+	      + \sum_{s=1} \underbrace{(v^{s}_{\vb{p}})_{\alpha} (\overline{v}^{s}_{\vb{p}})_{\beta}}_{\mathclap{(\cancel{p} - m)}} e^{+i p \cdot ( x- y)} \right] \\
+	      &= (i \cancel{\partial}_x + m) D(x - y) - (i \cancel{\partial}_x + m) D(y - x)
+\end{align}
+The subscript $x$ denotes what $\partial_{\mu}$ is with respect to.
+\begin{leftbar}
+  \begin{remark}
+    Recall, $D(x - y) = \int \frac{\bdd[3]{p}}{2 E_{p}} e^{-i p \cdot (x - y)}$
+  \end{remark}
+\end{leftbar}
+\begin{equation}
+  \dots = (i \cancel{\partial}_x + m \mathbb{1}) [D(x - y) - D(y - x)]
+  \label{eq:top}
+\end{equation}
+
+\subsection*{Comments}%
+
+\begin{itemize}
+  \item For $(x - y)^2 < 0$, $D(x - y) - D(y - x) = 0$.
+    We now have $\left\{ \psi_{\alpha}(x), \overline{\psi}_{\beta} (y) \right\} = 0$ for all $(x - y)^2  < 0$.
+    So what about causality?
+    Our observables are \emph{bilinear} in fermions. $\therefore$ they do commute at spacelike separations---the theory is causal.
+  \item Away from singularities,
+     \begin{equation}
+       i(i \cancel{\partial}_x - m) S(x - y) = 0
+    \end{equation}
+    \begin{proof}
+      By substituting in for $iS$ from \eqref{eq:top}, we can write the left hand side as
+      \begin{align}
+	\text{LHS} &= (i \cancel{\partial}_x - m) (i \cancel{\partial}_x + m) [D (x - y) - D(y - x)] \\
+		   &= - (\partial^2_x + m^2) [D(x - y) - D(y - x)] \\
+		   &= 0 \quad \text{using } p^{\mu} p_{\mu} = m^2.
+      \end{align}
+    \end{proof}
+\end{itemize}
+
+\subsection{The Feynman Propagator}%
+\label{sub:the_feynman_propagator}
+
+A similar calculation gives us
+\begin{align}
+  \bra{0} \psi_{\alpha}(x) \overline{\psi}_{\beta}(y) \ket{0} &= \int \frac{\bdd[d]{p}}{2 E_p} (\cancel{p} + m)_{\alpha\beta} e^{-i p \cdot (x - y)} \\
+  \bra{0} \overline{\psi}_{\beta}(y)\psi_{\alpha}(x)  \ket{0} &= \int \frac{\bdd[d]{p}}{2 E_p} (\cancel{p} - m)_{\alpha\beta} e^{+i p \cdot (x - y)} .
+\end{align}
+We want to define our Feynman propagator $(S_F)_{\alpha\beta}(x - y)$ with the time ordering as
+\begin{equation}
+  (S_F)_{\alpha\beta}(x - y) = \bra{0} T \psi_{\alpha}(x) \overline{\psi} _{\beta}(y) \ket{0} = 
+  \begin{cases}
+    \bra{0} \psi_{\alpha}(x) \overline{\psi}_{\beta}(y) \ket{0} & x^0> y^0 \\
+    -\bra{0} \overline{\psi}_{\beta}(y)\psi_{\alpha}(x)  \ket{0} & x^0 < y^0 \\
+  \end{cases}
+\end{equation}
+The minus sign is required for Lorentz invariance: when we have spacelike separation $(x - y)^2 < 0$, there is no Lorentz invariant way to order the times; different frames give different orderings of $x^0, y^0$.
+In this case the anti-commutator vanishes $\left\{ \psi(x) \overline{\psi}(y) \right\} = 0$ and so $T$ as defined is Lorentz invariant.
+\begin{itemize}
+  \item The same is true for \emph{strings} of fermionic operators in $T$: they \emph{anti-}commute.
+  \item We also have the same behaviour for normal-ordered products:
+    \begin{equation}
+      \normalorder{\psi_1 \psi_2} = - \normalorder{\psi_2 \psi_1}
+    \end{equation}
+\end{itemize}
+Then, with all these definitions, we have Wick's theorem for fermions
+\begin{equation}
+  T(\psi(x) \overline{\psi}(y))  =\normalorder{\psi(x) \overline{\psi}(y)} + \wick{\c\psi(x) \c{\overline{\psi}}}(y).
+\end{equation}
+Instead of $3$-momentum, have a $4$-momentum expression
+\begin{equation}
+  S_F(x - y) = i \int \dd[4]{x} \frac{e^{-i p \cdot (c - y)}}{p^2 - m^2 + i \epsilon} (\cancel{p} + m).
+\end{equation}
+\begin{exercise}
+  Check that this satisfies
+  \begin{equation}
+    (i \cancel{\partial}_x - m) S_F ( x - y) = i \delta^4 (x - y),
+  \end{equation}
+  i.e.~$S_F$ is a Green's function of the Dirac operator.
+\end{exercise}
+Let us now rejig Yukawa theory; nucleons are really fermions, and we have not accounted for that yet.
+
+\section{Fermionic Yukawa Theory}%
+\label{sec:fermionic_yukawa_theory}
+
+We have fermions $\psi, \overline{\psi}$---representing nucleons and anti-nucleons---and a real scalar field $\phi$---the mesons.
+\begin{equation}
+  \mathcal{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} \mu^2 \phi^2 + \overline{\psi}(i \cancel{\partial} - m) - \lambda \phi \overline{\psi} \psi
+\end{equation}

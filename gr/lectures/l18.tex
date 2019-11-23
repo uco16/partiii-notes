@@ -1,0 +1,198 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 18: November 22}
+
+\subsection{Anti-de Sitter Space}%
+\label{sub:anti_de_sitter_space_penrose}
+
+The metric in \texttt{AdS} is
+\begin{equation}
+  ds^2 = -\cosh^2\rho \, dt^2 + R^2 d\rho^2 + R^2 \sinh^2 \rho \, d\Omega^2_2,
+\end{equation}
+where $\rho \in [0, \infty)$ is the radial coordinate.
+Compared to \texttt{dS}, the space and time components are swapped.
+
+Let us introduce a new radial coordinate as $\dv{\psi}{\rho}= \frac{1}{\cosh \rho}$, giving $\cos \psi = \frac{1}{\cosh \rho}$. The metric becomes
+\begin{equation}
+  ds^2 = \frac{1}{\cos^2\psi} \left( -d \tilde{t}^2 + d\psi^2 + \sin^2 \psi d\Omega^2_2 \right),
+\end{equation}
+with $\widetilde{t} = \frac{t}{R}$. \texttt{AdS} is conformal to a new metric
+\begin{equation}
+  d\tilde{s}^2 = -d\tilde{t}^2 + d\psi^2 + \sin^2\psi d\Omega^2_2,
+\end{equation}
+where $\tilde{t} \in (-\infty, + \infty)$ and $\psi \in [0, \frac{\pi}{2}]$.
+Again, we sketch the Penrose diagram in the usual way by ignoring the two-sphere.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{lectures/l18f1.pdf_tex}
+  \caption{}
+  \label{fig:l18f1}
+\end{figure}
+
+Note that a \textcolor{yellow}{light ray} as depicted in Fig.~\ref{fig:l18f1} hits the boundary in finite coordinate time $t$.
+\begin{remark}
+  There is also something strange in \texttt{AdS}: We cannot specify initial conditions on some  \textcolor{Aqua}{spacelike surface $\Sigma$} and watch it evolve; at least not without knowledge of the boundary.
+\end{remark}
+However, there are natural boundary conditions, such as saying that there will not be a random light ray coming out of the boundary at some point.
+In that case, we can evolve things in time!
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{lectures/l18f2.pdf_tex}
+  \caption{Spacelike surfaces of initial conditions in \texttt{dS} and $\mathbb{M}$.}
+  \label{fig:l18f2}
+\end{figure}
+
+\begin{remark}
+  It is only in \texttt{AdS} that we have this problem.
+  For the cases of $\mathbb{M}$ and \texttt{dS}, see \ref{fig:l18f2}.
+\end{remark}
+
+\section{Coupling Matter}%
+\label{sec:coupling_matter}
+
+In Minkowski space $\mathbb{M}$, the action for a scalar field is
+\begin{equation}
+  S_{\text{scalar}} = \int \dd[4]{x} \left( - \frac{1}{2} \eta^{\mu\nu} \partial_{\mu} \phi \partial_{\nu} \phi - V(\phi) \right).
+\end{equation}
+In curved spacetime, we generalise this to
+\begin{equation}
+  S_{\text{Scalar}} = \int \dd[4]{x} \sqrt{-g} \left( - \frac{1}{2} g^{\mu\nu} \nabla_{\mu} \phi \nabla_{\nu} \phi - V(\phi) \right)
+\end{equation}
+\begin{remark}
+  $\nabla_{\mu} \phi = \partial_{\mu} \phi$ for a scalar. However, it is good practice to switch to covariant derivatives so that we can integrate by parts with the divergence theorem \ref{thm:divergence}.
+\end{remark}
+This is not quite the unique choice. We can actually add some more terms, which vanish when we go to flat space.
+In particular, 
+\begin{equation}
+  \int \dd[4]{x} \sqrt{-g} \frac{1}{2} \xi R \phi^2,
+\end{equation}
+where $\xi$ is just a dimensionless constant.
+Varying $\phi$ gives equations of motion
+\begin{equation}
+  g^{\mu\nu} \nabla_{\mu} \nabla_{\nu} \phi - \frac{\partial V}{\partial \phi} - \xi R \phi = 0.
+\end{equation}
+
+\subsection{Maxwell Theory}%
+\label{sub:maxwell_theory}
+
+There are other obvious fields that we can generalise to curved space.
+Using the language of differential forms, where $F = d A$ is a two-form, the Maxwell action is
+\begin{align}
+  S_{\text{Maxwell}} &= -\frac{1}{4} \int F \wedge \star F \\
+  &= - \frac{1}{4} \int \dd[4]{x} \sqrt{-g} g^{\mu\rho} g^{\nu\sigma} F_{\mu\nu} F_{\rho\sigma},
+\end{align}
+where $F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} = \nabla_{\mu} A_{\nu} - \nabla_{\nu} A_{\mu}$. The last equality is true because the Christoffel symbols cancel due to the anti-symmetrisation.
+This is why we could differentiate forms before we had a connection; the difference cancels out.
+
+The equation of motion, exactly the same story as in flat space, except with covariant derivatives, turn out to be
+\begin{equation}
+  \nabla_{\mu} F^{\mu\nu} = 0.
+\end{equation}
+
+This is the generalisation of the usual field theories to curved space.
+You can either view this as the field changing and the metric changing.
+The action for gravity and matter is then the sum of the Einstein-Hilbert action \eqref{eq:eintein-hilbert-action} with the matter action $S_m$:
+\begin{equation}
+  S = \frac{1}{2} M_{pl}^2 \int \dd[4]{x} \sqrt{-g} (R - 2 \Lambda) + S_m.
+\end{equation}
+
+\begin{definition}[]
+  The \emph{energy-momentum tensor}
+  \begin{equation}
+    T_{\mu\nu} = - \frac{2}{\sqrt{-g}} \frac{\delta S_m}{\delta g^{\mu\nu}}.
+  \end{equation}
+\end{definition}
+\begin{leftbar}
+  \begin{note}
+    Suppose we had the Lagrangian density $\mathcal{L}(x)$ differentiated by $g^{\mu\nu}(x)$. This gives a delta function, which is killed by the action $S_m$, which is why we have to vary  $S_m$ and not $\mathcal{L}$.
+  \end{note}
+\end{leftbar}
+\begin{remark}
+  There is a very slick argument: the usual $T^{\mu\nu}$ you get in QFT is a Noether current. The slick way to calculate the current (in notes) is to pretend that the parameter depends on spacetime.
+
+  In other words, take some symmetry for which $\delta S = 0$. Now take some symmetry which depends on space. The change of the action has to be of the form
+   \begin{equation}
+     \delta S = \int \dd[4]{x} J^{\mu} \partial_{\mu} \epsilon(x),
+  \end{equation}
+  where $\epsilon(x)$ is the symmetry parameter. Integrate by parts to get
+  \begin{equation}
+    \dots = - \int \dd[4]{x} \partial_{\mu} J^{\mu} \epsilon (x).
+  \end{equation}
+  This means that $\partial_{\mu} J^{\mu}$ must vanish for constant $\epsilon$.
+  The details are in the printed notes.
+\end{remark}
+
+Varying the metric gives the \emph{Einstein equation}
+\begin{equation}
+  \label{eq:einstein}
+  G_{\mu\nu} + \Lambda g_{\mu\nu} = 8 \pi G T_{\mu\nu}.
+\end{equation}
+Recall that if we vary the metric by a diffeomorphism, the metric changes as
+\begin{equation}
+  \delta g_{\mu\nu} = (\mathcal{L}_X g)_{\mu\nu} = \nabla_{\mu} X_{\nu} + \nabla_{\nu} X_{\mu}.
+\end{equation}
+The change in the matter action is
+\begin{equation}
+  \delta S_m = -2 \int \dd[4]{x} \sqrt{-g} T_{\mu\nu} \nabla^{\mu} X^{\nu}.
+\end{equation}
+Requiring $\delta S_m = 0$ by diffeomorphism invariance, it must be that  $\nabla_{\mu} T^{\mu\nu} = 0$.
+In other words, the energy-momentum tensor is \emph{covariantly conserved}.
+\begin{remark}
+  In flat space, this becomes genuine conservation.
+  In curved space, this conservation law is slightly more subtle.
+\end{remark}
+
+\begin{example}[]
+  Let $S = \int \dd[4]{x} \sqrt{-g} \left( \frac{1}{2} \nabla_{\mu} \phi \nabla^{\mu} \phi - V(\phi) \right)$. We want to vary this with respect to $g_{\mu\nu}$. There are two ones, one in the $\sqrt{-g}$ and one hiding in the contraction $\nabla_{\mu} \phi \nabla^{\mu} \phi$.
+  We obtain 
+  \begin{equation}
+    T_{\mu\nu} = \nabla_{\mu} \phi \nabla_{\nu} - g_{\mu\nu} ( \frac{1}{2} \nabla_{\rho} \phi \nabla^{\rho} \phi + V (\phi)).
+  \end{equation}
+\end{example}
+
+\begin{example}[]
+  For Maxwell theory, $S = - \frac{1}{4} \int \dd[4]{x} \sqrt{-g} F_{\mu\nu} F^{\mu\nu}$. This gives
+  \begin{equation}
+    T_{\mu\nu} = g^{\rho\sigma} F_{\mu\rho} F_{\nu\sigma} - \frac{1}{4} g_{\mu\nu} F_{\rho\sigma} F^{\rho\sigma}.
+  \end{equation}
+\end{example}
+
+\subsection{Fluids}%
+\label{sub:fluids}
+
+If you really care about situations in which matter is backreacting on matter, the right description is in terms of a fluid, where lots of particles interact with each other.
+Often in GR, we model matter as a perfect fluid.
+These have a velocity field $u_{\mu} (\vb{x}, t)$, with $u_{\mu} u^{\mu} = -1$, which tells us that the particles are travelling on timelike geodesics.
+Then the stress-energy tensor is in its most general form:
+\begin{equation}
+  T_{\mu\nu} = (\text{something}) u_{\mu} u_{\nu} + (\text{something else}) g_{\mu\nu}.
+\end{equation}
+It turns out that we have 
+\begin{equation}
+  T_{\mu\nu} = (\rho + P) u_{\mu} u_{\nu} + P g_{\mu\nu},
+\end{equation}
+where $P(\vb{x}, t)$ is the \emph{pressure} and $\rho(\vb{x}, t)$ the \emph{energy density}.
+Usually, there is some relation between these two, called the \emph{equation of state} $P = P(\rho)$.
+\begin{remark}
+  This is the description of a fluid with microscopic interactions and pressure. In particular, there is no gravity yet. We could pick flat space for example. If you want to find out how they interact using gravity, you have to solve the Einstein equations.
+\end{remark}
+
+For a fluid at rest, $u^{\mu} = (1, 0, 0, 0)$, and a flat metric $g_{\mu\nu} = \eta_{\mu\nu}$, then
+\begin{equation}
+  T^{\mu\nu} = 
+  \begin{pmatrix}
+   \rho &  &  &  \\
+    & P &  &  \\
+    &  & P &  \\
+    &  &  & P \\
+  \end{pmatrix}.
+\end{equation}
+All stress tensors have to obey the conservation law.
+\begin{exercise}
+  Apply the conservation law $\nabla_{\mu} T^{\mu\nu} = 0$ to this stress tensor.
+  You get two equations out: mass-energy conservation and the Euler equations of fluid dynamics.
+\end{exercise}

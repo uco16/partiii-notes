@@ -1,0 +1,79 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 18: November 21}
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c c}
+  $\psi\psi \to \psi\psi$ &  $\phi$ \\
+  $b, c$ & a \\
+  ${b, c} = 0$ & $[a, a^{\dagger}] = \dots$ \\
+  \end{tabular}
+  \caption{}
+  \label{tab:18-1}
+\end{table}
+
+In addition to the commutation relations of \ref{tab:18-1}, we can also work out the commutation relations 
+\begin{equation}
+  [a, b] = 0 = [a, c].
+\end{equation}
+
+\section{Momentum Space Feynman Rules for Fermionic Amplitudes}%
+\label{sec:momentum_space_feynman_rules_for_fermionic_amplitudes}
+
+Diagrams:
+\begin{equation}
+  %\feynmandiagram[inline=(a.base), horizontal=a to b] {
+  %  a -- [momentum=\(p, s\)] b -- [momentum=\(p', s'\)] c,
+  %  d -- e -- f,
+  %  b -- [scalar] e,
+  %};
+  %-
+  %\feynmandiagram[inline=(a.base), horizontal=a to b] {
+  %  a -- b -- c,
+  %  d -- e -- f,
+  %  b -- [scalar] e,
+  %};
+\end{equation}
+
+\begin{itemize}
+  \item No \emph{clash} allowed:
+    \begin{equation}
+      \cancel{
+	%\feynmandiagram[inline=(a.base), horizontal=a to b] {
+	%  a -- [fermion] b -- [anti fermion] c,
+	%};
+      }
+    \end{equation}
+  \item Dirac fermions preserve fermion number.
+  \item Incoming fermion $
+    (u^{s}_{\vb{p}})_{\alpha}
+    %\feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    %  a -- [fermion] b [blob],
+    %};
+    $
+  \item Outgoing fermion $(\overline{u}^{s}_{\vb{p}})
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a [blob] -- [fermion,  momentum=\(p, s\)] b,
+    };
+    $
+  \item Incoming anti-fermion $\overline{v_{\vb{p}}^{s}}$
+  \item Outgoing anti-fermion $v_{\vb{p}}^{s}$
+  \item $4$-momentum conservation at each vertex
+  \item vertex $
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a -- [fermion] c -- [fermion] b,
+      c -- [scalar] d
+    };
+    \sim (-i \lambda)
+    $
+  \item propagator
+    $
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a [particle=\(\alpha\)] -- [fermion,  momentum=\(p\)] b [particle=\(\beta\)],
+    };
+    \sim \frac{i (\cancel{p} + m)_{\beta\alpha}}{p^2 - m^2 + i \epsilon}
+    $
+    Indices are contracted in the \emph{opposti}
+\end{itemize}
+

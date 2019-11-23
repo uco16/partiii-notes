@@ -145,6 +145,7 @@ We can introduce a basis of six $4 \times 4$ matrices for $\omega$:
 Notice that this is anti-symmetric in $\mu \leftrightarrow \nu$ and $\rho \leftrightarrow \sigma$.
 If we lower the $\nu$ with the Minkowski metric, we get the following
 \begin{equation}
+  \label{eq:13-lorentz-generators}
   (M^{\rho\sigma}) \indices{^{\mu}_{\nu}} = \eta^{\rho\mu} \delta^{\sigma}_{\nu} - \eta^{\sigma\mu} \delta^{\rho}_{\nu}.
 \end{equation}
 Let us think of this in the following way: The first outer index $\mu$ labels the rows while $\nu$ labels the columns of each matrix. The inner indices $\rho\sigma$ tell us which matrix we are considering.
@@ -185,7 +186,12 @@ The factor of $1/2$ is conventional.
 \dots is defined by the algebra of the generators:
 \begin{equation}
   \label{eq:13-star}
-  [M^{\rho\sigma}], M^{\tau\nu}] = \eta^{\sigma\tau} M^{\rho\nu} - \eta^{\rho\tau} M^{\sigma\nu} - \eta^{\rho\nu} M^{\sigma\tau} - \eta^{\sigma\nu} M^{\rho\tau}.
+  [M^{\rho\sigma}, M^{\tau\nu}] = \eta^{\sigma\tau} M^{\rho\nu} - \eta^{\rho\tau} M^{\sigma\nu} + \eta^{\rho\nu} M^{\sigma\tau} - \eta^{\sigma\nu} M^{\rho\tau}.
+\end{equation}
+Note that this is anti-symmetric under $(\rho \leftrightarrow \sigma)$, $(\tau \leftrightarrow \nu)$ and also $(\rho\sigma \leftrightarrow \tau\nu)$.
+We write it concisely as
+\begin{equation}
+  [M^{\rho\sigma}, M^{\tau\nu}] = [ \eta^{\sigma\tau} M^{\rho\nu} - (\rho \leftrightarrow \sigma) ] - (\tau \leftrightarrow \nu)
 \end{equation}
 The finite Lorentz transformation $\Lambda$, a $4 \times 4$ matrix, is connected to the identity $\mathbb{1}$ as
 \begin{equation}

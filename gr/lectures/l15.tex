@@ -9,7 +9,7 @@
   where $d\Omega^2_2$ is the metric on $S^2$, i.e.~$d\theta^2 + \sin^2\theta d\phi^2$.
 \end{definition}
 \begin{claim}
-  In fact, de Sitter spacetime can be embedded in five-dimensional Minkowski space: $\mathbb{R}^{1, 4}$ with metric
+  In fact, de Sitter spacetime can be embedded in five-dimensional Minkowski space, which is $\mathbb{M}^5 = (\mathbb{R}^{1, 4}, g)$ with metric
   \begin{equation}
     \label{eq:15-hash}
     ds^2 = -(dX^0)^2 + \sum_{i=1}^{4} (dX^{i})^2
@@ -26,19 +26,19 @@
 These coordinates are not particularly symmetric, meaning that $X^4$ has been singled out from $X^{1, 2, 3}$, and, moreover, cover only $X^4 \geq 0$.
 A better choice of coordinates is
 \begin{equation}
-  X^0 = R\sinh( \frac{\tau}{R}) \text{ and } X^{i} = R \cosh( \frac{\tau}{R}) y^{i},
+  X^0 = R\sinh( \frac{\tau}{R}) \quad \text{ and } \quad X^{i} = R \cosh( \frac{\tau}{R}) y^{i},
 \end{equation}
 where $y^{i}$ parametrise a 3-sphere, i.e.~$\sum_{i = 1}^{4} (y^{i})^2 = 1$.
+These are called \emph{global coordinates} on \texttt{dS}.
 \begin{exercise}
   Another small calculation you can do is to look at the variation again and plug it into \eqref{eq:15-hash} to give
   \begin{equation}
-    ds^2 = -d\tau^2 + R^2 \cosh^2(\frac{\tau}{R}) d\Omega^2_3,
+    ds^2 = -d\tau^2 + R^2 \cosh^2\left(\frac{\tau}{R}\right) d\Omega^2_3,
   \end{equation}
   where $d\Omega_3^2$ is the metric on $S^3$.
   This is called the \emph{FRW} form of the metric.
 \end{exercise}
-We know that this metric must also solve the Einstein equation with the same cosmological constant (as it must!), since there is a coordinate transformation that takes us from de Sitter (dS) spacetime to this; they describe the same spacetime.
-These are global coordinates on dS.
+We know that this metric must also solve the Einstein equation with the same cosmological constant (as it must!), since there is a coordinate transformation that takes us from de Sitter (\texttt{dS}) spacetime to this; they describe the same spacetime.
 This form of the metric has a natural cosmological interpretation in terms of an initially contracting and later expanding universe.
 For the past three billion years or so, this has been a fairly good approximation to our universe.
 \begin{leftbar}
@@ -51,15 +51,15 @@ For the past three billion years or so, this has been a fairly good approximatio
   \end{remark}
 \end{leftbar}
 
-\section{\texorpdfstring{$\Lambda < 0$}{Negative Cosmological Constant}: Anti-de Sitter Spacetime}%
-\label{sec:anti_de_sitter_spacetime}
+\subsection{\texorpdfstring{$\Lambda < 0$}{Negative Cosmological Constant}: Anti-de Sitter Spacetime}%
+\label{sub:anti_de_sitter_spacetime}
 
 Let us look at some more solutions to the Einstein equations. Specifically, let us consider a negative cosmological constant $\Lambda < 0$. Again, we look for solutions of the kind
 \begin{equation}
   ds^2 = -f(r)^2 dt^2 + f(r)^{-2} dr^2 + r^2 d\Omega^2_2.
 \end{equation}
 Exactly the same calculation as before gives us $f(r) = \sqrt{1 + r^2/R^2}$ with $R^2 = -3/\Lambda$.
-This is \emph{anti-de Sitter} (AdS) spacetime. The plus sign rather than minus sign means that there is no coordinate singularity.
+This is \emph{anti-de Sitter} (\texttt{AdS}) spacetime. The plus sign rather than minus sign means that there is no coordinate singularity.
 Repeating the geodesic calculations, we find that this time, massive geodesics obey $\dot{r}^2 + V_{\text{eff}}(r) = E^2$ (designed to look like Newtonian mechanics) with $V_{\text{eff}}(r) = (1 + l^2/r^2) (1 + r^2/R^2)$.
 $l$ is to be interpreted as angular momentum.
 This is illustrated in \ref{fig:angmombar2}.
@@ -69,7 +69,7 @@ This is illustrated in \ref{fig:angmombar2}.
   \caption{}
   \label{fig:angmombar2}
 \end{figure}
-In particular, massive particles are confined to the centre of AdS.
+In particular, massive particles are confined to the centre of \texttt{AdS}.
 With a finite amount of energy, there is only so far we can get before we fall back towards low $r$.
 Massless particles follow null geodesics 
 \begin{equation}
@@ -91,7 +91,7 @@ This qualitatively changes the behaviour of the potential, as illustrated in Fig
 \end{figure}
 There is nothing that stops the light rays to go as far as they like to $r \to \infty$.
 
-Introduce new coordinates $r = R\sinh \rho$. The AdS metric becomes
+Introduce new coordinates $r = R\sinh \rho$. The \texttt{AdS} metric becomes
 \begin{equation}
   \label{eq:15-AdS-new}
   ds^2 = -\cosh^2\rho dt^2 + R^2 d\rho^2 + R^2 \sinh^2\rho (d\theta^2 + \sin^2\theta d\phi^2).
@@ -104,9 +104,9 @@ The null geodesic equation \eqref{eq:null-15} is
 where $\sigma$ is an affine parameter.
 Massless particles hit $\rho \to \infty$ as $\sigma \to \infty$.
 However, going back to $E = \cosh^2\rho \dot{t}$, the equation which defines the energy, we have $R \tan(t/R) = E (\sigma - \sigma_0)$.
-So $t \to \frac{\pi R}{2}$ as $\sigma \to \infty$. Massless particles reach infinity of AdS in finite coordinate time.
+So $t \to \frac{\pi R}{2}$ as $\sigma \to \infty$. Massless particles reach infinity of \texttt{AdS} in finite coordinate time.
 \begin{claim}
-  Like dS, AdS can be viewed as a hyperboloid in $\mathbb{R}^{2, 3}$
+  Like \texttt{dS}, \texttt{AdS} can be viewed as a hyperboloid in $\mathbb{R}^{2, 3}$
   \begin{equation}
     -(X^0)^2 - (X^4)^2 + \sum_{i=1}^{3}(X^{i})^2 = R^2.
   \end{equation}
@@ -120,9 +120,9 @@ So $t \to \frac{\pi R}{2}$ as $\sigma \to \infty$. Massless particles reach infi
       X^{i} &= R y^{i} \sinh\rho,
     \end{align}
   \end{subequations}
-  where $\sum_{}^{} (y^{i})^2 = 1$ defines a two-sphere and we recover the AdS metric in the form \eqref{eq:15-AdS-new}. 
+  where $\sum_{}^{} (y^{i})^2 = 1$ defines a two-sphere and we recover the \texttt{AdS} metric in the form \eqref{eq:15-AdS-new}. 
 \end{proof}
-There is one last set of coordinates, which AdS is most often written in in the physics literature:
+There is one last set of coordinates, which \texttt{AdS} is most often written in in the physics literature:
 \begin{subequations}
   \begin{align}
     X^{i} &= \frac{\widetilde{r}}{R} x^{i}, \qquad i = 0,1,2   \\
@@ -134,5 +134,5 @@ Computing the metric from this parametrisation gives
 \begin{equation}
   ds^2 = R^2 \frac{d\widetilde{r}^2}{\widetilde{r}^2} + \frac{\widetilde{r}^2}{R^2} + \frac{\widetilde{r}^2}{R^2} \eta_{ij} dx^{i} dx^{j}.
 \end{equation}
-This is called the \emph{Poincar\'e patch}. It does not cover the whole of AdS. 
-Unlike dS spacetime, AdS is not connected to our universe (as far as we can tell); however, it is an important spacetime in which we understand the behaviour of quantum gravity, which makes it worth studying!
+This is called the \emph{Poincar\'e patch}. It does not cover the whole of \texttt{AdS}. 
+Unlike \texttt{dS} spacetime, \texttt{AdS} is not connected to our universe (as far as we can tell); however, it is an important spacetime in which we understand the behaviour of quantum gravity, which makes it worth studying!

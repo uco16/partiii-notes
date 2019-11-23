@@ -30,21 +30,19 @@ More precisely, we require
     \begin{equation}
       \phi_\alpha: \mathcal{O}_\alpha \to U_\alpha \text{ and } \phi_\beta: \mathcal{O}_\beta \to U_\beta
     \end{equation}
-    then $\phi_\alpha \circ \phi^{-1}_\beta: \phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_{\beta}) \to \phi_\alpha (\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$ is smooth (ie.~infinitely differentiable)
-    % F1
-
-    \begin{figure}[htpb]
-      \centering
-      \includegraphics[width=0.6\linewidth]{lectures/F1.pdf}
-      \caption{An illustration of charts on a manifold}
-      \label{fig:manifold}
-    \end{figure}
-
+    then the \emph{transition functions} $\phi_\alpha \circ \phi^{-1}_\beta: \phi_\beta(\mathcal{O}_\alpha \cap \mathcal{O}_{\beta}) \to \phi_\alpha (\mathcal{O}_\alpha \cap \mathcal{O}_\beta)$ are smooth (ie.~infinitely differentiable).
     The $\phi_\alpha$ are called \emph{charts}. The idea is that there may be different ways to assign coordinates to a given point $p \in \mathcal{M}$.
     The collection of all charts is called an \emph{atlas}.
-    We require that these coordinate systems are mutually compatible.
-    $\phi_\alpha \circ \phi_\beta^{-1}$ are called \emph{transition functions}.
+    We require that these coordinate systems are mutually compatible. This is depicted in Figure \ref{fig:manifold}.
 \end{enumerate}
+
+% F1
+\begin{figure}[tbhp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{lectures/F1.pdf}
+  \caption{An illustration of charts on a manifold}
+  \label{fig:manifold}
+\end{figure}
 
 \begin{example}[$\mathbb{R}^n$]
   $\mathbb{R}^n$ or any open subset of $\mathbb{R}^n$ is a manifold. You only need a single chart.
@@ -52,14 +50,6 @@ More precisely, we require
 
 \begin{example}[$S^1$]
   We can view this as $(\cos \theta, \sin \theta) \in \mathbb{R}^{2}$ with $\theta \in [0, 2\pi)$. The closed set $[0, 2\pi)$ means that we cannot differentiate at $0$. This is \underline{not} a good chart because it is not an open set. 
-  \begin{figure}[htpb]
-    \centering
-    \def\svgwidth{0.8\columnwidth}
-    \input{lectures/F2.pdf_tex}
-    \caption{The two charts $\phi_1, \phi_2$ form an atlas of the manifold $S^1$.}
-    \label{fig:L1F2}
-  \end{figure}
-
   We need at least two charts, depicted in \ref{fig:L1F2}:
   \begin{equation}
     \begin{alignedat}{2}
@@ -69,7 +59,6 @@ More precisely, we require
       p &\mapsto \theta_2
     \end{alignedat}
   \end{equation}
-
   The transition function is 
   \begin{equation}
     \theta_2 = \phi_2(\phi_1^{-1}(\theta_1)) = 
@@ -84,6 +73,13 @@ More precisely, we require
   \end{remark}
 \end{leftbar}
 \end{example}
+\begin{figure}[htpb]
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \input{lectures/F2.pdf_tex}
+  \caption{The two charts $\phi_1, \phi_2$ form an atlas of the manifold $S^1$.}
+  \label{fig:L1F2}
+\end{figure}
 
 Since we can map $\mathcal{M} \to \mathbb{R}^n$ (at least locally), anything we can do on $\mathbb{R}^n$, we can now also do on $\mathcal{M}$ (e.g.~differentiation).
 

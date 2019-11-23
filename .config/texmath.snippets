@@ -29,28 +29,54 @@ endsnippet
 # Mathmode snippets
 
 # dots
-snippet .. "dots" Ai
+priority 100
+snippet ... "dots" A
 \dots
 endsnippet
 
-snippet d.. "dots" Ai
-\ddots
-endsnippet
-
-snippet c.. "dots" Ai
-\cdots
-endsnippet
-
-snippet // "fraction" "isMath()" eAw
+snippet // "fraction" "isMath()" eAi
 \frac{${1:${VISUAL:1}}}{${2:2}}$0
 endsnippet
 
+# --- (in)equalities ---
 snippet == "alignment equation" "isMath()" eA
 &=
 endsnippet
 
+snippet ^= "stacking something on equality" "isMath()" eA
+\stackrel{$1}{=}$0
+endsnippet
+
+snippet != "does not equal" "isMath()" eA
+\neq
+endsnippet
+
+snippet <= "less than or equal" "isMath()" eA
+\leq
+endsnippet
+
+snippet >= "greater than or equal" "isMath()" eA
+\geq
+endsnippet
+
+snippet >> "much greater than" "isMath()" eA
+\gg
+endsnippet
+
+snippet << "much less than" "isMath()" eA
+\ll
+endsnippet
+
+snippet ~ "order of" "isMath()" eA
+\sim
+endsnippet
+
 snippet def "defined to be" "isMath()" eA
 \coloneqq
+endsnippet
+
+snippet set "set" "isMath()" eAw
+\\{$1\\}$0
 endsnippet
 
 snippet span "span" "isMath()" eAw
@@ -99,11 +125,11 @@ endsnippet
 priority 50
 
 snippet under "underbrace" "isMath()" eAw
-\underbrace{${1:${VISUAL}}}_{$2}
+\underbrace{${1:${VISUAL}}}_{\mathclap{$2}}
 endsnippet
 
 snippet over "overbrace" "isMath()" eAw
-\jverbrace{${1:${VISUAL}}}^{$2}
+\jverbrace{${1:${VISUAL}}}^{\mathclap{$2}}
 endsnippet
 
 snippet __ "subscript" "isMath()" eAi
@@ -159,7 +185,7 @@ snippet Opp "big direct sum" "isMath()" Awe
 endsnippet
 
 snippet SS "summation" "isMath()" Awe
-\sum_{$1}^{$2}$0
+\sum_{${1:i=1}^{${2:\infty}}$0
 endsnippet
 
 # Derivatives
@@ -169,28 +195,32 @@ snippet rdv "differentiation evaluated" "isMath()" ewA
 endsnippet
 
 snippet rpdv "partial differentiation evaluated" "isMath()" ewA
-\left.\pdv{${1:${VISUAL}}}{${2:t}}\right\rvert_{$3}}$0
+\left.\pdv[$3]{${1:${VISUAL}}}{${2:t}}\right\rvert_{$3}}$0
 endsnippet
 
 snippet dv "differentiation" "isMath()" ewA
-\dv[$3]{${1:${VISUAL}}}{${2:t}}$0
+\dv{${1:${VISUAL}}}{${2:t}}$0
+endsnippet
+
+snippet "(n|\d)dv" "multiple differentiation" "isMath()" eAr
+\dv[`!p snip.rv=match.group(1)`]{${1:${VISUAL}}}{${2:t}}$0
 endsnippet
 
 snippet pdv "partial differentiation" "isMath()" ewA
-\frac{\partial^{$3} ${1:${VISUAL:x^{\mu}}}}{\partial ${2:t}}$0
+\frac{\partial ${1:${VISUAL:x^{\mu}}}}{\partial ${2:t}}$0
 endsnippet
 
 snippet fpdv "flat partial differentiation" "isMath()" ewA
-\flatfrac{\partial^{$1} ${2:${VISUAL}}}{\partial ${3:t}}$0
+\flatfrac{\partial ${1:${VISUAL}}}{\partial ${2:t}}$0
 endsnippet
 
 snippet fdv "functional differentiation" "isMath()" ewA
-\frac{\delta^{$1} ${2:${VISUAL}}}{\delta $3}$0
+\frac{\delta ${1:${VISUAL}}}{\delta $2}$0
 endsnippet
 
 # Differentials
 
-snippet dd "differential measure" "isMath()" ewA
+snippet dd "differential measure" "isMath()" Awe
 \dd[${1:d}]{${2:x}}$0
 endsnippet
 
@@ -215,7 +245,7 @@ snippet ind "tensor indices" "isMath()" ewA
 endsnippet
 
 snippet lim "limes" "isMath()" ewA
-\lim_{${1:h \to 0}} \left\\{ $2 \right\\}$3
+\lim_{${1:n} \to ${2:\infty}} \left\\{ $3 \right\\}
 endsnippet
 
 snippet par "differential operator" "isMath()" ewA
@@ -223,16 +253,50 @@ snippet par "differential operator" "isMath()" ewA
 endsnippet
 
 snippet nab "nabla" "isMath()" ewA
-\nabla_{${1:\mu}}$0
+\nabla
+endsnippet
+
+snippet inf "infinity" "isMath()" eAw
+\infty
+endsnippet
+
+# functions
+
+snippet cs "cosin" "isMath()" ew
+\cos($1)$0
+endsnippet
+
+snippet ch "cosin hyperbolicus" "isMath()" ew
+\cosh($1)$0
+endsnippet
+
+snippet tn "tangens" "isMath()" ew
+\tan($1)$0
+endsnippet
+
+snippet th "tangens hyperbolicus" "isMath()" ew
+\tanh($1)$0
+endsnippet
+
+snippet sn "sin" "isMath()" ew
+\sin($1)$0
+endsnippet
+
+snippet sh "sinus hyperbolicus" "isMath()" ew
+\sin($1)$0
+endsnippet
+
+snippet ex "exponential" "isMath()" ew
+\exp\left($1\right)$0
 endsnippet
 
 # arrows
 global !p
 arrows = {
-  "le": "leftarrow",
-  "xr": "xrightarrow",
+  "<": "leftarrow",
+  "x>": "xrightarrow",
   "Le": "Leftarrow",
-  "ri": "rightarrow",
+  ">": "rightarrow",
   "Ri": "Rightarrow",
   "lr": "leftrightarrow",
   "Lr": "Leftrightarrow",
@@ -242,13 +306,14 @@ arrows = {
   "Do": "Downarrow",
   "Ud": "Updownarrow",
   "ne": "nearrow",
+  "nw": "nwarrow",
   "se": "searrow",
   "sw": "swarrow",
-  "nw": "nwarrow",
 }
 endglobal
 
-snippet "-([a-zA-Z]{2})" "arrows with hyphen" "isMath()" eiAr
+priority 0
+snippet "-([a-zA-Z]{1,2})" "arrows with hyphen" "isMath()" eiAr
 `!p
 if match.group(1) not in arrows.keys():
   snip.rv=match.group(0)
@@ -257,6 +322,8 @@ else:
   snip.rv="\\"+arrow
 `
 endsnippet
+
+priority 50
 
 snippet abs "absolute value" "isMath()" Aew
 \abs{$1}$0
@@ -282,7 +349,11 @@ snippet til "tilde" "isMath()" ewA
 \widetilde{$1}$0
 endsnippet
 
-snippet dot "dot" "isMath()" Awe
+snippet hat "hat" "isMath()" ewA
+\hat{${1:${VISUAL}}}$0
+endsnippet
+
+snippet dot "dot" "isMath()" Aew
 \dot{${1:${VISUAL}}}$0
 endsnippet
 
@@ -290,7 +361,7 @@ snippet form "set of forms" "isMath()" Awe
 \Lambda^{${1:p}}(\mathcal{M})$0
 endsnippet
 
-snippet mat "set of matrices" "isMath()" Awe 
+snippet Mat "set of matrices" "isMath()" Awe 
 \text{Mat}_n(F)
 endsnippet
 
@@ -348,31 +419,7 @@ snippet "([a-zA-Z])(,\.|\.,)" "Vector postfix" "isMath()" eriA
 \vb{`!p snip.rv=match.group(1)`}
 endsnippet
 
-# functions with F
-
-# snippet "F([a-zA-Z])" "functions" "isMath()" eiAr
-# `!p
-# letters = {
-#   "c": "cos",
-#   "s": "sin",
-#   "t": "tr",
-#   "l": "log",
-#   "d": "det",
-#   "e": "exp",
-# }
-# if match.group(1).isupper():
-#   function=letters[match.group(1).casefold()].capitalize()
-# else:
-#   function=letters[match.group(1)]
-# 
-# snip.rv="\\"+function
-# `
-# endsnippet
-# 
-
-
 # --- GREEK INDICES ---
-priority 50
 
 # Define allowe index letter dictionary
 global !p
@@ -418,70 +465,98 @@ indices = {
   "vq": "\\vartheta",
   "+": "\\dagger",  # Hermitian conjugate
   "-": "-1",  # inverse
+  "(": "(",
+  ")": ")",
   "[": "[",
   "]": "]",
-  ",": ",",
+  "|": "|",
   ";": ";",
+  ",": ",",
 }
 endglobal
 
+priority 49
 # greek and other indices with '.'
-snippet "\.([a-zA-Z\[\],;+-]{1,2})" "indices with dot" "isMath()" eiAr
+snippet "\.([a-zA-Z\[\]\(\),;+-\|]{1,2})" "indices with dot" "isMath()" eiAr
 `!p
 if match.group(1) not in indices.keys():
   snip.rv=match.group(0)
 else:
-  index=indices[match.group(1)]
-  snip.rv="^{"+index+"}"
+  snip.rv="^{"+indices[match.group(1)]+"}"
 `
 endsnippet
 
+priority 50
+# tensor indices with '..'
+snippet "\.{2}([a-zA-Z\[\]\(\),;+-\|]{1,2})" "indices with dot" "isMath()" eiAr
+\indices{^{`!p
+if match.group(1) not in indices.keys():
+  snip.rv=match.group(0)
+else:
+  snip.rv=indices[match.group(1)]
+`}$1}$0
+endsnippet
+
+priority 51
+#higher prority than "multi indices"
+snippet "(\^|_)({.*)(,|;)};" "switch partial covariant derivative" "isMath()" eiAr
+`!p
+indicator={",", ";"} - {match.group(3)}
+snip.rv=match.group(1)+match.group(2)+indicator.pop()+"}"
+`
+endsnippet
+
+priority 50
 # add greek letters: {\mu}n -> {\mu\nu}
 # add derivatives: {\mu},r -> {\mu,\rho}
-snippet "(\^|_)({.*?)}([a-zA-Z\[\];]{1,2})" "multi indices" "isMath()" eiAr
+snippet "(\^|_)({.*?)(,|;|\\[a-z]*?|\[|\]|\|)}([a-zA-Z\[\];\|]{1,2})" "multi indices" "isMath()" eiAr
 `!p
 # check if new thing is a valid index
 # If not, just return the whole match
 # i.e. do not change anything
-if match.group(3) not in indices.keys():
+if match.group(4) not in indices.keys() or match.group(3) not in indices.values():
   snip.rv=match.group(0)
 else:
-  index=indices[match.group(3)]
+  index=indices[match.group(4)]
 
-# insert new index letter into the braces
-  snip.rv= match.group(1)+ match.group(2) + index + "}"
+  # insert new index letter into the braces
+  snip.rv= match.group(1)+ match.group(2) + match.group(3) + index + "}"
 `
 endsnippet
 
 # Latin indices with ','
 # priority higher than greek indices
 
-priority 51 
+priority 51
 snippet ',([a-zA-Z])' "latin index" "isMath()" eAir
 `!p snip.rv = "^{"+match.group(1)+"}"`
 endsnippet
 
-snippet '(\_|\^)({[a-z]*?)}([a-zA-Z])' "multi latin index" "isMath()" eAir
+priority 52
+snippet ',,([a-zA-Z])' "latin tensor" "isMath()" eAir
+`!p snip.rv = "\indices{^{"+match.group(1)`}$1}$0
+endsnippet
+
+snippet '(\_|\^)({[a-zA-Z]*?)}([a-zA-Z])' "multi latin index" "isMath()" eAir
 `!p snip.rv = match.group(1) + match.group(2) + match.group(3) + "}"`
 endsnippet
 
 priority 50
 
 # math fonts
-
 snippet BS "boldsymbol" "isMath()" Awe
 \boldsymbol
 endsnippet
 
-snippet '([1A-Z])bb' "Blackboard Bold" "isMath()" eAr
+snippet '([1A-Z])BB' "Blackboard Bold" "isMath()" eArw
 \mathbb{`!p snip.rv = match.group(1)`}
 endsnippet
 
-snippet '[a-zA-Z]cal' "CALligraphic" "isMath()" erA
+snippet '[a-zA-Z]CAL' "CALligraphic" "isMath()" erA
 \mathcal{`!p snip.rv=match.group(0)[0]`}
 endsnippet
 
-snippet '[a-zA-Z]scr' "Super CuRly" "isMath()" erA
+snippet '[a-zA-Z]SCR' "Super CuRly" "isMath()" erA
 \mathscr{`!p snip.rv=match.group(0)[0]`}
 endsnippet
 
@@ -493,7 +568,32 @@ snippet '[a-zA-Z]til' "Tilde" "isMath()" erA
 \tilde{`!p snip.rv=match.group(0)[0]`}
 endsnippet
 
-snippet '([a-zA-Z]{1,2})la' "Lie Algebra" "isMath()" erA
+snippet '[a-zA-Z]hat' "Hat" "isMath()" erAw
+\hat{`!p snip.rv=match.group(0)[0]`}
+endsnippet
+
+snippet '([a-zA-Z]{1,2})LA' "Lie Algebra" "isMath()" erA
 \mathfrak{`!p snip.rv=match.group(1)`}${2:_{\mathbb{C}}}(${1:\mathcal{M}})$0
 endsnippet
 
+snippet | "such that" "isMath()" eAw
+\suchthat
+endsnippet
+
+# --- GILLES CASTEL ---
+snippet => "implies" Ai
+\implies
+endsnippet
+
+snippet =< "implied by" Ai
+\impliedby
+endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+	snip.rv = ' '
+else:
+	snip.rv = ''
+`$2
+endsnippet

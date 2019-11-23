@@ -3,7 +3,7 @@
 \lhead{Lecture 14: November 13}
 We will look at diffeomorphism of the action. However, the action does not depend on coordinates we use; the change of coordinates is like a gauge theory of the action. Similarly to Noether's theorem, where symmetries give rise to conserved quantities, this gauge symmetry will give rise to something. We will try to find out what that something is.
 
-\begin{claim}
+\begin{claim} \label{claim:14-metric-change-diffeo}
   Acting with an infinitesimal diffeomorphism along a vector field $X \in \mathfrak{X}(\mathcal{M})$, the metric changes as the Lie derivative
   \begin{equation}
     \delta g_{\mu\nu} = (\mathcal{L}_X g)_{\mu\nu}.
@@ -42,7 +42,7 @@ We will look at diffeomorphism of the action. However, the action does not depen
 \end{proof}
 Alternatively, we can write 
 \begin{align}
-  \delta g_{\mu\nu} &= \partial_{\mu} X_{\nu} + \partial_{\nu} X_{\mu} + X^{\rho}(\underbrace{\partial_{\rho} g_{\mu\nu} - \partial_{\mu} g_{\rho\nu} - \partial_{\nu} g_{\mu\rho}}_{2 g^{\rho\sigma} \Gamma^{\sigma}_{\mu\nu}})) \\
+  \delta g_{\mu\nu} &= \partial_{\mu} X_{\nu} + \partial_{\nu} X_{\mu} + X^{\rho}(\underbrace{\partial_{\rho} g_{\mu\nu} - \partial_{\mu} g_{\rho\nu} - \partial_{\nu} g_{\mu\rho}}_{2 g^{\rho\sigma} \Gamma^{\sigma}_{\mu\nu}}) \\
 		    &= \nabla_{\mu} X_{\nu} + \nabla_{\nu} X_{\mu}.
 \end{align}
 Now look at the action
@@ -75,7 +75,7 @@ This is essentially another derivation of the Bianchi identity using the path in
 There are three cases that we should consider, depending on the cosmological constant: zero, positive and negative.
 We will spend a lot of time understanding the differences between these solutions. Even the solutions that look completely trivial---such as the one we will write down shortly---have interesting subtleties about them.
 
-\subsection{\texorpdfstring{$\Lambda = 0$}{Zero cosmological constant}: Minkowski Spacetime}%
+\subsection{\texorpdfstring{$\Lambda = 0$}{Zero Cosmological Constant}: Minkowski Spacetime}%
 \label{sub:zero_cosmological_constant_minkowski_spacetime}
 
 Need to solve $R_{\mu\nu} = 0$. The solution $g_{\mu\nu}$ is not allowed!

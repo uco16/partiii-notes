@@ -142,7 +142,7 @@ This satisfies certain symmetry properties which are more evident once we lower 
     \item $R_{\sigma\rho\mu\nu} = -R_{\sigma\rho\nu\mu}$
     \item $R_{\sigma\rho\mu\nu} = - R_{\rho\sigma\mu\nu}$
     \item $R_{\sigma\rho\mu\nu} = R_{\mu\nu\sigma\rho}$
-    \item $R^{\sigma[\rho\mu\nu]]} = 0$
+    \item $R_{\sigma[\rho\mu\nu]]} = 0$, the \emph{first Bianchi identity}
   \end{itemize}
 \end{claim}
 \begin{proof}
@@ -153,11 +153,17 @@ This satisfies certain symmetry properties which are more evident once we lower 
   \end{align}
   Now stare at this.
 \end{proof}
-\begin{claim}
-  The Bianchi identity $\nabla_{[\lambda R_{\sigma\rho] \mu\nu}} = 0$. This is sometimes also written as $R_{\sigma\rho [\mu\nu; \lambda]} = 0$
+\begin{claim}[The Second Bianchi Identity]
+\begin{equation}
+  \nabla_{[\lambda} R_{\sigma\rho] \mu\nu} = 0 \quad \text{or equivalently} \quad R_{\sigma\rho[\mu\nu;\lambda]} = 0
+\end{equation}
 \end{claim}
 \begin{proof}
-  Use normal coordinates.
+  The Riemann tensor is, schematically, $R \sim \partial \Gamma + \Gamma\Gamma$ and so its derivative is $\partial R \sim \partial^2 \Gamma + 2 \Gamma \partial\Gamma$. In normal coordinates at a point, we have $\Gamma = 0$ (but $\partial\Gamma \neq 0$ in general), so the last summand vanishes and the partial derivative of the Riemann tensor is
+  \begin{equation}
+    R_{\sigma\rho\mu\nu,\lambda} = \frac{1}{2} ( g_{\nu\sigma,\rho\mu\lambda} - g_{\nu\rho,\sigma\mu\lambda} - g_{\mu\sigma,\rho\nu\lambda} + g_{\mu\rho,\sigma\nu\lambda})
+  \end{equation}
+  The partial derivatives $\partial_{\mu} \partial_{\lambda}$ in the first term commute: $g_{\nu\sigma,\rho\mu\lambda} = g_{\nu\sigma,\rho\mu\lambda}$. Therefore, anti-symmetrising over $\mu$ and $\lambda$ makes this term vanish. In the same way, the other three terms vanish when we anti-symmetriese over $\mu, \nu$, and $\lambda$. Thus $R_{\sigma\rho[\mu\nu,\lambda]} = 0$. In normal coordinates, this is the same as $R_{\sigma\rho[\mu\nu;\lambda]} = 0$, which is a tensor equation and therefore holds in all coordinate systems.
 \end{proof}
 \begin{leftbar}
   \begin{remark}

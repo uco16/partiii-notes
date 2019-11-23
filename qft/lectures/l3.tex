@@ -21,19 +21,16 @@ The Lagrangian density transforms as
 We get one conserved current for each component of $\varepsilon^\nu$ :
 \begin{equation}
   \label{eq:emtensor}
-  (j^\mu)_\nu = \pdv{\mathcal{L}}{(\partial_\mu \phi)} \partial_\nu \phi - \delta \indices{^\mu_\nu} \mathcal{L}
+  (j^\mu)_\nu = \pdv{\mathcal{L}}{(\partial_\mu \phi)} \partial_\nu \phi - \delta \indices{^\mu_\nu} \mathcal{L} \coloneqq T \indices{^{\mu}_{\nu}},
 \end{equation}
 since $\Delta \phi = \partial_\nu \phi$ for $ \varepsilon^\nu$ and $X^\mu = \delta \indices{^\mu_\nu} \mathcal{L}$.
   We define this to be the \emph{energy-momentum tensor} $T \indices{^\mu _\nu}$. It has this name since it contains four conserved charges which are associated with
-  \begin{itemize}
-    \item Total energy: $E = \int_{}^{} \dd[3]{x} T^{00}$
-    \item Total momentum: $P^i = \int_{}^{} \dd[3]{x} T^{0i}$
-  \end{itemize}
+  \begin{align}
+    \text{Total Energy:} \qquad P^0 &\coloneqq E = \int \dd[3]{x} T^{00} \label{eq:total_energy} \\
+    \text{Total Momentum:} \qquad P^{i} &= \int \dd[3]{x} T^{0i}, \quad i = 1,2,3 \label{eq:total_momentum}
+  \end{align}
 
-  Applying \eqref{eq:emtensor} to the free real valued scalar field theory
-  \begin{equation}
-    \mathcal{L} =  \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2,
-  \end{equation}
+  Applying \eqref{eq:emtensor} to the free real valued scalar field theory Lagrangian, $\mathcal{L} =  \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2$,
   we obtain the energy momentum tensor
   \begin{equation}
     T \indices{^\mu^\nu} = \partial^\mu \phi ^\nu \phi - \eta\indices{^\mu^\nu} \mathcal{L}.
@@ -178,10 +175,13 @@ We recall that the canonical quantisation condition is enforced by requiring the
   [q, p] = i.
 \end{equation}
 
-We then define operators
-\begin{equation}
-  a^\dagger = \frac{-i}{\sqrt{2 \omega}} p + \sqrt{\frac{\omega}{2}} q \qquad a = \frac{+ip}{\sqrt{2\omega}} + \sqrt{\frac{\omega}{2}}q.
-\end{equation}
+
+\begin{definition}[]
+  We define the \emph{ladder} or \emph{creation and annihilation operators} to be
+  \begin{equation}
+    a^\dagger = \frac{-i p}{\sqrt{2 \omega}} + \sqrt{\frac{\omega}{2}} q \quad \iff \quad a = \frac{+ip}{\sqrt{2\omega}} + \sqrt{\frac{\omega}{2}}q.
+  \end{equation}
+\end{definition}
 
 In terms of these operators, we can write our original operators as
 \begin{equation}
@@ -199,7 +199,7 @@ where we used the commutator in the last equality.
 
 The commutation relations between these ladder operators and the Hamiltonian are
 \begin{equation}
-  [H, a^\dagger] \omega a^\dagger, \qquad [H, a] = -\omega a.
+  [H, a^\dagger] = \omega a^\dagger, \qquad [H, a] = -\omega a.
 \end{equation} 
 \begin{exercise}
 Work these out!
@@ -230,7 +230,24 @@ Excited states arise from a repeated application of $a^\dagger$:
 \end{leftbar}
 
 \begin{definition}[normal ordering]
-  A \emph{normal ordered} operator $:\mathcal{O}:$, is one in which we put all the $a$ s on the right of all the $a^\dagger$s.
+  A \emph{normal ordered} operator $\normalorder{\mathcal{O}}$, is the same as the operator $\mathcal{O}$, except that we reorder the string of ladder operators so that all the annihilation operators $a$'s are on the right of all the $a^\dagger$s.
 \end{definition}
+\begin{leftbar}
+  \begin{remark}
+    We \emph{do not} use any commutation relations! We simply reorder the string.
+  \end{remark}
+\end{leftbar}
+\begin{example}[]
+  For two operators, $\normalorder{a^{\dagger} a} = a^{\dagger} a$, or $\normalorder{a a} = aa$ and $\normalorder{a^{\dagger} a^{\dagger}} = a^{\dagger} a^{\dagger}$, but $\normalorder{a a^{\dagger}} = a^{\dagger} a$. With multiple operators, we have $\normalorder{a^{\dagger} a a^{\dagger} a a} = a^{\dagger} a^{\dagger} a a a$.
+\end{example}
+\begin{leftbar}
+  \begin{remark}
+    Normal ordering is \emph{not} a linear function on operators! 
+    To see this, consider
+    \begin{equation}
+      a^{\dagger} a = \normalorder{a a^{\dagger}} = \normalorder{1 + a^{\dagger} a} \neq \normalorder{1} + \normalorder{a^{\dagger} a} = 1 + a^{\dagger} a
+    \end{equation}
+  \end{remark}
+\end{leftbar}
 
-The normal ordered Hamiltonian is $H = \omega a^\dagger a$. With this definition, the ground-state energy is $H \ket{0} = 0$.
+The normal ordered Hamiltonian is $\normalorder{H} = \omega a^\dagger a$. With this definition, the ground-state energy is $H \ket{0} = 0$.

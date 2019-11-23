@@ -50,7 +50,7 @@ Examples of a Lorentz transformation include rotation around the $x$-axis or Lor
     &  &  & 1 \\
   \end{pmatrix},
 \end{equation}
-where $\gamma = (1- v^2)^{-1/2}$.
+where $\gamma = (1- v^2)^{-1/2}$, and the empty entries are understood to be zero.
 The Lorentz transformations form a Lie group under matrix multiplication. This means that applying two Lorentz transformations gives another, and any Lorentz transformation has an inverse.
 The Lorentz transformations allow a representation on the fields.
 For a scalar field, this is $\phi(x) \to \phi'(x) = \phi(\Lambda^{-1} x)$. This is an \emph{active transformation}, which genuinely rotates the field. This is why the inverse Lorentz transformation $\Lambda^{-1}$ is needed to used the new coordinates to the old.
@@ -111,7 +111,7 @@ Do Q1 in Ex.~sheet 1.
 Already noticeable in classical field theory: symmetries are important.
 
 \begin{theorem}[Noether's theorem]
-  Every continuous symmetry of $\mathcal{L}$ gives rise to a current $j^\mu(x)$ which is conserved:
+  Every continuous symmetry of the Lagrangian $\mathcal{L}$ gives rise to a \emph{current} $j^\mu(x)$, which is conserved:
   \begin{equation}
     \partial_\mu j^\mu = \pdv{(j^0)}{t} + \div \vb{j} = 0.
   \end{equation}
@@ -124,7 +124,7 @@ Already noticeable in classical field theory: symmetries are important.
     \phi(x) \to \phi'(x) = \phi(x) + \alpha \Delta \phi(x),
   \end{equation} 
   where $\alpha$ is seen as an infinitesimal parameter.
-  This is a symmetry if $S$ is unchanged, i.e.~ $\mathcal{L}$ should be invariant up to a total $4$-divergence (which integrates to a surface term and does not effect the E-L equations).
+  This is a symmetry if $S$ is unchanged, i.e.~$\mathcal{L}$ should be invariant up to a total $4$-divergence (which integrates to a surface term and does not affect the E-L equations).
   In other words, the Lagrangian density changes as
   \begin{equation}
     \label{eq:Lchange}
@@ -138,7 +138,7 @@ Already noticeable in classical field theory: symmetries are important.
     &= \mathcal{L}(x) + \alpha \partial_\mu \left( \pdv{\mathcal{L}}{(\partial_\mu \phi)} \Delta \phi \right) + \alpha \underbrace{\left( \pdv{\mathcal{L}}{\phi} - \partial_\mu \pdv{\mathcal{L}}{(\partial_\mu \phi)} \right)}_{\text{E-L: } = 0} \Delta \phi.
   \end{align}
 
-  Combining \eqref{eq:Lchange} and \eqref{eq:Lchange_2}, we see that
+  Combining \eqref{eq:Lchange} and \eqref{eq:Lchange_2}, we see that the current
   \begin{equation}
     j^\mu = \pdv{\mathcal{L}}{(\partial_\mu \phi)} \Delta \phi - X^\mu
   \end{equation}
@@ -164,26 +164,27 @@ Already noticeable in classical field theory: symmetries are important.
 
 \begin{example}[Scalar Field]
   \begin{equation}
-    \psi (x) = \frac{1}{\sqrt{2}} (\phi_1(x) + i \phi_{28}(x))
+    \psi (x) = \frac{1}{\sqrt{2}} (\phi_1(x) + i \phi_{2}(x))
   \end{equation}
   We could also use two real fields to describe this theory. However, when using complex fields, we can consider $\psi$ and $\psi^*$ as independent variables. This is because we really have two independent degrees of freedom $\phi_1$ and $\phi_2$.
   Using these variables, the Lagrangian is
   \begin{equation}
-    \mathcal{L} = \partial_\mu \psi* \partial^\mu \psi - V(\abs{\psi}^2).
+    \mathcal{L} = \partial_\mu \psi^* \partial^\mu \psi - V(\abs{\psi}^2).
   \end{equation}
   \begin{leftbar}
     \begin{remark}
       The potential could be for example:
       \begin{equation}
-	V(\abs{\psi}^2) = m^2 \psi* \psi + \frac{\lambda}{2} (\psi^* \psi)^2.
+	V(\abs{\psi}^2) = m^2 \psi^* \psi + \frac{\lambda}{2} (\psi^* \psi)^2.
       \end{equation}
       We will see later that the first summand will be a mass term and the second will describe an interaction.
     \end{remark}
   \end{leftbar}
   The symmetry is a complex phase rotation:
   \begin{equation}
-    \psi \to e^{i\alpha} \psi \implies \psi^* \to e^{-i\alpha} \psi^*.
+    \psi \to e^{i\alpha} \psi \quad \iff \quad \psi^* \to e^{-i\alpha} \psi^*,
   \end{equation}
+  where one equation implies the other by conjugation.
   Since $\mathcal{L}$ is invariant under this transformation, this is a symmetry with $M^\mu = 0$.
   The fields change as
   \begin{equation}
@@ -193,9 +194,9 @@ Already noticeable in classical field theory: symmetries are important.
   \begin{equation}
     j^\mu = (\psi \partial^\mu \psi - \psi^* \partial^\mu \psi).
   \end{equation}
-  This conserved charge could be the electric charge or some particle number (baryon, lepton, etc.) for example. In QED, we will see something every similar.
+  This conserved charge could be the electric charge or some particle number (baryon, lepton, etc.) for example. In QED, we will see something very similar.
 \end{example} 
 
-\begin{example}
+\begin{exercise}
 Do questions 2 and 3 of Example sheet 1.
-\end{example}
+\end{exercise}

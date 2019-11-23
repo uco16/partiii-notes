@@ -1,0 +1,144 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 16: November 18}
+\section{Symmetries}%
+\label{sec:symmetries}
+
+There are three basic spacetimes in GR.
+We have intuition of why Minkowski is important; the other two have so far just been pulled out of thin air. The thing that makes these spaces special are the symmetries.
+They are the \emph{maximally symmetric} spacetimes in general relativity.
+
+Let us first define what a symmetry is.
+Any intuition you have about this is probably correct. 
+Consider a sphere; it has the symmetry $SO(3)$. A rugby ball on the other hand, with the same topology, has only the symmetry $SO(2)$.
+(In general, this would be $O(3)$, but in these lectures we will only consider groups which are continuously connected to the identity.)
+
+Consider a one-parameter family of diffeomorphisms $\sigma_t \colon \mathcal{M} \to \mathcal{M}$.
+Recall that this is associated to a vector field
+\begin{equation}
+  K^{\mu} = \dv[]{x^{\mu}}{t},
+\end{equation}
+which is tangent to the flow lines.
+We will define a symmetry by flowing from one point to a closeby one; if the point looks the same as the point we came from, this is a symmetry.
+More specifically, this flow is called an \emph{isometry} if the metric looks the same at each point along the flow.
+From Claim \ref{claim:14-metric-change-diffeo}, we know that this translates to 
+\begin{equation}
+  \label{eq:killing}
+  \mathcal{L}_K g = 0 \quad \iff \quad \nabla_{\mu} K_{\nu} + \nabla_{\nu} K_{\mu} = 0.
+\end{equation}
+This is the \emph{Killing equation}. Any $K$ obeying this is called a \emph{Killing vector}. These describe the symmetries of the metric.
+\begin{leftbar}
+  \begin{remark}
+    How is this related to the Killing form of \emph{Symmetries}?
+  \end{remark}
+\end{leftbar}
+\begin{leftbar}
+  \begin{remark}
+    $\mathcal{L}_X \mathcal{L}_Y - \mathcal{L}_Y \mathcal{L}_X = \mathcal{L}_{[X, Y]}$.
+    This means that there is a Lie algebra structure emerging from continuous symmetries of metrics.
+  \end{remark}
+\end{leftbar}
+
+\begin{example}[Minkowski Space]
+  The Killing equation \eqref{eq:killing} becomes $\partial_{\mu} K_{\nu} + \partial_{\nu} K_{\mu} = 0$. The solutions to this are
+  \begin{equation}
+    K_{\mu} = c_{\mu} + \omega_{\mu\nu} x^{\nu} ,
+  \end{equation}
+  where $c_{\mu}$ are translations and $\omega_{\mu\nu} = -\omega_{\nu\mu}$ correspond to rotations or boosts.
+  These are the components of the Killing vector.
+  Similarly, we can define the Killing vectors themselves as
+  \begin{equation}
+    P_{\mu} = \frac{\partial^{} }{\partial x^{\mu}} \quad \text{and} \quad M_{\mu\nu} = \eta_{\mu\rho} x^{\rho} \frac{\partial^{} }{\partial x^{\nu}} - \eta_{\nu\rho} x^{\rho} \frac{\partial^{} }{\partial x^{\mu}}.
+  \end{equation}
+  Once we have two Killing vectors, we can compute their commutator as 
+  \begin{equation}
+    \begin{gathered}
+      [P_{\mu,} P_{\nu}] = 0 \qquad
+      [M_{\mu\nu} , M_{\rho\sigma}] = \eta_{\mu\sigma} \\
+      [M_{\mu\nu} , P_{\sigma}] = -\eta_{\mu\sigma} P_{\nu} + \eta _{\sigma\nu} P_{\mu}
+    \end{gathered}
+  \end{equation}
+  These are the commutation relations of the Poincar\'e group.
+\end{example}
+\begin{example}[]
+  The isometries of \texttt{dS} and \texttt{AdS} are inherited from the $5d$ embedding.
+  \begin{description}
+    \item[dS] has isometry group $SO(1, 4)$
+    \item[AdS] has isometry group $SO(2, 3)$
+    \item[Note:] both groups have $\dim(10)$, just like the Poincar\'e group of $\mathbb{M}^4$. Each of these three spaces is just as symmetric as the other two.
+  \end{description}
+  In $5d$, the Killing vectors are 
+  \begin{equation}
+    M_{AB} = \eta_{AC} X^{C} \frac{\partial^{} }{\partial X^{B}} - \eta_{BC} X^{C} \frac{\partial^{} }{\partial X^{A}},
+  \end{equation}
+  where $\eta = (- + + +)$ in \texttt{dS} and $\eta = (- - + + )$ in \texttt{AdS}. And $X^{A}$ with $A = 0,1,2,3,4$.
+  The flows induced by $M_{AB}$ map the embedding hyperboloid to itself. This implies that these are isometries of \texttt{(A)dS}.
+\end{example}
+\begin{claim}
+  If the metric $g_{\mu\nu}(x)$ does not depend on some coordinate $y$, then $K = \frac{\partial^{} }{\partial y}$ is a Killing vector.
+\end{claim}
+\begin{proof}
+  This is easy to see when we look at what the Lie derivative does:
+  \begin{equation}
+    (\mathcal{L}_{\frac{\partial^{} }{\partial y}} g)_{\mu\nu} = \frac{\partial^{} g_{\mu\nu}}{\partial y} = 0.
+  \end{equation}
+\end{proof}
+\begin{example}[de Sitter in static patch coordinates]
+  For the static patch, we expect $\frac{\partial^{} }{\partial t}$ to be a Killing vector.
+  We had $X^0 = \sqrt{R^2 - r^2} \sinh( \frac{t}{R})$ and $X^4 = \sqrt{R^2 - r^2} \cosh ( \frac{t}{R})$.
+  Look at $\frac{\partial^{}}{\partial t} = \frac{\partial^{} X^{a}}{\partial t} \frac{\partial^{} }{\partial X^{A}} = \frac{1}{R}(X^4 \frac{\partial^{} }{\partial X^0} + X^0 \frac{\partial^{} }{\partial X^4})$.
+\end{example}
+\begin{description}
+  \item[Comment:] Timelike Killing vectors, such that $g_{\mu\nu} K^{\mu} K^{\nu} < 0$, are used to define energy.
+    Both $\mathbb{M}^4$ and \texttt{AdS} have such objects. And \texttt{dS} has such an object in the static patch, but \emph{not} globally!
+    Consider the Killing vector $K = X^4 \frac{\partial^{} }{\partial X^0} + X^0 \frac{\partial^{} }{\partial X^4}$. The first term increases the timelike direction $X^0$ when $X^4 > 0$ and decreases $X^0$ when $X^4 <0$.
+    The Killing vector is positive and timelike only in the static patch.
+    Elsewhere, it is spacelike. Energy is a subtle concept in \texttt{dS}!
+\end{description}
+\begin{leftbar}
+  \begin{remark}
+    Timelike geodesics do not take us out of the static patch; the problems with energy only arise when we think more globally than what a single particle is doing.
+  \end{remark}
+\end{leftbar}
+
+\subsection{Conserved Quantities}%
+\label{sub:conserved_quantities}
+
+\begin{claim}
+  Consider a particle moving on a geodesic $x^{\mu}(\tau)$ in a spacetime with some Killing vector $K^{\mu}$.
+  Then $Q = K_{\mu} \dv[]{x^{\mu}}{\tau}$ is conserved.
+\end{claim}
+\begin{proof}
+  To see this,
+  \begin{align}
+    \dv[]{Q}{\tau} &= \partial_{\nu} K_{\mu} \dv[]{x^{\nu}}{\tau} \dv[]{x^{\mu}}{\tau} + K_{\mu} \dv[2]{x^{\mu}}{\tau} \\
+    &= \partial_{\nu} K_{\mu} \dv[]{x^{\nu}}{\tau} \dv[]{x^{\mu}}{\tau}  K_{\mu} \Gamma^{\mu}_{\rho\sigma} \dv[]{x^{\rho}}{\tau} \dv[]{x^{\sigma}}{\tau} \\
+    &= \nabla_{\nu} K_{\mu} \dv[]{x^{\nu}}{\tau} \dv[]{x^{\mu}}{\tau} \stackrel{\eqref{eq:killing}}{=} 0.
+  \end{align}
+  We can also see this from the action
+  \begin{equation}
+    S = \int \dd[]{\tau} \mathbf{g}_{\mu\nu} (x) \dot{x}^{\mu} \dot{x}^{\nu}.
+  \end{equation}
+  Consider $\delta x^{\mu} (\tau) = K^{\mu}(x)$. We have
+  \begin{equation}
+    \delta S = \int \dd[]{\tau} \left[ \partial_{\rho} g_{\mu\nu} \dv{x^{\mu}}{\tau} \dv{x^{\nu}}{\tau} K^{\rho} + 2g_{\mu\nu} \dv{x^{\mu}}{\tau} \dv{x^{\nu}}{\tau} \right].
+  \end{equation}
+  Using 
+  \begin{align}
+    g_{\mu\nu} \dv{K^{\nu}}{\tau} &=\dv{K_{\mu}}{\tau} - \dv{g_{\mu\nu}}{\tau} K^{\rho} \\
+				  &= (\partial_{\nu} K_{\mu} - \partial_{\nu} g_{\mu\nu} K^{\rho}) \dv{x^{\nu}}{\tau}
+  \end{align}
+  in the second argument, we have
+  \begin{equation}
+    \rightarrow \delta S = \int \dd[]{\tau} 2 \nabla_{\mu} K_{\nu} \dv{x^{\mu}}{\tau} \dv{x^{\nu}}{\tau},
+  \end{equation}
+  where the $\Gamma$ 's in $\nabla$ come from the $\partial g$ 's.
+  \begin{exercise}
+    Check this!
+  \end{exercise}
+  This means that we have
+  \begin{equation}
+    \delta S = 0 \quad \iff \quad \nabla_{(\mu)} K^{\nu)} = 0,
+  \end{equation}
+  which is the Killing equation.
+\end{proof}

@@ -1,0 +1,141 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 19: November 23}
+
+\begin{definition}[]
+  The \emph{height} of a root is the perpendicular distance from the hyperplane, see Fig.~\ref{fig:l18f2}.
+\end{definition}
+
+\subsection{Simple Roots}%
+\label{sub:simple_roots}
+
+\begin{equation}
+  \delta \in \Phi_S \quad \iff \quad \delta \in \Phi_+ \quad \delta \neq \alpha + \beta \quad \forall \alpha, \beta \in \Phi_+
+\end{equation}
+\begin{claim}
+  \label{claim:19-1}
+  If $\alpha, \beta \in \Phi_S$, then $\alpha - \beta$ is not a root.
+\end{claim}
+\begin{proof}
+  Suppose $\alpha - \beta \in \Phi$. Either
+  \begin{description}
+    \item[$\alpha - \beta \in \Phi_+$] $\alpha = \alpha - \beta + \beta \implies \alpha$ not simple \smashtimes
+    \item[$\beta - \alpha \in \Phi_+$] $\beta = \beta - \alpha + \alpha \implies \beta$ not simple \smashtimes
+  \end{description}
+\end{proof}
+\begin{claim}
+  If $\alpha, \beta \in \Phi_S$, then ` $\alpha$-string through $b$ ' has length
+  \begin{equation}
+    l_{\alpha, \beta} = 1 - \frac{2(\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{N}.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  String has roots
+  \begin{equation}
+    S_{\alpha, \beta} = \left\{ \beta + n \alpha \in \Phi, \quad n \in \mathbb{Z}, \quad n_- \leq n \leq n_+ \right\}
+  \end{equation}
+  with $n_+ \geq 0$ and $n_- \leq 0$.
+  Now Eq.~\eqref{eq:17-15} implies that $(n_+ + n_-) = -\frac{2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{Z}$. From Claim~\ref{claim:19-1}, we have
+  \begin{align}
+    \alpha, \beta \in \Phi_S &\implies \beta - \alpha \not \in \Phi  \\
+			     &\implies n_- = 0
+  \end{align}
+  Again from \eqref{eq:17-15}, we have
+  \begin{equation}
+    \label{eq:19-20}
+    n_+ = \frac{-2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{Z}_{\geq 0}
+  \end{equation}
+  Length of string is then
+  \begin{equation}
+    l_{\alpha, \beta} = n_+ + 1 = 1 - \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{N}
+  \end{equation}
+\end{proof}
+\begin{claim}
+  Let $\alpha, \beta \in \Phi_S$ be distinct simple roots, meaning that $\alpha \neq \beta$. Then the inner product is negative
+  \begin{equation}
+    (\alpha, \beta) \leq 0.
+  \end{equation}
+\end{claim}
+\begin{claim}
+  \label{cl:19-4}
+  Any positive root $\beta \in \Phi_+$ can be written as
+  \begin{equation}
+    \beta = \sum_i c_i \alpha_{(i)},
+  \end{equation}
+  an integer combination of simple roots, where $\alpha_{(i)} \in \Phi_S$ and $c_{i} \in \mathbb{Z}_{\geq 0}$
+\end{claim}
+\begin{proof}
+  The statement is true if $\beta \in \Phi_S$ is a simple root.
+  If $\beta \not \in \Phi_S$, then we must have that  $\beta = \beta_1 + \beta_2$ for $\beta_1, \beta_2 \in \Phi_+$.
+  Now if $\beta_1, \beta_2 \in \Phi_S$, then we are done. If not, then we subdivide again. We repeat this; this process can only terminate on a linear combination of simple roots as in the claim. Since the space is finite dimensional, and there is a highest root, then this process must indeed terminate.
+\end{proof}
+
+\begin{remark}
+  Similarly, we can decompose negative roots in terms of negative simple roots.
+\end{remark}
+This is the nice property of the simple roots! Any other roots can be written as a linear combination of them.
+To show that they are the basis, we still need to show the following:
+\begin{claim}
+  \label{cl:19-5}
+  Simple roots are linearly independent.
+\end{claim}
+\begin{proof}
+  Let $\lambda = \sum_{i \in I} c_{i} \alpha_{(i)}$, with $c_{i} \in \mathbb{R}\setminus{\{0\}}$, $\alpha_{(i)} \in \Phi_S$ and the index set is $I \subset \Phi_S$.
+  Then simple roots being linearly independent means that $\lambda \neq 0$ unless $c_{i} = 0$ for all $i$.
+  Define $\lambda_+ = \sum_{i\in I_+} c_{i} \alpha_{i}$, and $\lambda_- = -\sum_{i \in I_+} c_{i} \alpha_{(i)}$, with $I = I_+ \cup I_-$ and $I_+ = \left\{ i \in I \suchthat c_{i} > 0 \right\}$, $I_- = \left\{ i \in I \suchthat c_i < 0 \right\}$.
+  Now $\lambda = \lambda_+ - \lambda_-$ where $\lambda_+, \lambda_-$ not both zero
+  \begin{align}
+    (\lambda, \lambda) &= (\lambda_+, \lambda_+) + (\lambda_-, \lambda_-) - 2(\lambda_+, \lambda_-) \\
+		       &> -2 (\lambda_+, \lambda_-) \\
+		       &= 2 \sum_{i\in I_+} \sum_{j \in I_-} c_{i} c_{j} (\alpha_{(i)}, \alpha_{(j)})
+  \end{align}
+  Now $(\alpha_{(i)}, \alpha_{(j)}) \leq 0$. Moreover, $c_{i} > 0$, $c_{j} > 0$. Therefore, we have that $(\lambda, \lambda) > 0$. Since we have a non-degenerate inner product, we must have $\lambda \neq 0$.
+\end{proof}
+
+Finally, to form a basis, we need to make sure that there are enough of them:
+\begin{claim}
+  There are exactly $r = \text{Rank}[\mathfrak{g}]$ simple roots.
+\end{claim}
+\begin{proof}
+  By Claim \ref{cl:19-5}, simple roots are linearly independent and therefore $\abs{\Phi_S} \leq r$.
+  Suppose for contradiction that $\abs{\Phi_S} < r$. Then there would exist a vector $\lambda \in \mathfrak{h}^*_\mathbb{R}$, which is orthogonal to all simple roots:
+  \begin{equation}
+    (\lambda, \alpha) = 0 \qquad \forall \alpha \in \Phi_S.
+  \end{equation}
+  But all roots are either positive or negative. And by Claim \ref{cl:19-4}, we can write all roots as linear combinations of simple roots. Therefore, $\lambda$ is orthogonal to all roots
+  \begin{equation}
+    (\lambda, \alpha) = 0 \qquad \forall \alpha \in \Phi.
+  \end{equation}
+  Then $H_{\lambda} = \lambda_{i} H^{i} \in \mathfrak{h}$
+  \begin{align}
+    [H_{\lambda}, H] &= 0 \qquad \forall H \in \mathfrak{h} \\
+    [H_{\lambda} E^{\alpha}] &= (\lambda, \alpha) E^{\alpha}  = 0 \qquad \forall \alpha \in \Phi
+  \end{align}
+  This would imply that $\mathfrak{g}$ has a non-trivial ideal $I = \text{Span}_{\mathbb{C}}\left\{H_{\lambda}\right\}$. This contradicts the assumption that $\mathfrak{g}$ is simple.
+\end{proof}
+
+\begin{corollary}
+  We can now choose the simple roots $\alpha_{(i)}$, $i = 1, \dots, r$, as a basis for $\mathfrak{h}^*_{\mathbb{R}}$.
+  \begin{equation}
+    B = \left\{ \alpha \in \Phi_S \right\} = \left\{ \alpha_{(i)} \right\}.
+  \end{equation}
+\end{corollary}
+
+\begin{definition}[]
+  The inner products of simple roots form the \emph{Cartan matrix}
+  \begin{equation}
+    A_{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})} \qquad i,j = 1, \dots, r
+  \end{equation}
+\end{definition}
+
+\begin{equation}
+  \left\{ h^{i} = h^{\alpha_{(i)}}, e^{i}_{\pm} e^{\pm \alpha_{(i)}} \right\}, \qquad i = 1, \dots, r.
+\end{equation}
+Then we have the brackets
+\begin{align}
+  [h^{i}, h.j] &= 0 \\
+  [h^{i}, e^{j}_\pm] &= \pm A^{ji} e^{j}_\pm \qquad \text{(no summation)} \\
+  [e_+^{i}, e^{j}_-] &= \delta^{ij} h^{i}
+\end{align}
+This is the \emph{Chevali (?) basis}.
+We will see that we can restrain the Cartan matrix very heavily, and that any simple Lie algebra is determined by its Cartan matrix.

@@ -48,11 +48,17 @@ snippet claim "Claim" b
 \end{proof}$0
 endsnippet
 
-snippet nb "Remark" b
+snippet nb "Lecturer's Remark" b
+\begin{remark}
+	$1
+\end{remark}$0
+endsnippet
+
+snippet lb "My Note" b
 \begin{leftbar}
-	\begin{remark}
+	\begin{note}
 		$1
-	\end{remark}$0
+	\end{note}$0
 \end{leftbar}
 endsnippet
 
@@ -71,11 +77,11 @@ endsnippet
 snippet ink "Inkscape Figure" b
 \begin{figure}[${1:tbhp}]
 	\centering
-	\def\svgwidth{${2:0.6}\columnwidth}
+	\def\svgwidth{${2:0.5}\columnwidth}
 	\input{lectures/${3:ink}.pdf_tex}
-	\caption{${3/(\w+)\.\w+/\u$1/}$0}
+	\caption{$4}
 	\label{fig:${3/(\w+)\.\w+/$1/}}
-\end{figure}
+\end{figure}$0
 endsnippet
 
 snippet tex "mathmode in section title" w
@@ -116,14 +122,22 @@ endsnippet
 
 # Citations
 
-snippet eqref "cite an equation" 
+snippet eref "cite an equation" w
 \eqref{eq:$1}$0
 endsnippet
 
-snippet fref "cite a figure"
+snippet fref "cite a figure" w
 \ref{fig:$1}$0
+endsnippet
+
+snippet lab "label"
+\label{$1}$0
 endsnippet
 
 snippet EM "emphasise" A
 \emph{${1:${VISUAL}}}$0
+endsnippet
+
+snippet TT "monospace" Aw
+\texttt{$1}$0
 endsnippet
