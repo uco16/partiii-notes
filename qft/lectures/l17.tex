@@ -132,5 +132,111 @@ Let us now rejig Yukawa theory; nucleons are really fermions, and we have not ac
 
 We have fermions $\psi, \overline{\psi}$---representing nucleons and anti-nucleons---and a real scalar field $\phi$---the mesons.
 \begin{equation}
-  \mathcal{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} \mu^2 \phi^2 + \overline{\psi}(i \cancel{\partial} - m) - \lambda \phi \overline{\psi} \psi
+  \mathcal{L} = \underbrace{\frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi}_{\mathclap{\text{scalar kinetic}}} + \overbrace{\frac{1}{2} \mu^2 \phi^2}^{\mathclap{scalar mass}} + \underbrace{\overline{\psi}(i \cancel{\partial} - m) \psi}_{\mathclap{\text{nucleon kinetic and mass}}} - \overbrace{\lambda \phi \overline{\psi} \psi}^{\mathclap{\text{Yukawa interaction}}}
 \end{equation}
+The $3$-point interaction is depicted in Fig.~\ref{fig:l17f1}.
+\begin{figure}
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \feynmandiagram [vertical=b to a] {
+      a -- [scalar, edge label=$\phi$] b,
+      i -- [fermion, edge label=$\psi$] b -- [fermion, edge label=$\overline{\psi}$] j,
+    };
+    \caption{Yukawa $3$-point interaction.}
+    \label{fig:l17f1}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \feynmandiagram [horizontal=a to b, layered layout] {
+      a -- [fermion,  momentum=\(p\ s\)] c [blob] -- [fermion,  momentum'=\(p'\ s'\)] b,
+      d -- [fermion,  momentum=\(q\ r\)] c -- [fermion,  momentum'=\(q'\ r'\)] e,
+    };
+    \caption{Nucleon-nucleon scattering.}
+    \label{fig:l17f2}
+  \end{minipage}
+\end{figure}
+
+Dimensional analysis gives $[\mathcal{L}] = 4$, $[\phi] = 1$, $[\psi] = \frac{3}{2} \stackrel{!}{=} \left[\overline{\psi}\right]$. This means that $[\lambda] = 0$; no problems with renormalisability.
+
+\begin{example}[$\psi\psi \to \psi\psi$]
+  In nucleon-nucleon scattering, as illustrated in Fig.~\ref{fig:l17f2}, we label our initial and final states
+  \begin{align}
+    \ket{i} &= \sqrt{4 E_p E_{q}} (b_{\vb{p}}^{s})^{\dagger} (b_{\vb{q}}^{r})^{\dagger} \ket{0} \coloneqq \ket{\vb{p}, s; \vb{q}, r} \\
+    \ket{f} &= \sqrt{4 E_{\vb{p}'} E_{\vb{q}'}} (b_{\vb{p}'}^{s'})^{\dagger} (b_{\vb{q}'}^{r'})^{\dagger} \ket{0} \coloneqq \ket{\vb{p}', s' ; \vb{q}', r'}
+  \end{align}
+  Note that there is no minus when taking the adjoint $(b^{s} _{\vb{p}} b_{\vb{q}}^{r})^{\dagger} = (b_{\vb{q}}^{r})^{\dagger} (b_{\vb{p}}^{s})^{\dagger}$.
+  We have 
+  \begin{equation}
+    \bra{f} = \sqrt{4 E_{\vb{p}'} E_{\vb{q}'}} \bra{0} b_{\vb{q}'}^{r'} b_{\vb{p}'}^{s'}.
+  \end{equation}
+  Look for $O(\lambda^2)$ terms in the matrix element $\bra{f}(S-1)\ket{i}$ with all fields in the interaction picture, as usual.
+
+  Can use Dyson's formula \eqref{eq:8-dyson}, second order piece of expansion is
+  \begin{equation}
+    \label{eq:17-0}
+    \bra{f} \frac{(-i\lambda)^2}{2!} \int \dd[4]{x_1} \dd[4]{x_2} T \left[ \overline{\psi}(x_1) \psi(x_1) \phi(x_1) \overline{\psi}(x_2) \psi(x_2) \phi(x_2) \right] \ket{i}.
+  \end{equation}
+  Using Wick's theorem, we find that the contribution to scattering comes from the contraction
+  \begin{equation}
+    \bra{f} \normalorder{\overline{\psi}(x_1) \psi(x_1) \overline{\psi} (x_2) \psi(x_2)} \wick{\c \phi(x_1) \c \phi(x_2)} \ket{i}.
+  \end{equation}
+  If the $\phi$ were not contracted, they would annihilate the vacuum.
+  Then the $\psi$'s annihilate the $\ket{i}$ and the $\overline{\psi}$'s create $\bra{f}$.
+
+  We focus on how the fermionic fields act on $\ket{i}$. Let us expand out the $\phi$ fields first, ignoring the $c^{\dagger}$ terms, since they give no contribution at order $\lambda^2$:
+  \begin{equation}
+    \label{eq:17-1}
+    \normalorder{\overline{\psi}_1 \psi_1 \overline{\psi}_2 \psi_2} (b_{\vb{p}}^{s})^{\dagger} (b_{\vb{q}}^{r})^{\dagger} \ket{0} = - \int \frac{\bdd[3]{k_1} \bdd[3]{k_2}}{\sqrt{4 E_{\vb{k}_1} E_{\vb{k}_2}}} [\overline{\psi}_1 \cdot u^{m}_{\vb{k}_1}] [\overline{\psi}_2 \cdot u^{n}_{\vb{k}_2}] e^{-i(k_1 \cdot {x}_1 + k_2 \cdot {x}_2)} b^{m}_{\vb{k}_1} b^{n}_{\vb{k}_2} (b^{s}_{\vb{p}})^{\dagger} (b_{\vb{q}}^{r})^{\dagger} \ket{0},
+  \end{equation}
+  where we wrote $\phi(x_i) = \phi_{i}$ and $u(\vb{k}_i) = u_{\vb{k}_i}$ for brevity and used square brackets to indicate in which manner the spinor indices are contracted.
+  The minus sign that sits out front came from commuting $\phi_1$ past $\overline{\psi}_2$. Anti-commuting the $b$'s past the $b^{\dagger}$'s, we have
+  \begin{align}
+    \label{eq:17-g}
+    b_{\vb{k}_1} b^{n}_{\vb{k}_2} b_{\vb{p}}^{s}{}^{\dagger} b_{\vb{q}}^{r}{}^{\dagger} \ket{0} &= (b_{\vb{k}_1}^{m} \{b_{\vb{k}_2}^{n}, b_{\vb{p}}^{s}{}^{\dagger}\} b_{\vb{q}}^{r}{}^{\dagger} - b_{\vb{k}_1}^{m} b_{\vb{p}}^{s}{}^{\dagger} \cdot b_{\vb{k}_2}^{n} b_{\vb{q}}^{r}{}^{\dagger}) \ket{0} \\
+												 &= \left[ \bdelta^3(\vb{k}_2 - \vb{p}) \delta^{ns} \left\{ b_{\vb{k}_1}^{m}, b_{\vb{q}}^{r}{}^{\dagger} \right\} - \left\{ b_{\vb{k}_1}^{m} , b_{\vb{p}}^{s}{}^{\dagger} \right\}\left\{ b_{\vb{k}_2}^{n}, b_{\vb{q}}^{n}{}^{\dagger} \right\} \right].
+  \end{align}
+  where in the second lne, we introduce $\left\{ \dots \right\}$ because $b_{\vb{p}}^{s} \ket{0}  =0$.
+  \begin{equation}
+    \dots= [\bdelta^3(\vb{k}_2 - \vb{p}) \bdelta^3(\vb{k}_1 - \vb{q}) \delta^{ns} \delta^{mr} - \bdelta^3(\vb{k}_1 - \vb{p}) \bdelta^3(\vb{k}_2 - \vb{q}) \delta^{ms} \delta^{nr}] \ket{0}.
+  \end{equation}
+  Pluggin this back into Eq.~\eqref{eq:17-1}, we have
+  \begin{multline}
+    \label{eq:17-2}
+    \normalorder{\overline{\psi}_1 \psi_1 \overline{\psi}_2 \psi_2} (b_{\vb{p}}^{s})^{\dagger} (b_{\vb{q}}^{r})^{\dagger} \ket{0} = \frac{-1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}} \left([\overline{\psi}_1 \cdot u^{r} _{\vb{q}}] [\overline{\psi}_2 \cdot u_{\vb{p}}^{s}] 
+    e^{-i({p} \cdot {x}_2 + {q} \cdot {x}_1)} \right. \\
+    - \left. [\overline{\psi}_1 \cdot u^{s} _{\vb{p}}] [\overline{\psi}_2 \cdot u_{\vb{q}}^{r}] 
+    e^{-i({p} \cdot {x}_1 + {q} \cdot {x}_2)}\right) \ket{0}.
+  \end{multline}
+  Note the relative minus sign that appears between these two terms.
+  Now let us left multiply with $\bra{f}$. Consider
+  \begin{align}
+    \bra{0} b_{\vb{q}'}^{r'} b_{\vb{p}'}^{s'} b_{\vb{k}_1}^{m}{}^{\dagger} b_{\vb{k}_2}^{n}{}^{\dagger} &= \bra{0}b_{\vb{q}'}^{r'} (\left\{ b_{\vb{p}'}^{r'}, b_{\vb{k}_1}^{m}{}^{\dagger} \right\} - b_{\vb{k}_1}^{m}{}^{\dagger} b_{\vb{p}'}^{s'}) b_{\vb{k}_2}^{n}{}^{\dagger} \\
+													&= \bra{0}[\delta^{s'm} \delta^{r'n} \bdelta^3(\vb{p}' - \vb{k}) \bdelta^3(\vb{q}' - \vb{k}_2) - (m \leftrightarrow n, \vb{k}_1 \leftrightarrow \vb{k}_2)],
+  \end{align}
+  where we proceeded in a similar manner to \eqref{eq:17-g}.
+  Using this to left multiply \eqref{eq:17-2} by $\bra{f}$, we get
+  \begin{multline}
+    \bra{0} b_{\vb{q}'}^{r'} b_{\vb{p}'} ^{s'} [\overline{\psi}_1 \cdot u_{\vb{q}}^{r}] [\overline{\psi}_2 \cdot u^{s} _{\vb{p}}] \ket{0} = \frac{1}{2 \sqrt{E_{\vb{p}'} E_{\vb{q}'}}} \left\{ e^{+i(\vb{p}' \cdot x_1 + \vb{q}' \cdot x_2)} [\overline{u}{}^{s'} _{\vb{p}'} \cdot u^{r} _{\vb{q}}] [\overline{u} _{\vb{q}'} {}^{r'} \cdot u^{s} _{\vb{p}}] \right. \\
+      - \left. e^{+i(\vb{p}' \cdot x_2 + \vb{q}' \cdot x_1)} [\overline{u}_{\vb{q}'}{}^{r'} \cdot u^{r} _{\vb{q}}] [\overline{u} _{\vb{p}'} {}^{s'} \cdot u^{s} _{\vb{p}}]
+  \right\}.
+  \end{multline}
+  The $[\overline{\psi}_1 \cdot u^{s} _{\vb{p}}] [\overline{\psi}_2 \cdot u^{r}_{\vb{p}}]$ term in \eqref{eq:17-2} doubles up with this, cancelling the factor of $\frac{1}{2}$ in front of \eqref{eq:17-0}. Meanwhile, the $1 / \sqrt{E}$  terms cancel with the relativistic state normalisation.
+  Putting these together, we find that $\bra{f} (S-1) \ket{i}$  is given by
+  \begin{multline}
+    (-i \lambda)^2 \int \dd[4]{x_1} \dd[4]{x_2} \bdd[4]{k} 
+    \overbrace{\frac{i e^{i {k} \cdot ({x}_1 - {x}_2)}}{k_2 - \mu_2 + i \epsilon}}^{\mathclap{ \wick{\c\phi_1 \c\phi_2}}} \left( [\overline{u}{}^{s'} _{\vb{p}'} \cdot u_{\vb{p}}^{s}] [\overline{u}_{\vb{q}'}{}^{r'} \cdot u_{\vb{q}}^{r}] 
+    e^{+i[x_1 \cdot ({q}' - {q}) + \vb{x}_2 \cdot ({p}' - {p})]} \right. \\
+    \left. - [\overline{u}_{\vb{p}'}{}^{s'} \cdot u_{\vb{q}}^{r}][\overline{u}_{\vb{q}'}{}^{r'} \cdot u_{\vb{p}}^{s}]
+    e^{+i[{x}_1 \cdot ({p}' - {q}) i {x}_2 \cdot({q}' - {p})]} \right),
+  \end{multline}
+  where we have put the $\phi$ propagator back in. Performing the integrals over $\vb{x}_1$ and $\vb{x}_2$, this becomes
+  \begin{multline}
+    \int \frac{\bdd[4]{k} i(-i \lambda)^2}{k^2 - \mu^2 + i\epsilon} \left( [\overline{u}_{\vb{p}'}{}^{s'} \cdot u_{\vb{p}}^{s}] [\overline{u} _{\vb{q}'}{}^{r'} \cdot u_{\vb{q}}^{r}] \bdelta^4(q' - q' + k) \bdelta^4(p' - p - k)\right. \\
+    \left. - [\overline{u}_{\vb{p}'}{}^{s'} \cdot u_{\vb{q}}^{r}] [{\overline{u} _{\vb{q}'}{}^{r'} \cdot u_{\vb{p}}^{s}}] \bdelta^4(p' - q + k) \bdelta^4(q' - p - k) \right)
+  \end{multline}
+  Finally, writing the $S$-matrix element in terms of the amplitude in the usual way, $\bra{f}(S-1)\ket{i} = i \mathcal{M} \bdelta^4(p + q - p' -q')$, we have
+  \begin{equation}
+    \boxed{\mathcal{M} = (-i \lambda^2) \left\{ \frac{[\overline{u}{}^{r'}_{\vb{q}'} \cdot u_{\vb{q}}^{r}][u_{\vb{p}'}^{s'} \cdot u_{\vb{p}}^{s}]}{(p' - p)^2 - \mu^2 + i \epsilon} - \frac{[u_{\vb{p}'}^{s'} \cdot u_{\vb{q}}^{r}][\overline{u}{}^{r'}_{\vb{q}'} \cdot u_{\vb{p}}^{s}]}{(q' - p)^2 - \mu^2 + i \epsilon} \right\}} \, ,
+  \end{equation}
+  which is our final answer for the amplitude.
+\end{example}

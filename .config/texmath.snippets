@@ -71,7 +71,7 @@ snippet ~ "order of" "isMath()" eA
 \sim
 endsnippet
 
-snippet def "defined to be" "isMath()" eA
+snippet def "defined to be" "isMath()" eAw
 \coloneqq
 endsnippet
 
@@ -106,20 +106,44 @@ snippet map "Function Definition" b
 \end{equation}$0
 endsnippet
 
-# snippet "[1-9]*e-?\d*" "Scientific notation" "isMath()" eri
-# \SI{`!p snip.rv=match.group(0)`}{${1:\giga\electronvolt}}
-# endsnippet
-
 snippet sub "subscipt text" "isMath()" ei
 _{\text{$1}}$0
 endsnippet
 
-snippet hal "one half" "isMath()" eAw
-\frac{1}{2}
-endsnippet
+#snippet hal "one half" "isMath()" eAw
+#\frac{1}{2}
+#endsnippet
 
 snippet int "Integration" "isMath()" ew
 \int_{${1:-\infty}}^{${2:\infty}}${VISUAL}\\$3dd[${4:d}]{${5:x}} $0
+endsnippet
+
+snippet ppp "momentum" "isMath()" eiA
+_{\vb{p}}
+endsnippet
+
+snippet ppi "momentum" "isMath()" eiA
+_{\vb{p}'}
+endsnippet
+
+snippet qqq "momentum" "isMath()" eiA
+_{\vb{q}}
+endsnippet
+
+snippet qqi "momentum" "isMath()" eiA
+_{\vb{q}'}
+endsnippet
+
+snippet 'kk(\d)' "labeled momentum" "isMath()" eiAr
+_{\vb{k}_`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet wick "wick contraction" "isMath()" eAw
+\wick{\c$1 \c$2}
+endsnippet
+
+snippet bdel "normalised delta" "isMath()" eAw
+\bdelta^${1:4}($2)
 endsnippet
 
 priority 50
@@ -129,7 +153,7 @@ snippet under "underbrace" "isMath()" eAw
 endsnippet
 
 snippet over "overbrace" "isMath()" eAw
-\jverbrace{${1:${VISUAL}}}^{\mathclap{$2}}
+\overbrace{${1:${VISUAL}}}^{\mathclap{$2}}
 endsnippet
 
 snippet __ "subscript" "isMath()" eAi
@@ -185,7 +209,7 @@ snippet Opp "big direct sum" "isMath()" Awe
 endsnippet
 
 snippet SS "summation" "isMath()" Awe
-\sum_{${1:i=1}^{${2:\infty}}$0
+\sum_{${1:i=1}}^{${2:\infty}}$0
 endsnippet
 
 # Derivatives
@@ -218,14 +242,18 @@ snippet fdv "functional differentiation" "isMath()" ewA
 \frac{\delta ${1:${VISUAL}}}{\delta $2}$0
 endsnippet
 
+snippet g( "single bracket" "isMath()" ewA
+(
+endsnippet
+
 # Differentials
 
 snippet dd "differential measure" "isMath()" Awe
-\dd[${1:d}]{${2:x}}$0
+\dd[${1:4}]{${2:x}}$0
 endsnippet
 
 snippet bdd "barred measure" "isMath()" ewA
-\bdd[${1:d}]{${2:k}}$0
+\bdd[${1:4}]{${2:k}}$0
 endsnippet
 
 snippet rdd "relativistic measure" "isMath()" ewA
@@ -402,23 +430,6 @@ snip.rv=indicator.pop()+match.group(2)
 `
 endsnippet
 
-snippet '(.)([a-zA-Z0-9]|}|\))(\d)' "Auto Index" "isMath()" eAr
-`!p 
-# The following line prevents \c1 -> \c_1 for simpler-wick
-if match.group(1) == "\\":
-  snip.rv=match.group(0)
-else:
-  snip.rv = match.group(1) + match.group(2) + "^" + match.group(3)`
-endsnippet
-
-#snippet '([a-zA-Z])_(\d\d)' "Auto Multi Index" "isMath()" eAwr
-#`!p snip.rv = match.group(1) + "^{" + match.group(2) + "}"`
-#endsnippet
-
-snippet "([a-zA-Z])(,\.|\.,)" "Vector postfix" "isMath()" eriA
-\vb{`!p snip.rv=match.group(1)`}
-endsnippet
-
 # --- GREEK INDICES ---
 
 # Define allowe index letter dictionary
@@ -537,7 +548,7 @@ snippet ',,([a-zA-Z])' "latin tensor" "isMath()" eAir
 `!p snip.rv = "\indices{^{"+match.group(1)`}$1}$0
 endsnippet
 
-snippet '(\_|\^)({[a-zA-Z]*?)}([a-zA-Z])' "multi latin index" "isMath()" eAir
+snippet "(\_|\^)({[a-zA-Z']*?)}([a-zA-Z]|')" "multi latin index" "isMath()" eAir
 `!p snip.rv = match.group(1) + match.group(2) + match.group(3) + "}"`
 endsnippet
 
@@ -595,5 +606,27 @@ if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
 	snip.rv = ' '
 else:
 	snip.rv = ''
-`$2
+`$0
 endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet '(.)([a-zA-Z0-9]|}|\))(\d)' "Auto Index" "isMath()" eAr
+`!p 
+# The following line prevents \c1 -> \c_1 for simpler-wick
+if match.group(1) == "\\":
+  snip.rv=match.group(0)
+else:
+  snip.rv = match.group(1) + match.group(2) + "_" + match.group(3)`
+endsnippet
+
+#snippet '([a-zA-Z])_(\d\d)' "Auto Multi Index" "isMath()" eAwr
+#`!p snip.rv = match.group(1) + "^{" + match.group(2) + "}"`
+#endsnippet
+
+snippet "([a-zA-Z])(,\.|\.,)" "Vector postfix" "isMath()" eriA
+\vb{`!p snip.rv=match.group(1)`}
+endsnippet
+

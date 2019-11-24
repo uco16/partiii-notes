@@ -1,0 +1,185 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 19: November 23}
+
+\subsection{\texorpdfstring{$\psi\psi \to\psi\psi$}{Psi-Psi} Scattering}%
+\label{sub:psi_psi_scattering}
+
+\begin{equation}
+  \overline{\abs{M}^2} 0 \frac{\abs{\lambda}^4}{4} \left\{ \frac{\Tr(\cancel{q} \cancel{q'}) \Tr( \cancel{p} \cancel{p'})}{t^2} + \frac{\Tr(\cancel{q'}\cancel{p}) \Tr(\cancel{p'}\cancel{q})}{u^2} - \frac{2 \Re \Tr(\cancel{p} \cancel{p'} \cancel{q} \cancel{q'})}{ut} \right\}
+\end{equation}
+Use trace techniques (see PS3) to show that
+\begin{equation}
+  \label{eq:19-x}
+  \dots = \frac{\abs{\lambda}^4}{4} \left\{ \frac{4 q \cdot q' 4 p \cdot p'}{t^2} + \frac{4 q' \cdot q 4 p' \cdot q}{u^2} - \frac{8}{ut} (p \cdot q' p' \cdot q + p \cdot p' q \cdot q' - p \cdot q p' \cdot q') \right\}.
+\end{equation}
+It is customary to express this in terms of Mandelstram variables $s, t$, and $u$.
+ \begin{itemize}
+   \item By definition, $s = (p+q)^2$ and by $4$-momentum conservation, we have  $(p + q)^2 = (p' + q')^2$. Therefore, $p \cdot q = p' \cdot q' = \frac{s}{2}$ in the massless limit, where $p \cdot p = 0$ etc.
+   \item $t = (p - p')^2 = (q - q')^2 \quad \implies \quad p \cdot p' = q \cdot q' = -\frac{t}{2}$
+   \item $u = (p - q')^2 = (q - p')^2 \quad \implies \quad p \cdot q' = q \cdot p' = -\frac{u}{2}$
+\end{itemize}
+Substituting these identities back into \eqref{eq:19-x}, we get
+\begin{equation}
+  \overline{\abs{M}^2} = \abs{\lambda}^4 \left[ 1 +1 - \frac{1}{2 ut} (u^2 + t^2 - s^2) \right].
+\end{equation}
+Recall that $s + t + u = \sum m_{i}^2 = 0$  here, so $u = -s - t$  and 
+\begin{equation}
+  \boxed{\overline{\abs{M}^2} = 3 \abs{\lambda}^4}.
+\end{equation}
+
+\subsubsection{Cross Section}%
+\label{subsub:cross_section}
+
+Let us now find the cross-section. In the centre of mass frame, 
+\begin{equation}
+  \dv{\sigma}{t} = \frac{\overline{\abs{M}^2}}{16 \pi \lambda (s, \underbrace{0, 0}_{\mathclap{\text{masses}}})} \qquad \text{and} \qquad \left.\dv[]{t}{\cos\theta}\right\rvert_{CoM} = 2 \abs{\vb{p}} \abs{\vb{p}'}.
+\end{equation}
+And writing the solid angle $\Omega$: $d\Omega = \dd[]{\cos\theta \dd[]{\phi}}$, we have
+\begin{equation}
+  \left.\dv[]{\sigma}{\Omega}\right\rvert_{CoM} = \frac{\overline{\abs{M}^2}}{64 \pi^2 s} .
+\end{equation}
+
+We have \emph{identical} particles in the final state, and as illustrated in Figure~\ref{fig:l19f1}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l19f1.pdf_tex}
+  \caption{Scattering of identical particles. We cannot tell which particle is which.}
+  \label{fig:l19f1}
+\end{figure}
+Since we cannot tell which particle is which, we have to integrate the final state angles over the \emph{hemi-}sphere.
+This gives us
+\begin{equation}
+  \boxed{\sigma = \frac{3 \abs{\lambda}^4}{32 \pi s}}
+\end{equation}
+The scattering cross-section $\sigma$  is a measurable physical quantity and therefore needs to be non-negative, even with negative quantum interference effects.
+Since $[\lambda] = 0$, we have $[\sigma] = [s]^{-1} = -2$ , which is exactly what we expect: the scattering cross-section is an area.
+
+\chapter{Quantum Electrodynamics}%
+\label{cha:quantum_electrodynamics}
+
+Quantum Electrodynamics (\texttt{QED}) is a quantum field theory, in which the photon is described by a $4$-component vector field  $A_{\mu}$ . The Lagrangian is
+\begin{equation}
+  \mathcal{L} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu},
+\end{equation}
+where $F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}$ is the \emph{field strength-tensor}.
+Since we use $\eta = \text{diag}(+ - - -)$, we have to be very consistent with signs of three-vectors.
+\begin{align}
+  \vb{E} &= - \grad \phi - \dot{\vb{A}} \label{eq:19-1} \\
+  \vb{B} &= \grad \times \vb{A}, \label{eq:19-2}
+\end{align}
+where $\grad = (\frac{\partial }{\partial x^1}, \frac{\partial }{\partial x^2}, \frac{\partial }{\partial x^3}) = \partial_{i}$ and $A^{\mu} = (\phi, \vb{A})$, where $\vb{A} \coloneqq (A^1, A^2, A^3)$.
+
+The electric field is $\vb{E} = (F_{01}, F_{02}, F_{03}) = (-F^{01}, - F^{02}, -F^{03})$. Equation \eqref{eq:19-1} comes from $F_{0i} = \partial_0 A_{i} - \partial_{i} A_0$.
+The magnetic field is $\vb{B} = (B_1, B_2, B_3)$. Looking at Eq.~\eqref{eq:19-2}, we have for example 
+\begin{equation}
+  B_3 = \partial_1 A^2 - \partial_2 A^1 = -\partial_1 A_2 + \partial_2 A_1 = -F_{12} \quad \text{etc}
+\end{equation}
+Doing this for all components, we find that
+\begin{equation}
+  F_{\mu\nu} = 
+  \begin{pmatrix}
+   0 & E_1 & E_2 & E_3 \\
+   -E_1 & 0 & -B_3 & B_2 \\
+   -E_2 & B_3 & 0 & -B_1 \\
+   -E_3 & -B_2 & B_1 & 0 \\
+  \end{pmatrix},
+\end{equation}
+where the first index denotes the row and the second the column.
+
+\subsection{Maxwell's Equations}%
+\label{sub:maxwell_s_equations}
+
+$F_{\mu\nu}$ satisfies the \emph{Bianchi identity}:
+\begin{equation}
+  \partial_{\lambda} F_{\mu\nu} + \partial_{\mu} F_{\nu\lambda} + \partial_{\nu} F_{\lambda\mu} = \partial_{[\lambda} F_{\mu\nu]} = 0
+\end{equation}
+From this, $\lambda = 3$, $\mu = 1$, and $\nu = 3$ gives $\div \vb{B} = 0$, and $\lambda = 0$, $\mu = i$, $\nu = j$, $i \neq j$ gives $\dot{\vb{B}} = -\curl \vb{E}$.
+
+Furthermore, the Euler-Lagrange equations are 
+\begin{equation}
+  \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} A_{\nu})} \right) = 0 = \partial_{\mu} F^{\mu\nu},
+\end{equation}
+which give the other two vacuum Maxwell equations: 
+\begin{equation}
+  \div \vb{E} = 0 \qquad \dot{\vb{E}} = \curl \vb{B}.
+\end{equation}
+
+\subsection{Comments on Degrees of Freedom}%
+\label{sub:comments_on_degrees_of_freedom}
+
+The massless vector field $A_{\mu}$  starts with $4$ real degrees of freedom  $\mu = 0, \dots, 3$. But we know that a photon $\gamma$  only has two polarisation states!
+We note two things to help explain this
+\begin{enumerate}[i]
+  \item $A_0$ is \emph{not} dynamical $\leftrightarrow$ no kinetic term in $\mathcal{L}$ .
+    In fact, given $A_{i} (\vb{x}, t_0)$ and $\dot{A}_{i} (\vb{x}, t_0)$ , th en $A_0$  is fully determined since $\div \vb{E} =0$ and therefore $\laplacian A_0 + \div \dot{\vb{A}} = 0$ . This has solution
+    \begin{equation}
+      \label{eq:19-dagger}
+      A_0(\vb{x}, t_0) = \int \dd[3]{x'} \frac{\div \dot{\vb{A}} (\vb{x}', t_0)}{4\pi \abs{\vb{x} - \vb{x}'}}
+    \end{equation}
+    \begin{exercise}
+      Check this. \emph{Hint:} show that $\laplacian \left( \frac{1}{\abs{\vb{x} - \vb{x}'}} \right) = - 4\pi \delta^3 (\vb{x} - \vb{x}')$.
+    \end{exercise}
+    \item There is a large symmetry group. Consider the \emph{gauge transformation}
+      \begin{equation}
+	A_{\mu}(x) \to A_{\mu}(x) + \partial_{\mu} \lambda(x),
+      \end{equation}
+      where $\lambda(x)$ is some function such that  $\lim_{\abs{\vb{x}} \to \infty} \left\{ \lambda(\vb{x}) \right\} \to 0$ .
+      Under this transformation, 
+      \begin{equation}
+	F_{\mu\nu} \to \partial_{\mu} (A_{\nu} + \partial_{\nu} \lambda) - \partial_{\nu} (A_{\mu} + \partial_{\mu} \lambda) = F_{\mu\nu}.
+      \end{equation}
+      Since $F_{\mu\nu}$ is invariant, the Lagrangian $\mathcal{L}$ is too.
+      This is a new kind of symmetry that we have not met before---a \emph{gauge symmetry}, viewed as a redundancy in our description.
+\end{enumerate}
+
+\subsection{Gauge Fixing}%
+\label{sub:gauge_fixing}
+
+Our EL equations give $\partial_{\rho} F^{\rho\nu} = 0$. Acting on the left with $\eta_{\mu\nu}$ gives
+\begin{equation}
+  \eta_{\mu\nu} \partial_{\rho} F^{\rho\nu} = 0 \quad \implies \quad [\eta_{\mu\nu} \partial_{\rho} \partial^{\rho} - \partial_{\mu} \partial_{\nu}] A^{\nu}= 0.
+\end{equation}
+The operator $O_{\mu\nu} \coloneqq \eta_{\mu\nu} \partial_{\rho} \partial^{\rho} - \partial_{\mu} \partial_{\nu}$  is \emph{not} invertible, since it annihilates any function of the form $\partial^{\nu} \lambda(x)$ . This means that there is no way to \emph{uniquely} determined the evolution of $A_{\mu}$  given $A_{i}$ and $\dot A_{i}$  at $t_0$ .
+
+The reason is that we cannot distinguish between $A_{\mu}$  and $A_{\mu} + \partial_{\mu} \lambda$ , which are identified with the same physical state.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l19f2.pdf_tex}
+  \caption{$A_{\mu}$ configuration space. The \textcolor{violet}{cut} chooses one representative of each \textcolor{NavyBlue}{gauge orbit} (c.f.~fibres and sections in the \emph{Differential Geometry} lectures).}
+  \label{fig:l19f2}
+\end{figure} 
+\begin{definition}[]
+  A gauge orbit is the set of physically equivalent states, which are related by gauge transformation.
+\end{definition}
+As depicted in Fig.~\ref{fig:l19f2}, the \textcolor{NavyBlue}{gauge orbits} fill out the configuration space of $A_{\mu}$. \textcolor{violet}{Cutting a section} of this configuration space, we can choose one representative of each gauge orbit.
+This process is called \emph{fixing a gauge}.
+It does not matter which representation we choose from each, since they are all physically equivalent.
+There are many possible gauges, some of which make certain calculations easier.
+
+\begin{example}[]
+  The \emph{Lorentz gauge} is given by $\partial_{\mu} A^{\mu} = 0$ .
+  \begin{claim}
+    We can always pick a representative $\lambda$ such that this is the case.
+  \end{claim}
+  \begin{proof}
+    Start with $A_{\mu}'$ such that $\partial_{\mu} (A')^{\mu} = f(x)$.
+    Then choose $A_{\mu} = (A')_{\mu} + \partial_{\mu} \lambda(x)$, where $\partial_{\mu} \partial^{\mu} (\lambda(x)) = -f(x)$. We can always solve the latter equation.
+  \end{proof}
+
+  This condition does not pick a \emph{unique} representation from the orbit: we can make a further transformation with $\partial_{\mu} \partial^{\mu} \lambda(x) = 0$, which has non-trivial solutions.
+  The advantage of the Lorentz gauge is that the gauge condition is Lorentz invariant.
+  \begin{remark}
+    We will pick this gauge in our \texttt{QED} calculations.
+  \end{remark}
+\end{example}
+\begin{example}[]
+  The \emph{Coulomb gauge} or \emph{radiation gauge} is $\div \vb{A} = 0$.\par
+  We can perform an argument similar to the one above. From Eq.~\eqref{eq:19-dagger}, $A_0 = 0$.
+  The advantage of this gauge lies in the ease of seeing the physical degrees of freedom: the three components of $\vb{A}$ satisfy a physical constraint, leaving behind two physical degrees of freedom---the polarisation states. 
+\end{example}
+\begin{remark}
+  See David Tong's notes or Peskin \& Schröder for more.
+\end{remark}

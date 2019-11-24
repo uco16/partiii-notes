@@ -77,7 +77,7 @@ endsnippet
 snippet ink "Inkscape Figure" b
 \begin{figure}[${1:tbhp}]
 	\centering
-	\def\svgwidth{${2:0.5}\columnwidth}
+	\def\svgwidth{${2:0.4}\columnwidth}
 	\input{lectures/${3:ink}.pdf_tex}
 	\caption{$4}
 	\label{fig:${3/(\w+)\.\w+/$1/}}
@@ -88,10 +88,14 @@ snippet tex "mathmode in section title" w
 \texorpdfstring{$$1$}{$2}$0
 endsnippet
 
+snippet col "coloured text"
+\textcolor{$1}{${2:${VISUAL}}}
+endsnippet
+
 # Feynman diagrams
 
 snippet vfeyn "Vertical Feynman Diagram" b
-\begin{figure}[${1:htbp}]
+\begin{figure}[${1:tbph}]
 	\centering
 	\feynmandiagram [vertical=b to a] {
 		$3,
@@ -117,7 +121,11 @@ ${1:node} [particle=\(${2:\phi}\)]$0
 endsnippet
 
 snippet ln "Line"
--- [${1:fermion}${2:, edge label=\(${3:\phi}\)}${4:,  momentum=\(${5:k}\)}]$0
+-- [${1:fermion}${2:,  momentum=\(${3:k}\)}]$0
+endsnippet
+
+snippet ln* "auxillary line"
+-- [draw=none]
 endsnippet
 
 # Citations
@@ -131,7 +139,7 @@ snippet fref "cite a figure" w
 endsnippet
 
 snippet lab "label"
-\label{$1}$0
+\label{${1:eq}:`!p snip.rv=fn[1:-4]`-$2}$0
 endsnippet
 
 snippet EM "emphasise" A
