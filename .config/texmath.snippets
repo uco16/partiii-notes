@@ -30,8 +30,16 @@ endsnippet
 
 # dots
 priority 100
+#snippet ... "dots" A
+#\dots
+#endsnippet
+
 snippet ... "dots" A
 \dots
+endsnippet
+
+snippet +- "plus minus" Aw
+\pm
 endsnippet
 
 snippet // "fraction" "isMath()" eAi
@@ -55,7 +63,7 @@ snippet <= "less than or equal" "isMath()" eA
 \leq
 endsnippet
 
-snippet >= "greater than or equal" "isMath()" eA
+snippet >= "greater than or equal" "isMath()" eAw
 \geq
 endsnippet
 
@@ -86,21 +94,21 @@ endsnippet
 snippet map "Function Definition" b
 \begin{equation}
 	\begin{gathered}
-		${1:f} \colon \\
+		${1:f} \colon \\\\
 		\qquad
 	\end{gathered}
 	\begin{gathered}
-		${2:domain} \\
+		${2:domain} \\\\
 		${4:member}
 	\end{gathered}
 	\quad
 	\begin{gathered}
-		\to \\
+		\to \\\\
 		\mapsto
 	\end{gathered}
 	\quad
 	\begin{gathered}
-		${3:codomain} \\
+		${3:codomain} \\\\
 		${5:image of member}
 	\end{gathered}
 \end{equation}$0
@@ -136,6 +144,10 @@ endsnippet
 
 snippet 'kk(\d)' "labeled momentum" "isMath()" eiAr
 _{\vb{k}_`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet 'pp(\d)' "labeled momentum" "isMath()" eiAr
+_{\vb{p}_`!p snip.rv=match.group(1)`}
 endsnippet
 
 snippet wick "wick contraction" "isMath()" eAw
@@ -182,6 +194,10 @@ snippet ww "wedge product" "isMath()" weA
 \wedge
 endsnippet
 
+snippet bb "box" "isMath()" weA
+\Box
+endsnippet
+
 snippet cc "dot product" "isMath()" Awe
 \cdot
 endsnippet
@@ -219,7 +235,7 @@ snippet rdv "differentiation evaluated" "isMath()" ewA
 endsnippet
 
 snippet rpdv "partial differentiation evaluated" "isMath()" ewA
-\left.\pdv[$3]{${1:${VISUAL}}}{${2:t}}\right\rvert_{$3}}$0
+\left.\pdv[$3]{${1:${VISUAL}}}{${2:t}}\right\rvert_{$3}$0
 endsnippet
 
 snippet dv "differentiation" "isMath()" ewA
@@ -242,9 +258,9 @@ snippet fdv "functional differentiation" "isMath()" ewA
 \frac{\delta ${1:${VISUAL}}}{\delta $2}$0
 endsnippet
 
-snippet g( "single bracket" "isMath()" ewA
-(
-endsnippet
+#snippet g( "single bracket" "isMath()" ewA
+#(
+#endsnippet
 
 # Differentials
 
@@ -351,6 +367,44 @@ else:
 `
 endsnippet
 
+snippet ( "parentheses" iA
+(${1:${VISUAL}})$0
+endsnippet
+
+snippet { "braces" iA
+{${1:${VISUAL}}}$0
+endsnippet
+
+snippet [ "brackets" iA
+[${1:${VISUAL}}]$0
+endsnippet
+
+snippet <> "angular brackets" iA
+\langle ${1:${VISUAL}} \rangle$0
+endsnippet
+
+priority 1
+
+snippet lr( "left( right)" wA
+\left( ${1:${VISUAL}} \right)
+endsnippet
+
+snippet lr| "left| right|" wA
+\left| ${1:${VISUAL}} \right|
+endsnippet
+
+snippet lr{ "left\{ right\}" wA
+\left\\{ ${1:${VISUAL}} \right\\}
+endsnippet
+
+snippet lr[ "left[ right]" wA
+\left[ ${1:${VISUAL}} \right]
+endsnippet
+
+snippet lr< "left< right>" wA
+\left\langle ${1:${VISUAL}} \right\rangle]
+endsnippet
+
 priority 50
 
 snippet abs "absolute value" "isMath()" Aew
@@ -391,6 +445,10 @@ endsnippet
 
 snippet Mat "set of matrices" "isMath()" Awe 
 \text{Mat}_n(F)
+endsnippet
+
+snippet det "determinant" "isMath()" e
+\text{det}($1)
 endsnippet
 
 snippet :: "normal ordering" "isMath()" eiA
@@ -483,6 +541,7 @@ indices = {
   "|": "|",
   ";": ";",
   ",": ",",
+  "'": "'",
 }
 endglobal
 
@@ -520,7 +579,8 @@ endsnippet
 priority 50
 # add greek letters: {\mu}n -> {\mu\nu}
 # add derivatives: {\mu},r -> {\mu,\rho}
-snippet "(\^|_)({.*?)(,|;|\\[a-z]*?|\[|\]|\|)}([a-zA-Z\[\];\|]{1,2})" "multi indices" "isMath()" eiAr
+# added primes
+snippet "(\^|_)({.*?)(,|;|\\[a-z]*?|\[|\]|\|)}([a-zA-Z\[\];\|']{1,2})" "multi indices" "isMath()" eiAr
 `!p
 # check if new thing is a valid index
 # If not, just return the whole match
@@ -613,20 +673,24 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-snippet '(.)([a-zA-Z0-9]|}|\))(\d)' "Auto Index" "isMath()" eAr
+
+priority -100
+snippet '(.)([a-zA-Z]|}|\))(\d)' "Auto Index" "isMath()" eAr
 `!p 
 # The following line prevents \c1 -> \c_1 for simpler-wick
 if match.group(1) == "\\":
   snip.rv=match.group(0)
 else:
-  snip.rv = match.group(1) + match.group(2) + "_" + match.group(3)`
+  snip.rv = match.group(1) + match.group(2) + "^" + match.group(3)`
 endsnippet
 
-#snippet '([a-zA-Z])_(\d\d)' "Auto Multi Index" "isMath()" eAwr
-#`!p snip.rv = match.group(1) + "^{" + match.group(2) + "}"`
-#endsnippet
+priority 50
 
-snippet "([a-zA-Z])(,\.|\.,)" "Vector postfix" "isMath()" eriA
+snippet '([a-zA-Z])_(\d\d)' "Auto Multi Index" "isMath()" eAwr
+`!p snip.rv = match.group(1) + "^{" + match.group(2) + "}"`
+endsnippet
+
+snippet "([a-zA-Z0])(,\.|\.,)" "Vector postfix" "isMath()" eriA
 \vb{`!p snip.rv=match.group(1)`}
 endsnippet
 

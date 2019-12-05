@@ -66,9 +66,9 @@ Let $V$ be a vector space that has a product $*: V \times V \to V$, which is ass
 \end{equation}
 Moreover, the product is distributive over the field
 \begin{equation}
-  Z * (\alpha X + \beta Y) = (\alpha Z*X + \beta Z*Y).
+  Z * (\alpha X + \beta Y) = \alpha Z*X + \beta Z*Y.
 \end{equation}
-Then, we obtain a Lie algebra from the following definition of a Lie bracket
+Then, we obtain a Lie algebra by defining the Lie bracket to be the commutator
 \begin{equation}
   [X, Y] = X*Y - Y*X.
 \end{equation}
@@ -91,15 +91,16 @@ Then any $X \in \mathfrak{g}$ can be written as
 \begin{equation}
   X = X_a T^a \coloneq \sum_{a=1}^n X_a T^a
 \end{equation}
-where $X_a \in F$. Bracket of elements $X, Y \in \mathfrak{g}$ can then be written as
+where $X_a \in F$. The bracket of two Lie algebra elements $X, Y \in \mathfrak{g}$ can then be written as
 \begin{equation}
   [X, Y] = X_a Y_b [T^a, T^b].
 \end{equation}
-Therefore, knowing the brackets of basis elements allows us to construct the full Lie algebra:
+Therefore, knowing the brackets of basis elements allows us to construct the full Lie algebra.
+We write
 \begin{equation}
   [T^a, T^b] = f \indices{^a^b_c} T^c .
 \end{equation}
-The \emph{structure constants} $f \indices{^a^b_c}$ therefore define the Lie algebra, and two Lie algebras are isomorphic if they have the same structure constants.
+The \emph{structure constants} $f \indices{^{ab}_c} \in F$ therefore define the Lie algebra, and two Lie algebras are isomorphic if they have the same structure constants.
 Note however, that structure constants are basis dependent. We will want to find a way to classify Lie algebras that is independent of our choice of basis.
 
 \section{Structure Constants}%
@@ -107,58 +108,60 @@ Note however, that structure constants are basis dependent. We will want to find
 
 Let $f \indices{^a^b_c} \in F$, $a, b, c = 1, \ldots, \dim(\mathfrak{g})$ be structure constants of a Lie algebra $\mathfrak{g}$.
 The axioms of Lie algebras then imply
-\begin{enumerate}
-  \item $\implies f \indices{^a^b_c} = -f \indices{^b^a_c}$
-  \item $\implies f \indices{^a^b_c} f \indices{^c^d_e} + f \indices{^d^a_c} f \indices{^c^b_e} + f \indices{^b^d_c} f \indices{^c^a_e} = 0$
-\end{enumerate}
+\begin{description}
+  \item[Property 1.] $\implies f \indices{^a^b_c} = -f \indices{^b^a_c}$
+  \item[Property 3.] $\implies f \indices{^a^b_c} f \indices{^c^d_e} + f \indices{^d^a_c} f \indices{^c^b_e} + f \indices{^b^d_c} f \indices{^c^a_e} = 0$
+\end{description}
 
 \begin{definition}[isomorphism]
-  Two Lie algebras $\mathfrak{g}$ and $\mathfrak{g}'$ are said to be \emph{isomorphic}, $\mathfrak{g} \simeq \mathfrak{g}'$ if there exists a linear, one-to-one map $f: \mathfrak{g} \to \mathfrak{g}'$ such that
+  Two Lie algebras $\mathfrak{g}$ and $\mathfrak{g}'$ are said to be \emph{isomorphic}, denoted $\mathfrak{g} \simeq \mathfrak{g}'$, if there exists a linear, one-to-one map $f: \mathfrak{g} \to \mathfrak{g}'$ such that $\forall X, Y \in \mathfrak{g}$,
   \begin{equation}
-    [f(X), f(Y)] = f([X, Y]), \qquad \forall X, Y \in \mathfrak{g}.
+    [f(X), f(Y)] = f([X, Y]).
   \end{equation}
 \end{definition}
+We will be interested in classifying Lie algebras \emph{up to isomorphism}.
 
 \begin{definition}[subalgebra]
-  A \emph{subalgebra} $\mathfrak{h} \subset \mathfrak{g}$ is a vector subspace of $\mathfrak{g}$ which is also a Lie algebra.
+  A \emph{subalgebra} $\mathfrak{h} \subset \mathfrak{g}$ is a vector subspace of $\mathfrak{g}$ that is also a Lie algebra.
 \end{definition}
 
 \begin{definition}[ideal]
-  An \emph{ideal} of $\mathfrak{g}$ is a subalgebra $\mathfrak{h}$ of $\mathfrak{g}$ with
+  An \emph{ideal} of $\mathfrak{g}$ is a subalgebra $\mathfrak{h}$ of $\mathfrak{g}$ such that $\forall X \in \mathfrak{g}$ and $\forall Y \in \mathfrak{h}$,
   \begin{equation}
-    [X, Y] \in \mathfrak{h}, \qquad \forall X \in \mathfrak{g},\; Y \in \mathfrak{h}
+    [X, Y] \in \mathfrak{h}.
   \end{equation}
-  The notion of ideal roughly corresponds to the concept of a normal subgroup.
 \end{definition}
+The notion of ideal roughly corresponds to the concept of a normal subgroup.
 
-\begin{example}[trivial algebras]
-  Every Lie algebra $\mathfrak{g}$ has two `trivial' ideals:
+\begin{example}
+  Every Lie algebra $\mathfrak{g}$ has two \emph{`trivial'} ideals:
   \begin{equation}
     \mathfrak{h} = \left\{ 0 \right\} \qquad \text{and} \qquad \mathfrak{h} = \mathfrak{g}.
   \end{equation}
 \end{example}
-\begin{example}[derived algebra]
-  The \emph{derived algebra}
+\begin{example}
+  The \emph{derived algebra} 
+  \begin{equation} 
+    i = [\mathfrak{g}, \mathfrak{g}] \coloneq \text{Span}_F \left\{ [X, Y] \mid X, Y \in \mathfrak{g} \right\} 
+  \end{equation} 
+  is an ideal of $\mathfrak{g}$.
+\end{example}
+\begin{example}
+  The \emph{centre} $\xi(\mathfrak{g})$ of $\mathfrak{g}$, defined by
   \begin{equation}
-    i = [\mathfrak{g}, \mathfrak{g}] \coloneq = \text{Span}_F \left\{ [X, Y] \mid X, Y \in \mathfrak{g} \right\}
+    \xi(\mathfrak{g}) = \left\{ X \in \mathfrak{g} \mid \forall Y \in \mathfrak{g},\; [X, Y] = 0 \right\},
   \end{equation}
   is an ideal of $\mathfrak{g}$.
 \end{example}
-\begin{example}[centre]
-  The \emph{centre} of $\mathfrak{g}$
-  \begin{equation}
-    \xi(\mathfrak{g}) = \left\{ X \in \mathfrak{g} \mid [X, Y] = 0 \quad \forall Y \in \mathfrak{g} \right\}.
-  \end{equation}
-\end{example}
 
-\begin{definition}[abelian]
-  An Abelian Lie algebra is such that all brackets vanish:
+\begin{definition}
+  An \emph{Abelian} Lie algebra is such that all brackets vanish:
   \begin{equation}
     [X, Y] = 0 \qquad \forall X, Y \in \mathfrak{g}
   \end{equation}
 \end{definition}
 
-For an Abelian Lie algebra, the Lie algebra is equal to its own centre $\mathfrak{g} = \xi(\mathfrak{g})$ and the ideal is trivial $i(g) = \left\{ 0 \right\}$.
+For an Abelian Lie algebra, the Lie algebra is equal to its own centre $\mathfrak{g} = \xi(\mathfrak{g})$ and the derived algebra is trivial $i(g) = \left\{ 0 \right\}$.
 
 \begin{definition}[simple]
   A Lie algebra $\mathfrak{g}$ is said to be \emph{simple} if it is non-Abelian and it has no non-trivial ideals.

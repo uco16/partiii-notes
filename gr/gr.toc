@@ -44,3 +44,12 @@
 \contentsline {section}{\numberline {3.7}Coupling Matter}{74}{section.3.7}
 \contentsline {subsection}{\numberline {3.7.1}Maxwell Theory}{74}{subsection.3.7.1}
 \contentsline {subsection}{\numberline {3.7.2}Fluids}{76}{subsection.3.7.2}
+\contentsline {section}{\numberline {3.8}Energy Conservation}{78}{section.3.8}
+\contentsline {chapter}{\numberline {4}When Gravity is Weak}{82}{chapter.4}
+\contentsline {section}{\numberline {4.1}Linearised Theory}{83}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}The Fierz-Pauli Action}{83}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Gauge Symmetry}{84}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}The Newtonian Limit}{85}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Gravitational Waves}{86}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}How to Measure a Gravitational Wave}{88}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Making Waves}{91}{subsection.4.2.2}

@@ -102,8 +102,11 @@ Equivalently, consider the smooth curve $C \colon t \mapsto g(t) \in G$. Then
 This is a very general story that we will meet again when studying gauge theories.
 For matrix Lie groups, we can always define an element of the Lie algebra by a multiplication of the form $g^{-1} \dot g$.
 
-\subsection{The exponential map}%
-\label{sub:the_exponential_map}
+\chapter{Lie Groups from Lie Algebras}%
+\label{cha:lie_groups_from_lie_algebras}
+
+\section{The exponential map}%
+\label{sec:the_exponential_map}
 
 \begin{wrapfigure}{L}{0.25\columnwidth}
   \centering
@@ -124,7 +127,7 @@ To solve \eqref{eq:l8ode}, we define the exponential of a matrix:
 \begin{definition}[]
   The exponential of a matrix $M \in \text{Mat}_n(F)$ is defined to be
   \begin{equation}
-    \text{Exp}(M) \coloneqq \sum_{l =0}^{\infty} \frac{1}{l^!} M^l.
+    \text{Exp}(M) \coloneqq \sum_{l =0}^{\infty} \frac{1}{l^!} M^l \in \text{Mat}_n(F).
   \end{equation}
 \end{definition}
 \begin{claim}
@@ -151,9 +154,3 @@ It must be the case that
   If $X \in \mathscr{L}(SU(N))$, check that $\text{Exp}(t X) \in SU(N)$, $\forall t \in \mathbb{R}$.
 \end{exercise}
 
-\section{Reconstructing \texorpdfstring{$G$}{G} from \texorpdfstring{$\mathscr{L}(G)$}{its Lie Algebra}}%
-\label{sec:reconstructing_g_from_l_g}
-
-\begin{equation}
-  \text{Exp}\colon \mathscr{L}(G) \to G
-\end{equation}

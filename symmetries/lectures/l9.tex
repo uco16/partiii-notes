@@ -1,21 +1,28 @@
 % lecture notes by Umut Özer
 % course: symmetries
 \lhead{Lecture 9: October 31}
-We have the exponential map
+
+\section{Baker-Campell-Hausdorff Identity}%
+\label{sec:baker_campell_hausdorff_identity}
+
+Setting $t = 1$, we have a map
 \begin{equation}
-  \text{Exp}(\mathcal{M}) \coloneqq \sum_{l=0}^\infty \frac{1}{l!}M^l \in \text{Mat}_n(F)
+  \text{Exp}\colon \mathscr{L}(G) \to G.
 \end{equation}
-The exponential map is one-to-one in some neighbourhood of the identity $e\in G$.
-Given $X, Y \in \mathscr{L}(G)$, we can construct $g_X = \text{Exp}(X)$ and $g_Y = \text{Exp}(Y) \in G$ such that
+\begin{claim}
+  The exponential map is one-to-one in some neighbourhood of the identity $e\in G$.
+\end{claim}
+Given elements of the Lie algebra $X, Y \in \mathscr{L}(G)$, we can construct Lie group elements $g_X = \text{Exp}(X) \in G$ and $g_Y = \text{Exp}(Y) \in G$.
+Group multiplication can then be recovered by requiring
 \begin{equation}
-  g_X g_Y = g_Z = \text{Exp}(Z) \in G
+  g_X g_Y = g_Z = \text{Exp}(Z) \in G.
 \end{equation}
 By comparing the left and hight hand side, we get the \emph{Baker-Campbell-Hausdorff} (BCH) formula
 \begin{equation}
   \label{eq:BCH-formula}
   Z = X + Y + \frac{1}{2}[X, Y] + \frac{1}{12}([X, [X, Y]] - [Y, [X, Y]) + \dots,
 \end{equation}
-where $\dots$ reflects the terms that are quartic and higher in the matrices.
+where $(\dots)$ reflects the terms that are quartic and higher in the matrices.
 This series allows us to reconstruct from the bracket of the Lie algebra close to the identity the multiplication law of the group.
 \begin{leftbar}
   \begin{remark}
@@ -23,8 +30,7 @@ This series allows us to reconstruct from the bracket of the Lie algebra close t
     Moreover, this series is not unique since we can always shift around the higher order terms with the Jacobi identity.
   \end{remark}
 \end{leftbar}
-Therefore, $\mathscr{L}(G)$ determines $G$ in some neighbourhood of the identity (where the BCH series converges). More generally, $\text{Exp}$ is not globally one-to-one.
-
+Therefore, $\mathscr{L}(G)$ determines $G$ in some neighbourhood of the identity (where the BCH series converges). More generally, $\text{Exp}$ is not globally one-to-one. In particular,
 \begin{claim}
   The map $\text{Exp}$ is not surjective when $G$ is not connected.
 \end{claim}
@@ -44,10 +50,10 @@ Therefore, $\mathscr{L}(G)$ determines $G$ in some neighbourhood of the identity
   In general, for compact Lie groups $G$, the image of $\mathscr{L}(G)$ under $\text{Exp}$ is the connected component of the identity.
 \end{claim}
 \begin{claim}
-  The exponential map is not injective when $G$ has subgroup $U(1)$.
+  The exponential map is not injective when $G$ has a $U(1)$ subgroup.
 \end{claim}
 \begin{example}[$G = U(1)$]
-  The Lie algebra of $U(1)$ is $\mathscr{L}(U(1)) = \left\{ X \in ix \in \mathbb{C} \mid x \in \mathbb{R} \right\}$. Then $g = \text{Exp}(X) = \exp(ix) \in U(1)$. Lie algebra elements $ix$ and $ix + 2 \pi i$ yield the same group element.
+  The Lie algebra of $U(1)$ is $\mathscr{L}(U(1)) = \left\{ X = ix \in \mathbb{C} \mid x \in \mathbb{R} \right\}$. Then $g = \text{Exp}(X) = \exp(ix) \in U(1)$. Lie algebra elements $ix$ and $ix + 2 \pi i$ yield the same group element.
   The inverse of $\text{Exp}$ is multi-valued so it is not injective.
 \end{example}
 
@@ -91,8 +97,8 @@ This is written as
 where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$.
 %Fig with upper hemisphere S3+ simeq B3 circle with two opposite points marked
 
-\section{Representations}%
-\label{sec:representations}
+\chapter{Representation Theory}%
+\label{cha:representation_theory}
 
 \begin{definition}
   A \emph{representation} of a group $G$ is a map $D \colon G \to \text{Mat}_n(F)$, $n \in \mathbb{N}$, $F = \mathbb{R} \text{ or } \mathbb{C}$, that preserves the structure  of the group. In particular, for all $g_1, g_2 \in G$ we have
@@ -149,7 +155,7 @@ where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$
   \begin{equation}
     d(X) \coloneqq \left.\dv{D(g(t))}{t}\right\rvert_{t=0} \qquad \forall X \in \mathscr{L}(G).
   \end{equation}
-  This provdides a representation of $\mathscr{L}(G)$.
+  This provides a representation of $\mathscr{L}(G)$.
 \end{claim}
 
 

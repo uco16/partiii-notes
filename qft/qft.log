@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.6.20)  24 NOV 2019 01:23
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.6.20)  5 DEC 2019 16:29
  restricted system commands enabled.
  file:line:error style messages enabled.
 **qft.tex
@@ -23,7 +23,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.129 seconds (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+luaotfload | main : initialization completed in 0.114 seconds (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -2077,7 +2077,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen310
 \FrameRule=\dimen311
 \FrameSep=\dimen312
-)) (./qft.aux (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux))
+)) (./qft.aux (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux) (./lectures/l20.aux) (./lectures/l21.aux) (./lectures/l22.aux) (./lectures/l23.aux))
 \openout1 = qft.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -2247,21 +2247,21 @@ LaTeX Font Info:    Font shape `T1/stix2/bx/n' in size <10> not available
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
-] [2])
+] [2] [3])
 \tf@toc=\write6
 
 \openout6 = qft.toc
- [3] (./lectures/l1.tex
+ [4] (./lectures/l1.tex
 LaTeX Font Info:    Font shape `T1/stix2/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/stix2/b/n' tried instead on input line 3.
- [4]
+ [5]
 Chapter 1.
 LaTeX Font Info:    Try loading font information for TS1+stix2 on input line 42.
 (/usr/share/texlive/texmf-dist/tex/latex/stix2/ts1stix2.fd
 File: ts1stix2.fd 2018/04/02 v2.0.0-latex stix2 TS1 font definitions
-) [5
+) [6
 
-] [6]
+] [7]
 Chapter 2.
 
 LaTeX Font Warning: Font shape `LS2/stix2ex/b/n' in size <10> not available
@@ -2323,68 +2323,68 @@ LaTeX Font Warning: Font shape `LS2/stix2tt/b/n' in size <7.5> not available
 LaTeX Font Warning: Font shape `LS2/stix2tt/b/n' in size <6> not available
 (Font)              Font shape `LS2/stix2tt/m/n' tried instead on input line 105.
 
-[7
+[8
 
 ]) (./lectures/l2.tex
 Overfull \hbox (4.2134pt too wide) in paragraph at lines 6--7
 []\T1/stix2/bx/n/10 Ex-am-ple \T1/stix2/m/n/10 (Maxwell's Equa-tions)\T1/stix2/bx/n/10 : []\T1/stix2/m/n/10 The La-grangian which al-lows us to re-cover the charge-free Maxwell
  []
 
-[8] [9]
+[9] [10]
 LaTeX Font Info:    Try loading font information for U+bbold on input line 64.
  (/usr/share/texlive/texmf-dist/tex/latex/bbold/Ubbold.fd)
 
 LaTeX Font Warning: Font shape `U/bbold/m/n' in size <7.5> not available
 (Font)              size <7> substituted on input line 64.
 
-[10] [11] [12]) [13]
+[11] [12] [13]) [14]
 \openout2 = lectures/l3.aux
- (./lectures/l3.tex [14
+ (./lectures/l3.tex [15
 
-] [15]
+] [16]
 Chapter 3.
-[16
+[17
 
-] [17] [18] [19]) [20]
+] [18] [19] [20]) [21]
 \openout2 = lectures/l4.aux
- (./lectures/l4.tex [21
+ (./lectures/l4.tex [22
 
 
 ]
 LaTeX Font Info:    Font shape `T1/stix2/bx/n' in size <12> not available
 (Font)              Font shape `T1/stix2/b/n' tried instead on input line 89.
- [22] [23] [24]) [25]
+ [23] [24] [25]) [26]
 \openout2 = lectures/l5.aux
- (./lectures/l5.tex [26
+ (./lectures/l5.tex [27
 
 
-] [27] [28]) [29]
+] [28] [29]) [30]
 \openout2 = lectures/l6.aux
- (./lectures/l6.tex [30
+ (./lectures/l6.tex [31
 
 
-] [31] [32]) [33]
+] [32] [33]) [34]
 \openout2 = lectures/l7.aux
  (./lectures/l7.tex
 Chapter 4.
-[34
+[35
 
 
 
-] [35] [36]) [37]
+] [36] [37]) [38]
 \openout2 = lectures/l8.aux
  (./lectures/l8.tex (./lectures/l8f1.pdf_tex
-<lectures/l8f1.pdf, id=588, page=1, 216.957pt x 200.63043pt>
+<lectures/l8f1.pdf, id=636, page=1, 216.957pt x 200.63043pt>
 File: lectures/l8f1.pdf Graphic file (type pdf)
 <use lectures/l8f1.pdf, page 1>
 Package luatex.def Info: lectures/l8f1.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 124.53897pt x 115.16872pt.
-<lectures/l8f1.pdf, id=589, page=2, 216.957pt x 200.63043pt>
+<lectures/l8f1.pdf, id=637, page=2, 216.957pt x 200.63043pt>
 File: lectures/l8f1.pdf Graphic file (type pdf)
 <use lectures/l8f1.pdf, page 2>
 Package luatex.def Info: lectures/l8f1.pdf , page2 used on input line 59.
 (luatex.def)             Requested size: 124.53897pt x 115.16872pt.
-<lectures/l8f1.pdf, id=590, page=3, 216.957pt x 200.63043pt>
+<lectures/l8f1.pdf, id=638, page=3, 216.957pt x 200.63043pt>
 File: lectures/l8f1.pdf Graphic file (type pdf)
 <use lectures/l8f1.pdf, page 3>
 Package luatex.def Info: lectures/l8f1.pdf , page3 used on input line 62.
@@ -2394,7 +2394,7 @@ Overfull \hbox (5.23643pt too wide) detected at line 29
 [][] [][] [] [][] [] \LS1/stix2/m/it/10 H[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 t[]\LS1/stix2/m/n/10 /\LS1/stix2/m/it/10 H[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 t[]\LS1/stix2/m/n/10 / = [][] [] [][] [] \LS1/stix2/m/it/10 H[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 t[]\LS1/stix2/m/n/10 /\LS1/stix2/m/it/10 H[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 t[]\LS1/stix2/m/n/10 /\LS1/stix2/m/it/10 :
  []
 
-[38
+[39
 
 
 <./lectures/l8f1.pdf><./lectures/l8f1.pdf><./lectures/l8f1.pdf>]
@@ -2402,14 +2402,14 @@ Overfull \hbox (4.70996pt too wide) in paragraph at lines 96--117
 [][]   [] 
  []
 
-[39] [40]) [41]
+[40] [41]) [42]
 \openout2 = lectures/l9.aux
- (./lectures/l9.tex [42
+ (./lectures/l9.tex [43
 
 
-] [43] [44]) [45]
+] [44] [45]) [46]
 \openout2 = lectures/l10.aux
- (./lectures/l10.tex [46
+ (./lectures/l10.tex [47
 
 
 ]
@@ -2417,103 +2417,124 @@ Overfull \hbox (1.56998pt too wide) in paragraph at lines 90--118
 [][] [] 
  []
 
-[47] [48]) [49]
+[48] [49]) [50]
 \openout2 = lectures/l11.aux
- (./lectures/l11.tex [50
+ (./lectures/l11.tex [51
 
 
-] [51] [52] [53]) [54]
+] [52] [53] [54]) [55]
 \openout2 = lectures/l12.aux
- (./lectures/l12.tex [55
+ (./lectures/l12.tex [56
 
 
-] [56] [57] [58]) [59]
+] [57] [58] [59]) [60]
 \openout2 = lectures/l13.aux
- (./lectures/l13.tex [60
+ (./lectures/l13.tex [61
 
 
-] [61] [62]
+] [62] [63]
 Chapter 5.
 
 Overfull \hbox (9.37692pt too wide) in paragraph at lines 114--116
 \T1/stix2/m/n/10 form as $\LS1/stix2/m/it/10 \LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 / \LS1/stix2sf/m/n/10  \LS1/stix2/m/it/10 []\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 / = \LS1/stix2/m/it/10 \LS1/stix2/m/n/10 .[]\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 /$\T1/stix2/m/n/10 . Most par-ti-cles (but not $\LS1/stix2/m/it/10 $\T1/stix2/m/n/10 ) have some in-trin-sic an-gu-lar momentum---
  []
 
-[63
+[64
 
-]) [64]
+]) [65]
 \openout2 = lectures/l14.aux
- (./lectures/l14.tex [65
+ (./lectures/l14.tex [66
 
 
-] [66] [67] [68]) [69]
+] [67] [68] [69]) [70]
 \openout2 = lectures/l15.aux
- (./lectures/l15.tex [70
+ (./lectures/l15.tex [71
 
 
-] [71]) [72]
+] [72]) [73]
 \openout2 = lectures/l16.aux
- (./lectures/l16.tex [73
+ (./lectures/l16.tex [74
 
 
-] [74] [75]) [76] [77]
+] [75] [76]) [77] [78]
 \openout2 = lectures/l17.aux
- (./lectures/l17.tex [78
+ (./lectures/l17.tex [79
 
 
-] [79] [80] [81] [82]) [83]
+] [80] [81] [82] [83]) [84]
 \openout2 = lectures/l18.aux
- (./lectures/l18.tex [84
+ (./lectures/l18.tex [85
 
 
-] [85] [86]) [87]
+] [86] [87]) [88]
 \openout2 = lectures/l19.aux
  (./lectures/l19.tex (./lectures/l19f1.pdf_tex
-<lectures/l19f1.pdf, id=1201, page=1, 181.52867pt x 151.26146pt>
+<lectures/l19f1.pdf, id=1248, page=1, 181.52867pt x 151.26146pt>
 File: lectures/l19f1.pdf Graphic file (type pdf)
 <use lectures/l19f1.pdf, page 1>
 Package luatex.def Info: lectures/l19f1.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 166.04774pt x 138.37054pt.
-<lectures/l19f1.pdf, id=1202, page=2, 181.52867pt x 151.26146pt>
+<lectures/l19f1.pdf, id=1249, page=2, 181.52867pt x 151.26146pt>
 File: lectures/l19f1.pdf Graphic file (type pdf)
 <use lectures/l19f1.pdf, page 2>
 Package luatex.def Info: lectures/l19f1.pdf , page2 used on input line 58.
 (luatex.def)             Requested size: 166.04774pt x 138.37054pt.
-<lectures/l19f1.pdf, id=1203, page=3, 181.52867pt x 151.26146pt>
+<lectures/l19f1.pdf, id=1250, page=3, 181.52867pt x 151.26146pt>
 File: lectures/l19f1.pdf Graphic file (type pdf)
 <use lectures/l19f1.pdf, page 3>
 Package luatex.def Info: lectures/l19f1.pdf , page3 used on input line 60.
 (luatex.def)             Requested size: 166.04774pt x 138.37054pt.
-) [88
+) [89
 
 
-] [89<./lectures/l19f1.pdf><./lectures/l19f1.pdf><./lectures/l19f1.pdf>]
+] [90<./lectures/l19f1.pdf><./lectures/l19f1.pdf><./lectures/l19f1.pdf>]
 Chapter 6.
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 62.
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [90
+) [91
 
 ] (./lectures/l19f2.pdf_tex
-<lectures/l19f2.pdf, id=1240, page=1, 257.37889pt x 257.37889pt>
+<lectures/l19f2.pdf, id=1288, page=1, 257.37889pt x 257.37889pt>
 File: lectures/l19f2.pdf Graphic file (type pdf)
 <use lectures/l19f2.pdf, page 1>
 Package luatex.def Info: lectures/l19f2.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 166.04774pt x 166.04933pt.
-) [91]
+) [92]
 Overfull \hbox (5.92805pt too wide) in paragraph at lines 168--170
 []\T1/stix2/m/n/10 Start with $\LS1/stix2/m/it/10 A[]$ \T1/stix2/m/n/10 such that $\LS1/stix2/m/it/10 )[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 A[]\LS1/stix2/m/n/10 /[] = \LS1/stix2/m/it/10 f\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 /$\T1/stix2/m/n/10 . Then choose $\LS1/stix2/m/it/10 A[] \LS1/stix2/m/n/10 = .\LS1/stix2/m/it/10 A[]\LS1/stix2/m/n/10 /[] + \LS1/stix2/m/it/10 )[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 /$\T1/stix2/m/n/10 , where $\LS1/stix2/m/it/10 )[])[]\LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 \LS1/stix2/m/n/10 .\LS1/stix2/m/it/10 x\LS1/stix2/m/n/10 // =
  []
 
-[92<./lectures/l19f2.pdf>]) [93] [94
+[93<./lectures/l19f2.pdf>]) [94]
+\openout2 = lectures/l20.aux
+ (./lectures/l20.tex [95
+
+
+] [96] [97]) [98]
+\openout2 = lectures/l21.aux
+ (./lectures/l21.tex [99
+
+
+] [100]) [101]
+\openout2 = lectures/l22.aux
+ (./lectures/l22.tex [102
+
+
+] [103] [104]) [105]
+\openout2 = lectures/l23.aux
+ (./lectures/l23.tex [106
+
+
+
+] [107]) [108] [109
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 58.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 58.
- (./qft.aux (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 58.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 58.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
+ (./qft.aux (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux) (./lectures/l20.aux) (./lectures/l21.aux) (./lectures/l22.aux) (./lectures/l23.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 62.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2522,19 +2543,19 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 46518 strings out of 494412
- 125171,1144653 words of node,token memory allocated
- 30299 words of node memory still in use:
-   75 hlist, 11 vlist, 4 rule, 34 math, 81 glue, 3506 kern, 214 glyph, 2314 attribute, 67 glue_spec, 2314 attribute_list, 1 write nodes
-   avail lists: 1:12,2:9906,3:1986,4:156,5:251,6:82,7:5719,8:188,9:1609,10:15,11:214
- 47953 multiletter control sequences out of 65536+600000
- 239 fonts using 21863743 bytes
+ 46958 strings out of 494412
+ 156465,1144653 words of node,token memory allocated
+ 34135 words of node memory still in use:
+   75 hlist, 11 vlist, 4 rule, 34 math, 82 glue, 3993 kern, 220 glyph, 2652 attribute, 67 glue_spec, 2652 attribute_list, 1 write nodes
+   avail lists: 1:20,2:14296,3:3571,4:165,5:262,6:85,7:6814,8:188,9:1609,10:15,11:214
+ 48160 multiletter control sequences out of 65536+600000
+ 240 fonts using 21946455 bytes
  76i,32n,130p,860b,1931s stack positions out of 5000i,500n,10000p,200000b,100000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathcal.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathex.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathsf.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on qft.pdf (95 pages, 1097649 bytes).
+Output written on qft.pdf (110 pages, 1178074 bytes).
 
-PDF statistics: 1540 PDF objects out of 1728 (max. 8388607)
- 1411 compressed objects within 15 object streams
- 719 named destinations out of 1000 (max. 131072)
- 517 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1788 PDF objects out of 2073 (max. 8388607)
+ 1642 compressed objects within 17 object streams
+ 831 named destinations out of 1000 (max. 131072)
+ 629 words of extra memory for PDF output out of 10000 (max. 100000000)
 

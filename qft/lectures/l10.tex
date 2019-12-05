@@ -169,24 +169,24 @@ We now refine the Feynman rules to compute $i \mathcal{M}$:
   \item Integrate over momentum $k$ flowing in any closed loop as $\int \bdd[4]{k}$.
 \end{enumerate}
 
+\begin{figure}[htbp]
+  \centering
+  \feynmandiagram [horizontal=a to b] {
+    i1 -- [scalar, momentum=\(p_1\)] a -- [fermion, momentum=\(k + p_1'\)] b -- [scalar, momentum=$p_1'$] f1,
+    i2 -- [scalar,  momentum=\(p_2\)] c -- [anti fermion, rmomentum'=\(k - p_2'\)] d -- [scalar, momentum=$p_2'$] f2,
+    b -- [fermion, momentum=$k$] d,
+    c -- [fermion, momentum=$k + p_1' -p_1$] a,
+  };
+  \caption{}
+  \label{fig:abc}
+\end{figure}
+
 \begin{example}[$\phi \phi \to \phi \phi$]
   %Diagram
-  \begin{figure}[htbp]
-    \centering
-    \feynmandiagram [horizontal=a to b] {
-      i1 -- [scalar, momentum=\(p_1\)] a -- [fermion, momentum=\(k + p_1'\)] b -- [scalar, momentum=$p_1'$] f1,
-      i2 -- [scalar,  momentum=\(p_2\)] c -- [anti fermion, rmomentum'=\(k - p_2'\)] d -- [scalar, momentum=$p_2'$] f2,
-      b -- [fermion, momentum=$k$] d,
-      c -- [fermion, momentum=$k + p_1' -p_1$] a,
-    };
-    \caption{}
-    \label{fig:}
-  \end{figure}
-  The diagram in Figure \ref{fig:} gives
+  The diagram in Figure \ref{fig:abc} gives
   \begin{equation}
     i \mathcal{M} = \int \frac{(-ig)^4 \bdd[4]{k} i^4}{(k^2 - \mu^2 + i\varepsilon) ((k + p'_2)^2 - \mu^2 + i \varepsilon) ((k + p_1' - p_1)^2 - \mu^2 + i\varepsilon)((k+p_1')^2 - \mu^2 + i\varepsilon)}.
   \end{equation}
   Amazingly, we can do these integrals!
   All the one-loop diagrams in four dimensions have been done, however, the two-loop diagrams are still subject to active research.
-  
 \end{example}

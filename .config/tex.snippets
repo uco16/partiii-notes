@@ -2,6 +2,16 @@ extends texmath
 
 # --- Custom Snippets ---
 
+snippet ga "gathered" b
+\begin{gathered}
+  ${1:${VISUAL}}
+\end{gathered}
+endsnippet
+
+snippet use "usepackage" b
+\usepackage{$1}
+endsnippet
+
 snippet ß "backslash" Ai
 \
 endsnippet
@@ -85,10 +95,18 @@ snippet ink "Inkscape Figure" b
 endsnippet
 
 snippet tex "mathmode in section title" w
-\texorpdfstring{$$1$}{$2}$0
+\texorpdfstring{$$1$}{${2:${VISUAL}}}$0
 endsnippet
 
-snippet col "coloured text"
+snippet qu "quad"
+\quad
+endsnippet
+
+snippet qqu "quad"
+\qquad
+endsnippet
+
+snippet col "coloured text" w
 \textcolor{$1}{${2:${VISUAL}}}
 endsnippet
 
@@ -146,6 +164,6 @@ snippet EM "emphasise" A
 \emph{${1:${VISUAL}}}$0
 endsnippet
 
-snippet TT "monospace" Aw
+snippet tt "monospace" w
 \texttt{$1}$0
 endsnippet

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.6.20)  22 NOV 2019 18:36
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.6.20)  4 DEC 2019 12:52
  restricted system commands enabled.
  file:line:error style messages enabled.
 **gr.tex
@@ -23,7 +23,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.136 seconds (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+luaotfload | main : initialization completed in 0.115 seconds (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -2004,7 +2004,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip63
 )
-Package hyperref Info: Option `unicode' set `true' on input line 47.
+Package hyperref Info: Option `unicode' set `true' on input line 48.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2018/02/06 v6.86b Hyperref: PDF Unicode definition (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
@@ -2012,7 +2012,7 @@ Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-pdfdoc.def
 File: se-pdfdoc.def 2016/05/16 v1.11 stringenc: PDFDocEncoding
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 47.
+Package hyperref Info: Option `colorlinks' set `true' on input line 48.
  (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 Package: bookmark 2016/05/17 v1.26 PDF bookmarks (HO)
  (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def
@@ -2077,7 +2077,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen310
 \FrameRule=\dimen311
 \FrameSep=\dimen312
-)) (./gr.aux (./lectures/l1.aux) (./lectures/l2.aux) (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux))
+)) (./gr.aux (./lectures/l1.aux) (./lectures/l2.aux) (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux) (./lectures/l20.aux) (./lectures/l21.aux) (./lectures/l22.aux))
 \openout1 = gr.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -2263,7 +2263,7 @@ LaTeX Font Info:    Try loading font information for U+bbold on input line 16.
 LaTeX Font Warning: Font shape `U/bbold/m/n' in size <7.5> not available
 (Font)              size <7> substituted on input line 16.
 
-<lectures/F1.pdf, id=171, 388.93045pt x 311.56691pt>
+<lectures/F1.pdf, id=198, 388.93045pt x 311.56691pt>
 File: lectures/F1.pdf Graphic file (type pdf)
 <use lectures/F1.pdf>
 Package luatex.def Info: lectures/F1.pdf  used on input line 42.
@@ -2272,42 +2272,42 @@ Package luatex.def Info: lectures/F1.pdf  used on input line 42.
 
 
 ] (./lectures/F2.pdf_tex
-<lectures/F2.pdf, id=190, page=1, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=217, page=1, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 1>
 Package luatex.def Info: lectures/F2.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=191, page=2, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=218, page=2, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 2>
 Package luatex.def Info: lectures/F2.pdf , page2 used on input line 58.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=192, page=3, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=219, page=3, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 3>
 Package luatex.def Info: lectures/F2.pdf , page3 used on input line 60.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=193, page=4, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=220, page=4, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 4>
 Package luatex.def Info: lectures/F2.pdf , page4 used on input line 62.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=194, page=5, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=221, page=5, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 5>
 Package luatex.def Info: lectures/F2.pdf , page5 used on input line 64.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=195, page=6, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=222, page=6, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 6>
 Package luatex.def Info: lectures/F2.pdf , page6 used on input line 71.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=196, page=7, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=223, page=7, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 7>
 Package luatex.def Info: lectures/F2.pdf , page7 used on input line 74.
 (luatex.def)             Requested size: 290.58673pt x 145.34663pt.
-<lectures/F2.pdf, id=197, page=8, 549.68704pt x 274.93683pt>
+<lectures/F2.pdf, id=224, page=8, 549.68704pt x 274.93683pt>
 File: lectures/F2.pdf Graphic file (type pdf)
 <use lectures/F2.pdf, page 8>
 Package luatex.def Info: lectures/F2.pdf , page8 used on input line 77.
@@ -2326,27 +2326,27 @@ LaTeX Font Info:    Font shape `T1/stix2/bx/n' in size <12> not available
 
 
 ] (./lectures/liediffvf.pdf_tex
-<lectures/liediffvf.pdf, id=284, page=1, 244.60526pt x 101.2592pt>
+<lectures/liediffvf.pdf, id=311, page=1, 244.60526pt x 101.2592pt>
 File: lectures/liediffvf.pdf Graphic file (type pdf)
 <use lectures/liediffvf.pdf, page 1>
 Package luatex.def Info: lectures/liediffvf.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 352.85939pt x 146.07887pt.
-<lectures/liediffvf.pdf, id=285, page=2, 244.60526pt x 101.2592pt>
+<lectures/liediffvf.pdf, id=312, page=2, 244.60526pt x 101.2592pt>
 File: lectures/liediffvf.pdf Graphic file (type pdf)
 <use lectures/liediffvf.pdf, page 2>
 Package luatex.def Info: lectures/liediffvf.pdf , page2 used on input line 58.
 (luatex.def)             Requested size: 352.85939pt x 146.07887pt.
-<lectures/liediffvf.pdf, id=286, page=3, 244.60526pt x 101.2592pt>
+<lectures/liediffvf.pdf, id=313, page=3, 244.60526pt x 101.2592pt>
 File: lectures/liediffvf.pdf Graphic file (type pdf)
 <use lectures/liediffvf.pdf, page 3>
 Package luatex.def Info: lectures/liediffvf.pdf , page3 used on input line 61.
 (luatex.def)             Requested size: 352.85939pt x 146.07887pt.
-<lectures/liediffvf.pdf, id=287, page=4, 244.60526pt x 101.2592pt>
+<lectures/liediffvf.pdf, id=314, page=4, 244.60526pt x 101.2592pt>
 File: lectures/liediffvf.pdf Graphic file (type pdf)
 <use lectures/liediffvf.pdf, page 4>
 Package luatex.def Info: lectures/liediffvf.pdf , page4 used on input line 65.
 (luatex.def)             Requested size: 352.85939pt x 146.07887pt.
-<lectures/liediffvf.pdf, id=288, page=5, 244.60526pt x 101.2592pt>
+<lectures/liediffvf.pdf, id=315, page=5, 244.60526pt x 101.2592pt>
 File: lectures/liediffvf.pdf Graphic file (type pdf)
 <use lectures/liediffvf.pdf, page 5>
 Package luatex.def Info: lectures/liediffvf.pdf , page5 used on input line 67.
@@ -2432,7 +2432,7 @@ LaTeX Font Warning: Font shape `LS2/stix2tt/b/n' in size <6> not available
 
 
 ] (./lectures/mfdwboundary.pdf_tex
-<lectures/mfdwboundary.pdf, id=412, page=1, 438.60454pt x 348.22874pt>
+<lectures/mfdwboundary.pdf, id=439, page=1, 438.60454pt x 348.22874pt>
 File: lectures/mfdwboundary.pdf Graphic file (type pdf)
 <use lectures/mfdwboundary.pdf, page 1>
 Package luatex.def Info: lectures/mfdwboundary.pdf , page1 used on input line 56.
@@ -2448,7 +2448,7 @@ Chapter 2.
 ]
 Missing character: There is no ⁰ (U+2070) in font stix2-mathrm!
  [25] (./lectures/l7f1.pdf_tex
-<lectures/l7f1.pdf, id=454, page=1, 106.89395pt x 154.75247pt>
+<lectures/l7f1.pdf, id=481, page=1, 106.89395pt x 154.75247pt>
 File: lectures/l7f1.pdf Graphic file (type pdf)
 <use lectures/l7f1.pdf, page 1>
 Package luatex.def Info: lectures/l7f1.pdf , page1 used on input line 56.
@@ -2469,28 +2469,28 @@ Package luatex.def Info: lectures/l7f1.pdf , page1 used on input line 56.
 
 
 ] (./lectures/l10f1.pdf_tex
-<lectures/l10f1.pdf, id=615, page=1, 301.80046pt x 196.28102pt>
+<lectures/l10f1.pdf, id=642, page=1, 301.80046pt x 196.28102pt>
 File: lectures/l10f1.pdf Graphic file (type pdf)
 <use lectures/l10f1.pdf, page 1>
 Package luatex.def Info: lectures/l10f1.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 166.04774pt x 107.99083pt.
-<lectures/l10f1.pdf, id=616, page=2, 301.80046pt x 196.28102pt>
+<lectures/l10f1.pdf, id=643, page=2, 301.80046pt x 196.28102pt>
 File: lectures/l10f1.pdf Graphic file (type pdf)
 <use lectures/l10f1.pdf, page 2>
 Package luatex.def Info: lectures/l10f1.pdf , page2 used on input line 59.
 (luatex.def)             Requested size: 166.04774pt x 107.99083pt.
-<lectures/l10f1.pdf, id=617, page=3, 301.80046pt x 196.28102pt>
+<lectures/l10f1.pdf, id=644, page=3, 301.80046pt x 196.28102pt>
 File: lectures/l10f1.pdf Graphic file (type pdf)
 <use lectures/l10f1.pdf, page 3>
 Package luatex.def Info: lectures/l10f1.pdf , page3 used on input line 62.
 (luatex.def)             Requested size: 166.04774pt x 107.99083pt.
 ) [38<./lectures/l10f1.pdf><./lectures/l10f1.pdf><./lectures/l10f1.pdf>] (./lectures/l10f2.pdf_tex
-<lectures/l10f2.pdf, id=636, page=1, 285.55135pt x 148.80278pt>
+<lectures/l10f2.pdf, id=663, page=1, 285.55135pt x 148.80278pt>
 File: lectures/l10f2.pdf Graphic file (type pdf)
 <use lectures/l10f2.pdf, page 1>
 Package luatex.def Info: lectures/l10f2.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 166.04774pt x 86.52818pt.
-<lectures/l10f2.pdf, id=637, page=2, 285.55135pt x 148.80278pt>
+<lectures/l10f2.pdf, id=664, page=2, 285.55135pt x 148.80278pt>
 File: lectures/l10f2.pdf Graphic file (type pdf)
 <use lectures/l10f2.pdf, page 2>
 Package luatex.def Info: lectures/l10f2.pdf , page2 used on input line 60.
@@ -2498,7 +2498,7 @@ Package luatex.def Info: lectures/l10f2.pdf , page2 used on input line 60.
 ) [39]) [40<./lectures/l10f2.pdf><./lectures/l10f2.pdf>]
 \openout2 = lectures/l11.aux
  (./lectures/l11.tex (./lectures/l11f1.pdf_tex
-<lectures/l11f1.pdf, id=658, page=1, 240.81609pt x 200.72513pt>
+<lectures/l11f1.pdf, id=685, page=1, 240.81609pt x 200.72513pt>
 File: lectures/l11f1.pdf Graphic file (type pdf)
 <use lectures/l11f1.pdf, page 1>
 Package luatex.def Info: lectures/l11f1.pdf , page1 used on input line 56.
@@ -2507,7 +2507,7 @@ Package luatex.def Info: lectures/l11f1.pdf , page1 used on input line 56.
 
 
 <./lectures/l11f1.pdf>] [42] (./lectures/l11f2.pdf_tex
-<lectures/l11f2.pdf, id=689, page=1, 399.12602pt x 258.7014pt>
+<lectures/l11f2.pdf, id=716, page=1, 399.12602pt x 258.7014pt>
 File: lectures/l11f2.pdf Graphic file (type pdf)
 <use lectures/l11f2.pdf, page 1>
 Package luatex.def Info: lectures/l11f2.pdf , page1 used on input line 56.
@@ -2536,7 +2536,7 @@ Chapter 3.
 
 
 ] [56] [57]
-<lectures/angmombar.png, id=864, 83.19647pt x 49.72375pt>
+<lectures/angmombar.png, id=891, 83.19647pt x 49.72375pt>
 File: lectures/angmombar.png Graphic file (type png)
 <use lectures/angmombar.png>
 Package luatex.def Info: lectures/angmombar.png  used on input line 156.
@@ -2551,13 +2551,13 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 
 ]
-<lectures/angmombar2.png, id=904, 92.06369pt x 89.17903pt>
+<lectures/angmombar2.png, id=931, 92.06369pt x 89.17903pt>
 File: lectures/angmombar2.png Graphic file (type png)
 <use lectures/angmombar2.png>
 Package luatex.def Info: lectures/angmombar2.png  used on input line 68.
 (luatex.def)             Requested size: 207.56285pt x 201.06053pt.
  [61<./lectures/angmombar2.png>]
-<lectures/angmombar3.png, id=914, 214.45103pt x 128.17024pt>
+<lectures/angmombar3.png, id=941, 214.45103pt x 128.17024pt>
 File: lectures/angmombar3.png Graphic file (type png)
 <use lectures/angmombar3.png>
 Package luatex.def Info: lectures/angmombar3.png  used on input line 88.
@@ -2573,84 +2573,84 @@ Package luatex.def Info: lectures/angmombar3.png  used on input line 88.
 
 
 ] (./lectures/l17f1.pdf_tex
-<lectures/l17f1.pdf, id=998, page=1, 153.42001pt x 137.22801pt>
+<lectures/l17f1.pdf, id=1026, page=1, 153.42001pt x 137.22801pt>
 File: lectures/l17f1.pdf Graphic file (type pdf)
 <use lectures/l17f1.pdf, page 1>
 Package luatex.def Info: lectures/l17f1.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 186.8053pt x 167.10384pt.
 ) (./lectures/l17f2.pdf_tex
-<lectures/l17f2.pdf, id=999, page=1, 172.43866pt x 158.87729pt>
+<lectures/l17f2.pdf, id=1027, page=1, 172.43866pt x 158.87729pt>
 File: lectures/l17f2.pdf Graphic file (type pdf)
 <use lectures/l17f2.pdf, page 1>
 Package luatex.def Info: lectures/l17f2.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 186.8053pt x 172.11339pt.
-<lectures/l17f2.pdf, id=1000, page=2, 172.43866pt x 158.87729pt>
+<lectures/l17f2.pdf, id=1028, page=2, 172.43866pt x 158.87729pt>
 File: lectures/l17f2.pdf Graphic file (type pdf)
 <use lectures/l17f2.pdf, page 2>
 Package luatex.def Info: lectures/l17f2.pdf , page2 used on input line 65.
 (luatex.def)             Requested size: 186.8053pt x 172.11339pt.
 ) [68<./lectures/l17f1.pdf><./lectures/l17f2.pdf><./lectures/l17f2.pdf>] (./lectures/l17f3.pdf_tex
-<lectures/l17f3.pdf, id=1016, page=1, 347.35837pt x 347.35843pt>
+<lectures/l17f3.pdf, id=1044, page=1, 347.35837pt x 347.35843pt>
 File: lectures/l17f3.pdf Graphic file (type pdf)
 <use lectures/l17f3.pdf, page 1>
 Package luatex.def Info: lectures/l17f3.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 168.12363pt x 168.12941pt.
 ) (./lectures/l17f4.pdf_tex
-<lectures/l17f4.pdf, id=1017, page=1, 281.622pt x 388.48509pt>
+<lectures/l17f4.pdf, id=1045, page=1, 281.622pt x 388.48509pt>
 File: lectures/l17f4.pdf Graphic file (type pdf)
 <use lectures/l17f4.pdf, page 1>
 Package luatex.def Info: lectures/l17f4.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 121.4223pt x 167.49585pt.
-<lectures/l17f4.pdf, id=1018, page=2, 281.622pt x 388.48509pt>
+<lectures/l17f4.pdf, id=1046, page=2, 281.622pt x 388.48509pt>
 File: lectures/l17f4.pdf Graphic file (type pdf)
 <use lectures/l17f4.pdf, page 2>
 Package luatex.def Info: lectures/l17f4.pdf , page2 used on input line 62.
 (luatex.def)             Requested size: 121.4223pt x 167.49585pt.
-<lectures/l17f4.pdf, id=1019, page=3, 281.622pt x 388.48509pt>
+<lectures/l17f4.pdf, id=1047, page=3, 281.622pt x 388.48509pt>
 File: lectures/l17f4.pdf Graphic file (type pdf)
 <use lectures/l17f4.pdf, page 3>
 Package luatex.def Info: lectures/l17f4.pdf , page3 used on input line 64.
 (luatex.def)             Requested size: 121.4223pt x 167.49585pt.
 ) [69<./lectures/l17f3.pdf><./lectures/l17f4.pdf><./lectures/l17f4.pdf><./lectures/l17f4.pdf>] (./lectures/l17f5.pdf_tex
-<lectures/l17f5.pdf, id=1053, page=1, 465.32588pt x 300.27582pt>
+<lectures/l17f5.pdf, id=1082, page=1, 465.32588pt x 300.27582pt>
 File: lectures/l17f5.pdf Graphic file (type pdf)
 <use lectures/l17f5.pdf, page 1>
 Package luatex.def Info: lectures/l17f5.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 207.56285pt x 133.94075pt.
 ) (./lectures/l17f6.pdf_tex
-<lectures/l17f6.pdf, id=1055, page=1, 242.18037pt x 242.18037pt>
+<lectures/l17f6.pdf, id=1084, page=1, 242.18037pt x 242.18037pt>
 File: lectures/l17f6.pdf Graphic file (type pdf)
 <use lectures/l17f6.pdf, page 1>
 Package luatex.def Info: lectures/l17f6.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
-<lectures/l17f6.pdf, id=1056, page=2, 242.18037pt x 242.18037pt>
+<lectures/l17f6.pdf, id=1085, page=2, 242.18037pt x 242.18037pt>
 File: lectures/l17f6.pdf Graphic file (type pdf)
 <use lectures/l17f6.pdf, page 2>
 Package luatex.def Info: lectures/l17f6.pdf , page2 used on input line 58.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
 ) (./lectures/l17f7.pdf_tex
-<lectures/l17f7.pdf, id=1057, page=1, 242.18037pt x 242.18037pt>
+<lectures/l17f7.pdf, id=1086, page=1, 242.18037pt x 242.18037pt>
 File: lectures/l17f7.pdf Graphic file (type pdf)
 <use lectures/l17f7.pdf, page 1>
 Package luatex.def Info: lectures/l17f7.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
-<lectures/l17f7.pdf, id=1058, page=2, 242.18037pt x 242.18037pt>
+<lectures/l17f7.pdf, id=1087, page=2, 242.18037pt x 242.18037pt>
 File: lectures/l17f7.pdf Graphic file (type pdf)
 <use lectures/l17f7.pdf, page 2>
 Package luatex.def Info: lectures/l17f7.pdf , page2 used on input line 58.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
-<lectures/l17f7.pdf, id=1059, page=3, 242.18037pt x 242.18037pt>
+<lectures/l17f7.pdf, id=1088, page=3, 242.18037pt x 242.18037pt>
 File: lectures/l17f7.pdf Graphic file (type pdf)
 <use lectures/l17f7.pdf, page 3>
 Package luatex.def Info: lectures/l17f7.pdf , page3 used on input line 60.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
 ) (./lectures/l17f8.pdf_tex
-<lectures/l17f8.pdf, id=1060, page=1, 242.18037pt x 242.18037pt>
+<lectures/l17f8.pdf, id=1089, page=1, 242.18037pt x 242.18037pt>
 File: lectures/l17f8.pdf Graphic file (type pdf)
 <use lectures/l17f8.pdf, page 1>
 Package luatex.def Info: lectures/l17f8.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 123.29216pt x 123.28862pt.
-<lectures/l17f8.pdf, id=1061, page=2, 242.18037pt x 242.18037pt>
+<lectures/l17f8.pdf, id=1090, page=2, 242.18037pt x 242.18037pt>
 File: lectures/l17f8.pdf Graphic file (type pdf)
 <use lectures/l17f8.pdf, page 2>
 Package luatex.def Info: lectures/l17f8.pdf , page2 used on input line 61.
@@ -2658,23 +2658,23 @@ Package luatex.def Info: lectures/l17f8.pdf , page2 used on input line 61.
 ) [70] [71<./lectures/l17f5.pdf><./lectures/l17f6.pdf><./lectures/l17f6.pdf><./lectures/l17f7.pdf><./lectures/l17f7.pdf><./lectures/l17f7.pdf><./lectures/l17f8.pdf><./lectures/l17f8.pdf>]) [72]
 \openout2 = lectures/l18.aux
  (./lectures/l18.tex (./lectures/l18f1.pdf_tex
-<lectures/l18f1.pdf, id=1125, page=1, 372.72244pt x 243.40546pt>
+<lectures/l18f1.pdf, id=1153, page=1, 372.72244pt x 243.40546pt>
 File: lectures/l18f1.pdf Graphic file (type pdf)
 <use lectures/l18f1.pdf, page 1>
 Package luatex.def Info: lectures/l18f1.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 207.56285pt x 135.54845pt.
-<lectures/l18f1.pdf, id=1126, page=2, 372.72244pt x 243.40546pt>
+<lectures/l18f1.pdf, id=1154, page=2, 372.72244pt x 243.40546pt>
 File: lectures/l18f1.pdf Graphic file (type pdf)
 <use lectures/l18f1.pdf, page 2>
 Package luatex.def Info: lectures/l18f1.pdf , page2 used on input line 63.
 (luatex.def)             Requested size: 207.56285pt x 135.54845pt.
-<lectures/l18f1.pdf, id=1127, page=3, 372.72244pt x 243.40546pt>
+<lectures/l18f1.pdf, id=1155, page=3, 372.72244pt x 243.40546pt>
 File: lectures/l18f1.pdf Graphic file (type pdf)
 <use lectures/l18f1.pdf, page 3>
 Package luatex.def Info: lectures/l18f1.pdf , page3 used on input line 65.
 (luatex.def)             Requested size: 207.56285pt x 135.54845pt.
 ) (./lectures/l18f2.pdf_tex
-<lectures/l18f2.pdf, id=1129, page=1, 483.00111pt x 256.9357pt>
+<lectures/l18f2.pdf, id=1157, page=1, 483.00111pt x 256.9357pt>
 File: lectures/l18f2.pdf Graphic file (type pdf)
 <use lectures/l18f2.pdf, page 1>
 Package luatex.def Info: lectures/l18f2.pdf , page1 used on input line 56.
@@ -2683,11 +2683,106 @@ Package luatex.def Info: lectures/l18f2.pdf , page1 used on input line 56.
 
 
 <./lectures/l18f1.pdf><./lectures/l18f1.pdf><./lectures/l18f1.pdf>] [74<./lectures/l18f2.pdf>] [75] [76]) [77]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
- (./gr.aux (./lectures/l1.aux) (./lectures/l2.aux) (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 37.
+\openout2 = lectures/l19.aux
+ (./lectures/l19.tex (./lectures/l19f1.pdf_tex
+<lectures/l19f1.pdf, id=1217, page=1, 224.55923pt x 189.44273pt>
+File: lectures/l19f1.pdf Graphic file (type pdf)
+<use lectures/l19f1.pdf, page 1>
+Package luatex.def Info: lectures/l19f1.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 140.08713pt.
+<lectures/l19f1.pdf, id=1218, page=2, 224.55923pt x 189.44273pt>
+File: lectures/l19f1.pdf Graphic file (type pdf)
+<use lectures/l19f1.pdf, page 2>
+Package luatex.def Info: lectures/l19f1.pdf , page2 used on input line 62.
+(luatex.def)             Requested size: 166.04774pt x 140.08713pt.
+) (./lectures/l19f2.pdf_tex
+<lectures/l19f2.pdf, id=1219, page=1, 202.19597pt x 189.44272pt>
+File: lectures/l19f2.pdf Graphic file (type pdf)
+<use lectures/l19f2.pdf, page 1>
+Package luatex.def Info: lectures/l19f2.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 155.57817pt.
+<lectures/l19f2.pdf, id=1220, page=2, 202.19597pt x 189.44272pt>
+File: lectures/l19f2.pdf Graphic file (type pdf)
+<use lectures/l19f2.pdf, page 2>
+Package luatex.def Info: lectures/l19f2.pdf , page2 used on input line 61.
+(luatex.def)             Requested size: 166.04774pt x 155.57817pt.
+) [78
+
+
+<./lectures/l19f1.pdf><./lectures/l19f1.pdf>] [79<./lectures/l19f2.pdf><./lectures/l19f2.pdf>] [80] [81]
+Chapter 4.
+) [82
+
+]
+\openout2 = lectures/l20.aux
+ (./lectures/l20.tex [83
+
+
+] [84] [85] [86]) [87]
+\openout2 = lectures/l21.aux
+ (./lectures/l21.tex [88
+
+
+] (./lectures/l21f1.pdf_tex
+<lectures/l21f1.pdf, id=1335, page=1, 476.25383pt x 149.223pt>
+File: lectures/l21f1.pdf Graphic file (type pdf)
+<use lectures/l21f1.pdf, page 1>
+Package luatex.def Info: lectures/l21f1.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 52.02617pt.
+<lectures/l21f1.pdf, id=1336, page=2, 476.25383pt x 149.223pt>
+File: lectures/l21f1.pdf Graphic file (type pdf)
+<use lectures/l21f1.pdf, page 2>
+Package luatex.def Info: lectures/l21f1.pdf , page2 used on input line 58.
+(luatex.def)             Requested size: 166.04774pt x 52.02617pt.
+) (./lectures/l21f2.pdf_tex
+<lectures/l21f2.pdf, id=1337, page=1, 476.25383pt x 138.60782pt>
+File: lectures/l21f2.pdf Graphic file (type pdf)
+<use lectures/l21f2.pdf, page 1>
+Package luatex.def Info: lectures/l21f2.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 48.32523pt.
+<lectures/l21f2.pdf, id=1338, page=2, 476.25383pt x 138.60782pt>
+File: lectures/l21f2.pdf Graphic file (type pdf)
+<use lectures/l21f2.pdf, page 2>
+Package luatex.def Info: lectures/l21f2.pdf , page2 used on input line 58.
+(luatex.def)             Requested size: 166.04774pt x 48.32523pt.
+) [89<./lectures/l21f1.pdf><./lectures/l21f1.pdf>]
+Overfull \hbox (3.24542pt too wide) in paragraph at lines 112--114
+\T1/stix2/m/n/10 How-ever, it is nice to know that there is a class of ex-act grav-i-ta-tional wave so-lu-tions, called \T1/stix2/m/it/10 Brinkmann
+ []
+
+) [90<./lectures/l21f2.pdf><./lectures/l21f2.pdf>]
+\openout2 = lectures/l22.aux
+ (./lectures/l22.tex (./lectures/l22f1.pdf_tex
+<lectures/l22f1.pdf, id=1369, page=1, 461.9442pt x 208.29802pt>
+File: lectures/l22f1.pdf Graphic file (type pdf)
+<use lectures/l22f1.pdf, page 1>
+Package luatex.def Info: lectures/l22f1.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 74.87279pt.
+<lectures/l22f1.pdf, id=1370, page=2, 461.9442pt x 208.29802pt>
+File: lectures/l22f1.pdf Graphic file (type pdf)
+<use lectures/l22f1.pdf, page 2>
+Package luatex.def Info: lectures/l22f1.pdf , page2 used on input line 60.
+(luatex.def)             Requested size: 166.04774pt x 74.87279pt.
+) [91
+
+
+<./lectures/l22f1.pdf><./lectures/l22f1.pdf>] [92]
+Overfull \hbox (4.70935pt too wide) in paragraph at lines 106--108
+[]\T1/stix2/bx/n/10 Re-mark: []\T1/stix2/m/n/10 Shak-ing the mat-ter quadrupole at some char-ac-ter-is-tic fre-quency $\LS1/stix2/m/it/10 !$\T1/stix2/m/n/10 , cre-ates waves of roughly
+ []
+
+(./lectures/l22f2.pdf_tex
+<lectures/l22f2.pdf, id=1401, page=1, 184.80083pt x 125.24039pt>
+File: lectures/l22f2.pdf Graphic file (type pdf)
+<use lectures/l22f2.pdf, page 1>
+Package luatex.def Info: lectures/l22f2.pdf , page1 used on input line 56.
+(luatex.def)             Requested size: 166.04774pt x 112.53185pt.
+) [93<./lectures/l22f2.pdf>]) [94]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
+ (./gr.aux (./lectures/l1.aux) (./lectures/l2.aux) (./lectures/l3.aux) (./lectures/l4.aux) (./lectures/l5.aux) (./lectures/l6.aux) (./lectures/l7.aux) (./lectures/l8.aux) (./lectures/l9.aux) (./lectures/l10.aux) (./lectures/l11.aux) (./lectures/l12.aux) (./lectures/l13.aux) (./lectures/l14.aux) (./lectures/l15.aux) (./lectures/l16.aux) (./lectures/l17.aux) (./lectures/l18.aux) (./lectures/l19.aux) (./lectures/l20.aux) (./lectures/l21.aux) (./lectures/l22.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 41.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2696,19 +2791,19 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 45082 strings out of 494412
+ 45558 strings out of 494412
  125171,1144653 words of node,token memory allocated
- 24951 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 3199 kern, 4 sub_mlist, 118 glyph, 1900 attribute, 67 glue_spec, 1900 attribute_list, 2 write nodes
-   avail lists: 1:10,2:747,3:202,4:164,5:319,6:85,7:3338,8:140,9:676,10:23,11:197
- 46303 multiletter control sequences out of 65536+600000
- 133 fonts using 13784407 bytes
+ 30207 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 3 glue, 3911 kern, 4 sub_mlist, 125 glyph, 2310 attribute, 67 glue_spec, 2310 attribute_list, 2 write nodes
+   avail lists: 1:10,2:596,3:202,4:164,5:265,6:85,7:3331,8:140,9:676,10:23,11:197
+ 46391 multiletter control sequences out of 65536+600000
+ 149 fonts using 14991399 bytes
  57i,19n,80p,859b,912s stack positions out of 5000i,500n,10000p,200000b,100000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathtt.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathfrak.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathex.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathcal.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathsf.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on gr.pdf (78 pages, 1716065 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathtt.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm-bold.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathfrak.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathex.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathscr.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathcal.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathsf.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2/stix2-mathrm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2/STIX2Text-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on gr.pdf (95 pages, 1788246 bytes).
 
-PDF statistics: 1400 PDF objects out of 1440 (max. 8388607)
- 1239 compressed objects within 13 object streams
- 582 named destinations out of 1000 (max. 131072)
- 384 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1662 PDF objects out of 1728 (max. 8388607)
+ 1470 compressed objects within 15 object streams
+ 692 named destinations out of 1000 (max. 131072)
+ 456 words of extra memory for PDF output out of 10000 (max. 100000000)
 

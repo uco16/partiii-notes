@@ -85,12 +85,17 @@ We have $\Delta_t = 2 - \epsilon/3$, and $\Delta_g = -\epsilon$.
 \subsection{Critical Exponents Again}%
 \label{sub:critical_exponents_again}
 
+The reduced temperature $t = \frac{\abs{T - T_C}}{T_c}$ scales as
 \begin{equation}
-  t \to \zeta^{\Delta_t}t = e^{S \Delta_t}t
+  t \to \zeta^{\Delta_t}t = e^{s \Delta_t}t
 \end{equation}
-The correlation length $\xi$ scales as
+We also know correlation length $\xi$ scales as $\xi \sim t^{-\nu}$. Requiring this be a length scale (and thus scale like $\xi \to \zeta^{-1} \xi$), we get
 \begin{equation}
-  \xi \sim t^{-\nu}, \qquad \nu = \frac{1}{\Delta_t} = \frac{1}{2} + \frac{\epsilon}{12}
+  \xi \sim t^{-\nu} \to (\zeta^{\Delta_t} t)^{-\nu} = \zeta^{- \Delta_t \times \nu} \xi
+\end{equation}
+and therefore
+\begin{equation}
+  \qquad \nu = \frac{1}{\Delta_t} = \frac{1}{2} + \frac{\epsilon}{12}
 \end{equation}
 Old scaling relations:
 \begin{align}
