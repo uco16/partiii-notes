@@ -1,0 +1,147 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 1: January 20}
+
+\chapter*{Admin Stuff}%
+
+\section*{Books and Lecture Notes}%
+
+\begin{itemize}
+  \item String Theory Vol.~1 --- Polchinski, CUP
+
+  Probably fits this course most closely, although there will be some things that will be in this course that are not in the book and vice-versa.
+
+  \item Superstrings Vol.~1 --- Green et.~al, CUP
+
+  \item A String Theory Primer --- Schomerus, CUP
+\end{itemize}
+
+\section*{Online Resources}%
+
+\begin{itemize}
+  \item Online lecture notes by the professor.
+  \item David Tong's notes on arXiv:0908.0333
+  \item `Why string theory?' Conlon (CRC) for some light reading and history
+\end{itemize}
+
+\chapter{Introduction}%
+\label{cha:introduction}
+
+\section{What is String Theory?}%
+\label{sec:what_is_string_theory_}
+
+We do not actually know. This question still needs fleshing out to be answered well.
+Most likely, the actual string theory that we are working towards will be very different to the content that we will cover in these lectures.
+
+In some sense, string theory is an attempt at quantising the gravitational field.
+
+Naive quantisation of the Einstein-Hilbert action presents a number of problems.
+
+\subsection*{Conceptual Problems}%
+
+\begin{itemize}
+  \item The nature of time: Non-relativistic quantum mechanics is based on the Hamiltonian formulation.
+    This is not necessarily a technical problem.
+
+  \item How to quantise without a pre-existing causal structure?
+
+    One of the first things we learn in QM, when going to QFT, is that it is important to know whether two operators are timelike or spacelike separated. 
+    We have a notion that all operators that are spacelike separated commute.
+    However, if we are talking about general relativity, the metric contains information about and determines the causal structure. But this is what we want to quantise. So it is not immediately obvious what the algebra of operators should look like.
+
+  \item The symmetry of general relativity is diffeomorphism invariance (coordinate reparametrisations).
+
+    This is a gauge symmetry.
+    One thing we will discuss (although not prove) when talking about scattering amplitudes in string theory, the fact is that there are  no \emph{local} diffeomorphism-invariant observables.
+    As such, it is not even obvious what the quantum observables should be.
+\end{itemize}
+
+We will not be able to answer these deeper conceptual questions within the framework of string theory.
+
+But perhaps more importantly, there are technical obstacles.
+You might ask, are there any assumptions that allow us to make progress and return to the difficult conceptual problems later?
+
+\subsection*{Technical obstacles}%
+
+Let us look at perturbation theory.
+
+In particle physics, we often expand $g_{\mu\nu}$ about some classical solution, e.g.~Minkowski spacetime:
+\begin{equation}
+  g_{\mu\nu}(x) = \eta_{\mu\nu} + h_{\mu\nu}(x).
+\end{equation}
+
+This means that we can use the causal structure of the \emph{background} classical metric $\eta_{\mu\nu}$ to talk about quantisation of the fluctuations $h_{\mu\nu}$.
+This is what we do in \emph{Field Theory in Cosmology} for inflation.
+In spirit, this is very close to what we do in string theory.
+
+However, in some sense this split between background and perturbation is artificial and arbitrary. Nonetheless, we can take the Einstein--Hilbert action in general dimensions $D$
+\begin{equation}
+  S[g] = \frac{1}{k_D} \int \dd[D]{x} \sqrt{-g} R(g)
+\end{equation}
+and expand it out by choosing a gauge.
+Choosing a gauge wisely, we get an action
+\begin{equation}
+  S[h] \approx \frac{1}{k_D} \int \dd[D]{x} \left( h_{\mu\nu} \Box h^{\mu\nu} + \dots \right).
+\end{equation}
+Since the Ricci scalar involves inverse powers of the metric, this expansion will not terminate. We say that this expression is \emph{non-polynomial} in $h_{\mu\nu}$.
+
+The quadratic term gives us a propagator $ 
+\feynmandiagram[transform shape, scale=0.5][inline=(a.base), horizontal=a to b] {
+  a -- [boson] b,
+}; $
+and the interaction terms give us vertices $
+\begin{gathered}
+  \feynmandiagram[transform shape, scale=0.3][small, horizontal=a to b] {
+    a -- [boson] v -- [boson] b,
+    c -- [boson] v,
+  };
+\end{gathered}$
+ and $
+\begin{gathered}
+  \feynmandiagram[transform shape, scale=0.3][small, horizontal=a to b] {
+    a -- [boson] v -- [boson] b,
+    c -- [boson] v -- [boson] d,
+  };
+\end{gathered} $. These are the Feynman rules.
+
+However, loops give divergences, which cannot be dealt with using standard techniques (renormalisation, c.f.~\emph{Advanced Quantum Field Theory}).
+
+String theory provides a way to do quantum perturbation theory of the gravitational `field' (and much more).
+
+String theory gives us a framework to ask meaningful questions concerning quantum gravity (although we are not able to answer all of them at the moment).
+
+There are also other approaches out there, although string theory is most thoroughly studied / understood (although this might be because most resources in this area flow into string theory).
+
+One of the possibilities is trying to make classical gravity consistent with the standard model without needing to quantise it.
+
+There will be a sense in which we will learn quite a lot about QFT from studying string theory.
+
+To a certain extend, the motivation that we will take throughout this course is not whether string theory will give us a theory of the real world, but rather whether it might give us a hint on how to reconcile quantum mechanics and gravity. We have been trying to do this for the better part of a hundred years, so any hint would be appreciated.
+
+\section{Worldsheets and Embeddings}%
+\label{sec:worldsheets_and_embeddings}
+
+Popular science books and textbooks alike usually start off a discussion of string theory by starting with the assumption that particles are not point-like, but rather tiny little strings.
+
+The starting point is to consider a worldsheet $\Sigma$ , a two-dimensional surface swept out by a string. This is analogous to a worldline swept out by a pointlike particle moving through spacetime, as illustrated in Fig.~\ref{fig:l1f1}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l1f1.pdf_tex}
+  \caption{Particle worldline and string worldsheet}
+  \label{fig:l1f1}
+\end{figure}
+
+We put coordinates $(\sigma, \tau)$  on $\Sigma$  (at least locally) and we define an embedding of $\Sigma$ in the background spacetime $M$ by the functions $X^{\mu}(\sigma, \tau)$, where the $X^{\mu}$ are coordinates on $M$, i.e.~$X \colon \Sigma \to M$.
+
+There are rules (which we shall investigate) for glueing such worldsheets together, in a way that is consistent with the symmetries of the theory.
+
+We shall see that diagrams such as Fig.~\ref{fig:l1f2} are in one-to-one correspondence with correlation functions in some quantum theory.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l1f2.pdf_tex}
+  \caption{}
+  \label{fig:l1f2}
+\end{figure}
+It is natural to interpret such diagrams as Feynman diagrams in a perturbative expansion of some theory about a vacuum.
