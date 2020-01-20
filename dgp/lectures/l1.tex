@@ -55,7 +55,13 @@ In this course however, we will look at the following.
   \item General Relativity (1915) $\leftarrow$  Riemannian Geometry ($~1850$)
   \item Gauge theory (Maxwell, Yang Mills) $\leftrightarrow$  Connection on Principal Bundle (U(1) (Maxwell), SU(2), SU(3))
     \begin{equation}
-      A_+ = A_- + d g \qquad g = \psi_+ - \psi_-
+      A_+ = A_- + d g \qquad g = \psi_+ - \psi_- \qquad 
+      \omega = \left\{ 
+	\begin{matrix}
+	A_+ + d\psi_+ \\
+	A_- + d\psi_- \\
+	\end{matrix}
+      \right.
     \end{equation}
     \begin{figure}[tbhp]
       \centering
@@ -64,14 +70,6 @@ In this course however, we will look at the following.
       \caption{}
       \label{fig:l1f3}
     \end{figure}
-    \begin{equation}
-      \omega = \left\{ 
-	\begin{pmatrix}
-	A_+ + d\psi_+ \\
-	A_- + d\psi_- \\
-	\end{pmatrix}
-      \right\.
-    \end{equation}
 \end{enumerate}
 
 This course: cover 1, 2, 3 in some detail. Unifying feature: Lie groups.
@@ -107,7 +105,7 @@ As such, manifolds are topological spaces with additional structure, allowing us
 
 \begin{example}[$M = \mathbb{R}^n$]
   There is the \emph{trivial manifold}, which can be covered by only one open set.
-  There are other possibilities. In fact, there are infinitely many smooth structures on $\mathbb{R}^4$ (proof by Donaldson in $1984$ in his PhD. He used Gauge theory).
+  There are other possibilities. In fact, there are infinitely many smooth structures on $\mathbb{R}^4$ (Proof by Donaldson in $1984$ in his PhD. He used Gauge theory).
 \end{example}
 \begin{example}[sphere $S^n = \left\{ \vb{r} \in \mathbb{R}^{n + 1}, \abs{\vb{r}} = 1 \right\}$ ]
   Have two open sets 
@@ -132,13 +130,13 @@ As such, manifolds are topological spaces with additional structure, allowing us
   On $U \cap \widetilde{U}$ , 
   \begin{align}
     \frac{r_k}{1 + r_{n+1}} &= \frac{1 - r_{n+1}}{1 + r_{n+1}} \frac{r_k}{1 - r_{n+1}}, \qquad k = 1, \dots, n \\
-    \frac{1 - r_{n+1}}{1 + r_{n+1}} = \frac{(1 - r_{n+1})^2}{r^2_1 + r^2_2 + \dots + r^2_n} = \frac{1}{x^2_1 + x^2_2 + \dots + x^2_n}
+    \frac{1 - r_{n+1}}{1 + r_{n+1}} &= \frac{(1 - r_{n+1})^2}{r^2_1 + r^2_2 + \dots + r^2_n} = \frac{1}{x^2_1 + x^2_2 + \dots + x^2_n}
   \end{align}
   So on $\phi(U \cap \widetilde{U})$,
   \begin{equation}
     (\widetilde{x}_1, \dots, \widetilde{x}_n) = \left( \frac{x_1}{x^2_1 + \dots + x^2_n}, \dots, \frac{x_n}{x^2_1 + \dots + x^2_n} \right)
   \end{equation}
-  smooth maps from $\mathbb{R}^n \to \mathbb{R}^n$
+  are smooth maps from $\mathbb{R}^n \to \mathbb{R}^n$
 \end{example}
 \begin{example}[]
   A Cartesian product of manifolds is a manifold, for example we have the $n$-torus $T^n = S^1 \times S^1 \times \dots \times S^1$.

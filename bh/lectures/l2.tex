@@ -1,0 +1,219 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 2: January 20}
+
+For a static, spherically symmetric star, we use the metric \eqref{eq:static-sph-sym}.
+To find $\Phi$ and  $\Psi$, we need to solve the Einstein equations. In order to find those, we need to determine what matter the star contains.
+
+We will model the matter inside the star as a perfect fluid with energy-momentum tensor
+ \begin{equation}
+  T_{ab} = (\rho + p) u_a u_b + p g_{ab},
+\end{equation}
+where $u_a$ is the velocity of the fluid, obeying  $g_{ab} u^{a} u^{b} = -1$ .
+The quantities $\rho$ and $p$  are, respectively, the energy density and the pressure in the fluid's rest frame.
+
+Time-independence implies that $u^{a} = e^{-\Phi} (\frac{\partial }{\partial t})^{a}$.
+The velocity is fixed by the symmetry assumptions, which also imply that $\rho = \rho(r)$  and $p = p(r)$  can only be functions of $r$.
+Also  $\rho, p = 0$ for  $r > R$, where  $R$  is the radius of the star.
+
+\section{Tolman--Oppenheimber--Volkoff Equations}%
+\label{sec:tolman_oppenheimber_volkoff_equations}
+
+Solving the Einstein equation imposes the fluid equations, so we do not separately need to deal with those.
+However, in what follows, it will actually be slightly easier to derive one of the following equations by using the fluid equation $\nabla_{\mu} T^{\mu\nu} = 0$  instead of some components of the Einstein equations.
+
+By symmetry, there are only really $3$  equations to solve. To write these down more concisely, we define $m(r)$  by the relation
+\begin{equation}
+  e^{2 \Psi(r)} = (1 - \frac{2m(r)}{r})^{-1} \stackrel{\text{LHS} > 0}{\implies} m(r) < r / 2.
+\end{equation}
+
+\begin{exercise}[Sheet 1]
+  Using the $(\mu\nu)$  component of the Einstein equation, we can derive
+  \begin{align}
+    (tt): \qquad \dv{m}{r} &= 4 \pi r^2 \rho \tag{TOV 1} \label{eq:TOV1} \\
+    (rr): \qquad \dv{\Phi}{r} &= \frac{m + 4 \pi r^3 \rho}{r (r - 2m)} \tag{TOV 2} \label{eq:TOV2} \\
+    \nabla_{\mu} T^{\mu\nu} = 0 \qquad \dv{p}{r} &= -(p + \rho) \frac{m + 4\pi r^3 p}{r (r - 2m)} \tag{TOV 3} \label{eq:TOV3}
+  \end{align}
+  where instead of using a third Einstein equation, it is easiest to use $\nabla_{\mu} T^{\mu\nu} = 0$ to derive \eqref{eq:TOV3}.
+\end{exercise}
+
+We have three equations, but four unknowns $(m, \Phi, \rho, \pi)$ . However, luckily we have some extra information coming from \emph{thermodynamics}.
+
+A cold star has $T = 0$ but  $T = T(\rho, p)$ , so $T = 0$ fixes some  relation $p = p(\rho)$ . This is known as a ``barotopic equation of state''.
+
+We will not need much information about this relation. However, we will assume that  $\rho, p > 0$ and  $\dv{p}{\rho} >0$ .
+\begin{leftbar}
+  Else, we have an unstable fluid: an increase in density $\delta \rho > 0$ would cause a decrease in pressure $\delta p < 0$, which causes more fluid to flow into a given volume, causing in turn an even bigger increase in density.
+\end{leftbar}
+
+\section{Outside a Star: Schwarzschild Solution}%
+\label{sec:outside_a_star_schwarzschild_solution}
+
+Outside the star, at $r > R$, we have no matter and therefore  $\rho = p = 0$. 
+
+From \eqref{eq:TOV1}, we then find that $m(r) = M$  is a constant.
+One can then integrate \eqref{eq:TOV2} to find that $\Phi(r) = \frac{1}{2} \ln(1 - \frac{2M}{r}) + \Phi_0$ , where $\Phi_0$  is some constant of integration.
+
+However, $\Phi_0$ is not physical: as  $r \to \infty$, $\Phi(r) \to \Phi_0$ , so $g_{tt} \to e^{-2 \Phi_0}$  as $r \to \infty$ .
+This means that we can eliminate $\Phi_0$ by absorbing it into the time coordinate via the coordinate transform  $A' = e^{\Phi_0} t$ .
+Without loss of generality, we may therefore set $\Phi_0 = 0$ .
+The resulting metric is the \emph{Schwarzschild solution}
+\begin{equation}
+  ds^2 = - \left( 1 - \frac{2M}{r} \right) dt^2 + \left(1 - \frac{2M}{r}\right)^{-1} dr^2 + r^2 d\Omega^2.
+\end{equation}
+
+We interpret $M$  to be the mass of the star.
+
+At $r = 2M$, the ``Schwarzschild radius'', the metric components  $g_{\mu\nu}$  (in a coordinate basis) are singular.
+Since in our derivation every step was sound, this singularity must be inside the star, where the metric is not valid.
+The star must have 
+\begin{equation}
+  \label{eq:2-ineq}
+  R > 2M.
+\end{equation}
+
+\begin{remark}
+  To get from GR to Newtonian physics, we take the limit of $c \to \infty$. The inequality
+  \begin{equation}
+    R > 2M \qquad \xleftrightarrow[\text{units}]{\text{reinstate}} \qquad \frac{GM}{c^2 R} < \frac{1}{2}
+  \end{equation}
+  then becomes trivial, meaning that there is no Newtonian analogue of this new GR effect.
+\end{remark}
+
+ \begin{leftbar}
+  \begin{remark}
+    This is not true for black holes: they violate the assumption of static spacetime.
+  \end{remark}
+\end{leftbar}
+
+This inequality is certainly true for the sun, which has a Schwarzschild radius of $2 M_\odot \approx 3 km$ and a radius of $R_{\odot} \approx 7 \times 10^5$ km.
+
+\section{Interior Solution}%
+\label{sec:interior_solution}
+
+From \eqref{eq:TOV1}, we have that
+\begin{equation}
+  m(r) = 4 \pi \int_{0}^r \rho(r') {r'}^2 \dd[]{r'} + m_{*} \label{eq:2-dag},
+\end{equation}
+where $m_*$ is some integration constant.
+
+Let $\Sigma_t$  denote a surface of constant time $t$.
+The metric induced on such a surface is
+ \begin{equation}
+  \left.ds^2\right\rvert_{\Sigma_t} = e^{2 \Psi(r)} dr^2 + r^2 d\Omega^2.
+\end{equation}
+
+We want the metric to be smooth at $r = 0$.
+This implies that the spacetime is locally flat at  $r = 0$. For small  $r$ , this spacetime will look like Euclidean space $\mathbb{R}^3$.
+
+As such, a point on $S^2$  of small radius $r$  must be a distance $r$  from the origin $r = 0$  (since this is true in $\mathbb{E}^3$).
+For small $r$ we have
+\begin{equation}
+  \therefore \quad r \approx \int_0^r e^{\Phi(r')} \dd[]{r'} \approx e^{\Phi(0)} r \implies \Phi(0) = 0
+\end{equation}
+Else, there is some kind of singularity at the origin; the origin would not be smooth.
+
+This means that $m(0) = 0 \implies m_* = 0$ in Eq.~\eqref{eq:2-dag}.
+
+This was outside $R$. Continuity tells us that
+\begin{equation}
+  m(r) = M = 4 \pi \int_0^R \rho(r) r^2 \dd[]{r} \label{eq:2-star}.
+\end{equation}
+The fact that this is the same as in Newtonian physics is a coincidence; this is not in general true for general relativity.
+
+More specifically, in general relativity, the total energy is obtained by integrating the energy density $\rho(r)$ over the appropriate volume form. On $\Sigma_t$, this is
+ \begin{equation}
+  e^{\Psi(r)} \underbrace{r^2 \sin \theta dr \wedge d\theta \wedge d\varphi}_{\mathclap{\text{usual volume form on } \mathbb{E}^3}}.
+\end{equation}
+The energy of matter on $\Sigma_t$ is then
+\begin{equation}
+  E = 4 \pi \int_0^R e^{\Psi(r)} \rho(r)r^2 \dd[]{r}.
+\end{equation}
+Since $m > 0$, we find that $e^{\Psi} > 1$.
+Therefore $E > M$: the energy of the matter in the star is larger than the total energy of the star.
+This means that there is some gravitational binding energy $E - M$.
+
+Finally, reduces to \eqref{eq:TOV3} $\dv{p}{r} < 0$. Together with the previously mentioned assumption that $\dv{p}{\rho} > 0$, this implies that $\dv{\rho}{r} < 0$.
+\begin{exercise}[Sheet 1]
+  One can then show that
+  \begin{equation}
+    \frac{m(r)}{r} < \frac{2}{9} \left[ 1 - 6 \pi r^2 p(r) + (1 + 6 \pi r^2 p(r))^{1 / 2} \right] \label{eq:2-doubstar}
+  \end{equation}
+\end{exercise}
+At $r = R$, the surface of the star, the pressure vanishes $p = 0$. This then reduces to the ``Buchdahl inequality''
+\begin{equation}
+  R > \frac{9}{4} M,
+\end{equation}
+which is an improvement on Eq.~\eqref{eq:2-ineq}.
+
+Now \eqref{eq:TOV1} and \eqref{eq:TOV3} are coupled ordinary differential equations for $m$ and $\rho$ (via $p = p(\rho)$).
+These can be solved numerically given initial conditions. Eq.~\eqref{eq:2-dag} automatically implies $m(0) = 0 $, so we only need to specify $\rho(0) = \rho_c$.
+
+In particular, \eqref{eq:TOV3} implies that the pressure  $p$  decreases as we move out towards higher $r$.
+We define the radius  $R$  by $p(R) = 0$  giving us $R = R(\rho_c)$ . Similarly, once we have done this Eq.~\eqref{eq:2-star} fixes $M = M(\rho_c)$ . Finally, we fix $\Phi$ by solving  \eqref{eq:TOV2} in $r < R$ with initial condition
+ \begin{equation}
+  \Phi(R) = \frac{1}{2} \ln(1 - \frac{2M}{R}).
+\end{equation}
+As such, for a given equation of state, cold stars form a one-parameter family labelled uniquely by the energy density $\rho_c$ at the center of the star.
+
+\section{Maximum Mass of Cold Star}%
+\label{sec:maximum_mass_of_cold_star}
+
+The maximum mass $M_{\text{max}}$  depends on the equation of state.
+\begin{leftbar}
+  In particular, choosing the density of state for the degenerate electron gas gives the Chandrasekhar limit!
+\end{leftbar}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l2f1.pdf_tex}
+  \caption{}
+  \label{fig:l2f1}
+\end{figure}
+
+Experimentally, we can only know the equation of state up to nuclear density $\rho_0$ .
+\begin{claim}
+  The maximum mass is always $M_{\text{max}} \lesssim 5 M_\odot$ whatever happens for $\rho > \rho_0$.
+\end{claim}
+\begin{proof}
+  We know that $\rho$ decreases with $r$.
+  Let us now define two regions:
+  \begin{description}
+    \item[core] region where $\rho > \rho_0$ ($r < r_0$)
+    \item[envelope] region where $\rho < \rho_0$ ($r_0 < r < R$)
+  \end{description}
+  We then define the `core mass' to be $M_0 \coloneqq m(r_0)$.
+  Then Eq.~\eqref{eq:2-dag} gives 
+  \begin{equation}
+    \label{eq:2-1}
+    M_0 > \frac{4}{3} \pi r^3_0 \rho_0.
+  \end{equation}
+  The core mass has a higher density than nuclear density $\rho_0$.
+
+  On the other hand, eq.~\eqref{eq:2-doubstar} for $r = r_0$ gives that $\frac{m_0}{r_0} < \frac{2}{9}\left[ 1 -6 \pi r_0^2 p_0 + (1 + 6 \pi r_0^2 p_0)^{\frac{1}{2}} \right]$, but we know the quantity $p_0 = p(r_0)$  from the equation of state.
+  Now the right-hand side of this is a decreasing function of $p_0$ , so to simplify, we can evaluate this at $p_0 = 0$ . This then gives the \emph{Bookdahl bound}
+  \begin{equation}
+    \label{eq:2-2}
+    m_0 < \frac{4}{9} r_0,
+  \end{equation}
+  which is satisfied by the core alone.
+  We can of course get a sharper inequality by not restricting to $p_0 = 0$, but this is not needed here.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l2f2.pdf_tex}
+    \caption{}
+    \label{fig:l2f2}
+  \end{figure}
+  Now the intersection of \eqref{eq:2-1} and \eqref{eq:2-2}, as illustrated in Fig.~\ref{fig:l2f2}, turns out to be
+  \begin{equation}
+    m_0 < \sqrt{\frac{16}{243 \pi \rho_0}} \simeq 5 M_\odot,
+  \end{equation}
+  where in evaluating this last expression we used the nuclear density $\rho_0$.
+
+  For any $(m_0, r_0)$ in the allowed region, we solve \eqref{eq:TOV1} and \eqref{eq:TOV3} in the envelope region with $\rho = \rho_0$, $m = m_0$ at $r = r_0$. This fixes $M$ in terms of $(m_0, r_0)$.
+  Numerically, we find that the total mass $M$ is maximised when the core mass $m_0$ is maximised.
+  At this maximum, the envelope is small, so $M_{\text{max}} \lesssim 5 M_\odot$.
+  If we possess extra information, we can lower this bound further. However, this result as it is holds independent of the densities at $\rho > \rho_0$.
+\end{proof}
+
