@@ -1,0 +1,202 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 13: November 09}
+
+\subsection{2 \texorpdfstring{$\to$}{to} 2 Scattering}%
+\label{sub:2_$to$_to_2_scattering}
+
+We will want to know how the cross section varies with angle. We defined the Mandelstram variable 
+\begin{equation}
+  t \coloneqq (p_1 - q_1)^2 = m_1^2 + m_2'^2 - 2 E_{p_1} E_{q_1} + 2 \vb{p}_1 \cdot \vb{q}_1
+\end{equation}
+Writing $\vb{p}_1 \cdot \vb{p}_2 = \abs{\vb{p}_1} \abs{\vb{p}_2} \cos\theta$, we may take the derivative
+\begin{equation}
+  \dv[]{t}{\cos\theta}= 2 \abs{\vb{p}_1} \abs{\vb{q}_1}.
+\end{equation}
+This depends on the frame in which it is defined and is not a Lorentz invariant quantity.
+Often, we define our expressions in the centre-of-mass frame.
+\begin{definition}[]
+  The \emph{centre of mass frame} is the frame in which the total momentum is zero.
+\end{definition}
+
+Let us for a second talk about another Mandelstram variable. In the centre of mass frame, $s = (p_1 + p_2)^2$ is the centre of mass energy---a constant of the scattering.
+At the LHC, people talk about $\sqrt{s}$ to describe the energy scale of the scattering. This is the quantity that was cited as $13 TeV$ in the previous run.
+
+We can write
+\begin{equation}
+  \frac{\dd[3]{q_2}}{2 E_{q_2}} = \dd[4]{q_2} \delta(q_2^2 -  m_2'^2) \theta(q_2^0),
+\end{equation}
+where we defined the Heaviside-$\theta$-function as
+\begin{equation}
+  \theta(x) = 
+  \begin{cases}
+    0 & x < 0 \\
+    1 & x \geq 0
+  \end{cases}.
+\end{equation}
+In spherical polar coordinates, we can write
+\begin{equation}
+  \frac{\dd[3]{q_1}}{2 E_{q_1}} = \frac{\abs{\vb{q}_1}^2 \dd[]{\abs{ q_2}} \dd[]{(\cos \theta)} \dd[]{\phi}}{2 E_{q_1}} = \frac{1}{4 \abs{\vb{p}_1}} \dd[]{E_{q_1}} \dd[]{\phi} \dd[]{t}.
+\end{equation}
+
+We then get
+\begin{equation}
+  \label{eq:13-1}
+  \dv[]{\sigma}{t} = \frac{1}{8\pi \mathcal{F} \abs{\vb{p}_1}} \int \dd[]{E_{q_1}} \abs{\mathcal{M}}^2 \delta(s - m_2' + m_1'^2 - 2q_1 \cdot (p_1 + p_2)).
+\end{equation}
+
+We now boost with a Lorentz transformation to the centre of mass frame.
+Writing the components of the four momentum as
+\begin{equation}
+  p_1^{\mu} = (\sqrt{\abs{\vb{p}_1}^2 + m_1^2}, \vb{p}_1),
+\end{equation}
+we know that, since the momenta must add up to zero, we must have
+\begin{equation}
+  p_2^{\mu} = (\sqrt{\abs{\vb{p}_1}^2 + m_1^2}, -\vb{p}_1),
+\end{equation}
+Since $s$ is obtained from the sum of these momenta, we find that
+\begin{equation}
+  s = \qty(\sqrt{\abs{\vb{p}_1}^2 + m_1^2} + \sqrt{\abs{\vb{p}_1}^2 + m_2^2})^2
+\end{equation}
+Expanding this out, one can show that 
+\begin{equation}
+  \abs{\vb{p}_1} = \frac{\lambda^{1/2} (s_1 m_1^2 m_2^2)}{2 \sqrt{s}},
+\end{equation}
+where $\lambda(x, y, z) \coloneqq x^2 + y^2 + z^2 - 2xy - 2xz- 2yz$ is the \emph{Källen function}.
+Moreover, one can check that the flux is $\mathcal{F} = 2 \sqrt{\lambda(s, m_1^2, m_2^2)}$.
+
+Substituting all of this back into \eqref{eq:13-1}, we get
+\begin{equation}
+  \boxed{\dv[]{\sigma}{t} = \frac{\abs{\mathcal{M}}^2}{ 16 \pi \lambda (s, m_1^2, m_2^2)}}.
+\end{equation}
+For each different collision, we therefore know the probability of scattering.
+
+\section{Decay Rates}%
+\label{sec:decay_rates}
+
+A decay is an interaction in which we start from one particle and end up with multiple particles.
+\begin{definition}[]
+  The particle decay rate for a one-particle initial state $\ket{i}$ to an $n$-particle final state $\ket{f}$ is called the \emph{partial width}.
+  \begin{equation}
+    \Gamma_f = \frac{1}{2 E_{p_i}} \int \dd[]{p_f} \abs{\mathcal{M}}^2
+  \end{equation}
+\end{definition}
+Note that $2 E_{p_i}$ is not Lorentz invariant! This is expected since time-dilation tells us that the average decay rate depends on the frame. 
+The convention is to quote $\Gamma_f$ in the rest frame of the initial particle, where the energy $E_{p_i} = m_i$ is the mass of the initial state.
+\begin{definition}[]
+  The \emph{total width} $\Gamma$ is the sum over all partial widths:
+  \begin{equation}
+    \Gamma = \sum_f \Gamma_f.
+  \end{equation}
+\end{definition}
+
+\begin{definition}[]
+  The \emph{branching ratio} for $\ket{i} \to \ket{f}$, is 
+  \begin{equation}
+    \text{BR}(i \to f) = \frac{\Gamma_f}{\Gamma}.
+  \end{equation}
+\end{definition}
+Putting this into units, meaning that we reintroduce the relevant powers of $\hbar$ and $c$, we notice that the average lifetime $\tau$ is
+\begin{equation}
+  \tau = 6.6 \times 10^{-25} \qty(\frac{1 \text{ GeV}}{\Gamma}) \text{ seconds}
+\end{equation}
+
+\begin{exercise}
+  Show that the mass of the decay results has to be lower than or equal to the mass of the initial particle.
+\end{exercise}
+\begin{exercise}
+  Complete the second example sheet.
+\end{exercise}
+
+\chapter{The Dirac Equation}%
+\label{cha:the_dirac_equation}
+
+\section{Lorentz Transformations}%
+\label{sec:lorentz_transformations}
+
+Consider a Lorentz transformation $x^{\mu} \xrightarrow{LT} x'^{\mu} = \Lambda \indices{^{\mu}_{\nu}} x^{\nu}$. Under this transformation, scalars transform as $\phi(x) \to \phi'(x) = \phi(\Lambda^{-1}x)$.
+Most particles (but not $\phi$) have some intrinsic angular momentum---\emph{spin}.
+\begin{example}[]
+  Consider the spin-1 vector $A^{\mu}(x)$.
+  Under a Lorentz transformation, this transforms as $A_{\mu}(X) \to A_{\mu}'(x) = \Lambda \indices{^{\mu}_{\nu}} A^{\nu}(\Lambda^{-1} x)$. 
+\end{example}
+In general, we have $\phi^a(x) \to D \indices{^a_b} (\Lambda) \phi^b(\Lambda^{-1} x)$, where the $D \indices{^a_b}(\Lambda)$ form a \emph{representation} of the Lorentz group.
+This means that
+\begin{itemize}
+  \item $D(\Lambda_1) D(\Lambda_2) = D(\Lambda_1 \Lambda_2)$
+  \item $D(\Lambda^{-1}) = D^{-1}(\Lambda)$
+  \item and $D(I) = \mathbb{1}$.
+\end{itemize}
+
+To find representations, we look at the Lorentz algebra, considering infinitesimal transformations.
+Write $\Lambda \indices{^{\mu}_{\nu}} = \delta^{\mu}_{\nu} + \epsilon \omega \indices{^{\mu}_{\nu}} + O(\epsilon^2)$, where $\epsilon$ is an infinitesimal parameter.
+The defining relation of the Lorentz transformations $\Lambda$ is
+\begin{equation}
+  \Lambda \indices{^{\mu}_{\sigma}} \Lambda \indices{^{\nu}_{\rho}} \eta^{\sigma\rho} = \eta^{\mu\nu}.
+\end{equation}
+Therefore, we have to first order
+\begin{align}
+  (\delta^{\mu}_{\sigma} + \epsilon \omega \indices{^{\mu}_{\sigma}}) (\delta^{\nu}_{\rho} + \epsilon \omega \indices{^{\nu}_{\rho}}) \eta^{\sigma\rho} &= \eta^{\mu\nu} + O(\epsilon^2) \\
+															  \implies \omega^{\mu\nu} + \omega^{\nu\mu} &= 0.
+\end{align}
+Therefore, $\omega^{\mu\nu}$ is \emph{anti-symmetric}.
+It has $4 \times 3 / x$ components---three rotations and three boosts.
+We can introduce a basis of six $4 \times 4$ matrices for $\omega$:
+\begin{equation}
+  (M^{\rho\sigma})^{\mu\nu} = \eta^{\rho\mu} \eta^{\sigma\nu} - \eta^{\sigma\mu} \eta^{\rho\nu}.
+\end{equation}
+Notice that this is anti-symmetric in $\mu \leftrightarrow \nu$ and $\rho \leftrightarrow \sigma$.
+If we lower the $\nu$ with the Minkowski metric, we get the following
+\begin{equation}
+  \label{eq:13-lorentz-generators}
+  (M^{\rho\sigma}) \indices{^{\mu}_{\nu}} = \eta^{\rho\mu} \delta^{\sigma}_{\nu} - \eta^{\sigma\mu} \delta^{\rho}_{\nu}.
+\end{equation}
+Let us think of this in the following way: The first outer index $\mu$ labels the rows while $\nu$ labels the columns of each matrix. The inner indices $\rho\sigma$ tell us which matrix we are considering.
+\begin{example}[]
+  We generate a boost in the $x^1$ direction with
+  \begin{equation}
+    (M^{01}) \indices{^{\mu}_{\nu}} = 
+    \begin{pmatrix}
+     0 & 1 &  &  \\
+     1 & 0 &  &  \\
+      &  & 0 &  \\
+      &  &  & 0 \\
+    \end{pmatrix}
+  \end{equation}
+\end{example}
+\begin{example}[]
+  We generate rotations in the $x^1-x^2$ plane with
+  \begin{equation}
+    (M^{12}) \indices{^{\mu}_{\nu}} = 
+    \begin{pmatrix}
+     0 &  &  &  \\
+      & 0 & -1 &  \\
+      & 1 & 0 &  \\
+      &  &  & 0 \\
+    \end{pmatrix}
+  \end{equation}
+\end{example}
+We can expand $\omega$ in terms of this basis
+\begin{equation}
+  \omega \indices{^{\mu}_{\nu}} \coloneqq \frac{1}{2} (\Omega_{\rho\sigma} M^{\rho\sigma}) \indices{^{\mu}_{\nu}}.
+\end{equation}
+$M^{\rho\sigma}$ are called the \emph{generators} of the Lorentz group and $\Omega^{\rho\sigma}$ are six independent parameters, which are anti-symmetric in $\rho \leftrightarrow \sigma$.
+The factor of $1/2$ is conventional.
+
+\subsection{The Algebra of the Lorentz group}%
+\label{sub:the_algebra_of_the_lorentz_group}
+
+\dots is defined by the algebra of the generators:
+\begin{equation}
+  \label{eq:13-star}
+  [M^{\rho\sigma}, M^{\tau\nu}] = \eta^{\sigma\tau} M^{\rho\nu} - \eta^{\rho\tau} M^{\sigma\nu} + \eta^{\rho\nu} M^{\sigma\tau} - \eta^{\sigma\nu} M^{\rho\tau}.
+\end{equation}
+Note that this is anti-symmetric under $(\rho \leftrightarrow \sigma)$, $(\tau \leftrightarrow \nu)$ and also $(\rho\sigma \leftrightarrow \tau\nu)$.
+We write it concisely as
+\begin{equation}
+  [M^{\rho\sigma}, M^{\tau\nu}] = [ \eta^{\sigma\tau} M^{\rho\nu} - (\rho \leftrightarrow \sigma) ] - (\tau \leftrightarrow \nu)
+\end{equation}
+The finite Lorentz transformation $\Lambda$, a $4 \times 4$ matrix, is connected to the identity $\mathbb{1}$ as
+\begin{equation}
+  \Lambda = \exp(\frac{1}{2} \Omega_{\rho\sigma} M^{\rho\sigma}).
+\end{equation}

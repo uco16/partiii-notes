@@ -1,0 +1,195 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 23: December 03}
+
+\section{Irreps of \texorpdfstring{$A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$}{the Complexified Lie Algebra of SU(3)}}%
+\label{sec:irreps_of_lie_algebra_of_su_3_}
+
+Recall that the highest weight of an $\mathfrak{su}(2)$ representation determines the dimension of that representation.
+For each integral highest weight
+\begin{equation}
+  \Lambda = \Lambda_1 \omega_{(1)} + \Lambda_2 \omega_{(2)}, \qquad
+  \begin{gathered}
+    \Lambda_1, \Lambda_2 \in \mathbb{Z} \\
+    \Lambda_1, \Lambda_2 \geq 0
+  \end{gathered}
+\end{equation}
+where $(\Lambda_1, \Lambda_2)$ are the Dynkin labels of the representation, we get an irrep $R_{(\Lambda_1, \Lambda_2)}$ with dimension 
+\begin{equation}
+  \dim(R_{(\Lambda_1, \Lambda_2)}) = \frac{1}{2} (\Lambda_1 + 1) (\Lambda_2 + 1) (\Lambda_1 + \Lambda_2 + 2).
+\end{equation}
+This formula is symmetric under interchange of $\Lambda_1 \leftrightarrow \Lambda_2$ .
+This means that if $\Lambda_1 \neq \Lambda_2$, then we get pairs of representations. 
+\begin{equation}
+  R_{(\Lambda_2, \Lambda_1)} = \overline{R}_{(\Lambda_1, \Lambda_2)}.
+\end{equation}
+Using the formula to compute the $A_2$  irreps of lowest dimension, we obtain Table~\ref{tab:23-1}.
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{ c | c  c }
+    Irrep & dim & name \\
+    \hline
+    $R_{(0,0)}$ & $1$ & trivial \\
+    $R_{(1, 0)}$ & 3 & fundamental \\
+    $R_{(0, 1)} = \overline{R}_{(1, 0)}$ & $3$ & anti-fundamental \\
+    $R_{(2, 0)}$ & 6 &  \\
+    $R_{(0, 2)} = \overline{R}_{(2, 0)}$ & $6$ &  \\
+    $R_{(1, 1)}$ & $8$ & adjoint \\
+    $R_{(3, 1)}$ & 10 & \\
+    $R_{(0, 3)} = \overline{R}_{(3, 0)}$ & 10 &  \\
+  \end{tabular}
+  \caption{$A_2$ irreps of lowest dimension}
+  \label{tab:23-1}
+\end{table} 
+
+In particular, since $\dim(A_2) = \dim(\mathfrak{su}_{\mathbb{C}}(3)) = 8$, the eight dimensional representation $R_{(1,1)}$ is the natural candidate to be the adjoint representation.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l23f1.pdf_tex}
+  \caption{The weight lattice for the $R_{(1, 1)}$ representation of $A_2$. Applyig the step-down operators to the highest weight $\omega_1 + \omega_2 = \alpha + \beta$ gives the $\abs{S_{(1, 1)}} = 8$ weights.}
+  \label{fig:l23f1}
+\end{figure}
+Starting from the highest weight vector and successively apply the step down operator algorithm, we recover the other roots.
+This is shown in Figure \ref{fig:l23f1}.
+This is where our discussion comes back to the discussion of the \emph{eightfold way} in \ref{sec:key-idea}.
+
+In particular, the weights of the adjoint representation are the roots. From the diagram, we see that the weight set is 
+\begin{equation}
+  S_{(1, 1)} = \left\{ \omega_1 + \omega_2 = \alpha + \beta, \alpha, \beta, 0, -\alpha, -\beta, -(\alpha + \beta) \right\}
+\end{equation}
+if we translate the Dynkin labels into weights of the simple roots.
+
+The representation space is just the Lie algebra itself: the step generators and two Cartan elements
+\begin{equation}
+  \mathfrak{g} = \left\{ E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{\beta}, E^{\alpha+ \beta}, E^{-(\alpha + \beta)}, H^1, H^2 \right\}
+\end{equation}
+the weights you get correspond to the generator of the algebra itself, so $R_{(1, 1)}$ is indeed the adjoint representation.
+In particular, the weight $(0, 0)$ has multiplicity two.
+So the dimension of the adjoint representation is $\dim(R_{(1,1)}) = 8$.
+
+\section{Tensor Products Revisited}%
+\label{sec:tensor_products_revisited}
+
+The representation of a composite system, say of two particles, is given by the tensor product of the individual particle representations.
+
+Let $R_{\Lambda}$ and $R_{\Lambda'}$  be irreps of the simple complex Lie algebra $\mathfrak{g}$ .
+The corresponding representation spaces are $V_\Lambda$ and  $V_{\Lambda'}$ , where $\Lambda$ and  $\Lambda'$ denote the highest weight of the weight sets $S_{\Lambda}, S_{\Lambda'} \in \mathfrak{h}_{\mathbb{R}}^*$.
+The representation space is a direct sum of subspaces corresponding to each weight
+ \begin{equation}
+  V_{\Lambda} = \bigoplus_{\lambda \in S_\Lambda} V_{\lambda}
+\end{equation}
+
+We defined in Sec.~\ref{sec:tensor_product} the tensor product of two arbitrary representations.
+
+\begin{claim}
+  If $\lambda \in S_\Lambda$ and $\lambda' \in S_{\Lambda'}$, then $\lambda + \lambda' \in \mathcal{L}_\omega [\mathfrak{g}]$ is a weight of the tensor product representation $R_{\Lambda} \oplus R_{\Lambda'}$.
+\end{claim}
+\begin{proof}
+  Let $v_{\lambda} \in V_{\lambda}$ be a weight vector. Recall that this satisfies the eigenvalue equation
+  \begin{equation}
+    R_{\Lambda}(H^{i}) v_{\lambda} = \lambda^{i} v_{\lambda}.
+  \end{equation}
+  And similarly for $v_{\lambda'} \in V_{\lambda'}$.
+  Basis vectors for $V_{R_\Lambda \oplus R_{\Lambda'}} = V_{\Lambda} \oplus V_{\Lambda'}$ are tensor products $v_{\lambda} \oplus v_{\lambda'}$ of pairs of weight vectors from the original representation.
+  Then by Definition \ref{def:tensor-product-rep} of the tensor product representation, we have
+  \begin{align}
+    (R_{\Lambda} \otimes R_{\Lambda'})(H^{i}) (v_{\lambda} \otimes v_{\lambda'}) &= R_{\Lambda}(H^{i}) v_{\lambda} \otimes v_{\lambda'} + v_\lambda \otimes R_{\Lambda'} \otimes R_{\Lambda'} (H^{i}) v_{\lambda}' \\
+										 &= (\lambda + \lambda') (v_{\lambda} \otimes v_{\lambda'})
+  \end{align}
+\end{proof}
+
+For finite, simple complex $\mathfrak{g}$.
+\begin{equation}
+  R_{\Lambda} \otimes R_{\Lambda'} = \bigoplus_{\Lambda'' \in \mathcal{L}_\omega} \mathcal{N}_{\Lambda, \Lambda'}^{\Lambda''} R_{\Lambda''}.
+\end{equation}
+
+\begin{example}[$\mathfrak{g} = A_2$]
+  Have $R_{(1, 0)} \otimes R_{(1, 0)}$. The weight set is $S_{(1, 0)} = \{\omega_1, \omega_2 - \omega_1, -\omega_2\}$. Then
+  \begin{align}
+    S_{(1, 0) \otimes (1, 0)} &= S_{(1, 0)} \mathop{\text{``+''}} S_{1, 0} = \left\{ 2 \omega_1, \omega_2, \omega_2, \omega_1 - \omega_2, \omega_1 - \omega_2, -\omega_1-\omega_1, -2\omega_1 - 2\omega_2, -2\omega_2 \right\} \\
+    &= \left\{ 2\omega_1, \omega_2, \omega_1 - \omega_2, -\omega_1, -2\omega_1 -2\omega_2, -2\omega_2 \right\} \cup \left\{ \omega_2, \omega_1 - \omega_2, -\omega_1 \right\} \\
+    &= S_{(2, 0)} \cup S_{(0, 1)}
+  \end{align}
+  We therefore have
+  \begin{equation}
+    R_{(1, 0)} \otimes R_{(1, 0)} = R_{(2, 0)} \oplus R_{(0, 1)}.
+  \end{equation}
+  Indeed, the dimensions work out since $3 \times 3 = 6 + 3$.
+\end{example}
+
+\chapter{Gauge Theory}%
+\label{cha:gauge_theory}
+
+We will assume that most of the basics of Abelian gauge theory have been covered in other courses. We will develop these quickly and then move on to non-Abelian gauge theories.
+
+Gauge theories have other kinds of symmetries we have been dealing with; they are redundancies in the way we describe our system.
+
+\section{Electromagnetism}%
+\label{sec:electromagnetism}
+
+The classic example is the gauge invariance of electromagnetism. Consider a field
+\begin{equation}
+  a_{\mu} = 
+  \begin{cases}
+    \Phi, & \mu = 0 \\
+    A_{i}, & \mu = i = 1, 2, 3
+  \end{cases}
+\end{equation}
+Gauge transformations are $a_{\mu} \to a_{\mu} + \partial_{\mu} \alpha$, where $\alpha = \alpha(\vb{x}, t)$ and leave the fields invariant.
+In particular, they leave the field strength tensor $f_{\mu\nu} = \partial_{\mu} a_{\nu} - \partial_{\nu} a_{\mu}$ invariant.
+
+The Lagrangian is
+\begin{equation}
+  \mathcal{L}_{\text{EM}} = -\frac{1}{4 g^2} f^{\mu\nu} f_{\mu\nu}
+\end{equation}
+
+We will work with a redefined gauge potential, which is imaginary, and field strength tensor
+\begin{equation}
+  A_{\mu} = -i a_{\mu} \qquad F_{\mu\nu} = -i f_{\mu\nu}.
+\end{equation}
+We will use this to reconcile it with the fact that the gauge field naturally lives in the Lie algebra of the symmetry group, which we represented by complex numbers $e^{i \theta} \in \mathbb{C}$ .
+
+\subsection{Coupling to Matter}%
+\label{sub:coupling_to_matter}
+
+Define a complex scalar field $\phi \colon \mathbb{R}^3 \to \mathbb{C}$ with the standard Lagrangian
+\begin{equation}
+  \mathcal{L}_\phi = \partial_{\mu} \phi^* \partial^{\mu} \phi - W(\phi \phi^*).
+\end{equation}
+
+Choosing the potential $W$ to only depend on the modulus makes sure that this Lagrangian is invariant under a global $U(1)$ symmetry:
+\begin{equation}
+  \begin{gathered}
+    \phi \to g\phi \\
+    \phi^* \to g^{-1} \phi^*
+  \end{gathered}
+  \qquad g = \exp(i \delta) \in U(1), \quad \delta \in [0, 2\pi].
+\end{equation}
+
+Consider now the infinitesimal symmetry generator
+\begin{equation}
+  g = \exp(\epsilon X) \simeq (1 + \epsilon X + O(\epsilon^2))
+\end{equation}
+Working close to the identity element means taking $\epsilon \ll 1$. Moreover, $X \in \mathfrak{u}(1) \simeq i \mathbb{R}$.
+We write the infinitesimal symmetry transformation as 
+\begin{equation}
+  \begin{gathered}
+    \phi \to \phi + \delta_X \phi \\
+    \phi^* \to \phi^* + \delta_X \phi^*
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \delta_X \phi = \epsilon X \phi \\
+    \delta_X \phi^* = -\epsilon X \phi^*.
+  \end{gathered}
+\end{equation}
+
+We define \emph{symmetry} to mean that  under this transformation, the variation 
+\begin{equation}
+  \label{eq:symmetry}
+  \boxed{\delta_X \mathcal{L} = 0} 
+\end{equation}
+of the Lagrangian vanishes. 

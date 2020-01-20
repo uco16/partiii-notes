@@ -1,0 +1,172 @@
+\lhead{Lecture 1: October 10}
+
+\section*{Notation}%
+In the following chapters, we will make extensive use of Fourier theory. To avoid having to drag around factors of $(2\pi)^d$ all the time, which make the equations longer and obtuser than they need to be, we adopt the following notational convention.
+
+\begin{notation}[barred differential]
+  We understand the \emph{barred differential} $\bdd{q}$ to be the following normalisation of the ordinary differential measure
+  \begin{equation}
+    \bdd{q} \coloneqq \frac{\dd{q}}{2\pi}.
+  \end{equation}
+  In particular, given a $d$-dimensional vector $\vb{q} = (q_1, \ldots, q_d)$---most often a Fourier mode---we will frequently use the $d$-dimensional integration measure in Fourier space:
+  \begin{equation}
+    \bdd[d]{q} = \frac{\dd[d]{q}}{(2\pi)^d} = \prod_{i=1}^d \frac{\dd{q_i}}{2\pi}.
+  \end{equation}
+\end{notation}
+
+\begin{notation}[barred delta]
+  We will denote the \emph{barred Dirac delta} $\bdelta(q)$ to include a normalisation of $2\pi$ in the following way
+  \begin{equation}
+    \bdelta(q) \coloneqq 2\pi \delta(q).
+  \end{equation}
+  In particular, given a $d$-dimensional vector $\vb{q} = (q_1, \ldots, q_d)$, we will frequently use the $d$-dimensional distribution
+  \begin{equation}
+    \bdelta^d(\vb{q}) = (2\pi)^d \delta(\vb{q}) = \prod_{i=1}^d 2\pi \delta(q_i).
+  \end{equation}
+\end{notation}
+
+\newpage
+
+\chapter{Introduction}%
+\label{cha:lecture_1}
+
+\begin{description}
+  \item[Reference text book:] Introduction to Quantum Field Theory - Peskin and Schröder
+\end{description}
+
+QFT is a quantum theory with an infinite number of degrees of freedom at each point in spacetime $x^{\mu} = (t, \vb x)$. They are constructed from classical field theories (eg.~EM field) incorporating special relativity.
+QFT states are multi-particle states. The theory becomes relevant at relativistic energies, where we have a lot of exchange between energy $\leftrightarrow$ mass. This takes the form of particles being destroyed / created in interactions.
+Particle creation and annihilation occurs in Quantum field theory (QFT) but not in QM, differentiating the two theories. Unlike in QM, particle number is not fixed.
+The interactions themselves arise from the mathematical structure of the theory. Various principles determine this structure:
+\begin{itemize}
+  \item locality
+  \item symmetry
+  \item renormalisation group flow
+\end{itemize}
+
+\begin{definition}
+A \emph{Free QFT} is the limit which has particles but no interactions. Weakly interacting theories are then built from these by using perturbation theory.
+Strong coupling phenomena are an active area of research, hard to solve and relevant for nature, often approached by a discretisation of spacetime (lattice QCD).
+Free QFT is a relativistic theory with infinitely many \emph{quantised harmonic oscillators}.
+Non-relativistic QFTs also exist, describing quasi-particles like phonons.
+\end{definition}
+
+\begin{itemize}
+  \item Based on D.~Tong's notes (videos at PIRSA useful as well)
+\end{itemize}
+
+\section*{Units in QFT}%
+\label{sec:units_in_qft}
+
+As a mathematician, you would use $\pi = i = -1 = 2$ in these lectures. However, since we care about having correct numbers for our experimental measurements, we use special units in which $\hbar = c = 1$.
+\begin{equation}
+  [c] = L T^{-1}, \qquad [\hbar] = L^2 M T^{-1} \implies L = T = M^{-1}.
+\end{equation}
+Length and time are measured in inverse mass---or equivalently ($E = m\cancel{c^2}$) inverse energy units.
+To convert back to metres or seconds, insert relevant powers of $c$ and $\hbar$.
+E.g. $\lambda = \frac{\hbar}{m c}$, so when we measure $m_e \sim \SI{1e6}{\electronvolt}$, we have $\lambda_e = \SI{2e-12}{\meter}$. Similarly $m_p \sim \SI{1}{\giga\electronvolt} \rightarrow \SI{1e9}{\electronvolt}$ .
+
+In QFT, if a quantity $x$ has mass dimension $(\text{mass})^d$, we write $[x] = d$. E.g.~$[G_N] = -2$ since 
+\begin{equation}
+  G_N = \frac{\cancel{\hbar c}}{M_p^2} = \frac{1}{M_p^2}
+\end{equation}
+where $M_p \sim \SI{1e19}{\giga\electronvolt}$ corresponds to the \emph{Planck scale}, where quantum gravity effects became important ($\lambda_p \sim 10^{-35}$m).
+
+Angular momentum, like $\hbar$, is dimensionless in these units: $e^-$ total spin: $\hbar/2 = 1/2$.
+
+Relativistic Schrödinger equation does not work---something always goes wrong (causality violation / energy unbounded from below). In QFT, these faults are fixed by allowing for the creation and annihilation of particles.
+
+\chapter{Classical Field Theory}%
+\label{cha:classical_field_theory}
+
+A field is defined at each point of space and time ($t, \vb x$). Classical particle mechanics yields a finite number of generalised coordinates $q_a(t)$, where $a = x, y, \dots$ is a label.
+
+In field theory, we have a field $\phi_a(\vb x, t)$, where we can consider $\vb x$ as a label as well.
+So $a$ and $\vb x$ are labels: we have an infinite number of degrees of freedom: one for each $\vb x$.
+Position is relegated from a dynamical variable to a mere label.
+
+
+\begin{example}[Electromagnetism]
+\begin{equation}
+  E_i (\vb x, t), B_i(\vb x, t) \qquad \{i, j, k\} \in \left\{ 1, 2, 3 \right\} \text{ label spatial position}
+\end{equation}
+
+These 6 fields are derived from 4 fields $A_\mu(\vb x, t) = (\phi, \vb A)$, where $\mu \in \left\{ 0, 1, 2, 3 \right\}$.
+The relationship between the electric and magnetic fields and $A$ is
+\begin{equation}
+  E_i = -\pdv{A_i}{t} - \pdv{A_0}{x_i}, \qquad B_i = \frac{1}{2} \varepsilon_{ijk} \pdv{A_k}{x_j},
+\end{equation}
+where the Einstein summation convention is used.
+\end{example}
+
+\section{Dynamics of Fields}%
+\label{sec:dynamics}
+
+The dynamics of the field is governed by a Lagrangian $L$. This is a function of the fields $\phi_a(\vb x, t)$, their time derivatives $\dot \phi_a(\vb x, t)$ and spatial derivatives $\grad \phi_a(\vb x, t)$.
+We can write it as an integral over the Lagrangian density $\mathcal{L}$:
+\begin{equation}
+  L = \int \dd[3]{x} \mathcal{L}(\phi_a, \partial_\mu \phi_a).
+\end{equation}
+Confusingly, $\mathcal{L}$ is also often just called the \emph{Lagrangian} in QFT. We will mostly be concerned with Lagrangian densities.
+
+We define the action as 
+\begin{equation}
+  S = \int_{t_0}^{t_1} L \dd{t} = \sum_{a} \int \dd[4]{x} \mathcal{L}(\phi_a, \partial_\mu \phi_a).
+\end{equation}
+
+Since $[\mathcal{L}] = 4$ and $[\dd[4]{x}] = -4$, the action is dimensionless $[S] = 0$.
+The \emph{Dynamical Principle} of classical field theory is that fields evolve in such a way that the action $S$ is stationary with respect to those variations of the fields that don't affect the initial and final values.
+
+\begin{align}
+  \label{eq:variation in S}
+  \delta S &= \sum_a \int \dd[4]{x} \left\{ \pdv{\mathcal{L}}{\phi_a} \delta \phi_a + \pdv{\mathcal{L}}{(\partial_\mu \phi_a)} \delta(\partial_\mu \phi_a) \right\} \\
+	   &= \sum_a \int \dd[4]{x} \left\{ \pdv{\mathcal{L}}{\phi_a} \delta \phi_a + \partial_\mu \left( \pdv{\mathcal{L}}{(\partial_\mu \phi_a)} \delta \phi_a \right) - \partial_\mu \left( \pdv{\mathcal{L}}{(\partial_\mu \phi_a)} \right) \delta \phi_a \right\}
+\end{align}
+The total derivative vanishes for any term that decays at spatial $\infty$ and has $\delta \phi(\vb x, t_0) = 0 = \delta \phi(\vb x, t_1)$. So the dynamical principle is
+\begin{equation}
+  \label{eq:EL}
+  \delta S = 0 \implies \boxed{\partial_\mu \left( \pdv{\mathcal{L}}{(\partial_\mu \phi_a)}\right) - \pdv{\mathcal{L}}{\phi_a} = 0 } \qquad \text{Euler-Lagrange equations}.
+\end{equation}
+
+\begin{example}[Klein-Gordon Field $\phi$]
+
+  \begin{equation}
+    \mathcal{L} = \frac{1}{2} \eta^{\mu \nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2
+  \end{equation}
+  where we use the mostly minus signature $\eta^{\mu \nu} = \text{diag}(1, -1, -1, -1)$.
+
+  \begin{equation}
+    \mathcal{L} = \frac{1}{2} \dot\phi^2 - \frac{1}{2} (\grad \phi)^2 - \frac{1}{2} m^2 \phi^2
+  \end{equation}
+
+  \begin{leftbar}
+    \begin{remark}
+      $\mathcal{L} = T- V$ where $T = \frac{1}{2} \dot \phi^2$ is the kinetic and $V = \frac{1}{2} (\grad \phi)^2 + \frac{1}{2}m^2 \phi^2$ is the potential energy density.
+    \end{remark}
+  \end{leftbar}
+
+  The relevant derivatives of $\mathcal{L}$ appearing the the Euler-Lagrange equations are
+  \begin{equation}
+    \pdv{\mathcal{L}}{\phi} = -m^2\phi, \qquad \pdv{\mathcal{L}}{(\partial_\mu \phi)} = \partial^\mu \phi,
+  \end{equation}
+  So substituting $\mathcal{L}$ into \eqref{eq:EL} yield
+  \begin{equation}
+    \boxed{\partial_\mu \partial^\mu \phi + m^2 \phi = 0} \qquad \text{Klein-Gordon eqn}
+  \end{equation}
+  The K-G eqn admits a wave-like solution $\phi = e^{-i p \vdot x}$.
+
+  \begin{leftbar}
+    \begin{remark}
+      $p \vdot x = p^0 x^0 - \vb p \vdot \vb x^T = E t - \vb p \vdot \vb x$
+    \end{remark}
+  \end{leftbar}
+
+  Substitute $\phi \rightarrow$ KG:
+  \begin{equation}
+    (-p^2 + m^2)\phi = 0.
+  \end{equation}
+  Since $p^2 = E^2 - \abs{\vb{p}}^2 = m^2$, this reproduces the relativistic energy dispersion relation for a particle of mass $m$ and three-momentum $\vb{p}$.
+\end{example}
+
+
+

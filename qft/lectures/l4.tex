@@ -1,0 +1,190 @@
+%  _              _                    _  _   
+% | |    ___  ___| |_ _   _ _ __ ___  | || |  
+% | |   / _ \/ __| __| | | | '__/ _ \ | || |_ 
+% | |__|  __/ (__| |_| |_| | | |  __/ |__   _|
+% |_____\___|\___|\__|\__,_|_|  \___|    |_|  
+
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 4: October 17}
+
+\section{The Free Scalar Field}%
+\label{sec:the_free_scalar_field}
+
+Let us apply the SHO to free fields. We define the Fourier transform of a scalar field as
+\begin{equation}
+  \phi(\vb{x}) = \int_{}^{} \bdd[3]{p} \frac{1}{\sqrt{2\omega_{p}}} \left( a_{\vb{p}} e^{i \vb{p} \cdot \vb{x}}+ a^{\dagger}_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} \right),
+\end{equation}
+where $\omega_{p}^2 = p^2 + m^2$, writing $p = \sqrt\abs{\vb{p}}^2$.
+Since we explicitly added a Hermitian conjugate constant $a^\dagger$, this definition of the Fourier integral makes it evident that $\phi = \phi^\dagger$ is a real scalar field.
+We also expand the conjugate momentum $\pi(\vb{x})$ in terms of these Fourier modes
+\begin{equation}
+  \pi(\vb{x}) = \int_{}^{} \bdd[3]{p} (-i) \sqrt{\frac{\omega_{p}}{2}} \left( a_{\vb{p}} e^{i \vb{p} \cdot \vb{x}} - a_{\vb{p}}^{\dagger} e^{-i \vb{p} \cdot \vb{x}} \right).
+\end{equation}
+The process of promoting the constants $a_{\vb{p}}$ and $a_{\vb{p}}^\dagger$ to quantum operators---as it turns out, these will be annihilating and creating particles of momentum $\vb{p}$--- acting on a quantum state is called \emph{second quantisation}; we have inserted an infinite number of QHOs into momentum space.
+As a result, the fields $\phi$ and $\pi$ are also quantum operators. For these quantum fields, we want to impose commutation relations:
+\begin{subequations}
+  \begin{equation}
+    [\phi(\vb{x}), \phi(\vb{y})] = 0, \qquad [\pi(\vb{x}), \pi(\vb{y})] = 0,
+  \end{equation}
+  \begin{equation} \label{eq:field-ccr}
+    [\phi(\vb{x}), \pi(\vb{y})] = i \delta^3(\vb{x} - \vb{y}).
+  \end{equation}
+\end{subequations}
+
+\begin{leftbar}
+  \begin{remark}
+    We are in the Schr\"odinger picture, where time $t = x^0$ is in the states, not in the fields.
+  \end{remark}
+\end{leftbar}
+
+\begin{claim}
+  These are equivalent to
+  \begin{subequations}
+    \begin{equation}
+      [ a_{\vb{p}}, a_{\vb{q}} ] = 0, \qquad [a^{\dagger}_{\vb{p}}, a^{\dagger}_{\vb{q}}] = 0,
+    \end{equation}
+    \begin{equation} \label{eq:a-ccr}
+      [ a_{\vb{p}}, a^{\dagger}_{\vb{q}} ] = \bdelta^3(\vb{p}-\vb{q}).
+    \end{equation}
+  \end{subequations}
+\end{claim}
+\begin{proof}
+  Let us check that \eqref{eq:a-ccr} implies \eqref{eq:field-ccr} .
+  \begin{align}
+    [\phi(\vb{x}), \pi(\vb{y})] &= \int_{}^{} \bdd[3]{p} \bdd[3]{q} \frac{(-i)}{2} \frac{\omega_q}{\omega_p}
+    \left\{ - \left[ {a_{\vb{p}}}, {a^{\dagger}_{\vb{q}}} \right] e^{i\vb{p}\cdot\vb{x} - i\vb{q}\cdot\vb{y}} + \left[ {a^{\dagger}_{\vb{p}}}, {a_{\vb{q}}} \right] e^{-i\vb{p}\cdot\vb{x} + i\vb{q}\cdot\vb{y}} \right\} \\
+    &= \int_{}^{} \bdd[3]{p} \left( \frac{-i}{2} \right) \left\{ - e^{i \vb{p} \cdot(\vb{x} - \vb{y})} - e^{i\vb{p}\cdot(\vb{x}-\vb{y})} \right\} \\
+    &= i \delta^{3}(\vb{x} - \vb{y})
+  \end{align}
+\begin{exercise}
+  Complete the proof.
+\end{exercise}
+\end{proof}
+
+Now, compute the Hamiltonian $H$ in terms of the ladder operators $a_{\vb{p}}$ and $a^{\dagger}_{\vb{q}}$:
+\begin{align}
+    H &= \frac{1}{2} \int_{}^{} \dd[3]{x} \left[ \pi^2 + (\grad \phi)^2 + m^2 \phi^2 \right] 
+    \\[1em]
+  \begin{split}
+    &= \frac{1}{2} \int_{}^{} \dd[3]{x} \bdd[3]{p} \bdd[3]{q} \\
+    & \qquad \times \Big\{ 
+    -\frac{\sqrt{\omega_p \omega_2}}{2} \left( a_{\vb{p}} e^{i\vb{p}\cdot\vb{x}} - a^{\dagger}_{\vb{p}} e^{-i\vb{p}\cdot\vb{x}} \right)\left( a_{\vb{q}} e^{i\vb{q}\cdot\vb{x}} - a^{\dagger}_{\vb{q}} e^{i\vb{q}\cdot\vb{x}} \right) \qquad \text{from } \pi^2\\
+    &\qquad-\frac{1}{2}\sqrt{\omega_p \omega_2} \left( i p a_{\vb{p}} e^{i\vb{p}\cdot\vb{x}} - ip a^{\dagger}_{\vb{p}} e^{-i\vb{p}\cdot\vb{x}} \right)
+    \left(iq a_{\vb{q}} e^{i\vb{q}\cdot\vb{x}} - iqa^{\dagger}_{\vb{q}} e^{i\vb{q}\cdot\vb{x}} \right) \qquad \text{from } (\grad \phi)^2 \\
+    &\qquad-\frac{m^2}{2\sqrt{\omega_p \omega_2}} \left( a_{\vb{p}} e^{i\vb{p}\cdot\vb{x}} + a^{\dagger}_{\vb{p}} e^{-i\vb{p}\cdot\vb{x}} \right)
+    \left( a_{\vb{q}} e^{i\vb{q}\cdot\vb{x}} + a^{\dagger}_{\vb{q}} e^{-i\vb{q}\cdot\vb{x}} \right) \Big\} \qquad \text{from } m^2 \phi^2
+  \end{split} 
+  \\[1em]
+  &= \cdots \nonumber
+  \\[1em]
+  \begin{split}
+    &= \frac{1}{4} \int_{}^{} \bdd[3]{p} \Big\{ \underbrace{\left(\cancel{ -\omega_p + \frac{p^2}{\omega_p} + \frac{m^2}{\omega_p}})\right)}_{\text{since }\omega^2_p = p^2 + m^2} \left( a_{\vb{p}} a_{-\vb{p}} + a^{\dagger}_{\vb{p}} a_{-\vb{p}}^{\dagger} \right) + \left( \omega_p + \frac{p^2}{\omega_p} + \frac{m^2}{\omega_p} \right) (a_{\vb{p}} a^{\dagger}_{\vb{p}} + a^{\dagger}_{\vb{p}} a_{\vb{p}}) \Big\}
+  \end{split}
+  \\[1em]
+  \therefore \quad H &= \frac{1}{2} \int_{}^{} \bdd[3]{p} \omega_p (a_{\vb{p}} a^{\dagger}_{\vb{p}} + a^{\dagger}_{\vb{p}} a_{\vb{p}}).
+\end{align}
+This is the Hamiltonian of an infinite number of uncoupled harmonic oscillators, each at frequency $\omega_p = \sqrt{p^2 + m^2}$.
+
+\subsection{The Vacuum}%
+\label{sub:the_vacuum}
+
+\begin{definition}[vacuum]
+  The \emph{vacuum} or \emph{ground state} $\ket{0}$ is defined to be the state with the property that it is annihilated by all annihilation operators:
+  \begin{equation}
+    a_{\vb{p}} \ket{0} = 0, \quad \forall p.
+  \end{equation}
+\end{definition}
+
+Acting on the vacuum with the Hamiltonian, we expect to find the ground-state energy:
+\begin{align}
+  H \ket{0} &= \int_{}^{} \bdd[3]{p} \omega_p \left( \cancel{a^{\dagger}_{\vb{p}} a_{\vb{p}}} + \frac{1}{2} [a_{\vb{p}}, a^{\dagger}_{\vb{p}}] \right) \ket{0} \\
+  &= \frac{1}{2}\int_{}^{} \bdd[3]{p} \omega_p \bdelta^3(0) \ket{0}.
+\end{align}
+We find an infinite ground-state energy!
+And worse, this infinity is twofold; we have the obvious factor of $\bdelta^3(0)$, but also a less obvious infinity that arises because the integral $\int_{}^{} \bdd[3]{p} \omega_p$ does not converge; the energy of each harmonic oscillator diverges $\omega_{p} = \sqrt{p^2 + m^2} \rightarrow \infty$ as $p \to \infty$.
+This latter divergence is called a \emph{high-frequency} or \emph{ultra-violet} divergence. We can resolve this issue by introducing a UV-cutoff $\Lambda$ as an upper integration bound, which tames the integral. 
+\begin{leftbar}
+  \begin{remark}
+    Physically, this can be justified by postulating that $\Lambda$ corresponds to the highest energy (or equivalently, $\Lambda^{-1}$ the smallest length scale) on which this QFT is valid. On higher energy or smaller length scales, new physics will need to be introduced.
+    In statistical field theory, this smallest length scale is on the order of the lattice spacing. On smaller length scales, the continuum assumptions of the theory break down and new physics---accounting for the lattice effects---will need to be introduced.
+  \end{remark}
+\end{leftbar}
+
+Concerning the former infinity, $\bdelta^3(0)$, we have another resolution up our sleeves: Heuristically, one might claim that in non-gravitational physics, only energy differences are relevant for the dynamics of the system. As such, one might redefine the Hamiltonian to subtract the commutator $[a_{\vb{p}}, a^{\dagger}_{\vb{p}}]$ which led to the divergence.
+More concretely, this arbitrary choice that we can make in the Hamiltonian points to an ambiguity arising in moving from the classical to the quantum theory:
+
+Classically, the Hamiltonian $H = \frac{1}{2}(\omega q - i p)(\omega q + ip)$ is exactly the same as $H = \frac{1}{2}p^2 + \frac{1}{2} \omega^2 q^2$.
+However, in QM, the operator order matters, and upon quantisation it gives us $H = \omega a^{\dagger} a$.
+The analogous thing happens in QFT with momentum modes, which means that the Hamiltonian that we should really use is
+\begin{equation}
+  H = \int_{}^{} \bdd[3]{p} \omega_{\vb{p}} a^{\dagger}_{\vb{p}} a_{\vb{p}}.
+\end{equation}
+Using this Hamiltonian, the ground-state energy of the vacuum has been redefined to $H \ket{0} = 0$.
+
+This ambiguity in the definition of QFT operators can be resolved by introducing the concept of normal ordering.
+\begin{definition}[normal order]
+  A \emph{normal ordered} string of operators $\normalorder{\phi_1(\vb{x}_1) \cdots \phi_n(\vb{x}_n)}$ is defined to be the same string of operators, except that all annihilation operators $a$ are moved to the RHS of all creation operators $a^{\dagger}$.
+\end{definition}
+Since the annihilation operators annihilate the vacuum, the $\bdelta^3(0)$ infinity is discarded when using the normally ordered Hamiltonian
+\begin{equation}
+  \normalorder{H} = \int_{}^{} \bdd[3]{p} \omega_p a^{\dagger}_{\vb{p}} a_{\vb{p}}.
+\end{equation}
+
+\subsection{Particles}%
+\label{sub:particles}
+
+It is easy to verify the commutation relation with the Hamiltonian
+\begin{equation}
+  [H, a_{\vb{p}}^{\dagger}] = \omega_p a_{\vb{p}}^{\dagger} \qquad \text{and} \qquad 
+  [H, a_{\vb{p}}] = -\omega_p a_{\vb{p}}.
+\end{equation}
+The operator $a_{\vb{p}}^{\dagger}$ increases the energy by the constant value $\omega_p$.
+
+Now consider the state $\ket{\vb{p}'} = a_{\vb{p}'}^{\dagger} \ket{0}$. The energy of this state is
+\begin{align}
+  H \ket{p'} &= \int_{}^{} \bdd[3]{p} \omega_p a_{\vb{p}}^{\dagger} a_{\vb{p}} a_{\vb{p}'}^{\dagger} \ket{0}\\
+  &= \int_{}^{} \bdd[3]{p} \omega_p a_{\vb{p}}^{\dagger} \left( [a_{\vb{p}}, a_{\vb{p}'}^{\dagger}] - a_{\vb{p}'}^{\dagger} a_{\vb{p}} \right) \ket{0} \\
+  &= \omega_{p'} a_{\vb{p}'}^{\dagger} \ket{0} = \omega_{p'} \ket{\vb{p}'}.
+\end{align}
+Since $\omega_p = \sqrt{p^2 + m^2}$ is the relativistic dispersion relation of a particle of mass $m$ and momentum $p$, we interpret the state  $\ket{\vb{p}}$ as the one-particle momentum eigenstate.
+
+\begin{leftbar}
+  \begin{remark}
+    Mass $m$ comes from the term $\frac{1}{2} m^2 \phi^2$ in the Lagrangian; in general, the coefficient of the quadratic field term in $\mathcal{L}$ allows us to identify the mass.
+  \end{remark}
+\end{leftbar}
+
+\subsubsection{Properties of $\ket{\vb{p}}$}%
+\label{subsub:properties_of_p_m_}
+
+We previously defined the momentum operator $\vb{P} = -\int_{}^{} \dd[3]{x} \pi(\vb{x}) \grad \phi(\vb{x})$.
+\begin{exercise}
+  Show that $\vb{P} = \int_{}^{} \bdd[3]{p} \vb{p} a_{\vb{p}}^{\dagger} a_{\vb{p}}$. Then show that $\ket{\vb{p}}$ is actually a momentum eigenstate, i.e.~that $P \ket{\vb{p}} = \vb{p} \ket{\vb{p}}$.
+\end{exercise}
+We could also act with the angular momentum operator $J^i$ to find $J^i \ket{\vb{p}} = 0$. This is a spin-zero state.
+\begin{exercise}
+  Do all of Example sheet 1.
+\end{exercise}
+
+\subsubsection{Multi-Particle States $\ket{\vb{p}_1, \ldots, \vb{p}_n}$}%
+\label{subsub:multi_particle_states}
+
+We define $\ket{\vb{p}_1, \cdots, \vb{p}_n} \coloneq a_{\vb{p}_1} \cdots a_{\vb{p}_n} \ket{0}$.
+Since the creation operators $a_{\vb{p}_i}$ commute with each other, we have $\ket{\vb{p}, \vb{q}} = \ket{\vb{q}, \vb{p}}$. These multi-particle states are thus symmetric under interchange of particle label, which means that we are dealing with \emph{bosons}.
+
+The full Hilbert space is spanned by the set
+\begin{equation}
+  \left\{ \ket{0}, \ket{\vb{p}_1}, \ket{\vb{p}_1, \vb{p}_2}, \cdots \right\}.
+\end{equation}
+A space that is built from these basis states is called a \emph{Fock space}.
+
+We can also introduce a \emph{number operator}
+\begin{equation}
+  N = \int_{}^{} \bdd[3]{p} a_{\vb{p}}^{\dagger} a_{\vb{p}},
+\end{equation}
+which counts the number of particles.
+\begin{exercise}
+  Show that $N \ket{\vb{p}_1, \cdots, \vb{p}_{n}} = n{\vb{p}_1, \cdots, \vb{p}_{n}}$.
+\end{exercise}
+Also, the number operator commutes with the Hamiltonian, $[N, H] = 0$, which means that particle number is conserved in the free quantum field theory. This ceased to hold true once we allow interactions between the particles.

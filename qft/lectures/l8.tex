@@ -1,0 +1,165 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 8: October 26}
+If $H_I$ were just a function, we could solve \eqref{eq:interaction-operators} by $U = \exp[-i \int_{t_0}^{t} H_I(t') \dd[]{t'}]$, but this does not work.
+There are ordering ambiguities since $[H_I(t'), H_I(t'')] \neq 0$ for $t' \neq t''$.
+From \eqref{eq:interaction-operators}, we see that $U(t, t_0)$ satisfies
+\begin{equation}
+  U(t, t_0) = 1 + (-i) \int_{t_0}^{t} \dd[]{t'} H_I(t') U(t', t_0).
+\end{equation}
+Substituting this back into itself to get an infinite series
+\begin{equation}
+  U(t, t_0) = 1 + (-i) \int_{t_0}^{t} \dd[]{t'} H_I(t') + (-i)^2 \int_{t_0}^{t} \dd[]{t'} \int_{t_0}^{t} \dd[]{t''} H_I(t') H_I(t'') + \dots
+\end{equation}
+From the ranges of integration, the $H_I$ product is automatically time ordered.
+
+%F1 graph axes t' on x and y=t''. Then there is rectangle at x=t and y=t with diagonal line separating it into two triangles. Then both areas (upper and lower) are marked with T{} identities
+\begin{wrapfigure}{R}{0.4\textwidth}
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l8f1.pdf_tex}
+  \caption{}
+  \label{fig:l8f1}
+\end{wrapfigure}
+If we integrate over the upper patch in Figure \ref{fig:l8f1}, time ordering is $T \left\{ H_I(t') H_I(t'') \right\} = H_I(t'') H_I(t')$, whereas in the lower patch we have $T \left\{ H_I(t') H_I(t'') \right\} = H_I(t') H_I(t'')$.
+The upper triangle is the initial volume of the integral. But by relabelling, we can show that this is the same as the lower triangle:
+\begin{equation}
+  \int_{t_0}^{t} \dd[]{t'} \int_{t_0}^{t} \dd[]{t''} H_I(t') H_I(t'')
+  = \int_{t_0}^{t} \dd[]{t''} \int_{t_0}^{t} \dd[]{t'} H_I(t'') H_I(t').
+\end{equation}
+So $\frac{1}{2!}$ times the area of the full square is the area of the upper triangle
+\begin{equation}
+  U(t) = 1 + (-i) \int_{t_0}^{t} \dd[]{t'} H_I(t')
+  + \frac{(-i)^2}{2!} \int_{t_0}^{t} \dd[]{t'} \int_{t_0}^{t} \dd[]{t''} T \left\{ H_I(t') H_I(t'') \right\}
+\end{equation}
+Therefore, we obtain \emph{Dyson's formula} by writing
+\begin{equation}
+  \label{eq:8-dyson}
+  U(t, t_0) = T \exp{-i \int_{t_0}^{t} \dd[]{t'} H_I(t')} = T \exp{+i \int_{t_0}^{t} \dd[3]{x} \dd{t} \mathcal{L}_I(t')}
+\end{equation}
+\begin{example}
+  In scalar Yukawa theory, this is $T \exp[-i g \int_{}^{} \dd[4]{x} \psi^* \psi \phi]$.
+\end{example}
+This is something of a formal result---we expand to finite order in $\lambda_n$.
+
+\section{Scattering Amplitudes}%
+\label{sec:scattering_amplitudes}
+
+The time evolution used in scattering theory is called the \emph{S-matrix}.
+Let us define the time evolution operator going from initial to final states as
+\begin{equation}
+  S = \lim_{\substack{t \to \infty,\\ t_0 \to - \infty}} \left\{ U(t, t_0) \right\}
+\end{equation}
+The initial state $\ket{i}$ and final state $\ket{f}$ are in some sense `far away' from each other and from the interaction.
+We assume that $\ket{f}, \ket{i}$ behave like free particles; they are eigenstates of $H_0$.
+
+The amplitude is 
+\begin{equation}
+  \lim_{\substack{t \to \infty \\ t_0 \to - \infty}} \left\{ \bra{f} U(t, t_0) \ket{ i} \right\} = \bra{f} S \ket{i},
+\end{equation}
+where $\bra{ f}S \ket{ i}$ is historically called the \emph{S-matrix} or \emph{matrix element}.
+
+\begin{example}[]
+  Let us go back to scalar Yukawa theory, 
+  \begin{equation}
+    H_I = g \psi^*_I \psi_I \phi_I.
+  \end{equation}
+  Physically, we will model mesons with $\phi$ and nucleons as $\psi$.
+  Moreover, we will drop the subscript $I$ from now on for notational ease.
+  Concentrate on creation and annihilation operators in the expansion
+  The operator $\phi \sim a_{\vb{p}}, a^{\dagger}_{\vb{p}}$ destroys or creates a meson.
+  For the other two it is slightly more complicated:
+  $\psi \sim b_{\vb{p}}, c ^{\dagger}_{\vb{p}}$ destroys a nucleon or creates an anti-nucleon, while 
+  $\psi^* \sim b_{\vb{p}}^{\dagger}, c_{\vb{p}}$ creates a nucleon or destroys an anti-nucleon.
+  The only non-zero commutators are
+  \begin{equation}
+    [a_{\vb{p}}, a_{\vb{p}'}^{\dagger}] = [b_{\vb{p}}, b_{\vb{p}'}^{\dagger}] = [c_{\vb{p}}, c_{\vb{p}'}^{\dagger}] = \bdelta^3(\vb{p} - \vb{p}').
+  \end{equation}
+  The interaction Hamiltonian $H_I$ contains terms like $\int \dots b_{\vb{p}}^{\dagger} c_{\vb{p}'}^{\dagger} a_{\vb{p}''} + \dots$, which destroys a meson and produces a nucleon/anti-nucleon pair. This contributes to meson decay: $\phi \to \psi \bar \psi$.
+  Figure \ref{fig:meson-decay} represents this in a diagrammatic form.
+  %F2 phi with solid arrow going in and psi and psi bar with solid arrows going out
+  \begin{leftbar}
+    \begin{remark}
+      We wrote $\bar \psi$ to denote the anti-particle, not the field. In general, particles are labelled like their fields and anti-particles are labelled like the fields with a bar on top.
+    \end{remark}
+  \end{leftbar}
+  This interaction arose from the first term in $U(t, t_0)$.
+  At second order in $g$, we have more complicated terms like $\int \dots (c b a^{\dagger}) (b^{\dagger} c ^{\dagger} a) + \dots$. 
+  \begin{leftbar}
+    \begin{remark}
+      The momenta $\vb{p}, \vb{p}', \dots$ are implied.
+    \end{remark}
+  \end{leftbar}
+  %F3 psi and psi bar going in, mediated by phi, psi and psi bar going out, all solid arrows
+  This term, corresponding to the diagram depicted in Figure \ref{fig:nucleon-scattering}, contributes to nucleon / anti-nucleon scattering.
+  \begin{figure}[t]
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \feynmandiagram [horizontal=a to b] {
+        {i1 [particle=\(\psi\)], i2 [particle=\(\bar\psi\)]} -- [fermion, edge label=\(\)] a,
+        a -- [fermion, edge label=\(\phi\)] b,
+        b -- [fermion, edge label=\(\)] { f1 [particle=\(\psi\)] , f2 [particle=\(\hat\psi\)]},
+      };
+      \caption{Scattering between a nucleon $\psi$ and anti-nucleon $\bar\psi$ via the meson $\phi$.}
+      \label{fig:nucleon-scattering}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \feynmandiagram [horizontal=a to b] {
+	a [particle=\(\phi\)] -- [fermion, edge label=\(\),  momentum=\(p\)] b,
+	b -- [fermion, edge label=\(\), momentum=\(q_1\)] o1 [particle=\(\psi\)],
+	b -- [fermion, edge label=\(\), momentum=\(q_2\)] o2 [particle=\(\bar \psi\)],
+      };
+      \caption{A meson $\phi$ with momentum decays into a nucleon and anti-nucleon pair.}
+      \label{fig:meson-decay}
+    \end{subfigure}
+    \caption{Diagrammatic representations of interaction terms.}
+  \end{figure}
+
+\end{example} 
+
+\subsection{Meson Decay}%
+\label{sub:meson_decay}
+
+Let us compute the amplitude for the diagram in Figure \ref{fig:meson-decay}.
+We take the initial and final states to be
+\begin{equation}
+  \ket{i} = \sqrt{2 E_p} a_{\vb{p}}^{\dagger} \ket{0} \qquad \ket{f} = \sqrt{4 E_{q_1} E_{q_2}} b_{\vb{q}_1}^{\dagger} c_{\vb{q}_2} ^{\dagger} \ket{0}.
+\end{equation}
+We need to calculate the matrix element $\bra{ f} S \ket{i}$.
+As previously mentioned, we do this by expanding in the coupling constant $g$.
+The zeroth order term vanishes, since ${\bra{f}\ket{i} = \bra{0} b c a^{\dagger} \ket{0} = 0}$.
+The first order term is
+\begin{equation}
+  -ig \bra{f}T \int_{}^{} \dd[4]{x} \psi^*(x) \psi(x) \phi(x) \ket{i} + O(g^2).
+\end{equation}
+Note that the time ordering operator $T$ has no effect here, whereas in the higher order terms it will matter.
+Our general strategy is to expand all field and states, getting rid of all creation and annihilation operators with the commutation relations and the vacuum normalisation $\bra{0} \ket{0} = 1$.
+We will thus reduce this QFT amplitude to a function of 4-momenta.
+
+Let us expand the meson field $\phi$ and $\ket{i}$ first.
+\begin{equation}
+  \bra{f}S \ket{i} = -ig \bra{f} \int_{}^{} \dd[4]{x} \psi^*(x) \psi(x) \int_{}^{} \bdd[3]{k} \frac{\sqrt{2E_p}}{\sqrt{2E_k}} \left( a_{\vb{k}} a_{\vb{p}}^{\dagger} e^{-i k \cdot x} + a^{\dagger}_{\vb{k}} a^{\dagger}_{\vb{p}} e^{i k \cdot x} \right) \ket{0} + O(g^2)
+\end{equation}
+We can then commute the $a_{\vb{k}}^{\dagger}$ in the second summand directly into the vacuum on the left hand side, using that $[a_{\vb{k}}^{\dagger}, \psi(x)] = 0 = [a_{\vb{k}}^{\dagger}, \psi^*(x)]$. 
+This annihilates the vacuum on the left hand side since
+\begin{equation}
+  a_{\vb{k}} \ket{0} = 0 \implies \bra{0} a_{\vb{k}}^{\dagger} = 0.
+\end{equation}
+In the first term, we can replace $[a_{\vb{k}}, a_{\vb{p}}^{\dagger}] \ket{0} = \bdelta^3(\vb{p}-\vb{k}) \ket{0}$, so to first order in $g$, 
+\begin{equation}
+  \bra{f}S \ket{i} = -ig \bra{f} \int_{}^{} \dd[4]{x}  \psi^*(x) \psi(x) e^{-ip \cdot x} \ket{0}.
+\end{equation}
+We now expand the $\psi$ fields and the $\bra{f}$.
+\begin{align}
+  \begin{split}
+\bra{f}S \ket{i} &= -ig \bra{0} \int_{}^{} \dd[4]{x} \frac{\dd[3]{k_1} \dd[3]{k_2}}{\sqrt{4 E_{k_1} E_{k_2}}} \Bigr\{ \sqrt{4 E_{q_1} E_{q_2}} c_{\vb{q}_2} b_{\vb{q}_1} \left( b^{\dagger}_{\vb{k}_1} e^{i k_1 \cdot x} + \cancel{c_{\vb{k}_1}} e^{-i k_1 \cdot x} \right) \\
+		   &\qquad\times\left( \cancel{b_{\vb{k}_1}}(...) + c_{\vb{k}_2}^{\dagger} e^{i k_2 \cdot x} \right) e^{-i p \cdot x} \ket{0} \Bigr\}
+  \end{split}
+  \\
+		   &= -i g \bra{0} \int_{}^{} \dd[4]{x} \frac{\dd[3]{k_2}}{\sqrt{2 E_{k_2}}} \sqrt{2 E_{q_2}} [c_{\vb{q}_2}, c ^{\dagger}_{\vb{k}_2} ] e^{i (q_1 \cdot x + k_2 \cdot x - p \cdot x)} \ket{0} \\
+		   &=- ig \bra{0} \int_{}^{} \dd[4]{x} e^{i(q_1 + q_2 -p) \cdot x} \ket{0} \\
+		   &=-i g \bdelta^4(q_1 + q_2 -p).
+\end{align}
+This four dimensional delta function imposes 4-momentum conservation on initial and final states.

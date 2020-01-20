@@ -1,0 +1,171 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 5: October 19}
+In this course, we are interested in classifying Lie groups and Lie algebras. We have isomorphisms and homeomorphisms, maps which preserve group and manifold structure respectively.
+
+\begin{definition}[isomorphism]
+  Two Lie groups $G$ and $G'$ are \emph{isomorphic} $(G \simeq G')$ if there exists a one-to-one smooth map $J : G \to G'$ such that for all $g_1, g_2 \in G$, we have $J(g_1 g_2) = J(g_1) J(g_2)$.
+\end{definition}
+
+Let us look at some low-dimensional examples of unitary groups:
+\begin{example}[$G = U(1)$]
+  Let $U(1) = \left\{ z \in \mathbb{C} \mid \abs{z} = 1 \right\}$. A general element $z = e^{i \theta}$ of $G = U(1)$, parametrised by $\theta \in \mathbb{R}$ with identification $\theta \sim \theta + 2\pi$, corresponds to a unique element
+  \begin{equation}
+    M(\theta) =
+    \begin{pmatrix}
+     \cos\theta & -\sin\theta \\
+     \sin\theta & \cos\theta \\
+    \end{pmatrix}
+  \end{equation}
+  of $G' = SO(2)$ via the map
+  \begin{equation}
+    \begin{split}
+      J \colon U(1) &\to SO(2) \\
+      z(\theta) = e^{i\theta} &\mapsto M(\theta).
+    \end{split}
+  \end{equation}
+  The map $J$ is one-to-one and
+  \begin{equation}
+    J(z(\theta_1) z(\theta_2)) = M(\theta_1 + \theta_2) = M(\theta_1) M(\theta_2) = J(z(\theta_1)) J(z(\theta_2)).
+  \end{equation}
+  This implies that $U(1) \simeq SO(2)$.
+\end{example}
+
+\begin{example}[$G = SU(2)$]
+  This is a three-dimensional group. The matrix parametrised as $U = a_0 I_2 + i \vb{a} \cdot \boldsymbol\sigma$, where $\boldsymbol\sigma = (\sigma_1, \sigma_2, \sigma_3)$ and $a_0 \in \mathbb{R}$, $\vb{a} = (a_1, a_2, a_3) \in \mathbb{R}^3$, is an element of $SU(2)$ provided that 
+  \begin{equation}
+    a_0^2 + a_1^2 + a_2^2 + a_3^2 = 1.
+  \end{equation}
+  This implies that $M(SU(2)) \simeq S^3 \subset \mathbb{R}^4$.
+  Since 
+  \begin{equation}
+    \pi_1(SU(2)) \simeq \left\{ 1 \right\}, \qquad \pi_1(SO(3)) = \mathbb{R}_2,
+  \end{equation}
+  this means that $SU(2) \not\simeq SO(3)$.
+\end{example}
+
+\chapter{Lie Algebras}%
+\label{cha:lie_algebras}
+
+\begin{definition}[Lie algebra] \label{def:lie_algebra}
+  A \emph{Lie algebra} $\mathfrak{g}$ is a vector space over a field $F = \mathbb{R}, \mathbb{C}$ with a bracket, 
+  \begin{equation}
+    [\bullet, \bullet]\colon \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}
+  \end{equation}
+  with the following properties for all $X, Y, Z \in \mathfrak{g}$:
+  \begin{enumerate}
+    \item Anti-symmetry: $[X, Y] = -[Y, X]$.
+    \item (Bi-)linearity: $[\alpha X + \beta Y, Z] = \alpha[X, Z] + \beta [Y, Z]$, for all coefficients $\alpha, \beta \in F$.
+    \item Jacobi identity: $[X, [Y, Z] ] + [Y, [Z, X] ] + [Z, [X, Y] ] = 0$.
+  \end{enumerate}
+\end{definition}
+
+Let $V$ be a vector space that has a product $*: V \times V \to V$, which is associative, meaning that for all $X, Y, Z \in V$,
+\begin{equation}
+  (X * Y) * Z = X*(Y*Z).
+\end{equation}
+Moreover, the product is distributive over the field
+\begin{equation}
+  Z * (\alpha X + \beta Y) = \alpha Z*X + \beta Z*Y.
+\end{equation}
+Then, we obtain a Lie algebra by defining the Lie bracket to be the commutator
+\begin{equation}
+  [X, Y] = X*Y - Y*X.
+\end{equation}
+One example we have in mind is the case where $V$ is the vector space of matrices and $*$ is matrix multiplication. 
+\begin{leftbar}
+  \begin{remark}
+    Compare this to the Lie algebra of differential operators/vectors in differential geometry.
+  \end{remark}
+\end{leftbar}
+
+\begin{definition}[dimension]
+  The dimension of a Lie algebra $\mathfrak{g}$ is the dimension of its underlying vector space.
+\end{definition}
+
+Choose a basis $B$ for $\mathfrak{g}$
+\begin{equation}
+  B = \left\{ T^a, a=1, \ldots, n = \dim(\mathfrak{g}) \right\}.
+\end{equation}
+Then any $X \in \mathfrak{g}$ can be written as
+\begin{equation}
+  X = X_a T^a \coloneq \sum_{a=1}^n X_a T^a
+\end{equation}
+where $X_a \in F$. The bracket of two Lie algebra elements $X, Y \in \mathfrak{g}$ can then be written as
+\begin{equation}
+  [X, Y] = X_a Y_b [T^a, T^b].
+\end{equation}
+Therefore, knowing the brackets of basis elements allows us to construct the full Lie algebra.
+We write
+\begin{equation}
+  [T^a, T^b] = f \indices{^a^b_c} T^c .
+\end{equation}
+The \emph{structure constants} $f \indices{^{ab}_c} \in F$ therefore define the Lie algebra, and two Lie algebras are isomorphic if they have the same structure constants.
+Note however, that structure constants are basis dependent. We will want to find a way to classify Lie algebras that is independent of our choice of basis.
+
+\section{Structure Constants}%
+\label{sec:structure_constants}
+
+Let $f \indices{^a^b_c} \in F$, $a, b, c = 1, \ldots, \dim(\mathfrak{g})$ be structure constants of a Lie algebra $\mathfrak{g}$.
+The axioms of Lie algebras then imply
+\begin{description}
+  \item[Property 1.] $\implies f \indices{^a^b_c} = -f \indices{^b^a_c}$
+  \item[Property 3.] $\implies f \indices{^a^b_c} f \indices{^c^d_e} + f \indices{^d^a_c} f \indices{^c^b_e} + f \indices{^b^d_c} f \indices{^c^a_e} = 0$
+\end{description}
+
+\begin{definition}[isomorphism]
+  Two Lie algebras $\mathfrak{g}$ and $\mathfrak{g}'$ are said to be \emph{isomorphic}, denoted $\mathfrak{g} \simeq \mathfrak{g}'$, if there exists a linear, one-to-one map $f: \mathfrak{g} \to \mathfrak{g}'$ such that $\forall X, Y \in \mathfrak{g}$,
+  \begin{equation}
+    [f(X), f(Y)] = f([X, Y]).
+  \end{equation}
+\end{definition}
+We will be interested in classifying Lie algebras \emph{up to isomorphism}.
+
+\begin{definition}[subalgebra]
+  A \emph{subalgebra} $\mathfrak{h} \subset \mathfrak{g}$ is a vector subspace of $\mathfrak{g}$ that is also a Lie algebra.
+\end{definition}
+
+\begin{definition}[ideal]
+  An \emph{ideal} of $\mathfrak{g}$ is a subalgebra $\mathfrak{h}$ of $\mathfrak{g}$ such that $\forall X \in \mathfrak{g}$ and $\forall Y \in \mathfrak{h}$,
+  \begin{equation}
+    [X, Y] \in \mathfrak{h}.
+  \end{equation}
+\end{definition}
+The notion of ideal roughly corresponds to the concept of a normal subgroup.
+
+\begin{example}
+  Every Lie algebra $\mathfrak{g}$ has two \emph{`trivial'} ideals:
+  \begin{equation}
+    \mathfrak{h} = \left\{ 0 \right\} \qquad \text{and} \qquad \mathfrak{h} = \mathfrak{g}.
+  \end{equation}
+\end{example}
+\begin{example}
+  The \emph{derived algebra} 
+  \begin{equation} 
+    i = [\mathfrak{g}, \mathfrak{g}] \coloneq \text{Span}_F \left\{ [X, Y] \mid X, Y \in \mathfrak{g} \right\} 
+  \end{equation} 
+  is an ideal of $\mathfrak{g}$.
+\end{example}
+\begin{example}
+  The \emph{centre} $\xi(\mathfrak{g})$ of $\mathfrak{g}$, defined by
+  \begin{equation}
+    \xi(\mathfrak{g}) = \left\{ X \in \mathfrak{g} \mid \forall Y \in \mathfrak{g},\; [X, Y] = 0 \right\},
+  \end{equation}
+  is an ideal of $\mathfrak{g}$.
+\end{example}
+
+\begin{definition}
+  An \emph{Abelian} Lie algebra is such that all brackets vanish:
+  \begin{equation}
+    [X, Y] = 0 \qquad \forall X, Y \in \mathfrak{g}
+  \end{equation}
+\end{definition}
+
+For an Abelian Lie algebra, the Lie algebra is equal to its own centre $\mathfrak{g} = \xi(\mathfrak{g})$ and the derived algebra is trivial $i(g) = \left\{ 0 \right\}$.
+
+\begin{definition}[simple]
+  A Lie algebra $\mathfrak{g}$ is said to be \emph{simple} if it is non-Abelian and it has no non-trivial ideals.
+\end{definition}
+This implies that for simple Lie algebras, $\xi(\mathfrak{g}) = \left\{ 0 \right\}$ and $i(\mathfrak{g}) = \mathfrak{g}$.
+
+The main theorem that we will work up to is the \emph{Cartan classification}, which will allow us to classify all finite-dimensional, simple, complex Lie algebras $\mathfrak{g}$.

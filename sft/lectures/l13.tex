@@ -1,0 +1,152 @@
+% lecture notes by Umut Özer
+% course: set
+\lhead{Lecture 13: November 11}
+
+With our RG transformations, we saw that the couplings flow with the RG parameter $\zeta$. This flow can be described by the $\beta$-function differential equations.
+
+Let us derive the $\beta$-functions for the quartic interaction.
+To leading order, we found that the interactions give us the following flow
+\begin{align}
+  \label{eq:13-1}
+  \mu^2(\zeta) &= \zeta^2 (\mu_0^2 + a g_0) \qquad & g(\zeta) &= \zeta^{4 - d}(g_0 - b g_0^2), \\
+  a &= 12 \int_{\Lambda/\zeta}^{\Lambda} \frac{\bdd[d]{q}}{q^2 + \mu_0^2} \qquad & b &= 36 \int_{\Lambda/\zeta}^{\Lambda}\frac{\bdd[d]{q}}{(q^2 + \mu_0^2)^2}
+\end{align}
+which corrects the mass term and the quartic interactions.
+
+Let us write $\zeta = e^{s}$, where $s$ is infinitesimal.
+We can then solve the integrals in $a$ and $b$ as
+\begin{equation}
+  \label{eq:13-2}
+  \implies \dv[]{}{d} \int_{\Lambda e^{-s}}^\Lambda \dd[]{q} f(q) = \Lambda f(\Lambda)
+\end{equation}
+which becomes exact for $s \to 0$.
+
+Applying this to \eqref{eq:13-1}, we find the following $\beta$-functions:
+\begin{equation}
+  \label{eq:beta-functions}
+  \dv[]{\mu^2}{s} = 2 \mu^2 + \frac{3g}{2\pi^2} \frac{\Lambda^4}{\Lambda^2 + \mu^2} \qquad
+  \dv[]{g}{s} = -\frac{9}{2\pi^2} \frac{\Lambda^4}{(\Lambda^2 + \mu^2)^2} g^2
+\end{equation}
+where we used that $\dd[d]{q} = \dd[]{\Omega_{d-1}} q^{d-1} \dd[]{q}$ with $d = 4$. Together with \eqref{eq:13-2}, this leads to the factor of $\Lambda^4$ on top.
+
+\begin{leftbar}
+  \begin{remark}
+    I believe there might be some slight-of-hand happening to switch $\mu_0 \to \mu$ here.
+  \end{remark}
+\end{leftbar}
+
+\section{Wilson-Fischer Fixed Point}%
+\label{sec:wilson_fischer_fixed_point}
+
+\subsection{\texorpdfstring{$\epsilon$-}{Epsilon }Expansion}%
+\label{sub:epsilon_expansion}
+
+Since we now have the $\beta$-functions, it seems like the dimension $d$ does not necessarily need to be an integer anymore---unlike previously where we had integrals over $\dd[d]{q}$.
+
+We derived the $\beta$-functions \eqref{eq:beta-functions} in $d = 4$. Let us now consider $d = 4 - \epsilon$. The $\beta$-functions then turn out to be 
+\begin{equation}
+  \dv[]{\mu^2}{s} = 2 \mu^2 + \frac{3}{2\pi^2} \frac{\Lambda^4}{\Lambda^2+\mu^2}\widetilde{g} \qquad \dv[]{\widetilde{g}}{s} = \epsilon \widetilde{g} - \frac{9}{2\pi^2} \frac{\Lambda^4}{(\Lambda^2+ \mu^2)^2} \widetilde{g}^2 + \dots
+\end{equation}
+where we used an `$\epsilon$-expansion': $\Lambda_{d-1} = \frac{2\pi^{d/2}}{\Gamma(d/2)} \simeq 2 \pi^2 + O(\epsilon)$.
+
+We can solve for the fixed point, where the $\beta$-functions vanish.
+Denoting the fixed-point solutions with a star, we have
+\begin{align}
+  \mu^2_* &= -\frac{3}{4\pi^2} \frac{\Lambda^4}{\Lambda^2 + \mu_*^2} \widetilde{g}_* \qquad &\widetilde{g}_* &= \frac{2\pi^2}{9} \frac{(\Lambda^2 + \mu_*^2)^2}{\Lambda^4} \epsilon, \\
+	  &= - \frac{1}{6}\Lambda^2 \epsilon & &\simeq \frac{2\pi^2}{9} \epsilon.
+\end{align}
+where in the last line, we solved these two equations simultaneously.
+
+This is called the \emph{Wilson-Fischer Fixed Point}.
+Expanding the coupling constants in perturbations around this fixed point,
+\begin{equation}
+  \mu^2 = \mu_*^2 + \delta\mu^2 \qquad \widetilde{g} = \widetilde{g}_* + \delta \widetilde{g},
+\end{equation}
+we can write the flow of the perturbations as
+\begin{equation}
+  \dv[]{}{s}
+  \begin{pmatrix}
+  \delta \mu^2 \\
+  \delta \widetilde{g} \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    2 - \epsilon/3 &  \frac{3}{2\pi^2} \Lambda^2 (1 + \frac{\epsilon}{6}) \\
+   0 & -\epsilon \\
+  \end{pmatrix}
+  \begin{pmatrix}
+  \delta\mu^2 \\
+  \delta \widetilde{g} \\
+  \end{pmatrix}.
+\end{equation}
+We have $\Delta_t = 2 - \epsilon/3$, and $\Delta_g = -\epsilon$.
+%L13F1
+
+\subsection{Critical Exponents Again}%
+\label{sub:critical_exponents_again}
+
+The reduced temperature $t = \frac{\abs{T - T_C}}{T_c}$ scales as
+\begin{equation}
+  t \to \zeta^{\Delta_t}t = e^{s \Delta_t}t
+\end{equation}
+We also know correlation length $\xi$ scales as $\xi \sim t^{-\nu}$. Requiring this be a length scale (and thus scale like $\xi \to \zeta^{-1} \xi$), we get
+\begin{equation}
+  \xi \sim t^{-\nu} \to (\zeta^{\Delta_t} t)^{-\nu} = \zeta^{- \Delta_t \times \nu} \xi
+\end{equation}
+and therefore
+\begin{equation}
+  \qquad \nu = \frac{1}{\Delta_t} = \frac{1}{2} + \frac{\epsilon}{12}
+\end{equation}
+Old scaling relations:
+\begin{align}
+  c &\sim t^{-\alpha} \qquad \alpha = \frac{\epsilon}{6} \\
+  \Delta_\phi &\sim \frac{d-2}{2} = 1 - \frac{\epsilon}{2}
+\end{align}
+This gives
+\begin{equation}
+  \beta = \frac{1}{2}- \frac{\epsilon}{6} \qquad \gamma = 1 + \frac{\epsilon}{6} \qquad \delta = 3 + \epsilon.
+\end{equation}
+
+There is no physical system, which we can study with $d = 4-\epsilon$ dimensions.
+However, we can look at system which are close, for example $d = 3$ with $\epsilon = 1$. Since the expansion parameter is $\epsilon = 1$, all hell should break loose since we do not have convergence of our asymptotic expansions.
+However, we get surprisingly close results, listed in \ref{tab:epsilon-1}.
+
+\begin{table}[htpb]
+  \centering
+  \caption{Comparing the results of the $\epsilon$-expansion with the numerical results.}
+  \label{tab:epsilon-1}
+  \begin{tabular}{c | c c c c c c}
+     & $\alpha$ & $\beta$ & $\gamma$ & $\delta$ & $\eta$ & $\nu$ \\
+     \hline
+    MF & $0$ & $\frac{1}{2}$ & $1$ & $3$ & $0$ & $\frac{1}{2}$ \\
+    $\epsilon = 1$ & $0.17$ & $0.33$ & $1.17$ & $4$ & $0$ & $0.58$ \\
+    $d = 3$ & $0.1101$ & $0.3264$ & $1.2371$ & $4.7898$ & $0.0363$ & $0.6300$ \\
+  \end{tabular}
+\end{table}
+
+\subsection*{d = 2}%
+
+In $d = 2$, the scaling of $\phi$ is $\Delta_\phi = (d-2)/2 = 0$. We therefore have an infinite number of relevant terms in the effective action
+\begin{equation}
+  F[\phi] = \int \dd[2]{x} \left[ \frac{1}{2} (\grad \phi)^2+ g_{2(n+1)} \phi^{2(n+1)} +\dots \right]
+\end{equation}
+In a sense, there is no price to be paid to add another $\phi^2$ to your free action.
+This means that we have an infinite set of fixed points, since the couplings are not scaling---at least to leading order---under RG flow.
+This is a very bizarre situation; previously we only needed to care about the relevant interaction.
+Here we need a different tool to study this theory.
+This takes us towards \emph{conformal symmetry}.
+
+\section{Towards Conformal Symmetry}%
+\label{sec:towards_conformal_symmetry}
+
+Let us think a bit more about scale invariance: In a scale invariant theory, we may rescale $\vb{x} \to \lambda \vb{x}$ without changing the physics. We know by definition, this symmetry exists at a fixed point.
+However, it turns out that at a fixed point, this symmetry is actually enhanced to the full conformal symmetry: $\vb{x} \to \widetilde{\vb{x}}(\vb{x})$, where
+\begin{equation}
+  \frac{\partial^{} \widetilde{x}_i}{\partial x_k} \frac{\partial^{} \widetilde{x}_j}{\partial x_l} \delta_{ij} = \phi(\vb{x}) \delta_{kl}.
+\end{equation}
+The class of conformal transformations, which satisfy this condition, are of the form
+\begin{equation}
+  \widetilde{x}^i = \frac{x^i - (\vb{x} \cdot \vb{x}) a^i}{1 - 2 (\vb{x} \cdot \vb{a}) + (\vb{a} \cdot \vb{a})(\vb{x} \cdot \vb{x})}.
+\end{equation}
+It is highly non-trivial that conformal symmetry should hold at the RG fixed point.
+$d = 2$ conformal field theory is a very rich subject to study.

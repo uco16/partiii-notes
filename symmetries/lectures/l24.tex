@@ -1,0 +1,196 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 24: December 05}
+
+Now the symmetry condition \eqref{eq:symmetry} on the Lagrangian implies that we have a conserved Noether charge.
+To couple scalar field to electromagnetism, we gauge the $U(1)$.
+Previously, $g$ was simply an element of $U(1)$. Now, we promote $g$ to a field that depends on spacetime
+\begin{equation}
+  g\colon \mathbb{R}^{3, 1} \to {U}(1) \qquad
+  \begin{gathered}
+    \phi \to g(x) \phi \\
+    \phi^* \to g^{-1}(x) \phi^*
+  \end{gathered}
+\end{equation}
+
+Consider again the infinitesimal transformation $g = \exp(\epsilon X)$
+\begin{equation}
+  \delta_X \phi = \epsilon X(x) \phi.
+\end{equation}
+
+Once we gauge the symmetry, $\mathcal{L}_\phi$ is no longer invariant. To restore gauge invariance, we introduce a \emph{covariant derivative} $D_{\mu} = \partial_{\mu} + A_{\mu}$, where we introduced the gauge field $A_{\mu}\colon \mathbb{R}^{3, 1} \to \mathfrak{u}(1) \simeq i \mathbb{R}$, which lives in the Lie algebra of the gauge group.
+The gauge field transforms as
+\begin{equation}
+  \delta_X A_{\mu} = - \epsilon \partial_{\mu} X.
+\end{equation}
+
+We find a consistent coupling by taking the invariant Lagrangian
+\begin{equation}
+  \mathcal{L} = \frac{1}{4 g^2} F_{\mu\nu} F^{\mu\nu} + (D_{\mu} \phi)^* (D^{\mu} \phi) - W(\phi^* \phi),
+\end{equation}
+where we replaced the ordinary derivatives by covariant ones.
+
+In fact, we know that this is the correct Lagrangian since the variation with respect to the gauge fields gives the correct classical equations of motion.
+
+As far as we know, this is the unique way of getting renormalisable spin-$1$ interacting theories for $U(1)$ .
+We want to generalise this successful Lagrangian to other symmetry groups.
+
+\section{Non-Abelian Gauge Theory}%
+\label{sec:non_abelian_gauge_theory}
+
+We have a gauge symmetry $\gamma$ based on a Lie group  $G$.
+As in electromagnetism, start with a global symmetry:
+We obtain a global symmetry by choosing a representation  $D$  of the Lie group $G$  of dimension $N$.
+In general, we will think of a complex representation; in this case we can identify the representation space with  $V \simeq \mathbb{C}^N$ .
+We will define the standard Hermitian inner product $(u, v) \coloneqq \vb{u}^{\dagger} \cdot \vb{v}$ $\forall u, v \in V$.
+If we then have a field  $\phi \colon \mathbb{R}^{3, 1} \to V$ , then the Lagrangian $\mathcal{L}_\phi = (\partial_{\mu}, \partial^{\mu} \phi) - W [(\phi, \phi)]$  generalises the analysis of the $U(1)$  case.
+The transformation of the field 
+\begin{equation}
+  \label{eq:24-non-abel-sym-trans}
+  \phi \to D(g) \phi \qquad \forall g \in G
+\end{equation}
+is defined to be a  \emph{global non-Abelian symmetry transformation} if it preserves $\mathcal{L}_\phi$.
+This places a restriction on the $D$ : We require that $D$  is unitary, i.e.~$D(g)^{\dagger} D(g) = \mathbb{1}_N$ .
+
+It is quite important that $G$  is a compact group; only compact Lie groups have unitary representations of finite dimension.
+
+As in the Abelian case, we want to focus on the infinitesimal transformations. In a Lie group, we do this by expanding near the identity:
+\begin{equation}
+  g = \text{Exp}(\epsilon X) \qquad
+  \begin{gathered}
+    \epsilon \ll 1 \\
+    X \in \mathfrak{g}
+  \end{gathered}
+\end{equation}
+From our earlier analysis, we know that the representation $D$ of the Lie group induces a representation $R \colon \mathfrak{g} \to \text{Mat}_N(\mathbb{C})$ of the Lie algebra by
+\begin{equation}
+  D(g) = \text{Exp}(\epsilon R(X)).
+\end{equation}
+
+\begin{definition}[]
+  A `\emph{unitary}' representation $R(X)$ of the Lie algebra $\mathfrak{g}$ is anti-hermitian:
+  \begin{equation}
+    R(X) = - R(X)^{\dagger} \qquad \forall X \in \mathfrak{g}.
+  \end{equation}
+\end{definition} 
+
+Near the identity ($\epsilon \ll 1$), we have
+\begin{equation}
+  D(G) \approx \mathbb{1}_N + \epsilon R(X) + O(\epsilon^2)
+\end{equation}
+This means we can write down an infinitesimal version of the symmetry transformation \eqref{eq:24-non-abel-sym-trans} as $\phi \to \phi + \delta_X \phi$ with  $\delta_X \phi = \epsilon R(X) \phi \in V$ .
+
+We want to imitate the procedure of the Abelian case in electromagnetism to gauge the symmetry. We upgrade $X$  to be spacetime dependent:
+\begin{equation}
+  X \colon \mathbb{R}^{3, 1} \to \mathfrak{g}
+\end{equation}
+In particular, the symmetry transformation becomes
+\begin{equation}
+  \delta_X\phi = \epsilon R(X(x)) \phi \in V.
+\end{equation}
+Under this transformation $\mathcal{L}_\phi$  is no longer invariant. As before we introduce a gauge field $A_{\mu} \colon \mathbb{R}^{3, 1} \to \mathfrak{g}$, living in the Lie algebra of the gauge group.
+The gauge transformation is
+\begin{equation}
+  \label{eq:24-gtrans}
+  \delta_X A_{\mu} = - \epsilon \partial_{\mu} X + \epsilon [X, A_{\mu}]
+\end{equation}
+The first term is the same as the Abelian gauge transformation.
+Indeed it is quite important that we recover Abelian gauge theory in the limit of our couplings going to zero.
+However, the symmetries also allow us to a dd the unique additional term (up to coefficients) on the right.
+It is an element of the Lie algebra, has the right dimension, Lorentz indices, etc \dots
+
+We need to add this term because we want to define a covariant derivative.
+The natural candidate is
+\begin{equation}
+  \boxed{D_{\mu} \phi = \partial_{\mu} \phi + R(A_{\mu}) \phi}.
+\end{equation}
+\begin{claim}
+  With these definitions, we indeed have a covariant derivative. In other words, for all spacetime dependent $X \in \mathfrak{g}$, we have
+  \begin{equation}
+    \delta_X(D_{\mu} \phi) = \epsilon R(X) D_{\mu} \phi.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  We need to compute the variation in the covariant derivative. Variation is a linear operator satisfying the Leibniz rule:
+  \begin{align}
+    \delta_X (D_{\mu} \phi) &= \delta_X (\partial_{\mu} \phi + R(A_{\mu}) \phi) \\
+			    &= \partial_{\mu}(\delta_X \phi) + R(A_{\mu}) \phi_X \phi + R(\delta_X A_{\mu}) \phi.
+  \end{align}
+  We have used the fact that derivatives and representations are linear operations, meaning that we can take the variation inside them.
+  \begin{exercise}
+    Verify this property!
+  \end{exercise}
+  Applying \eqref{eq:24-gtrans} to the latter terms, we have
+  \begin{align}
+    \dots &= \partial_{\mu} ( \epsilon R(X) \phi) + \epsilon R(A_{\mu})R(X) \phi - \epsilon R(\partial_{\mu} X) \phi + R([X, A_{\mu}])\phi. \\
+	  &= \cancel{\epsilon R(\partial_{\mu} X) \phi} + \epsilon R(X) \partial_{\mu} \phi + \epsilon R(X) R(A_{\mu}) \phi + \cancel{\epsilon [R(A_{\mu}, R(X))] \phi} - \cancel{\epsilon R(\partial_{\mu} X) \phi} + \cancel{\epsilon [R(X), R(A_{\mu})]\phi} \\
+	  &= \epsilon R(X) \partial_{\mu} \phi + \epsilon R(X) R(A_{\mu}) \phi \\
+	  &= \epsilon R(X) D_{\mu} \phi.
+  \end{align}
+\end{proof}
+This means that we have a good analogue of the covariant derivative of the Abelian case.
+Now the variation of the inner product is
+\begin{equation}
+  \delta_X (D^{\mu} \phi, D_{\mu} \phi)= \epsilon (R(X) D_{\mu} \phi, D^{\mu} \phi) + \epsilon (D_{\mu} \phi, R(X) D^{\mu} \phi) = 0,
+\end{equation}
+using the fact that for a unitary representation we have $R(X)^{\dagger} = - R(X)$ .
+
+\subsection{Action for the Gauge Field}%
+\label{sub:action_for_the_gauge_field}
+
+The last thing we have to do is to find the appropriate generalisation of the Maxwell action for the non-Abelian gauge field $A_{\mu} \colon \mathbb{R}^{3, 1} \to \mathfrak{g}$; again, gauge invariance is going to do most of the work for us.
+We define the field strength tensor to be
+\begin{equation}
+  F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\mu} A_{\nu} + [A_{\mu}, A_{\nu}].
+\end{equation}
+\begin{claim}
+  \label{cl:24-1}
+  Only with these definitions does the field strength tensor transform with the adjoint representation, meaning that
+  \begin{equation}
+    \delta_X(F_{\mu\nu}) = \epsilon [X, F_{\mu\nu}] \in \mathfrak{g}.
+  \end{equation}
+\end{claim}
+\begin{remark}
+  In an Abelian Lie algebra, all the brackets will vanish and $F_{\mu\nu}$ is gauge invariant.
+\end{remark}
+\begin{proof}
+  The variation obeys the Leibniz rule and can be commuted with derivatives
+  \begin{equation}
+    \delta_X(F_{\mu\nu}) = \partial_{\mu} (\delta_X A_{\nu}) - \partial_{\nu} ( \delta_X A_{\mu}) + [\delta_X A_{\mu}, A_{\nu}] + [A_{\mu}, \delta_X A_{\nu}].
+  \end{equation}
+  As we have four terms and each term gets a gauge variation with two terms, we will end up with an expression of eight terms; however, these will reduce as we will see now.
+  \begin{align}
+    \dots &= \cancel{-\epsilon \partial_{\mu} \partial_{\nu} X} + \epsilon \partial_{\mu} ([X, A_{\nu}]) + \cancel{\epsilon \partial_{\nu} \partial_{\mu} X} - \cancel{\epsilon \partial_{\nu} ([X, A_{\mu}])} \nonumber \\ 
+	  & \qquad - \cancel{\epsilon [\partial_{\mu} X, A_{\nu}]} - \cancel{\epsilon [A_{\mu}, \partial_{\nu}X]} + \epsilon [[X, A_{\mu}] A_{\nu}] + \epsilon[A_{\mu}, [X, A_{\nu}]] \\
+	  &= \epsilon [X, \partial_{\mu} A_{\nu}] - \epsilon[X, \partial_{\nu} A_{\mu}] - \epsilon [A_{\nu}, [X, A_{\mu}]] + \epsilon [A_{\mu}, [A_{\nu}, X]] \\
+	  &= \epsilon [X, \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}] + \epsilon [X, [A_{\mu}, A_{\nu}]] \\
+	  &= \epsilon [X, F_{\mu\nu}],
+  \end{align}
+  where we have made use of the Jacobi identity.
+\end{proof}
+
+\begin{definition}[]
+  The \emph{Yang-Mills Lagrangian} $\mathcal{L}_{YM}$  is defined by using the Killing form (which is the unique invariant inner product in the Lie algebra)
+  \begin{equation}
+    \mathcal{L}_{\text{YM}} = \kappa[F_{\mu\nu}, F^{\mu\nu}] \times \frac{1}{g^2}.
+  \end{equation}
+\end{definition}
+\begin{claim}
+  The covariance property of Claim \ref{cl:24-1} is enough to show that this is invariant.
+\end{claim}
+\begin{proof}
+  We have $\forall X \in \mathfrak{g}$
+  \begin{align}
+    \delta_X \mathcal{L}_A &= \frac{1}{g^2} \kappa (\delta_X F_{\mu\nu}, F^{\mu\nu}) + \frac{1}{g^2} \kappa(F^{\mu\nu}, \delta_X F^{\mu\nu}) \\
+			   &= \frac{1}{g^2} [\kappa([X, F_{\mu\nu}], F^{\mu\nu}) + \kappa(F_{\mu\nu}, [X, F^{\mu\nu}])] = 0.
+  \end{align}
+\end{proof}
+
+\begin{remark}
+  You can show that this is the only Lagrangian that is quadratic in the field strength that you can write down.
+\end{remark}
+
+For $\mathfrak{g} = \mathscr{L}_{\mathbb{C}}[G]$ with representation $R_{\Lambda}$, have
+\begin{equation}
+  \mathcal{L} = \frac{1}{g^2} \kappa (F_{\mu\nu}, F^{\mu\nu}) + \sum_{\Lambda \in S} (D_{\mu} \phi^{\Lambda}, D^{\mu} \phi_{\Lambda}) - W[(\phi_{\Lambda}, \phi_{\Lambda})]
+\end{equation}

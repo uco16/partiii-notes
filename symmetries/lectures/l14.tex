@@ -1,0 +1,150 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 14: November 12}
+For the Lie algebra of $SU(2)$, we have already describe the full set of irreducible representations $R_\Lambda$ with $\dim(R) = \Lambda + 1$, where $\Lambda \in \mathbb{N}_0$.
+Let us consider the tensor product representations $R_{\Lambda} \otimes R_{\Lambda'}$. Because $\mathfrak{su}(2)$ is simple, it is fully reducible. In other words, we can decompose the product representation into a sum over the irreps $R_{\Lambda} \otimes R_{\Lambda'} \simeq \bigoplus_{\Lambda'' \in \mathbb{N}_0} \mathcal{L}_{\Lambda, \Lambda'}^{\Lambda''} R_{\Lambda''}$. Our task is now to find the multiplicities $\mathscr{L}$, which describe how often each irrep enters the decomposition.
+Let us use the Cartan basis. The vector space $V_\Lambda$ has basis $\left\{ v_{\lambda} \right\}$, $\lambda \in S_\Lambda = \left\{ -\Lambda, -\Lambda +2, \dots, + \Lambda \right\}$.
+The eigenvectors $R_\Lambda(H) v_{\lambda} = \lambda v_{\lambda}$. Similarly, we have a second vector space $V_{\lambda'}$ with basis $\left\{ v'_{\lambda'} \right\}$.
+Construct a basis for $V_\Lambda \otimes V_{\Lambda'}$ as $B = \left\{ v_{\lambda} \otimes v'_{\lambda} \mid \lambda \in S_\Lambda, \lambda' \in S_{\Lambda'} \right\}$.
+We now want to understand the weights of the new representation. To work out this weight, we act on a general basis vector with the representation of the Cartan element $H$. By definition, the tensor product representation acts as
+\begin{align}
+  (R_\Lambda \otimes R_{\Lambda'})(H) (v_{\lambda} \otimes v_{\lambda'}) &= (R_\Lambda (H) v_{\lambda}) \otimes v'_{\lambda'} + v_{\lambda} \otimes (R_{\Lambda'} (H) v'_{\lambda'}) \\
+									 &= (\lambda + \lambda') (v_{\lambda} \otimes v_{\lambda'}).
+\end{align}
+The eigenvalues are just the sums of the eigenvalues of the basis elements. Therefore, we can deduce that $R_\Lambda \otimes R_{\Lambda'}$ has weight set $S_{\Lambda, \Lambda'} = \left\{ \lambda + \lambda' \mid \lambda \in S_{\Lambda}, \lambda' \in S_{\Lambda'} \right\}$. Sometimes, this sum adds up the same weight in $n$ different cases. We then have to keep track of these $n$ multiplicities.
+We can then construct the representation, which is the sum of irreducibles, explicitly.
+The irreps are uniquely determined by identification of their weight set.
+We must take this weight set and decompose it into unions of the weight sets associated with the irreducibles; we will see that there is a unique way to do this.
+Consider first the highest weight. This will only come when $\lambda = \Lambda$ and $\lambda' = \Lambda'$. Since there is only one way to obtain the sum $\Lambda + \Lambda'$, the irrep $R_{\Lambda + \Lambda'}$ must appear in the decomposition with multiplicity one!
+In other words, $\mathcal{L}^{\Lambda + \Lambda'}_{\Lambda, \Lambda'} = 1$.
+We can decompose the tensor product as
+\begin{equation}
+  R_{\Lambda} \otimes R_{\Lambda'} = R_{\Lambda + \Lambda'} \oplus \widetilde{R}_{\Lambda, \Lambda'}.
+\end{equation}
+The problem is reduced to finding the remainder $\widetilde{R}_{\Lambda, \Lambda'}$, which will have weight set $\widetilde{S}_{\Lambda, \Lambda'}$ where $S_{\Lambda, \Lambda'} = S_{\Lambda + \Lambda'} \cup \widetilde{S}_{\Lambda, \Lambda'}$. 
+We remove the weight set
+\begin{equation}
+  S_{\Lambda + \Lambda'} = \left\{ -\Lambda - \Lambda', \dots, + \Lambda + \Lambda' \right\}, 
+\end{equation}
+and find the highest weight of the remainder $\widetilde{R}_{\Lambda, \Lambda'}$ and keep repeating until the remainder is empty.
+
+\begin{example}[$\Lambda = \Lambda' = 1$]
+  In this case, the weight set of both representations consists of two elements
+  \begin{equation}
+    S_1 = \left\{ -1 , +1 \right\}.
+  \end{equation}
+  This is the representation a spin-$\frac{1}{2}$ particle carries.
+  Then the weight set of the tensor product is 
+  \begin{align}
+    S_{1, 1} &= \left\{ -1, +1 \right\} + \left\{ -1, +1 \right\} = \left\{ -2, 0, 0, +2 \right\}. \\
+	     &= \left\{ -2, 0, +2 \right\} \cup \left\{ 0 \right\},
+  \end{align}
+  where $\left\{ -2, 0, +2 \right\}$ is the weight set of the highest weight representation $R_2$. We find that
+  \begin{equation}
+    R_1 \otimes R_1 = R_2 \oplus R_0.
+  \end{equation}
+  In quantum mechanics, this means that two spin-$\frac{1}{2}$ particles form states of spin-$1$ (triplet) and spin-$0$ (singlet).
+  Note that the dimensions match as well.
+\end{example}
+\begin{exercise}[Sheet 2, Qu 8]
+  Consider two irreps of $SU(2)$: $\Lambda' = M$ and $\Lambda = N$. Then show, by applying the above algorithm, that $R_N \otimes R_M = R_{\abs{M-N}} \oplus R_{\abs{M-N} + 2} \oplus \dots \oplus R_{N + M}$.
+  For $SU(2)$ this is essentially the whole story.
+\end{exercise}
+
+\chapter{Cartan Classification}%
+\label{cha:cartan_classification}
+
+Our ultimate aim of this chapter will be to classify all finite-dimensional simple complex Lie algebras $\mathfrak{g}$ (Cartan 1894). However, before we can do this we will have to build up some machinery.
+
+\section{The Killing Form}%
+\label{sec:the_killing_form}
+
+We can specify an inner product on $\mathbb{R}^3$, by mapping $\vb{u}, \vb{v} \to \vb{u} \cdot \vb{v}$. 
+Similarly, we might specify this scalar product by giving a metric such as $u_i, v_j \to \delta^{ij} u_i v_j$.
+
+\begin{definition}[Inner Product]
+  Given a vector space $V$ over $F = \mathbb{R}$ or $\mathbb{C}$, an \emph{inner product} is a bilinear, symmetric map $i: V \times V \to F$.
+\end{definition}
+
+\begin{definition}[]
+  We say that $i$ is \emph{non-degenerate} if $\forall v \in V, v \neq 0$ there is a $w \in V$ such that the inner product $i(v, w) \neq 0$.
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    This amounts to saying that there is no vector which is orthogonal to itself and all other vectors in the vector space.
+  \end{remark}
+\end{leftbar}
+Is there a `natural' inner product that we can write down on a Lie algebra $\mathfrak{g}$?
+Yes! This is the \emph{Killing form}.
+\begin{definition}[]
+  The \emph{Killing form} $\kappa$ of a Lie algebra $\mathfrak{g}$ over a field $F$ is the map
+  \begin{equation}
+    \begin{gathered}
+      \kappa \colon \\
+      \qquad
+    \end{gathered}
+    \begin{gathered}
+      \mathfrak{g} \times \mathfrak{g} \\
+      (X, Y)
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \to \\
+      \mapsto
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      F \\
+      \tr(\text{ad}_{X} \circ \text{ad} _{Y})
+    \end{gathered}
+  \end{equation}
+\end{definition}
+Let us find out what this means explicitly in components.
+The action of the inner $ad$-map composition is
+\begin{equation}
+  \begin{split}
+    (ad_X \circ ad_Y) \colon \mathfrak{g} \ &\to\  \mathfrak{g} \\
+    Z \ &\mapsto\  [X,[Y, Z]].
+  \end{split}
+\end{equation}
+Choose a basis $\left\{ T^a \right\}$, where $a = 1, \dots, D=\dim(\mathfrak{g})$, for the Lie algebra $\mathfrak{g}$. 
+We then know that by definition of the structure constants $f \indices{^{ab}_c}$, we have $[T^a, T^b] = f \indices{^{ab}_c} T^c$.
+Expanding the elements of the Lie algebra in terms of this basis, we see that
+\begin{align}
+  [X, [Y, Z]] &= X_a Y_b Z_c [T^a, [T^b, T^c]] \\
+	      &= X_a Y_b Z_c f \indices{^{ad}_e} f \indices{^{bc}_d} T^e \\
+	      &= M(X, Y) \indices{^a_e} Z_c T^e
+\end{align}
+with $M(X, Y) \indices{^c_e} = X_a Y_b f \indices{^{ad}_e} f^{bc_d}$. This is the explicit form of the inner $ad$-map composition.
+To find the explicit map defined by the Killing form, we take the trace of this:
+\begin{equation}
+  \kappa(X, Y) = \Tr_D [M(X, Y)] = \kappa^{ab} X_a Y_b,
+\end{equation}
+where, concretely, the Killing form is given by
+\begin{equation}
+  \boxed{\kappa^{ab} = f^{ad}_c f^{bc}_d}
+\end{equation}
+This is manifestly symmetric.
+
+Now what does `natural' mean? 
+\begin{claim}
+  The Killing form $\kappa$ remains invariant under the adjoint action of the Lie algebra $\mathfrak{g}$, meaning that $\forall X, Y, Z \in \mathfrak{g}$
+  \begin{equation}
+    \label{eq:killing-invariance}
+    \kappa(X, [Y, Z]) = \kappa([X, Y], Z)
+  \end{equation}
+\end{claim}
+\begin{proof}
+  By the defining property of the adjoint representation, we have
+  \begin{equation}
+    ad_{[Z, X]} = ad_Z \circ ad_X - ad_X \circ ad_Z.
+  \end{equation}
+  By cyclic invariance of the trace $\Tr(ABC) = \Tr(CAB) = \Tr(BCA)$, we find that
+  \begin{align}
+    \kappa(X, [Y, Z]) &= \Tr(ad_X \circ ad_{[Y, Z]}) \\
+		      &= \Tr(ad_X \circ ad_Y \circ ad_Z) - \Tr(ad_X \circ ad_Z \circ ad_Y) \\
+		      &= \Tr(ad_X \circ ad_Y \circ ad_Z) - \Tr(ad_Y \circ ad_X \circ ad_Z) \\
+		      &= \Tr(ad_{[X, Y]} \circ ad_Z) \\
+		      &= \kappa([X, Y], Z)
+  \end{align}
+\end{proof}

@@ -1,0 +1,159 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 14: November 13}
+
+\section{Continuous Symmetries}%
+\label{sec:continuous_symmetries}
+
+This will be our first step beyond the Ising model. 
+Like with music and musical notes and chords, there is an infinite collection of theories---determined by their free energy---we can study. However, just like in music, only a small subset of these are worth considering.
+
+Phases of matter are characterised by symmetries.
+There are external (spacetime) and internal (field, like U(1)) symmetries.
+The symmetry of the ground state (H) may be different from the symmetry of the free energy (G).
+For example, in the Ising model, the ground state at high temperature $T > T_c$ respects the $\mathbb{Z}_2$ symmetry of the theory. However, once we go to low temperatures $T < T_c$, the spins pick out a direction and the ground state has no symmetry. We say the symmetry of the theory has been \emph{spontaneously broken}.
+Of course, if we had a magnetic field, then the theory had no $\mathbb{Z}_2$ symmetry to begin with.
+
+In general, we build our theories by making a hypothesis of G, and seeing whether their predictions match up with nature.
+Many systems are characterised by their symmetrised. One example is given by christals. However, some of the most interesting symmetries we come across are internal symmetries.
+\begin{leftbar}
+  \begin{remark}
+    Sometimes, these things mix up. Think of lowering the temperature in a crystal. We spontaneously break spacetime symmetries at around the same time as we break internal symmetries. 
+  \end{remark}
+\end{leftbar}
+
+\section{O(N) Models}%
+\label{sec:o_n_models}
+
+We have $N$ scalar fields $\phi(\vb{a}) = (\phi_1(\vb{x}), \dots, \phi_{N}(\vb{x}))$. Of the theory respects $O(n)$ symmetry, the theory will be invariant under 
+\begin{equation}
+  \phi_a (\vb{x}) \to R \indices{_a^b} \phi_b(\vb{x}) \qquad R ^T R = \mathbb{1}.
+\end{equation}
+
+We may now write down the most general action
+\begin{equation}
+  F[\phi(\vb{x})] = \int \dd[d]{x} \left[ \frac{\gamma}{2} \sum_i (\grad \phi_i) \cdot (\grad \phi_i) + \frac{\mu^2}{2} \phi \cdot \phi + g (\phi \cdot \phi)^2 + \dots \right],
+\end{equation}
+
+\begin{example}[O(2): XY-Model]
+  A particularly interesting model of this is the \emph{XY-Model}, which is simply $O(2)$.
+  We package our fields $\phi = (\phi_1, \phi_2)$ into a complex field $\psi(\vb{x}) = \phi_1 (\vb{x}) + i \phi_2 (\vb{x})$, using the isomorphism between $U(1) \sim SO(2)$.
+  The free energy is then
+  \begin{equation}
+    F[\psi(x)] = \int \dd[d]{x} \left[ \grad \psi^* \cdot \grad \psi + \frac{\mu^2}{2} \abs{\psi}^2 + g \abs{ \psi}^4 + \dots \right]
+  \end{equation}
+
+  As we will see in the next sections, this model describes Bose-Einstein condensates and superfluids.
+\end{example}
+
+\begin{example}[O(3): Heisenberg Model]
+\end{example}
+
+These models are kind of `Ising-Plus'. However, these symmetries also give us some more interesting phenomena.
+
+
+\subsection{Goldstone Bosons}%
+\label{sub:goldstone_bosons}
+
+\begin{theorem}[]
+  For every spontaneously broken continuous symmetry, you get an exactly massless scalar.
+\end{theorem}
+These (Nambu-)Goldstone bosons show up in all areas of physics.
+Why does this happen? 
+For discrete symmetries we have a finite number of vacua.
+\begin{example}[$\mathbb{Z}_2$]
+  In the Ising model, the spins can either all point up or all down, $\langle \phi \rangle = \pm m_0$.
+  Therefore, there are two different vacua in the low temperature theory.
+\end{example}
+However, for continuous symmetries, the magnitude of the direction is fixed, whereas the direction of the field is not fixed.
+$\langle \abs{\phi} \rangle = M_0  = \sqrt{-\mu^2 / (4g)}$.
+This means that we have a sphere of ground states.
+
+%F1 Mexican hat 
+
+The ground state is at the bottom of the Mexican hat potential depicted in F1. 
+If we generalise this to the $O(n)$ model, the vacua are the $(n-1)$-sphere $S^{n-1}$.
+This means it costs us no energy to move around the bottom of the potential.
+There is no Boltzmann suppression in producing these; they are massless.
+Other names for these Goldstone bosons are \emph{spin waves}, \emph{soft modes}, or \emph{gapless modes}.
+At low temperatures, you are bound to produce these modes since they cost no energy; they dominate the low energy behaviour.
+
+We can count the number of Goldstone bosons we expect to have, by considering the number of generators.
+The number of Goldstone bosons is the number of broken symmetries $\dim(G) - \dim(H)$.
+In each case we get a vacuum manifold, which can be written as the quotient group
+\begin{equation}
+  S^{N-1} = \frac{O(N)}{O(N-1)}.
+\end{equation}
+The vacuum expectation value of $\phi$ in $O(N)$ is $\langle \phi \rangle = (M_0, 0, \dots, 0)$, where the zero vector remaining is the $O(N-1)$ symmetry.
+This means that the number of Goldstone bosons for $O(N)$ is $N-1$.
+
+\begin{example}[XY-Model]
+  Parametrise $\psi(\vb{x}) = (M_0 + \widetilde{M}(\vb{x})) e^{i \theta(\vb{x})}$.
+  The free energy takes the form
+  \begin{equation}
+    F[M, \theta] = \int \dd[d]{x} \left\{ \frac{\gamma}{2} (\grad \widetilde{M})^2 + \abs{\mu^2}\widetilde{M}^2 + g \widetilde{M}^4 + \dots + \frac{\gamma}{2} M_0^2 (\grad \theta)^2 + \gamma M_0 \widetilde{M} (\grad \theta)^2+ \dots \right\}
+  \end{equation}
+  The symmetry is being remembered in the vacuum, meaning that it costs no energy to rotate; the theory has a \emph{shift symmetry} since $\grad \theta \to \grad(\theta + a) = \grad \theta$.
+\end{example}
+
+We saw that approaching the critical point, the correlation length went to infinity, effectively giving us a massless mode, which has long-range correlations.
+Here, we do not have to tune anything; below the critical temperature, we get Goldstone bosons with infinite correlation length without having to tune the temperature, the magnetic field etc, to get to the critical point.
+Indeed, they show some very non-trivial behaviour.
+
+\subsection{Critical Exponents}%
+\label{sub:critical_exponent}
+
+If we sit at the critical temperature, we expect to have a theory with critical exponents as we had before.
+Although the $O(n)$ models look similar to the Ising model, they are actually in a different universality class.
+
+In $d = 3$, the exponents are particularly interesting, as tabulated in \ref{tab:14-1}.
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c | c c}
+     & $\eta$ & $\nu$ \\
+     \hline
+     MF & $0$ & $1/2$ \\
+     Ising & $0.0363$ & $0.6300$ \\
+     $N = 2$ & $0.0385$ & $0.6718$ \\
+     $N = 3$ & $0.0386$ & $0.702$ \\
+  \end{tabular}
+  \caption{Critical exponents}
+  \label{tab:14-1}
+\end{table}
+This tiny difference in critical exponent sets apart superfluids from magnets; this is known as the \emph{lambda transition}. In particular, the heat capacity $C \sim \abs{T - T_c}^{-\alpha}$, $\alpha = 2 - 3 \nu$ is given by $\alpha_{O(2)} = -0.16$, which gives a divergence at $T = T_c$ for superfluids.
+%F2
+
+\subsection{RG in the O(N) Model}%
+\label{sub:rg_in_the_o_n_model}
+
+Naive dimensional analysis gives us
+\begin{equation}
+  [\phi] = \frac{d-2}{2}, \qquad [\mu_0^2] = 2, \qquad [g_0] = 4 - d.
+\end{equation}
+However, we now have $F_I[\phi] \sim \int \dd[d]{x} g \phi^4$, where $\phi^4 \sim \phi \cdot \phi \phi \cdot \phi$, which we realise in Feynman diagrams by splitting the vertex
+\begin{equation}
+  \feynmandiagram[inline=(v.base), horizontal=a to b] {
+    a -- v -- b,
+    c -- v -- d
+  };
+  \to
+  \feynmandiagram[inline=(v.base), horizontal=v to r] {
+    a -- v -- r -- b,
+    c -- v,
+    r -- d,
+  };
+\end{equation}
+%Fix: elongated vertex
+
+To order $O(g_0)$, we can calculate the contributions from the following Feynman diagrams
+%Diagrams F3
+%F4
+Performing the epsilon expansion, we get
+\begin{equation}
+  \dv[]{\mu^2}{s} = 2\mu^2 + \frac{N + 2}{2\pi^2} \frac{\Lambda^4}{(\Lambda^2 + \mu^2)} \widetilde{g}^2 \qquad \dv[]{\widetilde{g}}{s} = \epsilon \widetilde{g} - \frac{N + 8}{2\pi^2} \frac{\Lambda^4}{\Lambda^2 + \mu^2} \widetilde{g}^2,
+\end{equation}
+where $\widetilde{g} = \Lambda^{-\epsilon} g$.
+Flowing towards the Wilson-Fischer fixed point, we have
+\begin{equation}
+  \mu_*^2 = -\frac{1}{2} \frac{N + 2}{N + 8} \Lambda^2 \epsilon, \qquad \widetilde{g}_* = \frac{2\pi^2}{N + 8} \epsilon
+\end{equation}

@@ -1,0 +1,186 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 12: November 07}
+\section{Green's Functions and the Vacuum}%
+\label{sec:green_s_functions_and_the_vacuum}
+
+Up until now, we have been describing amplitudes in terms of operators sandwiched between the \emph{free} vacuum states: $\bra{0} \dots \ket{0}$.
+What if we have interactions? We will see that we have been doing so far is actually correct, but we should show that explicitly.
+Let $\ket{\Omega}$ be the vacuum of the \emph{interacting} theory.
+In analogy to $H_0 \ket{0} = 0$ for the free Hamiltonian, we normalise the Hamiltonian with interactions as $H = H_0 + H_{\text{int}}$ such that $H \ket{\Omega}= 0$ and $\bra{\Omega}\ket{\Omega} = 1$.
+The $n$-point Green function is then defined to be
+\begin{equation}
+  G^{(n)} (x_1, \dots, x_n) \coloneqq \bra{\Omega} T \left\{ \phi_H (x_1) \dots \phi_H(x_n) \right\} \ket{\Omega}.
+\end{equation}
+We will write $\phi_H(x_i) \coloneqq \phi_{iH}$ for the fields in the interacting picture.
+\begin{claim}
+  Removing the vacuum bubbles takes us back to the free vacuum:
+  \begin{align}
+    \bra{\Omega} T \left\{ \phi_{1H} \dots \phi_{m H} \right\} \ket{\Omega} &=
+    \frac{\bra{0} T \left\{ \phi_{1I} \dots \phi_{mI}S \right\}\ket{0}}{\bra{0}S \ket{0}} \\
+									    &= \sum (\text{connected diagrams with $m$ external points}).
+  \end{align}
+\end{claim}
+\begin{leftbar}
+  \begin{remark}
+    This explains why the computations that we have been doing make sense at all.
+  \end{remark}
+\end{leftbar}
+\begin{proof}
+  Without loss of generality, we may order the coordinates in time as $x_1^0 > x_2^0 > \dots > x_m^0$.
+  Remember, $U(t, t_0) = e^{iH_0 t} e^{iH(t - t_0)} e^{-i H_0 t_0}$.
+  Expanding out the $S$ operator, the left hand side of the claim is equal to
+  \begin{align}
+    \bra{0} T \left\{ \phi_{1I} \dots \phi_{mI} S \right\} \ket{0} &=
+    \bra{0} U(\infty, t_1) \phi_{1I} U(t_1, t_2) \phi_{2I} \dots U(t_{m-1}, t_m) \phi_{mI} U(t_m, -\infty) \ket{0} \\
+    \begin{split}
+      &= \bra{0} U(\infty, t_1) U(t_1, 0) \underbrace{U(0, t_1) \phi_{1I} U(t_1, 0)}_{\phi_{1H}} U(0, t_2) \phi_{2I} \dots \\
+      & \qquad \dots \underbrace{U(0, t_m) \phi_{mI} U(t_m 0)}_{\phi_{mH}} U(0, -\infty) \ket{0}
+    \end{split}
+  \end{align}
+  This insertion in the last line allows us to convert back into the Heisenberg picture.
+  \begin{align}
+    \dots &= \underbrace{U(\infty, 0) \phi_{1H} \dots \phi_{mH}}_{\coloneqq \bra{\psi}} U(0, -\infty) \ket{0} \\
+	  &= \lim_{t_0 \to -\infty} \left\{ \bra{\psi} U(0, t_0) \ket{0} \right\} \\
+	  &= \lim_{t_0 \to -\infty} \left\{ \bra{\psi} e^{i H t_0} \ket{0} \right\},
+  \end{align}
+  where we used that $H_0 \ket{0} = 0$. We now insert a complete set of interacting states to get
+  \begin{align}
+    \dots &= \lim_{t_0 \to - \infty} \biggl\{ \bra{\psi} e^{-i Ht_0} \Bigl[ \ket{\Omega} \bra{\Omega} + \sum_{n=1}^\infty \left[ \prod_{j=1}^n \frac{\bdd[3]{p_j}}{\sqrt{2E_{p_j}}} \right] \ket{p_1, \dots, p_n} \bra{p_1, \dots, p_n} \Bigr] \ket{0} \biggr\}  \\
+	  &= \bra{\langle} \ket{\Omega} + \lim_{t_0 \to -\infty} \biggl\{ \sum_n \int \left( \prod_j \frac{\bdd[3]{p_j}}{\sqrt{2E_{p_j}}} \right) e^{-i \sum_{j=1}^n E_{p_j} t_0} \bra{\psi} \ket{p_1, \dots, p_n}\bra{p_1, \dots, p_n} \ket{0} \biggr\}
+  \end{align}
+  The second term vanishes because of the Riemann-Lebesgue lemma:
+  \begin{equation}
+    \lim_{\mu \to \infty} \left\{ \int_{a}^{b}  \dd[]{x} f(x) e^{i\mu x} \right\} = 0
+  \end{equation}
+  Therefore, we find 
+  \begin{equation}
+    \dots = \bra{0} U(\infty, 0) \underbrace{\phi_{1H} \dots \phi_{mH} \ket{\Omega} \bra{\Omega} \ket{0}}_{\ket{\psi}}.
+  \end{equation}
+  Similar to above we have
+  \begin{align}
+    \bra{0} U(\infty, 0) \ket{\psi} &= \lim_{t_0 \to \infty} \left\{ \bra{0} e^{i H t_0} \ket{\psi} \right\} \\
+				    &= \bra{\Omega} \phi_{1H} \dots \phi_{mH} \ket{\Omega}\bra{\Omega}\ket{0} \bra{0} \ket{\Omega}.
+  \end{align}
+  The denominator in the right hand side of the claim is ($m = 0$)
+  \begin{equation}
+    \bra{0}S \ket{0} = \bra{0}\ket{\Omega}\bra{\Omega}\ket{0},
+  \end{equation}
+  which completes the proof.
+\end{proof}
+\begin{leftbar}
+  \begin{remark}
+    Green's functions are ultimately the simplest way to think about scattering.
+  \end{remark}
+\end{leftbar}
+\begin{example}[]
+  Let us consider the previous example, we have
+  \begin{equation}
+    \bra{\Omega} T \left\{ \phi_{1H} \dots \phi_{4H} \ket{\Omega} \right\} = 
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.5][inline=(v.base), horizontal=a to b] {
+        a -- v [dot] -- b,
+        c -- v -- d,
+      };
+    \end{gathered}
+    + \left(
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.5][inline=(v.base), horizontal=a to b] {
+	a -- [draw = none] v [dot] -- [draw = none] b,
+	c -- v -- d,
+	a -- b,
+	v -- [loop, min distance=2cm] v,
+      };
+    \end{gathered}
+    + 5 \text{ similar}
+  \right) + 
+    \cancel{%F_2
+    }
+  \end{equation}
+\end{example}
+
+\subsection*{LSZ Reduction}%
+
+To describe scattering in the interacting theory, the external states (eg $\ket{p_1, p_2}$) should be those of the interacting theory.
+This means that when we have a Feynman diagram with an interaction on an external leg, then that loop gets absorbed into the definition of an external interacting state.
+In other words, we should exclude loops on external legs.
+\begin{leftbar}
+  \begin{remark}
+    A more detailed explanation of these \emph{amputated diagrams} is described further in the \emph{Advanced Quantum Field Theory} course in Lent term.
+  \end{remark}
+\end{leftbar}
+
+\section{Scattering}%
+\label{sec:scattering}
+
+\subsection*{Mandelstram Variables}%
+
+We would like to describe the kinematics in terms of Lorentz invariant theories. This means we do not have to worry about switching frames.
+Consider $2 \to 2$ scattering depicted in Figure \ref{fig:12-1}.
+\begin{figure}[htbp]
+  \centering
+  \feynmandiagram [vertical=a to c, layered layout] {
+    a -- [fermion, edge label=\(m_1\),  momentum'=\(p_1\)] v [blob] -- [fermion, edge label=\(m_1'\),  momentum'=\(q_1'\)] b,
+    c -- [fermion, edge label=\(m_2\), momentum'=$p_2$] v -- [fermion, edge label=$m_2'$, momentum'=$q_2$] d,
+  };
+  \caption{The Feynman diagrams associated with $2 \to 2$ scattering are obtained by replacing the central blob with all possible valid vertex / propagator combinations.}
+  \label{fig:12-1}
+\end{figure}
+By momentum conservation, we must have $p_1^{\mu} + p_2^{\mu} = q_1^{\mu} + q_2^{\mu}$. The Mandelstram variables are then defined as
+\begin{equation}
+  s \coloneqq (p_1 + p_2)^2 \qquad t \coloneqq (p_1-q_1)^2 \qquad u \coloneqq (p_1 - q_2)^2.
+\end{equation}
+\begin{exercise}
+  Let $s + t + u = m_1^2 + m_2^2 + m_1'^2 + m_2'^2$.
+  Nucleon scattering is then given as
+  \begin{align}
+    &
+    \begin{gathered}
+      \feynmandiagram[inline=(a.base), horizontal=a to b] {
+        a -- [fermion,  momentum=\(p_1\)] t -- [fermion,  momentum=\(q_1\)] b,
+        c -- [fermion,  momentum=\(p_2\)] e -- [fermion,  momentum=\(q_2\)] d,
+        t -- [scalar] e,
+        a -- [draw=none] c,
+        b -- [draw=none] d,
+      };
+    \end{gathered}
+    \quad + \quad
+    \begin{gathered}
+      \feynmandiagram[inline=(a.base), horizontal=a to b] {
+        a -- [fermion,  momentum=\(p_1\)] t -- [fermion,  momentum=\(q_2\)] b,
+        c -- [fermion,  momentum=\(p_2\)] e -- [fermion,  momentum=\(q_1\)] d,
+        t -- [scalar] e,
+        a -- [draw=none] c,
+        b -- [draw=none] d,
+      };
+    \end{gathered} \\
+    i \mathcal{M} &= (-ig)^2 \left\{ \frac{1}{(p_1 - q_1)^2 - m^2} + \frac{1}{(p_1 - q_2)^2 - m^2} \right\} \\
+     &= (-ig)^2 \left\{ \frac{1}{t - m^2} + \frac{1}{u - m^2} \right\} \\
+  \end{align}
+\end{exercise}
+
+\subsection*{Decay Rates and Cross-Sections}%
+
+Probability of scattering is expressed in terms of 
+\begin{equation}
+  \bra{f} (S-1) \ket{i} = i \mathcal{M} \bdelta^4 (p_i - \sum_i q_i)
+\end{equation}
+Now $\ket{f}$ and $\ket{i}$ are states of definite $4$-momentum.
+We then get a normalised probability as
+\begin{equation}
+  P = \frac{\abs{\bra{f}(S-1)\ket{i}}^2}{\bra{f}\ket{f}\bra{i}\ket{i}}.
+\end{equation}
+
+The effective cross-sectional area $d\sigma$ for scattering into $\ket{f}$ can be shown \cite{peskin95} to be
+\begin{equation}
+  d\sigma = \frac{\bdelta^4 (p_1 + p_2 - \sum_i q_i) \abs{\mathcal{M}}^2}{\mathcal{F}}
+\end{equation}
+where we introduced the \emph{flow factor} $ \mathcal{F} = 4 \sqrt{(p_1 \cdot p_2)^2 - m_1^2 m_2^2}$.
+To find the total $i \to f$ cross-section, we integrate over the final state momentum in the usual Lorentz invariant manner:
+\begin{equation}
+  \sigma = \int \frac{1}{\mathcal{F}} \dd[]{\Pi} \abs{\mathcal{M}}^2,
+\end{equation}
+where\footnote{David Tong and Peskin and Schroeder use $\dd[]{\Pi}$. We used $\dd[]{p_f}$ in Lectures.}
+\begin{equation}
+  \dd[]{\Pi} = \dd[]{p_f} \coloneqq \left( \prod_{f=1}^n \frac{\bdd[3]{q_f}}{2E_{q_f}} \bdelta^4( q_f - p_i) \right).
+\end{equation}

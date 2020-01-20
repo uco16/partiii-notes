@@ -1,0 +1,161 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 9: October 31}
+
+\section{Baker-Campell-Hausdorff Identity}%
+\label{sec:baker_campell_hausdorff_identity}
+
+Setting $t = 1$, we have a map
+\begin{equation}
+  \text{Exp}\colon \mathfrak{g} \to G.
+\end{equation}
+\begin{claim}
+  The exponential map is one-to-one in some neighbourhood of the identity $e\in G$.
+\end{claim}
+Given elements of the Lie algebra $X, Y \in \mathfrak{g}$, we can construct Lie group elements $g_X = \text{Exp}(X) \in G$ and $g_Y = \text{Exp}(Y) \in G$.
+Group multiplication can then be recovered by requiring
+\begin{equation}
+  g_X g_Y = g_Z = \text{Exp}(Z) \in G.
+\end{equation}
+By comparing the left and hight hand side, we get the \emph{Baker-Campbell-Hausdorff} (BCH) formula
+\begin{equation}
+  \label{eq:BCH-formula}
+  Z = X + Y + \frac{1}{2}[X, Y] + \frac{1}{12}([X, [X, Y]] - [Y, [X, Y]) + \dots,
+\end{equation}
+where $(\dots)$ reflects the terms that are quartic and higher in the matrices.
+This series allows us to reconstruct from the bracket of the Lie algebra close to the identity the multiplication law of the group.
+\begin{leftbar}
+  \begin{remark}
+    The formula is given purely in terms of sums of nested commutators of matrices. This reflects the fact that this is a formula in the Lie algebra. In fact, the same formula holds and makes sense even if we do not deal with matrix Lie groups.
+    Moreover, this series is not unique since we can always shift around the higher order terms with the Jacobi identity.
+  \end{remark}
+\end{leftbar}
+Therefore, $\mathfrak{g}$ determines $G$ in some neighbourhood of the identity (where the BCH series converges). More generally, $\text{Exp}$ is not globally one-to-one. In particular,
+\begin{claim}
+  The map $\text{Exp}$ is not surjective when $G$ is not connected.
+\end{claim}
+\begin{example}[$G= O(n)$]
+  The Lie algebra of $O(n)$ is the set of real anti-symmetric $n \times n$ matrices:
+  \begin{equation}
+    \mathscr{L}(O(n)) = \left\{ x \in \text{Mat}_n(\mathbb{R}) \mid X + X^T = 0 \right\}
+  \end{equation}
+  Recall that the matrices $X \in \mathscr{L}(O(n))$ are traceless $\text{Tr} X = 0$.
+  To find out which connected component $\text{Exp}(X)$ is in, we use the identity
+  \begin{equation}
+    \det(\text{Exp}(X)) = \exp(\text{Tr}X) = +1.
+  \end{equation}
+  Therefore, for any element $X$ of the Lie algebra, $\text{Exp}(X) \in SO(n)$. Since the image of the exponential map is not the whole of $O(n)$, but only $SO(n) \subset O(n)$, this is not surjective.
+\end{example}
+\begin{claim}
+  In general, for compact Lie groups $G$, the image of $\mathfrak{g}$ under $\text{Exp}$ is the connected component of the identity.
+\end{claim}
+\begin{claim}
+  The exponential map is not injective when $G$ has a $U(1)$ subgroup.
+\end{claim}
+\begin{example}[$G = U(1)$]
+  The Lie algebra of $U(1)$ is $\mathscr{L}(U(1)) = \left\{ X = ix \in \mathbb{C} \mid x \in \mathbb{R} \right\}$. Then $g = \text{Exp}(X) = \exp(ix) \in U(1)$. Lie algebra elements $ix$ and $ix + 2 \pi i$ yield the same group element.
+  The inverse of $\text{Exp}$ is multi-valued so it is not injective.
+\end{example}
+
+\section{SU(2) vs SO(3)}%
+\label{sec:su_2_vs_so_3_}
+
+We know that the Lie algebras have the same structure constants, meaning that they are isomorphic:
+\begin{equation}
+  \mathscr{L}(SU(2)) \simeq \mathscr{L}(SO(3)).
+\end{equation}
+Although we cannot construct an isomorphism $SU(2) \not\simeq SO(3)$, we can construct a \emph{double-covering}, that is a globally 2-to-one map
+\begin{equation}
+  \begin{split}
+    d \colon SU(2) \ &\to\  SO(3) \\
+    A \ &\mapsto\  d(A),
+  \end{split}
+\end{equation}
+where $d(A)_{ij} = \frac{1}{2} \tr_2 ( \sigma_i A \sigma_j A^{\dagger})$. Note that $d(A) = d(-A)$, $\forall A \in SU(2)$.
+This map provides an isomorphism between groups
+\begin{equation}
+  SO(3) \simeq SU(2) / \mathbb{Z}_2, \qquad \mathbb{Z}_2 = \left\{ \mathbb{1}_2, -\mathbb{1}_2 \right\} \text{ centre of SU(2)}.
+\end{equation}
+However, in this case this is more than merely an isomorphism between groups: Lie groups are also manifolds. 
+The manifold of $SU(2)$ is $\mathcal{M}(SU(2)) \simeq S^3$.
+\begin{equation}
+  S^3 \simeq \left\{ \vb{x} \in \mathbb{R}^4 \mid \abs{\vb{x}}^2 = 1 \right\}.
+\end{equation}
+Moreover, the manifold of $SO(3)$ is $S^3$ with antipodal points identified.
+Quotienting out $\mathbb{Z}_2$ is the same as taking $S^3$ and identifying antipodal points $\vb{x} \sim -\vb{x}$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l9f1.pdf_tex}
+  \caption{$S^3$ with antipodal points identified.}
+  \label{fig:l9f1}
+\end{figure}
+This is written as
+\begin{equation}
+  \mathcal{M}(SO(3)) \simeq S^3_+ \cup \left\{ \text{equator with antipodal points identified} \right\},
+\end{equation}
+where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$.
+%Fig with upper hemisphere S3+ simeq B3 circle with two opposite points marked
+
+\chapter{Representation Theory}%
+\label{cha:representation_theory}
+
+\begin{definition}
+  A \emph{representation} of a group $G$ is a map $D \colon G \to \text{Mat}_n(F)$, $n \in \mathbb{N}$, $F = \mathbb{R} \text{ or } \mathbb{C}$, that preserves the structure  of the group. In particular, for all $g_1, g_2 \in G$ we have
+  \begin{equation}
+    D(g_1) D(g_2) = D(g_1 g_2).
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  A representation $D$ is \emph{faithful} if it is injective; in other words, distinct group elements have distinct representations.
+\end{definition}
+\begin{definition}
+  For a \emph{Lie group} $G$, a representation $D$ is a group representation in the sense above, but the map $D$ must be smooth.
+\end{definition}
+\begin{definition}[]
+  For a \emph{Lie algebra} $\mathfrak{g}$, a \emph{representation} $d$ is a map $d: \mathfrak{g} \to \text{Mat}_n(F)$ that preserves the structure of the Lie algebra. In particular, for all $X_1, X_2 \in \mathfrak{g}$ and $\alpha, \beta \in F$ we have
+  \begin{enumerate}
+    \item $[d(X_1), d(X_2)] = d([X_1, X_2])$
+    \item $d(\alpha X_1 + \beta X_2) = \alpha d(X_1) + \beta d(X_2)$
+  \end{enumerate}
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    Again, representations of Lie groups need not be faithful.
+  \end{remark}
+\end{leftbar}
+\begin{definition}[]
+  The \emph{dimension} of a representation is the dimension $n$ of the matrices.
+\end{definition}
+\begin{definition}[]
+  Matrices act on a vector space $V \simeq F^n$ known as \emph{representation space}.
+\end{definition}
+\begin{leftbar}
+  \begin{remark}
+    In a physical context, this will be the Hilbert space of states on which the matrix operator act.
+  \end{remark}
+\end{leftbar}
+
+\begin{claim}
+  There is a direct relation between representations of a Lie group $G$ and of elements in the Lie algebra $\mathfrak{g}$.
+  Take a representation $D$ of a matrix Lie group $G$. Note that in general, $n = \dim D \neq \dim G = m$. We will construct a corresponding representation of the Lie algebra.
+  To do this, we use again the correspondence between tangent vectors and curves.
+  For $X \in \mathfrak{g}$, define a curve $C_X \colon I \in \mathbb{R} \to G$ that maps $t \mapsto g_X(t)$. We then expand $g_X(t) \simeq \mathbb{1}_n + t X + \dots$ and define the representation $d$ of the Lie algebra as
+  \begin{equation}
+    d(X) = \dv{}{t} \left. \left( D(g(t)) \right) \right\rvert_{t=0} \in \text{Mat}_n(F).
+  \end{equation}
+
+  %2 Nov l10
+  Map the curve onto $D(g(t)) \in GL(n, F) \subset \text{Mat}_n(F)$ in the space of matrices.
+  We then Taylor expand this around the origin to give
+  \begin{equation}
+    D(g(t)) = D(\mathbb{1}_m) + \left.\dv{D(g(t))}{t}\right\rvert_{t = 0} t + O(t^2).
+  \end{equation}
+  We have of course $D(\mathbb{1}_m) = \mathbb{1}_n$. Moreover, we define 
+  \begin{equation}
+    d(X) \coloneqq \left.\dv{D(g(t))}{t}\right\rvert_{t=0} \qquad \forall X \in \mathfrak{g}.
+  \end{equation}
+  This provides a representation of $\mathfrak{g}$.
+\end{claim}
+
+

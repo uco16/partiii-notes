@@ -1,0 +1,205 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 11: November 05}
+If we change the basis of the representation, the matrices change, but we still have the same representation. This motivates the following definition:
+\begin{definition}[]
+  Two representations $R_1$ and $R_2$ of $\mathfrak{g}$ are \emph{isomorphic}, $R_1 \simeq R_2$, if there exists an invertible matrix $S$ such that for all $X \in \mathfrak{g}$.
+  \begin{equation}
+    R_2(X) = S R_1 (X) S^{-1}
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  A representation $R$ over a vector space $V$ has an \emph{invariant subspace} $U \in V$ if $\forall X \in \mathfrak{g}, u \in U$,
+  \begin{equation}
+    R(X) u \in U.
+  \end{equation}
+\end{definition}
+\begin{example}[]
+  Any representation has two `trivial' invariant subspaces
+  \begin{equation}
+    U= \left\{ 0 \right\} \quad \text{ and } \quad U = V.
+  \end{equation}
+\end{example}
+\begin{definition}[]
+  An \emph{irreducible} representation $R$ of $\mathfrak{g}$ has no non-trivial invariant subspaces.
+\end{definition}
+
+\section{Representation theory of \texorpdfstring{$\mathscr{L}(SU(2))$}{the Lie algebra of SU(2)}}%
+\label{sec:representation_theory_of_texorpdfstring}
+
+\subsection{Cartan Basis}%
+\label{sub:cartan_basis}
+
+Take the real basis $T^a = - \frac{1}{2} i \sigma^a$ with $a = 1,2,3$, which we have already met before.
+Then
+\begin{equation}
+  \mathscr{L}(SU(2)) = \text{Span}_{\mathbb{R}} \left\{ T^a \mid a = 1,2,3 \right\}.
+\end{equation}
+Now, consider what happens when we change to a new (complex) basis:
+\begin{align}
+  H &= \sigma_3 =
+  \begin{pmatrix}
+   1 & 0 \\
+   0 & -1 \\
+  \end{pmatrix} \\
+  E_+ &= = \frac{1}{2} (\sigma_1 + i \sigma_2) = 
+  \begin{pmatrix}
+   0 & 1 \\
+   0 & 0 \\
+  \end{pmatrix} \\
+  E_- &= \frac{1}{2} (\sigma_1 - i\sigma_2) =
+  \begin{pmatrix}
+   0 & 0 \\
+   1 & 0 \\
+  \end{pmatrix}.
+\end{align}
+Note that for $X \in \mathscr{L}(SU(2))$, we have $X = -X^{\dagger}$.
+Thus if $X = X_H H + H_+ E^+ + X_- E^-$, then $X_H = i \mathbb{R}$ and $X_+ = -(X_-)^*$.
+
+This is called the \emph{Cartan basis}, which defines a \emph{complexification} of the Lie algebra:
+\begin{equation}
+  \mathscr{L}_{\mathbb{C}} (SU(2)) = \text{Span}_{\mathbb{C}} \left\{ T^a \mid a = 1,2,3 \right\}.
+\end{equation}
+The $\left\{ H, E^+, E^- \right\}$ are a basis for $\mathscr{L}_{\mathbb{C}}(SU(2))$.
+Often we refer to $H$ as the \emph{Cartan element} of the basis, while $E_{\pm}$ are the step operators.
+These matrices satisfy the same commutation relations as we are used to from angular momentum:
+\begin{equation}
+  \label{eq:L(su2)}
+  [H, E_{\pm}] = \pm 2 E_{\pm} \qquad [E_+, E_-] = H.
+\end{equation}
+The relation $[H, E_{\pm}]$ implies that 
+\begin{equation}
+  ad_{H}(E_{\pm}) = \pm 2 E_{\pm},
+\end{equation}
+while $ad_H(H) = 0$ corresponds to the statement that $[H, H] = 0$.
+Thus, in the Cartan basis, $\left\{ H, E_+, E_- \right\}$ are eigenvectors of
+\begin{equation}
+  ad_H \colon \mathscr{L}(SU(2)) \to \mathscr{L}(SU(2))
+\end{equation}
+with eigenvectors $\left\{ 0, +2, -2 \right\}$. We sometimes refer to these as \emph{roots} of the Lie algebra $\mathscr{L}(SU(2))$.
+\begin{leftbar}
+  \begin{remark}
+    From now on, we will write $\mathscr{L}(SU(2)) = \mathfrak{su}(2)$.
+  \end{remark}
+\end{leftbar}
+
+Consider a representation $R$ of $\mathfrak{su}(2)$ with representation space $V$. $H$ is diagonal, assume $R(H)$ is diagonalisable. This is equivalent to saying that the representation space $V$ is spanned by the eigenvectors of $R(H)$.
+We will introduce those eigenvectors by their eigenvectors $\lambda \in \mathbb{C}$:
+\begin{equation}
+  R(H) v_\lambda = \lambda v_\lambda.
+\end{equation}
+These eigenvalues $\left\{ \lambda \right\}$ of $R(H)$ are called the \emph{weights} of the representation $R$.
+\begin{leftbar}
+  \begin{remark}
+    Weights belong to a representation, whereas roots belong to the Lie algebra itself.
+  \end{remark}
+\end{leftbar}
+
+\subsection{Step Operators}%
+\label{sub:step_operators}
+
+As we have casually mentioned before, $E_{\pm}$ are known as \emph{step operators}. In the following discussion, the reasons for this will become clear.
+We can change the order of two representation matrices by introducing the commutator:
+\begin{equation}
+  R(H) R(E_{\pm}) v_\lambda = (R(E_{\pm}) R(H) + [R(H), R(E_{\pm})]) v_\lambda
+\end{equation}
+By definition, the commutator is $[R(H), R(E_\pm)] = \pm 2 R(E_{\pm})$.
+Therefore, we get
+\begin{equation}
+  \dots = (\lambda \pm 2) R(E_\pm) v_\lambda.
+\end{equation}
+Therefore, when we act on the basis with a representation of the step operator, we will move up or down to different values of the weight.
+In a finite-dimensional representation, we need to have a finite basis, and therefore a finite number of different weights.
+A finite-dimensional representation $R$ of $\mathfrak{su}(2)$ must therefore have a highest weight $\Lambda \in \mathbb{C}$ and a highest weight vector $v_{\Lambda}$ with
+\begin{equation}
+  R(H) v_{\Lambda} = \Lambda v_{\Lambda}, \qquad R(E_+) v_\Lambda = 0.
+\end{equation}
+Later on, we will also use the fact there needs to be a lowest weight as well for a finite-dimensional representation.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l11f1.pdf_tex}
+  \caption{}
+  \label{fig:l11f1}
+\end{figure}
+
+Starting from $v_{\Lambda}$, we can generate a new basis vector with weight $\Lambda -2$ by acting on it with $R(E_-)$. If we repeat this process, which is illustrated in \ref{fig:l11f1}, do we eventually get all of the basis vectors of the representation?
+\begin{claim}
+If $R$ is irreducible, then this is indeed the case; the remaining basis must be generated by arbitrary strings of $R(H)$, $R(E_+)$, and $R(E_-)$ acting on $v_\Lambda$.
+\end{claim}
+\begin{leftbar}
+  \begin{remark}
+    These strings can also be reordered using the commutators.
+  \end{remark}
+\end{leftbar}
+\begin{proof}
+  Let us define $v_{\Lambda - 2 n} = (R(E_-))^n v_{\Lambda}$ for $n \in \mathbb{N}$.
+  Consider the action of $R(E_+)$ on $v_{\Lambda - 2n}$. Then, we recall that we can obtain this by acting on the step down operator
+  \begin{equation}
+    R(E_+) v_{\Lambda - 2n} = R(E_+) R(E_-) \Lambda_{\Lambda - 2n + 2}.
+  \end{equation}
+  Using the commutator, we can then reverse the order to give
+  \begin{align}
+    \dots &= \bigl(R(E_-) R(E_+) + [R(E_+), R(E_-)]\bigr) v_{\Lambda - 2n + 2} \\
+	  &= R(E_-) R(E_+) v_{\Lambda - 2n + 2} + (\Lambda - 2n + 2) v_{\Lambda - 2n + 2}
+	  \label{eq:11-star}
+  \end{align}
+  Let us now set $n = 1$ in equation \eqref{eq:11-star}. The relation then boils down to
+  \begin{equation}
+    \label{eq:11-alpha}
+    R(E_+) v_{\Lambda - 2} = \Lambda v_{\Lambda}.
+  \end{equation}
+  Thus, we do not get a new linearly independent eigenvector, but instead a multiple of the highest weight vector.
+  Similarly, considering the $n = 2$ case yields
+  \begin{equation}
+    R(E_+) v_{\Lambda - 4} = R(E_-) R(E_+) v_{\Lambda - 2} + (\Lambda - 2) v_{\Lambda - 2}.
+  \end{equation}
+  Using the result \eqref{eq:11-alpha}, we get
+  \begin{equation}
+    \dots = \Lambda R(E_-) v_\Lambda + (\Lambda - 2) v_{\Lambda - 2} = (2\Lambda - 2) v_{\Lambda - 2}.
+  \end{equation}
+  Proceeding by induction, we find that for all $n$,
+  \begin{equation}
+    R(E_+) v_{\Lambda - 2n} \propto v_{\Lambda - 2n + 2}.
+  \end{equation}
+  The constants of proportionality can be obtained by substitution into \eqref{eq:11-star}.
+  In particular, we will set the constants of proportionality to
+  \begin{equation}
+    \label{eq:12-star}
+    R(E_+) v_{\Lambda - 2n} = r_n v_{\Lambda - 2n + 2}.
+  \end{equation}
+  Equation \eqref{eq:11-star} implies the following first order recurrence relation for these coefficients 
+  \begin{equation}
+    \label{eq:11-alpha-2}
+    r_n = r_{n-1} + \Lambda - 2n + 2
+  \end{equation}
+  In addition to this, we know that $R(E_+) v_\Lambda = 0$. This sets the boundary condition $r_0 = 0$.
+  We can solve \eqref{eq:11-alpha-2} to get
+  \begin{equation}
+    r_n = (\Lambda + 1 - n) n.
+  \end{equation}
+
+  Finally, we consider the fact that the finite dimension of the representation $R$ implies the existence of a lowest weight $\Lambda - 2N$ for some $N \in \mathbb{N_0}$. By definition there exists some lowest weight vector $v_{\Lambda - 2N} \neq 0$, which is annihilated by the lowering operator
+  \begin{equation}
+    R(E_-) v_{\Lambda - 2N} = 0 \implies v _{\Lambda - 2N - 2} = 0
+  \end{equation}
+  Using $n = N + 1$ in Equation \eqref{eq:12-star}, we deduce that
+  \begin{equation}
+    R(E_+) v_{\Lambda - 2N - 2} = r_{N+1} v_{\Lambda - 2N} = 0.
+  \end{equation}
+  Therefore, since $v_{\Lambda - 2N} \neq 0$, we must have $r_{N + 1} = 0$. In particular, 
+  \begin{equation}
+    r_{N + 1} = (\Lambda - N)(N + 1) = 0.
+  \end{equation}
+  Therefore, we find that the highest weight, rather than being an arbitrary number, is equal to an integer $\Lambda = N$.
+  %Lecture 11 November 5
+  \begin{description}
+    \item[Conclusion:] The finite dimensional irreps $R_\Lambda$ of $\mathfrak{su}(2)$ are labeled by the \emph{heighest weight} $\Lambda \in \mathbb{N}_0$. The remaining weights in $R_1$ are
+      \begin{equation}
+        S_{\Lambda} = \left\{ -\Lambda, -\Lambda + 2, \dots, \Lambda - 2, \Lambda \right\} \subset \mathbb{Z}.
+      \end{equation}
+      Hence, the dimension of the irrep is $\dim(R_\Lambda) = \Lambda + 1$.
+  \end{description}
+  In perfoming this proof, we determined the structure of the irreducible representation of $\mathfrak{su}(2)$.
+\end{proof}

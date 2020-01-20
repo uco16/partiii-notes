@@ -1,0 +1,174 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 8: October 29}
+We have this family of invertible diffeomorphisms. Such maps would not normally exist on a generic manifold. Let us see what the consequences of the existence of these diffeomorphisms are.
+
+\subsection{Consequences}%
+\label{sub:consequences}
+
+\begin{wrapfigure}{R}{0.35\columnwidth}
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l8f2.pdf_tex}
+  \label{fig:l8f2}
+\end{wrapfigure}
+
+The map $L_h \colon G \to G$ induces a map $L_h{}_*: T_g G \to T_{hg} G$.
+This map, called the \emph{differential}\footnote{In the \emph{General Relativity} course, we have met this as the \emph{pushforward}} of $L_h$, is in coordinate $\{\theta^i\}$ defined as
+\begin{equation}
+  \begin{gathered}
+    L_h{}_* \colon \\
+    \qquad
+  \end{gathered}
+  \begin{gathered}
+    T_g (G) \\
+    v= v^{i} \frac{\partial }{\partial \theta^{i}}
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    \to \\
+    \mapsto
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    T_{hg} (G) \\
+    J\indices{^{i}_{j}}(\theta) v^{j} \frac{\partial }{\partial \theta'{}^{i}}
+  \end{gathered}
+\end{equation}
+
+\begin{definition}[]
+  A \emph{(tangent) vector field} $X$ on $G$ specifies a tangent vector $X(g) \in T_gG$ at each point $g$ in the manifold $G$.
+\end{definition}
+Given a set of coordinates $\left\{ \theta^{i} \right\}$, we can expand any vector in terms of the coordinate basis $\left\{ \frac{\partial }{\partial \theta} \right\}$ 
+\begin{equation}
+  X(\theta) = v^i(\theta) \pdv{}{\theta^i} \in T_{g(\theta)}(G), \qquad i = 1, \dots, D,
+\end{equation}
+where we employ a slight abuse of notation and write $X(\theta)$ when we really mean $X(g(\theta))$.
+\begin{definition}[]
+  A vector field $X$ is said to be \emph{smooth} if the functions $v^i(\theta)$ are smooth.
+\end{definition}
+
+As soon as we have a left multiplication map, we can shift tangent vectors across the manifold and define a smooth tangent vector field:
+Starting from a tangent vector at the identity $\omega \in T_e G$, we define a vector field $X(g)$ for each element $g \in G$ as
+\begin{equation}
+  X(g) = L_g{}_*(\omega) \in T_g(G).
+\end{equation}
+However, we also have some more restrictive properties that come with this map. As $L_g{}_*$ is smooth and invertible, $X(g)$ is smooth and \emph{non-vanishing}.
+Starting from a basis $\{\omega_a\}$, $a = 1, \dots, D$, for $T_eG$, we actually get $D$ independent, non-vanishing vector fields
+\begin{equation}
+  X_g(g) = L_g{}_* (\omega_a).
+\end{equation}
+
+\begin{wrapfigure}{L}{0.24\columnwidth}
+  \centering
+  \def\svgwidth{0.2\columnwidth}
+  \input{lectures/hairyball.pdf_tex}
+  \label{fig:hairyball}
+\end{wrapfigure}
+
+These are called the \emph{left-invariant vector fields}; these exist on any Lie group manifold.
+
+\begin{example}[hairy ball theorem]
+  On a two sphere $\mathcal{M}(G) \simeq S^2$, you can never have a smooth, non-vanishing vector field.
+  Informally, you can never comb flat the hair on a spherical doll; there will always be at least two zeros where the hair parts.
+\end{example}
+In general, the number of zeros a manifold has is related to the Euler character.
+Out of the two dimensional compact manifolds, the only allowed manifold is the torus $\mathcal{M}(G) = T^2$, where $G = U(1) \times U(1)$.
+
+We can also use the technology of left-invariant vector fields to define the Lie algebra of vector fields without resorting to matrix representations of Lie groups.
+
+\section{Matrix Lie Groups}%
+\label{sec:matrix_lie_groups-again}
+
+Let us go back to the more restricted context of matrix Lie groups. This means that we can realise things more explicitly since we know how to multiply matrices.
+\begin{claim}
+  Let $G = \text{Mat}_N(F)$, $n \in \mathbb{N}$, $F = \mathbb{R} \text{ or } \mathbb{C}$.
+  Then, $\forall h \in G$, and $\forall X \in \mathfrak{g}$, we can define the left multiplication map $L_h{}_*(X) = h X \in T_h(G)$ simply as the multiplication of two matrices.
+\end{claim}
+\begin{leftbar}
+  \begin{remark}
+    It is highly non-obvious that we can do this, since $h$ and $X$ are different objects; one is an element of the Lie group, the other of the Lie algebra.
+  \end{remark}
+\end{leftbar}
+
+\begin{wrapfigure}{R}{0.25\columnwidth}
+  \centering
+  \def\svgwidth{0.2\columnwidth}
+  \input{lectures/l8f4.pdf_tex}
+  \caption{}
+  \label{fig:l8f4}
+\end{wrapfigure}
+
+\begin{proof}
+  Consider the Taylor series of a point $g$ lying on a curve $C$ in the Lie group $G$, as depicted in Figure \ref{fig:l8f4}.
+  \begin{equation}
+    g(t) = g(0) + \dot g(0) t + O(t^2).
+  \end{equation}
+  Then $\dot g(0) \in T_{g(0)}G$.
+  Consider the curve $C\colon t \in I \subset R \mapsto g(t) \in G$. Let $g(0) = e = \mathbb{1}_n$ and $\dot g(0) = X \in \mathfrak{g} \simeq T_e(G)$.
+  We can then define a new curve, $C' \colon t \mapsto h(t) = h \cdot g(t) \in G$. Near $t=0$,
+  \begin{equation}
+    h(t) \simeq h + t hX + O(t^2).
+  \end{equation}
+  Therefore, $hX \in T_hG$.
+\end{proof}
+
+Equivalently, consider the smooth curve $C \colon t \mapsto g(t) \in G$. Then
+\begin{equation}
+  \dot g(t) T_{g(t)}G \implies g^{-1}(t) \dot g(t) = L_{g^{-1}(t)}{}_* (\dot g(t)) \in T_eG = \mathfrak{g}.
+\end{equation}
+This is a very general story that we will meet again when studying gauge theories.
+For matrix Lie groups, we can always define an element of the Lie algebra by a multiplication of the form $g^{-1} \dot g$.
+
+\chapter{Lie Groups from Lie Algebras}%
+\label{cha:lie_groups_from_lie_algebras}
+
+\section{The exponential map}%
+\label{sec:the_exponential_map}
+
+\begin{wrapfigure}{L}{0.25\columnwidth}
+  \centering
+  \def\svgwidth{0.2\columnwidth}
+  \input{lectures/l8f5.pdf_tex}
+  \caption{}
+  \label{fig:l8f5}
+\end{wrapfigure}
+Let us now work backwards; imagine that we are given an element $X \in \mathfrak{g}$ of the Lie algebra.
+Since there is a correspondence between curves and tangent vectors, we can explicitly reconstruct a curve $C \colon I \in \mathbb{R} \to G$ on the Lie group by solving the ODE
+\begin{equation}
+  \label{eq:l8ode}
+  g^{-1}(t) \dv{g(t)}{t} = X.
+\end{equation}
+This is a curve whose tangent vector at the identity is $X$.
+We can enforce this to have a unique solution by specifying the boundary condition $g(0) = \mathbb{1}_n$.
+To solve \eqref{eq:l8ode}, we define the exponential of a matrix:
+\begin{definition}[]
+  The exponential of a matrix $M \in \text{Mat}_n(F)$ is defined to be
+  \begin{equation}
+    \text{Exp}(M) \coloneqq \sum_{l =0}^{\infty} \frac{1}{l^!} M^l \in \text{Mat}_n(F).
+  \end{equation}
+\end{definition}
+\begin{claim}
+  We solve \eqref{eq:l8ode} by setting $g(t) = \text{Exp}(t X)$, $\forall t \in \mathbb{R}.$
+\end{claim}
+\begin{proof}
+  Note that $g(0) = \text{Exp}(0) = \mathbb{1}_n$.
+  \begin{equation}
+    \dv{g(t)}{t} = \sum_{l = 1}^\infty \frac{1}{(l-1)!} t^{l-1} X^l = \text{Exp}(t X) \cdot X = g(t) X.
+  \end{equation}
+\end{proof}
+The exponential map takes us from the Lie algebra to the Lie group.
+It must be the case that
+\begin{equation}
+  \text{Exp}(t X) \in G, \qquad \forall t \in \mathbb{R},\; \forall X \in \mathfrak{g}.
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    As previously mentioned, we can also define the exponential map without reference to the matrix representation of Lie groups.
+  \end{remark}
+\end{leftbar}
+
+\begin{exercise}
+  If $X \in \mathfrak{su}(N)$, check that $\text{Exp}(t X) \in SU(N)$, $\forall t \in \mathbb{R}$.
+\end{exercise}
+

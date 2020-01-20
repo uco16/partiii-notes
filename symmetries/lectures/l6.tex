@@ -1,0 +1,187 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 6: October 22}
+
+\chapter{Lie Algebras from Lie Groups}%
+\label{cha:lie_algebras_from_lie_groups}
+
+So far, we have introduced the concepts of Lie group and Lie algebras.
+These appear to be very different objects. We will now relate these two concepts by showing that every Lie group gives rise to a Lie algebra, by considering the tangent space near its identity element.
+
+\section{Preliminaries}%
+\label{sec:preliminaries}
+
+Let $M$ be a smooth manifold of dimension $D$. Pick a point $p \in M$.
+Because of the manifold structure, we can introduce a coordinate chart $\left\{ x^i \in \mathbb{R} \right\}$, $i = i, \ldots, D$ in some region $\mathcal{P} \subset M$.
+Without loss of generality, we can choose the coordinates such that the point $p$ corresponds to the origin $x^i = 0$, $\forall i$.
+
+\begin{definition}[tangent space]
+  The \emph{tangent space} $T_p M$ to $M$ at $p$ is a $D$-dimensional vector space spanned by differential operators $\left\{ \pdv{}{x^j} \right\}$, $i = 1, \ldots, D$ acting on functions $f: M \to \mathbb{R}$.
+\end{definition}
+
+\begin{definition}[tangent vector]
+  An element of the tangent space is called a \emph{tangent vector}. We can expand every tangent vector $V$ as a linear combination of the differential operators
+  \begin{equation}
+    V = v^i \pdv{}{x^i} \in T_p  M,
+  \end{equation}
+  where the real coefficients $v^i \in \mathbb{R}$ are called the \emph{components} of $V$.
+  This decomposition tells us that tangent vectors act on a function $f = f(x)$ as
+  \begin{equation}
+    V \cdot f = v^i \left.\pdv{f(x)}{x^i} \right\rvert_{x = 0}
+  \end{equation}
+  where the evaluation at $x = 0$ signifies that we are dealing with a tangent space at point $p$, which is at the origin of our coordinates.
+\end{definition}
+
+%F1: Manifold blob with line/curve on it
+
+\begin{definition}[smooth curve]
+  A \emph{smooth curve} $C$ on a manifold $M$ is a smooth map from an interval $I \in \mathbb{R}$ to $M$.
+  In coordinates, we can use a parameter $t \in I$ to parametrise the curve as
+  \begin{equation}
+    C\colon t \mapsto x^i(t).
+  \end{equation}
+  We will work with curves in which the coordinates $\{ x^i (t) \}$ are continuous and differentiable at least once.
+  Moreover, we choose coordinates in which $x^i(0) = 0$, $\forall i = 1, \ldots, D$.
+\end{definition}
+
+%modifies F1 to have a point p and tangent vector to curve at that point
+\begin{figure}[htpb]
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/tangentcurve.pdf_tex}
+  \caption{Tangent vector $V_c$ to curve $C\colon I \to M$ at point $p \in M$.}
+  \label{fig:tangentcurve}
+\end{figure}
+Now consider a curve $C\colon I \to M$ passing through the point $p$ at $x^i(0) = 0$. The tangent vector to $C$ at $p$ is
+\begin{equation}
+  V_c = \dot x^i(0) \pdv{}{x^i} \in T_p M,
+\end{equation}
+where the derivatives with respect to the parameter $t$ are denoted $\dot x^i(t) = \dv{x^i(t)}{t}$.
+Intuitively, in a physical picture where $C$ is the trajectory of the particle, parametrised by a time coordinate $t$, the tangent vector $V_c \in T_p M$ corresponds to the velocity vector at $t = 0$.
+Every smooth curve has a tangent vector at every point it passes through.
+This construction will also work for the end points of the parameter interval.
+% F2 path with heavy dots at the end, $I = [0, L]$ written next to it
+
+\section{The Lie Algebra \texorpdfstring{$\mathscr{L}(G) = \mathfrak{g}$}{of group G}}%
+\label{sec:the_lie_algebra_of_G}
+
+Let $G$ be a Lie group of dimension $D$. Recall that Lie groups are also manfolds; we will apply the definitions above to examine certain tangent spaces on the manifold structure of $G$. Let $\left\{ \theta^i \right\}$, $i = 1, \ldots, D$, be a set of coordinates in some coordinate patch $\mathcal{P}$ containing the identity $e \in \mathcal{P} \subset G$.
+These coordinates allow us to parametrise any element $g \in \mathcal{P}$ as $g = g(\theta) \in G$. The statement that the coordinates are taken to be centered at the identity $e$ translates to $g(0) = e$.
+
+% F3 figure just as in notes
+\begin{figure}[htpb]
+  \centering
+  \def\svgwidth{0.55\columnwidth}
+  \input{lectures/tangentspace.pdf_tex}
+  \caption{Tangent space $T_p G$ at point $p$ in the manifold $G$.}
+  \label{fig:tangentspace}
+\end{figure}
+\begin{claim}
+  Let $G$ be a Lie group and consider the tangent space $T_e  G$ at the identity element $e \in G$.
+  We can define a Lie bracket operation
+  \begin{equation}
+    [\cdot, \cdot]: T_e G \times T_e G \to T_e G
+  \end{equation}
+  so that the tangent space becomes a Lie algebra $\mathscr{L}(G) = \{T_e G, [\cdot , \cdot]\}$ when we equip it with this bracket structure.
+\end{claim}
+\begin{proof}
+  It is evident that the tangent space $T_e G$ at the identity is a $D$-dimensional vector space. 
+  We have to find a suitable bracket that satisfies Definition \ref{def:lie_algebra} and makes this tangent space into a Lie algebra.
+  Showing this is easiest for matrix Lie groups.
+  Let $G \subset \text{Mat}_n (F)$ be a subspace of $n \in \mathbb{N}$ dimensional matrices over the field $F = \mathbb{R}$ or $\mathbb{C}$.
+  We can map tangent vectors to matrices by constructing the following map:
+  \begin{equation}
+    \begin{split}
+      f \colon T_e G &\to \text{Mat}_n(F) \\
+      v^i \pdv{}{\theta^i} &\mapsto v^i \left.\pdv{g(\theta)}{\theta^i} \right\lvert_{\theta = 0}.
+    \end{split}
+  \end{equation}
+  The map $f$ is injective and linear.
+  This allows us to identify the tangent space $T_n F$ spanned by $ \left\{ \left. \pdv{g(\theta)}{\theta^i}\right\rvert_{\theta = 0}\right\}$, $i = 1, \ldots, D$.
+  Due to this identification with matrices, the \emph{matrix commutator}, defined for any two $X, Y \in T_e G$ as
+  \begin{equation}
+    [X, Y] \coloneqq XY - YX,
+  \end{equation}
+  provides an obvious candidate for the bracket.
+  It is easy to check that the defining properties of Definition \ref{def:lie_algebra} of the Lie algebra hold.
+  Note in particular that the Jacobi identity follows from the associativity of matrix multiplication.
+  
+  It remains to show \emph{closure}: For any two tangent vectors $X, Y$, we need to show that their commutator $[X, Y]$ is itself also a tangent vector.
+  To achieve this, we use the correspondence between tangent vectors and \emph{curves} on a manifold.
+  Let $C: I \to G$ be a smooth curve passing through the identity $e$.
+  \begin{equation}
+    \begin{split}
+      C \colon &I \subset \mathbb{R} \to G \\
+       &t \mapsto g(t)
+    \end{split}
+  \end{equation}
+  The parameter is chosen in such a way that $t=0$ parametrises the identity matrix: $g(0) = I_N$.
+  By the chain rule, we can differentiate a group element $g$ as
+  \begin{equation}
+    \dv{g(t)}{t} = \dv{\theta^i (t)}{t} \pdv{g(\theta)}{\theta^i}.
+  \end{equation}
+  Consider the derivative at the origin:
+  \begin{equation}
+    \dot g(0) = \left. \dv{g(t)}{t}\right\rvert_{\mathrlap{t=0}} = \dot \theta^i(0) \left.\pdv{g(\theta)}{\theta^i}\right\rvert_{\mathrlap{\theta = 0}} \in T_e  G.
+  \end{equation}
+  This is the tangent vector to the curve $C$ at $e$.
+  We also have an explicit representation $\dot g(\theta) \in \text{Mat}_n (F)$ for the matrix Lie group. However, they are not in general elements of the Lie group $G$.
+
+  Near $t = 0$, we have a Taylor expansion
+  \begin{equation}
+    g(t) = I_n + X t + O(t^2)
+  \end{equation}
+  where the term $X$ appearing in the first order expansion is a tangent vector $X = \dot g(0) \in \mathscr{L}(G)$.
+
+  Given two elements $X_1, X_2 \in \mathscr{L}(G)$, we can find smooth curves $C_1: t \mapsto g_1(t) \in G$ and $C_2: t \mapsto g_2(t) \in G$, passing through the origin $g_1(0) = g_2(0) = I_n$, such that $\dot g_1(0) = X_1$ and $\dot g_2(0) = X_2$.
+
+  Near $t = 0$, another way of saying what we just said is that
+  \begin{equation}
+    g_1(t) = I_n + X_1 t + W_1 t^2 + O(t^3), \qquad
+    g_2(t) = I_n + X_2 t + W_2 t^2 + O(t^3)
+  \end{equation}
+  for some $W_1, W_2 \in \text{Mat}_n (F)$.
+
+  Define a new curve
+  \begin{equation}
+    h(t) = g_1^{-1}(t) g_2^{-1}(t) g_1(t) g_2(t) \in G.
+  \end{equation}
+  Since this is a composition of smooth maps, $h$ is itself smooth.
+  Equivalently, we have $\forall t \in I$
+  \begin{equation}
+    \label{eq:h}
+    g_1(t)g_2(t) = g_2(t) g_1(t) h(t).
+  \end{equation}
+  Expanding this near $t=0$ in steps,
+  \begin{align}
+    g_1(t) g_2(t) &= I_n + (X_1 + X_2)t + (X_1 X_2 + W_1 + W_2) t^2 + O(t^3) \\
+    g_2(t) g_1(t) &= I_n + (X_1 + X_2)t + (X_2 X_1 + W_1 + W_2) t^2 + O(t^3).
+  \end{align}
+  Here we can already see the terms $X_1 X_2$ and $X_2 X_1$ that we will want to isolate for our Lie bracket.
+
+  Now $h(t)$ has a Taylor series of the form
+  \begin{equation}
+    h(t) = I_n + h_1 t + h_2 t^2 + O(t^3).
+  \end{equation}
+  Plugging this into \eqref{eq:h} and using the above expansions for $g_1 g_2$ and $g_2 g_1$, we find that the coefficients in the Taylor series expansion are given by
+  \begin{equation}
+    h_1 = 0 \qquad h_2 = (X_1 X_2 - X_2 X_1) = [X_1, X_2].
+  \end{equation}
+  Thus, the curve $h_3$ is written in its Taylor series expansion as
+  \begin{equation}
+    h(t) = I_n + t^2 [X_1, X_2] + O(t^3).
+  \end{equation}
+  However, a curve should have its tangent vector in the linear term of its parameter.
+  To have a sneeky way around this issue, we redefine our parameter $s = t^2 \geq 0$, where $e$ lies at the end point.
+  This defines a new curve $C_3: s \mapsto g_3(s) = h(\sqrt{s})$, which near $s = 0$ has the form
+  \begin{equation}
+    g_3(s) = I_n + s[X_1, X_2] + O(s^{3/2}).
+  \end{equation}
+  This is a good curve in $C^1$, provided that $s \geq 0$. 
+  Finally, we can isolate the commutator by taking the derivative and evaluating it at $s = 0$:
+  \begin{equation}
+    [X_1, X_2] = \left.\dv{g_3(s)}{s}\right\rvert_{\mathrlap{s = 0}} = \dot g_3(0) \in \mathscr{L}(G)
+  \end{equation}
+  This demonstrates the closure property of the Lie algebra, since the bracket of two tangent vectors gives another.
+\end{proof}
+Note that the second derivative of $g_3$ will give us a negative power, and as $s \to 0$, the second derivative would blow up. So $\ddot g_3(0)$ does not exist. As slightly longer proof can construct good $C^n$ curves for any $n$, but $n = 1$ is sufficient for this proof.

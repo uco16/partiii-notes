@@ -1,0 +1,111 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 9: November 01}
+
+Let us recap. The renormalisation tells us how the theory changes on coarse graining to a different scale. The renormalisation steps are
+\begin{enumerate}
+  \item `Integrate out' high momentum modes, $1/\zeta < \abs{\vb{k}} < \Lambda$
+  \item Rescale momenta: $\vb{k} \to \vb{k}' = \zeta \vb{k}$
+  \item Rescale fields such that
+    \begin{equation}
+      F_\zeta [\phi'] = \int \dd[d]{x} \left[ \frac{1}{2} (\grad \phi')^2 + \frac{1}{2} \mu^2(\zeta) \phi'^2 + g(\zeta) \phi'^4 + \dots \right]
+    \end{equation}
+\end{enumerate}
+
+Previously, we included all possible interaction terms in $F$. Therefore, the new action will be of the same form, except with different coupling constants. As we have briefly discussed, under the RG, the coupling constants can flow in different ways. We will discuss this further in upcoming sections.
+
+\section{Returning to Universality}%
+\label{sec:universality}
+
+We discussed the idea of universality when we introduced the path integral and looked at how fluctuations can change the model.
+For example, the phase transition of a ferromagnet can be described by the same physical theory as the phase transition in liquid to gas, or even in early universe cosmology.
+
+Let us think about where we will land if we coarse-grain to larger and larger distance scales.
+There are two possibilities:
+\begin{itemize}
+  \item couplings flow to infinity
+  \item couplings converge towards a fixed point
+    \begin{itemize}
+      \item theory becomes scale-invariant
+      \item the correlation length becomes either $\xi= 0$ or $\xi= \infty$
+    \end{itemize}
+\end{itemize}
+\begin{example}[]
+  Performing the RG to the theory of QCD, we flow towards infinity as we go towards the IR. In the perturbative framework, we cannot make calculations anymore.
+\end{example}
+\begin{example}
+  In QED, below $500 KeV$ we go below the point where we integrate out electrons. We end up with a scale-invariant theory with free photons that do not interaction.
+\end{example}
+\begin{leftbar}
+  \begin{remark}
+    Q: can we have loops in RG parameter space?\\
+    A: Schwimmer and Commagautzki (?) proved in 2010 (?) that RG cannot flow back on itself.
+    This is related to the A and C theorems in conformal field theory.
+  \end{remark}
+\end{leftbar}
+
+\subsection{Ising Model Critical Points}%
+\label{sub:ising_model_critical_points}
+
+Let us begin at $T > T_c$ and increase the temperature $T \to \infty$. Physically, we know that at these high temperatures the correlation length will vanish $\xi\to 0$.
+However, if we start at $T < T_c$ and let $T \to 0$. All the spins will line up, there are no fluctuations and correlation is maximal. Therefore, there is zero correlation length $\xi\to 0$ also in this case.
+We see that the trivial fixed points have $\xi\to 0$; the most interesting fixed points will be those with $\xi\to \infty$; this will happen for the Ising model at $T = T_c$.
+%TODO F1 with patches. Left square has patches, arrow to right square with different patches but similar.
+These fixed points, where we have fluctuations on all length-scales, are known as \emph{critical points}.
+In general, we expect to find these at second order phase transitions.
+
+\subsection{Relevant, Irrelevant, Marginal}%
+\label{sub:relevant_irrelevant_marginal}
+
+%TODO F2: square with g_i(zeta) on the left and g_k(zeta) on the bottom. 
+\begin{wrapfigure}{R}{0.35\textwidth}
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l9f2.pdf_tex}
+  \caption{}
+  \label{fig:l9f2}
+\end{wrapfigure}
+We can deform our theory by changing one of the values of the couplings.
+For \emph{irrelevant} operators, the deformation does not change the flow behaviour; we end up at the same point in RG parameter space.
+The perturbed theory is in the same universality class as the original one.
+On the other hand, \emph{relevant} deformations put us into a different universality class.
+In practice, there are usually not that many relevant operations.
+The last kind of deformation we can perform is \emph{marginal} deformation.
+
+\subsection{Scaling}%
+\label{sub:scaling}
+
+Let us think about how particular physical quantities change under rescaling.
+In a scale-invariant system, a correlation function $\langle \phi(\vb{x}) \phi(0) \rangle$ can only depend on $r = \abs{\vb{x}}$. We have
+\begin{equation}
+  \langle \phi(\vb{x}) \phi(0) \rangle \sim \frac{1}{r^{d-2 + \eta}}.
+\end{equation}
+Let us use the RG to calculate $\eta$.
+In units of $[\text{length}]^{-1}$, we have
+\begin{equation}
+  [x] = -1, \qquad [\pdv{}{x}] = +1, \qquad F[\phi] = 0, \qquad [\phi(\vb{x})] = \frac{d-2}{2},\qquad \implies \eta = 0.
+\end{equation}
+A hand-waving explanation is that under the RG procedure, $\vb{x} \to \vb{x}/\zeta$, so any other quantity will be rescaled as $\phi(\vb{x}) \to \zeta^{\Delta \phi} \phi(\vb{x})$, where
+\begin{equation}
+  \Delta_\phi = \frac{d-2 + \eta}{2},
+\end{equation}
+where $[\phi(\vb{x})] = (d-2)/2$ is called the \emph{engineering dimension} and $\eta$ the \emph{anomalous dimension}.
+There is no reason to think that the exponent of $\zeta$ in the RG rescaling should match the engineering dimension.
+If we remember that we can have factors of the cutoff $a$, this anomalous scaling can be matched
+\begin{equation}
+  \langle \phi(\vb{x}) \rangle \sim \frac{a^n}{r^{d-2 + \eta}}.
+\end{equation}
+
+\subsection{Return to Critical Exponents}%
+\label{sub:return_to_critical_exponents}
+
+We defined the correlation length $\xi \sim t^{-\nu}$. By definition, $\xi$ is a length scale with scaling dimension $\Delta_{\xi} = -1$. This implies that $t \to \zeta^{\Delta t} t$ with $\Delta t = 1/\nu$.
+
+Consider the free energy at $B = 0$. This will be a function of the reduced temperature:
+\begin{equation}
+  F_{\text{thermo}}(t) = \int \dd[d]{x} f(t) \implies f(t) \sim t^{d\nu}.
+\end{equation}
+Recall that the total heat capacity was defined as $c = \pdv*[2]{f}{t} \sim t^{d\nu - 2} \sim t^{-\alpha}$, with $\alpha = 2 - d \nu$.
+Moreover, the magnetisation is $\phi \sim t^{\beta}$. This implies that $\Delta \phi = \beta \Delta t$ and so $\beta = \nu \Delta \phi$. Therefore $\beta = (f - 2 + \eta) / 2 \nu$.
+Let us now add a magnetic field $\int \dd[d]{x} B \phi$. This gives $\Delta_B = (d + 2 - \eta)/2 \nu$. 
+Finally, the susceptibility scales as: $\chi = \left.\pdv{\phi}{B}\right\rvert_{T} \sim t^{-\gamma} \implies \gamma = \nu (2 - \eta)$.

@@ -1,0 +1,149 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 15: November 15}
+
+In fact, for simple Lie algebras, the Killing form $\kappa$ is the unique invariant inner product, up to an overall scalar multiple.
+
+\begin{definition}[]
+  A Lie algebra is \emph{semi-simple} if it has no Abelian ideals.
+\end{definition}
+
+\begin{claim}
+  A finite-dimensional semi-simple Lie algebra can be written as the direct sum of a finite number of simple Lie algebras.
+\end{claim}
+\begin{proof}
+  Sheet 2 Qu 9b.
+\end{proof}
+\begin{leftbar}
+  \begin{note}
+    The underlying set for the vector space direct sum $\mathfrak{g}_1 \oplus \mathfrak{g}_2$ is 
+    \begin{equation}
+      \mathfrak{g} \times \mathfrak{g}' = \left\{ (x, x') \suchthat x \in \mathfrak{g},\; x' \in \mathfrak{g}' \right\}.
+    \end{equation}
+    where scalar multiplication and addition is defined as
+    \begin{gather}
+      c(x, x') \coloneqq (cx, cx') \\
+      (x, x') + (y, y') \coloneqq (x + y, x' + y').
+    \end{gather}
+    In order to make this a Lie algebra, we define the commutator to be
+    \begin{equation}
+      [(x, x'), (y, y')] \coloneqq([x, y], [x', y']).
+    \end{equation}
+    Note that the subsets $\mathfrak{g}, \mathfrak{g}'$ commute with each other: $[(x, 0), (0, x')] = 0$.
+  \end{note} 
+\end{leftbar}
+
+We will now try to find out under what conditions the Killing form is non-degenerate.
+\begin{theorem}[by Cartan]
+  The Killing form $\kappa$ is non-degenerate if and only if the associated Lie algebra $\mathfrak{g}$ is semi-simple.
+\end{theorem}
+\begin{proof}[Proof of forward direction only]
+  Assume that $\kappa$ is non-degenerate.
+  Suppose for contradiction that $\mathfrak{g}$ is not semi-simple.
+  This means that $\mathfrak{g}$ has an Abelian ideal $\mathfrak{j}$.
+  Denote $\dim(\mathfrak{g}) = D$ and $\dim(\mathfrak{j}) = d$.
+  Choose a basis
+  \begin{equation}
+    B = \left\{ T^{a} \right\} = \left\{ T^{i} \mid i = 1, \dots, d \right\} \cup \left\{ T^{\alpha} \mid \alpha =1, \dots, D-d \right\},
+  \end{equation}
+  where $\left\{ T^{i} \right\}$ span $\mathfrak{j}$. As $\mathfrak{j}$ is Abelian, we must have $[T^{i}, T^{j}] = 0$, $\forall i, j$.
+  Moreover, as $\mathfrak{j}$ is an ideal, $[T^{\alpha}, T^{j}] = f \indices{^{\alpha j}_{\kappa}} T^{k} \in \mathfrak{j}$ and therefore $f^{ij}_{a} = 0$ and $f^{\alpha j}_{\beta} =0$.
+  For $X = X_{a} T^{a} \in \mathfrak{g}$ and $Y = Y_{j} T^{j} \in \mathfrak{j}$, we have $\kappa[X, Y] = \kappa^{ai} X_{a} Y_{i}$ with
+  \begin{equation}
+    \kappa^{ai} = f^{ad}_{c} f^{ic}_{d} = f^{aj}_{\alpha} f^{i\alpha}_{j} = 0.
+  \end{equation}
+  Therefore, we have $K[X, Y] = 0$ for all $X \in \mathfrak{j}$ and all $X \in \mathfrak{g}$. In other words, $\kappa$ is degenerate, which contradicts the assumption.
+  Hence, $\mathfrak{g}$ is semi-simple.
+\end{proof}
+
+\section{Complexification}%
+\label{sec:complexification}
+
+Given a \emph{real} Lie algebra $\mathfrak{g}$, we can find a basis $\left\{ T^{a} \right\}$, $a = 1, \dots, \dim \mathfrak{g}$, with real structure constants
+\begin{equation}
+  \label{eq:15-star}
+  [T^{a}, T^{b}] = f^{ab}_{c} T^{c}, \qquad f^{ab}_{c} \in \mathbb{R}.
+\end{equation}
+\begin{definition}[]
+  Given a real Lie algebra $\mathfrak{g} = \text{Span}_{\mathbb{R}} \left\{ T^{a} \right\}$, its \emph{complexification} is $\mathfrak{g}_{\mathbb{C}} = \text{Span}_{\mathbb{C}} \left\{ T^{a} \right\}$.
+  We say that $\mathfrak{g}$ is a \emph{real form} of $\mathfrak{g}_\mathbb{C}$.
+\end{definition}
+Together with the bracket \eqref{eq:15-star}, $\mathfrak{g}_{\mathbb{C}}$ is a \emph{complex Lie algebra.}
+A complex Lie algebra can have multiple real forms.
+\begin{example}[]
+  Consider the Lie algebra of $SU(2)$:
+  \begin{align}
+    \mathscr{L}(SU(2)) = \mathfrak{su}(2) &= \text{span}_{\mathbb{R}} \left\{ T^{a} = -\frac{i\sigma_{a}}{2} \mid a = 1,2,3 \right\} \\
+		     &= \left\{ 2 \times 2 \text{ traceless anti-Hermitian matrices} \right\}.
+  \end{align}
+  Its complexification is
+  \begin{align}
+    \mathscr{L}_{\mathbb{C}}(SU(2)) = \mathfrak{su}_{\mathbb{C}}(2) &= \text{Span}_{\mathbb{C}}\left\{T^{a} = -\frac{i\sigma_{a}}{2} \mid a = 1,2,3\right\} \\
+    &= \left\{ 2 \times 2 \text{ traceless complex matrices} \right\}.
+  \end{align}
+\end{example}
+
+The Cartan-Weyl basis for $\mathfrak{su}_{\mathbb{C}}(2)$ is given by $H = 2 i T^3$ and $E_\pm = i T^1 \pm T^2$ with brackets
+\begin{equation}
+  [H, E_\pm] = \pm 2 E_{\pm} \qquad [E_+, E_-] = H.
+\end{equation}
+
+\subsection*{Recovering a Real Representation}%
+
+Starting from a representation $R$ of $\mathfrak{su}_{\mathbb{C}}(2)$ with
+\begin{subequations}
+  \begin{align}
+    \label{eq:15-star2}
+    [R(H), R(E_{\pm})] &= \pm 2 R(E_\pm) \\
+    [R(E_+), R(E_-)] &= R(H).
+  \end{align}
+\end{subequations}
+Pass back to original basis via
+\begin{subequations}
+  \begin{align}
+    R(T^1) &= \frac{1}{2i} \bigl(R(E_+) + R(E_-)\bigr) \\
+    R(T^2) &= \frac{1}{2i} \bigl(R(E_+) - R(E_-)\bigr) \\
+    R(T^3) &= \frac{1}{2i} R(H).
+  \end{align}
+\end{subequations}
+For all $X \in \mathfrak{su}(2)$, we can expand $X = X_{a} T^{a}$ for some ${X_{a} \in \mathbb{R}}$. Set $R(X) = X_{a} R(T^{a})$ to get a representation of $\mathfrak{su}(2)$.
+
+
+\section{Cartan Subalgebra}%
+\label{sec:cartan_subalgebra}
+
+\begin{definition}[]
+  We say that $X \in \mathfrak{g}$ is \emph{ad-diagonalisable} (AD), if $\text{ad}_X \colon \mathfrak{g} \to \mathfrak{g}$ is diagonalisable.
+\end{definition}
+\begin{definition}[]
+  A \emph{Cartan subalgebra} (CSA) $\mathfrak{h}$ of $\mathfrak{g}$ is a maximal Abelian subalgebra of ad-diagonalisable elements:
+  \begin{enumerate}
+    \item ad-diagonalisable: $H \in \mathfrak{h} \implies H$ is (AD)
+    \item Abelian: $H, H' \in \mathfrak{h} \implies [H, H'] = 0$
+    \item maximal: $X \in \mathfrak{g}$ with $[X, H] = 0$ for all $H \in \mathfrak{h}$ $\implies$ $X \in \mathfrak{h}$
+  \end{enumerate}
+\end{definition}
+In fact, all possible CSAs of $\mathfrak{g}$ are isomorphic and have the same dimension. This motivates the following definition:
+\begin{definition}
+  The \emph{rank} of a Lie algebra $\mathfrak{g}$ is the dimension of a CSA $\mathfrak{h}$ of $\mathfrak{g}$.
+  \begin{equation}
+    \text{rank}(\mathfrak{g}) \coloneqq \dim(\mathfrak{h}).
+  \end{equation}
+\end{definition}
+\begin{example}[$\mathfrak{g} = \mathfrak{su}_{\mathbb{C}}(2) = \text{span}_{\mathbb{C}} \left\{ H, E_{\pm} \right\}$]
+  The Cartan element $H$ is (AD), but $E_{\pm}$  are not, so we can choose $\mathfrak{h} = \text{Span}_{\mathbb{C}}\left\{H\right\}$ to be a CSA. Hence $\text{rank}(\mathfrak{g}) = 1$. 
+\end{example}
+Given a CSA $\mathfrak{h}$, we can choose a basis $\left\{ H^{i}\right\}$, $ i = 1, \dots, r$, where $[H^{i}, H^{j}] = 0$.
+\begin{example}[]
+  $\mathfrak{su}_{\mathbb{C}}(N) = \left\{ \text{traceless complex $n \times n$-matrices} \right\}$. \par
+  Choose $(H^{i})_{\alpha\beta} = \delta_{\alpha i} \delta_{\beta i} - \delta_{\alpha i + 1} \delta_{\beta i + 1}$.
+  Then $\text{rank} [\mathfrak{su}_{\mathbb{C}}(N)] = N-1$. The fact that the CSA is Abelian implies
+  \begin{description}
+    \item[$\implies$] by the defining property of the adjoint rep.: $ [ad_{H^{i}}, ad_{H^{j}}] = ad_{[H^{i}, H^{j}]} = 0 $.
+    \item[$\implies$] $r$ linear maps $ad_{H^{i}}\colon \mathfrak{g} \to \mathfrak{g}$, with $i = d, \dots, r$ are \emph{simultaneously diagonalisable}
+    \item[$\implies$] $\mathfrak{g}$ is spanned by simultaneous eigenvectors $ad_{H^{i}}$
+      %\begin{equation}
+      %  \boxed{ad_{H^{i}} (E^{\alpha}) = [H^{i}, E^{\alpha}] = \alpha^{i} E^{\alpha}, \quad i = d, \dots, r}
+      %\end{equation}
+  \end{description}
+\end{example}

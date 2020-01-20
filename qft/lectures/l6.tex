@@ -1,0 +1,172 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 6: October 22}
+\begin{exercise}
+  Do up to Q4 on Example sheet 2.
+\end{exercise}
+
+\section{Causality}%
+\label{sec:causality}
+
+There is still (potentially) a hint of Lorentz variance because the commutation relations of $\phi$ and $\pi$ satisfy equal-time commutation relations; moving to a different frame, they might not be equal-time anymore.
+What about arbitrarily large space-time separations?
+The real requirement of causality is that measurements performed at spacelike distances do not influence each other. In the language of quantum mechanics, this means that all spacelike separated operators commute with each other:
+\begin{equation}
+  [O_1(x), O_2(y)] = 0, \qquad \text{whenever } \abs{x-y}^2 < 0
+\end{equation}
+
+Do we have this? Define
+\begin{align}
+  \Delta(x - y) &\coloneqq [\phi(x), \phi(y)] \\
+		&= \int_{\mathbb{R}^6}^{} \frac{\bdd[3]{p} \bdd[3]{p'}}{\sqrt{4 E_p E_{p'}}} \left\{ [a_{\vb{p}}, a^{\dagger}_{\vb{p}'} e^{-i (p \cdot x - p' \cdot y)} + [a^{\dagger}_{\vb{p}}, a_{\vb{p}'} ] e^{+i (p \cdot x - p' \cdot y} \right\} \\
+		&= \int_{}^{} \frac{\bdd[3]{p}}{2E_p} \left\{ e^{-i p \cdot (x - y)} - e^{i p \cdot (x - y)} \right\} \label{eq:mark}
+\end{align}
+What do we know about this function?
+\begin{itemize}
+  \item Lorentz invariant because $\int_{}^{} \bdd[3]{p} (2 E_p)^{-1}$ is and the integrand is too
+  \item If $x, y$ are spacelike from each other, it vanishes because $x - y$ can be Lorentz transformed to $y - x$ in the first term, giving zero. This is illustrated in Figure \ref{fig:l6f1}.
+    %F1
+    \begin{figure}[tbhp]
+      \centering
+      \def\svgwidth{0.4\columnwidth}
+      \input{lectures/l6f1.pdf_tex}
+      \caption{}
+      \label{fig:l6f1}
+    \end{figure}
+  \item It does not vanish for timelike separations
+    \begin{example}[]
+      Using \eqref{eq:mark}, we see that for two obviously timelike separated spacetime points, we have
+      \begin{equation}
+	[\phi (\vb{x}, 0), \phi(\vb{x} , t) ] = \int_{}^{} \frac{\bdd[3]{p} }{2E_p} \left( e^{-i E_p t} - e^{+i E_p t} \right) \neq 0
+      \end{equation}
+    \end{example}
+  \item At equal times:
+    \begin{equation}
+      \label{eq:mark2}
+      [\phi(\vb{x}, t) \phi(\vb{y}, t) ] = \int_{}^{} \frac{\bdd[3]{p}}{2E_p} \left( e^{i \vb{p} \cdot (\vb{x} - \vb{y})} - e^{-i \vb{p} \cdot (\vb{x} - \vb{x})}\right) = 0
+    \end{equation}
+    where in the last line we changed variable $\vb{p}' = -\vb{p}$ in the latter integral.
+    This agrees with equal-time commutation relations.
+\end{itemize}
+
+\section{Propagators}%
+\label{sec:propagators}
+
+If we prepare a particle at spacetime point $y$, what is the probability amplitude associated with finding it at spacetime point $x$?
+It is given by the braket
+\begin{align}
+  \bra{0} \phi(x) \phi(y) \ket{0} &= \int_{}^{} \frac{\bdd[3]{p} \bdd[3]{p'}}{\sqrt{4 E_p E_p'}} \bra{0} a_{\vb{p}} a^{\dagger}_{\vb{p}'} \ket{ 0} e^{-ip \cdot x + i p' \cdot y} \\
+				  &= \int_{}^{} \frac{\bdd[3]{p} \bdd[3]{p'}}{\sqrt{4 E_p E_p'}} \bra{0} [a_{\vb{p}}, a^{\dagger}_{\vb{p}'}] \ket{ 0} e^{-ip \cdot x + i p' \cdot y} \\
+				  &= \int_{}^{} \frac{\bdd[3]{p}}{2 E_p} e^{-ip \cdot (x - y)} \coloneqq D(x - y) \qquad \text{the propagator}.
+\end{align}
+For spacelike separations $\abs{x - y}^2 < 0$, one can show that the commutator decays as $D(\vb{x} - \vb{y}) \sim e^{-m \abs{\vb{x} - \vb{y}}}$. We say that the quantum field \emph{leaks out of the light-cone}.
+But we just saw that spacelike measurements commute,
+\begin{equation}
+  \Delta(x - y) = [\phi(x), \phi(y)] = D(y- x)-D(x-y) = 0 \qquad \forall \abs{x - y}^2 < 0.
+\end{equation}
+We interpret this the following way: there is no Lorentz invariant way to order the events, and a particle can just as easily travel from $x$ to $y$ as vice-versa. In a measurement, this symmetry implies that these amplitudes cancel.
+
+All of this holds for real scalar fields. However, there is also an easy generalisation for complex scalar fields.
+For a $\mathbb{C}$ scalar, $[\psi(x), \psi^{\dagger}(y)] = 0$ outside the light-cone.
+However, for complex scalars, we have particles and anti-particles in our interpretation. We interpret this to say that the amplitude for a particle to go from $x$ to $y$ cancels the one for its anti-particle to go from $y$ to $x$. 
+This is the more general statement; for the case of real fields, the particle is its own anti-particle.
+
+\subsection{Feynman Propagator}%
+\label{sub:feynman_propagator}
+
+\begin{definition}[Feynman Propagator]
+  The \emph{Feynman propagator} $\Delta_F(x - y)$ is defined as
+  \begin{equation}
+    \Delta_F (x - y) = \bra{0} T \phi(x) \phi(y) \ket{0}= 
+    \begin{cases}
+      \bra{0} \phi(x) \phi(y) \ket{0}, & x^0 > y^0 \\
+      \bra{0} \phi(y) \phi(x) \ket{0}, & x^0 < y^0.
+    \end{cases}
+  \end{equation}
+  where $T$ is the time-ordering operator.
+\end{definition}
+
+\begin{figure}[tbhp]
+  \centering
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l6f2.pdf_tex}
+    \caption{Feynman prescription}
+    \label{fig:l6f2}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l6f3.pdf_tex}
+    \caption{Epsilon prescription}
+    \label{fig:l6f3}
+  \end{minipage}
+\end{figure}
+
+\begin{claim}
+  We can write the Feynman propagator as
+  \begin{equation}
+    \boxed{\Delta_F = \int_{}^{} \bdd[4]{p} \frac{ie^{-ip \cdot (x - y)}}{p^2 - m^2}}.
+  \end{equation}
+  This is manifestly Lorentz invariant.
+  At the moment this is ill-defined because for each value of $\vb{p}$, the integral over $p^0$ has a pole at $(p^0)^2 = \abs{\vb{p}}^2 + m^2$. 
+  We need a prescription that tells us how to handle this pole. We define the integration contour to be the one depicted in Fig.~\ref{fig:l6f2}.
+  To use the residue theorem, we write
+  \begin{equation}
+    \frac{1}{p^2 - m^2} = \frac{1}{(p^0)^2 - E_p^2} = \frac{1}{((p^0)^2 - E_p)((p^0)^2 + E_p)}
+  \end{equation}
+  to see that the residue at $p^0 = \pm E_p$ is $\pm \frac{1}{2 E_p}$.
+  For $x^0 > y^0$, we close the contour in the lower-half plane:
+  \begin{equation}
+    e^{-i p^0 (x^0 - y^0)} \to 0 \qquad \text{as} \qquad p^0 \to -i \infty.
+  \end{equation}
+  Therefore, (integrating clockwise incurs the minus sign)
+\begin{align}
+  \Delta_F(x - y) &= \int_{}^{} \bdd[3]{p} \frac{1}{(2\pi) 2 E_p} (- 2\pi i) i e^{-i E_p (x^0 - y^0) + i \vb{p} \cdot (\vb{x} - \vb{y} )} \\
+		  &= \int_{}^{} \bdd[3]{p} \frac{1}{2E_p} e^{-i p (x - y)}
+  \end{align}
+    This is $D(x - y)$, which we showed was $\bra{0} \phi(x) \phi(y) \ket{0}$.
+
+    On the other hand, when $x^0 < x^0$, we close the contour in the upper-half plane to get 
+  \begin{align}
+    \Delta_F(x - y) &= \int_{}^{} \bdd[3]{p} \frac{1}{(2\pi) 2 E_p} (+ 2\pi i) i e^{+i E_p (x^0 - y^0) + i \vb{p} \cdot (\vb{x} - \vb{y} )} \\
+		    &= \int_{}^{} \bdd[3]{p} \frac{1}{2E_p} e^{-i p (y - x)} \\
+		    &= D(y - x) = \bra{0} \phi(y) \phi(x) \ket{0}.
+  \end{align}
+\end{claim}
+There is a mnemonic that we can use to short-circuit this tedious contour integration.
+The `$i \epsilon$' prescription moves the poles slightly off the real axis. This is illustrated in Fig.~\ref{fig:l6f3}.
+The propagator is
+\begin{equation}
+  \boxed{\Delta_F(x - y) = \int_{}^{} \bdd[4]{p} \frac{i e^{-i p \cdot (x - y)}}{p^2 - m^2 + i \epsilon}}
+\end{equation}
+which is an equivalent description, once we take $\epsilon \to 0$.
+
+The Feynman propagator $\Delta_F$ is the Green's function of the Klein-Gordon operator
+\begin{equation}
+  (\partial_t^2 - \laplacian + m^2) \Delta_F(x - y) = \int_{}^{} \bdd[4]{p} \frac{i (-p^2 + m^2)}{p^2 - m^2} = -i \delta^4 (x- y).
+\end{equation}
+
+\subsection{Retarded Green's Functions}%
+\label{sub:retarded_green_s_functions}
+
+\begin{wrapfigure}{R}{0.4\columnwidth}
+  \centering
+  \def\svgwidth{0.35\columnwidth}
+  \input{lectures/l6f4.pdf_tex}
+  \caption{Retarded prescription}
+  \label{fig:l6f4}
+\end{wrapfigure}
+
+It can be useful to pick other contours. One example is the \emph{retarded} Green's function
+\begin{equation}
+  \Delta_R (x - y) = 
+  \begin{cases}
+    [\phi(x), \phi(y)], & x^0 > y^0 \\
+    0, & x^0 < y^0
+  \end{cases}
+\end{equation}
+which is useful in a context in which we start with  an initial field configuration and look at evolution in the presence of a source. For example, $(\partial_\mu \partial^\mu + m^2 )\phi(x) = J(x)$.
+
+However, $\Delta_F$ is the most useful propagator in QFT.

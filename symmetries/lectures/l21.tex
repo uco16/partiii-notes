@@ -1,0 +1,203 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 21: November 28}
+
+\begin{definition}[]
+  The \emph{level} of a root is the weight in its root string expansion.
+\end{definition}
+
+\section{Reconstructing \texorpdfstring{$\mathfrak{g}$}{the Lie Algebra} from \texorpdfstring{$A^{ij}$}{the Cartan Matrix}}%
+\label{sec:reconstructing_the_lie_algebra_from_the_cartan_matrix}
+
+The Cartan matrix determines\footnote{up to choice of one vector (such as $\alpha_{(1)}$) in $\mathbb{R}^r$} the simple roots $\alpha_{(i)}$,  $i = 1, \dots, r = \text{rank}(\mathfrak{g})$ via
+\begin{equation}
+  A^{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})} = \frac{2 \abs{\alpha_{(i)}}}{\abs{\alpha_{(j)}}} \cos(\varphi_{ij})
+\end{equation}
+We have the same picture as in Fig.~\ref{fig:l18f1}.
+The remaining roots are found by constructing root strings. As we know from Claim \ref{cl:19-ii}, the length of the $\alpha_{(i)}$-string through $\alpha_{(j)}$ is $ l_{ij} = 1 - A_{ji} \in \mathbb{N}^+$.
+
+\begin{example}[$\mathfrak{g} = A_2$]
+  \dynkin{A}{2} \quad $\mathfrak{g} \simeq \mathfrak{su}_{\mathbb{C}}(3)$ \par
+  The Cartan matrix is $A = 
+  \begin{pmatrix}
+   2 & -1 \\
+   -1 & 2 \\
+  \end{pmatrix} $, from which we can read off that $\mathfrak{g}$  has two simple roots $\alpha, \beta$ with
+   \begin{equation}
+     \frac{2(\alpha, \beta)}{(\alpha, \alpha)} = \frac{2(\beta, \alpha)}{(\beta, \beta)} = -1
+  \end{equation}
+  Therefore, $\abs{\alpha} = \abs{\beta}$ and $\cos(\theta_{\alpha, \beta}) = -\frac{1}{2} \implies \theta = \frac{2\pi}{3}$. This geometry is illustrated in Fig.~\ref{fig:l21f1}.
+
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.3\columnwidth}
+    \input{lectures/l21f1.pdf_tex}
+    \caption{The simple roots of $A_2$ obey $\abs{\alpha} = \abs{\beta}$.}
+    \label{fig:l21f1}
+  \end{figure}
+
+  To find the remaining roots we use that
+  \begin{itemize}
+    \item $\alpha, \beta \in \Phi_S \implies \pm (\alpha - \beta) \not \in \Phi$ 
+    \item the length of the $\alpha$-string through $\beta$  is \begin{equation}
+	l_{\alpha, \beta} = 1 - 2 \frac{(\alpha, \beta)}{(\alpha, \alpha)} = 2
+    \end{equation}  
+    and the length of the $\beta$-string through $\alpha$ is 
+      \begin{equation}
+	l_{\beta, \alpha} = 1 - 2 \frac{(\beta, \alpha)}{(\beta, \beta)} = 2
+    \end{equation}  
+    So $\beta + n \alpha, \alpha + n' \beta \in \Phi$ only for $n, n' \in \left\{ 0, 1 \right\}$
+    \item $\alpha, \beta, \alpha + \beta \in \Phi$ and $-\alpha, -\beta, -(\alpha + \beta) \in \Phi$
+    \item the $\alpha$- and $\beta$-strings through $\alpha + \beta$ (and vice-versa) yield no additional roots
+  \end{itemize}
+  The new root has squared length
+  \begin{align}
+    (\alpha + \beta, \alpha + \beta) &= (\alpha, \alpha) + (\beta, \beta) + 2 (\alpha, \beta) \\
+				     &= (\alpha, \alpha) [1 + 1 - 1] = (\alpha, \alpha)
+  \end{align}
+
+  \subsection*{Root system for $A_2$}%
+  The root set is
+  \begin{equation}
+    \Phi = \left\{ \pm \alpha, \pm \beta, \pm (\alpha + \beta) \right\},
+  \end{equation}
+  where all the roots have the same length
+  \begin{equation}
+    \abs{\alpha} = \abs{\beta} = \abs{\alpha + \beta}.
+  \end{equation}
+  This is illustrated in \ref{fig:l21f2}.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l21f2.pdf_tex}
+    \caption{The root system of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$.}
+    \label{fig:l21f2}
+  \end{figure}
+
+  The CW basis for $A_2$ is:
+  \begin{equation}
+    \left\{ H^1, H^2, E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{-\beta}, E^{\alpha + \beta}, E^{-(\alpha + \beta)} \right\}
+  \end{equation}
+  Since $\mathfrak{g} = A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, we have $\dim \mathfrak{g} = 3^2 - 1 = 8$, as expected.
+\end{example}  
+
+\begin{exercise}
+  Find the root system of $B_2$.
+\end{exercise}
+
+\chapter{Representation Theory II}%
+\label{cha:representation_theory_ii}
+
+To find the finite-dimensional rep of $\mathfrak{su}_{\mathbb{C}}(2)$, the idea was to work in the CW basis and work with step operators.
+Because we have now generalised the CW basis to general simple Lie algebras, we can use the same idea.
+
+\section{Weights}%
+\label{sec:weights}
+
+Let $R$ be a representation of $\mathfrak{g}$ with dimension $N$.
+For example, 
+\begin{equation}
+  \begin{gathered}
+    H^i \\
+    E^{\alpha}
+  \end{gathered}
+  \quad \mapsto \quad
+  \begin{gathered}
+    R(H^i) \\
+    R(E^\alpha)
+  \end{gathered}
+  \quad \in \text{Mat}_N(\mathbb{C})
+  \qquad i = 1, \dots, r \quad \alpha \in \Phi
+\end{equation}
+
+The $H^i$ are  \emph{diagonalisable} in the sense that $[H^i, H^{j}] = 0$ . The representation matrices also commute since $ [R(H^{i}), R(H^{j})] = R([H^{i}, H^{j}]) = 0$. So if one is diagonalisable, then all of them are.
+We will assume that $R(H^i)$  are diagonalisable for $i = 1, \dots, r$.
+The fact that they commute with each other means that $\left\{ R(H^{i}) \right\}$ are \emph{simultaneously diagonalisable}.
+
+This means that the vector space $V \simeq \mathbb{C}^N$ on which they act is spanned by the simultaneous eigenvectors of $\left\{ R(H^i) \right\}$.
+Just as for the  $\mathfrak{su}_{\mathbb{C}}(2)$ case, we can write our representation space $V$ as
+ \begin{equation}
+  V = \bigoplus_{\lambda \in S_R} V_{\lambda}
+\end{equation}
+a decomposition into a direct sum of linear subspaces associated with the eigenvalues $\lambda$, where $\forall v \in V_\lambda$, we have
+\begin{equation}
+  R(H^{i}) v = \lambda^{i} v \qquad 
+  \begin{gathered}
+    \lambda^{i} \in \mathbb{C} \\
+    i = 1, \dots, r.
+  \end{gathered}
+\end{equation}
+
+For $\mathfrak{su}_{\mathbb{C}}(2)$, we called the eigenvalue $\lambda$ the  \emph{weights}. In this case, they are vectors rather than just numbers.
+
+\begin{definition}[]
+  The eigenvalue $\lambda \in \mathfrak{h}^*$ is a \emph{weight} of the representation $R$. We denote by $S_R$ the associated weight set.
+\end{definition}
+
+\begin{remark}
+  Weights $\lambda \in S_R \subset \mathfrak{h}^*$ have multiplicities $m_{\lambda} = \dim V_{\lambda} \geq 1$.
+\end{remark}
+
+This motivates the following rephrasing of Def.~\ref{def:roots}:
+\begin{definition}[]
+  Roots $\alpha \in \Phi$ are the weights of the adjoint representation $R(X) = ad_X$.
+\end{definition}
+
+The key point for $\mathfrak{su}_{\mathbb{C}}(2)$ was that we generated the other weight vectors from the highest weight by applying the step operators.
+We likewise consider the action of step operators $R(E^{\alpha})$ , with root $\lambda \in \Phi$, on vectors  $v$ belonging to a particular subspace  $V_\lambda$ with weight  $\lambda$.
+ \begin{align}
+  R(H^{i}) R(E^\alpha) v &=  R(E^\alpha) R(H^{i}) v + [R(H^{i}), R(E^{\alpha})] v \\
+			 &= (\lambda^i+ \alpha^i) R(E^\alpha) v
+\end{align}
+\begin{leftbar}
+  \begin{note}
+    This is similar to how we solve the QHO with step operators in quantum mechanics, showing that $a \ket{n}$ is an eigenvalue of $H$ with energy $n - 1$.
+  \end{note}
+\end{leftbar}
+Thus, for all vectors $v \in V_\lambda$, we find that
+\begin{equation}
+  R(E^\alpha) v 
+  \begin{cases}
+    \in V_{\lambda + \alpha}, & \text{if } \lambda + \alpha \in S_R \\
+    = 0, & \text{otherwise}
+  \end{cases}
+\end{equation}
+
+Recall that for $\mathfrak{su}_{\mathbb{C}}(2)$, the weights were all integers.
+Here, we can use again the fact that the Lie algebra contains a lot of $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebras.
+This allows us to say something precise about the weights.
+
+Consider the action of $\mathfrak{sl}(2)_\alpha$ of a particular $\mathfrak{su}_{\mathbb{C}}(2)$  subalgebra
+with generators
+\begin{equation}
+  \{R(h^\alpha), \quad R(e^{\alpha}), \quad R(e^{-\alpha}) \} 
+\end{equation}
+on $V$.
+Representation matrices obey the  $\mathfrak{su}_{\mathbb{C}}(2)$  commutation relations
+\begin{align}
+  [R(h^\alpha), R(e^{\pm \alpha})] &= \pm 2 R(e^{\pm \alpha}) \\
+  [R(e^{+\alpha}), R(e^{- \alpha})] &= R(h^\alpha) \\
+\end{align}
+
+Each generator defines a linear map $V \to V$.
+This means that $V$ is a representation space for some representation of $\mathfrak{sl}(2)_\alpha$ ($R_\alpha$ is finite-dimensional but not necessarily  irreducible).
+Recall the definition 
+\begin{equation}
+  h^\alpha = \frac{2}{(\alpha, \alpha)} H^\alpha \qquad H^\alpha = (\kappa^{-1})_{ij} \alpha^{i} H^{j}
+\end{equation}
+Using linearity, we have that $\forall v \in V_{\lambda}$,
+\begin{align}
+  R(h^{\alpha}) v &= \frac{2}{(\alpha, \alpha)} (\kappa^{-1})_{ij} \alpha^{j} R(H^{j}) v \\
+						   &= \left( \frac{2}{(\alpha, \alpha)} (\kappa^{-1})_{ij} \alpha^{i} \lambda^{j} \right) v \\
+						   &= \frac{2 (\alpha, \lambda)}{(\alpha, \alpha)} \cdot v
+\end{align}
+We learned something new; the weights $\lambda$ have to obey the following quantisation condition:
+ \begin{equation}
+  \label{eq:23}
+   \boxed{\frac{2(\alpha, \lambda)}{(\alpha, \alpha)} \in \mathbb{Z} \qquad
+    \begin{gathered}
+      \forall \lambda \in S_R \\
+      \alpha \in \Phi
+    \end{gathered}}
+\end{equation}
+

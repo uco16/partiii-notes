@@ -1,0 +1,138 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 12: November 07}
+Hence, we have unique candidates for the irreps of dimensions in Table \ref{tab:12-reps}.
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+     & & Dimension \\
+     \hline
+    $R_0 = d_0$ & trivial representation & $1$  \\
+    $R_1 = d_f$ & fundamental representation & $2$ \\
+    $R_2 = d_{adj}$ & adjoint representation & $3$ \\
+    \hline
+  \end{tabular}
+  \caption{}
+  \label{tab:12-reps}
+\end{table}
+
+\subsection{Angular Momentum in Quantum Mechanics}%
+\label{sub:angular_momentum_in_quantum_mechanics}
+
+What we have here described is analogous to the theory of angular momentum in quantum mechanics.
+Recall that the total angular momentum consists of orbital and spin angular momenta.
+We have a Hermitian operator $\vb{J} = (J_1, J_2, J_3)$ of total angular momentum.
+Its corresponding eigenstates are labelled by $j \in \mathbb{Z}/2$, $j \geq 0$, and $m \in \left\{ -j, -j + 1, \dots, j-1, j \right\}$:
+\begin{align}
+  J^2 \ket{j, m} &= \hbar j (j+1) \ket{j, m}  \\
+  J_3 \ket{j, m} &= \hbar m \ket{j, m},
+\end{align}
+where $J^2 = J_1^2 + J_2^2 + J_3^2$.
+In the Cartan representation, we have the correspondance
+\begin{align}
+  J_3 &= \frac{1}{2} R(H) \\
+  J_\pm = J_1 \pm i J_2 &= R(E_\pm)
+\end{align}
+The highest weight is $\Lambda = 2 j \in \mathbb{Z}^+$ and the other weights are $\lambda = 2m \in \mathbb{Z}$. The associated states are
+\begin{equation}
+  v_\Lambda \sim \ket{j, j} \qquad v_\lambda \sim \ket{j, m}.
+\end{equation}
+
+\subsection{\texorpdfstring{$SU(2)$}{SU(2)} reps from \texorpdfstring{$\mathfrak{su}(2)$}{its Lie algebra's} reps}%
+\label{sub:su2-reps-from-lsu2-reps}
+
+Locally, we can parametrise group elements $A \in SU(2)$ as $A = \text{Exp}(X)$, where $X$ is an element of the corresponding Lie algebra $\mathfrak{su}(2)$.
+Starting from an irrep $R_\Lambda$ of $\mathfrak{su}(2)$, we have a representation 
+\begin{equation}
+  D_\Lambda(A) = \text{Exp} \bigl(R_\Lambda(X)\bigr).
+\end{equation}
+As before, $\Lambda \in \mathbb{N}_0$.
+We will now use the relationship between $SU(2)$ and $SO(3)$ that we established. In particular, you can think of $SO(3)$ as the quotient
+\begin{equation}
+  SO(3) \simeq \frac{SU(3)}{\mathbb{Z}_2},
+\end{equation}
+corresponding to the identification of antipodal points $A \sim -A$.
+This condition implies that the representation matrices of $A$ and $-A$ must be the same.
+In other words, for a representation of $SO(3)$, we require that $\forall A \in SU(3)$
+\begin{equation}
+  D_\Lambda(-A) = D_\Lambda(A).
+\end{equation}
+Using the representation property, we can see that this is actually equivalent to the simpler condition
+\begin{equation}
+  D_\Lambda (-\mathbb{1}_2) = D_{\Lambda}(\mathbb{1}_2).
+\end{equation}
+Now if we represent $-\mathbb{1}_2 = \text{Exp}(i\pi H)$ with 
+\begin{equation}
+  H = 
+  \begin{pmatrix}
+   1 & 0 \\
+   0 & -1 \\
+  \end{pmatrix}, 
+  \qquad \text{Exp}(i \pi H) = 
+  \begin{pmatrix}
+   e^{i\pi} &  \\
+    & e^{-i\pi} \\
+  \end{pmatrix} = -\mathbb{1}.
+\end{equation}
+Therefore, the representation is
+\begin{align}
+  D_\Lambda(-\mathbb{1}_2) &= \text{Exp}(i\pi R(\Lambda)(H)), \qquad \text{with } R_\Lambda(H) = 
+  \begin{pmatrix}
+   \Lambda &  &  &  &  \\
+    & \Lambda-2 &  &  &  \\
+    &  & \ddots &  &  \\
+    &  &  & -\Lambda + 2 &  \\
+    &  &  &  & -\Lambda \\
+  \end{pmatrix} \\
+			   &= \text{Exp}
+           \begin{pmatrix}
+            e^{i\pi \Lambda} &  &  &  \\
+			     & e^{i \pi (\Lambda - 2)} &  &  \\
+             &  & \ddots &  \\
+             &  &  & e^{-i \pi \Lambda} \\
+           \end{pmatrix}.
+\end{align}
+We find that $D_\Lambda(-\mathbb{1}_2)$ has eigenvalue $\text{exp}(i\pi\lambda) = (-1)^{\lambda} = (-1)^\Lambda$. Hence, 
+\begin{equation}
+  D_\Lambda (-\mathbb{1}_2) = D_\Lambda (+\mathbb{1}_2) = \mathbb{1}_{\Lambda + 1} \qquad \text{iff} \quad \Lambda \in 2 \mathbb{Z}.
+\end{equation}
+Now we have two cases:
+\begin{itemize}
+  \item $\Lambda \in 2\mathbb{Z} \implies$ $D_\Lambda$ is a representation of $SU(2)$ and $SO(3)$.
+  \item $\Lambda \in 2\mathbb{Z} + 1 \implies$ $D_\Lambda$ is a representation of $SU(2)$, but \emph{not} of $SO(3)$.
+\end{itemize}
+
+\section{New representations from old}%
+\label{sec:new_representations_from_old}
+
+\begin{definition}[conjugate rep]
+  If $R$ is a representation of a \emph{real} Lie algebra $\mathfrak{g}$, we define a \emph{conjugate representation} by $\bar R(X) = R(X)^* \quad \forall X \in g$.
+\end{definition}
+Sometimes, we find that $\bar R \simeq R$.
+\begin{leftbar}
+  \begin{remark}
+    We will find that the if a particle transforms under a representation $R$, its anti-particles will transform under $\bar R$.
+  \end{remark}
+\end{leftbar}
+
+\begin{definition}[direct sum]
+  Suppose we are given representations $R_1$ and $R_2$ of any $\mathfrak{g}$ (not necessarily real) with representation spaces $V_1$ and $V_2$ of dimensions $d_1$ and $d_2$. We then define a \emph{direct sum} $R_1 \oplus R_2$ as a new representation that acts on the representation space
+  \begin{equation}
+    V_1 \oplus V_2 = \left\{ v_1 \oplus v_2 \mid v_1 \in V_1, v_2 \in V_2 \right\}
+  \end{equation}
+  as 
+  \begin{equation}
+    (R_1 \oplus R_2)(X) (v_1 \oplus v_2) = (R_1(X) v_1) \oplus (R_2(X)v_2) \in V_1 \oplus V_2
+  \end{equation}
+  for all $X \in \mathfrak{g}$.
+\end{definition}
+
+The matrix corresponding to the linear map $(R_1 \oplus R_2)(X)$ is in block matrix notation
+\begin{equation}
+  (R_1 \oplus R_2)(X)= 
+  \begin{pmatrix}
+    R_1(X) & 0 \\
+    0 & R_2(X) \\
+  \end{pmatrix}
+\end{equation}

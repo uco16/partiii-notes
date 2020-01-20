@@ -1,0 +1,283 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 14: November 12}
+
+\section{The Spinor Representation}%
+\label{sec:the_spinor_representation}
+
+We will look for other matrices other than $M$ that satisfy the Lorentz algebra \eqref{eq:13-star}.
+
+\begin{definition}[]
+  The anti-commutator of two matrices $X, Y \in GL(n)$ is
+  \begin{equation}
+    \left\{ X, Y \right\} = X Y + Y X.
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  The \emph{Clifford algebra} is defined, in any number of dimensions, by the relation
+  \begin{equation}
+    \boxed{ \left\{ \gamma^{\mu}, \gamma^{\nu} \right\} = 2 \eta^{\mu\nu} \mathbb{1} },
+  \end{equation}
+  where $\gamma^{\mu}$ are a set of $4$ matrices, $\mu \in \left\{ 0, 1,2,3 \right\}$.
+  We have $\gamma^{\mu} \gamma^{\nu} = - \gamma^{\nu} \gamma^{\mu}$ for $\mu \neq \nu$ and $(\gamma^0)^2 = \mathbb{1}$ and $(\gamma^i)^2 = -\mathbb{1}$, for $i \in \left\{ 1, 2,3 \right\}$.
+\end{definition}
+The simplest representation of the Clifford algebra is in terms of $4 \times 4$ matrices, for example the \emph{chiral representation}:
+\begin{equation}
+  \gamma^0 = 
+  \begin{pmatrix}
+   0 & \mathbb{1}_2 \\
+   \mathbb{1}_2 & 0 \\
+  \end{pmatrix}, 
+  \qquad \gamma^i = 
+  \begin{pmatrix}
+   0 & \sigma^i \\
+   -\sigma^i & 0 \\
+  \end{pmatrix},
+\end{equation}
+where $\sigma^i$ are the \emph{Pauli matrices}:
+\begin{equation}
+  \sigma^i = 
+  \begin{pmatrix}
+   0 & 1 \\
+   1 & 0 \\
+  \end{pmatrix}, \qquad
+  \sigma^2 =
+  \begin{pmatrix}
+   0 & -i \\
+   i & 0 \\
+  \end{pmatrix},
+  \qquad \sigma^3 = 
+  \begin{pmatrix}
+   1 & 0 \\
+   0 & -1 \\
+  \end{pmatrix}.
+\end{equation}
+These satisfy $\left\{ \sigma^i, \sigma^j\right\} = 2 \delta^{ij} \mathbb{1}_2$ and $\left[ \sigma^j, \sigma^k \right] = 2 i \epsilon^{jkl} \sigma^l$, for $i,j,k,l \in \left\{ 1, 2,3 \right\}$.
+Note that these are not the only matrices which work as a representation. In fact, any similarity transformation $U \gamma^{\mu} U^{-1}$, with constant invertible matrix $U$, will give a valid representation.
+
+\begin{definition}[]
+  \begin{align}
+    S^{\rho\sigma} \coloneqq \frac{1}{4} [\gamma^{\rho}, \gamma^{\sigma}] &=
+    \begin{cases}
+      0, & \rho = \sigma \\
+      \frac{1}{2} \gamma^{\rho} \gamma^{\sigma}, & \rho \neq \sigma,
+    \end{cases} \\
+									  &=\frac{1}{2} \gamma^{\rho} \gamma^{\sigma} - \frac{1}{2} \eta^{\rho\sigma} \mathbb{1} \label{eq:14-2star}
+  \end{align}
+\end{definition}
+
+\begin{claim}
+  \label{cl:14-1}
+  \begin{equation}
+    [S^{\mu\nu}, \gamma^{\rho}] = \gamma^{\mu}\eta^{\nu\rho} - \gamma^{\nu} \eta^{\rho\mu}
+  \end{equation}
+\end{claim}
+\begin{claim}
+  $S$ provides a representation of the Lorentz group, meaning that
+  \begin{equation}
+    [S^{\rho\sigma}, S^{\tau\nu}] = \eta^{\sigma\tau} S^{\rho\nu} - \eta^{\rho\tau} S^{\sigma\nu} + \eta^{\rho\nu} S^{\sigma\tau}- \eta^{\sigma\nu} S^{\rho\tau}.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  Use Claim \ref{cl:14-1} and \eqref{eq:14-2star}.
+\end{proof}
+
+\begin{definition}[]
+  The \emph{Dirac spinor} $\psi_{\alpha}(x)$, $\alpha \in \left\{ 1, 2, 3, 4 \right\}$ is defined by
+  \begin{equation}
+    \psi_{\alpha}(x) \xrightarrow{L.T.} S[\Lambda] \indices{^{\alpha}_{\beta}} \psi^{\beta}(\Lambda^{-1} x),
+  \end{equation}
+  where $\Lambda = \exp(\frac{1}{2} \Omega_{\rho\sigma} M^{\rho\sigma})$ and $S[\Lambda] = \exp(\frac{1}{2} \Omega^{\rho\sigma} S^{\rho\sigma})$.
+\end{definition}
+
+\begin{claim}
+  The spinor representation is \emph{not} equivalent to the usual vector representation.
+\end{claim}
+\begin{proof}
+  We can see this by looking at a specific LT, such as \emph{rotations}:
+  \begin{equation}
+    S^{ij} = \frac{1}{4} \left[	
+      \begin{pmatrix}
+       0 & \sigma^i \\
+       -\sigma^i & 0 \\
+      \end{pmatrix},
+      \begin{pmatrix}
+       0 & \sigma^j \\
+       -\sigma^j & 0 \\
+      \end{pmatrix}
+    \right]
+    = -\frac{i \epsilon^{ijk}}{2} 
+    \begin{pmatrix}
+     \sigma^k & 0 \\
+     0 & \sigma^k \\
+    \end{pmatrix},
+  \end{equation}
+  where we made use of the algebra of $\sigma^i$. Interpreting $\phi$ physically as the rotation angle, we then write $\Omega_{ij} \coloneqq -\epsilon_{ijk} \phi^k$, (eg. $\Omega_{12} = -\phi^3$). We then have
+  \begin{equation}
+    S[\Lambda] = \exp(\frac{1}{2} \Omega_{\rho\sigma} S^{\rho\sigma}) = 
+    \begin{pmatrix}
+     e^{i \phi \cdot \sigma/2} & 0 \\
+     0 & e^{-i \phi \cdot \sigma /2} \\
+    \end{pmatrix},
+  \end{equation}
+  \begin{leftbar}
+    \begin{remark}
+      check sign
+    \end{remark}
+  \end{leftbar}
+  where we get an extra factor of two due to the two $\epsilon$ dotted together.
+  Consider a rotation of $2\pi$ around the $x^3$-axis: $\phi = 0,0, 2 \pi$ gives
+  \begin{equation}
+    S[\Lambda] = 
+    \begin{pmatrix}
+      e^{i\pi \sigma^3} & 0 \\
+      0 & e^{-i\pi \sigma^3} \\
+    \end{pmatrix}
+    = -\mathbb{1}.
+  \end{equation}
+  Therefore, a rotation of $2\pi$ takes $\psi_\alpha(x) \to -\psi_{\alpha}(x)$. This is different to a vector, which goes as 
+  \begin{equation}
+    \Lambda = \exp(\frac{1}{2} \Omega_{\mu\nu} M^{\mu\nu}) = \exp
+    \begin{pmatrix}
+     0 & 0 & 0 & 0 \\
+     0 & 0 & 2\pi & 0 \\
+     0 & -2\pi & 0 & 0 \\
+     0 & 0 & 0 & 0 \\
+    \end{pmatrix} = \mathbb{1}_4,
+  \end{equation}
+  as expected.
+
+  Let us now consider what happens to \emph{boosts of spinors}
+  Using \eqref{eq:14-2star}, we get
+  \begin{equation}
+    S^{01} = \frac{1}{2} 
+    \begin{pmatrix}
+     -\sigma^i & 0 \\
+     0 & \sigma^i \\
+    \end{pmatrix}.
+  \end{equation}
+  Writing the boost parameter as $\Omega_{0i} \coloneqq \chi_i (=- \Omega_{i0})$, we have
+  \begin{equation}
+    S[\Lambda] = 
+    \begin{pmatrix}
+     e^{-\chi \cdot \sigma / 2} & 0 \\
+     0 & e^{\chi \cdot \sigma/2} \\
+    \end{pmatrix}
+  \end{equation}
+  For rotations, $S[\Lambda]$ is unitary, since $S[\Lambda]^{\dagger} S[\Lambda] = \mathbb{1}$, but for boosts it is not!
+\end{proof}
+\begin{claim}
+  There are no finite-dimensional unitary representations of the Lorentz boosts.
+\end{claim}
+\begin{proof}
+  The $S[\Lambda] = \exp[\frac{1}{2} \Omega_{\rho\sigma} S^{\rho\sigma}]$ are only unitary if $S^{\sigma\rho}$ are anti-Hermitian, i.e.~$(S^{\rho\sigma})^{\dagger} = -S^{\rho\sigma}$. $(S^{\rho\sigma})^{\dagger} = -\frac{1}{4} [(\gamma^{\rho})^{\dagger}, (\gamma^{\sigma})^{\dagger}]$ can be anti-Hermitian only if \emph{all} $\gamma^{\mu}$ are Hermitian, or if all $\gamma^{\mu}$ are anti-Hermitian.
+  This cannot be arranged: $(\gamma^0)^2 = \mathbb{1}$ implies that $\gamma^0$ has real eigenvalues. Therefore it cannot be anti-Hermitian, since these have imaginary eigenvalues.
+  Similarly, $(\gamma^i)^2 = -\mathbb{1}$ implies that $\gamma^i$ cannot be Hermitian.
+  In general, there is no way to pick $\gamma^{\mu}$ such that $S^{\mu\nu}$ are anti-Hermitian.
+\end{proof}
+
+\section{Constructing a Lorentz Invariant Action of \texorpdfstring{$\psi$}{psi}}%
+\label{sec:constructing_a_lorentz_invariant_action_of_psi_}
+
+\begin{equation}
+  \psi^{\dagger}(x) = (\psi^*)^T(x)
+\end{equation}
+Is $\psi^{\dagger}(x) \psi(x)$ a Lorentz scalar?
+Under a LT, we have
+\begin{equation}
+  \psi^{\dagger}(x) \psi(x) \xrightarrow{LT} \psi^{\dagger}(\Lambda^{-1}x) S[\Lambda]^{\dagger} S[\Lambda] \psi(\Lambda^{-1} x).
+\end{equation}
+This is not a Lorentz scalar; this is where the non-unitarity of $S$ matters! 
+\begin{leftbar}
+  \begin{remark}
+    In the chiral representation, $(\gamma^0)^{\dagger} = (\gamma^0)$, and $\gamma^i = -(\gamma^i)^{\dagger}$. Using the Clifford algebra, and the fact that $(\gamma^0)^2 = \mathbb{1}$, we can encapsulate both of these facts as
+    \begin{equation}
+      \label{eq:14-3}
+      (\gamma^{\mu})^{\dagger} = \gamma^0 \gamma^{\mu} \gamma^0.
+    \end{equation}
+  \end{remark}
+\end{leftbar}
+Using \eqref{eq:14-3}, we have
+\begin{equation}
+  (S^{\mu\nu})^{\dagger} = - \frac{1}{4} [(\gamma^{\mu})^{\dagger}, (\gamma^{\nu})^{\dagger}] = -\gamma^0 S^{\mu\nu} \gamma^0,
+\end{equation}
+which we can use to show, by repeatedly using $(\gamma^0)^2 = \mathbb{1}$, that
+\begin{equation}
+  S[\Lambda]^{\dagger} = \exp(\frac{1}{2} \Omega_{\mu\nu} (S^{\mu\nu})^{\dagger}) = \gamma^0 S[\Lambda]^{-1} \gamma^0.
+\end{equation}
+The fact that these $\gamma^0$'s pop up points to the existence of another adjoint. With this in mind, we define the following.
+\begin{definition}[]
+  The \emph{Dirac adjoint} of $\psi$ is $\bar \psi(x) \coloneqq \psi^{\dagger}(x) \psi^0$.
+\end{definition}
+
+\begin{claim}
+  $\bar \psi \psi$ is a scalar.
+\end{claim}
+\begin{proof}
+  Under a Lorentz transformation $x^{\mu} \to \Lambda\indices{^{\mu}_{\nu}} x^{\nu}$, this transforms as
+  \begin{align}
+    \bar\psi(x)\psi(x) = \psi^{\dagger}(x) \gamma^0 \psi(x) \to &\psi^{\dagger}(\Lambda^{-1} x) S[\Lambda]^{\dagger} \gamma^0 S[\Lambda] \psi(\Lambda^{-1} x) \\
+								&= \psi^{\dagger}(\Lambda^{-1} x)\gamma^0 \psi(\Lambda^{-1} x) \\
+								&= \bar \psi(\Lambda^{-1} x) \psi(\Lambda^{-1} x).
+  \end{align}
+\end{proof}
+\begin{claim}
+  $\bar \psi(x) \gamma^{\mu} \psi(x)$ is a Lorentz vector.
+\end{claim}
+\begin{proof}
+  Let us suppress the argument. Under Lorentz transformations, we have
+  \begin{equation}
+    \bar\psi \gamma^{\mu} \psi \to \bar\psi S[\Lambda]^{-1} \gamma^{\mu} S[\Lambda]\psi.
+  \end{equation}
+  If $\bar\psi \gamma^{\mu} \psi$ is to be a Lorentz transformation, we must have
+  \begin{equation}
+    \label{eq:14-1}
+    S[\Lambda]^{-1} \gamma^{\mu} S[\Lambda] = \Lambda \indices{^{\mu}_{\nu}} \gamma^{\nu}.
+  \end{equation}
+  Recall that $\Lambda \indices{^{\mu}_{\nu}} = \exp(\frac{1}{2} \Omega_{\rho\sigma} M^{\rho\sigma})$ and $S[\Lambda] = \exp(\frac{1}{2} \Omega_{\rho\sigma} S^{\rho\sigma})$.
+  Infinitesimally (taking the $\Omega$ terms to be small and throwing out higher order terms in $\Omega$), we get
+  \begin{align}
+    (M^{\rho\sigma}) \indices{^{\mu}_{\nu}} \gamma^{\nu} &= - [S^{\rho\sigma}, \gamma^{\mu}]. \\
+    (\eta^{\rho\mu} \delta^{\sigma}_{\nu} - \gamma^{\sigma\mu} \delta^{\rho}_{\nu}) \gamma^{\nu}) &= \eta^{\rho\mu} \gamma^{\sigma} - \gamma^{\rho} \eta^{\sigma\mu}.
+  \end{align}
+  But by Claim \ref{cl:14-1}, the right hand side is $-[S^{\rho\sigma}, \gamma^{\mu}]$.
+\end{proof}
+\begin{corollary}
+  The action
+  \begin{equation}
+    \label{eq:14-dirac-lagrangian}
+    \boxed{ S = \int \dd[4]{x} \underbrace{\bar\psi(x) (i \gamma^{\mu} \partial_{\mu} - m) \psi(x)}_{\mathcal{L}_D} }
+  \end{equation}
+  is Lorentz invariant.
+\end{corollary}
+
+\section{The Dirac Equation}%
+\label{sec:the_dirac_equation}
+
+The Euler-Lagrange equations obtained from the Dirac Lagrangian \eqref{eq:14-dirac-lagrangian} are the \emph{Dirac equation} and the conjugate equation:
+\begin{align}
+  \overline{\psi}\colon \qquad (i \gamma^{\mu} \partial_{\mu} - m) \psi &= 0 \\
+  {\psi}\colon \qquad i \partial_{\mu} \overline{\psi} \gamma^{\mu} + m \overline{\psi} &= 0
+\end{align}
+\begin{leftbar}
+  \begin{remark}
+    The Dirac equation is a first order ODE, unlike Klein-Gordon, yet still Lorentz invariant.
+  \end{remark}
+\end{leftbar}
+\begin{definition}[slash notation]
+  We write $A_{\mu} \gamma^{\mu} \coloneqq \cancel{A}$.
+\end{definition}
+In slash notation, we have $(i \cancel{\partial} - m) \psi = 0$.
+
+\begin{claim}
+  Each component $\phi_{\alpha}$ of $\psi$ solves the Klein-Gordon equation.
+\end{claim}
+\begin{proof}
+  Act on the Dirac equation with $(i \cancel{\partial} + m)$ to get
+  \begin{align}
+    (i \cancel{\partial} + m)(i \cancel{\partial} - m) \psi &= 0 \\
+    \implies -(\gamma^{\mu} \gamma^{\nu} \partial_{\mu} \partial_{\nu} + m^2) \psi &= 0 \\
+    - (\frac{1}{2} \left\{ \gamma^{\mu}, \gamma^{\nu} \right\} \partial_{\mu} \partial_{\nu} + m^2) \psi &= 0\\
+    - (\partial^2 + m^2) \psi_{\alpha} &= 0.
+  \end{align}
+\end{proof}

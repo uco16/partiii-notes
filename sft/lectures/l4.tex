@@ -1,0 +1,145 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 4: October 21}
+This domain wall solution will shed light on the behaviour of mean field theory in lower dimensions.
+
+\section{Lower Critical Dimension}%
+\label{sec:lower_critical_dimension}
+
+Let us first consider the case of one domain wall in the system.
+The probability of having a domain wall at $x = X$ is
+\begin{equation}
+  p(\text{wall at }x = X) = \frac{e^{-\beta F_{\text{wall}}}}{Z}.
+\end{equation}
+However, the domain wall could form anywhere. Integrating over the probability of having a domain wall anywhere in the system gives
+\begin{equation}
+p(\text{wall anywhere}) = \frac{e^{-\beta F_{\text{wall}}}}{Z} \frac{L}{w}.
+\end{equation}
+The probability to have $n$ walls in the system is obtained by considering the product of the probabilities at $n$ different locations:
+\begin{align}
+  P(n \text{ walls}) &= \frac{e^{-n\beta F_{\text{wall}}}}{Z} \frac{1}{w^n} \int_{-L/2}^{L/2} \dd[]{x_1}\int_{-L/2}^{L/2} \dd[]{x_2} \cdots \int_{-L/2}^{L/2} \dd[]{x_n} \\
+		     &= \frac{1}{Z n!} \left( \frac{L e^{-\beta F_{\text{wall}}}}{w} \right)^n.
+\end{align}
+We can now consider the sum over these probabilities. The sum over of all even $n$ is giving a hyperbolic cosine. This is the probability of going from left to right and ending up at the same magnetisation $m_0$ that we started with, since at each domain wall, the magnetisation swaps $m_0 \to -m_0$. Similarly, we can calculate the probability of having an odd number $n$ of domain walls, giving a hyperbolic sine:
+\begin{align}
+  p(m_0 \to m_0) &= \frac{1}{Z} \cosh \left( \frac{L e^{-\beta F_{\text{wall}}}}{w} \right)\\
+  p(m_0 \to -m_0) &= \frac{1}{Z} \sinh \left( \frac{L e^{-\beta F_{\text{wall}}}}{w} \right).
+\end{align}
+Now let us consider what happens in $d = 1$: In one dimension, the free energy of domain wall solutions $F_{DW} \sim L^{d-1}$ is a constant. Therefore, the $\cosh$ and $\sinh$ terms both diverge as $L \to \infty$. If there are no other divergent processes, then these probabilities will dominate over the partition function $Z$, and eventually converge to $p(m_0 \to m_0) = p(m_0 \to -m_0) = 50\%$.
+This is a puzzling result; it appears that as the system size grows, the probability of ending up in a system with domain walls go to unity. In this case, we say that domain walls proliferate.
+In one dimension, we do not expect the mean-field approximation to work, because spatial variations are important.
+On the other hand, in the case of $d > 1$, the free energy $F \sim L^{d-1}$ will grow, meaning that the exponential factor $e^{-\beta F} \to 0$ suppresses the otherwise linear growth of probability.
+
+\section{My First Path Integral}%
+\label{sec:my_first_path_integral}
+
+We now define the partition function as a path integral over all possible field configurations. This is an integral over all functions $m(\vb{x})$:
+\begin{equation}
+  Z = \int_{}^{} \pdd{m(\vb{x})} e^{-\beta F[m(\vb{x})]}.
+\end{equation}
+We focus on fluctuations around the saddle point. If these fluctuations are too big, we cannot use perturbative methods any more, and the path integral method breaks down, corresponding to strongly coupled field theories.
+
+As is conventional in field theory, we denote the scalar field as $m(\vb{x}) \to \phi(\vb{x})$.
+We also drop the dependence on $\vb{x}$ in writing $\phi = \phi(\vb{x})$.
+Setting $B = 0$, the free energy is
+\begin{equation}
+  F[\phi(\vb{x})] = \int_{}^{} \dd[d]{x} \left[ \frac{1}{2} \alpha_2(T) \phi^2 + \frac{1}{4} \alpha_4(T) \phi^4 + \frac{1}{2} \gamma(T) (\grad \phi)^2 + \ldots \right].
+\end{equation}
+We approximate this action by setting all coefficients $\alpha_{n \geq 4} = 0$.
+At the moment, this looks like a gross oversimplification; however, renormalisation group theory will show us that these terms are actually irrelevant for our purposes.
+Now there are two cases: The coefficient to the quadratic term $\alpha_2$ can either be positive or negative.
+If we have $\alpha_2 > 0$, this will lead to a \emph{disordered phase}, whereas $\alpha_2 < 0$ will lead to an \emph{ordered} phase.
+In that case, we can look at the variations of the field about its mean $\langle \phi \rangle$:
+\begin{equation}
+  \widetilde \phi(\vb{x}) = \phi(\vb{x}) - \langle \phi \rangle.
+\end{equation}
+The action then becomes
+\begin{equation}
+  F[\widetilde \phi(\vb{x})] = F[\langle\phi\rangle] + \frac{1}{2} \int_{}^{} \dd[d]{x} \left[ \alpha_2' (T) \widetilde\phi^2 + \gamma(T) (\grad \phi)^2 + \ldots \right],
+\end{equation}
+where $\alpha'_2(T) = -2\alpha_2(T) > 0$.
+
+\subsection{Fourier Space}%
+\label{sub:fourier_space}
+
+To perform this calculation, we have to move to Fourier space.
+In that case, we express the field $\phi(\vb{x})$ as an integral over the modes $\phi_{\vb{k}}$ with wavevector $\vb{k}$:
+\begin{equation}
+  \phi_{\vb{k}} = \int_{}^{} \dd[d]{x} e^{-i \vb{k} \cdot \vb{x}} \phi(\vb{x}).
+\end{equation}
+Since $\phi$ is a real scalar field, a standard result in Fourier theory is that $\phi_{\vb{k}}^* = -\phi_{\vb{k}}$.
+\begin{leftbar}
+  \begin{remark}
+    For complex fields, this relationship between the Fourier conjugates does not in general hold.
+  \end{remark}
+\end{leftbar}
+Since we have a smallest lattice scale $a$ in the system, the momentum modes must vanish for some wavenumber scale $ \abs{\vb{k}} > \Lambda \sim \frac{\pi}{a}$.
+
+\begin{description}
+  \item[Finite Volume] 
+    In a finite box of side-length $L$, and volume $V \sim L^d$, the allowed wavevectors are discrete:
+    \begin{equation}
+      \vb{k} = \frac{2 \pi \vb{n}}{L}, \qquad \vb{n} \in \mathbb{N}^d.
+    \end{equation}
+    Following this discretisation, the Fourier expansions of the fields $\phi$ turn from integrals into sums:
+    \begin{equation}
+      \phi(\vb{x}) = \frac{1}{V} \sum_{\vb{k}} e^{+i \vb{k} \cdot \vb{x}} \phi_{\vb{k}}.
+    \end{equation}
+    We sometimes say that the field theory has been `quantised'.
+  \item[Infinite Volume] If the volume becomes infinite $L \to \infty$, the wavevectors become members of a continuous set $\vb{k} \in \mathbb{R}^d$, meaning that the expansion of $\phi$ into its Fourier modes now looks like
+    \begin{equation}
+      \phi(\vb{x}) = \int_{\mathbb{R}^d}^{} \frac{\dd[d]{k}}{(2\pi)^d} e^{+i \vb{k} \cdot \vb{x}} \phi_{\vb{k}} \coloneqq \int_{}^{} \bdd[d]{k} e^{+i \vb{k} \cdot \vb{x}} \phi_{\vb{k}}.
+    \end{equation}
+    The definition of the normalised measure $\bdd[d]{k} = (2\pi)^{-d} \dd[d]{k}$ was chosen to not have to carry around superfluous factors of $(2\pi)^d$ in Fourier space.
+\end{description}
+
+Inserting $\phi(\vb{x})$ into the free energy, we have
+\begin{equation}
+  F[\phi_{\vb{k}}] = \frac{1}{2} \int_{}^{} \bdd[d]{\vb{k}_1} \int_{}^{} \bdd[d]{\vb{k}_2} \int_{}^{} \dd[d]{x} (-\gamma \vb{k}_1 \cdot \vb{k}_2 + \mu^2) \phi_{\vb{k}_1} \phi_{\vb{k}_2} e^{i(\vb{k}_1 + \vb{k}_2) \cdot \vb{x}}.
+\end{equation}
+where we chose to write the coefficient to the quadratic term as $\alpha_2 = \mu^2$. This convention is often chosen in field theory, stemming from the analogy to quantum field theory, where the coefficient to the quadratic field $\phi^2$ is (twice) the mass of the particle.
+Performing the integral over $\vb{x}$ gives a delta function. The normalisation of that delta function is determined by our Fourier space conventions:
+\begin{equation}
+  \bdelta^d(\vb{k}_1 + \vb{k}_2) \coloneqq (2\pi)^d \delta^d(\vb{k}_1 + \vb{k}_2) = \int_{}^{} \dd[d]{x} e^{i(\vb{k}_1 + \vb{k}_2) \cdot \vb{x}},
+\end{equation}
+where we again use the horizontal bar notation to denote a Fourier space normalisation that will considerably simplify equations by hiding annoying factors of $(2\pi)^d$.
+The free energy is then found to be
+\begin{equation}
+  F[\phi_{\vb{k}}] = \frac{1}{2} \int_{}^{} \bdd[d]{k} (\gamma k^2 + \mu^2) \phi_{\vb{k}} \phi^*_{\vb{k}},
+\end{equation}
+A free energy or action of this form is said to be 'diagonalised'. This terminology stems from the analogous case in matrices, where we can write each matrix as a spectral decomposition over its eigenvalues in a certain basis of eigenvectors.
+In the picture of this analogy, the $\abs{\phi_{\vb{k}}}^2$ are the eigenvectors with eigenvalue $(\gamma k^2 + \mu^2)$.
+
+\section{Path Integral Measure}%
+\label{sec:path_integral_measure}
+
+What exactly do we mean when we write down the path integral measure $\pdd{\phi}$?
+The path integral measure is defined as an integral over all possible field configurations. We define this as
+\begin{equation}
+  \int_{}^{} \pdd{\phi(\vb{x})} \coloneqq \prod_{\vb{k}} \left[N \int_{}^{} \dd[]{\phi_{\vb{k}}}  \dd{\phi^*_{\vb{k}}} \right].
+\end{equation}
+The normalisations $N$ are not important, since they usually cancel out when we compute expectation values and correlation functions.
+Moreover, we have to keep in mind that $\phi^*$ is not actually an independent degree of freedom.
+This actually means that this derivation would technically only be correct for complex fields, and not really well-defined for the scalar fields that we are dealing with. However, we still go through it here to lead up to the result and introduce the concepts.
+With this definition of the path integral measure, we will aim to compute the partition function
+\begin{equation}
+  Z = \prod_{\vb{k}} N \int_{}^{} \dd[]{\phi_{\vb{k}}} \dd{\phi^*_{\vb{k}}} e^{-\frac{\beta}{2} \int_{}^{} \bdd[d]{k} (\gamma k^2 + \mu^2) \abs{\phi_{\vb{k}}}^2}.
+\end{equation}
+However, another slightly strange feature of this notation that we will have to make a bit more rigorous is the notion of having an infinite number of integrals over the continuous wavenumber labels $\vb{k}$. To make a bit more sense of this, we first deal with a path integral defined over a finite volume $V$ of space, making the set of wavenumbers discrete, and then define the infinite integral as the limit as $V \to \infty$ of that expression.
+\begin{description}
+  \item[Finite Volume] When we choose to work in a finite volume $V$, the integral over continuous wavevectors in the argument of the exponential function turns into a sum over discrete wavevectors. The partition function for a finite volume is therefore
+    \begin{align}
+      Z &= \prod_{\vb{k}} \left[ N \int \dd{\phi_{\vb{k}}} \dd{\phi^*_{\vb{k}}} \right] e^{-\frac{\beta}{2V} \sum_{\vb{k}} (\gamma k^2 + \mu^2) \abs{\phi_{\vb{k}}}^2} \\
+	&= \prod_{\vb{k}} N \left[ \int \dd{\phi_{\vb{k}}} \dd{\phi^*_{\vb{k}}} e^{-\frac{\beta}{2 V}(\gamma k^2 + \mu^2) \abs{\phi_{\vb{k}}}^2} \right].
+    \end{align}
+\end{description}
+Now, we can actually solve these integrals exactly! To see this, consider the well-known Gaussian integral over the real numbers $x \in \mathbb{R}$:
+\begin{equation}
+  \int_{-\infty}^{\infty} \dd[]{x} e^{-\frac{x^2}{2a}} = \sqrt{2\pi a}.
+\end{equation}
+Each of the integrals over a particular $\phi_{\vb{k}}$ or $\phi^*_{\vb{k}}$ can then be solved as a Gaussian integral. The total partition function is a product over these integrals, two for each wavevector $\vb{k}$ (one for the field $\phi$ and one for the conjugate field $\phi^*$). This procedure yields the following partition function:
+\begin{equation}
+  Z = \prod_{\vb{k}} N \sqrt{\frac{2\pi T_v}{\gamma k^2 + \mu^2}}.
+\end{equation}
+As we will see, the Gaussian theory is one of the few path integrals that we can solve exactly due to this analogy with the Gaussian integral.
+All higher order terms, corresponding to `interactions' between the fields, have to be dealt with perturbatively.

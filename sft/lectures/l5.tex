@@ -1,0 +1,107 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 5: October 23}
+Let us look in a bit more detail at the path integral above.
+We are in fact dealing not with a complex variable, which has two degrees of freedom, but with a scalar field, where $\phi^*_{\vb{k}} = \phi_{-\vb{k}}$.
+This constraint complicates the integral.
+If we just had worked with a complex variable, then the path integral can be solved. The real space result which was quoted above is the square root of this, which is explained by the additional constraint.
+
+In the free, non-interacting theory, the path integral is completely solvable. Although they look very frightening, there are actually ways to tame the infinite integrals in the path integral and make sense of them.
+
+\section{Path integral in thermodynamics}%
+
+The thermodynamic free energy is related to the partition function as $Z = e^{-\phi F_{\text{therm}}}$. Taking logarithms and dividing by the system's volume $V$, we have
+\begin{align}
+  \frac{F_{\text{therm}}}{V} &= -\frac{T}{V} \log(Z) \\
+			       &= -\frac{T}{2V} \sum_{\vb{k}} \log \left( \frac{2\pi T V N^2}{\gamma k^2 + \mu^2} \right) \\
+			       &\rightarrow -\frac{T}{2} \int_{}^{} \bdd[4]{k} \log(\frac{2\pi T V N^2}{\gamma k^2 + \mu^2})
+\end{align}
+where we took the continuum limit $V \to \infty$ in the last line.
+
+We can use this to calculate various physical quantities.
+
+\subsection{Heat Capacity}%
+\label{sub:heat_capacity}
+
+The normalised heat capacity $c = \frac{C}{V}$ is given by
+\begin{align}
+  c &= \frac{\beta^2}{V} \pdv[2]{}{B} \log(Z) \\
+    &=\frac{1}{2} (T^2 \pdv[2]{}{T} + 2 T \pdv{}{T}) \int_{}^{} \bdd[4]{k} \log \left( \frac{2\pi T V N^2}{\gamma k^2 + \mu^2} \right)
+\end{align}
+where $\mu^2 = T - T_c$.
+We have an infinite number of degrees of freedom; an infinite number of spins---one for each lattice site. This means that the integral
+\begin{equation}
+  c = \frac{1}{2} \int_{0}^{\Lambda} \bdd[d]{k} \left[ 1  - \frac{2 T}{\gamma k^2 + \mu^2} + \frac{T^2}{(\gamma k^2 + \mu^2)^2} \right]
+\end{equation}
+actually diverges. We can calculate this integral by using $\dd[d]{k} = k^{d-1} \dd{k} \dd{\Omega}_d$.
+Let us look at the middle term. This has dimension dependent behaviour
+\begin{equation}
+  \int_{0}^{\Lambda} \dd[]{k} \frac{k^{d-1}}{\gamma k^2 + \mu^2} = 
+  \begin{cases}
+    \Lambda^{d-2} & d > 2 \\
+    \log \Lambda & d = 2 \\
+    \frac{1}{\mu} & d = 1.
+  \end{cases}
+\end{equation}
+Similarly, the last term scales with dimension, although in a different way
+\begin{equation}
+  \int_{0}^{\Lambda} \dd[]{k} \frac{k^{d-1}}{(\gamma k^2 + \mu^2)^2} = 
+  \begin{cases}
+    \Lambda^{d-4} & d > 4 \\
+    \log \Lambda & d = 4 \\
+    \mu^{d-4} & d < 4.
+  \end{cases}
+\end{equation}
+This means that something interesting is happening when $d = 4$. When $d < 4$, we have $c \sim \abs{T- T_c}^{-\alpha}$, where $\alpha = 2 - \frac{d}{2}$.
+Note that this result also ignored interactions. However, as opposed to mean-field theory, we have at least included fluctuations. By doing this, we have learned that the critical exponent $\alpha$ has changed.
+This tells us that fluctuations matter.
+Moreover, we also learned that when $d > 4$, the heat capacity is dominated by the last term, which is dominated by $\Lambda$, which is independent of temperature. This is why the critical exponents do not differ from each other once we cross the upper critical dimension $d = 4$.
+
+\section{Correlation Functions}%
+\label{sec:correlation_functions}
+
+The big step was that the order parameter depends on space, and is allowed to fluctuate about the mean-field value.
+We can therefore now ask questions about the system which depend on position.
+In mean field theory, we had no such local information:
+\begin{equation}
+  \langle \phi(x) \rangle = 
+  \begin{cases}
+    0 & T > T_c \\
+    \pm m_0 & T < T_c.
+  \end{cases}
+\end{equation}
+The information about these fluctuations are encoded in \emph{correlation functions}, sometimes also referred to as $Green's functions$.
+The next simplest correlation function beyond the simple mean above, is the \emph{two-point} correlation function
+\begin{equation}
+  \langle \phi(x) \phi(y) \rangle
+\end{equation}
+This is known from QFT, where it is the \emph{propagator} that tells us how waves propagate from one place to another.
+In our case, it is related to the value of the local magnetisation.
+Since we want to know about the fluctuations about the mean, we can work with the \emph{connected correlation function}, which is defined by subtracting off the mean
+\begin{equation}
+  \langle \phi(x) \phi(y) \rangle_c = \langle \phi(x) \phi(y) \rangle - \langle \phi(x) \rangle \langle \phi(y) \rangle.
+\end{equation}
+In statistics, this is known as the \emph{second cumulant}.
+
+\subsection{Computing Correlation Functions}%
+\label{sub:computing_correlation_functions}
+
+This section will be very useful for any studies in field theory. 
+Consider the free energy for a position dependent magnetic field
+\begin{equation}
+  F[\phi(x)] = \int_{}^{} \dd[d]{x} \left[ \frac{\gamma}{2}(\grad \phi)^2 + \frac{\mu^2}{2} \phi^2 + B(x) \phi \right].
+\end{equation}
+The partition function then depends on the configuration of the magnetic field:
+\begin{equation}
+  Z[B(x)] = \int_{}^{} \pdd{\phi} e^{-\beta F [\phi, B]}.
+\end{equation}
+The partition function gives the probability for each individual spin configuration. The mean of some random variable $O$ was then given by
+\begin{equation}
+  \langle O \rangle = \sum_{i} o_i p_i
+\end{equation}
+where $o_i$ are the values of the random variable, and $p_i$ their associated probabilities.
+We can get objects like this from the partition function in a slick fashion by performing a functional differentiation:
+\begin{equation}
+  \frac{1}{\beta} \fdv{\log Z}{B(\vb{x})} = \frac{1}{\beta Z} \fdv{Z}{B(\vb{x})} = -\frac{1}{Z} \int_{}^{} \pdd{\phi(x)} \phi(x) e^{-\phi F[\phi(x), B(x)]} = - \langle \phi(\vb{x}) \rangle\rvert_{B}.
+\end{equation}
+We say that the external magnetic field $B$, which linearly multiplies the $\phi$ in the free energy, is called a \emph{source}. Similarly, if we wanted to calculate the correlation function for $O$, we can add a source term to the free energy which allows us to recover $\langle O \rangle$ by methods of functional differentiation of $Z$.

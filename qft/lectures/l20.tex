@@ -1,0 +1,189 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 20: November 28}
+
+\section{Quantisation of the electromagnetic field}%
+\label{sec:quantisation_of_the_electromagnetic_field}
+
+Following the standard quantisation procedure, we first calculate the canonical conjugate momenta
+\begin{align}
+  \pi^0 &= \frac{\partial \mathcal{L}}{\partial \dot{A}_0} = 0 \\
+  \pi^1 &= \frac{\partial \mathcal{L}}{\partial \dot{A}_{i}} = - \dot{A}^{i} + \partial^{i} A^0 = F^{i0} = +E^{i}
+\end{align}
+Meaning that the Hamiltonian is
+\begin{align}
+  H &= \int \dd[3]{x} \left( \pi^i \dot{A}_{i} - \mathcal{L} \right) \\
+    &= \int \dd[3]{x} \frac{1}{2} \left( \abs{\vb{E}}^2 + \abs{\vb{B}}^2 \right) - A_0 (\grad \cdot \vb{E})
+\end{align}
+Note that the $A_0$ acts as a Lagrange multiplier, imposing $\grad \cdot \vb{E} = 0$.
+
+Now a constraint of the system, treating $\vb{A}$ as the physical degree of freedom.
+
+\subsection*{Lorentz Gauge}%
+
+Imposing $\partial_{\mu} A^{\mu} = 0$ means that Maxwell's equations $\partial_{\mu} F^{\mu\nu}$ become 
+\begin{equation}
+  \label{eq:20-ddagger}
+  \partial_{\mu} \partial^{\mu} A^{\nu} = 0.
+\end{equation}
+We now construct a different theory, where this comes directly from the Euler-Lagrange equations. This is given by the new Lagrangian
+\begin{equation}
+  \mathcal{L} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} (\partial_{\mu} A^{\mu})^2.
+\end{equation}
+\begin{remark}
+  This additional term spoils gauge invariance.
+\end{remark}
+The Euler-Lagrange equations are
+\begin{equation}
+  \partial_{\mu} F^{\mu\nu} + \partial^{\nu}(\partial_{\mu} A^{\mu}) = 0 \quad \iff \quad \partial_{\mu} \partial^{\mu} A^{\nu} = 0,
+\end{equation}
+which is \eqref{eq:20-ddagger}.
+
+We now work with this new Lagrangian, only imposing $\partial_{\mu} A^{\mu} = 0$ later, at the operator level.
+In general, $\mathcal{L} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2\alpha} (\partial_{\mu} A^{\mu})^2$.
+ This gives us a continuum of different theories, which are different gauges.
+\begin{description}
+  \item[$\alpha = 1$] is called the \emph{Feynman gauge}.
+  \item[$\alpha \to 0$] is the \emph{Landau gauge}.
+\end{description}
+
+Sometimes, people leave in the $\alpha$  in its most general form; any physical observable should be independent of this.
+This is a bit too complicated for our purposes so we will work in the Feynman gauge $\alpha = 1$ for now.
+
+The new theory has no gauge symmetry, but now $A_0$  and the spatial components $\vb{A}$  are dynamical:
+\begin{equation}
+  \pi^0 = \frac{\partial \mathcal{L}}{\partial \dot{A}_0} = - \partial_{\mu} A^{\mu}, \qquad \pi^i = \frac{\partial \mathcal{L}}{\partial \dot{A}_{i}} = - \dot{A}^{i} + \partial^{i} A^0
+\end{equation}
+When we consider the operators, we will set this extra piece to zero to get a physical limit.
+
+Working in the Schrödinger picture, the commutators are
+
+\begin{subequations}
+  \label{eq:20-comms}
+  \begin{equation}
+    [A_{\mu}(\vb{x}), A_{\nu}(\vb{y})] = 0 = [\pi_{\mu}(\vb{x}), \pi_{\nu}(\vb{y})]
+  \end{equation}
+  \begin{equation}
+    [A_{\mu}(\vb{x}), \pi_{\nu}(\vb{y})] = i \delta^3 (\vb{x} - \vb{y}) \eta_{\mu\nu}.
+  \end{equation}
+\end{subequations}
+
+If we expand $A_{\mu}(\vb{x})$, we have, in the Schrödinger picture, 
+\begin{equation}
+  \label{eq:20-A}
+  A_{\mu}(\vb{x}) = \int \frac{\bdd[3]{p}}{\sqrt{2 \abs{\vb{p}}}} \sum_{\lambda = 0}^{3} \left( \varepsilon_{\mu}^{\lambda} (\vb{p}) a_{\vb{p}}^{\lambda} e^{i \vb{p} \cdot \vb{x}} + (\varepsilon_{\mu}^{\lambda})^*(\vb{p}) (a_{\vb{p}}^{\lambda})^{\dagger} e^{-i \vb{p} \cdot \vb{x}} \right).
+\end{equation}
+where $\varepsilon_{\mu}^{\lambda = 0,1,2,3}$ are four polarisation $4$-vectors.
+The energy in the photon, because it is massless, is just its momentum $E_{\vb{p}} = \abs{\vb{p}}$.
+Similarly, its canonical momentum is
+\begin{equation}
+  \pi^{\mu}(\vb{x}) = \int \frac{(+i) \sqrt{\abs{\vb{p}}} \bdd[3]{p}}{\sqrt{2}} 
+  \sum_{\lambda = 0}^{3} 
+  \left( [\varepsilon^{\mu} _{\vb{p}}]^{\lambda} a_{\vb{p}}^{\lambda} e^{i \vb{p} \cdot \vb{x}} 
+  -(a_{\vb{p}}^{\lambda})^{\dagger} e^{-i \vb{p} \cdot \vb{x}} [(\varepsilon^{\mu} _{\vb{p}})^*]^\lambda \right).
+\end{equation}
+
+We pick $\varepsilon^0_{\mu}$  to be time-like and $\varepsilon^{i}_{\mu}$  to be space-like, with normalisation $ \varepsilon^\lambda \cdot (\varepsilon^*)^{\lambda'} = \eta^{\lambda \lambda'}$.
+We choose $\varepsilon^{1\mu}$  and $\varepsilon^{2 \mu}$  to be the transverse polarisation, meaning that $\varepsilon^1 \cdot p = 0 = \varepsilon^2 \cdot p$, and $\varepsilon^{3 \mu}$ to be the longitudinal polarisation.
+\begin{example}[]
+  Consider a photon $\gamma$ travelling in the $x^3$-direction:
+  \begin{equation}
+    p^\mu = \abs{\vb{p}} 
+    \begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    1 \\
+    \end{pmatrix}
+    , \quad \varepsilon^{\rho\mu} = 
+    \begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    0 \\
+    \end{pmatrix}, \quad \varepsilon^{1\mu} = 
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    0 \\
+    0 \\
+    \end{pmatrix}, \quad \varepsilon^{2\mu} = 
+    \begin{pmatrix}
+    0 \\
+    0 \\
+    1 \\
+    0 \\
+    \end{pmatrix}, \quad \varepsilon^{3\mu} = 
+    \begin{pmatrix}
+    0 \\
+    0 \\
+    0 \\
+    1 \\
+    \end{pmatrix}.
+  \end{equation}
+  For the other momenta, just do a rotation.
+\end{example}
+
+The commutation relations \eqref{eq:20-comms} then correspond to 
+\begin{equation}
+  [a_{\vb{p}}^{\lambda}, a_{\vb{q}}^{\lambda'}] = 0  = [a_{\vb{p}}^\lambda{}^{\dagger}, a_{\vb{q}}^{\lambda'}{}^{\dagger}]
+\end{equation}
+\begin{equation}
+  [a_{\vb{p}}^{\lambda}, a_{\vb{q}}^{\lambda'}{}^{\dagger}] = - \eta^{\lambda \lambda'} \bdelta^3(\vb{p} - \vb{q}).
+\end{equation}
+This strange minus sign is OK for $\lambda = \lambda' = 1 , 2, 3$, but unusual for timelike photons.
+
+As usual, the annihilation operator annihilates the vacuum $a_{\vb{p}}^{\lambda} \ket{0} = 0$ .
+We describe a state with momentum $\vb{p}$  and polarisation $\lambda$ as  $\ket{\vb{p}, \lambda} = a_{\vb{p}}^{\lambda}{}^{\dagger} \ket{0}$ . This is fine for spacelike photons $\lambda = 1, 2, 3$, but when we consider timelike ones, the minus comes back to haunt us:
+ \begin{equation}
+  \bra{\vb{p}, \lambda = 0}\ket{\vb{q}, \lambda = 0} = \bra{0} a_{\vb{p}}^0 a_{\vb{q}}^0{}^{\dagger} \ket{} = - \bdelta^3(\vb{p} - \vb{q}).
+\end{equation}
+We have a negatively normed state!  
+In general, a Hilbert space with a negative norm state is problematic, but in fact the constraint equation from our gauge comes to the rescue.
+
+It will take us three approaches, each one becoming successively less naive.
+
+Let us work in the Heisenberg picture.
+\begin{enumerate}[]
+  \item If we naively try to impose $\partial_{\mu} A^{\mu} = 0$, this does not work since $\pi^0 = -\partial_{\mu} A^{\mu}$ , so the commutation relations could not possibly be obeyed.
+  \item We might instead try to impose the condition on the Hilbert space:
+    We can split the states into `physical states' $\ket{\psi}$  and `others', which we hope will decouple:
+    \begin{equation}
+      \label{eq:20-star}
+      \partial_{\mu} A^{\mu} \ket{\psi} = 0.
+    \end{equation}
+    It turns out that this condition will be too strong.
+
+    Let us split the integral \eqref{eq:20-A} into two fields
+    \begin{align}
+      A_{\mu}({x}) &= \int \frac{\bdd[3]{p}}{ \sqrt{2 \abs{\vb{p}}}} \sum_{\lambda} \varepsilon_{\mu}^{\lambda} a_{\vb{p}} ^{\lambda} e^{-i {p} \cdot {x}}
+      + \int \frac{\bdd[3]{p}}{\sqrt{2 \abs{\vb{p}}}} \sum_\lambda \varepsilon_{\mu}^{\lambda}{}^* a_{\vb{p}}^{\lambda}{}^{\dagger} e^{i {p} \cdot {x}} \\
+		      &\coloneqq A_{\mu}^{\dagger}(x) + A_{\mu}^- (x)
+    \end{align}
+    Now we have $A_{\mu}^+ \ket{0} = 0$ automatically, but $\partial^{\mu} A_{\mu}^- \ket{0} \neq 0$ and therefore $\ket{0}$ is not physical!
+    So this approach does not work either.
+
+  \item Final attempt: define physical states $\ket{\psi}$ by 
+    \begin{equation}
+      \label{eq:20-phi}
+      \partial^{\mu} A^{\dagger}_{\mu} (x) \ket{\psi} = 0
+    \end{equation}
+    Then we have $\bra{\psi'} \partial_{\mu} A^{\mu} \ket{\psi} = 0$ for physical states $\ket{\psi}$ and $\ket{\psi'}$. 
+    Equation \eqref{eq:20-phi} is the \emph{Gupta-Bleuler condition}. Its linearity means that $\left\{ \ket{\psi} \right\}$ span a Hilbert space $\mathcal{H}_{\text{phys}}$.
+\end{enumerate}
+
+We decompose a generic state $\ket{\Psi} = \ket{\psi_I} \ket{\phi}$. The $\ket{\psi_T}$ are transverse photons with $a_{\vb{k}}^{1, 2}{}^{\dagger}$, whereas $\ket{\phi}$ are time-like photons with $a_{\vb{k}}^0{}^{\dagger}$ and longitudinal photons with $a_{\vb{k}}^{3}{}^{\dagger}$.
+So now, $\partial_{\mu} (A^+)^{\mu} \ket{\Psi} =0$ gives (in two or three lines) that
+\begin{equation}
+  \label{eq:20-doubstar}
+  (a_{\vb{k}}^3 - a^0_{\vb{k}})\ket{\phi} = 0.
+\end{equation}
+This means that physical states only contain timelike-longitudinal (TL) $\psi$-pairs.
+So in general, 
+\begin{equation}
+  \ket{\phi} = \sum_{n = 0}^{\infty} c_n \ket{\phi_n},
+\end{equation}
+where $\ket{\phi_n}$ are $n$ TL-pairs.
+
+Equation \eqref{eq:20-doubstar} implies that $\bra{\phi_m}\ket{\phi_n} = \delta_{m0} \delta_{n0}$. 
+States with TL pairs have zero norm. These zero norm states are treated as an equivalence class: states that differ only by TL pairs are physically equivalent.

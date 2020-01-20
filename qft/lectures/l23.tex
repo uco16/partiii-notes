@@ -1,0 +1,103 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 23: December 05}
+
+\chapter{Summary}%
+
+\section*{Classical Field Theory}%
+
+\begin{itemize}
+  \item Symmetries of $S$, Noether's theorem $\implies$ currents and charges
+  \item EL equations of motion, Lorentz invariance
+\end{itemize}
+
+\section*{Canonical Quantisation}%
+
+\begin{itemize}
+  \item expand $\phi \sim a, a^{\dagger}$ (SHO for each momentum)
+    \begin{itemize}
+      \item second quantisation
+    \end{itemize}
+  \item CRs between fields / operators
+  \item Physical things are $\bra{ \dots } \dots \phi \dots \ket{ \dots }$, same in all pictures
+  \item Normal ordering introduced to get sensible (non-$\infty$) def\textsuperscript{n} of observables
+  \item Time ordering $\rightarrow \bra{0} T \phi(x) \phi(y) \ket{0}$ propagator
+    \begin{itemize}
+      \item building blocks of theory
+    \end{itemize}
+\end{itemize}
+
+\section*{Interacting Picture}%
+
+\begin{equation}
+  \bra{f}(S- 1)\ket{i} = \lim_{\substack{t \to +\infty \\ t_0 \to - \infty}} \bra{f} U(t, t_0) \ket{i}
+\end{equation}
+\begin{itemize}
+  \item time evolution operator $U(t, t_0) = T\exp{-i \int_{t_0}^{t} \dd[]{t} H_I(t')} = T \exp{+i \int \dd[4]{x} \mathcal{L}_I}$ 
+  \item Wick's theorem was important step in providing connection between QFT and Feynman rules \& diagrams.
+  \item e.g. $\phi^4$ theory: $\bra{0} T (\phi_1 \dots \phi_4 \phi_x^4) \ket{0}$
+    \begin{itemize}
+      \item get diagrams, but only keep first piece
+      \item throw away vacuum bubbles because fully interacting vacuum absorbs them
+      \item disconnected pieces also get thrown away (LSZ reduction formula)
+    \end{itemize}
+\end{itemize}
+
+\section*{Four Spinors}%
+
+\begin{itemize}
+  \item A new rep. of Lorentz group
+\end{itemize}
+If a field transformas a spinor, fields have to anti-commute in order to make sense.\par
+$\implies$ anti-commuting creation / annihilation operators
+
+\section*{Spinor cross-sections}%
+
+Time / normal ordering of operators gives additional minus signs for fermions
+\begin{equation}
+  \left\{ \psi, \overline{\psi} \right\} \neq 0 \qquad \text{but} \qquad 
+  \begin{gathered}
+    \left\{ \psi_e, \overline{\psi}_{\mu} \right\} = 0 \\
+    \left\{ \psi_e, \overline{\psi}_{e} \right\} \neq 0 \\
+    \left\{ \psi_{\mu}, \overline{\psi}_{\mu} \right\} \neq 0
+  \end{gathered}
+\end{equation}
+
+\begin{itemize}
+  \item Spin sums give us traces of $\gamma$ matrices (see exercise sheet 3).
+  \item Parity, chiral fermions $\implies \gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3$
+\end{itemize}
+
+\section*{QED}%
+
+Gauge invariance 
+\begin{align}
+  A_{\mu} &\to A_{\mu} + \partial_{\mu} \lambda(x) \\
+  \phi^a &\to e^{i q_a \lambda(x)} \phi^a,
+\end{align}
+where $q_a$ are charges of $\phi^a$.
+
+\begin{equation}
+  F_{\mu\nu} \to F_{\mu\nu} \qquad \text{and} \qquad D_{\mu} \phi^a \to e^{i e q_a \lambda} D_{\mu} \phi^a
+\end{equation}
+where
+\begin{equation}
+  D_{\mu} \coloneqq (\partial_{\mu} - i e q_a a_{\mu})
+\end{equation}
+
+\begin{itemize}
+  \item Pick a gauge to make progress
+    \begin{itemize}
+      \item We enforced $\partial_{\mu} A^{\mu} = 0$ by changing $\mathcal{L}$
+    \end{itemize}
+  \item M\o ller scattering
+\end{itemize}
+
+\section*{Part III Exam}%
+\label{sec:part_iii_exam}
+
+Same format as previous years:
+\begin{itemize}
+  \item 3 hours
+  \item answer 3 out of 4 questions, all equal weight
+\end{itemize}

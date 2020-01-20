@@ -1,0 +1,153 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 21: November 30}
+
+\begin{example}[$m = n = 1$]
+  Let $\ket{\phi_1} = a_{\vb{p}}^{0}{}^{\dagger} a_{\vb{p}_2}^3{}^{\dagger} \ket{0}$ and $\ket{\phi_1'} = a_{\vb{p}_3}^0 {}^{\dagger} a_{\vb{p}_4}^3 {}^{\dagger} \ket{0}$.
+  Then
+  \begin{align}
+    \bra{\phi_1'} \ket{\phi_1} &= \bra{0} a_{\vb{p}_4}^3 a_{\vb{p}_3}^0 \ket{\phi_1} \\
+    &= \bra{0} a_{\vb{p}_4}^3 a_{\vb{p}_3}^3 a_{\vb{p}_1}^0{}^{\dagger} a_{\vb{p}_2}^3{}^{\dagger} \ket{0} \\
+    &= 0
+  \end{align}
+  where we commuted $a_{\vb{p}_1}^0 {}^{\dagger}$ through the other two operators on the left.
+\end{example}
+
+If we want to describe \texttt{QCD} amplitudes, we have to find
+\section{Photon Feynman Propagator}%
+\label{sec:photonphoton_feynman_propagator}
+
+\begin{equation}
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    a [particle=\(\mu\)] -- [boson] b [particle=\(\nu\)],
+  };
+  \quad \bra{0} T A_{\mu} (x) A_{\nu} (y) \ket{0}
+  = \int \bdd[4]{p} \frac{-i}{p^2 + i \epsilon} \left[ \eta_{\mu\nu} + (\alpha -1 ) \frac{p_{\mu} p_{\nu}}{p^2} \right] e^{-i p \cdot (x - y)}
+\end{equation}
+for the general $\alpha$ gauge.
+
+Note the simple form of the momentum space Feynman rule $\frac{-i\eta_{\mu\nu}}{p^2+ i \epsilon}$ in the Feynman gauge $\alpha = 1$.
+
+\section{Interactions}%
+\label{sec:interactions}
+
+Let us try the simplest possibility and couple it to a conserved current
+\begin{equation}
+  \mathcal{L} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} - e j^{\mu} A_{\mu},
+\end{equation}
+where $e$ is the dimensionless \emph{gauge coupling}.
+
+The Euler-Lagrange equation for this Lagrangian give $\partial_{\mu} F^{\mu\nu} = e j^{\nu}$.
+Taking partial derivatives, $\partial_{\nu} \partial_{\mu} F^{\mu\nu} = e \partial_{\nu} j^{\nu} = 0$.
+This means that $j^{\mu}$ is a conserved current.
+
+\subsection{Coupling to Fermions}%
+\label{sub:coupling_to_fermions}
+
+What about coupling to fermions? We want to couple the photon to an electron for example.
+The Dirac part for the fermion $\mathcal{L}_D = \overline{\psi} (i \cancel{\partial} - m) \psi$  has an internal symmetry of phase rotation $\psi \to e^{-i \alpha} \psi$ and $\overline{\psi} \to e^{+i \alpha} \overline{\psi}$.
+This yields a conserved current  $j^{\mu} = \overline{\psi} \gamma^{\mu} \psi$ .
+Our \texttt{QED} Lagrangian is the sum of the photon and Dirac part
+\begin{equation}
+  \mathcal{L}_{\text{QED}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline{\psi} (i \cancel{\partial} - m)\psi - e \overline{\psi}_{\alpha} \eta^{\mu}_{\alpha\beta} A_{\mu} \psi_{\beta}.
+\end{equation}
+As always, we get $i$  times the interaction Lagrangian for the vertex.
+The Feynman rule associated with this vertex is
+\begin{equation}
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    a [particle=\(\alpha\)] -- [anti fermion] b -- [boson] c [particle=\(\mu\)],
+    b -- [anti fermion] d [particle=\(\beta\)],
+  };
+  \sim - i \epsilon (\eta^{\mu})_{\alpha\beta}
+\end{equation}
+
+Previously, to cancel unphysical polarisations, it was crucial that we had gauge invariance. Do we still have it?
+\begin{definition}[]
+  The \emph{covariant derivative} is $D_{\mu} \psi \coloneqq \partial_{\mu} \psi + i e A_{\mu} \psi$.
+\end{definition}
+We can use this to rewrite the \texttt{QED} Lagrangian in a more useful form:
+\begin{equation}
+  \mathcal{L}_{\text{QED}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline{\psi} (i \cancel{D} - m)\psi.
+\end{equation}
+
+\begin{claim}
+  Under gauge transformation $ A_{\mu} (x) \to A_{\mu}(x) + \partial_{\mu} \lambda(x)$, the Lagrangian $\mathcal{L}_{\text{QED}}$ is not gauge invariant unless $\psi$ transforms as
+  \begin{equation}
+    \psi(x) \to e^{-i e \lambda(x)} \psi(x)
+  \end{equation}
+\end{claim}
+\begin{proof}
+  Under the gauge transformation,
+  \begin{align}
+    D_{\mu} \psi = (\partial_{\mu} + i e A_{\mu}) \psi &\to \partial_{\mu} (e^{-i e \lambda}\psi) + i e A_{\mu} (e^{-i e \lambda} \psi) + i e \psi \partial_{\mu} \lambda(x) \\
+    &= e^{-i e \lambda} D_{\mu} \psi
+  \end{align}
+  This means that $\overline{\psi} \cancel{D} \psi$ is gauge invariant.
+\end{proof}
+
+Observables do not depend on TL $\gamma$ pairs $\ket{\phi}_n$ .
+\begin{example}[]
+  \begin{equation}
+    H = \int \bdd[3]{p} \abs{\vb{p}} (\sum_{i=1}^{3} a_{\vb{p}}^{i}{}^{\dagger} a_{\vb{p}}^{i} - a_{\vb{p}}^0{}^{\dagger} a_{\vb{p}}^0)
+  \end{equation}
+  But by \eqref{eq:20-doubstar}, $\bra{\psi} a_{\vb{p}}^3{}^{\dagger} a_{\vb{p}}^3 \ket{\psi} = \bra{\psi} a_{\vb{p}}^0{}^{\dagger} a_{\vb{p}}^0 \ket{\psi}$.
+\end{example}
+
+Gauge invariance of $\mathcal{L}_{\text{QED}}$ impels that we remove the unphysical degrees of freedom in $A_{\mu}$, leaving two polarisation states.
+The gauge coupling $e$  has the interpretation of electric charge, since the Euler-Lagrange equations are $\partial_{\mu} F^{\mu\nu} = e j^{\nu}$. In electromagnetism, $j^0$ is the charge density. But as a quantum operator,
+ \begin{align}
+   Q = -e \int \dd[3]{x} \overline{\psi} \gamma^0 \psi &= - e \int \bdd[3]{p} \sum_s (b_{\vb{p}}^s{}^{\dagger} b_{\vb{p}}^{s} - c_{\vb{p}}^{s}{}^{\dagger} c_{\vb{p}}^{s}) \\
+						       &= - e \times (\text{number of particles $-$ number of anti particles})
+\end{align} 
+
+\subsection{Coupling to Scalar Fields}%
+\label{sub:coupling_to_scalar}
+
+Charged pions are well described by a complex scalar field.
+What about a real scalar? For a real scalar, it turns out that there is actually no suitable charged current. You cannot couple it in a gauge invariant way to electromagnetism.
+\begin{exercise}
+  Try to do it to see which piece does not cancel as it usually does!
+\end{exercise}
+For a complex scalar $\phi$, we use the covariant derivative again
+\begin{equation}
+  D_{\mu} \phi = \partial_{\mu} \phi - i e q A_{\mu} \phi.
+\end{equation}
+This is of the same form as before, except that the number $q \in \mathbb{R}$  is now the charge of $\phi$ in units of $e$.
+If you only discuss  \texttt{QED} coupled to one field, you can always absorb it into the gauge coupling $e$.
+
+Under a gauge transformation, we have  $\phi(x) \to e^{i e q \phi(x)} \phi (x)$ and $D_{\mu} \phi \to e^{i e q \lambda} D_{\mu} \phi$ .
+
+The Lagrangian for our scalar-\texttt{QED} theory is
+\begin{equation}
+  \mathcal{L}_{\phi \text{QED}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (D_{\mu} \phi)^{\dagger} D^{\mu} \phi - m^2 \phi^{\dagger} \phi.
+\end{equation}
+If we expand out the covariant derivatives and pick out the interaction pieces, which involve more than two fields, we get
+\begin{equation}
+  \mathcal{L}^{\text{int}}_{\phi \text{QED}} = i e q (\phi^{\dagger} \partial^{\mu} \phi - (\partial^{\mu} \phi)^{\dagger} \phi) A_{\mu} + e^2 q^2 A_{\mu} A^{\mu} \phi^{\dagger} \phi.
+\end{equation}
+Let us think about what the Feynman rules for these shall be.
+
+\begin{equation}
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    i -- [charged scalar] a -- [boson] b [particle=\(\mu\)],
+    e -- [anti charged scalar] a,
+  };
+  \sim i e q (p^{\mu} + q^{\mu})
+  \qquad
+  \feynmandiagram[inline=(c.base), horizontal=a to b, layered layout] {
+    a -- [charged scalar] c -- [boson] b [particle=\(\mu\)],
+    d -- [anti charged scalar] c -- [boson] e [particle=\(\mu\)],
+  };
+  \sim 2 i e^2 q^2 \mu_{\mu\nu}
+\end{equation} 
+Where the first vertex factor comes from $\phi \sim \int b e^{-i p \cdot x} + c^{\dagger} e^{i p \cdot x}$.
+
+\subsection*{Noether's Theorem}%
+
+The current $j^{\mu} = i e q [ ( D^{\mu} \phi)^{\dagger} \phi - \phi^{\dagger} D^{\mu} \phi]$ is gauge invariant.
+This is a good model for electromagnetic interactions of charged pions $\pi^{\pm}$ and beyond-the-standard-model physics with charged Higgs $H^{\pm}$.
+
+To couple a $U(1)$ gauge field $A_{\mu}$ to any number of fields $\phi^{a}$ (fermions and / or bosons), replace space-time derivatives with covariant derivatives, i.e.
+\begin{equation}
+  \partial_{\mu} \phi^{a} \to D_{\mu} \phi^{a} = \partial_{\mu} \phi^{a} - i e q_a A_{\mu} \phi^a \qquad \text{(no sum on $a$)}.
+\end{equation}

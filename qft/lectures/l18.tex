@@ -1,0 +1,292 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 18: November 21}
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c c}
+  $\psi\psi \to \psi\psi$ &  $\phi$ \\
+  $b, c$ & a \\
+  $\{b, c\} = 0$ & $[a, a^{\dagger}] = \dots$ \\
+  \end{tabular}
+  \caption{}
+  \label{tab:18-1}
+\end{table}
+
+In addition to the commutation relations of Table \ref{tab:18-1}, we can also work out the commutation relations 
+\begin{equation}
+  [a, b] = 0 = [a, c].
+\end{equation}
+
+\section{Momentum Space Feynman Rules for Fermionic Amplitudes}%
+\label{sec:momentum_space_feynman_rules_for_fermionic_amplitudes}
+
+%Diagrams:
+%\begin{equation}
+%  \begin{gathered}
+%    \feynmandiagram[inline=(a.base), vertical=e to b] {
+%      a -- [fermion,  momentum=\(p\ s\)] b -- [fermion,  momentum=\(p'\ s'\)] c,
+%      d -- [fermion] e -- [fermion] f,
+%      e -- [scalar] b,
+%    };
+%  \end{gathered}
+%  +
+%  \begin{gathered}
+%    \feynmandiagram[inline=(a.base), vertical=e to b] {
+%      a -- [momentum=\(p\ s\)] b -- [momentum=\(p'\ s'\)] c,
+%      d -- e -- f,
+%      b -- [scalar] e,
+%    };
+%  \end{gathered}
+%  -
+%  \begin{gathered}
+%    \feynmandiagram[inline=(a.base), vertical=e to b] {
+%      a -- b -- c,
+%      d -- e -- f,
+%      b -- [scalar] e,
+%    };
+%  \end{gathered}
+%\end{equation}
+
+\begin{itemize}
+  \item No \emph{clash} allowed:
+    $\qquad \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+        a -- [fermion] b -- [anti fermion] c,
+      }; $
+  \item Dirac fermions preserve fermion number.
+  \item external lines:
+    \begin{itemize}
+      \item Incoming fermion $ (u^{s}_{\vb{p}})_{\alpha} \sim
+	\feynmandiagram[inline=(a.base), horizontal=a to b] {
+	  a -- [fermion, momentum=$p\ s$] b [blob],
+	}; $
+      \item Outgoing fermion $(\overline{u}{}^{s}_{\vb{p}})_{\alpha} \sim
+	  \feynmandiagram[inline=(a.base), horizontal=a to b] {
+	    a [blob] -- [fermion,  momentum=\(p\ s\)] b,
+	  }; $
+      \item Incoming anti-fermion $\overline{v}{}^{s}_{\vb{p}}$
+      \item Outgoing anti-fermion $v_{\vb{p}}^{s}$
+    \end{itemize}
+  \item $4$-momentum conservation at each vertex $
+    \begin{gathered}
+      \feynmandiagram[scale=0.5, transform shape][inline=(c.base), horizontal=a to b] {
+        a -- [fermion] c[dot] -- [fermion] b,
+        c -- [scalar] d
+      };
+    \end{gathered}
+    \sim (-i \lambda) $
+  \item propagator
+    $
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a [particle=\(\alpha\)] -- [fermion,  momentum=\(p\)] b [particle=\(\beta\)],
+    };
+    \sim \frac{i (\cancel{p} + m)_{\beta\alpha}}{p^2 - m^2 + i \epsilon}
+    $
+  \item Indices are contracted in the \emph{opposite direction} to the arrows.
+  \item Relative minuses between diagrams that have one particle swapped due to Fermi-Dirac statistics. To be sure of relative minuses, follow the ordering of operators.
+  \item In a closed fermionic loop, e.g.
+    \begin{equation}
+      \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+	a -- [scalar] x [particle=\(x\)] -- [fermion,  momentum=\(k\), half left] y [particle=\(y\)] -- [fermion, half left] x,
+	y -- [scalar] b,
+      };
+      \sim \normalorder{\overline{\psi}_{\alpha} (x) \wick{\c \psi_{\alpha}(x)\c{\overline{\psi}}_{\beta} (y)} \psi_{\beta}(y)}
+    \end{equation}
+    Contraction is defined on $\wick{\c \psi \c{\overline{\psi}}}$
+    \begin{equation}
+      = - \normalorder{\wick{\c\psi_{\beta}(y) \c{\overline{\psi}_{\alpha}(x)}} \wick{\c \psi_{\alpha}(x) \c{\overline{\psi}}_{\beta}(y)}}.
+    \end{equation}
+    Hence there is an additional minus sign for a closed fermionic loop, as well as the usual $\int \dd[4]{k}$ around the loop momenta.
+\end{itemize}
+
+What if $\mathcal{L}_{\text{int}} = -\lambda \phi \overline{\psi} _{\alpha} (\gamma^5)_{\alpha\beta} \psi_{\beta}$?
+\begin{leftbar}
+  \begin{note}
+    This only preserves $P$ if $\phi$ is a pseudo-scalar, i.e.~$P\phi (\vb{x}, t) = -\phi(-\vb{x}, {t})$.
+  \end{note}
+\end{leftbar}
+
+The Feynman rule for the interaction is
+\begin{equation}
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    a -- [scalar] b -- [fermion] c [particle=\(\alpha\)],
+    b -- [fermion] d [particle=\(\beta\)],
+  };
+  \sim (-i \lambda) (\gamma^5)_{\alpha\beta}.
+\end{equation}
+
+How do we deal with spin and the $\abs{\mathcal{M}}^2$  in the cross-section calculation?
+
+In most experiments, the initial spin states $\ket{i}$  are random. In that case we average over them (e.g.~for $\psi\psi \to \psi\psi$, it would be $\frac{1}{4} \sum_{r, s = 1}^{2}$ ). Typically, the final state particles $\ket{f}$ are not observed.
+Any properties that are not observed can / do happen, so we have to sum over all unobserved possibilities in the final state.
+\begin{leftbar}
+  \begin{note}
+    There are particular experiments with polarised beams, where we have some biases. Peskin \& Schroeder \cite{peskin95} deals with this.
+  \end{note}
+\end{leftbar}
+
+\begin{remark}
+  $\mathcal{M} = B - A$ in $\psi\psi \to \psi\psi$, where $B$ \& $A$ are the different terms.
+  They can be written as dot products of spinors; the indices $\alpha, \beta$ are summed over.
+
+  We write appropriate spin sums / averages with a bar:
+  \begin{equation}
+    \overline{\abs{\mathcal{M}}^2} = \overline{\abs{A}^2} + \overline{\abs{B}^2} - \overline{A^{\dagger} B} - \overline{B^{\dagger} A}.
+  \end{equation}
+  \begin{align}
+    A &= \frac{\lambda^2 (\overline{u}^{s}_{p'})_{\alpha} (u^{r}_{r})_{\alpha} (\overline{u}^{r'}_{q'})_{\beta} (u^{s}_{p})_{\beta}}{(u - \mu_2 + i \epsilon)} \\
+      &\coloneqq \lambda^2 \frac{[\overline{u}^{s'}_{p'} \cdot u^{r}_{q}][\overline{u}^{r'}_{q'} \cdot u^{s}_{p}]}{(u - \mu^2)},
+  \end{align}
+  where we leave the $i \epsilon$ as ``understood'' from now on.
+\end{remark}
+
+\begin{remark}
+  Since $(\gamma^0)^{\dagger} = \gamma^0$ , $[\overline{u}^{s'}_{p} \cdot u^{r}_{q}]^{\dagger} = [\overline{u}^{r}_{q} \cdot u^{s'}_{p'}]$ 
+\end{remark}
+\begin{align}
+  \overline{\abs{A}^2} &= \frac{\abs{\lambda}^4}{4} \frac{\sum_{rss'r'} (\overline{u}{}^{s'}_{p'})_{\alpha} \overbrace{(u^{r}_{q})_{\alpha} (\overline{u}{}^{r}_{q})_{\beta}}^{\mathclap{\text{spin sum over $r$ gives } (\cancel{q} + m)_{\alpha}b}} (u^{s'}_{p'})^{\beta} (\overline{u}{}^{r'}_{q'})_{\gamma} \overbrace{(u^{s}_{p})_{\gamma} (\overline{u}{}^{s}_{p})_{\delta}}^{\mathclap{(\cancel{p} + m)_{\gamma\delta}}} (u^{r}_{q'})_{\delta} }{(u - \mu^2)^2} \\
+  &= \frac{\abs{\lambda}^4}{4} \frac{(\cancel{p'} + m)_{\alpha\beta} (\cancel{q} + m)_{\beta\alpha} (\cancel{q'} + m)_{\gamma\delta} (\cancel{p} + m)_{\delta\gamma}}{(u - \mu^2)^2}  \\
+  &= \frac{\abs{\lambda}^4}{4} \frac{\Tr[(\cancel{p'} + m)(\cancel{q} + m)] \Tr[(\cancel{q'} + m )(\cancel{p} + m)]}{(u - \mu^2)^2}.
+\end{align}
+This is why knowing how to deal with traces (PS3) is important. They come out in the spin sums.
+
+Often we are in the high energy limit, where we can neglect particle masses, $\mu, m \to 0$.
+ \begin{example}[]
+  At the LHC, $\sqrt{s} = 13$TeV $>> m_p = 1$GeV.
+\end{example}
+In that case, then 
+\begin{equation}
+  \overline{\abs{A}^2} = \frac{\abs{\lambda}^4}{4 u^2} \Tr(\cancel{p'} \cancel{q}) \Tr(\cancel{q'} \cancel{p}).
+\end{equation}
+\begin{exercise}
+  Check that a similar calculation gives
+  \begin{equation}
+    \overline{\abs{B}^2} = \frac{\abs{\lambda}^4}{4t^2} \Tr(\cancel{q'} \cancel{q}) \Tr(\cancel{p'} \cancel{p}).
+  \end{equation}
+\end{exercise}
+We also want to know $- \overline{A^{\dagger} B} - \overline{B^{\dagger} A} = -2 \Re \overline{(A^{\dagger} B)}$ .
+\begin{align}
+  \overline{A^{\dagger} B} &= \frac{\abs{\lambda}^4}{4 ut} \sum_{r r' s s'} (\overline{u}^{r}_{\vb{q}})_{\beta} (u^{s'}_{\vb{p'}})_{\beta} (\overline{u}{}^{s}_{\vb{p}})_{\alpha}(u^{r'}_{\vb{q}'})_{\alpha} (\overline{u}{}^{r'}_{\vb{q}'})_{\gamma} (u^{r}_{\vb{q}})_{\gamma} (\overline{u}{}^{s'}_{\vb{p}'})_{\delta} (u^{s}_{\vb{p}})_{\delta} \\
+			   &= \frac{\abs{\lambda}^4}{4ut} \Tr (\cancel{q} \cancel{p'} \cancel{p} \cancel{q'}) \qquad \text{in limit } \mu, m \to 0.
+\end{align}
+
+\subsection{Feynman Rules for Spin Summed \texorpdfstring{$\abs{\mathcal{M}}^2$}{M squared} diagrams}%
+\label{sub:feynman_rules_for_spin_summed_squared_diagrams}
+
+\begin{itemize}
+  \item Complex conjugation switches $\ket{i} \leftrightarrow \ket{f}$ in diagram
+  \item Fermion lines are joined with identical momenta on LHS and RHS
+  \item After a spin sum, a closed fermion line in the $\abs{\mathcal{M}}^2$ diagram is given by a trace over $\gamma$ matrices, with appropriate $\gamma^5$'s etc in vertices at the correct position in the trace.
+\end{itemize}
+Trace follows fermion arrows \emph{backwards}.
+\begin{example}[]
+  Omitting the $s$ labels, we have
+  \begin{equation}
+    B \sim
+    \begin{gathered}
+      \feynmandiagram[small, horizontal=a to b] {
+        a -- [fermion,  momentum=\(p\)] b -- [fermion,  momentum=\(q'\)] c,
+        d -- [fermion,  momentum'=\(q\)] e -- [fermion,  momentum'=\(p'\)] f,
+        b -- [scalar] e,
+        a -- [draw=none] d,
+        c -- [draw=none] f,
+      };
+    \end{gathered}
+    \quad \implies \quad B^{\dagger} \sim
+    \begin{gathered}
+      \feynmandiagram[small, horizontal=a to b] {
+        a -- [fermion,  momentum=\(p'\)] b -- [fermion,  momentum=\(q\)] c,
+        d -- [fermion,  momentum'=\(q'\)] e -- [fermion,  momentum'=\(p\)] f,
+        b -- [scalar] e,
+        a -- [draw=none] d,
+        c -- [draw=none] f,
+      };
+    \end{gathered}
+  \end{equation}
+  Then the equation $\overline{\abs{\mathcal{M}}^2} = \overline{\abs{B}^2} + \overline{\abs{A}^2} - 2 \Re(\overline{A B^{\dagger}})$ can be expressed diagrammatically as
+  \begin{align}
+    \overline{\abs{\mathcal{M}}^2} &= 
+    \begin{gathered}
+      \begin{tikzpicture}[scale=0.8]
+	\begin{feynman}
+	  \diagram[small, horizontal=a to b] {
+	    a -- [fermion,  momentum=\(p\)] b -- [fermion,  momentum=\(p'\)] c,
+	    d -- [fermion,  momentum=\(q\)] e -- [fermion,  momentum'=\(q'\)] f,
+	    b -- [scalar] e,
+	    a -- [draw=none] d,
+	    c -- [draw=none] f,
+	    c -- [fermion,  momentum=\(p\)] i,
+	    f -- [fermion,  momentum=\(q\)] j,
+	    c -- [scalar] f,
+	    i -- [draw=none] j,
+	  };
+	\end{feynman}
+	%circle in middle
+	%\node (v) at ($(a)!0.5!(j)$) {};
+	% arcs
+	\draw (i) arc (0:181.5:1.9);
+	\draw (j) arc (0:-178:1.9);
+      \end{tikzpicture}
+    \end{gathered}
+    \quad + \quad
+    \begin{gathered}
+      \begin{tikzpicture}[scale=0.8]
+	\begin{feynman}
+	  \diagram[small, horizontal=a to b] {
+	    a -- [fermion,  momentum=\(p\)] b -- [fermion,  momentum=\(q'\)] c,
+	    d -- [fermion,  momentum=\(q\)] e -- [fermion,  momentum'=\(p'\)] f,
+	    b -- [scalar] e,
+	    a -- [draw=none] d,
+	    c -- [draw=none] f,
+	    c -- [fermion,  momentum=\(p\)] i,
+	    f -- [fermion,  momentum=\(q\)] j,
+	    c -- [scalar] f,
+	    i -- [draw=none] j,
+	  };
+	\end{feynman}
+	%circle in middle
+	%\node (v) at ($(a)!0.5!(j)$) {};
+	% arcs
+	\draw (i) arc (0:181.5:1.9);
+	\draw (j) arc (0:-178:1.9);
+      \end{tikzpicture}
+    \end{gathered}
+    \quad - 2 \Re \left(
+    \begin{gathered}
+      \begin{tikzpicture}[scale=0.8]
+	\begin{feynman}
+	  \diagram[small, horizontal=a to b] {
+	    a -- [fermion,  momentum=\(p\)] b -- [draw=none] c,
+	    d -- [fermion,  momentum=\(q\)] e -- [draw=none] f,
+	    b -- [scalar] e,
+	    a -- [draw=none] d,
+	    c -- [draw=none] f,
+	    c -- [fermion,  momentum=\(p\)] i,
+	    f -- [fermion,  momentum=\(q\)] j,
+	    c -- [scalar] f,
+	    i -- [draw=none] j,
+	  };
+	  \diagram* {
+	    (b) -- [solid, momentum'=\(q'\)] (f),
+	    (e) -- [fermion, momentum'=\(p'\)] (c),
+	  };
+	\end{feynman}
+	%circle in middle
+	%\node (v) at ($(a)!0.5!(j)$) {};
+	% arcs
+	\draw (i) arc (0:181.5:1.9);
+	\draw (j) arc (0:-178:1.9);
+      \end{tikzpicture}
+    \end{gathered} \right) \\
+    &= \frac{\abs{\lambda}^4}{4} \left\{ \frac{\Tr(\cancel{q} \cancel{q'}) \Tr(\cancel{p}\cancel{p'})}{t^2} \ +\qquad  \frac{\Tr(\cancel{q'} \cancel{p}) \Tr(\cancel{p'} \cancel{q})}{u^2} \qquad - \qquad \frac{2 \Re \Tr(\cancel{p} \cancel{q'} \cancel{q} \cancel{p'})}{ut} \right\}
+  \end{align}
+  \begin{remark}
+    The minus sign that we started with ended up in the $2 \Re$ term. It has an effect on the differential cross-section---a truly quantum interference effect.
+  \end{remark}
+
+  \begin{leftbar}
+    \begin{note}
+      In the massive case, this simply becomes $\cancel{p} \to (\cancel{p} + \mu)$ for all momenta inside the traces and $t \to (t - \mu^2)$ for all Mandelstram variables in the denominator.
+    \end{note}
+  \end{leftbar}
+\end{example}

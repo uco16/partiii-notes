@@ -1,0 +1,344 @@
+% lecture notes by Umut Özer
+% course: qft
+\lhead{Lecture 22: December 03}
+
+\section{External Photons}%
+\label{sec:external_photons}
+
+We want to be able to calculate $\gamma-e$ scattering.
+
+\begin{equation}
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    a -- [boson,  momentum=\(k\ \lambda\)] b [blob],
+  };
+  \sim \varepsilon^{\lambda}_{\mu}(k)
+  \qquad
+  \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+    a [blob] -- [boson,  momentum=\(k\ \lambda\)] b,
+  };
+  \sim \varepsilon^{\lambda^*}_{\mu}(k)
+\end{equation}
+
+Typically, we do not resolve the photon polarisations. We therefore want to average over the initial ones and sum over the final ones.
+The prescription, which we will motivate later, is
+\begin{claim}
+  We can replace the sum
+\begin{equation}
+  \sum_{\lambda} \varepsilon^{\lambda}_{\mu}{}^* (k) \varepsilon^{\lambda}_{\nu} (k) \to -\eta_{\mu\nu}
+\end{equation}
+\end{claim}
+\begin{proof}
+  To see how this is derived, consider an arbitrary process with an external photon $\gamma$.
+   \begin{equation}
+    \feynmandiagram[inline=(a.base), horizontal=a to b, layered layout] {
+      a -- [fermion] b [blob] -- [boson,  momentum=\(k\ \lambda\)] c,
+      f -- [fermion] b,
+      d -- [fermion] b,
+      e -- [fermion] b,
+    };
+    \begin{gathered}
+      \mathcal{M} \coloneqq M^{\mu}(k) \varepsilon^{\lambda}_{\mu}{}^* (k) \\
+      d\sigma \propto \sum_{\lambda} \abs{\mathcal{M}}^2 = \sum_{\lambda} \varepsilon^{\lambda}_{\mu}{}^* (k) \varepsilon^{\lambda}_{\nu} (k) \mathcal{M}^{\mu}(k) \mathcal{M}^{\nu}{}^*(k)
+    \end{gathered}
+  \end{equation}
+  We rotate coordinates such that the photon direction is $x^3$:  $k^{\mu}  (k, 0, 0, k)$ .
+  Physical photon polarisations are $\varepsilon^{1\mu} = (0, 1, 0, 0)$  and $\varepsilon^{2 \mu} = (0, 0, 1, 0)$ .
+  I.e.~$\sum_{\lambda} \abs{\mathcal{M}}^2 = \abs{M^2(k)}^2 + \abs{\mathcal{M}^2(k)}^2$ . 
+  
+  Recall that external photons are created by $\int \dd[4]{x} j^{\mu} A_{\mu}$ .
+  Therefore,
+  \begin{equation}
+    M^{\mu}(k) \propto \int \dd[4]{x} e^{i k \cdot x} \bra{f} j^{\mu} \ket{i},
+  \end{equation}
+  where the external photon is \emph{omitted} from $\ket{i}$  and $\ket{f}$ .
+
+  Classical electromagnetism implies that the current is conserved, $\partial_{\mu} j^{\mu}(x) = 0$ . This still holds in \texttt{QFT}---it is called a \emph{Ward Identity} and is a consequence of gauge invariance.
+  \begin{remark}
+    This will be covered in the Lent term's \texttt{AQFT} course.
+  \end{remark}
+  \begin{remark}
+    Integrating by parts, we have
+    \begin{align}
+      k_{\mu} \mathcal{M}^{\mu}(k) &\propto \int \dd[4]{x} (\partial_{\mu} e^{i k \cdot x}) \bra{f} j^{\mu}(x) \ket{i}  \\
+      &= - \int \dd[4]{x} e^{i k \cdot x} \bra{f} \partial_{\mu} j^{\mu} \ket{i} =0
+    \end{align} 
+    where we used the Ward identity in the last line.
+    Thus, the Ward identity implies that $\mathcal{M} = 0$ if we replace the photon polarisation with its $4$-momentum.
+  \end{remark}
+
+  For our particular $k^{\mu} = (k, 0, 0, k)$ , the Ward identity states 
+  \begin{equation}
+    k \mathcal{M}^0(k) - k \mathcal{M}^3(k) = 0 \qquad \text{or} \qquad \mathcal{M}^0 = \mathcal{M}^3.
+  \end{equation}
+  Moreover, 
+  \begin{align}
+    \sum_{\lambda} \varepsilon^{\lambda}_{\mu}{}^* (k) \varepsilon^{\lambda}_{\nu} (k) \mathcal{M}^{\mu}(k) \mathcal{M}^{\nu}(k)^* &= \abs{\mathcal{M}^1}^2 + \abs{\mathcal{M}^2}^2 + 0 \\
+    &= \abs{\mathcal{M}^1}^2 + \abs{\mathcal{M}^2}^2 + \abs{\mathcal{M}^3}^2  - \abs{\mathcal{M}^0}^2 \\
+    &= -\eta_{\mu\nu} \mathcal{M}^{\mu}(k) (\mathcal{M}^{\nu}(k))^*.
+  \end{align}
+  Hence, we may replace $\sum_\lambda \varepsilon^{\lambda}_{\mu}{}^* (k) \varepsilon^{\lambda}_{\nu} (k) \to -\eta_{\mu\nu}$.
+\end{proof}
+
+In other words, the timelike and longitudinal photons can be consistently \emph{omitted} from \texttt{QED} calculations, since the squared amplitudes cancel.
+
+\subsection{Electron-Muon Scattering in QED}%
+\label{sub:electron_muon_scattering_in_qed}
+
+Both are spinors. However, they have different interactions and therefore should be described by different fermionic fields $\psi_e$ and $\psi_\mu$ of mass $m_e$ and $m_\mu$ respectively.
+All of the electron creation and annihilation operators will anti-commute with the ones for the muon.
+
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a [particle=\(e\)] -- [fermion,  momentum=\(p\ s\)] b -- [fermion, momentum=\(p'\ s'\)] c,
+      d [particle=\(\mu\)] -- [fermion,  momentum=\(q\ r\)] e -- [fermion, momentum=\(q'\ r'\)] f,
+      b -- [boson] e,
+      a -- [draw=none] d,
+      c -- [draw=none] f,
+    };
+  \end{gathered}
+  \qquad \mathcal{M} \sim (-i e)^2 [\overline{u}^{s'}(p') \gamma^{\mu} u^{s}(p)] \left( \frac{-i \eta_{\mu\nu}}{(p - p')^2 + i \epsilon} \right) [\overline{u}^{r'}(q') \gamma^{\nu} u^r (q)]
+\end{equation}
+
+\begin{equation}
+  \begin{gathered}
+    \begin{tikzpicture}[scale=0.8]
+      \begin{feynman}
+	\diagram[small, horizontal=a to b] {
+      a -- [fermion,  momentum=\(p\)] b -- [fermion,  momentum=\(p'\)] c,
+      d -- [fermion,  momentum=\(q\)] e -- [fermion,  momentum'=\(q'\)] f,
+      b -- [boson] e,
+      a -- [draw=none] d,
+      c -- [draw=none] f,
+      c -- [fermion,  momentum=\(p\)] i,
+      f -- [fermion,  momentum=\(q\)] j,
+      c -- [boson] f,
+      i -- [draw=none] j,
+	};
+	\end{feynman}
+	%circle in middle
+	%\node (v) at ($(a)!0.5!(j)$) {};
+	% arcs
+	\draw (i) arc (0:181.5:1.9);
+	\draw (j) arc (0:-178:1.9);
+      \end{tikzpicture}
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \begin{aligned}
+      \overline{\abs{\mathcal{M}}^2} = \frac{e^4}{4 t^2} &\Tr[(\cancel{p'} + m_e) \eta^{\mu} (\cancel{p} + m_e) \gamma^{\nu}] \\
+      \times &\Tr[(\cancel{q'} + m_{\mu}) \gamma_{\mu} (\cancel{q} + m_{\mu}) \gamma_{\nu}]
+    \end{aligned}
+  \end{gathered}
+\end{equation}
+The first trace is
+\begin{equation}
+  4 (p'{}^{\nu} p^{\mu} + p'{}^{\mu} p^{\nu} - p \cdot p' \eta^{\mu\nu} + m_e^2 \eta^{\mu\nu}).
+\end{equation}
+The second one is the same except for $m_e \to m_{\mu}$ and $p \to q$, $p' \to q'$, and indices downstairs.
+
+In the massless limit, 
+\begin{equation}
+  \overline{\abs{\mathcal{M}}^2} = \frac{8 e^4}{t^2} \left[ \frac{s^2}{4} + \frac{u^2}{4} \right] = 2 e^4 \frac{s ^2 + u ^2}{t^2}.
+\end{equation}
+In this limit, we had derived an expression, in which we substitute the above to get
+\begin{equation}
+  \boxed{\dv{\sigma}{t} = \frac{\overline{\abs{\mathcal{M}}^2}}{16 \pi s^2} = \frac{e^4}{8 \pi s^2} \frac{s^2 + (s + t)^2}{t^2}}
+\end{equation}
+This means that the cross-section is
+\begin{equation}
+  \sigma = \frac{e^4}{8 \pi s^2} \int_{-s / 2}^0 \dd[]{t} \frac{s^2 + (s + t)^2}{t^2},
+  \qquad t = 
+  \begin{cases}
+    -2 p \cdot p' & \text{for } m_e, m_\mu \to 0 \\
+    -\frac{s}{2}(1 - \cos \theta)
+  \end{cases}.
+\end{equation}
+Note that $\sigma$ has a singularity that disappears if we include $m_e \neq 0$ and $m_{\mu} \neq 0$ because we would not integrate to zero.
+In the centre of mass frame, 
+\begin{align}
+  p' &= (\sqrt{\abs{\vb{p}}^2 + m_e^2}, \vb{p}'),  &p &= (\sqrt{\abs{\vb{p}}^2+ m_e^2}, \vb{p}) \\
+  q' &= (\sqrt{\abs{\vb{p}}^2 + m_{\mu}^2}, -\vb{p}'), &q &= (\sqrt{\abs{\vb{p}}^2+ m_e^2}, -\vb{p})
+\end{align}
+\begin{align}
+  s = (p' + q')^2 &= (\sqrt{\abs{\vb{p}}^2 + m_e^2} + \sqrt{\abs{\vb{p}'}^2 + m_{\mu}^2})^2 \\
+  \implies \abs{\vb{p}'}^2 &= \frac{\lambda(s, m_e^2, m_{\mu}^2)}{4 (s + m_e^2 +m_{\mu}^2)} = \abs{\vb{p}}^2
+\end{align}
+
+\begin{remark}
+  \begin{align}
+    t &= m_e^2 + m_{\mu}^2 - 2 p \cdot p'  \\
+      &= m_e^2 + m_{\mu}^2 - 2 \left( \frac{\lambda(s, m_e^2, m_{\mu}^2)}{4(s + m_e^2 + m_{\mu}^2)} + m_e^2 \right) + \frac{2 \cos\theta \lambda(s, m_e^2, m_{\mu}^2)}{4(s + m_e^2 + m_{\mu}^2)}
+  \end{align}
+  upper limit is now $m_{\mu}^2 - m_e^2$ instead of $0$.
+\end{remark}
+
+%Alternative explanation erratum 5 Dec
+\subsection*{Erratum}%
+
+The ranges of integration should be $- \frac{s}{2} ( 1+  \cos(\pi - \theta_0)) \simeq -\frac{s}{2}$ to $-\frac{s}{2}(1 - \cos(\theta_0)) \simeq -\frac{s}{4} \theta_0^2$. Then 
+\begin{align}
+  \sigma &= \frac{e^4}{8 \pi s^2} \int_{-s / 2}^{-s \theta_0^2 / 4} \frac{2s^2}{t^2} + \frac{2s}{t} + 1 \\
+	 &= \frac{e^{4}}{8 \pi s} [- \frac{2s^2}{t} + 2 s \ln t + t]_{+s / 2}^{-s \theta_0^2 / 4} \\
+	 &= \frac{e^4}{ 8\pi s} \left\{ \frac{8}{\theta_0^2}  \frac{7}{2} + 2 \ln( \frac{2}{\theta_0^2}) + O(\theta_0^2) \right\}
+\end{align}
+
+\section{Other Processes in QED}%
+\label{sec:other_processes_in_qed}
+
+\begin{equation*}
+  e^- e^- \to e^- e^-: \qquad
+  \begin{gathered}
+    \feynmandiagram [small, vertical=b to e] {
+      d -- [anti fermion] e -- [boson] f,
+      a -- [fermion] b -- [boson] c,
+      b -- [fermion] e,
+      a -- [draw=none] d,
+      c -- [draw=none] f,
+    };
+  \end{gathered}
+  \qquad + \qquad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\diagram [small, vertical=b to e] {
+	  d -- [anti fermion] e -- [draw=none] f,
+	  a -- [fermion] b -- [draw=none] c,
+	  b -- [fermion] e,
+	  a -- [draw=none] d,
+	  c -- [draw=none] f,
+	};
+	\diagram* {
+	  (b) -- [boson] (f),
+	  (e) -- [boson] (c),
+	};
+      \end{feynman}
+      \end{tikzpicture}
+  \end{gathered}
+\end{equation*}
+\begin{equation*}
+  e^- e^- \to e^- e^-: \qquad
+  \begin{gathered}
+    \feynmandiagram [small, vertical=b to e] {
+      d -- [fermion] e -- [fermion] f,
+      a -- [fermion] b -- [fermion] c,
+      b -- [boson] e,
+      a -- [draw=none] d,
+      c -- [draw=none] f,
+    };
+  \end{gathered}
+  \qquad + \qquad
+  \begin{gathered}
+	\begin{tikzpicture}
+	  \begin{feynman}
+	    \diagram [small, vertical=b to e] {
+	d -- [fermion] e -- [draw=none] f,
+	a -- [fermion] b -- [draw=none] c,
+	b -- [boson] e,
+	a -- [draw=none] d,
+	c -- [draw=none] f,
+      };
+      \diagram* {
+	(b) -- (f),
+	(e) -- [fermion] (c),
+      };
+	  \end{feynman}
+	\end{tikzpicture}
+  \end{gathered}
+\end{equation*}
+\begin{equation*}
+  e^+ e^- \to e^+ e^-: \qquad
+  \begin{gathered}
+    \feynmandiagram [small, horizontal=a to b] {
+      i [particle=\(e^-\)] -- [fermion] a -- [fermion] ii [particle=\(e^+\)],
+      a -- [boson] b,
+      f [particle=\(e^+\)] -- [anti fermion] b -- [anti fermion] ff [particle=\(e^+\)],
+    };
+  \end{gathered}
+  \qquad + \qquad
+  \begin{gathered}
+    \feynmandiagram [small, vertical=b to e] {
+      d [particle=\(e^+\)] -- [anti fermion] e -- [anti fermion] f [particle=\(e^{+}\)],
+      a [particle=\(e^{-}\)] -- [fermion] b -- [fermion] c [particle=\(e^{-}\)],
+      b -- [boson] e,
+      a -- [draw=none] d,
+      f -- [draw=none] c,
+    };
+  \end{gathered}
+\end{equation*}
+\begin{equation*}
+  e^+ e^- \to \mu^+ \mu^-: \qquad
+  \begin{gathered}
+    \feynmandiagram [horizontal=a to b] {
+      i [particle=\(e^-\)] -- [fermion] a -- [fermion] ii [particle=\(e^+\)],
+      a -- [boson] b,
+      f [particle=\(\mu^+\)] -- [fermion] b -- [fermion] ff [particle=\(\mu^-\)],
+    };
+  \end{gathered}
+\end{equation*}
+This diagram is historically important since quark diagram is the same, but comes in three colours. Comparison to muon production showed that QCD has three colours.
+
+We can even scatter photons\footnote{This has only been observed in 2018 at the LHC}, but not at tree level; we have to consider loops:
+\begin{equation*}
+  \gamma\gamma \to \gamma\gamma: \qquad
+  \begin{gathered}
+    \feynmandiagram [small, vertical=b to e] {
+      d -- [boson] e -- [anti fermion] g -- [boson] f,
+      a -- [boson] b -- [fermion] h -- [boson] c,
+      b -- [fermion] e,
+      g -- [fermion] h,
+      a -- [draw=none] d,
+      c -- [draw=none] f,
+    };
+  \end{gathered}
+  \qquad + \qquad \left(
+    \begin{gathered}
+      \text{permutations} \\
+      \text{of external } \gamma
+    \end{gathered}
+      \right) \quad \propto \quad \int \frac{\bdd[4]{k}}{k^4 + \dots}
+\end{equation*}
+This is naively $\ln$ divergent! However, gauge invariance \emph{cancels} these pieces. This renders the result finite.
+
+Finally, we also have \emph{Compton scattering}
+\begin{equation*}
+  \gamma e^- \to \gamma e^-: \qquad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\diagram[small, horizontal=b to c] {
+	  e -- [draw=none] f -- [draw=none] g -- [draw=none] h,
+	  a -- [fermion] b -- [fermion] c -- [fermion] d,
+	  a -- [draw=none] e,
+	  d -- [draw=none] h,
+	  b -- [draw=none] f,
+	  c -- [draw=none] g,
+	};
+	\diagram* {
+	  (e) -- [boson] (b),
+	  (h) -- [boson] (c),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \qquad + \qquad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\diagram[small, horizontal=b to c] {
+	  e -- [draw=none] f -- [draw=none] g -- [draw=none] h,
+	  a -- [fermion] b -- [fermion] c -- [fermion] d,
+	  a -- [draw=none] e,
+	  d -- [draw=none] h,
+	  b -- [draw=none] f,
+	  c -- [draw=none] g,
+	};
+	\diagram* {
+	  (b) -- [boson] (g),
+	  (f) -- [boson] (c),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+\end{equation*}
+

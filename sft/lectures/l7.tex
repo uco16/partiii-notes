@@ -1,0 +1,150 @@
+% lecture notes by Umut Özer
+% course: sft
+\lhead{Lecture 7: October 28}
+\section{Green's Functions}%
+\label{sec:green_s_functions}
+
+Consider a multi-dimensional Gaussian. This is not a path integral, but rather a large but finite number of integrals.
+We can then diagonalise this, separating this integral into $n$ Gaussian integrals. This will evaluate to the square root of the product of the eigenvalues, which gives the determinant
+\begin{equation}
+  \int_{-\infty}^{\infty} \dd[n]{y} e^{-\frac{1}{2} \vb{y}^T \cdot G^{-1} \cdot \vb{y}} = \sqrt{\det(2\pi G)}.
+\end{equation}
+Similarly, we can deal with an extra linear term $\vb{B}^T \cdot \vb{y}$ by changing variables and completing the square. This gives
+\begin{equation}
+  \int_{-\infty}^{\infty} \dd[n]{y} e^{-\frac{1}{2} \vb{y}^T \cdot G^{-1} \cdot \vb{y} + \vb{B}^T \cdot \vb{y}} = \sqrt{\det(2\pi G)} e^{\frac{1}{2} \vb{B}^T \cdot G \cdot \vb{B}}.
+\end{equation}
+
+Let us apply this to path integrals now. Consider again the action
+\begin{align}
+  F[\phi(x)] &= \int_{}^{} \dd[d]{x} \left[ \frac{1}{2} \phi(\grad\phi)^2 + \frac{1}{2} \mu^2\phi^2 + B \phi\right] \\
+	     &= \iint \dd[d]{x} \dd[d]{y} \frac{1}{2} \phi(x) G^{-1} (x, y) \phi(y) + \int_{}^{} \dd[d]{x} B(x) G(x)
+\end{align}
+Then we have the inverse $G^{-1}(x, y) = \delta^d(x - y) (-\gamma\laplacian_{y} + \mu^2)$ in the sense that it acts on $G(x, y)$ to give, in analogy to matrix multiplication,
+\begin{equation}
+  \int_{}^{} \dd[4]{z} G^{-1}(x, z) G(z, y) = \delta^d(x, y).
+\end{equation}
+The correlation function is then
+\begin{equation}
+  (-\phi \laplacian_x + \mu^2) \langle \phi(x) \phi(0) \rangle = \frac{1}{\beta}\delta^d(x).
+\end{equation}
+This is telling us that the fluctuations solve the Euler-Lagrange equations.
+\begin{leftbar}
+  \begin{remark}
+    Green's functions allow us to solve differential equations:
+    Consider a differential operator $O(x)$ acting on a function $F(x)$ to give
+    \begin{equation}
+      \label{eq:l_7_operator}
+      O(x) F(x) = H(x).
+    \end{equation}
+    If we can solve the equation
+    \begin{equation}
+      O(x) G(x, y) = \delta^d(x - y),
+    \end{equation}
+    then we can solve equation \eqref{eq:l_7_operator} by integrating
+    \begin{equation}
+      F(x) = \int_{}^{} \dd[d]{y} H(y) G(x - y)
+    \end{equation}
+    so that as expected we have
+    \begin{equation}
+      O(x) F(x) = \int_{}^{} \dd[d]{y} H(y) \delta^d(x - y) = H(x).
+    \end{equation}
+  \end{remark}
+\end{leftbar}
+
+\subsection{Connection to Susceptibility}%
+\label{sub:connection_to_susceptibility}
+
+In the mean field theory, we defined the magnetic susceptibility to be $\chi = \pdv*{m}{B}$. In the continuum limit $m \to \phi(x)$, where we go from mean-field theory to a theory with local fluctuations, we can define a local version of the magnetic susceptibility as
+\begin{equation}
+  \chi(x, y) \coloneqq \fdv{\phi(x)}{B(y)} = \beta \langle \phi(x) \phi(y) \rangle \sim \int \pdd{\phi} \fdv{\phi}{B} e^{\beta F[\phi]}
+\end{equation}
+We can also define a global susceptibility by integrating over all space
+\begin{equation}
+  \chi = \int_{}^{} \dd[d]{x} \chi(x, 0) = \beta \int_{}^{} \dd[d]{x} \langle \phi(x) \phi(0) \rangle.
+\end{equation}
+
+We can now start to ask a few more physical questions.
+Recall that we found the functional form of the correlator to have a particular scaling behaviour:
+\begin{equation}
+  \langle \phi(x) \phi(y) \rangle \sim 
+  \begin{cases}
+    \frac{1}{r^{d-2}} & r \ll \varepsilon \\
+    \frac{e^{-r/2}}{r^{(d-1)/2}} & r \gg \varepsilon.
+  \end{cases}
+  \implies 
+  \mu^2 \sim \abs{T - T_c}, \text{ and } \xi \sim \frac{1}{\abs{T - T_c}^{1/2}}.
+\end{equation}
+This means that correlations are related across the entire system, across all distance scales, around the critical temperature $T_c$.
+Physically, we intuitively understand that at high temperatures $T \gg T_c$, there is so much energy in the system, so many fluctuations, that different parts of the system are practically uncorrelated.
+As we lower the temperature, the fluctuations decrease in magnitude and the size of patches with aligned spins grows, meaning that the correlation length starts to grow.
+As $T \to T_c$, we find patches of all shapes and sizes at all scales, as the correlation length goes to infinity.
+
+\section{Critical Exponents (Again\ldots)}%
+\label{sec:critical_exponents_againldots_}
+
+The correlation length goes like $\xi \sim \abs{T - T_c}^{-\nu}$, where $\nu = \frac{1}{2}$ and $\langle \phi(x) \phi(y) \rangle \sim r^{-(d-2 + \eta)}$, where $\eta = 0$.
+
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    & MFT & $d = 2$ & $d = 3$ \\
+    \hline
+    $\eta$ & 0 & ${1}/{4}$ & $0.0363\dots$ \\
+    $\nu$ & $\frac{1}{2}$ & $1$ & $0.6300$ \\
+    \hline
+  \end{tabular}
+  \caption{caption}
+  \label{tab:label}
+\end{table}
+
+
+\subsection{Upper Critical Dimension}%
+\label{sub:upper_critical_dimension}
+
+Recall that from mean-field theory, the one point correlation is $\langle \phi(x) \rangle = \pm m_0$. The path integral told us that there are also fluctuations. 
+A sensible question to ask is: How big are the fluctuations relative to $m_0$?
+This tells us whether the mean-field theory is good or bad.
+\begin{equation}
+  R = \frac{\int_{0}^{\xi} \dd[d]{x} \langle \phi(x)\phi(0) \rangle}{\int_{0}^{\xi} \dd[d]{x} m_0^2} \sim \frac{1}{m_0^2 \xi^d} \int_{0}^{\xi} \dd[]{r} \frac{r^{d-1}}{r^{d-2}} \sim \frac{\xi^{2-d}}{m_0^2}
+\end{equation}
+where we used that in polar coordinates, $\dd[d]{x} = r^{d-1} \dd[]{r} \dd[]{\Omega_d}$.
+Therefore $m_0 \sim \abs{T - T_c}^{1/2}$ and $\xi = \abs{T - T_c}^{-1/2}$ implies that $R = \abs{T-T_c}^{(d-4)/2}$.
+
+\section{Translating to QFT}%
+\label{sec:translating_to_qft}
+
+There is a very strong and non-accidental connection between the tools we are using in this course and the tools used in quantum field theory.
+In statistical field theory, we have a path integral $Z = \int \pdd{\phi} e^{-\beta \int_{}^{} \dd[d]{x} F[\phi]}$. Here, $d$ is entirely spatial. There is no imaginary term.
+
+In Quantum field theory, we have
+\begin{equation}
+  Z = \int \pdd{\phi} e^{\frac{i}{\hbar} \int \dd[d]{x} \mathcal{L}[\phi]}.
+\end{equation}
+Here $d$ is spacetime and we have a factor of $\frac{i}{\hbar}$.
+
+To translate from one to the other, we can use a \emph{Wick rotation}, which is a change of coordinates such that $\tau = it$. This means that our operators become
+\begin{equation}
+  \partial_t^2 - \laplacian \to -(\partial_\tau^2 + \laplacian).
+\end{equation}
+The quantum field theory path integral then becomes a Euclidean path integral such as the one in statistical field theory:
+\begin{equation}
+  Z = \int \pdd{\phi} e^{\frac{i}{\hbar} S[\phi]} \to \int \pdd{\phi}e^{-\frac{1}{\hbar} S_E[\phi]}.
+\end{equation}
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    High energy physics & Statistical field theory \\
+    \hline
+    Quantum fluctuations & Thermal fluctuations \\
+    QFT in $d-1$ dimensions & SFT in $d$ dimensions\\
+    $\hbar$ & $\beta$ \\
+    \hline
+  \end{tabular}
+  \caption{Analogy between QFT and SFT.}
+  \label{tab:analogy}
+\end{table}
+There are places where this analogy breaks down. For example, there are situations where there are important topological properties of QFT. In this case, the analogy becomes limited; it is difficult to phrase topological questions in the language of statistical mechanics.

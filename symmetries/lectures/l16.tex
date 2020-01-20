@@ -1,0 +1,144 @@
+% lecture notes by Umut Özer
+% course: symmetries
+\lhead{Lecture 16: November 16}
+%Cartan-Weyl basis
+%\begin{equation}
+%  \mathfrak{g} = \mathfrak{su}_{\mathbb{C}}(2) \qquad \left\{ H, E_+, E_- \right\}
+%\end{equation}
+%\begin{equation}
+%  [H, E_{\pm}] = \pm 2E_{\pm} \qquad [E_+, E_-] = H
+%\end{equation}
+%
+%Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$ of dimension $\rank(\mathfrak{g})$.
+%Basis for $\mathfrak{h}$ is $\left\{ H^{i} \right\}$, $i = 1, \dots, r$ with
+%\begin{equation}
+%  \label{eq:16-1}
+%  [H^{i}, H^{j}] = 0 \quad \forall i, j
+%\end{equation}
+%$\mathfrak{g}$ is spanned by simultaneous eigenvectors of $ad_{H^{i}} \colon \mathfrak{g} \to \mathfrak{g}$.
+The eigenvectors of $ad_{H^{i}}$ within the CSA can be distinguished by their eigenvectors:
+\begin{description}
+  \item[Zero eigenvalues] correspond to $\left\{ H^{i} \right\}$, $i = 1, \dots, r$
+    \begin{equation}
+      ad_{H^{i}}(H^{j}) = [H^{i}, H^{j}] = 0
+    \end{equation}
+  \item[Non-zero eigenvalues] correspond to \emph{step-operators} $\left\{ E^{\alpha} \right\}$,
+    \begin{equation}
+      \label{eq:16-2}
+      ad_{H^{i}}(E^{\alpha}) = [H^{i}, E^{\alpha}] = \alpha^{i} E^{\alpha}
+    \end{equation}
+    By construction, $\alpha^{i} \in \mathbb{C}$ are not all zero.
+\end{description}
+
+For a general element $H \in \mathfrak{h}$, we can write $H = c_{i} H^{i}$ with $c_{i} \in \mathbb{C}$.
+By \eqref{eq:16-2}, we have
+\begin{equation}
+  \label{eq:16-3}
+  [H, E^{\alpha}] = \alpha(H) E^{\alpha}
+\end{equation}
+with $\alpha(H) = c_{i} \alpha^{i} \in \mathbb{C}$.
+
+\begin{definition}[]
+  \label{def:roots}
+  The eigenvalues $\alpha$ are called the \emph{roots} of the Lie algebra. 
+\end{definition}
+
+Each root determines a \emph{linear map} $\alpha \colon \mathfrak{h} \to \mathbb{C}$. We should think of $\alpha$ as an element of $\mathfrak{h}^*$, which is the dual space to $\mathfrak{h}$.
+In general, we have a problem of degenerate eigenvalues.
+In a full proof of the Cartan construction, one can prove the following:
+\begin{claim}
+  The roots are non-degenerate if $\mathfrak{g}$ is simple; each root corresponds to precisely one of the step generators $E^{\alpha}$.
+\end{claim}
+We will assume this from now on.\footnote{A more complete story is given by Fuchs and Schweigert.}
+This means that the set $\Phi$ of roots of the Lie algebra must consist of $d-r$ distinct elements of $\mathfrak{h}^*$. Here $d = \dim(\mathfrak{g})$ and $r = \dim(\mathfrak{h})$.
+\begin{definition}[]
+  The \emph{Cartan-Weyl basis} is $B = \left\{ H^{i} \mid i=1, \dots, r \right\} \cup \left\{ E^{\alpha} \mid \alpha \in \Phi \right\}$.
+\end{definition}
+By Cartan's theorem, if $\mathfrak{g}$ is simple, then the Killing form with normalisation $N$,
+\begin{equation}
+  \label{eq:16-4}
+  \kappa(X, Y) = \frac{1}{N} \Tr[ad_X \circ ad_Y],
+\end{equation}
+is non-degenerate.
+We will always assume $\mathfrak{g}$ is simple from now on.
+Let us evaluate $\kappa$ in the Cartan-Weyl basis.
+\begin{claim}
+  \begin{enumerate}
+    \item $\forall H \in \mathfrak{h}$, $\forall \alpha \in \Phi$, we have $\kappa(H, E^{\alpha}) = 0$
+    \item $\forall \alpha, \beta \in \Phi$, such that $\alpha + \beta \neq 0$, we have $\kappa(E^{\alpha}, E^{\beta}) =0$
+    \item non-degeneracy of $\kappa$ then implies that $\forall H \in \mathfrak{h}$, $\exists H' \in \mathfrak{h}$ such that $\kappa(H, H') \neq 0$.
+  \end{enumerate}
+\end{claim}
+\begin{proof}[Proof of 1]
+  \item For any $H' \in \mathfrak{h}$, we use the relation \eqref{eq:16-3} to write
+    \begin{equation}
+      \alpha(H') \kappa(H, E^{\alpha}) = \kappa(H, [H', E^{\alpha} ])
+    \end{equation}
+    Using the invariance \eqref{eq:killing-invariance} of the Killing form, this becomes
+    \begin{align}
+      \alpha(H') \kappa(H, E^{\alpha}) &= \kappa ([H, H'], E^{\alpha})\\
+       &= \kappa (0, E^{\alpha}) = 0
+    \end{align}
+    \begin{equation}
+      \alpha(H') \neq 0 \quad \implies \quad \kappa(H, E^{\alpha}) = 0.
+    \end{equation}
+\end{proof}
+\begin{proof}[Proof of 2]
+  For all $H' \in \mathfrak{h}$, we have
+  \begin{align}
+    [\alpha(H') + \beta(H')] \kappa(E^{\alpha}, E^{\beta}) &\stackrel{\eqref{eq:16-3}}{=} \kappa([H', E^{\alpha}], E^{\beta}) + \kappa(E^{\alpha}, [H', E^{\beta}]) \\
+							   &\stackrel{\eqref{eq:killing-invariance}}{=} 0
+  \end{align}
+  Nor for all $\alpha,\beta \in \Phi$ such that $\alpha + \beta \neq 0$, we have 
+  \begin{equation}
+    \alpha(H') + \beta(H') \neq 0 \text{ for some } H' \quad \implies \quad \kappa(E^{\alpha}, E^{\beta}) = 0.
+  \end{equation}
+\end{proof}
+\begin{proof}[Proof of 3]
+  For some $H \in \mathfrak{h}$, assume for contradiction that $\kappa(H, H') = 0$, $\forall H' \in \mathfrak{h}$. From 1, $\kappa(H, E^{\alpha}) = 0$ for all $\alpha \in \Phi$. This means that
+  \begin{equation}
+    \kappa(H, X) = 0 \quad \forall X \in \mathfrak{g} \quad \implies \quad \kappa \text{ degenerate}.
+  \end{equation}
+  This is a contradiction.
+\end{proof}
+The third statement implies that $\kappa$ is a non-degenerate inner product on $\mathfrak{h}$
+\begin{equation}
+  \kappa(H, H') = \kappa^{ij} c_{i} c'_{j},
+\end{equation}
+where $H = c_{i} H^{i}$ and $H' = c_{i}' H^{i}$.
+This means that $\kappa^{ij} = \kappa(H^{i}, H^{j})$ is an invertible $r \times r$ matrix. Explicitly, there exists an inverse matrix $\kappa^{-1}$ such that $(\kappa^{-1})_{ij} \kappa^{jk} = \delta^{k}_{i}$.
+This inverse matrix $\kappa^{-1}$ defines a non-degenerate inner product on the dual space $\mathfrak{h}^*$.
+This is where the roots live! Suppose we have roots $\alpha, \beta \in \Phi$ such that
+\begin{equation}
+  [H^{i}, E^{\alpha}] = \alpha^{i} E^{\alpha}, \qquad [H^{i}, E^{\beta}] = \beta^{i} E^{\beta}.
+\end{equation}
+We then define an inner product
+\begin{equation}
+  \label{eq:16-6}
+  \boxed{(\alpha, \beta) \coloneqq (\kappa^{-1})_{ij} \alpha^{i} \beta^{j}}
+\end{equation}
+\begin{claim} \label{claim:16-inverse-root-is-root}
+  If $\alpha \in \Phi$ is a root, then $-\alpha \in \Phi$ is too and $\kappa(E^{\alpha}, E^{-\alpha}) \neq 0$.
+\end{claim}
+\begin{proof}
+  \begin{description}
+    \item[From 1:] $\kappa(E^{\alpha}, H) = 0 \quad \forall H \in \mathfrak{h}$
+    \item[From 2:] $\kappa(E^{\alpha}, E^{\beta}) = 0 \quad \forall \beta \in \Phi$ with $\alpha \neq -\beta$
+  \end{description}
+  Hence, unless $-\alpha \in \Phi$ and $\kappa(E^{\alpha}, E^{-\alpha}) \neq 0$, we have $\kappa(E^{\alpha}, X) = 0$ for all elements $X \in \mathfrak{g}$, which would mean that $\kappa$ is degenerate, being a contradiction.
+\end{proof}
+
+\section{Algebra in Cartan-Weyl basis}%
+\label{sec:algebra_in_cartan_weyl_basis}
+
+So far, we have the following brackets:
+\begin{align}
+  [H^{i}, H^{j}] &= 0 \quad \forall i , j = 1, \dots, r \\
+  [H^{i}, E^{\alpha}] &= \alpha^{i} E^{\alpha} \quad \alpha \in \Phi.
+\end{align}
+It remains to evaluate $[E^{\alpha}, E^{\beta}] \quad \forall \alpha, \beta \in \Phi$.
+We can use the Jacobi identity (Def.~\ref{def:lie_algebra})
+\begin{align}
+[H^{i}, [E^{\alpha}, E^{\beta}]] &= [E^{\alpha}, [E^{\beta}, H^{i}]] - [E^{\beta}, [H^{i}, E^{\alpha}]] \\
+				   &\stackrel{\eqref{eq:16-3}}{=} (\alpha^{i} + \beta^{i}) [E^{\alpha}, E^{\beta}]
+\end{align}
