@@ -1,0 +1,148 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 19: November 27}
+
+\section{Energy Conservation}%
+\label{sec:energy_conservation}
+
+\begin{figure}[tbhp]
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.73\columnwidth}
+    \input{lectures/l19f1.pdf_tex}
+    \caption{Flat space}
+    \label{fig:l19f1}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l19f2.pdf_tex}
+    \caption{Curved space}
+    \label{fig:l19f2}
+  \end{minipage}
+\end{figure}
+
+In flat space, currents and the energy-momentum tensor obey
+\begin{equation}
+  \partial_{\mu} J^{\mu} = 0 \quad \text{and} \quad  \partial_{\mu} T^{\mu\nu} = 0.
+\end{equation}
+\begin{claim}
+  We can define conserved charges
+  \begin{equation}
+    Q(\Sigma) = \int_{\Sigma} \dd[3]{x} J^0 \quad \text{and} \quad P^{\mu}(\Sigma) = \int_{\Sigma} \dd[3]{x} T^{0\mu}
+  \end{equation}
+\end{claim}
+\begin{proof}
+  There are two terms from the boundaries.
+  \begin{align}
+    0 &= \int_V \dd[4]{x} \partial_{\mu} J^{\mu} \\
+      &= \Delta Q(\Sigma) + \int_B \dd[3]{x} n^{i} J_{i},
+  \end{align}
+  where $n^{i}$ is normal to $B$.
+
+  If there is no current leaking out of $B$, meaning $n_{i}J^{i} = 0$ on $B$, then $\Delta Q(\Sigma) = 0$. Exactly the same arguments hold for $P^{\mu}(\Sigma)$.
+\end{proof}
+
+In curved spacetime, we have
+\begin{equation}
+  \nabla_{\mu} J^{\mu} = 0 \quad \text{and} \quad \nabla_{\mu} T^{\mu\nu} = 0.
+\end{equation}
+
+For $J^{\mu}$, we have a similar story
+\begin{align}
+  0 &= \int_V \dd[4]{x} \sqrt{-g} \nabla_{\mu} J^{\mu} \\
+  &= \int_{\partial V} \dd[3]{x} \sqrt{\abs{\gamma}} n_{\mu} J^{\mu},
+\end{align}
+where $\partial V = \Sigma_1 \cup \Sigma_2 \cup B$.
+
+If $n_{\mu} J^{\mu} = 0$ on $B$, no matter which cylinder we choose in \ref{fig:l19f2}, then we have charge conservation
+ \begin{equation}
+  Q(\Sigma_1) = Q(\Sigma_2),
+\end{equation}
+where $Q(\Sigma) = \int_{\Sigma} \dd[3]{x} \sqrt{\abs{\gamma}} n_{\mu} J^{\mu}$ .
+So charge conservation in curved space is just like in flat space!
+
+This same argument does not work for the stress-energy tensor $T^{\mu\nu}$! 
+If we try to repeat the same argument, we now have
+\begin{equation}
+  0 = \int_V \dd[4]{x} \sqrt{-g} \nabla_{\mu} T^{\mu\nu}.
+\end{equation}
+There is a hanging index $\mu$. And there is no divergence theorem for objects of this type.
+
+Instead, redoing the same derivation, we find that
+\begin{equation}
+  \label{eq:19-1}
+  \sqrt{-g} \nabla_{\mu} T^{\mu\nu} = 0 \quad \iff \quad \partial_{\mu} (\sqrt{-g} T^{\mu\nu}) = -\sqrt{-g} \Gamma^{\nu}_{\mu\rho} T^{\mu\rho}.
+\end{equation}
+
+We have seen this before; this term looks like a driving force, which roughly speaking means that $T^{0\mu}$ is \emph{not} conserved.
+Note that covariant conservation is not enough to give actual conservation.
+
+Intuitively, the fields in a generic spacetime, with energy $T^{\mu\rho}$ slosh around. Spacetime reacts to this, emitting gravitational waves, which takes away energy from the energy in the fields.
+Roughly speaking, the extra term can be viewed as energy of the fields seeping into the gravitational field of spacetime itself.
+
+There is one situation where we can make progress:
+Suppose we have a spacetime that has a Killing vector $K$. We can then define the following current, built from the stress-energy tensor
+ \begin{equation}
+  J^{\mu}_T \coloneqq K_{\nu} T^{\mu\nu}.
+\end{equation}
+This current is then conserved, since
+\begin{equation}
+  \nabla_{\mu} J^{\mu}_T = (\nabla_{\mu} K_{\nu}) T^{\mu\nu} + K_{\nu} \nabla_{\mu} T^{\mu\nu} = 0.
+\end{equation}
+The first term vanishes by the Killing equation (imprinting the symmetry of $T^{\mu\nu}$ onto $\nabla_{\mu} K_{\nu}$) and the second term is zero due to covariant conservation of $T^{\mu\nu}$ .
+
+We can then define the conserved charge
+\begin{equation}
+  Q_T(\Sigma) = \int_{\Sigma} \dd[3]{x} \sqrt{\abs{\gamma}} n_{\mu} J^{\mu}_T.
+\end{equation}
+If the Killing vector is timelike everywhere, $g_{\mu\nu} K^{\mu} K^{\nu} < 0$ , this can be interpreted as energy.
+
+What if there is no Killing vector? Is there some generalised energy? Can we make sense of the total energy, both in matter and in the gravitational field?
+The short answer is: no, we cannot.
+\begin{example}[]
+  Take two black holes or neutron stars. When they orbit, they will emit gravitational waves and lose energy. The orbit radii decrease in time until they hit each other. This is an example of a case in which no Killing vector exists. We should intuitively be able to define the total energy.
+  It turns out, as we will see later, that in that we case we cannot.
+\end{example}
+
+There is a longer answer however. Well actually, it will be the short version of the long answer:
+\begin{claim}
+  \label{cl:19-1}
+  There is no diffeomorphism-invariant local energy-density for the gravitational field (and therefore for the gravitational waves).
+\end{claim}
+
+In some sense we should just stop here. If it is not diffeomorphism-invariant, it is not physical.
+However, there are some things we can do. For example, people write the RHS of \eqref{eq:19-1} as the Landau-Lifshitz pseudo tensor\footnote{See Landau \& Lifshitz Volume 2 on Classical Fields}---the derivative of something.
+
+There is one case where precise statement can be made: if you are in $\mathbb{M}^n$, it makes sense to ask about the energy flux in the asymptotic part of spacetime $\mathscr{I}^+$. This is not a \emph{local} part of spacetime, and Claim \ref{cl:19-1} does not apply.
+This is called the \emph{Bondi-energy}.
+
+This is one of the differences between general relativity and other field theories.
+
+\begin{leftbar}
+  \begin{note}
+    The absence of a conserved quantity called energy does not change whether or not the Einstein equations have solutions; it just means that we will have to work much harder than before to find these solutions.
+  \end{note}
+\end{leftbar}
+
+\chapter{When Gravity is Weak}%
+\label{cha:when_gravity_is_weak}
+
+We will solve the Einstein equations perturbatively, working in `almost inertial coordinates'.
+\begin{definition}[]
+  \emph{Almost inertial coordinates} hold for spacetimes, which in some sense are close to Minkowski space:
+  \begin{equation}
+    g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu},
+  \end{equation}
+  where $\eta_{\mu\nu} \ll 1$.
+\end{definition}
+\begin{leftbar}
+  \begin{note}
+    Note that the units of $ds^2 = g_{\mu\nu} dx^{\mu} dx^{\nu}$ are contained in $dx^{\mu}$ and $g_{\mu\nu}$ are just dimensionless numbers.
+  \end{note}
+\end{leftbar}
+We think of gravity as a `spin-2' field $h_{\mu\nu}$ propagating in Minkowski space. To that end, we will raise and lower indices using the Minkowski metric $\eta_{\mu\nu}$, rather than $g_{\mu\nu}$.
+\begin{example}[]
+  $h^{\mu\nu} = \eta^{\mu\rho} \eta^{\nu\sigma} h_{\rho\sigma}$.
+\end{example}
+We will then construct a theory.

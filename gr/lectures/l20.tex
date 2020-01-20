@@ -1,0 +1,202 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 20: November 29}
+
+\section{Linearised Theory}%
+\label{sec:linearised_theory}
+
+We want to build the theory of the linear ripples $h_{\mu\nu}$.
+We work to leading order in $h_{\mu\nu}$. We have the inverse metric
+\begin{equation}
+  g^{\mu\nu} = \eta^{\mu\nu} - h^{\mu\nu},
+\end{equation}
+where again we raise indices with the Minkowski metric.
+The Christoffel symbols are
+\begin{equation}
+  \Gamma^{\sigma}_{\nu\rho} = \frac{1}{2} \eta^{\sigma\lambda}(\partial_{\nu} h_{\lambda\rho} + \partial_{\rho} h_{\nu\lambda} - \partial_{\lambda} h_{\nu\rho})
+\end{equation}
+and the Riemann tensor is
+\begin{align}
+  R\indices{^{\sigma}_{\rho\mu\nu}} &= \partial_{\mu} \Gamma^{\sigma}_{\nu\rho} - \partial_{\nu} \Gamma^{\sigma}_{\mu\nu} + \underbrace{\Gamma^{\lambda}_{\nu\rho} \Gamma^{\sigma}_{\mu\lambda} - \Gamma^{\lambda}_{\mu\rho} \Gamma^{\sigma}_{\nu\lambda}}_{\mathclap{O(h^2)}}. \\
+				    &= \frac{1}{2} \eta^{\sigma\lambda} (\partial_{\mu} \partial_{\rho} h_{\nu\lambda} - \partial_{\mu} \partial_{\lambda} h_{\nu\rho} - \partial_{\nu} \partial_{\rho} h_{\mu\lambda} + \partial_{\nu} \partial_{\lambda} h_{\mu\rho}).
+\end{align}
+It is very easy working in linearised theory; all the hard stuff disappears.
+The Ricci tensor is
+\begin{equation}
+  \label{eq:20-riem}
+  R_{\mu\nu} = \frac{1}{2} (\partial^{\rho} \partial_{\mu} h_{\nu\rho} + \partial^{\rho} \partial_{\nu} h_{\mu\rho} - \Box h_{\mu\nu} - \partial_{\mu} \partial_{\nu} h),
+\end{equation}
+and finally the Ricci scalar is
+\begin{equation}
+  R = \partial^{\mu} \partial^{\nu} h_{\mu\nu} - \Box h.
+\end{equation}
+We have introduced two new objects
+\begin{align}
+  \Box &= \partial_{\mu} \partial^{\mu} \\
+  h &= h_{\mu}^{\mu} = \eta^{\mu\nu} h_{\mu\nu}.
+\end{align}
+
+Finally, the Einstein tensor
+\begin{equation}
+  G_{\mu\nu} = \frac{1}{2} \left[ \partial^{\rho} \partial_{\mu} h_{\nu\rho} + \partial^{\rho} \partial_{\nu} h_{\mu\rho} - \Box h_{\mu\nu} - \partial_{\mu} \partial_{\nu} h - (\partial^{\rho} \partial^{\sigma} h_{\rho\sigma} - \Box h) h_{\mu\nu} \right].
+\end{equation}
+This obeys the linearised Bianchi identity $\partial_{\mu} G^{\mu\nu} = 0$ , which is the equation of motion in the absence of matter.
+
+In this case, we did not start with the action. However, we could have start with an action which does derive this equation of motion.
+
+\subsection{The Fierz-Pauli Action}%
+\label{sub:the_fierz_pauli_action}
+
+The Einstein equation $G_{\mu\nu} = 8 \pi G T_{\mu\nu}$  follows from the following action by Fierz and Pauli, written down in the 1930s, 
+\begin{equation}
+  S_{\text{FP}} = \int \dd[4]{x} \frac{1}{8\pi G} \left[ - \frac{1}{4} \partial_{\rho} h_{\mu\nu} \partial^{\rho} h^{\mu\nu} + \frac{1}{2} \partial_{\rho} h_{\mu\nu} \partial^{\nu} h^{\rho\mu} + \frac{1}{4} \partial_{\mu} h \partial^{\mu} h - \frac{1}{2} \partial_{\nu} h^{\mu\nu} \partial_{\mu} h \right] + h_{\mu\nu} T^{\mu\nu}
+\end{equation}
+
+The claim is twofold: if we vary this action w.r. t $h$ , we get the Einstein equation. The hard part of the claim is that $S_{\text{FP}}$  arises from the Einstein-Hilbert action $S_{\text{EH}}$  by expanding to $O(h^2)$ .
+
+In particular, we have to include a lot of the second order terms (for example in the Riemann tensor).
+
+We should think about this in very much the same way as we think of the Maxwell action; expanding out $S_{\text{MW}}$  in terms of $A$ rather than  $F$, and also having a term that couples to the current.
+
+This action has a particular symmetry.
+
+\subsection{Gauge Symmetry}%
+\label{sub:gauge_symmetry}
+
+Under an infinitesimal diffeomorphism $x^{\mu} \mapsto x^{\mu} - \xi^{\mu} (x)$, the metric changes as 
+\begin{equation}
+  \delta g_{\mu\nu} = (\mathcal{L}_{\xi} g)_{\mu\nu} = \nabla_{\mu} \xi_{\nu} + \nabla_{\nu} \xi_{\mu}.
+\end{equation}
+Assuming that $\xi^{\mu}$ are `small', in the same sense that $h$ is small, we view this as a gauge transformation of $g^{\mu\nu}$ which, to leading order, is
+\begin{equation}
+  h_{\mu\nu} \mapsto h_{\mu\nu} + \partial_{\mu} \xi_{\nu} + \partial_{\nu} \xi_{\mu}.
+\end{equation}
+In particular, the covariant derivatives of the Christoffel symbols, which depend on $h$, are dropped since they are of order $O(h \xi)$.
+
+\begin{exercise}
+  You can check that the Riemann tensor $R\indices{^{\mu}_{\rho\nu\sigma}}$ given by \eqref{eq:20-riem} and therefore also $S_{\text{FP}}$ are both invariant under gauge transformations.
+\end{exercise}
+
+\begin{leftbar}
+  \begin{note}
+    We assume that the derivatives $\partial \xi$ are also small.
+  \end{note}
+\end{leftbar}
+
+\begin{remark}
+  There is a very nice story here, dating back to Feynman and Weinberg that goes beyond this: let us think about which terms we can act to this action that respect this gauge symmetry.
+  You cannot have a mass term; you need to have derivatives of $h$. Moreover, any term you add forces you to add more terms. In the end, you will end up adding up infinitely many terms, which reconstitute the expansion of the Eintein-Hilbert action.
+  The claim is that there is essentially a unique way to do this: the Eintein-Hilbert action.
+
+  This is the statement that a massless spin-$2$ particle needs gauge-invariance to make sense of the quantum theory and if you want interactions, you are obliged to come out with general relativity.
+\end{remark}
+
+We use gauge symmetry to choose a gauge; we pick \emph{de Donder \texttt{(dD)} gauge}, given by
+\begin{equation}
+  \partial^{\mu} h_{\mu\nu} - \frac{1}{2} \partial_{\nu} h = 0.
+\end{equation}
+
+This is analogous to Lorentz gauge $\partial_{\mu} A^{\mu} = 0$ in electromagnetism.
+
+\begin{remark}
+  In the full non-linear theory, the generalisation of \texttt{dD} is something quite elegant: $g^{\mu\nu} \Gamma^{\rho}_{\mu\nu} = 0$.
+
+  These are both 4 equations. Notice that it not a tensor equation! But this is exactly what you want for gauge fixing.
+
+  In \texttt{dD} gauge, the linearised Einstein equations become
+  \begin{equation}
+    \Box h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} \Box h = -16 \pi G T_{\mu\nu}
+  \end{equation}
+  \begin{definition}[]
+    Define $\overline{h}_{\mu\nu} = h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} h$ 
+  \end{definition}
+  We then have $\overline{h} = \eta_{\mu\nu} \overline{h}^{\mu\nu} = -h$ and so $h_{\mu\nu} = \overline{h}_{\mu\nu} - \frac{1}{2} \overline{h}\eta_{\mu\nu}$. 
+  And \begin{equation}\Box \overline{h}_{\mu\nu} = - 16 \pi G T^{\mu\nu}.\end{equation}
+\end{remark}
+
+\subsection{The Newtonian Limit}%
+\label{sub:the_newtonian_limit}
+
+Our aim will be to rederive Newtonian gravity in this framework.
+Consider stationary matter with $T_{00} = \rho(\vb{x})$. Then $\Box = -\partial_t^2 + \nabla^2$ and we look for solutions with $\partial / \partial t = 0$. 
+\begin{equation}
+  \nabla^2 \overline{h}_{00} = -16 \pi G \rho(\vb{x}) \quad \text{and} \quad \nabla^2 \overline{h}_{0i} = \nabla^2 \overline{h}_{ij} = 0.
+\end{equation}
+These have the solution $\overline{h}_{0i} = \overline{h}_{ij} = 0$ and $\overline{h}_{00} = - 4 \Phi (\vb{x})$, which $\Phi$ the Newtonian gravitational potential, defined by solvint the Poisson equation
+\begin{equation}
+  \nabla^2 \Phi = 4 \pi G \rho(\vb{x}).
+\end{equation}
+
+\begin{remark}
+  We are hiding the speed of light $c = 1$. By the time we put the speed of light in, the energy density $\rho$ becomes the mass density.
+\end{remark}
+\begin{remark}
+  This looks so similar to electromagnetism, since it is in some sense the only thing we could get.
+  There are quantum mechanical arguments, but classically, gauge symmetry allows you to have a well-defined intial value problem.
+\end{remark}
+
+This then gives $h_{00} = - 2 \Phi$, $h_{ij} = -2 \Phi \delta_{ij}$ , $h_{0i} = 0$ . 
+The metric then becomes
+\begin{equation}
+  ds^2 = -(1 + 2 \Phi) dt^2 + (1 - 2 \Phi) d\vb{x}^2.
+\end{equation}
+
+\begin{example}[]
+  Suppose that the mass-density was a point mass $m$ sitting at the origin.
+  We have $\Phi = - G M /r$ as the solutions to the Poisson equation. The metric then agrees with the Taylor equation of the Schwarzschild metric.
+\end{example}
+
+\begin{remark}
+  You can argue in intuitive terms that the factor of two in $-(1 + 2 \Phi)dt^2$ has to be there. These arguments do not tell you about the factor in $d\vb{x}^2$; they follow from Einstein's equations.
+  In the Newtonian limit, you get a lightbending answer that is off by a factor of two from the results of GR.
+  The reason that this factor of two is the additional factor $(1 - 2\Phi)$ in front of $d\vb{x}^2$.
+
+  This fact is also how Einstein found the factor of two before the full Schwarzschild metic was found; you don't need the full Schwarzschild metric to describe lightbending.
+\end{remark}
+
+\section{Gravitational Waves}%
+\label{sec:gravitational_waves}
+
+You may have heard tangentially: gravitational waves were discovered a couple of years ago. They are promising to revolutionise physics, so it might be a good idea to see how they are derived.
+
+There are wave solutions in GR obeying
+\begin{equation}
+  \Box \overline{h} _{\mu\nu} = 0.
+\end{equation}
+
+The solution is $\overline{h}_{\mu\nu} = \Re(H_{\mu\nu} e_{i k_{\rho} x^{\rho}})$, where $H_{\mu\nu}$ is a complex, symmetric matrix that tells us about the polarisation of the gravitational waves.
+This solves the wave equation providing $k_{\mu} k^{\mu} = 0$. In other words, the wavevector of these waves is null, which means that gravitational waves travel at the speed of light.
+
+To derive this equation, we had to be in \texttt{dD} gauge. We have to make sure that this solution agrees with that gauge choice.
+\begin{claim}
+  This satisfies \texttt{dD} gauge $\partial_{\mu} \overline{h}_{\mu\nu} = 0$, provided that $k^{\mu} H_{\mu\nu} = 0$.
+\end{claim}
+
+\begin{remark}
+  Again, analogously to electromagnetism, this means that the polarisation is transverse to the direction of propagation.
+\end{remark}
+
+We can make further gauge transformations that leave us in \texttt{dD} gauge
+\begin{align}
+  \eta_{\mu\nu} &\to \eta_{\mu\nu} + \partial_{\mu} \xi_{\nu} + \partial_{\nu} \xi_{\mu} \\
+  \implies \overline{h}_{\mu\nu} &\to \overline{h}_{\mu\nu} + \partial_{\mu} \xi_{\nu} +  \partial_{\nu} \xi_{\mu} - \partial^{\rho} \xi_{\rho} \eta_{\mu\nu}.
+\end{align}
+
+This leaves us in $dD$ gauge, provided that $\Box \xi_{\mu} = 0$.
+
+\begin{remark}
+  This means that not all of these polarisations are physical.
+\end{remark}
+
+We can take, say, $\xi_{\mu} = \lambda_{\mu} e^{i k_{\rho} x^{\rho}}$. This shifts the polarisation vector
+\begin{equation}
+  H_{\mu\nu} \to H_{\mu\nu} + i (k_{\mu} \lambda_{\nu} + k_{\nu} \lambda_{\mu} - k^{\rho} \lambda_{\rho} \eta_{\mu\nu}).
+\end{equation}
+
+\begin{claim}
+  We can choose $\lambda_{\mu}$ such that $H_{0\mu} = 0$ and also $H\indices{^{\mu}_{\mu}} = 0$.
+  This is the \emph{transverse-traceless (\texttt{TT}) gauge}.
+\end{claim}
+\begin{proof}
+  Problem sheet.
+\end{proof}

@@ -1,0 +1,127 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 23: December 06}
+
+\subsection{Power Radiated}%
+\label{sub:power_radiated}
+
+We want to understand how much energy is emitted in gravitational waves.
+This is a subtle subject; the definition of energy in GR is problematic.
+
+To put this into perspective, we might recall how we did this calculation in Maxwell theory.
+In electromagnetism, we compute the power by integrating the momentum carried away (or equivalently the energy flux) by the electromagnetic field through at two-sphere.
+\begin{equation}
+  \mathcal{P} = \int_{S^2} \dd[2]{S_i} T^{0i}.
+\end{equation}
+$T^{0i}$ is the \emph{Poynting vector}.
+
+We need to defined the analogue of the Poynting vector for gravitational waves.
+We define an energy-momentum tensor $t_{\mu\nu}$ for the gravitational field, which, in the linearised theory, should obey the conservation law
+\begin{equation}
+  \partial_{\mu} t^{\mu\nu} = 0.
+\end{equation}
+Unfortunately, there is no such object that is gauge invariant!
+Surely, the power emitted should be independent of the coordinates we choose.
+
+The proper way to proceed is to work in $\mathbb{M}^4$ and look at $\mathscr{I}^+$. There is a gauge invariant meaning to the amount of energy that hits $\mathscr{I}^+$ at any given time.
+A correct treatment this has to work asymptotically. This is called \emph{Bondi energy}.
+
+We will do things in a more hand-wavy and sloppy way.
+This is because we only really care about order-of-magnitude estimates.
+
+There is an obvious approach to defining $t^{\mu\nu}$. From the Fiatz-Pauli action, which can be viewed as a theory of the field $h_{\mu\nu}$ in a flat $\mathbb{M}^4$background, we can calculate the Noether current for translations in exactly the same way as you would for any other quantum field theory.
+
+The result with neither be symmetric in $\mu, \nu$, nor gauge invariant.
+This is not a surprise; the same thing happens for Maxwell theory; however for Maxwell theory we can add terms that give us both. For the Fierz-Pauli action, we can only add a term that makes it symmetric---we can not get gauge invariance.
+
+Let us take a shortcut. In \texttt{TT} gauge, with $h = 0$ and $\partial_{\mu} h^{\mu\nu} = 0$,the Fierz-Pauli action is 
+\begin{equation}
+  S_{\text{FP}} = -\frac{1}{8 \pi G} \int \dd[4]{x} \frac{1}{4} \partial_{\rho} h_{\mu\nu} \partial^{\rho} h^{\mu\nu}.
+\end{equation}
+We now just pretend that this is the action for $10$scalar fields $h^{\mu\nu}$.
+The energy density is going to be of the form
+\begin{equation}
+  t^{00} \sim \frac{1}{G} \dot{h}_{\mu\nu} \dot{h}^{\mu\nu} + (\text{gradient terms}).
+\end{equation}
+For wave solutions, the gradient term $\nabla h^{\mu\nu} \cdot \nabla h^{\mu\nu}$contributes to the same.
+
+Previously, we had the solutions $\overline{h}_{ij} = \frac{2G}{r} \ddot{I}_{ij}$. This is not in \texttt{TT} gauge. If we but it in this form, we get
+\begin{equation}
+  h_{ij} \sim \frac{G}{r} \ddot{\mathcal{Q}}_{ij},
+\end{equation}
+with $\mathcal{Q}_{ij} = I_{ij} - \frac{1}{3} I_{kk} \delta_{ij}$is the traceless part of the quadrupole.
+This suggests that the energy density in gravitational waves far from the source is
+\begin{equation}
+  t^{00} \sim \frac{G}{r^2} \dddot{\mathcal{Q}}_{ij}^2.
+\end{equation}
+Integrated over a sphere, this suggests that the power emitted is
+\begin{equation}
+  \mathcal{P} \sim G \dddot{\mathcal{Q}}^2_{ij}.
+\end{equation}
+In fact, the correct result is $\mathcal{P} = \frac{G}{5} \dddot{Q}^2_{ij}$, using the Bondi energy at $\mathscr{I}^+$ .
+\begin{leftbar}
+  \begin{note}
+    With squared quantities, the indices are contracted.
+  \end{note}
+\end{leftbar}
+
+\begin{remark}
+  The problem with this derivation is that at every single step we obtain things that depend on the coordinates.
+  In fact, if you do things more carefully, you get this term and a bunch of other stuff that depends on the coordinates we are working with. This other stuff vanishes when you take the limit to $\mathscr{I}^+$.
+\end{remark}
+
+\begin{remark}
+  There are multiple other ways of getting this. One is the Landau-Lifshitz pseudo-tensor.
+\end{remark}
+
+\begin{remark}
+  The fifth is important; there was a nobel prize awarded to the Holst-Taylor binary.
+  Long before LIGO existed, we could see the energy being emitted by the fact that neutron star orbits were decaying.
+\end{remark}
+
+\begin{example}[]
+  A binary system, two objects that are orbiting each other, with centrifugal force $\omega^2 R \sim GM / R^2$.
+  The quadrupole $\mathcal{Q} \sim M R^2$.This means that the third time derivative goes like $\dddot{\mathcal{Q}} \sim \omega^3 M R^2$. The power emitted is
+  \begin{equation}
+    \mathcal{P} \sim G \dddot{\mathcal{Q}}^2 \sim \frac{G^4M^5}{R^5}.
+  \end{equation}
+  Since we want actual numbers, we have to put $c$ back in. The above formula is actually correct, however, the Schwarzschild radius for a black hole has a factor $R_S = \frac{2GM}{c^2}$. 
+  \begin{equation}
+    \label{eq:23-1}
+    \mathcal{P} = \left(\frac{R_s}{R}\right)^5 L_{\text{planck}},
+  \end{equation}
+  where the Planck luminosity is $L_{\text{planck}} = \frac{c^5}{G} \approx 3.6 \times 10^{52} Js^{-1}$.
+ To get a feel for the enormity of this, the Sun emits a luminosity $L_\odot \approx 10^{-26} L_{\text{planck}}$.
+ All the stars in the observable universe emit $L \sim 10^{-5} L_{\text{planck}}$.
+
+  Nonetheless, when two black holes collide, their distance is roughly $R \approx R_S$ and so the power they emit for that brief fraction of a second is $L \approx L_{\text{planck}}$. To say that LIGO observed violent events in an understatement.
+\end{example}
+
+\begin{example}[]
+  Two objects with different masses $M^1 \gg M^2$ have a power
+  \begin{equation}
+    \mathcal{P} \sim \frac{G^4 M_1^3 M_2^2}{R^5}.
+  \end{equation}
+  We can now start calculating the gravitational waves emitted by other things.
+  For Jupiter, its mass is $M^2 \approx 10^{-3} M_\odot$ and its orbit is $R\approx 10^8 km$.
+  The power emitted $\mathcal{P} \approx 10^{-44} L_{\text{planck}} = 10^{-18} L_\odot$, which is negligible. What is killing this here is the factor of $5$ is the exponent of \eqref{eq:23-1}.
+\end{example}
+
+\begin{example}[]
+  Suppose that hit up one of the excellent nightclubs in Cambridge to celebrate the end of Michaelmas term.
+  You give it everything you have and wave your arms wildly. How many gravitational waves do you emit?
+  $\mathcal{Q} \approx 1 kg m^2$  and $\dddot{\mathcal{Q}} \approx 1 kg m^2 s^{-3}$ . The power emitted while you dance is
+  \begin{equation}
+    \mathcal{P} \sim \frac{G \dddot{\mathcal{Q}}^2}{c^5} \approx 10^{-52} J s^{-1}.
+  \end{equation}
+  This is a really low amount. To see how low, consider the next example.
+\end{example}
+
+\begin{example}[]
+  There is a lower bound to the gravitational wave power you can emit. A single graviton has $E = \hbar \omega$ so if $\omega = 1 s^{-1}$.
+  Therefore $E \approx 10^{-34} J$. If you want to dance until you emit a single graviton, you should wave your arms for
+  \begin{equation}
+    T \approx 10^{18}s \approx 10 \text{ billion years}.
+  \end{equation}
+  This is one of the examples that exemplify that quantum gravity will never be important in our lifetimes.
+\end{example}

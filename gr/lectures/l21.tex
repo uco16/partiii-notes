@@ -1,0 +1,122 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 21: December 02}
+
+This gauge has the advantage that the trace of $\overline{h}_{\mu\nu}$ vanishes, which means that $\overline{h}_{\mu\nu} = h_{\mu\nu}$.
+
+The number of polarisations is $10 - 4 - 4 = 2$, where the last four are from the residual gauge transformations.
+Fortuitously, this is exactly the same number of polarisations of the photon.
+This is special about $4$ dimensions and does not hold in arbitrary dimensions.
+
+\begin{example}[]
+  Take a wave moving in the $z$ -direction with null wavevector
+  \begin{equation}
+    k^{\mu} = (\omega, 0, 0, \omega).
+  \end{equation}
+  We can interpret $\omega$  as the frequency or wavenumber.
+  The \texttt{dD} gauge tells us that the polarisation is transverse to the direction, $k^{\mu} H_{\mu\nu} = 0$ , which means that the polarisation has to satisfy $H_{0\nu} + H_{3 \nu} = 0$ . Then, in the \texttt{TT} gauge, the polarisation has just two components:
+  \begin{equation}
+    H_{\mu\nu} = 
+    \begin{pmatrix}
+     0 & 0 & 0 & 0 \\
+     0 & H_+ & H_\times & 0 \\
+     0 & H_\times & -H_+ & 0 \\
+     0 & 0 & 0 & 0 \\
+    \end{pmatrix}.
+  \end{equation}
+\end{example}
+
+How do we make gravitational waves in the first place? If we have a gravitational wave, how can we tell? What effect does it have on matter?
+We will address the first question in a later section, but for now we will deal with the latter ones.
+
+\subsection{How to Measure a Gravitational Wave}%
+\label{sub:how_to_measure_a_gravitational_wave}
+
+Consider a family of geodesics $x^{\mu} (\tau; s)$,  where $\tau$  is an affine parameter for the geodesic and $s$  labels different geodesics.
+In other words, we have a $4$-velocity $u^{\mu} = \left.\pdv[]{x^{\mu}}{\tau}\right\rvert_{s}$ for each geodesic and displacement $S^{\mu} = \left.\pdv[]{x^{\mu}}{s}\right\rvert_{\tau}$ .
+
+Take particles in flat space $u^{\mu} = (1, 0, 0, 0)$. We use the geodesic deviation equation \eqref{eq:geodesic_deviation}
+\begin{equation}
+  \dv[2]{S^{\mu}}{\tau} = R\indices{^{\mu}_{\rho\sigma\nu}} u^{\rho} u^{\sigma} S^{\nu} \quad \implies \quad \dv[2]{S^{\mu}}{t} = R\indices{^{\mu}_{00\nu}} S^{\nu},
+\end{equation}
+Where we can replace $\tau$  with $t$  up to $O(h)$ . Using the previous result for linearised Riemann, we get
+\begin{equation}
+  \dv[2]{S^{\mu}}{t} = \frac{1}{2} \frac{\partial^2 h\indices{^{\mu}_{\nu}}}{\partial t^2} S^{\nu}.
+\end{equation}
+So for a wave in the $z$ -direction, we have
+\begin{equation}
+  \dv[2]{S^0}{t} = \dv[2]{S^3}{t} = 0.
+\end{equation}
+So all the action happens in the $(x-y)$-plane, which is transverse to the direction of motion.
+To make the equations a bit simpler, we will focus on the particular plane $z = 0$.
+
+We have two polarisations to look at.
+
+\begin{description}
+  \item[$H_+$ polarisation] We set $H_\times = 0$. This means that we have
+    \begin{align}
+      \dv[2]{S^1}{t} &= - \frac{\omega^2}{2} H_+ e^{i \omega t} S^1 \\
+      \dv[2]{S^2}{t} &= + \frac{\omega^2}{2} H_+ e^{i \omega t} S^2
+    \end{align}
+    The solutions to linear order in $h$ are
+    \begin{align}
+      S^1 (t) &= S^1 (0) \left[1 + \frac{1}{2} H_+ e^{i \omega t} + \dots\right] \\
+      S^2 (t) &= S^2 (0) \left[1 - \frac{1}{2} H_+ e^{i \omega t} + \dots\right] \\
+    \end{align}
+    \begin{remark}
+      The physical solution is the real part of this.
+    \end{remark}
+    $S^{\mu}$ is the displacement to neighbouring geodesics; when they move in in $x^1$, they move out in  $x^2$.
+    If we have a bunch of particles originally arranged on a circle, we obtain the time evolution depicted in %F1
+    \ref{fig:l21f1}.
+     \begin{figure}[tbhp]
+      \centering
+      \def\svgwidth{0.4\columnwidth}
+      \input{lectures/l21f1.pdf_tex}
+      \caption{Time evolution of $H_+$ polarisation gravitational waves.}
+      \label{fig:l21f1}
+    \end{figure}
+
+  \item[$H_\times$ polarisation] We have $H_+ = 0$. Then
+    \begin{align}
+      \dv[2]{S^1}{t} &= - \frac{\omega^2}{2} H_\times e^{i \omega t} S^2 \\
+      \dv[2]{S^2}{t} &= - \frac{\omega^2}{2} H_\times e^{i \omega t} S^1
+    \end{align}
+    The solutions to linear order in $h$ are
+    \begin{align}
+    S^1 (t) &= S^1 (0) + \frac{1}{2} S^2(0) H_\times e^{i \omega t} + \dots \\
+    S^2 (t) &= S^1(0) + \frac{1}{2} S^1(0) H_+ e^{i \omega t} + \dots \\
+    \end{align}
+    Define $S_\pm = S^1 \pm S^2$. It is then the same as before, but rotated by  $45^\circ$. This is illustrated in %F2
+     \begin{figure}[tbhp]
+      \centering
+      \def\svgwidth{0.4\columnwidth}
+      \input{lectures/l21f2.pdf_tex}
+      \caption{Time evolution of $H_\times$ polarisation gravitational waves.}
+      \label{fig:l21f2}
+    \end{figure}
+\end{description}
+
+Gravitational wave detectors, such as LIGO, have two perpendicular arms. As a wave passes, the change in the length is
+\begin{equation}
+  L' = L\left(1 \pm \frac{H_{+}}{2}\right) \quad \implies \quad \frac{\delta L}{L} = \frac{H_+}{2}
+\end{equation}
+If the wave passes at an angle $\theta$, there are various $\cos\theta$ factors we have to take into account.
+We will see shortly that astrophysical sources give $H_+ \sim 10^{-21}$. This is why we can do the linearised analysis in the first place. We only need quadratic order terms at precisions of $~ 10^{-42}$.
+For arms of length $L \sim 3$km, the change in the length of the arms is $\delta \sim 10^{-18}$m. This is small! But this is what LIGO measured!
+
+With LISA, LIGO will be put into space, and we will have $L \sim 3 \times 10^3$km and $\delta L = 10^{-12}$m.
+
+\subsection*{An Aside}%
+
+You could ask yourself: is there actually an exact solution to the Einstein equations that contains gravitational waves? This is quite academic in nature, since the difference in predictions is so small. However, it is nice to know that there is a class of exact gravitational wave solutions, called \emph{Brinkmann metrics}.
+They take the following form
+\begin{equation}
+  ds^2 = -du dr + dx^a dx^{a} + H_{ab} (u) x^{a} x^{b} du^2,
+\end{equation}
+where $u = t - z$ and $v = t + z$ are lightcone coordinates. $z$ will be the direction in which the wave travels.
+Moreover, $a = 1, 2$ and $H_{ab}(u)$ are arbitrary functions with a traceless matrix, $H\indices{^{a}_{a}} = 0$.
+
+This is constant if $t$ and $z$ increase at the same time; the profile is carried forward, corresponding to wave propagation.
+
+This is in slightly different coordinates to what we have been working with, so linearising this does not quite give the metrics that we have been working with.

@@ -1,0 +1,166 @@
+% lecture notes by Umut Özer
+% course: gr
+\lhead{Lecture 22: December 04}
+
+\subsection{Making Waves}%
+\label{sub:making_waves}
+
+The discussion of the production of gravitational waves will very much parallel the production of electromagnetic waves.
+You generate electromagnetic waves by shaking charges; you generate gravitational waves by shaking mass.
+In fact, the punchline of the previous subsection is that this is actually inaccurate in almost all circumstances. However, for now this is a good approximation.
+
+We want to solve
+\begin{equation}
+  \label{eq:22-1}
+  \Box \overline{h}_{\mu\nu} = -16\pi G T_{\mu\nu}.
+\end{equation}
+
+Everything is done in linearised analysis, meaning that the right hand side  must be small in an appropriate sense.
+As we go on we will half-see what this means. In some sense we will deal with slowly moving things with low energy.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l22f1.pdf_tex}
+  \caption{}
+  \label{fig:l22f1}
+\end{figure}
+
+Consider some interesting region $\Sigma$ of space with an extend $d$, illustrated in Figure \ref{fig:l22f1} in which  $T_{\mu\nu} \neq 0$ . This could be two neutron stars orbiting each other.
+Then there is a whole bunch of empty space $r \gg d$  between us and $\Sigma$.
+\begin{leftbar}
+  \begin{note}
+    This is the same setup as when we try to understand radiation in electromagnetism (far-field approximation).
+  \end{note}
+\end{leftbar}
+
+We will solve this using Green's functions.
+Similar to the Green's function solution of electromagnetism, the solution is
+\begin{equation}
+  \overline{h}_{\mu\nu}(\vb{x}, t) = 4 G \int_\Sigma \dd[3]{x'} \frac{T_{\mu\nu}(\vb{x}', t_{\text{ret}})}{\abs{\vb{x} - \vb{x}'}},
+\end{equation} 
+with $t_{\text{ret}} = t - \abs{\vb{x} - \vb{x}'}$.
+\begin{remark}
+  This derivative $\partial_0$ is with respect to $t$, not $t_{\text{ret}}$.
+\end{remark}
+
+The equation \eqref{eq:22-1} was derived in \texttt{dD} gauge. And this solution indeed obeys the \texttt{dD} gauge condition provided that $\partial_{\mu} T^{\mu\nu} = 0$ .
+
+For $r \gg d$, 
+\begin{align}
+  \abs{\vb{x} - \vb{x}'} &\approx r - \frac{1}{r} \vb{x} \cdot \vb{x}' + \dots \\
+  \text{and} \quad \frac{1}{\abs{\vb{x} - \vb{x}'}} &\approx \frac{1}{r} + \frac{1}{r^3} \vb{x} \cdot \vb{x}' + \dots \\
+  \text{and} \quad T_{\mu\nu} ( \vb{x}', t_{\text{ret}}) &= T_{\mu\nu} (\vb{x}', t - r) + \dot{T}_{\mu\nu} ( \vb{x}' , t - r) \frac{\vb{x} \cdot \vb{x}'}{r} + \dots,
+\end{align} 
+where we need $\dot{T}_{\mu\nu}$  to be suitably small.
+At leading order, 
+\begin{equation}
+  \overline{h}_{\mu\nu} \approx \frac{4 G}{r} \int_{\Sigma} \dd[3]{x'} T_{\mu\nu}(\vb{x}', t - r)
+\end{equation}
+We get that
+\begin{equation}
+  \Rightarrow \overline{h}_{00} \approx \frac{4GE}{r} \qquad \text{with } E = \int_{\Sigma} \dd[3]{x'} T_{00} (\vb{x}', t - r).
+\end{equation}
+This is just recapitulating the Newtonian limit.
+Similarly, we have
+\begin{equation}
+  \overline{h}_{0i} \approx - \frac{4GP_i}{r} \qquad \text{with } P_i = -\int_{\Sigma} \dd[3]{x'} T_{0i} (\vb{x}', t - r).
+\end{equation}
+This is just a long-distance fall off that you would see for stationary matter, or for matter moving along way away. 
+The interesting physics comes from the following component
+\begin{equation}
+  \overline{h}_{ij} \approx \frac{4G}{r} \int_{\Sigma} \dd[3]{x'} T_{ij}(\vb{x}', t - r).
+\end{equation}
+Unlike the other two, $T_{ij}$  is not a conserved object; it is the current part of the stress-tensor rather than the charge part.
+
+To solve this integral, we perform the same manipulations as in electromagnetism. In particular, we write
+\begin{align}
+  T^{ij} &= \partial_{k} (T^{ik} x^{j}) - (\partial_{k} T^{ik})x_{j} \\
+	 &= \partial_{k} (T^{ik} x^{j}) + \partial_0 T^{0i} x^{j},
+\end{align}
+where we rewrote the second term by using the fact that the energy-momentum tensor is conserved $\partial_{\mu} T^{\mu\nu} = 0$ .
+Symmetrising over $i$  and $j$ , 
+\begin{align}
+  T^{0(i} x^{j)} &= \frac{1}{2}\partial_{k} ( T^{0k} x^{i} x^{j}) - \frac{1}{2} (\partial_{k} T^{0k}) x^{i} x^{j} \\
+  &= \frac{1}{2}\partial_{k} (T^{0k} x^{i} x^{j}) + \frac{1}{2} \partial_0 T^{00} x^{i} x^{j},
+\end{align}
+again using conservation of the energy-momentum tensor.
+
+Put this into the integral $\int_{\Sigma} \dd[]{x'}$  and drop any total spatial derivative.
+All that remains are the time derivatives $\partial_0$. What we get is that the metric where we are is given by
+\begin{equation}
+  \overline{h}_{ij}(\vb{x}, t) \approx \frac{2G}{r} \ddot{I}_{ij}(t - r), \qquad \text{where } I_{ij} = \int \dd[3]{x'} T^{00} (\vb{x}', t) x'_{i} x'_{j}.
+\end{equation}
+$I_{ij}$ is the \emph{quadrupole} of the energy distribution in the region $\Sigma$.
+\begin{leftbar}
+  \begin{note}
+    The dependence on $\vb{x}$ of $\overline{h}$ comes from the $r$.
+  \end{note}
+\end{leftbar}
+
+\begin{remark}
+  We could now use the \texttt{dD} gauge condition $\partial_{\mu} \overline{h}{}^{\mu\nu} = 0$ to find the corrections to $\overline{h}_{00}$ and $\overline{h}_{0i}$ using $\overline{h}_{ij}$.
+\end{remark}
+
+\begin{remark}
+  Shaking the matter quadrupole at some characteristic frequency $\omega$, creates waves of roughly frequency $\omega$ (possibly with some factors of two).
+  We will see this in more detail in the next section.
+\end{remark}
+
+\begin{leftbar}
+  \begin{note}
+    In electromagnetism there is an analogous formula: "gauge field far away = first time derivative of the dipole of the charge density".
+    We get the quadrupole rather than the dipole, since the dipole of a mass density is related to the momentum, which is conserved and cannot shake backwards and forwards.
+    You have to go to the quadrupole to find the gravitational waves, which is why they are weak compared to electromagnetic waves.
+  \end{note}
+\end{leftbar}
+
+\begin{example}[Binary System]
+  Consider two objects, each with mass $M$ , in a circular orbit in the $(x-y)$ -plane at distance $R$. 
+  This is illustrated in \ref{fig:l22f2}.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l22f2.pdf_tex}
+    \caption{}
+    \label{fig:l22f2}
+  \end{figure}
+
+  Newtonian gravity gives $\omega^2 = \frac{2 G M }{R^3}$ . Viewed as point particles, 
+  \begin{equation}
+    T^{00}(\vb{x}, t) = M \delta(z) \left[ \delta(x - \frac{1}{2} R \cos(\omega t)) \delta(y - \frac{1}{2} R \sin(\omega t)) + \delta(x + \frac{1}{2} R \cos(\omega t)) \delta(y + \frac{1}{r} R \sin(\omega t)) \right]
+  \end{equation}
+
+  Compute the quadrupole $I_{ij}(t)$  to find 
+  \begin{equation}
+    I_{ij} = \frac{MR^2}{4}
+    \begin{pmatrix}
+     1 + \cos(2 \omega t) & \sin(2 \omega t) & 0 \\
+     \sin(2 \omega t) & 1 - \cos(2\omega t) & 0 \\
+     0 & 0 & 0 \\
+    \end{pmatrix},
+  \end{equation}
+  where we have used the double-angle formula along the way.
+
+  This tells us that 
+  \begin{equation}
+    \overline{h}_{ij} = - \frac{2 G M R^2 \omega^2}{r} 
+    \begin{pmatrix}
+     \cos(2 \omega t_{\text{ret}}) & \sin(2 \omega t_{\text{ret}}) & 0 \\
+     \sin(2 \omega t_{\text{ret}}) & - \cos(2 \omega t_{\text{ret}}) & 0 \\
+     0 & 0 & 0 \\
+    \end{pmatrix}.
+  \end{equation}
+  This combination of polarisation is called \emph{circular polarisation} as in the case of light.
+  We get circularly polarised gravitational waves travelling in the $z$-direction.
+  Use $\omega^2 =\frac{2 GM}{R^3}$ to find the magnitude $\abs{h_{ij}} \sim \frac{G^2M^2}{R r}$.
+
+  This is what you measure in LIGO.
+  For light, what you measure is the square of the amplitude, meaning that you can only see as $~\frac{1}{r^2}$ far. As you start to improve LIGO, you start to see much further out than with optical telescopes!
+
+  To get a `large' magnitude $h_{ij}$, we need compact objects nearby.
+  The most compact objects are black holes. The closest they can come is the \emph{Schwarzschild radius} $R_S = 2 G M$. Neutron stars are not wildly different from this.
+
+  As these objects approach, the size of the gravitational wave that we will see is given by $\abs{h_{ij}} \sim \frac{GM}{r}$.
+  A black hole of a few solar masses ($R_S \sim 10$km) in our neighbouring Andromeda galaxy ($r \sim 10^{18}$km) gives a gravitational wave strength of $\abs{h_{ij}} \sim 10^{-17}$.
+\end{example}
