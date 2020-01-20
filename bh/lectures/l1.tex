@@ -1,0 +1,224 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 1: January 17}
+
+\chapter*{Administrative}%
+
+\begin{itemize}
+  \item Office hours: Fridays 2pm, B2.09
+  \item Lecture notes: \url{www.damtp.cam.ac.uk/user/hsr1000} and /examples
+    \begin{itemize}
+      \item everything in notes is examinable
+    \end{itemize}
+  \item Conventions: $G = c = 1$, ignore $\Lambda$ (negligible for Black holes)
+  \item indices: $\mu, \nu, \dots$ refer to \emph{specific} basis, \par
+    $a, b, c, \dots$ `abstract indices' (Penrose) refer to \emph{any} basis
+    \begin{equation}
+      \text{e.g.} \qquad \Gamma^{\mu}_{\nu\rho} = \frac{1}{2} g^{\mu\sigma}(g^{\sigma\nu, \rho} + g_{\sigma\rho, \nu} - g_{\nu\rho, \sigma}) \qquad R = g^{ab} R_{ab}
+    \end{equation}
+  \item Books listed in lecture notes (Wald etc)
+\end{itemize}
+
+\chapter{Spherical Stars}%
+\label{cha:spherical_stars}
+
+\section{Cold stars}%
+\label{sec:cold_stars}
+
+Gravitational force, which wants the star to contract, is balanced by pressure of nuclear reactions. If we wait long enough, star will exhaust nuclear fuel and the star will contract. What happens next?
+Any new source of pressure will have to be non-thermal, since time will cause the star to cool down.
+There is one such source of pressure coming from the Pauli principle.
+If you have a gas of fermions, it will resist compression. This is called `degeneracy pressure'.
+This is entirely a quantum effect, which is not thermal.
+
+\begin{definition}[]
+  A \emph{white dwarf} is a star in which gravity is balanced by electron degeneracy pressure.
+\end{definition}
+This is a very dense star: a white dwarf with the same mass as our sun, $M = M_{\odot}$ has a radius $R \sim \frac{1}{100} R_{\odot}$.
+
+However, not all stars can end their life this way. The maximum mass of a white dwarf is the Chandrasekhar limit $M_{wd} \leq 1.4 M_{\odot}$.
+
+If matter is sufficiently dense, we have inverse $\beta$-decay, which turns the protons in the star into neutrons. 
+We therefore get a second class of star:
+\begin{definition}[]
+  A \emph{neutron dwarf} is a star in which gravity is balanced by neutron degeneracy pressure.
+\end{definition}
+These are tiny: taking a neutron star with $M \sim M_{\odot}$ , then $R \sim 10$ km. Compare this with the radius of our sun, which is $R_{\odot} \simeq 7 \times 10^5$ km.
+Because they are so dense, their gravitational force on the surface is very strong.
+In terms of Newtonian gravity, we have $\abs{\Phi} \sim 0.1$ at the surface.
+General relativity becomes negligible if $\abs{\Phi} \ll 1$ . So here, general relativity is important.
+
+We will show that for any cold star there is a maximal mass around five solar masses.
+This bound will be independent of our ignorance of the properties of matter at such high densities.
+
+In order to make this problem tractable, we will assume that the star is spherically symmetric and time independent. 
+
+\section{Spherical Symmetry}%
+\label{sec:spherical_symmetry}
+
+\begin{definition}[]
+  The \emph{unit round metric} on $S^2$ is $d\Omega^2 = d\theta^2 + \sin^2\theta d\varphi^2$.
+\end{definition}
+
+Roughly speaking, spherical symmetry is the isometry group of this metric.
+The isometry group in this case is $SO(3)$ .
+
+\begin{definition}[]
+  A spacetime is \emph{spherically symmetric} if its isometry group contains an $SO(3)$ subgroup, whose orbits are $2$-spheres.
+\end{definition}
+\begin{leftbar}
+  Pick a point and act on it with all $SO(3)$ elements. It will then fill out a sphere with unit round metric.
+\end{leftbar}
+\begin{definition}[]
+  In a spherically symmetric spacetime $(M, g)$ , the \emph{area radius function} is 
+  \begin{equation}
+    \begin{gathered}
+      r \colon \\
+      \qquad
+    \end{gathered}
+    \begin{gathered}
+      M \\
+      p
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \to \\
+      \mapsto
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \mathbb{R} \\
+      r(p) = \sqrt{\frac{A(p)}{4 \pi}}
+    \end{gathered}
+  \end{equation}
+\end{definition}
+where $A(p)$  is the area of the $S^2$  orbit through $p$. 
+\begin{leftbar}
+  You can think of $r$ as the radial coordinate. Instead of defining $r$ in terms of distance from the origin (which does not exist on $S^2$), we define it here via the area.
+\end{leftbar}
+\begin{remark}
+  The $S^2$ has induced metric $r(p)^2 d\Omega^2$.
+\end{remark}
+
+\section{Time-independence}%
+\label{sec:time_independence}
+
+\begin{definition}[stationary]
+  The spacetime $(M, g)$ is \emph{stationary} if there exists a Killing vector field (KVF) $k^{a}$, which is everywhere timelike ($g_{ab} k^{a} k^{b} < 0$).
+\end{definition}
+\begin{leftbar}
+  Our spacetime has a time-translation symmetry.
+\end{leftbar}
+
+Pick some hypersurface $\Sigma$ transverse to $k^{a}$ . We can then pick coordinates $x^{i}$ , $i = 1, 2, 3$ on  $\Sigma$.
+
+ \begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l1f1.pdf_tex}
+  \caption{}
+  \label{fig:l1f1}
+\end{figure} 
+
+We assign coordinates $(t, x^{i})$  to point parameter distance $t$ along an integral curve  $k^{a}$  through a point on $\Sigma$ with coordinates  $x^{i}$ .
+This implies that $k = \partial / \partial t$ , implying that  the metric in independent of $t$  (since $k^{a}$ is Killing).
+\begin{equation}
+  ds^2 = g_{00} (x^{k}) dt^2 + 2 g_{0i} (x^{k}) dt dx^{i} + g_{ij} (x^{k}) dx^{i} dx^{j}
+\end{equation}
+with $g_{00} < 0$ .
+Conversely, any metric of this form is stationary.
+
+This is the weakest notion of time-independence we can use. There is also a more refined notion. Before we can introduce that, we need to talk about hypersurface orthogonality.
+
+ \begin{claim}
+  Let $\Sigma$ be a hypersurface of constant $f = 0$ on $\Sigma$ where $f \colon M \to \mathbb{R}$ a smooth function where $df \neq 0$ on $\Sigma$.
+  Then $df$ is normal to $\Sigma$.
+\end{claim}
+\begin{proof}
+  Let $t^{a}$ be a vector that is tangent to $\Sigma$. Then
+  \begin{equation}
+    df(t) = t(f) = t^{\mu} \partial_{\mu} f = 0
+  \end{equation}
+  since $f$ is constant on $\Sigma$.
+\end{proof}
+\begin{leftbar}
+  Normals to a surface are not unique. For example, we can rescale $f$ to get another normal on $\Sigma$.
+  In fact, we can also add something that vanishes on $\Sigma$.
+\end{leftbar}
+
+\begin{claim}
+  If $n$ is also normal to $\Sigma$, then $n = g df + f n'$, where $g \neq 0$ on $\Sigma$ and $n'$ is a smooth $1$-form.
+\end{claim}
+\begin{proof}
+  By the rules of the exterior derivative,
+  \begin{equation}
+    dn = dg \wedge df + df \wedge n' + f dn'
+  \end{equation}
+  Evaluating this on $\Sigma$ gives
+  \begin{equation}
+    \left. dn \right\rvert_\Sigma = (dg - n') \wedge df \implies n \wedge dn \rvert_\Sigma = 0,
+  \end{equation}
+  as $n \propto df$ on $\Sigma$.
+\end{proof}
+
+This is very useful since there is also a converse of this statement:
+\begin{theorem}[Frobenius]
+  If $n \neq 0$ is a $1$-form such that $n \wedge dn \equiv 0$, then $\exists$ functions $g, f$ such that $n = g df$. So $n$ is normal to surfaces of constant $f$. We say that $n$ is \emph{hypersurface orthogonal}.
+\end{theorem}
+
+\begin{definition}[static]
+  A spacetime $(M, g)$ is \emph{static} if there is a hypersurface-orthogonal timelike Killing vector field.
+\end{definition}
+\begin{remark}
+  This is a refinement since static $\implies$ stationary.
+\end{remark}
+
+By Frobenius' theorem, we can choose $\Sigma \perp k^{a}$ when defining $(t, x^{i})$ (since $k^{a}$ is hypersurface-orthogonal).
+But $\Sigma$ is $t = 0$, normal to $\Sigma$ is $dt$.
+Therefore, $\left. k_{\mu} \right\rvert_{t = 0} \propto (1, 0, 0,0)$.
+In particular, the spatial components in these coordinates are $\left. k_{i} \right\rvert_{t = 0} = 0$, but $k_{i} = g_{0i}(x^{k})$. 
+Therefore, $g_{0i}(x^{k}) = 0$. In a static spacetime, the off-diagonal elements of the metric are zero.
+\begin{equation}
+  ds^2 = g_{00} (x^{i}) dt^2 + g_{ij}(x^{k}) dx^{i} dx^{j} \qquad (g_{00} < 0.)
+\end{equation}
+
+There is now an additional symmetry present. We have a discrete time-reversal symmetry $(t, x^{i}) \to (-t, x^{i})$ .
+
+Roughly speaking, static means `time-independent and invariant under time-reversal'.
+\begin{example}[]
+  A rotating star can be stationary, but not static.
+\end{example}
+\begin{leftbar}
+  Static means non-rotating.
+\end{leftbar}
+
+\section{Static, spherically symmetric spacetimes}%
+\label{sec:static_spherically_symmetric_spacetimes_}
+
+Let us talk about a spherical, non-rotating star.
+More formally, we will assume the isometry group $\mathbb{R} \times SO(3)$.
+\begin{leftbar}
+  $SO(3)$ are the spatial rotations.
+  $\mathbb{R}$ are the time-translations associated to the timelike Killing vector field $k^{a}$.
+\end{leftbar}
+
+\begin{claim}
+  This implies that the spacetime is static (rotation breaks spherical symmetry).
+\end{claim}
+
+On $\Sigma$, choose coordinates $x^{i} = (r, \theta, \varphi)$, where $r$ is defined via the area-radius.
+A consequence of the spherical symmetry is that the metric must take the following form on $\Sigma$
+\begin{equation}
+  \left.ds^2 \right\rvert_{\Sigma} = e^{2\Psi(r)} dr^2 + r^2 d\Omega^2
+\end{equation}
+(this is because $dr d\theta$ or $dr d\varphi$ break spherical symmetry.)
+
+\begin{equation}
+  ds^2 = -e^{2 \Phi(r)} dt^2 + r^{2 \Psi(r)} dt^2 + r^2 d\Omega^2.
+\end{equation}
+\begin{leftbar}
+  The choice of $g_{00}$ is inspired by the Newtonian limit.
+\end{leftbar}
+\begin{leftbar}
+  At the moment there is no origin. There is no reason to think of $r$ as the distance to the origin. In fact, it is not the distance to the origin.
+\end{leftbar}

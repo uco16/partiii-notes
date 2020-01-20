@@ -1,0 +1,140 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 1: January 18}
+
+\url{www.damtp.cam.ac.uk/user/wingate/AQFT}
+
+\subsection*{Course Outline}%
+
+\begin{itemize}
+  \item Path integrals
+    \begin{itemize}
+      \item QM
+      \item Methods w/ integrals
+      \item Feynman rules
+    \end{itemize}
+  \item Regularization \& Renormalization
+  \item Gauge theories
+\end{itemize}
+
+\chapter{Path Integrals in QM}%
+\label{cha:path_integrals_in_qm}
+
+\begin{description}
+  \item[Goal:] Schr\"odinger's equation $\to$ path integral
+\end{description}
+
+Consider a Hamiltonian in one dimension $\hat{H} = H(\hat{x}, \hat{p})$, where position and momentum operators satisfy the common commutation relations $[\hat{x}, \hat{p}] = i \hbar$ .
+Assume the it takes the form
+\begin{equation}
+  \hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x}).
+\end{equation}
+Schr\"odinger's equation then says that the time evolution of a state $\ket{\psi(t)}$  is given by
+\begin{equation}
+  i\hbar \frac{\partial }{\partial t} \ket{\psi(t)} = \hat{H} \ket{\psi(t)}.
+\end{equation}
+This has a formal solution, giving us the time-evolution operator
+\begin{equation}
+  \ket{\psi(t)} = e^{-i \hat{H} t / \hbar} \ket{\psi(0)}.
+\end{equation}
+
+In the Schr\"odinger picture, the states are evolving in time whereas operators and their eigenstates are constant in time.
+\begin{definition}[wavefunction]
+  $\Psi(x, t) \coloneqq \bra{x} \ket{\psi(t)}$
+\end{definition}
+The Schr\"odinger equation then becomes
+\begin{equation}
+  \bra{x}\hat{H} \ket{\psi(t)} = \left( -\frac{\hbar^2}{2m} \frac{\partial^2 }{\partial x^2} + V(x) \right) \Psi(x, t).
+\end{equation}
+We will turn this differential equation into an integral equation, where we will sum over particle paths---a path integral.
+We can introduce an integral by inserting a complete set of states $1 = \int dx_0 \ket{x_0}\bra{x_0}$.
+\begin{align}
+  \Psi(x, t) &= \bra{x}e^{-i \hat{H} t / \hbar} \ket{\psi(0)} \\
+	     &= \int_{-\infty}^{\infty} \dd[]{x_0} \bra{x} e^{-i \hat{H} t / \hbar} \ket{x_0} \bra{x_0} \ket{\psi(0)} \\
+	     &\coloneqq \int_{-\infty}^{\infty}\dd[]{x_0} \underbrace{K(x, x_0; t)}_{\mathclap{\text{`kernel'}}} \Psi(x_0, 0)
+\end{align}
+We repeat this insertion for $n$ intermediate times and positions.
+\begin{notation}[]
+  Let $0 \coloneqq t_0 < t_1 < \dots < t_n < t_{n+1} \coloneqq T$
+\end{notation}
+And we also want to factor the exponential into $n$  terms:
+\begin{equation}
+  e^{i \hat{H} T / \hbar} = e^{-\frac{i}{\hbar} \hat{H} (t_{n+1} - t_n)} \cdots e^{-\frac{i}{\hbar} \hat{H} (t_{1} - t_0)}.
+\end{equation}
+Then
+\begin{equation}
+  K(x, x_0; T) = \int_{-\infty}^{\infty} \left[ \prod_{r =1}^n \dd[]{x_r} \bra{x_{r+1}} e^{-\frac{i}{\hbar} \hat{H} (t_{r+1}-t_r)} \ket{x_r} \right] \bra{x_1}e^{-\frac{i}{\hbar} \hat{H}(t_1 - t_0)}\ket{x_0}
+\end{equation}
+Integrals are over all possible position eigenstates at times $t_r, r = 1, \dots, n$.
+%F1
+
+\subsection*{Free Theory}%
+
+Consider the ``free'' theory, with $V(\hat{x}) = 0$ .
+We will now play a similar but different trick to what we did before. Let us insert a complete set of momentum eigenstates $1 = \int_{-\infty}^{\infty}\bdd[]{p} \ket{p}\bra{p}$. We also note that these momentum eigenstates are plane waves $\bra{x}\ket{p} = \frac{1}{\sqrt{2 \pi \hbar}} e^{i p x / \hbar}$ .
+
+\begin{definition}[]
+  \begin{equation}
+    \bdd{p} \coloneqq \frac{\dd[]{p}}{2 \pi \hbar}.
+  \end{equation}
+\end{definition}
+
+The corresponding kernel is
+\begin{align}
+  K_0(x, x'; t) &= \bra{x}\exp(\frac{i}{\hbar} \frac{\hat{p}^2}{2m} t) \ket{x'}. \\
+		&= \int_{-\infty}^{\infty}\bdd[]{p} e^{-i p^2 t / 2m \hbar} e^{i p (x - x') / \hbar} \\
+		&= \sqrt{\frac{m}{2 \pi i \hbar t}} e^{\frac{im (x - x')^2}{2 \hbar t}}. \label{eq:1-kernel}
+\end{align}
+\begin{remark}
+  \begin{equation}
+    \lim_{t \to 0} \left\{ K_0(x, x'; t) \right\} = \delta(x - x').
+  \end{equation}
+\end{remark}
+As expected from $\bra{x} \ket{x'} = \delta(x - x')$ .
+
+From the Baker-Campbell-Hausdorff formula, we know that
+\begin{align}
+  e^{\epsilon \hat{A}} e^{\epsilon \hat{B}} &= \exp(\epsilon \hat{A} + \epsilon \hat{B} + \frac{\epsilon^2}{2} [\hat{A}, \hat{B}] + \dots) \neq e^{\epsilon(\hat{A} + \hat{B})} \\
+  \text{for small $\epsilon$:} \qquad e^{\epsilon(\hat{A} + \hat{B})} &= e^{\epsilon \hat{A}} e^{\epsilon \hat{B}} (1 + O(\epsilon^2))
+\end{align}
+Letting $\epsilon = 1 / n$ and raising the above to the  $n$\textsuperscript{th} power\footnote{This step is sometimes called Susuki--Trotter (?) decomposition.} gives
+\begin{equation}
+  e^{\hat{A} + \hat{B}} = \lim_{n \to \infty} \left\{ e^{\hat{A} / n} e^{\hat{B} / n} \right\}^n.
+\end{equation}
+We will use this to separate kinetic and potential terms.
+
+Take $t_{r+1} -t_r = \delta t$  with $\delta t \ll T$  and $n$ large such that $n \delta t = T$.
+ \begin{equation}
+   e^{-\frac{i}{\hbar} \hat{H} \delta t} = \exp(-\frac{i \hat{p}^2 \delta t}{2 m \hbar}) \exp(-\frac{i V(\hat{x}) \delta t}{\hbar}) [1 + O(\delta t^2)]
+\end{equation}
+Using the result \eqref{eq:1-kernel}, 
+\begin{align}
+  \bra{x_{r +1}} \exp(- \frac{i \hat{H}}{\hbar} \delta t)\ket{x_r} &= e^{-i V(x_r) \delta t / \hbar} K_0 (x_{r+1}, x_r ; \delta t) \\
+  &= \sqrt{\frac{m}{2 \pi i \hbar \delta t}} \exp[\frac{i m}{2 \hbar} \left( \frac{x_{r+1} - x_r}{\delta t} \right)^2 \delta t - \frac{i}{\hbar} V(x_r) \delta t]
+\end{align}
+With $T = n \delta t$
+ \begin{equation}
+   K(x, x_0; T) = \int \left[ \prod_{r = 1}^n \dd[]{x_r} \right] \left( \frac{m}{2 \pi i \hbar \delta t} \right)^{\frac{n + 1}{2}} \exp{i \sum_{r = 0}^n \left[ \frac{m}{2 \hbar}\left( \frac{x_{r + 1} - x_r}{\delta t} \right)^2 - \frac{1}{\hbar} V(x_r) \right] \delta t}
+\end{equation}
+In the limit $n \to \infty$ , $\delta t \to 0$ with  $n \delta t = T$  fixed, the exponent becomes
+\begin{equation}
+  \frac{1}{\hbar}\int_0^T \dd[]{t} \left[ \frac{1}{2} m \dot{x}^2 - V(x) \right] = \int_0^T \dd{t} L(x, \dot{x}),
+\end{equation}
+where $L$  is the classical Lagrangian, the Legendre transformation of the classical Hamiltonian.
+The classical action is $S = \int \dd[]{t} L(x, \dot{x})$.
+
+The main result therefore is that the path integral for the kernel is
+\begin{equation}
+  \boxed{K(x, x_0; t) \coloneqq \bra{x}e^{-i \hat{H} t / \hbar} \ket{x_0} = \int \pdd{x} e^{\frac{i}{\hbar} S}}
+\end{equation}
+
+\begin{definition}[functional integral]
+  \begin{equation}
+    \pdd{x} = \lim_{\delta t \to 0 \\ n \delta T \text{ fixed}} \left\{ (\sqrt{...}) \prod_{r = 1}^n (\sqrt{...} d x_r) \right\}
+  \end{equation}
+\end{definition}
+We do not need to care about normalization factors.
+
+\begin{remark}
+  In the limit $\hbar \to 0$, 
+\end{remark}

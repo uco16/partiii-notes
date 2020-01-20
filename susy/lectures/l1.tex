@@ -1,0 +1,190 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 1: January 18}
+
+Lecture notes: \href{www.damtp.cam.ac.uk/user/dbs26}{www.damtp.cam.ac.uk/user/dbs26}
+
+Main book: Hori \& Vafa "Mirror Symmetry" (chapters 8-16)
+
+\chapter{Introduction}%
+\label{cha:introduction}
+
+\section{Motivation: What is supersymmetry?}%
+\label{sec:motivation}
+
+In a theory with bosons and fermions, the Hamiltonian can be written $\mathcal{H} = \mathcal{H}_B \oplus \mathcal{H}_F$ , where $\mathcal{H}_{B(F)}$  has even (odd) number of fermionic excitations.
+
+Such a theory is supersymmetric if there exists an operator $Q$ mapping $\mathcal{H}_B \to \mathcal{H}_F$  and $\mathcal{H}_F \to \mathcal{H}_B$  such that
+\begin{equation}
+  \left\{ Q, Q^{\dagger} \right\} = 2 H \qquad Q^2 = 0.
+\end{equation}
+Here, $\left\{ A, B \right\} = AB + BA$  is the \emph{anti-commutator},  $H$  is the Hamiltonian.
+
+\subsection*{Consequences}%
+
+\begin{enumerate}[i)]
+  \item The Hamiltonian and Q commute
+    \begin{align}
+      [H, Q] &= \frac{1}{2} [\left\{ Q, Q^{\dagger} \right\}, Q]  \\
+	     &= \frac{1}{2} [(Q Q^{\dagger} + Q^{\dagger} Q) Q - Q (Q Q^{\dagger} + Q^{\dagger} Q)] \\
+	     &= 0.
+    \end{align}
+    The two inner terms vanish since $Q^2 = 0$ and the two outer terms cancel identically.
+    Therefore, the operator $Q$ is \emph{conserved}, and the transformations it generates will be \emph{symmetries}. We call them \emph{supersymmetries} because they mix bosons and fermions.
+  \item All states $\psi$ in our theory have non-negative energy
+    \begin{align}
+      E &= \bra{\psi} H \ket{\psi} = \frac{1}{2} \bra{\psi} \left\{ Q, Q^{\dagger} \right\} \ket{\psi} \\
+      &= \frac{1}{2} \norm{Q \ket{\psi}}^2 + \frac{1}{2} \norm{Q^{\dagger} \psi}^2 \geq 0,
+    \end{align}
+    with equality if and only if $Q \ket{\psi} = 0 = Q^{\dagger} \psi$, meaning that the state is invariant under supersymmetry.
+
+    If we have a Lorentz invariant quantum field theory (QFT), then $H$ is part of the momentum vector $P_m = (H, \vb{P})$. It is then natural to expect that there is a multiplet of $Q$'s.\par
+    Indeed in $d = 4$ we have $\left\{ Q_{\alpha}, Q^{\dagger}_{\dot\alpha} \right\} = 2 \sigma^{m}_{\alpha \dot{\alpha}} P_m$, where $\sigma^{m} = (\mathbb{1}_{2 \times 2}, \boldsymbol\sigma)$.\par
+    For generic dimension $d$, this becomes $\left\{ Q_A, Q_B^{\dagger} \right\} = 2 \Gamma^{m}_{AB} P_{m}$.
+\end{enumerate}
+
+\subsection*{Why study supersymmetry?}%
+
+Traditionally, this question was answered by phenomenology. Supersymmetry was a promising approach to solve ongoing problems in dark matter, the unification of couplings in the standard model, as well as stabilizing the Higgs mass. The involvement of supersymmetry in the last issue was ruled out in experiments at CERN, and the above reasons will not be the motivation that drives us to study supersymmetry in this course.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l1f1.pdf_tex}
+  \caption{In many supersymmetric theories, the running couplings meet at the same point. This was taken to be indicative of a grand unified theory (GUT). }
+  \label{fig:l1f1}
+\end{figure}
+
+In this course, we will be driven by the following fact: QFT is hard!
+Usually, we have to study it via perturbation theory, as exemplified in \ref{fig:1}.
+\begin{figure}[htbp]
+  \centering
+  \feynmandiagram [horizontal=a to b] {
+    i1 -- [boson] a [dot] -- b [dot] -- [boson] f1,
+    i2 -- a,
+    b -- f2,
+  };
+  \qquad + \qquad
+  \feynmandiagram [horizontal=a to b] {
+    i1 -- [boson] a [dot] -- c -- d -- b [dot] -- [boson] f1,
+    i2 -- a,
+    b -- f2,
+    c -- [boson, half left] d,
+  };
+  \qquad + \qquad \dots
+  \caption{In the diagrammatic perturbation series in QFT, particles are almost always propagating freely, except at the interaction vertices.}
+  \label{fig:1}
+\end{figure}
+This is very different to quantum mechanics, where we first practice with exactly solvable systems.
+The reason for this is twofold. Firstly, they are usually better approximations to reality than a free particle; a spherically symmetric Coulomb potential is a better starting point to describe atoms than a free particle is, even though we still need to consider realistic models like (hyper)fine-structure perturbatively.
+Secondly, it helps us understand what quantum mechanics actually \emph{is}.
+
+Supersymmetry allows us to get exact results for (some observables) in QFT. This is especially true in $d < 4$, but also in $d = 4$.
+
+These exact results are often closely related to deep maths, such as the Atiyah--Singer theorem (which we will meet in $d = 1$) , mirror symmetry and enumerative geometry ($d = 2$), and Donaldson--Seiberg--Witten invariants ($d = 4$).
+
+\section{Fermions and Super Vector Spaces}%
+\label{sec:fermions_and_super_vector_spaces}
+
+\begin{definition}
+  A $\mathbb{Z}_2$-graded vector space is of the form $V = V_0 \oplus V_1$.
+\end{definition}
+
+\begin{definition}[parity]
+  We let the \emph{parity} $\abs{v}$  of $v \in V$  be
+  \begin{equation}
+    \abs{v} = 
+    \begin{cases}
+      0, & \text{if } v \in V_0 \qquad (\text{even / bosonic}) \\
+      1, & \text{if } v \in V_1 \qquad (odd / fermionic / Grassman) 
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\begin{notation}[]
+  If $\dim_{\mathbb{R}}(V_0) = p$ and $\dim_{\mathbb{R}}(V_1) = q$, then we write $V= \mathbb{R}^{p \mid q}$.
+\end{notation}
+
+As usual, the dual $V^*$ of a $\mathbb{Z}_2$-graded vector space (over $\mathbb{R}$) is the space of linear maps $\phi \colon V \to \mathbb{R}$ with $(V^*)_{0 (1)}$ being those linear maps that vanish on $V_{1 (0)}$ respectively.
+
+Unsurprisingly, the direct sum of two $\mathbb{Z}_2$-graded vector spaces is
+\begin{align}
+  V \oplus W &= (V \oplus W)_0 \oplus (V \oplus W)_1 \\
+	     &= (V_0 \oplus W_0) \oplus (V_1 \oplus W_1).
+\end{align}
+
+Likewise, we can take the tensor product
+\begin{align}
+  (V \otimes W)_0 &= (V_0 \otimes W_0) \oplus (V_1 \otimes W_1) \\
+  (V \otimes W)_1 &= (V_0 \otimes W_1) \oplus (V_1 \otimes W_0)
+\end{align}
+
+Until now, we are just dealing with usual vector spaces, where we keep track of the fact that some elements have parity $1$.
+To make $V$ a super vector space, we define an unusual exchange operation.
+\begin{align}
+  \text{usually (bosonic):} \qquad 
+  &\begin{gathered}
+    s \colon \\
+    \qquad
+  \end{gathered}
+  \begin{gathered}
+    U \otimes U' \\
+    u \otimes u'
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    \to \\
+    \mapsto
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    U' \otimes U \\
+    u' \otimes u
+  \end{gathered} \\
+  \text{super vector space:} \qquad 
+  &\begin{gathered}
+    s \colon \\
+    \qquad
+  \end{gathered}
+  \begin{gathered}
+    V \otimes W \\
+    v \otimes w
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    \to \\
+    \mapsto
+  \end{gathered}
+  \quad
+  \begin{gathered}
+    W \otimes V \\
+    (-1)^{\abs{v} \abs{w}} w \otimes v.
+  \end{gathered}
+\end{align}
+
+\begin{definition}[superalgebra]
+  Closely related is a superalgebra. This is a supervector space $A$ with a multiplication map $\bullet\colon A \times A \to A$ with $\abs{ a \cdot b} = \abs{a} + \abs{b}\ (\text{mod } 2)$.
+\end{definition}
+\begin{definition}[commutative]
+  A is supercommutative (or just commutative) if $ab = (-1)^{\abs{a} \abs{b}} b a$.
+\end{definition}
+
+\begin{example}[]
+  To treat $\mathbb{R}^{p \mid q}$ as a superalgebra, we take
+  \begin{equation}
+    x^{i} x^{j} = x^{j} x^{i}, \qquad
+    x^{i} \psi^{a} = \psi^{a} x^{i},\qquad
+    \text{but } \psi^{a} \psi^{b} = -\psi^{b} \psi^{a},
+  \end{equation}
+  where $x^{i} \in \mathbb{R}^{p \mid 0}$ and $\psi^{a} \in \mathbb{R}^{0 \mid q}$.
+  In particular, $(\psi^{a})^2 = 0$ for any fixed $a$.
+\end{example}
+
+Not all $A$  are (super-)commutative.
+\begin{definition}[Lie superalgebra]
+  A \emph{Lie superalgebra} is a supervector space $g = g_0 \oplus g_1$ with a bilinear Lie bracket operation $[, ]\colon g \times g \to g$ that
+  \begin{itemize}
+    \item is `graded anti-symmetric' $[X, Y] = - (-1)^{\abs{x} \abs{y}} [Y, X]$ 
+    \item obeys $[X, [Y, Z]] + (-1)^{\abs{X}(\abs{Y} + \abs{Z})}[Y, [Z, X]] + (-1)^{\abs{Y}(\abs{Z} + \abs{X})}[Z, [X, Y]] = 0$
+  \end{itemize}
+\end{definition}
