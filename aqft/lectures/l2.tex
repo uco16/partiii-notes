@@ -1,0 +1,140 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 2: January 21}
+
+We may analytically continue this to imaginary time.
+Let $\tau = i t$. In terms of this imaginary time, we have
+ \begin{equation}
+  \bra{x} e^{- \hat{H} \tau / \hbar} \ket{x_0} = \int \pdd{x} e^{-S / \hbar}.
+\end{equation}
+Mathematically, it makes these integrals much more well-defined, clearly convergent.
+Here the least-action principle is really evident from  the $\hbar = 0$ argument.
+We also see the connection to statistical physics, interpreting  $e^{-S / \hbar}$  as the Boltzmann factor $e^{-\beta H}$ .
+
+Quantum mechanics is quantum field theory in $0 + 1$  dimensions.
+We are treating space differently from time: $\hat{x}(t)$  is a field, whereas $t$  is a variable.
+However, Lorentz invariance forces us to put $x$  and $t$  on the same footing.
+In QFT, we solve this problem by demoting $x$  from a field to another label. We then talk about fields $\phi(x, t)$ and want to know about the behaviour of these in all of spacetime.
+\begin{leftbar}
+  String theory gives another ansatz to this problem by promoting again.
+\end{leftbar}
+
+\chapter{Integrals and their Diagrammatic Expansions}%
+\label{cha:integrals_and_their_diagrammatic_expansions}
+
+In QFT, we are interested in correlation functions.
+The following discussion will be very similar to what we have seen in the \emph{Statistical Field Theory} course in Michaelmas term, also no knowledge from that course will be assumed here.
+
+For simplicity, consider a $0$ -dimensional field $\varphi \in \mathbb{R}$. As if we are in imaginary time, let
+\begin{equation}
+  Z = \int_{\mathbb{R}} \dd[]{\varphi} e^{- \frac{S(\varphi)}{\hbar}}.
+\end{equation} 
+Assume that the action $S(\varphi)$  is an even polynomial and  $S(\varphi) \to \infty$  as $\varphi \to \pm \infty$ .
+
+We will be interested in expectation values
+\begin{equation}
+  \expectationvalue{f} = \frac{1}{Z} \int \dd[]{\varphi} f(\varphi) e^{-S / \hbar}.
+\end{equation}
+Again, assume $f$ does not grow too fast as $\varphi \to \pm \infty$. Usually, $f$ is polynomial in $\varphi$.
+
+\section{Free Theory}%
+\label{sec:free_theory}
+
+Say we have $N$ scalar fields (in $0+1$ dimensions we should really just say `variables') $\varphi_{a}$ with $a = 1, \dots, N$, with action
+\begin{equation}
+  S_0 (\varphi) = \frac{1}{2} m_{ab} \varphi_{a} \varphi_{b} = \frac{1}{2} \varphi^T m \varphi,
+\end{equation}
+where $m$ is an $N \times N$ symmetric, positive definite ($\det m > 0$) matrix.
+
+We can diagonalise this. There exists some orthogonal $P$ such that $m = P \Lambda P^T$, where $\Lambda$ is diagonal.
+Let $\chi = P^T \varphi$. Then the free partition function is
+\begin{align}
+  Z_0 &= \int \dd[N]{\varphi} \exp(-\frac{1}{2 \hbar} \varphi^T m \varphi) \\
+      &= \int \dd[N]{\chi} \exp(- \frac{1}{2 \hbar} \chi^T \Lambda \chi) \\
+      &= \prod_{c=1}^N \int \dd[]{\chi_c} e^{-\frac{\lambda_c}{2 \hbar} \chi^2} = \sqrt{\frac{(2 \pi \hbar)^N}{\det m}}
+\end{align}
+
+We want to get from the partition function to correlation functions.
+We can do this by introducing an $N$-component vector of external sources $J$ to the action
+\begin{equation}
+  S_0 (\varphi) \to S_0 + J^T \varphi.
+\end{equation}
+The partition function is then
+\begin{equation}
+  Z_0(J) = \int \dd[N]{\varphi} \exp(-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar}) J^T \varphi.
+\end{equation}
+Similar to solving an ordinary Gaussian integral, we complete the square by writing $\widetilde{\varphi} = \varphi + m^{-1} J$. One can then solve this integral to be
+\begin{equation}
+  Z_0(J) = Z_0(0) \exp(\frac{1}{2\hbar} J^T m^{-1} J).
+\end{equation}
+This is called the \emph{generating function}\footnote{When we go to higher dimensions, where $J = J(x)$ this will be a generating functional $Z[J(x)]$.}.
+Correlation functions are obtained from differentiating with respect to the auxiliary sources $J$ and evaluating the whole expression at $J = 0$:
+\begin{align}
+  \expectationvalue{\varphi_a \varphi_b} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \varphi_{a} \varphi_{b} \exp(-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar} J^T \varphi)\right\rvert_{J = 0}. \\
+					 &= \frac{1}{Z_0(0)} \left. \int \dd[N]{\varphi}  \left( -\hbar \frac{\partial }{\partial J_a} \right) \left(-\hbar \frac{\partial }{\partial J_b}\right) \exp( \dots )  \right\rvert_{J = 0} \\
+					 &= \frac{1}{Z_0(0)} \left( -\hbar \frac{\partial }{\partial J_a} \right) \left( -\hbar \frac{\partial }{\partial J_b} \right) Z_0(J) \rvert_{J=0} \\
+					 &= \hbar (m^{-1})_{ab}
+					 =
+					 \begin{gathered}
+					   \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+					     a [particle=\(a\)] -- b [particle=\(b\)],
+					   };
+					 \end{gathered}
+\end{align}
+Connecting this to the \emph{Quantum Field Theory} course, we identify this as the \emph{free propagator}.
+
+More generally, let $l(\varphi)$ be a \emph{linear} combination of $\varphi_a$. 
+ \begin{equation}
+  l(\varphi) = \sum_{a = 1}^N l_a \varphi_a, \qquad l_a \in \mathbb{R}.
+\end{equation}
+Then the steps above are equivalent to swapping $l(\varphi)$  for $l(- \hbar \frac{\partial}{\partial J}) = -\hbar \sum_a l_a \frac{\partial }{\partial J_a}$ .
+
+The correlation function can again be evaluated explicitly by the introduction of an auxiliary current $J$:
+\begin{align}
+  \expectationvalue{l^{(1)}(\varphi) \cdots l^{(p)} (\varphi)} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \prod_{i = 1}^p l^{(i)}(\varphi) e^{-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar} J^T \varphi} \right\rvert_{J = 0}. \\
+							       &= (-\hbar)^p \prod_{i = 1}^p l^{(i)}(\frac{\partial }{\partial J}) \left. e^{\frac{1}{2\hbar} J^T m^{-1} J} \right\rvert_{J=0}
+\end{align}
+
+In other words, if $p$  is odd, the integrand is odd in some $\varphi_a$  and the integral over $\varphi_a \in (- \infty, + \infty )$   vanishes.
+For $p = 2 k$, the terms which are non-zero as $J \to 0$ have the following form.
+We need half the derivatives to bring down components of  $m^{-1} J$  and half to remove the $J$ -dependence from those terms that earlier derivatives brought down.
+As such, we get exactly $k$  factors of $m^{-1}$ .
+This is Wick's theorem.
+
+\begin{example}[4-point function]
+  Consider the $4$-point correlation function
+  \begin{align}
+    \expectationvalue{\varphi_b \varphi_c \varphi_d \varphi_f} &= \hbar^2 \left[ (m^{-1})_{bc} (m^{-1})_{df}
+    + (m^{-1})_{bd} (m^{-1})_{cf}
+  + (m^{-1})_{bf} (m^{-1})_{cd} \right] \\
+  &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a [particle=\(b\)] -- [draw=none] b [particle=\(d\)]
+      -- c [particle=\(f\)]
+      -- [draw=none] d [particle=\(c\)]
+      -- a,
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a [particle=\(b\)] -- [draw] b [particle=\(d\)]
+      -- [draw=none] c [particle=\(f\)]
+      -- d [particle=\(c\)]
+      -- [draw=none] a,
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a [particle=\(b\)] -- [draw=none] b [particle=\(d\)]
+      -- c [particle=\(f\)]
+      -- [draw=none] d [particle=\(c\)]
+      -- a,
+    };
+  \end{gathered}
+  \end{align}
+\end{example}
+
+%see photo for rest
