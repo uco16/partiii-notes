@@ -14,9 +14,9 @@ We also see the connection to statistical physics, interpreting  $e^{-S / \hbar}
 Quantum mechanics is quantum field theory in $0 + 1$  dimensions.
 We are treating space differently from time: $\hat{x}(t)$  is a field, whereas $t$  is a variable.
 However, Lorentz invariance forces us to put $x$  and $t$  on the same footing.
-In QFT, we solve this problem by demoting $x$  from a field to another label. We then talk about fields $\phi(x, t)$ and want to know about the behaviour of these in all of spacetime.
+In QFT, we solve this problem by demoting $x$ from a field to another label. We then talk about fields $\phi(x, t)$ and want to know about the behaviour of these in all of spacetime.
 \begin{leftbar}
-  String theory gives another ansatz to this problem by promoting again.
+  String theory gives another ansatz to this problem by promoting again, instead of demoting operators to labels.
 \end{leftbar}
 
 \chapter{Integrals and their Diagrammatic Expansions}%
@@ -73,13 +73,10 @@ Correlation functions are obtained from differentiating with respect to the auxi
   \expectationvalue{\varphi_a \varphi_b} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \varphi_{a} \varphi_{b} \exp(-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar} J^T \varphi)\right\rvert_{J = 0}. \\
 					 &= \frac{1}{Z_0(0)} \left. \int \dd[N]{\varphi}  \left( -\hbar \frac{\partial }{\partial J_a} \right) \left(-\hbar \frac{\partial }{\partial J_b}\right) \exp( \dots )  \right\rvert_{J = 0} \\
 					 &= \frac{1}{Z_0(0)} \left( -\hbar \frac{\partial }{\partial J_a} \right) \left( -\hbar \frac{\partial }{\partial J_b} \right) Z_0(J) \rvert_{J=0} \\
-					 &= \hbar (m^{-1})_{ab}
-					 =
-					 \begin{gathered}
-					   \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-					     a [particle=\(a\)] -- b [particle=\(b\)],
-					   };
-					 \end{gathered}
+					 &= \hbar \, (m^{-1})_{ab} \coloneqq
+					 \feynmandiagram[inline=(a.base), horizontal=a to b] {
+					   a [particle=\(a\)] -- b [particle=\(b\)],
+					 };
 \end{align}
 Connecting this to the \emph{Quantum Field Theory} course, we identify this as the \emph{free propagator}.
 
@@ -102,39 +99,58 @@ As such, we get exactly $k$  factors of $m^{-1}$ .
 This is Wick's theorem.
 
 \begin{example}[4-point function]
-  Consider the $4$-point correlation function
+  Consider the $4$-point correlation function. One can check that the above result gives
   \begin{align}
-    \expectationvalue{\varphi_b \varphi_c \varphi_d \varphi_f} &= \hbar^2 \left[ (m^{-1})_{bc} (m^{-1})_{df}
-    + (m^{-1})_{bd} (m^{-1})_{cf}
-  + (m^{-1})_{bf} (m^{-1})_{cd} \right] \\
+    \expectationvalue{\varphi_a \varphi_b \varphi_c \varphi_d} &= \hbar^2 \left[ (m^{-1})_{ab} (m^{-1})_{cd}
+    + (m^{-1})_{ac} (m^{-1})_{bd}
+  + (m^{-1})_{ad} (m^{-1})_{bc} \right] \\
   &= 
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a [particle=\(b\)] -- [draw=none] b [particle=\(d\)]
-      -- c [particle=\(f\)]
+    \feynmandiagram[small, horizontal=a to b] {
+      a [particle=\(a\)] -- [draw=none] b [particle=\(b\)]
+      -- c [particle=\(d\)]
       -- [draw=none] d [particle=\(c\)]
       -- a,
     };
   \end{gathered}
   +
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a [particle=\(b\)] -- [draw] b [particle=\(d\)]
-      -- [draw=none] c [particle=\(f\)]
+    \feynmandiagram[small, horizontal=a to b] {
+      a [particle=\(a\)] -- [draw] b [particle=\(b\)]
+      -- [draw=none] c [particle=\(d\)]
       -- d [particle=\(c\)]
       -- [draw=none] a,
     };
   \end{gathered}
   +
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a [particle=\(b\)] -- [draw=none] b [particle=\(d\)]
-      -- c [particle=\(f\)]
-      -- [draw=none] d [particle=\(c\)]
-      -- a,
-    };
+    \begin{tikzpicture}
+      \begin{feynman}
+	\diagram[small, horizontal=a to b] {
+	  a [particle=\(a\)] 
+	  -- [draw=none] b [particle=\(b\)]
+	  -- [draw=none] c [particle=\(d\)]
+	  -- [draw=none] d [particle=\(c\)]
+	  -- [draw=none] a,
+	};
+	\diagram* {
+	  (a) -- (c),
+	  (b) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
   \end{gathered}
   \end{align}
+  We end up with three terms, one for each way of grouping the 4 fields into pairs.
 \end{example}
 
-%see photo for rest
+In general, for $\expectationvalue{\varphi_{1} \dots \varphi_{2k}}$, the number of terms is the number of distinct ways of pairing the $2k$ fields. This is $(2k + 1)!! = (2k)! / (2^k k!)$; the number of permutations of $2k$ fields is $(2k)!$, but we have to divide this by the $2^k$ permutations within the pairs and the $k!$ ways of rearranging the pairs.
+\begin{remark}
+  For complex fields, $m$ is Hermitian but not symmetric anymore. In that case, the order of indices of $m^{-1}$ is important. We keep track of this by drawing the propagator with a directed line
+  \begin{equation}
+    \langle \phi_a \phi_b^* \rangle = \hbar\, (m^{-1})_{ab} \coloneqq
+    \feynmandiagram[inline=(a.base), horizontal=a to b] {
+      a [particle=\(a\)] -- [fermion] b [particle=\(b\)],
+    };
+  \end{equation}
+\end{remark}

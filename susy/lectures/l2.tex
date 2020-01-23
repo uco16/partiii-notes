@@ -154,12 +154,20 @@ More generally, for $2m$  fermions $\psi^{a}$  and antisymmetric matrix $A_{ab}$
   Z &= \int e^{-\frac{A_{ab}}{2 \hbar} \psi^a \psi^{b}} \dd[2m]{\psi} = \sum_{k = 0}^{\infty} \frac{(-1)^k}{(2 \hbar)^k k!} \int (A_{ab} \psi^{a} \psi^{b})^k \dd[2m]{\psi}  \\
     &= \frac{(-1)^m}{(2 \hbar)^{m} m!} \epsilon^{a_1 b_1 \dots a_m b_m} A_{a_1 b_1 } \dots A_{a_m b_m} \\
     &= \left( \frac{-1}{\hbar} \right)^m \text{Pfaff}(A).
+    \label{eq:2-g}
 \end{align}
+\begin{definition}[Pfaffian]
+  In the preceding derivation, we stumbled across the \emph{Pfaffian} of a $2m \times 2m$ antisymmetric matrix $A$, defined by
+  \begin{equation}
+    \text{Pfaff}(A) = \frac{1}{2^m m!} e^{a_1 a_2 \dots a_{2m}} A_{a_1 a_2} \cdots A_{a_{2m-1} a_{2m}}.
+  \end{equation}
+\end{definition}
 \begin{exercise}
-  For anatisymmetric A, show that $\text{Pfaff}(A) = \sqrt{\det A}$.
+  For antisymmetric A, show that $(\text{Pfaff } A)^2 = \det A$.
 \end{exercise}
+This means that the Gaussian integral \eqref{eq:2-g} can be written as $\pm \sqrt{\det A}$.
 \begin{leftbar}
   \begin{remark}
-    Again, this is the inverse to what you expect from the bosonic counterpart.
+    Again, up to a normalisation of the measure, this is the inverse to what you expect from the bosonic counterpart of the Gaussian integral.
   \end{remark}
 \end{leftbar}

@@ -73,9 +73,14 @@ Integrals are over all possible position eigenstates at times $t_r, r = 1, \dots
 Consider the ``free'' theory, with $V(\hat{x}) = 0$ .
 We will now play a similar but different trick to what we did before. Let us insert a complete set of momentum eigenstates $1 = \int_{-\infty}^{\infty}\bdd[]{p} \ket{p}\bra{p}$. We also note that these momentum eigenstates are plane waves $\bra{x}\ket{p} = \frac{1}{\sqrt{2 \pi \hbar}} e^{i p x / \hbar}$ .
 
-\begin{definition}[]
+\begin{definition}[barred differential]
+  We define the normalised differential in Fourier space to be
   \begin{equation}
     \bdd{p} \coloneqq \frac{\dd[]{p}}{2 \pi \hbar}.
+  \end{equation}
+  In higher dimensional QFT, this generalises to
+  \begin{equation}
+    \bdd[n]{p} \coloneqq \frac{\dd[n]{p}}{(2 \pi \hbar)^n}
   \end{equation}
 \end{definition}
 
@@ -97,7 +102,7 @@ From the Baker-Campbell-Hausdorff formula, we know that
   e^{\epsilon \hat{A}} e^{\epsilon \hat{B}} &= \exp(\epsilon \hat{A} + \epsilon \hat{B} + \frac{\epsilon^2}{2} [\hat{A}, \hat{B}] + \dots) \neq e^{\epsilon(\hat{A} + \hat{B})} \\
   \text{for small $\epsilon$:} \qquad e^{\epsilon(\hat{A} + \hat{B})} &= e^{\epsilon \hat{A}} e^{\epsilon \hat{B}} (1 + O(\epsilon^2))
 \end{align}
-Letting $\epsilon = 1 / n$ and raising the above to the  $n$\textsuperscript{th} power\footnote{This step is sometimes called Susuki--Trotter (?) decomposition.} gives
+Letting $\epsilon = 1 / n$ and raising the above to the  $n$\textsuperscript{th} power\footnote{This step is sometimes called Suzuki--Trotter decomposition.} gives
 \begin{equation}
   e^{\hat{A} + \hat{B}} = \lim_{n \to \infty} \left\{ e^{\hat{A} / n} e^{\hat{B} / n} \right\}^n.
 \end{equation}

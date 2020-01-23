@@ -1,0 +1,173 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 2: January 22}
+
+\section{The Classical Particle and String}%
+\label{sec:the_classical_particle_and_string}
+
+In this section we will start systematically constructing a theory of quantum strings.
+As a precursor to this discussion, we will need to talk a bit about non-relativistic quantum mechanics.
+
+In non-relativistic QM, we treat time ($t$) as a parameter and position ($\hat{x}$) as an operator.
+Obviously, this kind of distinction should not survive in a relativistic theory. This means there are some choices to be made. 
+
+\begin{description}
+  \item[Second quantisation:] Both $x^{i}$ and $t$ are considered parameters. They are not the fundamental objects we quantise. Instead, we quantise quantum fields $\phi(\vb{x}, t)$, which are the basic objects of our theory.
+    We require that the fields transform in appropriate ways under Lorentz transformations.
+    This is historically overwhelmingly the most useful way to do it, seeing its success in quantum field theory and the standard model.
+  \item[First quantisation:] Here we make the other choice: we elevate $t$ to being an operator.
+    This is the natural framework for describing the relativistic embedding of worldlines (-sheets, -volumes) into spacetime.
+    Here, $X^{\mu} = (x^{i}, t)$ is an operator, the fundamental object we quantise, and there will be some other natural parameter entering the theory.
+\end{description}
+
+There is such a thing as string field theory, which employs the viewpoint of second quantisation. However, apart from a few exceptions, there is not much that you do not also obtain from first quantisation string theory.
+However, first quantisation string theory has made significant advances on problems that have not yet be solved with second quantisation.
+
+\subsection{Worldlines and Particles}%
+\label{sub:worldlines_and_particles}
+
+We consider the embedding of a worldline $\mathcal{L}$  into spacetime $M$.
+The basic field is the embedding  $X^{\mu} \colon \mathcal{L} \to M$. An action that describes this embedding might be
+\begin{equation}
+  \label{eq:2-a}
+  S[X] = -m \int_{x_2}^{x_1} \dd[]{s} = -m \int_{\tau_1}^{\tau_2} \dd[]{\tau} \sqrt{-\eta^{\mu\nu} \dot{X}^{\mu} \dot{X}^{\nu}},
+\end{equation}
+where $\tau$ (a parameter) is the proper time and $X^{\mu}(\tau_2) = x_2^{\mu}$, $X^{\mu}(\tau_1) = x_1^{\mu}$ are end points of the world line.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l2f1.pdf_tex}
+  \caption{}
+  \label{fig:l2f1}
+\end{figure}
+
+The momentum conjugate to $X^{\mu}(\tau)$  is $P_{\mu}(\tau) = - m \frac{\dot{X_{\mu}}}{\sqrt{- \dot{X}^2}}$. This satisfies $\dot{X}^2 = \eta_{\mu\nu} \dot{X}^{\mu} \dot{X}^{\nu}$. 
+This satisfies $P^2 + m^2 = 0$ identically, an \emph{on-shell condition}.
+
+\subsection*{Symmetries}%
+
+\begin{description}
+  \item[Rigid symmetry:] $X^{\mu}(\tau) \to \Lambda\indices{^{\mu}_{\nu}} X^{\nu}(\tau) - a^{\mu}$, where $\Lambda\indices{^{\mu}_{\nu}}$ is a Lorentz transformation and $a^{\mu}$ is a (constant) displacement.
+  \item[Reparameterisation invariance:] $\tau \to \tau + \xi(\tau)$. The embedding $X^{\mu}$ changes as 
+    \begin{equation}
+      X^{\mu}(\tau) \to X^{\mu}(\tau + \xi) = X^{\mu}(\tau) + \xi \dot{X}^{\mu}(\tau) + \dots.
+    \end{equation}
+    To first order, $\delta X^{\mu}(\tau) = \xi \dot{X}^{\mu} (\tau)$.
+\end{description}
+
+There is a rewriting of this action \eqref{eq:2-a} that makes life a bit easier.
+We do this by introducing a new auxiliary field $e(\tau)$, which is a one-form, on the worldline $\mathcal{L}$.
+\begin{equation}
+  \label{eq:2-b}
+  S[X, e] = \frac{1}{2} \int_{\mathcal{L}} \dd[]{\tau} \left( e^{-1} \eta_{\mu\nu} \dot{X}^{\mu} \dot{X}^{\nu} - em^2 \right).
+\end{equation}
+\begin{leftbar}
+  If you like, you can think of $e$ as something like a one-dimensional metric, which sets a scale for distances on the line.
+\end{leftbar}
+\begin{leftbar}
+  We will be able to do something analogous for strings, which will be very useful!
+\end{leftbar}
+
+The equations of motion for $X^{\mu}(\tau)$ and $e(\tau)$ are 
+\begin{equation}
+  \dv{\tau} (e^{-1} \dot{X}^{\mu}) = 0.
+\end{equation}
+However, the equation of motion for $e$  will not depend on $\dot{e}$, but be purely algebraic:
+\begin{equation}
+  \label{eq:2-1}
+  \dot{X}_2 + e^2 m^2 = 0.
+\end{equation}
+As such, $e$ can be thought of as a Lagrange multiplier, enforcing a constraint.
+What is the constraint that it enforces?
+
+The momentum conjugate to $X^{\mu}$  is 
+\begin{equation}
+  \label{eq:2-2}
+  P_{\mu} = e^{-1} \dot{X}_{\mu}.
+\end{equation}
+Combining \eqref{eq:2-1} and \eqref{eq:2-2}, we can eliminate $e$ to find precisely the on-shell condition $P^2 + m^2 = 0$.
+
+\begin{leftbar}
+  The auxiliary field $e$ basically enforces energy-momentum conservation on the worldline.
+\end{leftbar}
+
+\begin{exercise}
+  We can write $e^{-1} = m / \abs{\dot{X}}$. Plug this into the action \eqref{eq:2-b} to find that $S[X, e]$, subject to the equation of motion for $e(\tau)$ gives precisely the action \eqref{eq:2-a}.
+\end{exercise}
+There are two reasons why we should consider this new action instead. Firstly, in the $m \to 0$ limit, it will be easy to show that it describes null worldlines. Secondly, since there is no square root in this theory, it will be easier to quantise.
+This is at the cost of having to introduce a new non-dynamical field $e$.
+
+The action $S[X, e]$ has the following symmetries:
+\begin{itemize}
+  \item Poincar\'e invariance (where $e$ is invariant)
+  \item Reparameterisation invariance: 
+    \begin{equation}
+      \delta X^{\mu} = \xi \dot{X}^{\mu} \qquad \delta e = \dv{\tau} (\xi e)
+    \end{equation} 
+    provided these variations vanish on the endpoints.
+    \begin{leftbar}
+      Note that this transformation law under diffeomorphisms shows that $e$ needs to transform like a one-form.
+    \end{leftbar}
+\end{itemize}
+
+\begin{leftbar}
+  Locally, we can think of $e$ as a pure gauge.
+\end{leftbar}
+
+\begin{remark}
+  We could generalise $\eta_{\mu\nu} \to g_{\mu\nu}\big(X(\tau)\big)$. 
+  The model becomes highly non-linear.
+  We will look at this later in the context of strings.
+\end{remark}
+
+\subsection{Classical Strings: The Nambu--Goto Action}%
+\label{sub:classical_strings}
+
+Our starting point will be the \emph{Nambu-Goto Action}.
+We use units where $\hbar = c = 1$ throughout.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l2f2.pdf_tex}
+  \caption{}
+  \label{fig:l2f2}
+\end{figure}
+The fundamental degree of freedom is
+\begin{equation}
+  X \colon \sigma \to M,
+\end{equation}
+where $M$ is called the \emph{target space}.
+
+\begin{definition}[Nambu--Goto Action]
+  The Nambu--Goto action is
+  \begin{equation}
+    S[X] = -\frac{1}{2\pi \alpha'} \int_{\Sigma} \dd[]{\tau} \dd[]{\sigma} \sqrt{-\det(\eta_{\mu\nu} \partial_{a} X^{\mu} \partial_{b} X^{\nu})},
+  \end{equation}
+  where $\alpha'$ is a constant with dimensions of (spacetime) area and $\sigma^{a} = (\tau, \sigma)$  and $\partial_{a} = \frac{\partial}{\partial \sigma^{a}}$ .
+\end{definition}
+
+\begin{remark}
+  One often speaks of the \emph{string length} $l_2 = 2 \pi \sqrt{\alpha'}$.
+\end{remark}
+
+\begin{definition}[string tension]
+  We introduce the \emph{string tension} $T = \frac{1}{2 \pi \alpha'}$.
+\end{definition}
+
+\begin{leftbar}
+  This turns out to be a good starting point; quantising this puts us on the right track. However, it is horrendously difficult to actually perform this quantisation. Instead, we will consider another action.
+\end{leftbar}
+
+\begin{definition}[Polyakov Action]
+  The Polyakov action is
+  \begin{equation}
+    S[X, h] = -\frac{1}{4 \pi \alpha'} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} h^{ab} \eta_{\mu\nu} \partial_{a} X^{\mu} \partial_{b} X^{\nu}.
+  \end{equation}
+\end{definition}
+
+The new feature as compared to the Nambu--Goto action is the new field $h_{ab}$, which is a metric on $\Sigma$.
+It is non-dynamical; there are no Einstein-Hilbert terms and similarly to $e$ previously it can be thought of as enforcing a constraint.
+We will find that $h_{ab}$ is extremely important.
+\begin{leftbar}
+  This form is quite suggestive. All this is, when quantised, is a two-dimensional massless Klein--Gordon field in three dimensions. It is difficult to find an easier theory than this.
+\end{leftbar}

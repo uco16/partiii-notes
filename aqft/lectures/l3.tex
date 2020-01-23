@@ -1,0 +1,210 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 3: January 23}
+
+\section{Interacting Theory}%
+\label{sec:interacting_theory}
+
+We want to go beyond the free theory.
+The way we are going to achieve this is by an expansion about the classical result $\hbar$.
+The resulting integral will end up not being convergent.
+
+\begin{claim}
+  Integrals like
+  \begin{equation}
+    \int \dd[]{\phi} f(\phi) e^{- S / \hbar}
+  \end{equation}
+  do not have a Taylor expansion about $\hbar = 0$.
+\end{claim}
+\begin{proof}[Dyson]
+  If the expansion about $\hbar = 0$ existed for $\hbar > 0$, then in the complex plane, there must be some open neighbourhood of $\hbar$ in which the expansion converges.
+  For $S(\phi)$ has a minimum, the integral is divergent if $\Re (\hbar)< 0$.
+  Therefore, the radius of convergence cannot be greater than zero.
+\end{proof}
+
+So the $\hbar$-expansion is at best \emph{asymptotic}.
+\begin{definition}[asymptotic]
+  A series $\sum_{n = 0}^{\infty} c_n \hbar^n$  is asymptotic to $I(\hbar)$ if
+  \begin{equation}
+    \lim_{\hbar \to 0^+} \frac{1}{\hbar^N} \abs{I(\hbar) - \sum_{n=0}^N c_n \hbar^n} = 0.
+  \end{equation} 
+\end{definition}
+\begin{notation}[]
+  We write $I(\hbar) \sim \sum_{n=0}^{\infty} c_n \hbar^n$.
+\end{notation}
+
+The series misses out transcendental terms like $e^{-\frac{1}{\hbar^2}} \sim 0$ . However, these can evidently be important since obviously $e^{-\frac{1}{\hbar^2}} \neq 0$  for finite $\hbar$. These are called  \emph{non-perturbative contributions}. These become important in particular for non-Abelian gauge theories.
+
+Take the $\phi$-fourth action
+\begin{equation}
+  S(\phi) = \underbrace{\frac{1}{2} m^2 \phi^2}_{\mathclap{S_0(\phi)}} + \underbrace{\frac{\lambda}{4!} \phi^4}_{\mathclap{S_1(\phi)}} \qquad 
+  \begin{gathered}
+    m^2 > 0 \\
+    \lambda > 0.
+  \end{gathered}
+\end{equation}
+Expand about the minimum of $S(\phi)$, which is $\phi = 0$.
+\begin{align}
+  Z &= \int \dd[]{\phi} e^{- S / \hbar}  \\
+    &= \int \dd[]{\phi} e^{-S_0 / \hbar} \overbrace{\sum_{n=0}^\infty \frac{1}{n!} \left( -\frac{\lambda}{4! \hbar} \right)^n \phi^{4 n}}^{\mathclap{e^{- S_1 / \hbar}}}.
+\end{align}
+
+In order to make progress, we truncate the series and swap summation and integration. This misses out transcendental terms.
+In the end, we end up with a series that is asymptotic to $Z$:
+ \begin{equation}
+   Z \sim \frac{\sqrt{2\hbar}}{m} \sum_{n=0}^N \frac{1}{n!} \left( - \frac{\hbar \lambda}{4! m^4} \right)^n 2^{2v} \int_{0}^\infty \dd[]{t} e^{-t} t^{2n + \frac{1}{2} - 1}, 
+\end{equation}
+where $t = \frac{1}{2\hbar} m^2 \phi^2$. We recognise the Gamma function
+\begin{equation}
+  \int_{0}^\infty \dd[]{t} e^{-t} t^{2n + \frac{1}{2} - 1} = \Gamma(2 n + \frac{1}{2}) = \frac{(4n)! \sqrt{\pi}}{4^{2n} (2n)!}.
+\end{equation}
+The partition function is
+\begin{equation}
+Z \sim \frac{\sqrt{2 \pi \hbar}}{m} \sum_{n=0}^N \left( - \frac{\hbar \lambda}{m^4} \right)^n \frac{(4n)!}{(4!)^n n! 2^{2n} (2n)!}
+\end{equation}
+The factor on the right comes in part from the Taylor expansion of $e^{-S_1 / \hbar}$ and from the number of ways of pairing the $4n$ fields of the $n$ copies of $\phi^4$.
+Stirling's approximation allows us to write $n! \approx e^{n \ln n}$ .
+The factor in the partition function then become
+\begin{equation}
+  \frac{(4n)!}{(4!)^n n! 2^{2n} (2n)!} \approx n!.
+\end{equation}
+We end up with factorial growth!
+
+\subsection{Diagrammatic Method}%
+\label{sub:diagrammatic_method}
+
+Let us introduce a current $J$
+\begin{align}
+  Z(J) &= \int \dd[]{\phi} \exp{-\frac{1}{\hbar} \left( S_0(\phi) + S_1 (\phi) + J \phi \right)} \\
+       &= \exp[-\frac{1}{\hbar} S_1 (-\hbar \frac{\partial }{\partial J})] \underbrace{\int \dd[]{\phi} \exp{-\frac{1}{\hbar} (S_0 + J \phi)}}_{\mathclap{Z_0 (J)}} \\
+       &\propto \exp[-\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4] \exp(\frac{1}{2\hbar} J^T M^{-1} J), \qquad M = m^2 \\
+       &\sim \sum_{n=0}^N \frac{1}{n!} \left[ -\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4 \right]^n \sum_{p=0} \frac{1}{p!} \left( \frac{1}{2\hbar} J m^{-2} J \right)^p \label{eq:3-star}.
+\end{align}
+This is called the \emph{double expansion}.
+Diagrammatically, we use the propagator and vertex
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a [particle=\(J\)] -- [solid,  edge label=$m^{-2}$] b [particle=\(J\)],
+    };
+  \end{gathered}
+  \qquad 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
+      a -- v --b,
+      c -- v -- d
+    };
+  \end{gathered}
+  \quad -\lambda \left( \frac{\partial }{\partial J} \right)^4.
+\end{equation}
+Let us check $Z(0)$.
+For a term to be non-zero when $J=0$, we need the number of derivations to be equal to the number of propagators. Denoting by $E$ the number of external sources, left undifferentiate
+\begin{equation}
+  E \coloneqq 2 P - 4 n = 0.
+\end{equation}
+The first non-trivial terms are $(n, p) = (1, 2), (2, 4), \dots$.
+\begin{equation}
+  Z(0) \propto 1 + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
+      a -- [half left] b -- [half left] a,
+      a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+      a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
+      b -- [half left] a,
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+    };
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+    };
+  \end{gathered}
+  + 
+  O(n=3).
+\end{equation}
+
+Count the number of times each diagram appears by using a \emph{pre-diagram}
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
+      a [particle=\(1\)] -- v -- b [particle=\(3\)],
+      c [particle=\(2\)] -- v -- d [particle=\(4\)],
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
+      c [particle=\(b\)] -- d [particle=\(b'\)],
+      a [particle=\(a\)] -- b [particle=\(a'\)],
+      b -- [draw=none] d,
+      a -- [draw=none] c,
+    };
+  \end{gathered}
+\end{equation}
+The numerator $A = 4!$ ways of matching derivatives to sources.
+Denominator of \eqref{eq:2-star} is $F = (n!) (4!)^n (p!) 2^p = 4! \cdot 2 \cdot 2^2$.
+So $ \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+    };
+  \end{gathered} $
+comes with a prefactor of $\frac{A}{F} = \frac{1}{8}$. More generally, $F$ accounts for permutations of 
+\begin{itemize}
+  \item all vertices $n!$
+  \item each vertex's legs $4!$
+  \item all propagators $p!$
+  \item both end of each propagator $2$
+\end{itemize}
+
+The symmetry of each particular graph is important.
+For the above diagram, take pairing $(1a, 2a', 3b, 4b')$. Swapping $a \leftrightarrow a'$ and $1 \leftrightarrow^2$ gives exactly the same graph.
+We define the \emph{symmetry factor} $S$ to be $\frac{A}{F} = \frac{1}{S}$.
+$S$ is the number of ways of redrawing the unlabelled graph, leaving it unchanged.
+These are called the automorphisms of the graph.
+For  $ \begin{gathered}
+\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+};
+\end{gathered} $, we can swap the direction of upper and lower loops ($2^2$) and also swap upper and lower loops ($2$). Therefore, we obtain $S = 2 \cdot 2^3 = 8$.
+
+Let us look at a slightly more complicated example.
+\begin{example}[basketball]
+  \begin{equation}
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
+        a [dot] -- [half left] b [dot] -- [half left] a,
+        a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
+      };
+    \end{gathered}
+    \qquad S = 4! \cdot 2 = 48
+  \end{equation}
+  The pre-diagram associated to this is
+  \begin{equation}
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+        a -- [half left] c -- [draw=none] e [dot] -- f [dot] -- [draw=none] g [half left] b,
+        a -- [half right] d -- [draw=none] h [dot] -- i [dot] -- [draw=none] j [half left] b,
+      };
+    \end{gathered}
+  \end{equation}
+  We obtain $F = 2 (4!)^2 4! 2^4 = 4^3 \cdot 2^{14}$ and $A = 8 \cdot 6 \cdot 4 \cdot 2 \cdot 4! = 3^2 \cdot 2^{10}$. Thus $A / F = 1 / 48$.
+\end{example}
+
+For the other diagrams, we have
+\begin{equation}
+  \frac{Z(0)}{Z_0(0)} = 1 - \frac{\lambda \hbar}{8 m^4} + \frac{\hbar^2 \lambda^2}{m^8} \left( \frac{1}{48} + \frac{1}{16} + \frac{1}{128} \right)
+\end{equation}

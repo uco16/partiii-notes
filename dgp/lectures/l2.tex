@@ -1,0 +1,187 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 2: January 22}
+
+\begin{definition}[surface]
+  Let $f_1, \dots, f_k \colon \mathbb{R}^N \to \mathbb{R}$  be smooth functions.
+  A surface $f_1 = 0, \dots, f_k = 0$  is a manifold of dimension $\dim n = N - k$ if the rank of the matrix  $\frac{\partial f_{\alpha}}{\partial x^{i}}$, $\alpha = 1, \dots, k$ and $i = 1, \dots, N$ is maximal and equal to $k$ at all points of $\mathbb{R}^N$..
+\end{definition}
+\begin{example}[]
+  The $n$-sphere $S^n$ is a surface in $\mathbb{R}^{n+1}$ with $f_1 = 1 - \abs{\vb{r}}^2$.
+\end{example}
+
+\begin{theorem}[Whitney]
+  Every smooth manifold of dimension $n$ is an embedded surface in $\mathbb{R}^N$, where $N \leq 2 n$.
+\end{theorem}
+\begin{leftbar}
+  If you enjoy using geometrical intuition and looking at surfaces, this theorem ensures that you can always do that and not loose generality.
+\end{leftbar}
+
+\begin{definition}[real projective space]
+  The $n$-dimensional \emph{real projective space} is defined as the quotient
+  \begin{equation}
+    \mathbb{RP}^n = (\mathbb{R}^{n+1} \setminus \{0\}) / \sim,
+  \end{equation}
+  where we quotient out the equivalence classes $[X_1, \dots, X_n+1] \sim [c X_1, \dots, cX_{n+1}]$ for all $c \in \mathbb{R}^*$.
+  The $[X_1, \dots, X_{n+1}]$ are called \emph{homogeneous coordinates}.
+\end{definition}
+In other words, this is the space of all lines through the origin in $\mathbb{R}^{n+1}$ .
+
+\begin{claim}
+  $\mathbb{RP}^n$ is a smooth manifold of dimension $n$ with $(n+1)$ open sets.
+\end{claim}
+\begin{proof}
+  Let us define our open sets with respect to the homogeneous coordinates.
+  We define the set $U_{\alpha} \colon [X] \in \mathbb{RP}^n$  such that $X_{\alpha} \neq 0$  $\alpha = 1, \dots, n+1$ .
+  We can now find local coordinates on $\phi_{\alpha} \colon U_{\alpha} \to V_{\alpha} \in \mathbb{R}^n$
+  \begin{equation}
+    x_1 = \frac{X_1}{X_{\alpha}} \quad \dots \quad x_{\alpha-1} = \frac{X_{\alpha-1}}{X_{\alpha}} \quad x_{\alpha+1} = \frac{X_{\alpha +1}}{X_{\alpha}} \quad \dots \quad x_n = \frac{X_n}{X_\alpha}.
+  \end{equation}
+\end{proof}
+\begin{exercise}
+  Prove smoothness of $\phi_{\beta} \circ \phi_{\alpha}^{-1}$.
+\end{exercise}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l2f1.pdf_tex}
+  \caption{Real projective space $\mathbb{RP}^n$ is isomorphic to $S^n / \mathbb{Z}^n$, identifying antipodal points.}
+  \label{fig:l2f1}
+\end{figure}
+
+Now it turns out that this manifold is equivalent to $\mathbb{RP}^n = S^n / \mathbb{Z}^2$. From quantum mechanics, we know that this means in particular $\mathbb{RP}^3 = SO(3)$.
+This is illustrated in \ref{fig:l2f1}.
+
+\chapter{Vector Fields}%
+\label{cha:vector_fields}
+
+Let $M, \widetilde{M}$ be smooth manifolds of dimension $n, \tilde{n}$.
+
+\begin{definition}[smooth map]
+  A map $f\colon M \to \widetilde{M}$ is \emph{smooth} if $\widetilde{\phi}_{\beta} \circ f \circ \phi_{\alpha}^{-1}$ is a smooth map from $\mathbb{R}^n$ to $\widetilde{\mathbb{R}}^n$ for all $\alpha, \beta$.
+  We call $f \colon M \to \mathbb{R}$ a \emph{function}, whereas we call $f\colon \mathbb{R} \to M$ a \emph{curve}.
+\end{definition} 
+
+Let $\gamma\colon \mathbb{R} \to M$ be a curve.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l2f2.pdf_tex}
+  \caption{}
+  \label{fig:l2f2}
+\end{figure}
+For some $U \in M$,  $U \simeq \mathbb{R}^n$ , we can define local coordinates $(x^1, \dots, x^n)$ .
+% Missed something
+
+\begin{definition}[tangent vector]
+  A \emph{tangent vector} $V$  to $\gamma$ at  $p$ is 
+   \begin{equation}
+     V\rvert_p = \left. \dv{\psi}{\epsilon}\right\rvert_{\epsilon = 0} \in T_p M,
+  \end{equation}
+  where $T_p M$ is the \emph{tangent space} to $M$ at $p$.
+\end{definition}
+\begin{definition}[tangent bundle]
+  We define the \emph{tangent bundle} as $T M \coloneqq \bigcup_{p \in M} T_p M$.
+\end{definition}
+\begin{definition}[vector field]
+  A \emph{vector field} assigns a tangent vector to all $p \in M$ .
+\end{definition}
+
+Let $f\colon M \to \mathbb{R}$ . The rate of change of $f$  along $ \gamma$ is
+\begin{align}
+  \dv{}{\epsilon} f(x^{a}(\epsilon)) \rvert_{\epsilon =0} &= \sum_a \dot{x}^{a} \frac{\partial f}{\partial x^{a}} \\
+						      &= \sum_a V^{a} \left. \frac{\partial f}{\partial x^{a}}\right\rvert_{\epsilon=0},
+\end{align}
+whee $V^{a} \coloneqq \dot{x}^{a}\rvert_{\epsilon=0, \dots, x_n}$.
+
+Vector fields are first order differential operators
+\begin{equation}
+  V = \sum_a V^{a}(\vb{x}) \frac{\partial }{\partial x^{a}}.
+\end{equation}
+The derivatives $\left.\left\{ \frac{\partial }{\partial x^1}, \dots, \frac{\partial }{\partial x^{n}} \right\} \right\rvert_p$ form a basis of $T_p M$. 
+
+\section{Integral curves}%
+\label{sec:integral_curves}
+
+\begin{definition}[integral curve]
+  An \emph{integral curve} (a \emph{flow}) of a vector field is defined by
+  \begin{equation}
+    \dot{\gamma} (\epsilon) = V \rvert_{\gamma(\epsilon)},
+  \end{equation}
+  where the dot denotes differentiation with respect to $\epsilon$.
+\end{definition}
+
+On $n$  first order ODEs: $\dot{x}^{a} = V^{a} (x)$ .
+
+There exists a unique solution given initial data $X^{a} (0)$ .
+Given a solution $X^{a}(\epsilon)$ , we can expand it in a Taylor series as
+\begin{equation}
+  X^{a}(\epsilon) = X^{a}(0) + V^{a} \cdot \epsilon + O(\epsilon^2).
+\end{equation}
+Up to first order in $\epsilon$, the vector field determines the flow.
+We call  $V$  a \emph{generator} of its flow.
+
+The following example illustrates how you get from a vector field to its flow.
+\begin{example}[$M = \mathbb{R}^2$, $x^{a} = (x, y)$]
+  Consider the vector field $V = x \frac{\partial }{\partial x} + \frac{\partial }{\partial y}$ .
+  The system of ODEs we solve is $\dot{x} = x$ and $\dot{y} = 1$ .
+  This gives us the integral curve $(x(\epsilon), y(\epsilon)) = (x(0)e^\epsilon, y(0) + \epsilon)$ .
+  From this we can see that $x(\epsilon) \cdot \exp(-y (\epsilon))$  is constant along $\gamma$.
+  Using this we can draw the unparametrised integral curve in Fig.~\ref{fig:l2f3}.
+   \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l2f3.pdf_tex}
+    \caption{}
+    \label{fig:l2f3}
+  \end{figure}
+\end{example}
+
+This example motivates the following definition.
+\begin{definition}[invariant]
+  An \emph{invariant} of a vector field $V$ is a function $f$ constant along the flow of $V$.
+  \begin{equation}
+    f(x^{a}(0)) = f(x^{a}(\epsilon)) \qquad \forall \epsilon.
+  \end{equation}
+  Equivalently, $V(f) = 0$.
+\end{definition}
+
+Let us now consider an example that goes the other way: from flow to vector field.
+\begin{example}
+  Consider the $1$ -parameter group of rotations of a plane.
+  \begin{equation}
+    (x( \epsilon), y(\epsilon)) = (x_0 \cos\epsilon - y_0 \sin \epsilon, x_0 \sin \epsilon + y_0 \cos \epsilon).
+  \end{equation}
+  The associated vector field is
+  \begin{equation}
+  V = \left.\left( \frac{\partial y(\epsilon)}{\partial \epsilon} \frac{\partial }{\partial y} + \frac{\partial x(\epsilon)}{\partial \epsilon} \frac{\partial }{\partial x} \right)\right\rvert_{\epsilon = 0} = x \frac{\partial }{\partial y} - y \frac{\partial }{\partial y}.
+  \end{equation}
+\end{example}
+
+Now you can add vector fields, but there is also another operation.
+\begin{definition}[Lie bracket]
+  A \emph{Lie bracket} $[V, W]$ of two vector fields $V, W$ is a vector field defined by
+  \begin{equation}
+    [V, W](f) = V(W(f)) - W(V(f)) \qquad \forall f.
+  \end{equation}
+\end{definition}
+\begin{leftbar}
+  This is indeed another vector field since the commutator of two first order operators is another first order operator.
+\end{leftbar}
+
+\begin{example}[]
+  Let $V = x \frac{\partial }{\partial x} + \frac{\partial }{\partial y}$  and $W = \frac{\partial }{\partial x}$ . We then have $[V, W] = - W$.
+\end{example}
+\begin{leftbar}
+  This is not always the case but sometimes the Lie bracket reproduces some of the vector fields. There is an interesting algebraic structure to this.
+\end{leftbar}
+\begin{definition}[Lie algebra]
+  A \emph{Lie algebra} is a vector space $\mathfrak{g}$ with an anti-symmetric, bilinear operation $[\ ,\ ]\colon \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$, called a \emph{Lie bracket}, which satisfies the \emph{Jacobi identity}
+  \begin{equation}
+    [V, [U, W]] + [W, [V, U]] + [U, [W, V]] = 0 \qquad \forall U, V, W \in \mathfrak{g}.
+  \end{equation}
+\end{definition}
+\begin{leftbar}
+  We will spend some time discussing this abstractly, but then focus on the Lie algebras of vector fields in the main part of this course.
+\end{leftbar}

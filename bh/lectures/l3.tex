@@ -1,0 +1,33 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 3: January 22}
+
+\chapter{The Schwarzschild Black Hole}%
+\label{cha:the_schwarzschild_black_hole}
+
+In contrast to cold stars, which cannot have masses more than a few times $M_\odot$, hot stars will undergo complete gravitational collapse to form a  \emph{black hole}.
+The simplest black hole solution is described by the Schwarzschild metric, which we will assume to be valid everywhere in this chapter.
+
+\section{Birkhoff's Theorem}%
+\label{sec:birkhoff_s_theorem}
+
+In \emph{Schwarzschild coordinates} $(t, r, \theta, \phi)$ , the Schwarzschild metric is the one-parameter family
+\begin{equation}
+  ds^2 = - \left( 1 - \frac{2M}{r} \right) dt^2 + \left( 1- \frac{2M}{r} \right)^{-1} dt^2 + r^2 d\Omega^2,
+\end{equation}
+where the parameter $M > 0$  is interpreted as a mass.
+This is a solution to the vacuum Einstein equations for $0 < r < r_S = 2M$, the  \emph{Schwarzschild radius}.
+This is spherically symmetric, but it turns out that staticity is not required.
+
+\begin{theorem}[Birkhoff]
+  Any spherically symmetric solution of the vacuum Einstein equations is isometric to the Schwarzschild solution.
+\end{theorem}
+\begin{proof}
+  See Hawking and Ellis.
+\end{proof}
+The theorem assumes only spherical symmetry, but the Schwarzschild solution has an additional isometry: $\partial / \partial t$ is a hypersurface-orthogonal Killing vector field, which is timelike for $r > 2M$, so the corresponding Schwarzschild solution is static.
+
+Birkhoff's theorem implies that the spacetime outside any spherical body is the time-independent (exterior) Schwarzschild spacetime, even if the body itself is time-dependent.
+In particular, the Schwarzschild solution is a good description of the spacetime outside a spherical star during its gravitational collapse collapse.
+
+
