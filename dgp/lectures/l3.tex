@@ -1,0 +1,214 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 3: January 27}
+
+Any two vector spaces of a given dimension are isomorphic; there is nothing special other than the dimension distinguishing vector spaces.
+For Lie algebras this is not so.
+\begin{example}[]
+  Even in dimension $2$, which is the lowest non-trivial dimension, there are two Lie algebras (up to isomorphism)
+  \begin{equation}
+    a) \quad [V, W] = -W, \qquad b) \quad [V, W] = 0.
+  \end{equation}
+\end{example}
+
+If the vector space underlying $\mathfrak{g}$ is finite-dimensional, and $V_{\alpha}$, $\alpha = 1, \dots, \dim \mathfrak{g}$  is a basis of $\mathfrak{g}$, we can define the Lie algebra by specifying the brackets
+\begin{equation}
+  [V_{\alpha}, V_{\beta}] = \sum_{\gamma} f\indices{_{\alpha\beta}^{\gamma}} V_{\gamma}, 
+\end{equation}
+where $f\indices{_{\alpha\beta}^{\gamma}}$  are the \emph{structure constants.}
+
+\begin{example}[$\mathfrak{g} = \mathfrak{gl}(n, \mathbb{R})$]
+  The vector space is given by $n \times n$ real matrices, and the Lie bracket is the matrix commutator.
+  The dimension of this Lie algebra is $\dim \mathfrak{g} = n^2$.
+\end{example}
+
+\begin{example}[Vector fields]
+  The set of all vector fields on a manifold $M$ form an infinite-dimensional Lie algebra.
+\end{example}
+
+\begin{example}[]
+  Consider $\text{diff}(\mathbb{R})$ or $\text{diff}(S^1)$, vector fields on a line or on a circle respectively.
+  \begin{align}
+    \text{diff}(\mathbb{R}),\quad x \in \mathbb{R}, \quad V_{\alpha} &= -x^{\alpha + 1} \frac{\partial }{\partial x} \\
+    \text{diff}(S^1), \quad \theta \in S^1, \quad V_{\alpha} &= i e^{i \alpha \theta} \frac{\partial }{\partial \theta}
+  \end{align}
+  \begin{equation}
+    [V_{\alpha}, V_{\beta}] = (\alpha - \beta) V_{\alpha + \beta}.
+  \end{equation}
+\end{example}
+
+\begin{example}[Virasoro algebra]
+  The \emph{Virasoro algebra} $\text{Vir} = \text{diff}(S^1) \oplus \mathbb{R}$ is the central extension\footnote{We will meet the concept of central extension and central charge in this term's \emph{String Theory} course.} of $\text{diff}(S^1)$, with \emph{central charge} $c = \mathbb{R}$.
+  \begin{align}
+    \left\{
+    \begin{gathered}
+      [V_{\alpha}, c] = 0 \\
+      [V_{\alpha}, V_{\beta}]_{\text{vir}} = (\alpha - \beta) V_{\alpha + \beta} + \frac{c}{12} (\alpha^3 - \alpha) \delta_{\alpha + \beta, 0}
+    \end{gathered}
+    \right.
+  \end{align}
+  \begin{remark}
+    \begin{equation}
+      [f(\theta) \frac{\partial }{\partial \theta}, g(\theta) \frac{\partial }{\partial \theta}] = \underbrace{(f g' - g f')}_{\mathclap{\text{Wronskian}}} \frac{\partial }{\partial \theta}
+    \end{equation}
+    `After Witten'.
+    \begin{equation}
+      [f \frac{\partial }{\partial \theta}, g \frac{\partial }{\partial \theta}]_{\text{vir}} = [f \frac{\partial }{\partial \theta}, g \frac{\partial }{\partial \theta}] + \frac{i c}{48 \pi} \int_0^{2 \pi} (f''' g - g''' f) \dd[]{\theta}
+    \end{equation}
+  \end{remark}
+\end{example}
+
+\begin{theorem}[Ado]
+  Every finite-dimensional Lie algebra is isomorphic to some matrix Lie algebra, a subalgebra of $\mathfrak{gl}(n, \mathbb{R})$.
+\end{theorem}
+\begin{leftbar}
+  \begin{remark}
+    $n$ is not necessarily the dimension of the Lie algebra.
+  \end{remark}
+\end{leftbar}
+
+\chapter{Lie Groups}%
+\label{cha:lie_groups}
+
+\begin{definition}[Lie group]
+  A \emph{Lie group} is a smooth manifold $G$, which is also a group, such that the group operations
+  \begin{gather}
+    \text{multiplication} \qquad G \times G \to G, \qquad (g_1, g_2) \to g_1 \cdot g_2 \\
+    \text{inverse} \qquad G \to G \qquad g \to g^{-1}
+  \end{gather}
+  are smooth maps between manifolds.
+\end{definition}
+
+\begin{example}[$G = GL(n, \mathbb{R}) \in \mathbb{R}^{n^2}$]
+  The general linear group $GL(n, \mathbb{R})$ is defined as the set of invertible matrices $\{g \in G \suchthat \det g \neq 0\}$.
+  The dimension is $\dim (G) = n^2$.
+\end{example}
+\begin{example}[$G = O(n, \mathbb{R})$]
+  This is the group of orthogonal matrices, defined by $\frac{1}{2} n (n + 1)$ conditions $g^T g = \mathbb{1}$.
+  The dimension is then $\dim O(n, \mathbb{R}) = n^2 - \frac{1}{2} n (n+1) = \frac{1}{2}n (n-1)$.
+  We also have to check that these conditions define a manifold in the sense that the associated Jacobian has maximal rank.
+\end{example}
+
+\begin{definition}[group action]
+  A \emph{group action} on a manifold $M$ is a map $G \times M \to M$ mapping $(g, p) \to g(p)$ such that
+  \begin{equation}
+    e(p) = p, \qquad g_1(g_2(p)) = (g_1 \cdot g_2) (p)
+  \end{equation}
+  for all $p \in M$ and al $g_1, g_2$ on $G$.
+\end{definition}
+
+\begin{definition}[transformation group]
+  If we have a group action, we refer to $G$ as a group of \emph{transformations}.
+\end{definition}
+
+\begin{example}[]
+  Take $M = \mathbb{R}^2$  and $G = E(2)$, the three-dimensional Euclidean group.
+  \begin{equation}
+    g 
+    \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+     \cos \theta & - \sin \theta \\
+     \sin \theta & \cos \theta \\
+    \end{pmatrix} 
+    \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix} + 
+    \begin{pmatrix}
+    a \\
+    b \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \tilde{x} \\
+    \tilde{y} \\
+    \end{pmatrix}
+  \end{equation}
+  Take $G_E \in G$ to be a one-parameter subgroup of  $G$.
+  There are three such subgroups
+   \begin{gather}
+    G_\theta: 
+    \begin{pmatrix}
+    \tilde{x} \\
+    \tilde{y} \\
+    \end{pmatrix} = 
+    \begin{pmatrix}
+    \cos \theta \cdot x - \sin \theta \cdot y \\
+    \sin \theta \cdot x + \cos \theta \cdot y \\
+    \end{pmatrix} \\
+    G_a \colon
+    \begin{pmatrix}
+    \tilde{x} \\
+    \tilde{y} \\
+    \end{pmatrix} = 
+    \begin{pmatrix}
+    x + a \\
+    y \\
+    \end{pmatrix} \\
+    G_b \colon
+    \begin{pmatrix}
+    \tilde{x} \\
+    \tilde{y} \\
+    \end{pmatrix} = 
+    \begin{pmatrix}
+    x \\
+    y + b \\
+    \end{pmatrix}.
+  \end{gather}
+  Each of these one-parameter subgroups generates a flow.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l3f1.pdf_tex}
+    \caption{}
+    \label{fig:l3f1}
+  \end{figure}
+  We can think of this flow as being generated by a vector field $V\rvert_{p} = \left.\dv{E} g_E(p)\right\rvert_{E = 0}$.
+  \begin{align}
+    V_\theta &= d \frac{\partial }{\partial y} - y \frac{\partial }{\partial x} \\
+    V_a &= \left. \left( \dv{\tilde{x}}{a} \frac{\partial }{\partial \tilde{x}} + \dv{\tilde{y}}{a} \frac{\partial }{\partial \tilde{y}} \right) \right\rvert_{a = 0} = \frac{\partial }{\partial x} \\
+    V_b &= \frac{\partial }{\partial y}.
+  \end{align}
+  We define a $3$-dimensional Lie algebra of $E(2)$ as
+  \begin{equation}
+    [V_a, V_\theta] = V_b \qquad [V_b, V_\theta] = -V_a \qquad [V_a, V_b] = 0,
+  \end{equation} 
+  represented by vector fields on $M$.
+\end{example}
+
+\section{Geometry on Lie Groups}%
+\label{sec:geometry_on_lie_groups}
+
+\begin{definition}[push forward]
+  Let $f \colon M \to \widetilde{M}$  be a smooth map between manifolds.
+  We define the \emph{tangent map} or \emph{push forward} to be
+  \begin{equation}
+    \begin{gathered}
+      f_* \colon \\
+      \qquad
+    \end{gathered}
+    \begin{gathered}
+      T_p(M) \\
+      V
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \to \\
+      \mapsto
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      T_{f(p)}(\widetilde{M}) \\
+      f_*(V) = \left. \dv{E} f(\gamma(E)) \right\rvert_{E=0}.
+    \end{gathered}
+  \end{equation} 
+\end{definition}
+
+This extends to the tangent bundle $T (M)$ .
+If $x^{\alpha}$  are coordinates of $\mathcal{M} \supset M$ , $(y^{\alpha'})$  coordinates on $\widetilde{\mathcal{M}} \subset M$ , then
+\begin{equation}
+  V = V^{\alpha} \frac{\partial }{\partial x^{a}} \qquad f_*(V) = V^{\alpha} \frac{\partial f^i}{\partial x^{a}} \frac{\partial }{\partial y^{i}}.
+\end{equation}

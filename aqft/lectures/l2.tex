@@ -42,16 +42,16 @@ Again, assume $f$ does not grow too fast as $\varphi \to \pm \infty$. Usually, $
 
 Say we have $N$ scalar fields (in $0+1$ dimensions we should really just say `variables') $\varphi_{a}$ with $a = 1, \dots, N$, with action
 \begin{equation}
-  S_0 (\varphi) = \frac{1}{2} m_{ab} \varphi_{a} \varphi_{b} = \frac{1}{2} \varphi^T m \varphi,
+  S_0 (\varphi) = \frac{1}{2} M_{ab} \varphi_{a} \varphi_{b} = \frac{1}{2} \varphi^T M \varphi,
 \end{equation}
-where $m$ is an $N \times N$ symmetric, positive definite ($\det m > 0$) matrix.
+where $M$ is an $N \times N$ symmetric, positive definite ($\det M > 0$) matrix.
 
-We can diagonalise this. There exists some orthogonal $P$ such that $m = P \Lambda P^T$, where $\Lambda$ is diagonal.
+We can diagonalise this. There exists some orthogonal $P$ such that $M = P \Lambda P^T$, where $\Lambda$ is diagonal.
 Let $\chi = P^T \varphi$. Then the free partition function is
 \begin{align}
-  Z_0 &= \int \dd[N]{\varphi} \exp(-\frac{1}{2 \hbar} \varphi^T m \varphi) \\
+  Z_0 &= \int \dd[N]{\varphi} \exp(-\frac{1}{2 \hbar} \varphi^T M \varphi) \\
       &= \int \dd[N]{\chi} \exp(- \frac{1}{2 \hbar} \chi^T \Lambda \chi) \\
-      &= \prod_{c=1}^N \int \dd[]{\chi_c} e^{-\frac{\lambda_c}{2 \hbar} \chi^2} = \sqrt{\frac{(2 \pi \hbar)^N}{\det m}}
+      &= \prod_{c=1}^N \int \dd[]{\chi_c} e^{-\frac{\lambda_c}{2 \hbar} \chi^2} = \sqrt{\frac{(2 \pi \hbar)^N}{\det M}}
 \end{align}
 
 We want to get from the partition function to correlation functions.
@@ -61,19 +61,20 @@ We can do this by introducing an $N$-component vector of external sources $J$ to
 \end{equation}
 The partition function is then
 \begin{equation}
-  Z_0(J) = \int \dd[N]{\varphi} \exp(-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar}) J^T \varphi.
+  Z_0(J) = \int \dd[N]{\varphi} \exp(-\frac{1}{2\hbar} \varphi^T M \varphi - \frac{1}{\hbar}) J^T \varphi.
 \end{equation}
-Similar to solving an ordinary Gaussian integral, we complete the square by writing $\widetilde{\varphi} = \varphi + m^{-1} J$. One can then solve this integral to be
+Similar to solving an ordinary Gaussian integral, we complete the square by writing $\widetilde{\varphi} = \varphi + M^{-1} J$. One can then solve this integral to be
 \begin{equation}
-  Z_0(J) = Z_0(0) \exp(\frac{1}{2\hbar} J^T m^{-1} J).
+  \label{eq:generating-function}
+  Z_0(J) = Z_0(0) \exp(\frac{1}{2\hbar} J^T M^{-1} J).
 \end{equation}
 This is called the \emph{generating function}\footnote{When we go to higher dimensions, where $J = J(x)$ this will be a generating functional $Z[J(x)]$.}.
 Correlation functions are obtained from differentiating with respect to the auxiliary sources $J$ and evaluating the whole expression at $J = 0$:
 \begin{align}
-  \expectationvalue{\varphi_a \varphi_b} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \varphi_{a} \varphi_{b} \exp(-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar} J^T \varphi)\right\rvert_{J = 0}. \\
+  \expectationvalue{\varphi_a \varphi_b} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \varphi_{a} \varphi_{b} \exp(-\frac{1}{2\hbar} \varphi^T M \varphi - \frac{1}{\hbar} J^T \varphi)\right\rvert_{J = 0}. \\
 					 &= \frac{1}{Z_0(0)} \left. \int \dd[N]{\varphi}  \left( -\hbar \frac{\partial }{\partial J_a} \right) \left(-\hbar \frac{\partial }{\partial J_b}\right) \exp( \dots )  \right\rvert_{J = 0} \\
 					 &= \frac{1}{Z_0(0)} \left( -\hbar \frac{\partial }{\partial J_a} \right) \left( -\hbar \frac{\partial }{\partial J_b} \right) Z_0(J) \rvert_{J=0} \\
-					 &= \hbar \, (m^{-1})_{ab} \coloneqq
+					 &= \hbar \, (M^{-1})_{ab} \coloneqq
 					 \feynmandiagram[inline=(a.base), horizontal=a to b] {
 					   a [particle=\(a\)] -- b [particle=\(b\)],
 					 };
@@ -88,22 +89,22 @@ Then the steps above are equivalent to swapping $l(\varphi)$  for $l(- \hbar \fr
 
 The correlation function can again be evaluated explicitly by the introduction of an auxiliary current $J$:
 \begin{align}
-  \expectationvalue{l^{(1)}(\varphi) \cdots l^{(p)} (\varphi)} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \prod_{i = 1}^p l^{(i)}(\varphi) e^{-\frac{1}{2\hbar} \varphi^T m \varphi - \frac{1}{\hbar} J^T \varphi} \right\rvert_{J = 0}. \\
-							       &= (-\hbar)^p \prod_{i = 1}^p l^{(i)}(\frac{\partial }{\partial J}) \left. e^{\frac{1}{2\hbar} J^T m^{-1} J} \right\rvert_{J=0}
+  \expectationvalue{l^{(1)}(\varphi) \cdots l^{(p)} (\varphi)} &= \frac{1}{Z_0(0)} \left.\int \dd[N]{\varphi} \prod_{i = 1}^p l^{(i)}(\varphi) e^{-\frac{1}{2\hbar} \varphi^T M \varphi - \frac{1}{\hbar} J^T \varphi} \right\rvert_{J = 0}. \\
+							       &= (-\hbar)^p \prod_{i = 1}^p l^{(i)}(\frac{\partial }{\partial J}) \left. e^{\frac{1}{2\hbar} J^T M^{-1} J} \right\rvert_{J=0}
 \end{align}
 
 In other words, if $p$  is odd, the integrand is odd in some $\varphi_a$  and the integral over $\varphi_a \in (- \infty, + \infty )$   vanishes.
 For $p = 2 k$, the terms which are non-zero as $J \to 0$ have the following form.
 We need half the derivatives to bring down components of  $m^{-1} J$  and half to remove the $J$ -dependence from those terms that earlier derivatives brought down.
-As such, we get exactly $k$  factors of $m^{-1}$ .
+As such, we get exactly $k$  factors of $M^{-1}$ .
 This is Wick's theorem.
 
 \begin{example}[4-point function]
   Consider the $4$-point correlation function. One can check that the above result gives
   \begin{align}
-    \expectationvalue{\varphi_a \varphi_b \varphi_c \varphi_d} &= \hbar^2 \left[ (m^{-1})_{ab} (m^{-1})_{cd}
-    + (m^{-1})_{ac} (m^{-1})_{bd}
-  + (m^{-1})_{ad} (m^{-1})_{bc} \right] \\
+    \expectationvalue{\varphi_a \varphi_b \varphi_c \varphi_d} &= \hbar^2 \left[ (M^{-1})_{ab} (M^{-1})_{cd}
+    + (M^{-1})_{ac} (M^{-1})_{bd}
+  + (M^{-1})_{ad} (M^{-1})_{bc} \right] \\
   &= 
   \begin{gathered}
     \feynmandiagram[small, horizontal=a to b] {
@@ -146,9 +147,9 @@ This is Wick's theorem.
 
 In general, for $\expectationvalue{\varphi_{1} \dots \varphi_{2k}}$, the number of terms is the number of distinct ways of pairing the $2k$ fields. This is $(2k + 1)!! = (2k)! / (2^k k!)$; the number of permutations of $2k$ fields is $(2k)!$, but we have to divide this by the $2^k$ permutations within the pairs and the $k!$ ways of rearranging the pairs.
 \begin{remark}
-  For complex fields, $m$ is Hermitian but not symmetric anymore. In that case, the order of indices of $m^{-1}$ is important. We keep track of this by drawing the propagator with a directed line
+  For complex fields, $M$ is Hermitian but not symmetric anymore. In that case, the order of indices of $M^{-1}$ is important. We keep track of this by drawing the propagator with a directed line
   \begin{equation}
-    \langle \phi_a \phi_b^* \rangle = \hbar\, (m^{-1})_{ab} \coloneqq
+    \langle \phi_a \phi_b^* \rangle = \hbar\, (M^{-1})_{ab} \coloneqq
     \feynmandiagram[inline=(a.base), horizontal=a to b] {
       a [particle=\(a\)] -- [fermion] b [particle=\(b\)],
     };

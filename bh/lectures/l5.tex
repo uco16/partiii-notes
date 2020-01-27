@@ -1,0 +1,142 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 5: January 27}
+
+\begin{definition}[]
+  A \emph{solar mass black hole} has a mass $M \lesssim 100 M_\odot$. These are formed by the gravitational collapse of a star.
+\end{definition}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l5f1.pdf_tex}
+  \caption{}
+  \label{fig:l5f1}
+\end{figure}
+Approximate disc particles as following circular orbits.
+
+As the energy decreases (say by friction), the radius slowly decreases.
+A particle from the disc reaches the ISCO. If it has energy $E = \sqrt{8 / 9}$ it falls into the hole.
+A fraction of $1 - \sqrt{8 /9} \approx 6\%$ of the rest mass is lost to friction. This colossal amount of energy is converted to electromagnetic radiation.
+
+\section{White Holes}%
+\label{sec:white_holes}
+
+Consider the $r > 2M$ Schwarzschild solution.
+\begin{definition}[outgoing EF coords]
+  Now define $u \coloneqq t - r_*$, which is constant along \emph{outgoing} radial null geodesics.
+  Then $(u, r, \theta, \phi)$ define \emph{outgoing Eddington--Finkelstein coordinates}.
+\end{definition}
+The metric in these coordinates is
+\begin{equation}
+  ds^2 = - \left( 1 - \frac{2M}{r} \right) du^2 - 2du dr + r^2 d\Omega^2.
+\end{equation}
+
+Just as in the ingoing case, we can extend this though $r = 2M$ to  $r \leq 2M$  until the curvature singularity at $r = 0$.
+ \begin{claim}
+  This is not the same as the previous $r \leq 2M$ region!
+\end{claim}
+\begin{proof}
+  Consider for example the outgoing radial null geodesics $u = \text{const.}$  and $\dv{r}{\tau} = +1$ .
+  In this $r < 2M$ region, $r$ is increasing, so it cannot be the same region as before.
+\end{proof}
+\begin{exercise}
+  Repeat the calculation as for the ingoing case to show $k = \frac{\partial }{\partial u}$ in ingoing EF coordinates and $\frac{\partial }{\partial r}$  is the time-orientation equivalent to $k$ in $r > 2M$.
+\end{exercise}
+\begin{leftbar}
+  The fundamental confusion of calculus: $\frac{\partial }{\partial r}$  in the ingoing coordinates is not the same as in the outgoing coordinates, since we are holding different coordinates fixed.
+\end{leftbar}
+
+\begin{definition}[white hole]
+  A \emph{white hole} is a region that cannot receive a signal from $\infty$.
+\end{definition}
+
+The $r \leq 2M$  region is a \emph{white hole}!
+
+A white hole is essentially a time-reverse of a black hole.
+If we substitute $u = -v$ , we recover the metric from the ingoing coordinates.
+Therefore, $u = -v$  is an isometry mapping the white hole to the black hole, which reverses the time orientation.
+
+White holes are unphysical\footnote{As discussed in \emph{General Relativity}, our universe (emerging from the big bang singularity) looks a bit like the inside of a white hole in $5$ dimensions.}, since there is no mechanism for forming them; you would have to start with the singularity at $r = 0$ and get the white hole emerging from it.
+Black holes are stable; small perturbations will decay. Since white holes are time-reversals of black holes, they are unstable objects. 
+
+\section{Kruskal Extension}%
+\label{sec:kruskal_extension}
+
+\begin{definition}[]
+  For $r > 2M$, take the \emph{Kruskal--Szekeres} coordinates $(U, V, \theta, \phi)$ with $0> U = -e^{-u / 4M}$ and $0< V = +e^{v / 4M}$.
+\end{definition}
+
+We then have
+\begin{equation}
+  UV = -e ^{r_* / 2M} = -e^{r / 2M} (\frac{r}{2M} - 1) \label{eq:5-star}.
+\end{equation}
+The right hand side is monotonic. Therefore, if we know $U$  and $V$ , we can determine $r = r(U, V)$  uniquely.
+Similarly, 
+\begin{equation}
+  \frac{V}{U} = -e^{t / 2M}
+\end{equation}
+fixes $t (U, V)$ .
+\begin{exercise}
+  Show that in these coordinates the metric is
+  \begin{equation}
+    ds^2 = -\frac{32M^3}{ r(U, V)} e^{-r(U, V) / 2M} dU dV + r(U, V)^2 d\Omega^2.
+  \end{equation}
+\end{exercise}
+We can smoothly extend this metric to a larger range of $U$ and  $V$ , since it remains smooth and invertible.
+We can now use \eqref{eq:5-star} to define $r(U, V)$  for $U \geq 0$  or $V \leq 0$ . The metric can then be analytically extended with $\det g_{\mu\nu} \neq 0$  to new regions, where either $U > 0$ or  $V < 0$. 
+
+What does the Schwarzschild radius $r = 2M$ correspond to?
+We have  $U V = 0$, which corresponds either to  $U = 0$ or  $V = 0$. In fact, this is not one surface but two!
+
+What about the curvature singularity at  $r = 0$?
+Equation  \eqref{eq:5-star} gives $UV = 1$, a hyperbola.
+ \begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l5f2.pdf_tex}
+  \caption{Kruskal diagram}
+  \label{fig:l5f2}
+\end{figure} 
+Radial null geodesics correspond to constant $U$  or $V$.
+
+We have four regions
+ \begin{enumerate}[I:]
+  \item $r > 2M$ Schwarzschild
+  \item Black hole region
+  \item White hole region
+  \item new region with $r > 2M$ isometric to $I$ via $(U, V) \to (-U, -V)$
+\end{enumerate}
+\begin{leftbar}
+  Ingoing EF cover I and II, while outgoing EF cover I and III.
+\end{leftbar}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l5f3.pdf_tex}
+  \caption{A star collapsing to form a black hole. The interior of the star covers up regions IV and III.}
+  \label{fig:l5f3}
+\end{figure}
+
+\begin{exercise}
+  Show 
+  \begin{equation}
+    k = \frac{1}{4M} \left( V \frac{\partial }{\partial V} - U \frac{\partial }{\partial U} \right) \qquad k^2 = - \left( 1 - \frac{2M}{r} \right),
+  \end{equation} 
+  timelike in I, IV, spacelike in II, III, and null at $U = 0$ or $V = 0$.
+\end{exercise}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l5f3.pdf_tex}
+  \caption{Orbits (integral curves) of $k$.}
+  \label{fig:l5f3}
+\end{figure}
+
+$\{U = 0\}$ and $\{V = 0\}$ are fixed by $k$.
+$k = 0$ on `bifurfaction 2-sphere' $U = V = 0$ (also fixed by $k$).
+\begin{leftbar}
+  Recall that every point on the diagram represents a suppressed two-sphere.
+\end{leftbar}

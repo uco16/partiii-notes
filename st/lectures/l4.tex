@@ -1,0 +1,128 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 4: January 27}
+
+\section{Classical Hamiltonian Dynamics of the String}%
+\label{sec:classical_hamiltonian_dynamics_of_the_string}
+
+We continue to work in  conformal gauge, where $h_{ab} = e^{\phi}
+\begin{pmatrix}
+ -1 & 0 \\
+ 0 & 1 \\
+\end{pmatrix} $.
+\begin{definition}[canonical momentum]
+  We define the \emph{canonical momentum field}, conjugate to $X^{\mu}$  as the functional derivative
+  \begin{equation}
+    P_{\mu} (\sigma, \tau) = \frac{\delta S(x)}{\delta X^{\mu}(\sigma, \tau)} = \frac{1}{2 \pi \alpha'} \dot{X}_{\mu}.
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  Given the Lagrangian density $\mathscr{L}$ , the Hamiltonian density is
+  \begin{equation}
+    \mathscr{H} = P_{\mu} \dot{X}^{\mu} - \mathscr{L} = \frac{1}{4 \pi \alpha'} (\dot{X}^2 + X'{}^2).
+  \end{equation}
+\end{definition}
+\begin{definition}[Poisson brackets]
+  We introduce Poisson brackets $\{\cdot, \cdot\}_{\text{PB}}$. For a particle theory, where our coordinates $x^{\mu}(\tau)$  and momenta $p_{\mu} (\tau)$  are our fundamental variables, it is useful to define
+  \begin{equation}
+    \{f, g\}_{\text{PB}} = \frac{\partial f}{\partial x^{\mu}} \frac{\partial g}{\partial p_{\mu}} - \frac{\partial f}{\partial p_{\mu}} \frac{\partial g}{\partial x^{\mu}}.
+  \end{equation}
+\end{definition}
+\begin{example}[]
+  We have for example, $\{x^{\mu}, p_{\nu}\} = \delta^{\mu}_{\nu}$.
+\end{example}
+The Hamiltonian $\mathscr{H}$  is the generator of time translations
+\begin{equation}
+  \dv{f}{\tau} = \frac{\partial f}{\partial \tau} + \{f, \mathscr{H}\}.
+\end{equation}
+
+Our field theoretic generalisation requires 
+\begin{equation}
+  \{X^{\mu}(\sigma, \tau), P_{\mu}(\sigma', \tau)\} = \delta^{\mu}_{\nu} \delta(\sigma - \sigma').
+\end{equation}
+Recall that the $X^{\mu}(\sigma, \tau)$  can be written in terms of Fourier modes $\alpha^{\mu}_n$  and $\overline{\alpha}{}^{\mu}_n$, where $\sigma \sim \sigma + 2 \pi$ is periodic, which is the reason why $n$ takes on discrete values.
+
+\begin{claim}
+  The Poisson bracket relationship between $X^{\mu}$ and $P_{\mu}$ requires
+  \begin{subequations}
+    \label{eq:4-alg}
+    \begin{alignbox}
+      \{\alpha^{\mu}_m, \alpha^{\nu}_n\}_{\text{PB}} &= -im \eta^{\mu\nu} \delta_{m+n, 0} \\
+      \{\overline{\alpha}{}^{\mu}_m, \overline{\alpha}{}^{\nu}_n\}_{\text{PB}} &= -im \eta^{\mu\nu} \delta_{m+n, 0} \\
+      \{\alpha^{\mu}_m, \overline{\alpha}{}^{\nu}_n\}_{\text{PB}} &= 0
+    \end{alignbox}
+  \end{subequations}
+\end{claim}
+\begin{proof}
+  Without loss of generality, let us check this at $\tau = 0$:
+  \begin{align}
+    X^{\mu}(\sigma) &= x^{\mu} + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{1}{n} \left( \alpha^{\mu}_n e^{+i n\sigma} + \overline{\alpha}{}^{\mu}_n e^{-i n \sigma}\right), \\
+    P^{\mu}(\sigma) &= \frac{p^{\mu}}{2\pi} + \frac{1}{2 \pi} \frac{1}{\sqrt{2\alpha'}} \sum_{n \neq 0} \left( \alpha^{\mu}_n e^{+i n\sigma} + \overline{\alpha}{}^{\mu}_n e^{-i n \sigma}\right). \\
+  \end{align}
+  The Poisson bracket is
+  \begin{align}
+    \Bigl\{ X^{\mu}(\sigma), P^{\nu} (\sigma') \Bigr\}_{\text{PB}} &= \frac{1}{2\pi} \Bigl\{ x^{\mu}, p^{\nu} \Bigr\}_{\text{PB}} + \frac{i}{4\pi} \sum_{m, n \neq 0} \frac{1}{m} 
+    \left( \Bigl\{ \alpha^{\mu}_m, \alpha^{\nu}_n \Bigr\}_{\text{PB}} e^{i (m \sigma + n \sigma')} +
+  \Bigl\{ \overline{\alpha}{}^{\mu}_m, \overline{\alpha}{}^{\nu}_n \Bigr\}_{\text{PB}} e^{-i (m \sigma + n \sigma')} \right) \\
+								  &= \frac{\eta^{\mu\nu}}{2\pi} + \frac{\eta^{\mu\nu}}{2 \pi} \sum_{n \neq 0} e^{in(\sigma - \sigma')} = \frac{\eta^{\mu\nu}}{2 \pi} \sum_n e^{i n (\sigma - \sigma')},
+  \end{align}
+  but $\frac{1}{2\pi} \sum_n e^{i n (\sigma - \sigma')}$ is just the periodic version of the Dirac $\delta$-function, so
+  \begin{equation}
+    \Bigl\{ X^{\mu}(\sigma), P^{\nu}(\sigma') \Bigr\}_{\text{PB}} = \eta^{\mu\nu} \delta(\sigma - \sigma').
+  \end{equation}
+\end{proof}
+
+
+\section{The Stress Tensor and Witt Algebra}%
+\label{sec:the_stress_tensor_and_witt_algebra}
+
+Let us introduce (worldsheet) light-cone coordinates $\sigma^{\pm} = \tau \pm \sigma$.
+In these coordinates, the worldsheet metric looks like $e^{\phi}
+\begin{pmatrix}
+ 0 & 1 / 2 \\
+ 1 / 2 & 0 \\
+\end{pmatrix} $ and $\partial_{\pm} = \frac{\partial }{\partial \sigma^\pm}$.
+The action and equations of motion become
+\begin{equation}
+  S = -\frac{1}{2 \pi \alpha'} \int \dd[]{\sigma^+} \dd[]{\sigma^-} \partial_+ X \cdot \partial_- X, \qquad \partial_+ \partial_- X^{\mu} = 0.
+\end{equation}
+The stress tensor $T_{ab}$  is
+\begin{equation}
+  T_{++} = -\frac{1}{\alpha'} \partial_+ X \cdot \partial_+ X, 
+  \qquad T_{--} = -\frac{1}{\alpha'} \partial_- X \cdot \partial_- X,
+  \qquad \underbrace{T_{+ - } =T_{- +} = 0}_{\mathclap{\text{effectively trace of } T_{ab}}}.
+\end{equation}
+The constraint is $T_{\pm \pm} = 0$. It is useful to introduce the Fourier modes of $T_{\pm \pm}$. We define (at $\tau = 0$) the charges
+\begin{equation}
+  L_n = -\frac{1}{2\pi} \int_0^{2\pi} \dd[]{\sigma} T_{--}(\sigma) e^{-in\sigma} \qquad
+  \overline{L}_n = -\frac{1}{2\pi} \int_0^{2\pi} \dd[]{\sigma} T_{++}(\sigma) e^{+in\sigma}.
+\end{equation}
+Recall that 
+\begin{equation}
+  \partial_- X^{\mu}(\sigma^-) = \sqrt{\frac{\alpha'}{2}} \sum_n \alpha_n e^{-i n \sigma^-}, 
+\end{equation}
+where $\alpha_0^{\mu} = \sqrt{\frac{\alpha'}{2}} p^{\mu}$.
+We find
+\begin{align}
+  L_n &= \frac{1}{2 \pi \alpha'} \int_{0}^{2\pi}\dd[]{\sigma}  \partial_- X^{\mu}(\sigma) \partial_- X_{\mu}(\sigma) \\
+      &= \frac{1}{4 \pi} \sum_{m,  p} \alpha_m \cdot \alpha_p \int_0^{2\pi} \dd[]{\sigma} e^{-i (m + p - n) \sigma} \\
+      &= \frac{1}{4 \pi} \sum_{m, p} \alpha_m \cdot \alpha_p 2 \pi \delta_{p, n-m},
+\end{align}
+and similarly for $\overline{L}_n$ . We have
+\begin{equation}
+  \boxed{
+    L_n = \frac{1}{2} \sum_m \alpha_{n - m} \cdot \alpha_m, \qquad 
+    \overline{L}_n = \frac{1}{2} \sum_m \overline{\alpha}_{n - m} \cdot \overline{\alpha}_m, \qquad 
+  }
+\end{equation}
+The constraint can be written as $L_n = 0 = \overline{L}_n$ .
+Using the algebra \eqref{eq:4-alg} for the $\alpha^{\mu}_n$  ($\overline{\alpha}{}^{\mu}_n$), we can compute the algebra for the $L_n$  ($\overline{L}_n$) to be
+\begin{subequations}
+  \begin{alignbox}
+    \Bigl\{ L_m, L_n \Bigr\}_{\text{PB}} &= -i (m - n) L_{m+n}, \\
+    \Bigl\{ \overline{L}_m, \overline{L}_n \Bigr\}_{\text{PB}} &= -i (m - n) \overline{L}_{m+n}, \\
+    \Bigl\{ L_m, \overline{L}_n \Bigr\}_{\text{PB}} &= 0.
+  \end{alignbox}
+\end{subequations}
+This is called the \emph{Witt algebra}.
+We will see that if we set $L_n = 0 = \overline{L}_n$ at a given $\tau$, then the evolution of the system preserves $L_n = 0 = \overline{L}_n$.

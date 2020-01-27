@@ -1,0 +1,417 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 4: January 25}
+
+\subsection{Diagrams with External Sources}%
+\label{sub:diagrams_with_external_sources}
+
+As we have previously mentioned, diagrams with $E = n$ external sources need to be considered for the $n$-point correlation functions.
+Let us focus on those diagrams that have $E = 2$ external currents.
+\begin{equation}
+  Z(J) \supset [ \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+  \ + \
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex (a);
+	\tikzfeynmanset{every vertex={small, dot}};
+	\vertex[below=0.5cm of a] (b);
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[below=0.5cm of b] (d);
+
+	\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+	  (a) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \ + \ 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+  \quad \
+  \mathclap{\begin{gathered}
+     \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+       a [small, dot] -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+     };
+   \end{gathered}}
+  \quad + \
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex (a);
+	\tikzfeynmanset{every vertex={small, dot}};
+	\vertex[below=0.5cm of a] (b);
+	\vertex[below=0.5cm of b] (c);
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[below=0.5cm of c] (d);
+
+	\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+	  (a) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  +
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex (a);
+	\tikzfeynmanset{every vertex={small, dot}};
+	\vertex[below=0.5cm of a] (b);
+	\vertex[right=0.4cm of b] (c);
+	\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[below=0.5cm of b] (d);
+
+	\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+	  (a) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  + \
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+  \
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
+      a [dot] -- [half left] b [dot] -- [half left] a,
+      a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
+    };
+  \end{gathered}
+  \ + \ \dots ]
+\end{equation}
+
+Factor out vacuum bubble diagrams
+\begin{equation}
+  [ \dots ] = 
+  \underbrace{ [ \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+        a [large, dot] -- b [large, dot],
+      };
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex (a);
+          \tikzfeynmanset{every vertex={small, dot}};
+          \vertex[below=0.5cm of a] (b);
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex[below=0.5cm of b] (d);
+          \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \diagram* {
+            (a) -- (d),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \ + \dots ]}_{\mathclap{\text{no vacuum bubbles}}}
+  \cdot \underbrace{[1 + \quad
+   \mathclap{\begin{gathered}
+     \feynmandiagram[transform shape, scale=0.5][vertical=a to b] {
+       a [small, dot] -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+     };
+   \end{gathered}}
+   \quad + \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][horizontal=a to b] {
+	a [small, dot] -- [half left] b [small, dot] -- [half left] a,
+	a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
+      };
+    \end{gathered}
+    \  + \dots
+  ]}_{\mathclap{Z(0)}}
+\end{equation}
+
+The $n$-point expectation values are then given by
+\begin{align}
+  \expectationvalue{\phi^2} &= \frac{(-\hbar)^2}{Z(0)} \left.\frac{\partial^2 Z(J) }{\partial J^2} \right\rvert_{J = 0} \\
+  &=
+  \underbrace{ [ \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+        a [large, dot] -- b [large, dot],
+      };
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex (a);
+          \tikzfeynmanset{every vertex={small, dot}};
+          \vertex[below=0.5cm of a] (b);
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex[below=0.5cm of b] (d);
+          \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \diagram* {
+            (a) -- (d),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \begin{tikzpicture}
+	\begin{feynman}
+	  \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex (a);
+	  \tikzfeynmanset{every vertex={small, dot}};
+	  \vertex[below=0.5cm of a] (b);
+	  \vertex[below=0.5cm of b] (c);
+	  \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex[below=0.5cm of c] (d);
+	  \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	  \draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+	  \diagram* {
+	    (a) -- (d),
+	  };
+	\end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \begin{tikzpicture}
+	\begin{feynman}
+	  \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex (a);
+	  \tikzfeynmanset{every vertex={small, dot}};
+	  \vertex[below=0.5cm of a] (b);
+	  \vertex[right=0.4cm of b] (c);
+	  \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex[below=0.5cm of b] (d);
+	  \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	  \draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+	  \diagram* {
+	    (a) -- (d),
+	  };
+	\end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \ + \dots ]}_{\mathclap{\text{no vacuum bubbles}}}
+\end{align}
+
+\subsection*{Symmetry factors}%
+
+From $Z(J)$ \eqref{eq:3-star}, the $E = 2$, $V = 0$ ($P = 1$) term is
+\begin{equation}
+  \frac{1}{2\hbar} \frac{J^2}{m^2} \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+\end{equation}
+We have $F = 2$ and $A = 1$, so $\frac{A}{F} = \frac{1}{2} = \frac{1}{S}$.
+The expectation value is $\langle \phi^2 \rangle = \frac{\hbar}{m^2} = 
+\begin{gathered}
+  \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+    a [large, dot] -- b [large, dot],
+  };
+\end{gathered} $ as expected!
+
+$\langle \phi^{2n} \rangle$ proceeds similarly, but note that there \emph{are} disconnected diagrams
+\begin{equation}
+  \langle \phi^4 \rangle = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+      a [large, dot] -- b [large, dot],
+      c [large, dot] -- d [large, dot],
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+      a [large, dot] -- v [small, dot] -- b [large, dot],
+      c [large, dot] -- v -- d [large, dot],
+    };
+  \end{gathered}
+  + 
+  COPY FROM NOTES
+\end{equation}
+
+\section{Effective Actions}%
+\label{sec:effective_actions}
+
+\begin{definition}[Wilson effective action]
+  We define $W(\phi)$ such that $ Z(J) = e^{-W (J) / \hbar}$.
+\end{definition}
+
+\begin{claim}
+  $W(0)$ is the sum of all connected vacuum diagrams and $W(J)$ is the sum of all connected diagrams.
+\end{claim}
+\begin{proof}
+  We denote the set of connected diagrams as $\{C_I\}$, which are taken to contain their respective symmetry factors.
+  Any diagram $D$ is a product of connected diagrams:
+  \begin{equation}
+    D = \frac{1}{S_D} \prod_I (C_I)^{n_I},
+  \end{equation}
+  where $n_I$ is the number of times $C_I$ appears in $D$, and  $S_D$  is the symmetry factor associated with rearranging diagrams $C_I$'s, given by
+  \begin{equation}
+    S_D = \prod_{I} n_I!.
+  \end{equation}
+
+  \begin{example}[]
+    If the diagram is
+    \begin{equation}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+	};
+      \end{gathered}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+	};
+      \end{gathered}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+	  a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
+	  b -- [half left] a,
+	};
+      \end{gathered}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+	};
+      \end{gathered}
+      = 
+      \underbrace{      \begin{gathered}
+		  	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+		  	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+		  	};
+		        \end{gathered}
+		        \begin{gathered}
+		  	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+		  	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+		  	};
+		        \end{gathered}
+		        \begin{gathered}
+		  	\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+		  	  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=+135, out=+45] a,
+		  	};
+		    \end{gathered}}_{(C_1)^3}
+		    \underbrace{      \begin{gathered}
+					\feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+					  a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
+					  b -- [half left] a,
+					};
+				      \end{gathered}}_{\mathclap{c_2}}
+    \end{equation}
+    The disconnected parts commute. We have $n_1 = 3$ and $n_2 = 1$. The associated factor is $S_D = 3!  \cdot 1! = 6$.
+  \end{example}
+  Let $\{n_I\}$ be the set of integers specifying $D$, then
+  \begin{align}
+    \frac{Z}{Z_D} = \sum_{\{n_I\}} D
+		  &= \sum_{\{n_I\}} \prod_I \frac{1}{n_I!} (c_I)^{n_I} \\
+		  &= \prod_{I} \sum_{n_I} \frac{1}{n_I!} (c_I)^{n_I} \\
+		  &= \exp(\sum_I c_I) \\
+		  &= \exp( \text{sum of unique connected diagrams} ) \\
+		  &\coloneqq e^{-(W - W_0) / \hbar},
+  \end{align}
+  where $W = W_0 - \hbar \sum_{I} c_I$.
+\end{proof}
+
+\begin{claim}
+  $W(J)$ is the generating function for \emph{connected correlation functions}.
+\end{claim}
+\begin{example}
+  Taking logarithms, we have
+  \begin{equation}
+    -\frac{1}{\hbar} W(J) = \ln (Z(J)).
+  \end{equation}
+  Differentiating with respect to $J$  twice and evaluating at $J = 0$ gives
+   \begin{align}
+     -\frac{1}{\hbar} \left.\frac{\partial^2}{\partial J^2} W \right\rvert_{J = 0} &= \frac{1}{Z(0)} \left.\frac{\partial^2 Z}{\partial J^2}\right\rvert_{J = 0} - \frac{1}{(Z(0))^2} \left.\left( \frac{\partial Z}{\partial J} \right)^2 \right\rvert_{J =0} \\
+     &= -\frac{1}{\hbar^2} \left[ \langle \phi^2 \rangle - \cancel{\langle \phi \rangle}^2 \right] = \frac{1}{\hbar^2} \langle \phi^2 \rangle_{\text{connected}}.
+  \end{align}
+  \begin{leftbar}
+    There are also theories where $\langle \phi \rangle \neq 0$.
+  \end{leftbar}
+  Less trivially, 
+  \begin{align}
+    -\frac{1}{\hbar} \left. \frac{\partial^4 W}{\partial J^4} \right\rvert_{J = 0} &= \frac{1}{Z(0)} \left. \frac{\partial^4 Z}{\partial J^4}\right\rvert_{J = 0} - \left.\left( \frac{1}{Z(0)} \frac{\partial^2 Z}{\partial J^2} \right)^2 \right\rvert_{J = 0} \\
+    \langle \phi^4 \rangle_{\text{connected}} &= \langle \phi^4 \rangle - \langle \phi^2 \rangle^2
+  \end{align}
+\end{example}
+
+\subsection*{Interactions}%
+
+Consider an action for two distinguishable fields
+\begin{equation}
+  S(\phi, \chi) = \frac{m^2}{2} \phi^2 + \frac{M^2}{2} \chi^2 + \frac{\lambda}{4} \phi^2 \chi^2.
+\end{equation}
+There is no factorial behind the factor $4$.
+The Feynman rules are
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- [solid, edge label=$\phi$] b,
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- [dotted, edge label=$\chi$] b,
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- c -- [dotted] b,
+      d -- [dotted] c -- f,
+    };
+  \end{gathered}
+\end{equation}
+The connected vacuum diagrams are
+\begin{align}
+  -\frac{W}{\hbar} &= [
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][horizontal=a to b] {
+      a -- [loop, dotted, min distance=2cm, in=-135, out=-45] a,
+      a -- [loop, min distance=2cm, in=135, out=45] a,
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][vertical=a to b] {
+      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [half right, dotted] b -- [loop, min distance=2cm, in=135, out=45] b -- [half right, dotted] a,
+    };
+  \end{gathered}
+  + DIAGRAMS
+  ] \\
+  &= -\frac{\hbar\lambda}{4 m^2 M^2} + \frac{\hbar^2 \lambda^2}{m^4 M^4} [\frac{1}{16} + \frac{1}{16} + \frac{1}{8}].
+\end{align}
+
+Also from Feynman diagrams, 
+\begin{align}
+  \langle \phi^2 \rangle &= DIAGRAMS \\
+  &= \frac{\hbar}{m^2} - \frac{\hbar^2 \lambda}{2 m^4 M^2} + \frac{\hbar^3 \lambda^2}{m^6 M^4} [\frac{1}{4} + \frac{1}{2} + \frac{1}{4}] + \dots
+\end{align}
+Say we do not care about the field $\chi$, maybe $M \gg m$, the high energy field is never produced in our experiments.
+Then we want to `integrate out' $\chi$ by defining $W(\phi)$ as
+\begin{equation}
+  e^{- W(\phi) / \hbar} = \int \dd[]{\chi} e^{- S(\phi, \chi) / \hbar}.
+\end{equation}
+In other words, we treat $\phi^2 \chi^2$ as a source term, $J = \phi^2$ in earlier notation.

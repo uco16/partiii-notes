@@ -16,7 +16,7 @@ The resulting integral will end up not being convergent.
   \end{equation}
   do not have a Taylor expansion about $\hbar = 0$.
 \end{claim}
-\begin{proof}[Dyson]
+\begin{proof}[Proof (Dyson)]
   If the expansion about $\hbar = 0$ existed for $\hbar > 0$, then in the complex plane, there must be some open neighbourhood of $\hbar$ in which the expansion converges.
   For $S(\phi)$ has a minimum, the integral is divergent if $\Re (\hbar)< 0$.
   Therefore, the radius of convergence cannot be greater than zero.
@@ -24,7 +24,7 @@ The resulting integral will end up not being convergent.
 
 So the $\hbar$-expansion is at best \emph{asymptotic}.
 \begin{definition}[asymptotic]
-  A series $\sum_{n = 0}^{\infty} c_n \hbar^n$  is asymptotic to $I(\hbar)$ if
+  A series $\sum_{n = 0}^{\infty} c_n \hbar^n$  is asymptotic to a function $I(\hbar)$ if
   \begin{equation}
     \lim_{\hbar \to 0^+} \frac{1}{\hbar^N} \abs{I(\hbar) - \sum_{n=0}^N c_n \hbar^n} = 0.
   \end{equation} 
@@ -35,7 +35,7 @@ So the $\hbar$-expansion is at best \emph{asymptotic}.
 
 The series misses out transcendental terms like $e^{-\frac{1}{\hbar^2}} \sim 0$ . However, these can evidently be important since obviously $e^{-\frac{1}{\hbar^2}} \neq 0$  for finite $\hbar$. These are called  \emph{non-perturbative contributions}. These become important in particular for non-Abelian gauge theories.
 
-Take the $\phi$-fourth action
+Take the $\phi$-fourth action for a real scalar
 \begin{equation}
   S(\phi) = \underbrace{\frac{1}{2} m^2 \phi^2}_{\mathclap{S_0(\phi)}} + \underbrace{\frac{\lambda}{4!} \phi^4}_{\mathclap{S_1(\phi)}} \qquad 
   \begin{gathered}
@@ -43,149 +43,171 @@ Take the $\phi$-fourth action
     \lambda > 0.
   \end{gathered}
 \end{equation}
-Expand about the minimum of $S(\phi)$, which is $\phi = 0$.
+Expand the exponential in the paritition function $Z$ about the minimum of $S(\phi)$, which is $\phi = 0$.
 \begin{align}
-  Z &= \int \dd[]{\phi} e^{- S / \hbar}  \\
+  Z &= \int \dd[]{\phi} \exp[-\frac{1}{\hbar} \left( \frac{1}{2} m^2\phi^2 + \frac{\lambda}{4!}\phi^4 \right)]  \\
     &= \int \dd[]{\phi} e^{-S_0 / \hbar} \overbrace{\sum_{n=0}^\infty \frac{1}{n!} \left( -\frac{\lambda}{4! \hbar} \right)^n \phi^{4 n}}^{\mathclap{e^{- S_1 / \hbar}}}.
 \end{align}
 
-In order to make progress, we truncate the series and swap summation and integration. This misses out transcendental terms.
+In order to make progress, we truncate the series to be able to swap the order of summation and integration. This misses out transcendental terms.
 In the end, we end up with a series that is asymptotic to $Z$:
  \begin{equation}
    Z \sim \frac{\sqrt{2\hbar}}{m} \sum_{n=0}^N \frac{1}{n!} \left( - \frac{\hbar \lambda}{4! m^4} \right)^n 2^{2v} \int_{0}^\infty \dd[]{t} e^{-t} t^{2n + \frac{1}{2} - 1}, 
 \end{equation}
-where $t = \frac{1}{2\hbar} m^2 \phi^2$. We recognise the Gamma function
+where $t = \frac{1}{2\hbar} m^2 \phi^2$. We recognise the integral to be the Gamma function
 \begin{equation}
   \int_{0}^\infty \dd[]{t} e^{-t} t^{2n + \frac{1}{2} - 1} = \Gamma(2 n + \frac{1}{2}) = \frac{(4n)! \sqrt{\pi}}{4^{2n} (2n)!}.
 \end{equation}
 The partition function is
 \begin{equation}
-Z \sim \frac{\sqrt{2 \pi \hbar}}{m} \sum_{n=0}^N \left( - \frac{\hbar \lambda}{m^4} \right)^n \frac{(4n)!}{(4!)^n n! 2^{2n} (2n)!}
+  \label{eq:3-Z0}
+  Z \sim \frac{\sqrt{2 \pi \hbar}}{m} \sum_{n=0}^N \left( - \frac{\hbar \lambda}{m^4} \right)^n \underbrace{\frac{1}{(4!) n!}}_{\mathclap{(a)}}\underbrace{\frac{(4n)!}{2^{2n} (2n)!}}_{\mathclap{(b)}}
 \end{equation}
-The factor on the right comes in part from the Taylor expansion of $e^{-S_1 / \hbar}$ and from the number of ways of pairing the $4n$ fields of the $n$ copies of $\phi^4$.
+The factor on the right comes in part from (a) the Taylor expansion of the term $S_1(\phi) = (\phi)\frac{\lambda}{4!} \phi^4$ in the exponential and from (b) the number of ways of pairing the $4n$ fields of the $n$ copies of $\phi^4$.
 Stirling's approximation allows us to write $n! \approx e^{n \ln n}$ .
 The factor in the partition function then become
 \begin{equation}
   \frac{(4n)!}{(4!)^n n! 2^{2n} (2n)!} \approx n!.
 \end{equation}
-We end up with factorial growth!
+We end up with factorial growth, signalling that the series is not convergent, but asymptotic!
 
 \subsection{Diagrammatic Method}%
 \label{sub:diagrammatic_method}
 
-Let us introduce a current $J$
+Let us now introduce a current $J$ to obtain the generating function
 \begin{align}
-  Z(J) &= \int \dd[]{\phi} \exp{-\frac{1}{\hbar} \left( S_0(\phi) + S_1 (\phi) + J \phi \right)} \\
-       &= \exp[-\frac{1}{\hbar} S_1 (-\hbar \frac{\partial }{\partial J})] \underbrace{\int \dd[]{\phi} \exp{-\frac{1}{\hbar} (S_0 + J \phi)}}_{\mathclap{Z_0 (J)}} \\
-       &\propto \exp[-\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4] \exp(\frac{1}{2\hbar} J^T M^{-1} J), \qquad M = m^2 \\
-       &\sim \sum_{n=0}^N \frac{1}{n!} \left[ -\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4 \right]^n \sum_{p=0} \frac{1}{p!} \left( \frac{1}{2\hbar} J m^{-2} J \right)^p \label{eq:3-star}.
+  Z(J) &= \int \dd[]{\phi} \exp[-\frac{1}{\hbar} \left( S_0(\phi) + S_1 (\phi) + J \phi \right)] \\
+       &= \exp[-\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4] \underbrace{\int \dd[]{\phi} \exp[-\frac{1}{\hbar} (S_0 + J \phi)]}_{\mathclap{Z_0 (J)}} \\
+       &\stackrel{\eqref{eq:generating-function}}{\propto} \exp[-\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4] \exp(\frac{1}{2\hbar} J^T M^{-1} J), \qquad M = m^2 \\
+       &\sim \sum_{V=0}^N \frac{1}{V!} \left[ -\frac{\lambda}{4! \hbar} \left( \hbar \frac{\partial }{\partial J} \right)^4 \right]^V 
+       \sum_{P=0}^\infty \frac{1}{P!} \left( \frac{1}{2\hbar} \frac{J^2}{2 \hbar m^2} \right)^P \label{eq:3-star}.
 \end{align}
 This is called the \emph{double expansion}.
-Diagrammatically, we use the propagator and vertex
-\begin{equation}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
-      a [particle=\(J\)] -- [solid,  edge label=$m^{-2}$] b [particle=\(J\)],
+Diagrammatically, each of the $P$ propagators, represented by a line as in Fig.~\ref{fig:l3f1a}, give a factor of $M^{-1} = m^{-2}$.  We use a filled circle at the end of a line to represent a source factor $J$.
+Each of the $V$ factors $\left( \frac{\partial }{\partial J} \right)^4$, originating from the interaction term $S_1(\phi)$, are associated with a vertex as in Fig.~\ref{fig:l3f1b}.
+
+\begin{figure}[tbph]
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [large, dot] -- [solid,  edge label=$m^{-2}$] b [large, dot],
     };
-  \end{gathered}
-  \qquad 
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
-      a -- v --b,
-      c -- v -- d
-    };
-  \end{gathered}
-  \quad -\lambda \left( \frac{\partial }{\partial J} \right)^4.
-\end{equation}
-Let us check $Z(0)$.
-For a term to be non-zero when $J=0$, we need the number of derivations to be equal to the number of propagators. Denoting by $E$ the number of external sources, left undifferentiate
+    \caption{Propagator with external sources $J$ at both ends.}
+    \label{fig:l3f1a}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    $ \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][horizontal=a to b] {
+        a -- v [small, dot] --b,
+        c -- v -- d
+      };
+    \end{gathered} \quad \sim \quad
+    -\lambda \left( \frac{\partial }{\partial J} \right)^4$ 
+    \caption{Vertex}
+    \label{fig:l3f1b}
+  \end{subfigure}
+  \caption{Components of the diagrammatic representation of the double series.}
+  \label{fig:l3f1}
+\end{figure}
+
+Let us check that we reproduce the result \eqref{eq:3-Z0} for $Z(0)$.
+For a term to be non-zero when $J=0$, we need the number of derivations to be equal to the number of source terms coming from the end of propagators. 
+\begin{notation}[external sources]
+  We denote by $E$ the number of external sources, which are left undifferentiated.
+  For $P$ propagtors and $V$ vertices, the number of such sources is
+  \begin{equation}
+    E \coloneqq 2 P - 4 V.
+  \end{equation}
+\end{notation}
+For $Z(0)$ we will require $E = 0$, whereas for $n$-point functions, we will want $E = n$.
+The first non-trivial terms are $(V, P) = (1, 2), (2, 4), \dots$.
 \begin{equation}
-  E \coloneqq 2 P - 4 n = 0.
-\end{equation}
-The first non-trivial terms are $(n, p) = (1, 2), (2, 4), \dots$.
-\begin{equation}
-  Z(0) \propto 1 + 
+  Z(0) \propto 1 + \quad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
-    };
-  \end{gathered}
-  + 
+    \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+       a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+     };}
+  \end{gathered} \quad
+  + \
   \begin{gathered}
     \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
       a -- [half left] b -- [half left] a,
       a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
     };
-  \end{gathered}
+  \end{gathered} \
+  +\quad
+  \mathclap{\begin{gathered}
+     \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+       a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
+       b -- [half left] a,
+     };
+   \end{gathered}}\quad
   +
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
-      a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
-      b -- [half left] a,
-    };
-  \end{gathered}
-  +
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
-    };
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
-    };
+    \quad \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+       a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+     };
+   } \qquad
+     \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
+        a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+      };}\quad
   \end{gathered}
   + 
-  O(n=3).
+  O(V=3).
 \end{equation}
 
-Count the number of times each diagram appears by using a \emph{pre-diagram}
-\begin{equation}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
-      a [particle=\(1\)] -- v -- b [particle=\(3\)],
-      c [particle=\(2\)] -- v -- d [particle=\(4\)],
+\subsection{Symmetry Factors}%
+\label{sub:symmetry_factors}
+
+\begin{definition}[symmetry factor]
+  The \emph{symmetry factor} $S$ is the number of ways of redrawing the unlabeled diagram, leaving it unchanged.
+\end{definition}
+
+\begin{definition}[pre-diagram]
+  A \emph{pre-diagram} for a $(V, P)$ term in the double expansion is a collection of $V$ vertices and $P$ propagators, where the ends of the vertex lines are labeled by numbers and the ends of the propagators labelled by letters.
+\end{definition}
+We count the number of times each diagram appears in the double expansion by using such pre-diagrams.
+
+\begin{example}[$V = 1$]
+  Consider the first diagram with only a single vertex and two loops attached to it.
+  \begin{figure}[tbhp]
+    \centering
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a [particle=\(1\)] -- v [small, dot] -- b [particle=\(3\)],
+      c [particle=\(4\)] -- v -- d [particle=\(2\)],
     };
-  \end{gathered}
-  \qquad
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b, layered layout] {
-      c [particle=\(b\)] -- d [particle=\(b'\)],
-      a [particle=\(a\)] -- b [particle=\(a'\)],
+    \qquad
+    \feynmandiagram[small, horizontal=a to b] {
+      a [large, dot, label=180:\(a\)] -- b [large, dot, label=0:\(a'\)],
+      c [large, dot, label=180:\(b\)] -- d [large, dot, label=0:\(b\)],
       b -- [draw=none] d,
       a -- [draw=none] c,
     };
-  \end{gathered}
-\end{equation}
-The numerator $A = 4!$ ways of matching derivatives to sources.
-Denominator of \eqref{eq:2-star} is $F = (n!) (4!)^n (p!) 2^p = 4! \cdot 2 \cdot 2^2$.
-So $ \begin{gathered}
-    \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-      a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
-    };
-  \end{gathered} $
-comes with a prefactor of $\frac{A}{F} = \frac{1}{8}$. More generally, $F$ accounts for permutations of 
-\begin{itemize}
-  \item all vertices $n!$
-  \item each vertex's legs $4!$
-  \item all propagators $p!$
-  \item both end of each propagator $2$
-\end{itemize}
+    \caption{Pre-diagram of the $V = 1$ diagram with $P = 2$ loops.}
+    \label{fig:l3f2}
+  \end{figure}
+  There are $A = 4!$ ways of matching the sources $a, a', b, b'$ to the derivatives at $1, 2, 3$, and $4$.
+  This is cancelled by a $4!$ in the denominator $F = (V!) (4!)^V (P!) 2^P = 4! \cdot 2 \cdot 2^2$ of Eq.~\eqref{eq:3-Z0}.
 
-The symmetry of each particular graph is important.
-For the above diagram, take pairing $(1a, 2a', 3b, 4b')$. Swapping $a \leftrightarrow a'$ and $1 \leftrightarrow^2$ gives exactly the same graph.
-We define the \emph{symmetry factor} $S$ to be $\frac{A}{F} = \frac{1}{S}$.
-$S$ is the number of ways of redrawing the unlabelled graph, leaving it unchanged.
+  So the $(V, P)= (1, 2)$ diagram comes with a prefactor of $\frac{A}{F} = \frac{1}{8}$ (times $-\hbar \lambda m^{-4}$). 
+\end{example}
+
+In general, $S$ is given by the relation $\frac{A}{F} = \frac{1}{S}$, where $A$ is the number of ways of assigning the sources to the derivatives and $F$ the number of non-equivalent permutations of all vertices, each vertex's legs, all propagators, and their ends.
+However, the symmetry of each particular graph is important: If the diagram has a particular symmetry, then some permutations in $F$ may be identical and have been double-counted.
+For the above diagram, consider the pairing $(1a, 2a', 3b, 4b')$. Swapping $a \leftrightarrow a'$ and $1 \leftrightarrow 2$ gives exactly the same graph, so it should not be counted twice.
+
+An alternative way to determine $S$ is to consider the actions, which leave invariant the unlabelled diagram.
 These are called the automorphisms of the graph.
-For  $ \begin{gathered}
-\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-  a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
-};
-\end{gathered} $, we can swap the direction of upper and lower loops ($2^2$) and also swap upper and lower loops ($2$). Therefore, we obtain $S = 2 \cdot 2^3 = 8$.
+For $(1, 2)$, we can swap the direction of upper and lower loops ($2^2$) and also swap upper and lower loops ($2$). Therefore, we obtain $S = 2 \cdot 2^2 = 8$.
 
-Let us look at a slightly more complicated example.
 \begin{example}[basketball]
+  Let us look at a slightly more complicated example.
+  The \emph{basketball} diagram has the symmetry factor
   \begin{equation}
     \begin{gathered}
-      \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
+      \feynmandiagram[transform shape, scale=0.8][horizontal=a to b, layered layout] {
         a [dot] -- [half left] b [dot] -- [half left] a,
         a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
       };
@@ -195,13 +217,51 @@ Let us look at a slightly more complicated example.
   The pre-diagram associated to this is
   \begin{equation}
     \begin{gathered}
-      \feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-        a -- [half left] c -- [draw=none] e [dot] -- f [dot] -- [draw=none] g [half left] b,
-        a -- [half right] d -- [draw=none] h [dot] -- i [dot] -- [draw=none] j [half left] b,
+      \feynmandiagram[transform shape, scale=0.5][horizontal=a to b] {
+        a [particle=\(1\)] -- c [small, dot] -- b [particle=\(2\)],
+	e [particle=\(4\)] -- c -- f [particle=\(3\)],
+      };
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \begin{tikzpicture}
+	\begin{feynman}
+	  \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex[label=180:$a$] (a);
+	  \vertex[right=2cm of a, label=0:$b$] (b);
+	  \vertex[label=180:$c$, below=0.5cm of a] (c);
+	  \vertex[right=2cm of c, label=0:$d$] (d);
+	  \vertex[label=180:$e$, below=0.5cm of c] (e);
+	  \vertex[right=2cm of e, label=0:$f$] (f);
+	  \vertex[label=180:$g$, below=0.5cm of e] (g);
+	  \vertex[right=2cm of g, label=0:$h$] (h);
+	
+	  \diagram* {
+	    (a) -- (b),
+	    (c) -- (d),
+	    (e) -- (f),
+	    (g) -- (h),
+	  };
+	\end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.5][horizontal=a to b] {
+        a [particle=\(5\)] -- c [small, dot] -- b [particle=\(6\)],
+	e [particle=\(8\)] -- c -- f [particle=\(7\)],
       };
     \end{gathered}
   \end{equation}
-  We obtain $F = 2 (4!)^2 4! 2^4 = 4^3 \cdot 2^{14}$ and $A = 8 \cdot 6 \cdot 4 \cdot 2 \cdot 4! = 3^2 \cdot 2^{10}$. Thus $A / F = 1 / 48$.
+  We can simply calculate $F = 2 \cdot (4!)^2 \cdot 4! \cdot 2^4 = 4^3 \cdot 2^{14}$ and from the pre-diagram we determine the ways to pair currents and derivatives
+  \begin{equation}
+    A = \underbrace{(2 \cdot 4)}_{\mathclap{a}} \underbrace{(4)}_{\mathclap{b}} \underbrace{(2 \cdot 3)}_{\mathclap{c}} \underbrace{(3)}_{\mathclap{d}} \underbrace{(2 \cdot 2)}_{\mathclap{e}} \underbrace{(2)}_{\mathclap{f}} \underbrace{(2 \cdot 1)}_{\mathclap{g}} \underbrace{(1)}_{\mathclap{h}} = 3^2 \cdot 2^{10}.
+  \end{equation}.
+  There are probably multiple ways to obtain this factor, but the reasoning here was as follows:
+  For the letter $a$, we have a choice (factor 2) whether to connect to the left or the right vertex. In each case, we have $4$ numbers to connect to.
+  Since the basketball shape has no loops, this means that $b$ has no choice in which vertex to use; it always has to be the one that we did not choose for $a$. For $b$ we only have a choice of $4$ numbers to connect to.
+  For $c$, we again have a choice of two vertices, but only three remaining numbers (since the others are filled by $a$ or $b$). We proceed in the same way for the remaining letters.
+  Thus $A / F = 1 / 48$.
 \end{example}
 
 For the other diagrams, we have

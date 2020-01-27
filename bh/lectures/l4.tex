@@ -1,0 +1,124 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 4: January 24}
+
+\section{Finkelstein Diagram}%
+\label{sec:finkelstein_diagram}
+
+\begin{definition}[]
+  \emph{Outgoing} radial null geodesics in $r \gg M$ have $t - r_* = \text{constant}$. This means that
+  \begin{equation}
+    \label{eq:4-star}
+    v= 2r + 4 M \ln \abs{\frac{r}{2M} - 1} + \text{const.}
+  \end{equation}
+\end{definition}
+
+\begin{exercise}
+  Consider radial null geodesics in ingoing Eddington--Finkelstein coordinates. Show that these are either (i) ingoing $v = \text{constant}$ or (ii) `outgoing'---either \eqref{eq:4-star} or $r \equiv 2 M$.
+\end{exercise}
+
+Plot:
+%F1 PLot
+
+
+In $r < 2M$, \emph{both} families have decreasing $r$ and reach $r = 0$ in finite $\tau$.
+
+\section{Gravitational Collapse}%
+\label{sec:gravitational_collapse}
+
+%F2
+
+Eventually the star collapses through the Schwarzschild surface, forming a black hole.
+It continues to collapse until it hits the curvature singularity in finite time, which marks its end.
+In fact, that time is very short.
+
+\begin{exercise}[Sheet $1$]
+  Proper time along any timelike curve in the region $r \leq 2M$ cannot exceed $\pi M$.
+\end{exercise}
+
+Taking the Sun $M = M_\odot$, then you get to live $10^{-5}$s before you are destroyed in a singularity.
+
+Assume it is not you falling into the black hole, just your friend who is going to be destroyed. You will see that the light is gradually more reshifted and time slows down.
+An observer at $r > 2M$ never sees the star cross  $r = 2M$. They see an ever-increasing redshift causing the star to fade away.
+
+\section{Black Hole Region}%
+\label{sec:black_hole_region}
+
+\begin{definition}[causal]
+  A vector is \emph{causal} if it is timelike or null (and therefore not the zero-vector).
+  A curve is causal if its tangent vector is not causal.
+\end{definition}
+
+\begin{definition}[time-orientability]
+  A spacetime $(M, g)$ is \emph{time-orientable} if there exists a \emph{time-orientation}: a causal vector field $T^{a}$.
+\end{definition}
+
+Given such a vector field, every point in spacetime either lives in the future or past lightcone with respect to it.
+However, this is not always possible since there can be obstructions to this.
+If the spacetime is time-orientable, there are only two inequivalent choices.
+
+\begin{definition}[]
+  A causal vector is future-directed (past-directed) if it lies in the same (opposite) light cone as $T^{a}$.
+\end{definition}
+
+For the Schwarzschild solution with $r > 2M$, the obvious choice is the Killing vector field $k = \partial / \partial t$  as a time-orientation.
+In Eddington--Finkelstein coordinates, $k = \partial / \partial v$  works for $r > 2M$ but becomes spacelike for  $r < 2M$. 
+However, the component $g_{rr} = 0$ , the vector fields $\pm \partial / \partial r$  are null and therefore causal.
+Which one do we choose?
+\begin{claim}
+  Choosing $- \partial / \partial r$ gives an equivalent time-orientation as $k$ for $r > 2M$.
+\end{claim}
+\begin{proof}
+  Let us take the inner product
+  \begin{equation}
+    k \cdot (- \partial / \partial r) = - g_{vr} = -1.
+  \end{equation}
+  If the product of two timelike vector fields is negative, they are in the same lightcone.
+  Therefore, $-\partial / \partial r$ is in the same cone as $k$ for $r > 2M$ and defines the time orientation for $r > 0$ (tangent to ingoing radial null geodesic).
+\end{proof}
+
+\begin{claim}
+  Let $x^{\mu}(\lambda)$ be a future-directed causal curve such that initially $r (\lambda_0) \leq 2M$. 
+  Then $r(\lambda) \leq 2M$ for all $\lambda > \lambda^0$.
+\end{claim}
+\begin{proof}
+  The tangent vector $V^{\mu} = \frac{\partial x^{\mu}}{\partial \lambda}$ is future-directed causal.
+  Therefore, since $- \partial / \partial r$  is also future-directed causal, their inner product is non-positive. Evaluating this gives
+  \begin{gather}
+    0 \geq \left( -\frac{\partial }{\partial r} \right) \cdot V = - g_{r \mu} V^{\mu} = - V^{v} = - \dv{v}{\lambda} \\
+    \therefore \dv{v}{\lambda} \geq 0 \label{eq:4-star2} \\
+    \implies -2 \dv{v}{\lambda} \dv{r}{\lambda} = \underbrace{-V^2}_{\mathclap{ \geq 0}} + \underbrace{\left( 1 - \frac{2M}{r} \right) \left( \dv{v}{\lambda} \right)^2}_{\mathclap{ \geq 0 \text{ in } r \leq 2M}}
+    + \underbrace{r^2 \left( \dv{\Omega}{\lambda} \right)^2}_{\mathclap{r \geq 0}} \geq 0 \text{ in } r \leq 2M \label{eq:4-dagger} \\
+    \implies \dv{v}{\lambda} \dv{r}{\lambda} \leq 0 \text{ in } r \leq 2M.
+  \end{gather}
+  Assume for contradiction that $\dv{r}{\lambda} > 0$  at each point in $r \leq 2M$ .
+  Therefore $\dv{v}{\lambda} \leq 0$ . But  \eqref{eq:4-star2} then means that $\dv{v}{\lambda} = 0$.
+  Then \eqref{eq:4-dagger} implies that $-V^2  = 0$  or $\left( \dv{\Omega}{\lambda} \right)^2 = 0$ .
+  Thus, the only non-zero component of $V^{\mu}$  is $V^r = \dv{r}{\lambda} > 0$ .
+  This means that $V^{\mu}$  is a positive multiple of $\partial / \partial r$ , meaning that $V^{\mu}$  is past-directed. This is a contradiction.
+
+  Therefore, $\dv{r}{\lambda} \leq 0$  in $r \leq 2M$. With the initial condition $r(\lambda_0) \leq 2M$, we have that $r(\lambda) \leq 2M$ $\forall \lambda \geq \lambda_0$.
+\end{proof}
+
+\begin{definition}[black hole]
+  A \emph{black hole} is a region of spacetime from which no signal can reach infinity\footnote{We will define infinity more rigorously later in the course, but at the moment the intuitive notion is satisfactory.}.
+\end{definition}
+
+We have shown that for $r \leq 2M$ of the Schwarzschild ingoing Eddington--Finkelstein coordinates is a black hole.
+\begin{definition}[event horizon]
+  The boundary $r = 2M$ is called the \emph{event horizon}.
+\end{definition}
+
+\section{Detecting Black Holes}%
+\label{sec:detecting_black_holes}
+
+There are two key properties of black holes
+\begin{itemize}
+  \item There is no upper bound on the mass of a black hole (unlike for a cold star).
+  \item Black holes are very small.
+\end{itemize}
+In practice, we infer the existence of black holes by looking at their gravitational effect on nearby orbiting stars.
+This is what makes us confident that there is a $4 \times 10^6 M_{\odot}$ supermassive black hole at the centre of our galaxy.
+It is still unknown how supermassive black holes (with $M \geq 10^6 M_\odot$) can form in the first place.
+
+%%

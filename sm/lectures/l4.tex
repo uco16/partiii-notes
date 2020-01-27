@@ -1,0 +1,107 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 4: January 25}
+
+\chapter{Spacetime Symmetries}%
+\label{cha:spacetime_symmetries}
+
+The symmetries we have are spacetime $\otimes$  internal (1967 Coleman--Mandula). In particular, the spacetime symmetry is the Poincaré symmetry.
+
+\section{Poincaré Symmetries and Spinors}%
+\label{sec:poincare_symmetries_and_spinors}
+
+A general transformation of the Poincaré group acts on spacetime $x^{\mu}$ as
+\begin{equation}
+  x^{\mu} \to x'{}^{\mu} = \Lambda\indices{^{\mu}_{\nu}} x^{\nu} + a^{\mu}, \qquad \mu = 0, 1, 2, 3
+\end{equation}
+where $\Lambda\indices{^{\mu}_{\nu}}$ are the Lorentz transformations and $a^{\mu}$ translations.
+We write the Poincaré group therefore as $O(3, 1) \rtimes \mathbb{R}^4$, where $\rtimes$ denotes the semi-direct product, which does not commute.
+
+These transformations leave the Minkowski metric $ds^2 = dx^{\mu} \eta_{\mu\nu} dx^{\nu}$ invariant, where $\eta_{\mu\nu} = \eta^{\mu\nu} = \text{diag}(+1, -1, -1, -1)$:
+For $\Lambda \in O(3, 1)$, we have
+\begin{equation}
+  \label{eq:4-invariance}
+  \Lambda\indices{^{\mu}_{\rho}} \eta_{\mu\nu} \Lambda\indices{^{\nu}_{\sigma}} = \eta_{\rho\sigma} \qquad \text{or} \qquad \Lambda^T \eta \Lambda = \eta
+\end{equation}
+This means that we have a choice of either $\det \Lambda = \pm 1$.
+\begin{equation}
+  (\Lambda\indices{^{0}_0})^2-(\Lambda\indices{^{1}_0})^2-(\Lambda\indices{^{2}_0})^2-(\Lambda\indices{^{3}_0})^2 = 1.
+\end{equation}
+Then $\abs{\Lambda \indices{^0_0}} \geq 1$ implies that for each of the two choices of determinant, we can have either $\Lambda \indices{^0_0} \geq 1$ or $\Lambda \indices{^0_0} \leq -1$.
+Therefore, $O(3, 1)$ has 4 disconnected components. The element continuously connected to the identity, $SO(3, 1)^{\uparrow}$, is the proper orthochronous Lorentz group with $\det \Lambda = 1$ and $\Lambda \indices{^0_0} \geq 1$.
+Any other element in $O(3,1)$ can be obtained by combining elements of $SO(3, 1)^{\uparrow}$ with
+\begin{equation}
+  \{\mathbb{1}, \Lambda_P, \Lambda_T, \Lambda_{PT}\}, \qquad \text{Klein Group}
+\end{equation}
+where $\Lambda_P = \text{diag}(+1, -1, -1, -1)$ are the parity transformations and $\Lambda_T = \text{diag}(-1, +1, +1, +1)$ time reversal.
+
+From now on we work with $SO(3, 1)^{\uparrow} \to SO(3, 1)$ .
+
+\subsection{Poincaré Algebra}%
+\label{sub:poincare_algebra}
+
+As usual to derive the algebra, we consider the infinitesimal transformation
+\begin{equation}
+  \Lambda\indices{^{\mu}_{\nu}} = \delta^{\mu}_{\nu} + \omega\indices{^{\mu}_{\nu}}; \qquad a^{\mu} = \epsilon^{\mu}; \qquad \omega\indices{^{\mu}_{\nu}}, \epsilon^{\mu} \ll 1.
+\end{equation}
+The invariance \eqref{eq:4-invariance} of the metric then gives
+\begin{equation}
+  (\delta^{\mu}_{\rho} + \omega\indices{^{\mu}_{\rho}}) \eta_{\mu\nu} (\delta^{\nu}_{\sigma} + \omega\indices{^{\nu}_{\sigma}}) = \eta_{\rho\sigma}.
+\end{equation}
+This implies that $\omega_{\sigma\rho}= -\omega_{\rho\sigma}$ is antisymmetric.
+As such, we have $6$ parameters $\omega_{\mu\nu}$ for the Lorentz transformations.
+In addition to this, we have $4$ parameters $\epsilon_{\mu}$ for translations. In total, the Poincaré group has $10$ dimensions.
+
+To study the algebra of the Poincaré group, we will look at its representation on a Hilbert space, since we are interested in quantum theory.
+We are working with a state $\ket{\psi}$ and consider transformations enacted by unitary operators $U(\Lambda, a) = \exp(i [\omega_{\mu\nu} M^{\mu\nu} + \epsilon_{\mu} P^{\mu}])$ as
+\begin{equation}
+  \ket{\psi} \to U(\Lambda, a) \ket{\psi},
+\end{equation}
+where $U(\Lambda, a)$ form a representation of the Poincaré group and the generators $M^{\mu\nu}$ and $P^{\mu}$ of the Poincaré algebra are Hermitian.
+Near the identity, we can expand the exponential
+\begin{equation}
+  U(1 + \omega, \epsilon) = \mathbb{1} - \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} + i \epsilon_{\mu} P^{\mu},
+\end{equation}
+Since $\omega_{\mu\nu}$ is antisymmetric, so is $M^{\mu\nu}$.
+
+To determine the algebra, we also need to find the Lie brackets.
+Since the translations commute, $[P^{\mu}, P^{\nu}] = 0$.
+More complicated is the bracket $P^{\sigma}, M^{\mu\nu}$.
+
+$P^{\mu}$ by itself has a double personality. It is a vector, which means that under infinitesimal Lorentz transformations it transforms as
+\begin{align}
+  P^{\sigma} \to \Lambda\indices{^{\sigma}_{\rho}} P^{\rho} &\simeq (\delta\indices{^{\sigma}_{\rho}} + \omega\indices{^{\sigma}_{\rho}}) P^{\rho} \\
+  &= P^{\sigma} + \frac{1}{2} (\omega_{\alpha\rho} - \omega_{\rho\alpha}) \eta^{\sigma\alpha} P^{\rho} \\
+  &= P^{\sigma} + \frac{1}{2} \omega_{\alpha\rho} (\eta^{\rho\alpha} P^{\rho} - \eta^{\sigma\rho} P^{\alpha}).
+\end{align} 
+However, it is also an operator, which acts on the Hilbert space.
+Therefore, it transforms as
+\begin{align}
+  P^{\sigma} \to U^{\dagger} P^{\sigma} U &= (\mathbb{1} + \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}) P^{\sigma} (\mathbb{1} - \frac{i}{2} \omega_{\alpha \beta} M^{\alpha \beta}) \\
+					  &= P^{\sigma} +\frac{i}{2} \omega_{\mu\nu} [M^{\mu\nu}, P^{\sigma}] + O(\omega^2).
+\end{align}
+Comparing the above two expressions, we have
+\begin{equation}
+  \boxed{[P^{\sigma}, M^{\mu\nu}] = -i (P^{\mu} \eta^{\nu\sigma} - P^{\nu} \eta^{\mu\sigma})}
+\end{equation}
+As such, whenever we see an algebra $[X^{\mu_1 \dots}, M^{\rho\sigma}]$, then we should know that the right hand side actually tells us how $X^{\mu_1 \dots}$ transforms under Lorentz transformations!
+
+Similarly, 
+\begin{equation}
+  \boxed{[M^{\mu\nu}, M^{\rho\sigma}] = i (M^{\mu\sigma} \eta^{\nu\rho} + M^{\nu\rho} \eta^{\mu\sigma} - M^{\mu\rho} \eta^{\nu\sigma} - M^{\nu\sigma} \eta^{\mu\rho})}.
+\end{equation}
+Again, this tells us that $M^{\mu\nu}$ transforms under Lorentz transformations as a tensor.
+
+\begin{example}[]
+  A $4$-dimensional matrix representation of $M^{\mu\nu}$ is given by
+  \begin{equation}
+    (M^{\rho\sigma})\indices{^{\mu}_{\nu}} = -i (\eta^{\mu\sigma} \delta^{\rho}_{\nu} - \eta^{\rho\mu} \delta^{\sigma}_{\nu})
+  \end{equation}
+\end{example}
+
+\subsection*{Comments}%
+
+Since $P^0 = H$ is the Hamiltonian, we find that the commutation relation have some physical meaning:
+\begin{equation}
+  [P^0, P^{\mu}] = 0 \implies \text{Energy-Momentum conservation}
+\end{equation}

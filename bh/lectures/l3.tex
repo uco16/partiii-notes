@@ -13,7 +13,7 @@ The simplest black hole solution is described by the Schwarzschild metric, which
 
 In \emph{Schwarzschild coordinates} $(t, r, \theta, \phi)$ , the Schwarzschild metric is the one-parameter family
 \begin{equation}
-  ds^2 = - \left( 1 - \frac{2M}{r} \right) dt^2 + \left( 1- \frac{2M}{r} \right)^{-1} dt^2 + r^2 d\Omega^2,
+  ds^2 = - \left( 1 - \frac{2M}{r} \right) dt^2 + \left( 1- \frac{2M}{r} \right)^{-1} dr^2 + r^2 d\Omega^2,
 \end{equation}
 where the parameter $M > 0$  is interpreted as a mass.
 This is a solution to the vacuum Einstein equations for $0 < r < r_S = 2M$, the  \emph{Schwarzschild radius}.
@@ -30,4 +30,192 @@ The theorem assumes only spherical symmetry, but the Schwarzschild solution has 
 Birkhoff's theorem implies that the spacetime outside any spherical body is the time-independent (exterior) Schwarzschild spacetime, even if the body itself is time-dependent.
 In particular, the Schwarzschild solution is a good description of the spacetime outside a spherical star during its gravitational collapse collapse.
 
+\section{Gravitational Redshift}%
+\label{sec:gravitational_redshift}
 
+Let $A$ and $B$ be two observers in Schwarzschild spacetime at fixed $(r, \theta, \phi)$ with $r_B > r_A$.
+Now $A$ sends two photons to $B$, separated by a coordinate time $\Delta t$ as measured by  $A$.
+Since  $\partial / \partial t$  is an isometry, the two photons follow the same paths, separated by a time translation of $\Delta t$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l3f1.pdf_tex}
+  \caption{}
+  \label{fig:l3f1}
+\end{figure}
+\begin{claim}
+  $A$ measures the \emph{proper} time between the photons to be $\Delta \tau_{A} = \sqrt{1 - \frac{2M}{r_A}} \Delta t$ .
+\end{claim}
+\begin{proof}
+  Proper time from a point $a$  to $b$  is given by $\tau = \int_a^b \sqrt{g_{\mu\nu} \dv{x^{\mu}}{\lambda} \dv{x^{\nu}}{\lambda}} d\lambda $.
+  We want to measure the proper time elapsing along the worldline of $A$ in between sending the two photons. The relevant points are $a = (t_0, r_A, \theta, \phi)$ and $b = (t_0 + \Delta t, r_A, \theta, \phi)$.
+  Parametrising this path with $\lambda = t$, we have
+  \begin{equation}
+    \dv{x^{\mu}}{x^0} = \delta^{\mu}_0 \quad \implies \quad
+    \Delta \tau_A = \int_{t_0}^{t_0 + \Delta t} \sqrt{g_{00}} \dd[]{t} = \sqrt{1 - \frac{2M}{r_A}} \Delta t.
+  \end{equation}
+\end{proof}
+By the same argument, the proper time along $B$ 's worldline is $\Delta \tau_B = \sqrt{1 - \frac{2M}{r_B}} \Delta t$ . The difference here is due to the difference in metric: the curvature of the Schwarzschild spacetime at $r_B$ is different  from the curvature at $r_A$. 
+Eliminating $\Delta t$  gives
+\begin{equation}
+  \frac{\Delta \tau_B}{\Delta \tau_A} = \sqrt{\frac{1 - 2M / r_B}{1 - 2M / r_A}} > 1.
+\end{equation}
+Note that this diverges as $r_A \to 2M$.
+We can apply this argument to two successive wavecrests of light waves propagaing from $A$  to $B$ to relate the period $\Delta \tau_A$ of waves emitted by $A$  to the period $\Delta \tau_B$ of the waves received by  $B$.
+For light $\Delta \tau = \lambda$  (with $c = 1$), where $\lambda$  is the wavelength of the light.
+Hence $\lambda_B  > \lambda_A$: the light becomes redshifted as it climbs out of the gravitational field.
+If $r_B \gg 2M$, the redshift $z$  is given by
+\begin{equation}
+  1 + z \coloneqq \frac{\lambda_B}{\lambda_A} \approx \sqrt{\frac{1}{1 - 2M / r_A}}.
+\end{equation} 
+Refering back to the Buchdahl inequality \eqref{eq:buchdahl}, the maximum possible redshift of light emitted from the surface $r_A = R > 9 M / 4$ of a spherical star is therefore $z = 2$.
+
+\section{Geodesics of the Schwarzschild Solution}%
+\label{sec:geodesics_of_the_schwarzschild_solution}
+
+Let $x^{\mu}(\tau)$ be an affinely parametrised geodesic with tangent vector $u^{\mu} = \dv{x^{\mu}}{\tau}$.
+Since $k = \partial / \partial t$  and $m = \partial / \partial \phi$  are Killing vector fields, we have the conserved quantities
+\begin{equation}
+  E = \left(1 - \frac{2M}{r}\right) \dv{t}{\tau} \qquad \text{and} \qquad h = r^2 \sin^2 \theta \dv{\phi}{\tau}.
+\end{equation}
+We can interpret these quantities by evaluating the expressions at large $r$, where the metric is almost flat, and comparing these with analogous results from special relativity.
+For a timelike geodesic, chossing $\tau$ to be proper time gives $E$ and $h$ the interpretations of energy and angular momentum, both per unit rest mass, respectively.
+For a null geodesic, we can rescale the affine parameter and $E$ and $h$ do not have clear physical interpretations.
+However, the ratio $h/E$ is invariant under this rescaling. For a null geodesic which propagates to large $r$, $b = \abs{h / E}$ is the \emph{impact parameter}.
+
+\begin{claim}
+  We can always choose coordinates $\theta$ and $\phi$ so that the geodesic is confined to the equatorial plane.
+\end{claim}
+\begin{proof}
+  Using the geodesic Lagrangian $L = g_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}$, the Euler--Lagrange equation for $\theta(\tau)$ gives
+  \begin{align}
+    \dv{\tau} (r^2 \dot{\theta}) - r^2 \sin\theta \cos \theta \dot{\phi}^2 &= 0 \\
+    r^2 \dv{\tau} \left( r^2 \dv{\theta}{\tau} \right) - h^2 \frac{\cos \theta}{\sin^3 \theta} &= 0.
+    \label{eq:3-1}
+  \end{align}
+
+  We can choose coordinates $(\theta, \phi)$  on $S^2$  so that the geodesic initally lies in the equatorial plane $\theta(0) = \frac{\pi}{2}$ and moves tangentially to it with $\left.\dv{\theta}{\tau}\right\rvert_{\tau = 0} = 0$.
+  For any function $r(\tau)$, Eq.\eqref{eq:3-1} is then a second order ODE for $\theta$ with two initial conditions.
+  One solution to this is $\theta(\tau) = \pi / 2$ and uniqueness results for ODEs guarantee that this is in fact the unique solution.
+\end{proof}
+\begin{claim}
+  The radial motion of the geodesic is determined by the same equation as a Newtonian particle of unit mass and energy $E^2 / 2$ moving in a $1d$ potential
+  \begin{equation}
+    V(r) = \frac{1}{2} \left( 1 - \frac{2M}{r} \right) \left( \sigma + \frac{h^2}{r^2} \right), \qquad \sigma =
+    \begin{cases}
+      1, & \text{timelike} \\
+      0, & \text{null}  \\
+      -1, & \text{spacelike}
+    \end{cases}.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  We will use the relation $g_{\mu\nu} u^{\mu} u^{\nu} = -\sigma$.
+   \begin{gather}
+     - \left( 1- \frac{2M}{r} \right) \left(\dv{t}{\tau}\right)^2 + \left( 1 - \frac{2M}{r} \right)^{-1} \left( \dv{r}{\tau} \right)^2 + r^2 \left( \dv{\phi}{\tau} \right)^2 = -\sigma \\
+     -E^2 + \left( \dv{r}{\tau} \right)^2 + \left( 1 - \frac{2M}{r} \right) \frac{h^2}{r^2} = - \left( 1 - \frac{2M}{r} \right) \sigma \\
+     \frac{1}{2} \left( \dv{r}{\tau} \right)^2 + V(r) = \frac{1}{2}E^2.
+  \end{gather}
+\end{proof}
+
+\section{Eddington--Finkelstein Coordinates}%
+\label{sec:eddington_finkelstein_coordinates}
+
+In this section we will have a closer look at radial null geodesics.
+\begin{definition}[radial]
+  A geodesic is \emph{radial} if $\theta$ and $\phi$ are constant along it.
+\end{definition}
+We evidently have $h = 0$, but for null geodesics we can also rescale the affine parameter  $\tau$  so that $E = 1$. The geodesic equations are
+ \begin{equation}
+   \dv{t}{\tau} = \left( 1 - \frac{2M}{r} \right)^{-1} \qquad \dv{r}{\tau} = 
+   \begin{cases}
+     +1, & \text{outgoing} \\
+     -1, & \text{ingoing}.
+   \end{cases}
+\end{equation}
+An ingoing geodesic at some $r > 2M$ will reach  $r = 2M$ in finite affine parameter. Dividing gives
+ \begin{equation}
+   \dv{t}{r} = \pm \left( 1 - \frac{2M}{r} \right)^{-1}.
+\end{equation}
+This has a simple pole at $r = 2M$, so  $t$  diverges logarithmically as $r \to 2M$.
+
+\subsection{Coordinate Singularity}%
+\label{sub:coordinate_singularity}
+
+ \begin{definition}[Regge--Wheeler]
+  To investigate what is happening at $r = 2M$, we define the  \emph{Regge--Wheeler radial coordinate} $r_*$ by
+   \begin{equation}
+     dr_* = \frac{dr}{\left( 1 - \frac{2M}{r} \right)}.
+  \end{equation}
+\end{definition}
+Making a choice of integration, we get $r_* = r + 2M \ln \abs{\frac{r}{2M} - 1}$ .
+Note that $r_* \sim r$  for large $r$ and  $r_* \to - \infty$  as $r \to 2M$. This is illustrated in Fig.~\ref{fig:l3f2}.
+\begin{wrapfigure}{R}{0.35\columnwidth}
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l3f2.pdf_tex}
+  \caption{Regge--Wheeler radial coordinates.}
+  \label{fig:l3f2}
+\end{wrapfigure}
+Along a radial null geodesic we have  $\dv{t}{r_*} = \pm 1$ , so $t \mp r_*$ is constant.
+\begin{definition}[Eddington--Finkelstein]
+  The \emph{Eddington--Finkelstein coordinates} $(v, r, \theta, \phi)$ are obtained by defining a new coordinate $v = t + r_*$, which is constant along ingoing radial null geodesics. 
+\end{definition}
+We eliminate $t$ by $t = v - r_*(r)$ and hence
+\begin{equation}
+  dt = dv - \frac{dr}{\left( 1 - \frac{2M}{r} \right)}.
+\end{equation}
+In these coordinates, the metric is
+\begin{equation}
+  \label{eq:3-2}
+  ds^2 = - \left( 1 - \frac{2M}{r} \right) dv^2 + 2 dv dr + r^2 d\Omega^2.
+\end{equation}
+As a matrix, we have
+\begin{equation}
+  g_{\mu\nu} = 
+  \begin{pmatrix}
+    - \left( 1 - \frac{2M}{r} \right) & 1 &  &  \\
+   1 &  &  &  \\
+    &  & r^2 &  \\
+    &  &  & r^2 \sin^2 \theta \\,
+  \end{pmatrix}
+\end{equation}
+with all empty entries being zero.
+
+Unlike Schwarzschild coordinates, the metric components in Eddington--Finkelstein coordinates are smooth for all  $r > 0$, including  $r = 2M$.
+The determinant  $\det (g_{\mu\nu}) = -r^4 \sin^2 \theta$  means that the metric is non-degenerate for all $r > 0$.\footnote{Except at $\theta = 0, \pi$, because the coordinates $(\theta, \phi)$ are not defined at the poles.}
+This means that the signature is Lorentzian for  $r > 0$, since a change of signature would require an eigenvalue passing through zero.
+
+\begin{definition}[real analytic]
+  A \emph{real analytic function} can be expanded as a convergent power series about any point.
+\end{definition}
+The metric components are real analytic functions of the above coordinates.
+If a real analytic metric satisfies the Einstein equations in some open set, then it will satisfy them everywhere.
+Without encountering any problems, the Schwarzschild spacetime  can therefore be \emph{extended} though the surface $r = 2M$ to a new region with  $r < 2M$. 
+The metric \eqref{eq:3-2} is a solution to the vacuum Einstein equations for all $r > 0$.
+\begin{remark}
+  The new region $0 < r < 2M$ is spherically symmetric. This is consistent with Birkhoff's theorem since we can just transform back to coordinates $(t, r, \theta, \phi)$ to obtain the Schwarzschild metric in Schwarzschild coordinates, but now with $r < 2M$.
+\end{remark}
+
+\subsection{Curvature Singularity}%
+\label{sub:curvature_singularity}
+
+Ingoing radial null geodesics in Eddington--Finkelstein coordinates obey $\dv{r}{\tau} = -1$ and will reach $r = 0$ in finite affine parameter.
+Since the metric is Ricci flat, the simplest non-trivial scalar constructed from the metric is
+\begin{equation}
+  R_{abcd} R^{abcd} \propto \frac{M^2}{r^6}.
+\end{equation}
+This diverges as $r \to 0$.
+Since it is a scalar, it diverges in all coordinate charts.
+Therefore, there exists no chart for which the metric can be smoothly extended through  $r = 0$, which is an example of a \emph{curvature singularity}, where tidal forces become infinite and general relativity ceases to hold.
+Strictly speaking, $r = 0$ is not part of the spacetime manifold because the metric is not defined there.
+
+Recall  that  $k = \partial / \partial t$  is a Killing vector field of the Schwarzschild solution for $r > 2M$.
+In ingoing Eddington--Finkelstein coordinates  $x^{\mu}$ , this is
+\begin{equation}
+  k  = \frac{\partial }{\partial t} = \frac{\partial x^{\mu}}{\partial t} \frac{\partial }{\partial x^{\mu}} = \frac{\partial }{\partial v},
+\end{equation} 
+since the Eddington--Finkelstein coordinates are independent of $t$ except for $v = t + r_*(r)$.
+This equation can be used to extend the definition of $k$ to $r \leq 2M$.
+Since $k^2 = g_{vv}$, $k$ is null at $r= 2M$ and spacelike for $ 0 < r < 2M$.
+Hence the extended Schwarzschild solution is static only in the $r > 2M$ region.

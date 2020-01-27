@@ -1,0 +1,160 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 3: January 24}
+
+Let us look at the equations of motion for the Polyakov action.
+
+\begin{exercise}
+  If we vary the worldsheet metric $h_{ab} \to h_{ab} + \delta h_{ab}$, then the action changes as 
+  \begin{equation}
+    \delta S = -\frac{1}{2\pi \alpha'} \int_\Sigma \dd[2]{\sigma} \sqrt{-h} T_{ab} \delta h^{ab},
+  \end{equation}
+  with \emph{stress tensor} $T_{ab} = \frac{1}{\alpha'} \partial_{a} X^{\mu} \partial_{b} X_{\mu} - \frac{1}{2} h_{ab} h^{cd} \partial_{c} X^{\mu} \partial_{d} X_{\mu}$.
+\end{exercise}
+\begin{leftbar}
+  \begin{remark}
+    Indices are raised and lowered with the Minkowski metric.
+  \end{remark}
+\end{leftbar}
+
+So the $h_{ab}$ equation of motion is 
+\begin{equation}
+  \boxed{T_{ab} = 0}
+\end{equation}
+
+\begin{remark}
+  \begin{itemize}
+    \item The trace vanishes $h^{ab} T^{ab} = 0$, because $h_{ab} h^{ab} = 2$.
+    \item Symmetric $T_{ab} = T_{ba}$ because $h_{ab} = h_{ba}$.
+    \item The $X^{\mu}$ equation of motion is
+      \begin{equation}
+	\frac{1}{\sqrt{-h}} \partial_{a} \left(\sqrt{-h} h^{ab} \partial_{b} X^{\mu}\right) = 0.
+      \end{equation}
+      If the $h_{ab} = \text{diag}(-1, 1)$, then this is the wave equation.
+  \end{itemize}
+\end{remark}
+
+\section{Classical Equivalence of Polyakov and Nambu--Goto}%
+\label{sec:classical_equivalence_of_polyakov_and_nambu_goto}
+
+It is useful to define  $G_{ab} = \eta_{\mu} \partial_{a} X^{\mu} \partial_{b} X^{\nu}$ . The Nambu--Goto action is then
+\begin{equation}
+  S_{NG} = -\frac{1}{2\pi \alpha'} \int_\Sigma \dd[2]{\sigma} \sqrt{- \det (G_{ab})}.
+\end{equation}
+By imposing the metric's equation of motion, the vanishing of $T_{ab}$  tells us that
+\begin{equation}
+  G_{ab} - \frac{1}{2} h_{ab} \underbrace{G_{cd} h^{cd}}_{\mathclap{G \coloneqq \tr(G_{ab})}} = 0.
+\end{equation}
+The determinant is
+\begin{equation}
+  \det(G_{ab}) = \frac{1}{4} G^2 \det(h_{ab}) = \frac{1}{4}G^2 h.
+\end{equation}
+So $\sqrt{-h} G = 2 \sqrt{-\det G_{ab}}$  and
+\begin{equation}
+  \frac{1}{2} \sqrt{-h} h^{cd} \partial_{c} X^{\mu} \partial_{d} X^{\nu} \eta_{\mu\nu} = \sqrt{-\det(G_{ab})}.
+\end{equation}
+
+\begin{remark}
+  This is because $h_{ab}$ is not appearing dynamically in the action (no derivatives), so its equation of motion is just a constraint.
+\end{remark}
+
+\section{The Polyakov Action}%
+\label{sec:the_polyakov_action}
+
+\begin{equation*}
+  S[X, h] = -\frac{1}{4 \pi \alpha'} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} h^{ab} \eta_{\mu\nu} \partial_{a} X^{\mu} \partial_{b} X^{\nu}.
+\end{equation*}
+
+Can we generalise this action?
+\begin{itemize}
+  \item We could replace $\eta_{\mu\nu}$ with a general $g_{\mu\nu}(x)$ (more later).
+  \item What about a 2-$D$ Einstein--Hilbert term, to make $h_{ab}$  dynamical?
+    \begin{equation}
+      \frac{1}{4 \pi} \int_\Sigma \dd[2]{\sigma} \sqrt{-h} \, R(h) = \chi.
+    \end{equation}
+    In 2-$D$, this is a topological invariant: the Euler characteristic $\chi$ of the worldsheet.
+  \item What about a cosmological constant on $\Sigma$?
+    \begin{equation}
+      \Lambda \int_\Sigma \dd[2]{\sigma} \sqrt{-h}
+    \end{equation}
+    The equations of motion for $h_{ab}$ will be of the form
+    \begin{equation}
+      T_{ab} \propto \Lambda h_{ab}.
+    \end{equation}
+    However, we know that $T_{ab}$ is traceless. We therefore have $h^{ab} T_{ab} \propto 2 \Lambda$, so we need $\Lambda = 0$.
+  \item We could include background fields in the spacetime. 
+
+    For example, there could be a $2$-form field $ B(X) = \frac{1}{2} B_{\mu\nu} dX^{\mu} \wedge dX^{\nu}$.
+    We could include the term
+    \begin{equation}
+      -\frac{1}{2\pi \alpha'} \int_\Sigma B = -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} \sqrt{-h} \, \epsilon^{ab} \partial_{a} X^{\mu} \partial_{b} X^{\nu} B_{\mu\nu}.
+    \end{equation}
+
+    Or we might have a scalar field $\phi(X)$. The sort of term we might have is something like
+    \begin{equation}
+      \frac{1}{4 \pi } \int_\Sigma \dd[2]{\sigma} \sqrt{-h} \, \phi(X) R(h).
+    \end{equation}
+\end{itemize}
+
+\subsection{Symmetries}%
+\label{sub:symmetries}
+
+\begin{itemize}
+  \item Poincaré invariance: $X^{\mu} \to \Lambda\indices{^{\mu}_{\nu}} X^{\nu} + a^{\mu}$, where $\Lambda\indices{^{\mu}_{\nu}}$ and $a^{\mu}$ are independent of $(\sigma, \tau)$. (These are rigid / global symmetries, as opposed to gauge / local symmetries). The metric $h^{ab} \to h^{ab}$ does not change.
+  \item Diffeomorphism invariance.
+
+    Infinitesimally: $\sigma^{a} \to \sigma^{a} + \xi^{a}$. Then
+    \begin{align}
+      \delta X^{\mu} &= \xi^{a} \partial_{a} X^{\mu} \\
+      \delta h_{ab} &= \xi^{c} \partial_{c} h_{ab} + (\partial_{a} \xi^{c}) h_{bc} + (\partial_{b} \xi^{c}) h_{ac}.
+    \end{align}
+  \item Weyl invariance: $X^{\mu} \to X^{\mu}$ does not change. But the worldsheet is rescaled by some position dependent factor $h_{ab} \to e^{2 \Lambda(\sigma, \tau)} h_{ab}$.
+
+    Infinitesimally:
+    \begin{equation}
+      \delta X^{\mu} = 0, \qquad \delta h_{ab} = 2 \Lambda h_{ab}.
+    \end{equation}
+\end{itemize}
+
+\subsection{Classical Solutions}%
+\label{sub:classical_solutions}
+
+The two-dimensional metric $h_{ab}$ has three degrees of freedom. We can use the diffeomorphism invariance to fix two of the degrees of freedom in $h_{ab}$ (at least locally) and write it as
+\begin{equation}
+  h_{ab} = e^{2 \Phi}
+  \begin{pmatrix}
+   -1 & 0 \\
+   0 & 1 \\
+  \end{pmatrix}.
+\end{equation}
+Moreover, Weyl invariance means that the factor $e^{2 \phi}$ drops out, eliminating the final degree of freedom.
+
+The action then becomes
+\begin{equation}
+  S[X] = -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} \left( - \dot{X}^2 + (X')^2 \right), \qquad \dot{X}^{\mu} \coloneqq \frac{\partial X^{\mu}}{\partial \tau}, \quad (X')^{\mu} \coloneqq \frac{\partial X^{\mu}}{\partial \sigma}.
+\end{equation}
+The equation of motion is
+\begin{equation}
+  \Box X^{\mu} = 0 \qquad \Box = - \partial_\tau^2 + \partial^2_\sigma.
+\end{equation}
+Solutions are split between left- and right-movers.
+\begin{equation}
+  X^{\mu}(\sigma, \tau) = X^{\mu}_R(\tau + \sigma) + X_L^{\mu}(\tau + \sigma).
+\end{equation}
+Introduce the Fourier modes $\alpha^{\mu}_n$  and $\overline{\alpha}^{\mu}_n$  (which are not complex conjugate to each other, but it will be useful to think of them as if they were).
+The solutions then become
+\begin{align}
+  X^{\mu}_R(\tau - \sigma) &= \frac{1}{2} x^{\mu} + \frac{\alpha'}{2} p^{\mu} (\tau - \sigma) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{\alpha_n^{\mu}}{n} e^{-i n (\tau - \sigma)} \\
+  X^{\mu}_R(\tau + \sigma) &= \frac{1}{2} x^{\mu} + \frac{\alpha'}{2} p^{\mu} (\tau + \sigma) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{\alpha_n^{\mu}}{n} e^{-i n (\tau + \sigma)}.
+\end{align}
+
+The $x^{\mu}$  and $p^{\mu}$  are the centre of mass position and momentum of the string in spacetime.
+
+\begin{notation}[]
+  We also introduce the notation 
+  \begin{equation}
+    \alpha_0^{\mu} = \overline{\alpha}_0^{\mu} = \sqrt{\frac{\alpha'}{2}} p^{\mu}
+  \end{equation}
+\end{notation}
+
+$X^{\mu}$ is real, so we also require that $(\alpha_n^{\mu})^* = \alpha^{\mu}_{-n}$.
