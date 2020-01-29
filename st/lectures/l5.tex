@@ -1,0 +1,142 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 5: January 29}
+
+\section{A First Look at the Quantum Theory}%
+\label{sec:a_first_look_at_the_quantum_theory}
+
+If we choose the metric to be Minkowski up to Weyl transformation, we get a two-dimensional Klein--Gordon equation of motion.
+However, there is also the constraint $T_{ab} = 0$, which distinguishes the two-dimensional massless Klein--Gordon field from bosonic string theory.
+There are two approaches we can take.
+Either we impose the constraint first and then quantise, or we do it the other way around.
+\emph{Lightcone quantisation} goes the first route, which has historically been very successful.
+However, in this course, we will not do this!
+
+Instead, we will quantise the unconstrained theory and then impose the constraint $T_{ab} = 0$ as a physical condition  on the Hilbert space of states.
+
+\subsection{Canonical Quantisation}%
+\label{sub:canonical_quantisation}
+
+We quantise by replacing our Poisson brackets with commutators:
+\begin{equation}
+  \Bigl\{ \quad , \quad \Bigr\}_{\text{PB}} \to -i [\quad , \quad ].
+\end{equation}
+Giving equal time commutators:
+\begin{equation}
+  [X^{\mu}(\sigma), X^{\nu}(\sigma')] = 0, \qquad [P_{\mu}(\sigma), P_{\nu}(\sigma')] = 0, \qquad [P_{\mu}(\sigma), X^{\nu}(\sigma')] = -i \delta\indices{_{\mu}^{\nu}} \delta(\sigma - \sigma').
+\end{equation}
+Using the mode expansions for $X^{\mu}$  and $P_{\mu}$ , e.g.
+\begin{equation}
+  X^{\mu}(\sigma, \tau) = x^{\mu} + p^{\mu} \alpha' \tau + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{1}{n}\left( \alpha_n^{\mu} e^{-in (\tau - \sigma)} + \overline{\alpha}_n{}^{\mu} e^{-in (\tau + \sigma)} \right).
+\end{equation}
+The commutation relations for the modes are
+\begin{equation}
+  [\alpha^{\mu}_m, \alpha^{\nu}_n] = m \delta_{m + n, 0} \eta^{\mu\nu}, \qquad
+  [\alpha^{\mu}_m, \overline{\alpha}^{\nu}_n] = 0, \qquad
+  [\overline{\alpha}^{\mu}_m, \overline{\alpha}^{\nu}_n] = m \delta_{m + n, 0} \eta^{\mu\nu}.
+\end{equation}
+For each direction $\mu$, these are an infinite number of ladder operator relations ($(\alpha_n^{\mu})^{\dagger} = \alpha^{\mu}_{-n}$).
+
+\begin{definition}[vacuum]
+  We introduce a \emph{vacuum state} $\ket{0}$ on the worldsheet $\Sigma$ such that
+  \begin{equation}
+    \alpha_n^{\mu} \ket{0} = 0 \qquad n \geq 0.
+  \end{equation}
+\end{definition}
+
+We recall the Fourier modes of $T_{ab}$  are $L_n$  and $\overline{L}_n$, where
+\begin{equation}
+  \label{eq:5-1}
+  L_m = \frac{1}{2} \Sigma_n \alpha_{m - n} \cdot \alpha_n.
+\end{equation}
+These are called the \emph{Virasoro operators}.
+\begin{leftbar}
+  The contraction is given by the spacetime Minkowski metric.
+  Later we will briefly talk about how things change with a curved metric.
+\end{leftbar}
+This expression Eq.~\eqref{eq:5-1} is ambiguous for $m = 0$ because $\alpha_n$ and $\alpha_{-n}$ do not commute. Going from the classical to the quantum theory, operator ordering starts to matter. 
+We shall take
+\begin{equation}
+  \label{eq:5-2}
+  L_0 = \frac{1}{2} \alpha_0^2 + \sum_{n > 0} \alpha_{-n} \cdot \alpha_n.
+\end{equation}
+\begin{leftbar}
+  The ambiguity is still there as we will see later. We just shifted the ambiguity into the states.
+\end{leftbar}
+
+Instead of thinking about $x^{\mu}$, $p_{\mu}$ and $T_{ab}$, it will be more useful to think about the mode operators $\alpha^{\mu}_m, \overline{\alpha}^{\mu}_m$ and $L_m$ and $\overline{L}_m$.
+
+\subsection{Physical State Conditions}%
+\label{sub:physical_state_conditions}
+
+We shall be imposing the conditions $T_{ab} = 0$  on the Hilbert space of the theory.
+
+\begin{notation}[]
+  Let us define $N = \sum_{n > 0} \alpha_{-n} \cdot \alpha_n$ and $\overline{N} = \sum_{n > 0} \overline{\alpha}_{-n} \cdot \overline{\alpha}_n$.
+\end{notation}
+\begin{leftbar}
+  We think of the $\alpha_n$ with positive (negative) $n$ to be annihilation (creation) operators.
+  In that case $N$ is like a number operator.
+  However, they are not quite like the ladder operators for the quantum harmonic operator, and $N$ is not quite a number operator; it is more like a weighted number operator.
+\end{leftbar}
+
+Then $L_0 = \frac{\alpha'}{4} p^2 + N$, and $\overline{L}_0 = \frac{\alpha'}{4} p^2 + \overline{N}$, where $\alpha_0^{\mu} = \sqrt{\frac{\alpha'}{2}} p^{\mu}$.
+
+It would be too strong a condition for the operator to vanish $T_{ab} = 0$  identically as an operator expression; there would not be much of a theory left if we did that.
+\begin{definition}[physical states]
+  Instead, we require that $T_{ab} \ket{\phi} = 0$ for $\ket{\phi}$ to be a \emph{physical state}.
+\end{definition}
+This means that $L_n \ket{\phi} = 0$ and  $\bra{\phi} L_{-n} = 0$ for $n > 0$ .
+
+We shall also require $L_0 \ket{\phi} = a \ket{\phi}$ and $\overline{L}_0 \ket{\phi} = a \ket{\phi}$, where the constant $a$  reflects the ambiguity in defining the ordering of operators constituting $L_0$ , Eq.~\eqref{eq:5-2}, in the quantum theory.
+
+For now we shall take $a = 1$.
+ \begin{leftbar}
+  We will find that we can interpret the canonical quantised states in a natural way when $a = 1$.
+\end{leftbar}
+
+\begin{definition}[]
+  Let us define $L^{\pm} = L_0 \pm \overline{L}_0$.
+\end{definition}
+Then our conditions for a state $\ket{\phi}$ to be physical translate to
+\begin{equationbox}
+  \label{eq:5-3}
+  (L^+_0 - 2) \ket{\phi} = 0, \qquad
+  L^-_0 \ket{\phi} = 0, \qquad
+  L_n \ket{\phi} = 0 = \overline{L}_n \ket{\phi} \quad \text{for } n > 0.
+\end{equationbox}
+
+\section{The Spectrum}%
+\label{sec:the_spectrum}
+
+\subsection{The Tachyon}%
+\label{sub:the_tachyon}
+
+\begin{definition}[]
+  We can construct a (spacetime) momentum eigenstate as
+  \begin{equation}
+    \ket{k} = e^{i k \cdot x} \ket{0}
+  \end{equation}
+\end{definition}
+In terms of a position basis in the target space, the momentum operator is $p_{\mu} = -i \frac{\partial }{\partial x^{\mu}}$, so $p_{\mu} \ket{k} = k_{\mu} \ket{k}$.
+
+From the point of view of a massless Klein--Gordon theory, we would just stop here. However, we have got to check the physicality conditions, which we imposed. 
+Straightforwardly, we get from \eqref{eq:5-3} that
+\begin{equation}
+  L_n \ket{k} = 0 = \overline{L}_n \ket{k}.
+\end{equation}
+For the other two, we need to work a bit harder. We can write $L_0^- = N - \overline{N}$. This is sometimes called \emph{level matching}.
+\begin{leftbar}
+  This is the only constraint coupling the left- and right-moving sectors together.
+\end{leftbar}
+Here, $N = \overline{N} = 0$.
+Finally, we only need to check that $(L_0^+ - 2) \ket{k} \stackrel{!}{=} 0$ .
+\begin{equation}
+  (L_0^+ - 2) \ket{k} = \left( \frac{\alpha'}{2} p^2 + N + \overline{N} - 2 \right) \ket{k} = \left( \frac{\alpha'}{2} k^2 - 2 \right) \ket{k} = 0.
+\end{equation}
+This gives us a condition on $k^2$ : $k^2 - \frac{4}{\alpha'} = 0$. 
+If we compare this with the energy-momentum condition $k^2 + M^2 = 0$, we see that the spacetime interpretation of this is that the state has negative mass squared:
+\begin{equation}
+  \boxed{M^2 = -\frac{4}{\alpha'}}
+\end{equation}
+The state $\ket{k}$ has a spacetime interpretation as a tachyon.

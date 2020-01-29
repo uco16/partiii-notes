@@ -1,0 +1,244 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 5: January 28}
+
+\subsection{Effective Field Theory: Integrating out \texorpdfstring{$\chi$}{a massive field}}%
+\label{sub:integrating_out_chi}
+
+From the action \eqref{eq:4-action}, we obtained Feynman diagrams for both fields and calculated expressions for $W$ and $\langle \phi^2 \rangle$.
+Let us now show that we can get the same thing by first removing $\chi$ from the theory and then calculating expectation values in the effective theory.
+In other words, we want to calculate correlation functions only involving $\phi$ fields as
+\begin{equation}
+  \langle f(\phi) \rangle = \frac{1}{Z} \int \dd[]{\phi} \dd[]{\chi} f(\phi) e^{-S(\phi, \chi) / \hbar} = \frac{1}{Z} \dd[]{\phi} f(\phi) e^{-W(\phi) / \hbar}.
+\end{equation}
+In this simple example, 
+\begin{equation}
+  e^{-W(\phi) / \hbar} = \int \dd[]{\chi} e^{-S(\phi, \chi) / \hbar} = e^{-m^2 \phi^2 / 2 \hbar} \sqrt{\frac{2 \pi \hbar}{M^2 + \frac{1}{2} \lambda \phi^2}}.
+\end{equation}
+Taking logarithms, we obtain
+\begin{equation}
+  W(\phi) = \frac{1}{2} m^2 \phi^2 + \frac{\hbar}{2} \ln(1 + \frac{\lambda}{2 M^2} \phi^2) + \frac{\hbar}{2} \ln(\frac{M^2}{2 \pi \hbar}).
+\end{equation}
+The final term is constant and in non-gravitational physics does not effect any expectation values.
+\begin{leftbar}
+  In gravitational theories, this term is taken to be the origin of the cosmological constant.
+\end{leftbar}
+We expand the logarithm
+\begin{equation}
+  W(\phi) = \left( \frac{m^2}{2} + \frac{\hbar\lambda}{4 M^2}\right) \phi^2 - \frac{\hbar \lambda^2}{16 M^4} \phi^4 + \frac{\hbar \lambda^3}{48 M^6} \phi^6 + \dots
+\end{equation}
+From a theory which did not have any self-interaction, integrating out the $\chi$ -field gave us infinitely many self-interaction terms for all the even powers.
+We can think of the first term as an effective mass and write the other couplings as
+\begin{equation}
+  W(\phi) \coloneqq \frac{m_{\text{eff}}^2}{2} \phi^2 + \frac{\lambda_4}{4!} \phi^4 + \frac{\lambda_6}{6!} \phi^6 + \dots + \frac{\lambda_{2k}}{(2k)!} \phi^{2k} + \dots,
+\end{equation}
+where 
+ \begin{equation}
+  m_{\text{eff}}^2 = m^2 + \frac{\hbar \lambda}{2 M^2} \qquad 
+  \lambda_{2k} = (-1)^{k +1} \hbar \frac{(2k)!}{2^{k+1} k} \frac{\lambda^k}{M^{2k}}.
+\end{equation}
+
+In higher dimensions, we usually need to calculate $W(\phi)$  perturbatively. 
+From $S(\phi, \chi)$  and the path integral over $ \chi$, we have the Feynman rules
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.6][horizontal=a to b] {
+      a -- [scalar] b,
+    }; \\
+    \hbar / M^2
+  \end{gathered}
+  \qquad \text{and} \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.3][horizontal=b to a] {
+      a -- [scalar] v [square dot] -- [scalar] b,
+      a -- [draw=none] b,
+    };
+  \end{gathered}
+  \sim - \frac{\lambda \phi^2}{2 \hbar}.
+\end{equation} 
+The propagator is the same as in the previous Feynman rules \eqref{eq:4-rules}, but the factor associated with the vertex now accounts for the fact that we are treating the interaction term $\frac{\lambda}{4} \phi^2 \chi^2$ as a source term for $\chi^2$.
+The effective action is then given by the sum of connected diagrams
+\begin{align}
+  W(\phi) &\sim -\hbar \left[ \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+        a [square dot],
+      };
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][horizontal=a to b] {
+        a [square dot] -- [half left, dashed] b -- [half left, dashed] a,
+      };
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=0.4][horizontal=a to b] {
+        a [square dot] -- [half left, dashed] b [square dot] -- [half left, dashed] a,
+      };
+    \end{gathered}
+    \ + \
+    \begin{gathered}
+      \begin{tikzpicture}
+	\begin{feynman}
+	  \tikzfeynmanset{every vertex={square dot}};
+	  \vertex (a) at (-0.5, 0);
+	  \vertex (b) at (0.35355, 0.35355);
+	  \vertex (c) at (0.35355, -0.35355);
+	  \draw[dashed] (a) arc [start angle=180, end angle=-180, radius=0.5cm];
+	  \diagram* {
+	  };
+	\end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \ + \ \cdots
+  \right] \\
+  &= S(\phi) + \frac{1}{2} \frac{\hbar \lambda}{2 M} \phi^2 - \frac{1}{4} \frac{\hbar \lambda^2}{4 M^4} \phi^4 + 
+  \frac{1}{3!} \frac{\hbar \lambda^3}{8 M^6} \phi^6 + \cdots,
+\end{align}
+where in the first term $S(\phi) = S(\phi, 0)$ is the part of the action that is unaffected by the integral over $\chi$.
+
+We can now use $W(\phi)$ to calculate the expectation value
+\begin{align}
+  \langle \phi^2 \rangle = \frac{1}{Z} \int \dd[]{\phi} \phi^2 e^{-W(\phi) / \hbar}
+  \quad &\sim \quad 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[below=0.5cm of a] (b);
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of b] (c);
+        \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \diagram* {
+          (a) -- (c),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \ + \dots\\
+  &= \ \frac{\hbar}{m_{\text{eff}}^2} \ - \ \frac{\lambda_4 \hbar^2}{2 m_{\text{eff}}^6} + \dots
+\end{align}
+The five diagrams of \eqref{eq:4-2ptdiag} have been reduced to just two diagrams with the effective action $W(\phi)$.
+
+\subsection{Quantum Effective Action \texorpdfstring{$\Gamma$}{Gamma}}%
+\label{sub:quantum_effective_action_gamma}
+
+\begin{definition}[]
+  We define the average field $\Phi = \langle \phi \rangle_J$ in the presence of an external source $J$ as
+  \begin{equation}
+    \label{eq:5-avgfield}
+    \Phi \coloneqq \frac{\partial W}{\partial J} = -\frac{\hbar}{Z(J)} \frac{\partial }{\partial J} \int \dd[]{\phi} e^{-(S + J \phi) / \hbar} \coloneqq \langle \phi \rangle_J,
+  \end{equation}
+  where we have assumed that $S(\phi)$ as before is even in $\phi$ and has a minimum at $\phi = 0$.
+\end{definition}
+\begin{definition}[quantum effective action]
+  We have a Legendre transformation from the Wilsonian effective action $W(J)$ to the \emph{quantum effective action} $\Gamma(\Phi)$:
+  \begin{equation}
+    \Gamma(\Phi) = W(J) - \Phi J.
+  \end{equation}
+\end{definition}
+\begin{claim}
+  As usual for Legendre transformations, we have  
+  \begin{equation}
+     \boxed{\frac{\partial \Gamma}{\partial \Phi} = - J}
+  \end{equation}
+  So $J \to 0$ corresponds to an extremum (in practice a minimum) of the effective action $\Gamma(\Phi)$.
+\end{claim}
+\begin{proof}
+  Using the product rule, the chain rule, and the definition \eqref{eq:5-avgfield} of $\Phi$, 
+  \begin{equation}
+    \frac{\partial \Gamma}{\partial \Phi} = \frac{\partial W}{\partial \Phi} - J - \Phi \frac{\partial J}{\partial \Phi}
+    = \cancel{\frac{\partial W}{\partial J} \frac{\partial J}{\partial \Phi}} - J - \cancel{\Phi \frac{\partial J}{\partial \Phi}}
+    = -J
+  \end{equation}
+\end{proof}
+
+\begin{leftbar}
+  In higher dimensions, one performs a derivative expansion
+  \begin{equation}
+    \Gamma(\Phi) = \int \dd[d]{x} \left[ -V(\Phi) -\frac{1}{2} \partial^{\mu} \Phi \partial_{\mu} \Phi + \dots \right]
+  \end{equation}
+  where the first term in this expansion defines the effective potential $V(\Phi)$.
+  The effective potential might shift the minimum of the action when including quantum effects. These quantum corrections can lead to spontaneous symmetry breaking.
+\end{leftbar}
+
+\subsection{Analogy with Statistical Mechanics}%
+\label{sub:analogy_with_statistical_mechanics}
+
+The $W$  is like the Helmholtz free energy $F$. In the presence of some external magnetic field $h$  in some spin system, it is defined via
+\begin{equation}
+  e^{-\beta F(h)} = \int \pdd{s} e^{-\beta H}.
+\end{equation}
+We can define the magnetisation to be $M = - \frac{\partial F}{\partial h}$.
+One can then switch to the Gibbs free energy, analogous to $\Gamma$, by defining
+\begin{equation}
+  G(M) = F(h) + M h.
+\end{equation}
+As $h \to 0$, the magnetisation of the system  is the minimum of $G$. 
+
+\subsection{Perturbative Calculation of \texorpdfstring{$\Gamma(\Phi)$}{the Quantum Effective Action}}%
+\label{sub:perturbative_calculation_of_gamma_phi_}
+
+We want to treat $\Phi$ as $\phi$ and write down a new Wilsonian effective action
+\begin{equation}
+  e^{-W_\Gamma (J) / g} = \int \dd[]{\Phi} e^{-(\Gamma(\Phi) + J\Phi) / g},
+\end{equation}
+where $g$ is a new, fictitious Planck constant and $J$ a source.
+This is in analogy to before, replacing the action $S$  with the quantum effective action $\Gamma$.
+ As before, $W_\Gamma(J)$  is the sum of connected vacuum diagrams and can be written as a power series in $g$
+ \begin{equation}
+  W_\Gamma(J) = \sum_{l = 0}^{\infty} g^{l} W_\Gamma^{(l)} (J),
+\end{equation}
+where $l$ counts the loops.  In particular, $W_\Gamma^{(0)}$  is composed of all the \emph{tree} diagrams with $\Phi$ as legs.
+
+In the limit of $g \to 0$,  $W_\Gamma(J) \to W^{(0)}_\Gamma(J)$ . 
+Also as $g \to 0$, the integral in  $\Phi$  is dominated by the minimum of the exponent, which is $\Phi$  such that
+\begin{equation}
+  \frac{\partial \Gamma}{\partial \Phi} = -J \qquad (\text{steepest descent})
+\end{equation}
+Therefore, by analogy to the earlier definition with with action $S(\phi) + J \phi$, we have
+\begin{equation}
+  W_\Gamma^{(0)}(J)= \Gamma(\Phi) + J \Phi = W(J).
+\end{equation}
+The moral of the story is that the sum of connected diagrams in a theory with action $S(\phi) + J \phi$  (i.e.~$W(J)$) can be constructed from a sum of tree diagrams with action $\Gamma(\Phi) + J \Phi$ .
+
+\begin{definition}[bridge]
+  An edge in a connected graph is a \emph{bridge} if removing it would leave the graph disconnected.
+\end{definition}
+An example is shown in Fig.~\ref{fig:bridge}.
+\begin{figure}[tbph]
+  \centering
+  \tikz[remember picture]{\node(L){
+  \feynmandiagram [small, horizontal=a to b] {
+    f -- a -- g,
+    q -- a,
+    a -- b -- c -- d,
+    b -- [half left] c -- [half left] b,
+  };};
+  \node[right=0.5cm of L] (L1) {}; }%
+  \hspace*{2cm}%
+  \tikz[remember picture]{\node(R){
+  \feynmandiagram [small, horizontal=a to b] {
+    f -- a -- g,
+    q -- a,
+    a -- [draw=none] b -- c -- d,
+    b -- [half left] c -- [half left] b,
+  };};
+  \node[left=0.5cm of R] (R1) {}; }%
+  \caption{Cutting a bridge disconnects a graph.}
+  \label{fig:bridge}
+\end{figure}
+\tikz[overlay,remember picture]{\draw[-latex, thick] (L1) -- (R1) node [midway, below]{Cut bridge};}
+
+\begin{definition}[1PI]
+  A connected graph is called \emph{one-particle irreducible} (1PI) if it has no bridges.
+\end{definition}

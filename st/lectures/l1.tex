@@ -19,8 +19,9 @@
 \section*{Online Resources}%
 
 \begin{itemize}
-  \item Online lecture notes by the professor.
-  \item David Tong's notes on arXiv:0908.0333
+  \item Lecture notes by the professor are \href{www.damtp.cam.ac.uk/user/rar31/LectureNotes.pdf}{online}.
+  \item Probelem sheet 1 by the professor is \href{www.damtp.cam.ac.uk/user/rar31/ProblemSet1.pdf}{online}.
+  \item David Tong's notes on \href{https://arxiv.org/abs/0908.0333}{arXiv:0908.0333}.
   \item `Why string theory?' Conlon (CRC) for some light reading and history
 \end{itemize}
 
@@ -85,24 +86,42 @@ Choosing a gauge wisely, we get an action
 \end{equation}
 Since the Ricci scalar involves inverse powers of the metric, this expansion will not terminate. We say that this expression is \emph{non-polynomial} in $h_{\mu\nu}$.
 
-The quadratic term gives us a propagator $ 
-\feynmandiagram[transform shape, scale=0.5][inline=(a.base), horizontal=a to b] {
-  a -- [boson] b,
-}; $
-and the interaction terms give us vertices $
-\begin{gathered}
-  \feynmandiagram[transform shape, scale=0.3][small, horizontal=a to b] {
-    a -- [boson] v -- [boson] b,
-    c -- [boson] v,
-  };
-\end{gathered}$
- and $
-\begin{gathered}
-  \feynmandiagram[transform shape, scale=0.3][small, horizontal=a to b] {
-    a -- [boson] v -- [boson] b,
-    c -- [boson] v -- [boson] d,
-  };
-\end{gathered} $. These are the Feynman rules.
+\begin{figure}[tbph]
+  \centering
+  \begin{subfigure}[t]{0.3\textwidth}
+    \centering
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- [boson] b,
+    };
+    \caption{Propagator}
+    \label{fig:l1f0p}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.3\textwidth}
+    \centering
+    \begin{minipage}[t]{0.3\textwidth}
+      \centering
+      \feynmandiagram[transform shape, scale=0.3][horizontal=a to b] {
+        a -- [boson] v -- [boson] b,
+        c -- [boson] v,
+      };
+    \end{minipage}%
+    \begin{minipage}[t]{0.3\textwidth}
+      \centering
+      \feynmandiagram[transform shape, scale=0.3][horizontal=a to b] {
+        a -- [boson] v -- [boson] b,
+        c -- [boson] v -- [boson] d,
+      };
+    \end{minipage}
+    \caption{Vertices}
+    \label{fig:l1f0v}
+  \end{subfigure}
+  \caption{Feynman rules}
+  \label{fig:l1f0}
+\end{figure}
+
+The quadratic term gives us a propagator of Fig.~\ref{fig:l1f0p}
+and the interaction terms give us vertices illustrated in Fig.~\ref{fig:l1f0v}
+These are the Feynman rules.
 
 However, loops give divergences, which cannot be dealt with using standard techniques (renormalisation, c.f.~\emph{Advanced Quantum Field Theory}).
 
@@ -141,7 +160,7 @@ We shall see that diagrams such as Fig.~\ref{fig:l1f2} are in one-to-one corresp
   \centering
   \def\svgwidth{0.4\columnwidth}
   \input{lectures/l1f2.pdf_tex}
-  \caption{}
+  \caption{Not a particularly beautiful diagram\dots}
   \label{fig:l1f2}
 \end{figure}
 It is natural to interpret such diagrams as Feynman diagrams in a perturbative expansion of some theory about a vacuum.

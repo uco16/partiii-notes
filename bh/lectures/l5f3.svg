@@ -83,17 +83,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.2272727"
-     inkscape:cx="342.49177"
-     inkscape:cy="634.68888"
+     inkscape:zoom="2.4300518"
+     inkscape:cx="372.68962"
+     inkscape:cy="613.5665"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
+     inkscape:window-width="960"
      inkscape:window-height="1011"
      inkscape:window-x="0"
      inkscape:window-y="32"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
        id="grid815" />
@@ -154,46 +154,46 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="89.958336"
-       y="142.21875"
+       x="91.047134"
+       y="146.46506"
        id="text1718"><tspan
          sodipodi:role="line"
          id="tspan1716"
-         x="89.958336"
-         y="142.21875"
+         x="91.047134"
+         y="146.46506"
          style="stroke-width:0.26458332px">III</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="99.461731"
-       y="117.5207"
+       x="93.346977"
+       y="117.73846"
        id="text1722"><tspan
          sodipodi:role="line"
          id="tspan1720"
-         x="99.461731"
-         y="117.5207"
+         x="93.346977"
+         y="117.73846"
          style="stroke-width:0.26458332px">II</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="110.67142"
-       y="132.52097"
+       x="107.84055"
+       y="133.17424"
        id="text1726"><tspan
          sodipodi:role="line"
          id="tspan1724"
-         x="110.67142"
-         y="132.52097"
+         x="107.84055"
+         y="133.17424"
          style="stroke-width:0.26458332px">I</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="79.904167"
-       y="131.41942"
+       x="78.162094"
+       y="133.37926"
        id="text1730"><tspan
          sodipodi:role="line"
          id="tspan1728"
-         x="79.904167"
-         y="131.41942"
+         x="78.162094"
+         y="133.37926"
          style="stroke-width:0.26458332px">IV</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#aa8800;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
@@ -219,25 +219,25 @@
          style="stroke-width:0.26458332px">$r= 0$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d4aa00;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d4aa00;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="125.83367"
-       y="144.5406"
+       y="142.42397"
        id="text1888"><tspan
          sodipodi:role="line"
          id="tspan1886"
          x="125.83367"
-         y="144.5406"
-         style="stroke-width:0.26458332px;stroke:none;fill:#d4aa00;">surface of star</tspan></text>
+         y="142.42397"
+         style="fill:#d4aa00;stroke:none;stroke-width:0.26458332px">surface of star</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="116.41666"
-       y="114.4375"
+       x="121.20737"
+       y="117.15949"
        id="text1892"><tspan
          sodipodi:role="line"
          id="tspan1890"
-         x="116.41666"
-         y="114.4375"
+         x="121.20737"
+         y="117.15949"
          style="stroke-width:0.26458332px">$r= 2M$</tspan></text>
   </g>
 </svg>

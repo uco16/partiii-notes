@@ -1,0 +1,197 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 6: January 29}
+
+\section{Einstein--Rosen Bridge}%
+\label{sec:einstein_rosen_bridge}
+
+Taking $t$ constant in I corresponds to $V / U$ being constant. This extends into IV.
+
+Let $r = \rho + M + \frac{M^2}{4 \rho}$ and choose $\rho > \frac{M}{2}$ in I and $0 < \rho < \frac{M}{2}$ in IV.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l6f1.pdf_tex}
+  \caption{}
+  \label{fig:l6f1}
+\end{figure}
+\begin{exercise}
+  Show that the Schwarzschild metric in \emph{isotropic coordinates} $(t, \rho, \theta, \phi)$  is
+  \begin{equation}
+    ds^2 = -\frac{\left( 1 - \frac{M}{2\rho} \right)^2}{\left( 1 + \frac{M}{2 \rho} \right)^2} dt^2 + \left( 1 + \frac{M}{2\rho} \right)^4 (d\rho^2 + \rho^2 d\Omega^2).
+  \end{equation}
+\end{exercise}
+
+Taking $\rho \to \frac{M^2}{4 \pi}$ is an isometry I $\leftrightarrow$ IV.
+
+For $t$ constant, we have 
+\begin{equation}
+  ds^2 = \left( 1 + \frac{M}{2\rho} \right)^4 (d\rho^2 + \rho^2 d\Omega^2),
+\end{equation}
+which is smooth $\forall \rho > 0$.
+
+This gives us an \emph{Einstein--Rosen bridge} connecting two far-away regions of spacetime.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l6f2.pdf_tex}
+  \caption{Einstein--Rosen bridge}
+  \label{fig:l6f2}
+\end{figure}
+
+\section{Extendibility}%
+\label{sec:extendibility}
+
+\begin{definition}[extendible]
+  A Riemannian manifold $(M, g)$ is \emph{extendible} if it is isometric to a proper subset of another spacetime $(M', g')$, which is called an \emph{extension} of $(M, g)$.
+\end{definition}
+\begin{example}[]
+  Let $(M, g)$ be the $r> 2M$ Schwarzschild spacetime.
+  Then $(M', g')$ can be taken to be the Kruskal extension of $(M, g)$.
+  Kruskal itself is \emph{inextendible}---it is a \emph{maximal analytic extension} of $(M, g)$.
+\end{example}
+
+\section{Singularities}%
+\label{sec:singularities}
+
+\begin{definition}[singular]
+  The metric $g_{\mu\nu}$ is \emph{singular} if it is not smooth or $\det g_{\mu\nu} = 0$ somewhere.
+\end{definition} 
+There are different kinds of singularity:
+\begin{description}
+  \item[Coordinate singularities] can be eliminated via a change of coordinates (e.g.~at $r = 2M$ in Schwarzschild coordinates). This is not a physical singularity.
+  \item[Scalar curvature singularities] are points where the scalar built from $R\indices{^{a}_{bcd}}$ diverges (e.g.~at $r = 0$ in Schwarzschild spacetime).
+  \item[Non-curvature singularities] 
+\end{description}
+
+\subsection{Conical Singularity}%
+
+Let us give an example of a non-curvature singularity.
+Let $M = \mathbb{R}^2$ be a manifold with metric $g = dr^2 + \lambda^2 r^2 d\phi^2$ in polar coordinates $(r, \phi)$, with the identification $\phi \sim \phi + 2\pi$.
+
+For $\lambda >0$, we have a singularity $\det g_{\mu\nu} = 0$ at $r = 0$.
+If $\lambda = 1$, then this is just Euclidean space $\mathbb{E}^2$ and we can switch to Cartesian coordinates, where the metric has $\det g_{\mu\nu} = 1$; in this case, $r = 0$ is a coordinate singularity.
+However, whenever $\lambda \neq 1$, changing coordinates $\phi' = \lambda \phi$ gives the metric $g = dr^2 + r^2 d\phi'{}^2$, which is locally isometric to $\mathbb{E}^2$; in this case $r = 0$ is clearly not a coordinate singularity.
+Moreover, the curvature tensor $R\indices{^{a}_{bcd}} = 0$ vanishes everywhere, which means that the singularity cannot be a curvature singularity either.
+
+Now the change of coordinates means that the new angular coordinates has a different period $\phi' \sim \phi' + 2\pi \lambda$, so this is spacetime is not globally isometric to $\mathbb{E}^2$.  
+Take a circle with radius $r = \epsilon$. The ratio of circumference and radius is 
+\begin{equation}
+  \frac{\text{circumference}}{\text{radius}} = \frac{2 \pi \lambda \epsilon}{\epsilon} = 2 \pi \lambda \not\longrightarrow 2 \pi \text{ as } \epsilon \to 0.
+\end{equation}
+As such, the manifold is not locally flat at $r = 0$ and the metric cannot be smoothly extended to $r = 0$. We call this a \emph{conical singularity}.
+
+\subsection{Geodesic Compleneness}%
+\label{sub:geodesic_compleneness}
+
+\begin{definition}[future endpoint]
+  A point $p \in M$ is a \emph{future endpoint} of a future-directed causal curve $\gamma \colon (a, b) \to M$ if, for any neighbourhood $\mathcal{O}$ of $p$, there exists a value $t_0$ such that $\gamma(t) \in \mathcal{O}$ for all $t > t_0$.
+\end{definition}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.25\columnwidth}
+  \input{lectures/l6f3.pdf_tex}
+  \caption{Future endpoint}
+  \label{fig:l6f3}
+\end{figure}
+\begin{definition}[future-inextendible]
+  A curve $\gamma$ is \emph{future-inextendible} if it has no future endpoint.
+\end{definition}
+
+\begin{example}[]
+  Take Minkowski space $\mathbb{M}^4$ with the curve $\gamma \colon (-\infty, 0) \to M$ defined by $\gamma(t) = (t, 0, 0, 0)$. Then $(0,0,0,0)$ is a future endpoint.
+  Taking the manifold $\mathbb{M}^4 \setminus \{(0,0,0,0)\}$, $\gamma$ becomes future-inextendible.
+\end{example}
+
+\begin{definition}[complete]
+  A geodesic is \emph{complete} if an affine parameter extends to $\pm \infty$.
+\end{definition}
+\begin{definition}[geodesically complete]
+  A Riemannian manifold $(M, g)$ is \emph{geodesically complete} iff all inextendible causal geodesics are complete.
+\end{definition}
+\begin{example}[]
+  Minkowski spacetime with a static spherical star is geodesically complete.
+\end{example}
+\begin{example}[]
+  Kruskal is geodesically incomplete---geodesics reach $r = 0$ in finite affine parameter.
+\end{example}
+
+An extendible spacetime is geodesically incomplete in a boring way; we can just make it into a bigger spacetime.
+This motivates the following definition:
+\begin{definition}[singular]
+  A spacetime $(M, g)$ is \emph{singular} if it is inextendible and geodesically incomplete.
+\end{definition}
+\begin{example}[]
+  Kruskal is singular.
+\end{example}
+
+\chapter{The Initial Value Problem}%
+\label{cha:the_initial_value_problem}
+
+\section{Predictability}%
+\label{sec:predictability}
+
+\begin{definition}[partial Cauchy surface]
+  Let $(M, g)$ be time-orientable. A \emph{partial Cauchy surface} $\Sigma$ is a hypersurface such that no two points are connected by a causal curve in $M$.
+\end{definition}
+\begin{definition}[domain of dependence]
+  The \emph{future (past) domain of dependence} of $\Sigma$, denoted $D^{+ (-)}(\Sigma)$, is the set of points $p \in M$ such that every past-(future-)inextendible causal curve through $p$ intersects $\Sigma$.
+  The full domain of dependence is $D(\Sigma) = D^+(\Sigma) \cup D^-(\Sigma)$.
+\end{definition}
+
+Any causal geodesic in $D(\Sigma)$  must intersect $\Sigma$ . Therefore, it is determined uniquely by a tangent vector on $\Sigma$.
+\begin{leftbar}
+  We can predict particle trajectories, say, on $D(\Sigma)$ by specifying initial data on $\Sigma$.
+\end{leftbar}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l6f4.pdf_tex}
+  \caption{}
+  \label{fig:l6f4}
+\end{figure}
+
+\begin{definition}[hyperbolic PDEs]
+  Take fields $T \indices{^{(i)a b \dots}_{c d \dots}}$, where $i = 1, \dots, N$, which obey equations of motion
+  \begin{equation}
+    g^{ef} \nabla_{e} \nabla_{f} T \indices{^{(i)a b \dots}_{c d \dots}} = \dots.
+  \end{equation}
+  The right hand side depends on $g$ and its derivatives. It depends \emph{linearly} on $T^{(i)}$ and their \emph{first} derivatives.
+\end{definition}
+\begin{example}[]
+  The Klein--Gordon, and Maxwell equations in Lorentz gauge are Hyperbolic PDEs. This is a large class of equations encompassing most physical equations of motion.
+\end{example}
+
+Solutions of such equations are uniquely determined in $D(\Sigma)$  from initial data on $\Sigma$.
+ \begin{example}[]
+   Take $\mathbb{M}^2$  and $\Sigma$  to be the positive $x$-axis. This is illustrated in \ref{fig:l6f5}.
+   \begin{figure}[tbhp]
+     \centering
+     \def\svgwidth{0.4\columnwidth}
+     \input{lectures/l6f5.pdf_tex}
+     \caption{}
+     \label{fig:l6f5}
+   \end{figure}
+   \begin{figure}[tbhp]
+     \centering
+     \def\svgwidth{0.4\columnwidth}
+     \input{lectures/l6f6.pdf_tex}
+     \caption{}
+     \label{fig:l6f6}
+   \end{figure}
+   Taking $\Sigma'$ to be the whole $x$-axis, we have the case illustrated in \ref{fig:l6f6}.
+
+  Consider the wave equation $\nabla^{a} \nabla_{a} \psi = -\partial_t^2 \psi + \partial_x^2 \psi = 0$.
+  The solutions in $D(\Sigma)$ ($M$) are uniquely determined by data in $(\psi, \partial_t \psi)$ on $\Sigma$ ($\Sigma'$).
+\end{example}
+
+Generally, if $D(\Sigma) \neq M$ , then physics in $M \setminus D(\Sigma)$  is not determined by data on $\Sigma$.
+
+ \begin{definition}[]
+   A spacetime $(M, g)$ is \emph{globally hyperbolic} if there exists a \emph{Cauchy surface}---a partial Cauchy surface such that $D(\Sigma) = M$.
+\end{definition}
+\begin{definition}[]
+  The \emph{Cauchy horizon} is the boundary of $D(\Sigma)$ in $M$.
+\end{definition}
+
+Globally hyperbolic iff no Cauchy horizon for $\Sigma$.

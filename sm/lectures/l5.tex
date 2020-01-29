@@ -1,0 +1,155 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 5: January 28}
+
+\subsection*{Comment 2}%
+
+
+The algebra of $SO(3, 1)$ is determined by the algebra of $SU(2) \times SU(2)$.
+Define Hermitian operators $J_{i} = \frac{1}{2} \epsilon_{ijk} M_{jk}$ and $K_{i} = M_{0i}$. Their algebra arises directly from the commutators \eqref{eq:mcom} of the $M_{ij}$:
+\begin{equation}
+  [J_{i}, J_{j}] = i \epsilon_{ijk}, 
+  \qquad [J_{i}, K_k] = i \epsilon_{ijk} K_k,
+  \qquad [K_{i}, K_{j}] = -i \epsilon_{ijk} J_k.
+\end{equation}
+We can also define $A_i = \frac{1}{2} (J_i + i K_i)$ and $B_i = \frac{1}{2} (J_i - i K_i)$. These are not Hermitian.
+However, this gives a nice separation between the algebras
+\begin{equation}
+  [A_i, A_j] = i \epsilon_{ijk} A_k, \qquad
+  [B_i, B_j] = i \epsilon_{ijk} B_k, \qquad
+  [A_i, B_j] = 0,
+\end{equation}
+and in each case the $A$- and $B$-subalgebra look like the algebra of the $J$'s: These are like $SU(2)$ algebras, except they are not Hermitian.
+
+
+\subsection*{Representations of $SU(2) \times SU(2)$}%
+
+For representations of $SU(2) \times SU(2)$, recall that that the $SU(2)$ states are labelled by half-integers $j = 0, \frac{1}{2}, \dots$.
+Then the $A_i$ and $B_i$ algebra states are labelled by $A, B = 0, \frac{1}{2}, \dots$ respectively.
+Therefore, the representations of $SO(3, 1)$ can be labelled by specifying $(A, B)$.
+\begin{remark}
+  Under parity
+  \begin{align}
+    P\colon \qquad &J_i \to J_i \\
+		   & K_i \to -K_i \\
+		   & A_i \leftrightarrow B_i \\
+		   & (A, B) \leftrightarrow (B, A)
+  \end{align}
+  Therefore, we can denote either one of these, say $(A, B)$, as `left'. Then $(B, A)$ is `right' and vice-versa.
+\end{remark}
+
+\subsection*{Comment 3}%
+
+We have the homomorphism
+\begin{equation}
+  SO(3, 1) \simeq SL(2, \mathbb{C}).
+\end{equation}
+
+Consider first $SO(3, 1)$.
+Let $X = X_{\mu} e^{\mu} = (X_0, X_1, X_2, X_3)$  denote a $4$ -vector.
+Under Lorentz transformation $X \to \Lambda X$, where $\Lambda \in SO(3, 1)$, the modulus squared $\abs{X}^2 = X^2_0 - X^2_1 - X^2_2 - X^2_3$  remains invariant.
+
+Now consider the space of $2 \times 2$  matrices with basis given by the Pauli matrices
+\begin{equation}
+  \sigma^{\mu} \coloneqq 
+  \left\{ 
+    \begin{pmatrix}
+     1 & 0 \\
+     0 & 1 \\
+    \end{pmatrix},
+    \begin{pmatrix}
+     0 & 1 \\
+     1 & 0 \\
+    \end{pmatrix},
+    \begin{pmatrix}
+     0 & -i \\
+     i & 0 \\
+    \end{pmatrix},
+    \begin{pmatrix}
+     1 & 0 \\
+     0 & -1 \\
+    \end{pmatrix}
+  \right\}
+\end{equation}
+We can then write any matrix $\widetilde{X}$ as a linear combination of these
+\begin{equation}
+  \label{eq:5-map}
+  \widetilde{X} = X_{\mu} \sigma^{\mu} = 
+  \begin{pmatrix}
+   X_0 + X_3 & X_1 - i X_2 \\
+   X_1 + i X_2 & X_0 - X_3 \\
+  \end{pmatrix}.
+\end{equation}
+Taking the components $(X_0, X_1, X_2, X_3)$ to be the same as the $4$-vector above, this is just another way of representing the same information.
+Furthermore, the action of $SL(2, \mathbb{C})$ on $\widetilde{X}$ is
+\begin{equation}
+  \widetilde{X} \to N \widetilde{X} N^{\dagger}, \qquad N \in SL(2, \mathbb{C}).
+\end{equation}
+Since $N \in SL(2, \mathbb{C})$, we have $\det N = 1$.  The determinant has the form $\det \widetilde{X} = X^2_0 - X^2_1 - X^2_2 - X^2_3$. Exactly as in the case of $SO(3, 1)$, this quantity is kept invariant.
+
+This is the defining feature. As such, the map from $SL(2, \mathbb{C}) \to SO(3, 1)$ defined by \eqref{eq:5-map} is homomorphic.
+This map is $2$ to $1$ since it maps $N = \pm \mathbb{1} \to \Lambda = \mathbb{1}$.
+
+\begin{claim}
+  But $SL(2, \mathbb{C})$ is \emph{simply connected.}
+\end{claim}
+\begin{proof}
+  Polar decomposition: We can write $N = e^{h} U$, where $h = h^{\dagger}$ is hermitian and $U = (U^{\dagger})^{-1}$ unitary.
+  Since the eigenvalues of a hermitian matrix are positive, the trace of $h$ is positive.
+  Then, using that $\det e^h = e^{\tr h}$, we find that $\det N = 1$ implies that $\tr h = 0$ and $\det U = 1$.
+  \begin{equation}
+    h =
+    \begin{pmatrix}
+     a & b+ic \\
+     b-ic & -a \\
+    \end{pmatrix}
+    \qquad U = 
+    \begin{pmatrix}
+     x + i y & z + i w \\
+     -z + i w & x - i y \\
+    \end{pmatrix}.
+  \end{equation}
+  For $h$, the variables $a, b, c \in \mathbb{R}$ define the manifold $\mathbb{R}^3$.
+  Similarly the components of $U$ have the condition $x^2 + y^2 + z^2 + w^2 = 1$, defining the manifold $S^3$.
+  Therefore, we have that $SL(2, \mathbb{C})$ has the manifold structure $\mathbb{R}^3 \times S^3$, which is simply connected.
+\end{proof}
+\begin{corollary}
+  Thus, the $SO(3, 1)$ manifold, which is obtained from a $2$ to $1$ map from $SL(2, \mathbb{C})$, is $\mathbb{R}^3 \times S^3 / \mathbb{Z}_2$.
+\end{corollary}
+
+\subsection*{Representations of $SL(2, \mathbb{C})$}%
+
+\begin{definition}[fundamental]
+  The \emph{fundamental representation} $\psi_{\alpha}$, $\alpha = 1, 2$ is given by
+  \begin{equation}
+    \psi'_{\alpha} = N\indices{_{\alpha}^{\beta}} \psi_{\beta}.
+  \end{equation}
+  The $\psi_{\alpha}$ transforming in this way are called \emph{left-handed Weyl spinors}.
+\end{definition}
+\begin{definition}[conjugate]
+  The \emph{antifundamental} or \emph{conjugate representation} is given by \emph{right-handed Weyl spinors} $\overline{\chi}_{\dot{\alpha}}$, $\dot{\alpha} = 1, 2$ transforming as
+  \begin{equation}
+    \overline{\chi}{}'_{\dot{\alpha}} = (N^*)\indices{_{\dot{\alpha}}^{\dot{\beta}}} \overline{\chi}_{\dot{\beta}}.
+  \end{equation}
+\end{definition}
+\begin{definition}[contravariant]
+  The \emph{contravariant representation} is
+  \begin{equation}
+    \psi'{}^{\alpha} = \psi^{\beta} (N^{-1})\indices{_{\beta}^{\alpha}}, 
+    \qquad \overline{\chi}{}'{}^{\dot{\alpha}} = \overline{\chi}{}^{\dot{\beta}} (N^*{}^{-1})\indices{_{\dot{\beta}}^{\dot{\alpha}}}.
+  \end{equation}
+\end{definition}
+
+To raise and lower indices, we need \emph{invariant tensors}:
+\begin{description}
+  \item[SO(3, 1)] $\eta^{\mu\nu} = (\eta_{\mu\nu})^{-1}$
+  \item[SL(2, $\mathbb{C}$)] $\epsilon^{\alpha\beta} = \epsilon^{\dot{\alpha} \dot{\beta}} = 
+    \begin{pmatrix}
+     0 & 1 \\
+     -1 & 0 \\
+    \end{pmatrix} = -\epsilon_{\alpha\beta} = -\epsilon_{\dot{\alpha} \dot{\beta}}$ 
+\end{description}
+Invariance means that $\epsilon^{\alpha\beta}$ transforms as
+\begin{equation}
+  \epsilon'{}^{\alpha\beta} = \epsilon^{\rho\sigma} N\indices{_{\rho}^{\alpha}} N\indices{_{\sigma}^{\beta}} = \epsilon^{\alpha\beta} \det N = \epsilon^{\alpha\beta}
+\end{equation}

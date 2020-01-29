@@ -56,10 +56,10 @@
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l5f4.pdf}}%
     \put(0.04216934,0.80323585){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$U$\end{tabular}}}}%
     \put(0.95897218,0.80323585){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V$\end{tabular}}}}%
-    \put(0.50057076,0.3018593){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
-    \put(0.60347713,0.56929917){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
-    \put(0.72485986,0.40687059){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
-    \put(0.39170041,0.41879856){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
+    \put(0.5151247,0.28083702){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
+    \put(0.51413226,0.53897852){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
+    \put(0.63834494,0.41414756){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
+    \put(0.38846624,0.41233022){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l5f4.pdf}}%
   \end{picture}%
 \endgroup%

@@ -57,13 +57,13 @@
     \put(0.03997475,0.73425652){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$U$\end{tabular}}}}%
     \put(0.90906485,0.73425652){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l5f3.pdf}}%
-    \put(0.4745198,0.25897287){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
-    \put(0.57207066,0.5124945){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
-    \put(0.68713633,0.35851911){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
-    \put(0.37131533,0.36982632){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
+    \put(0.48569614,0.21538519){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
+    \put(0.50930367,0.51025924){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
+    \put(0.65807796,0.35181335){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
+    \put(0.35343323,0.34970888){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l5f3.pdf}}%
     \put(0.29798583,0.02812072){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r= 0$\end{tabular}}}}%
-    \put(0.84277449,0.23513941){\color[rgb]{0.83137255,0.66666667,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}surface of star\end{tabular}}}}%
-    \put(0.74611031,0.54414305){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r= 2M$\end{tabular}}}}%
+    \put(0.84277449,0.25686637){\color[rgb]{0.83137255,0.66666667,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}surface of star\end{tabular}}}}%
+    \put(0.7952862,0.51620222){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r= 2M$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

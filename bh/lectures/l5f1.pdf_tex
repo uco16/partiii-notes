@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{411.51919348bp}%
+    \setlength{\unitlength}{361.79892193bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,12 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.33114272)%
+  \begin{picture}(1,0.33480988)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l5f1.pdf}}%
-    \put(0.14788557,0.16514363){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}star\end{tabular}}}}%
-    \put(0.53921956,0.26674416){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}black hole\end{tabular}}}}%
-    \put(0.90065869,0.19387606){\color[rgb]{0,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}accretion disc\end{tabular}}}}%
+    \put(0.16820877,0.14599834){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}star\end{tabular}}}}%
+    \put(0.57021967,0.30400035){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}black hole\end{tabular}}}}%
+    \put(0.88700669,0.09247496){\color[rgb]{0,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}accretion disc\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{l5f1.pdf}}%
   \end{picture}%
 \endgroup%
