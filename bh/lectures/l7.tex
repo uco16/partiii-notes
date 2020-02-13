@@ -1,0 +1,239 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 7: January 31}
+
+Examples of globally hyperbolic spacetimes include:
+\begin{itemize}
+  \item Minkowski spacetime ($t = \text{const.}$ is Cauchy)
+  \item Kruskal spacetime
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l7f1.pdf_tex}
+    \caption{}
+    \label{fig:l7f1}
+  \end{figure}
+  \item spherical gravitational collapse %F2
+\end{itemize}
+
+Non-globally hyperbolic spacetimes are:
+\begin{itemize}
+  \item Minkowski with the origin removed: There is no Cauchy surface %F3
+\end{itemize}
+
+Globally hyperbolic spacetimes are \emph{nice} in the following sense:
+\begin{theorem}[]
+  Let $(M, g)$ be globally hyperbolic. Then 
+  \begin{enumerate}[(i)]
+    \item There exists a \emph{global time function} $t \colon M \to \mathbb{R}$ such that $-(dt)^{a}$ is future-directed timelike.
+    \item The constant-$t$ surfaces are Cauchy and all have the same topology $\Sigma$.
+    \item $M$ has topology $\mathbb{R} \times \Sigma$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+  Show that the function $U + V$ is a global time function for the Kruskal spacetime.
+\end{exercise}
+In particular, the surface $U + V = 0$, a straight line through the origin in Kruskal spacetime, is an Einstein--Rosen bridge. As illustrated in Fig.~\ref{fig:l6f2}, we can think of this as a cylinder $\Sigma \simeq \mathbb{R} \times S^2$ . Therefore, the manifold is $M \simeq \mathbb{R}^2 \times S^2$ .
+
+Let $x^{i}$  be coordinates on the $t = 0$ surface $\Sigma$, and let  $T^{a}$  be an arbitrary timelike vector field.
+If we now pick an arbitrary $p \in M$, an integral curve of  $T^{a}$  through $p$  intersects $\Sigma$  at a unique point. Let the coordinates of that point be $x^{i}(p)$ .
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l7f4.pdf_tex}
+  \caption{}
+  \label{fig:l7f4}
+\end{figure}
+This defines a map $x^{i} \colon M \to \mathbb{R}$, shown in Fig.~\ref{fig:l7f4}.
+
+Use $(t, x^{i})$ as coordinates on $M$.
+We write the metric as 
+\begin{equation}
+  ds^2-N -N^2 dt^2 h_{ij} (dx^{i} + N^{i} dt) (dx^{j} + N^{j} dt).
+\end{equation}
+We call $N(t, x)$ the \emph{lapse function} and $N^{i}(t, x)$ the \emph{shift vector}. Finally, $h_{ij}(t, x)$ is the metric on the surface of constant $t$.
+
+\section{Extrinsic Curvature}%
+\label{sec:extrinsic_curvature}
+
+\begin{definition}[spacelike surface]
+  A hypersurface $\Sigma$ is \emph{spacelike} if its normal $n_{a}$ is everywhere timelike.
+\end{definition}
+
+If $X^{a}$  is a vector that is tangent to the surface, then by definition $n_{a} X^{a} =0$  and if $n_{a}$ is timelike, then $X^{a}$  is spacelike.
+Any vector tangent to the spacelike hypersurface is spacelike.
+
+Assume that we have normalised the normal to be a unit vector, $n_{a} n^{a} = -1$ . Then define 
+\begin{equation}
+  h\indices{^{a}_{b}} \coloneqq \delta^{a}_{b} + n^{a} n_{b}.
+\end{equation}
+Lowering indices gives $h_{ab} = g_{ab} + n_{a} n_{b}$ , so it is a symmetric tensor.
+
+If $X^{a}$ , $Y^{a}$  are tangent vectors, then
+\begin{equation}
+  h_{ab} X^{a} Y^{b} = g_{ab} X^{a} Y^{a}.
+\end{equation}
+Therefore, $h_{ab}$  is the \emph{induced metric} on $\Sigma$  (the pull-back of $g_{ab}$).
+
+Since $h\indices{^{a}_{b}} n^{b} = 0$ and $h\indices{^{a}_{c}} h\indices{^{c}_{b}} = h\indices{^{a}_{b}}$ , the  $h\indices{^{a}_{b}}$  is a \emph{projection} onto $\Sigma$.
+
+Using this tensor, we can decompose any vector into a parallel and perpendicular component
+ \begin{equation}
+  X^{a} = \delta^{a}_{b} X^{b} = \underbrace{h\indices{^{a}_{b}} X^{b}}_{\mathclap{X^{a}_{\parallel}}} - \underbrace{n^{a} n_{b} X^{b}}_{\mathclap{X^{a}_{\perp}}}.
+\end{equation}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l7f5.pdf_tex}
+  \caption{}
+  \label{fig:l7f5}
+\end{figure}
+
+Let $N_a$  be perpendicular to $\Sigma$  at $p$.
+Parallel transport  $N_a$  along $C \colon X^{b} \nabla_{b} N_{a} = 0$ .
+Does $N_a$  remain perpendicular to $\Sigma$ ?
+Let $Y^{a}$  be tangent to $\Sigma$. T hen
+\begin{equation}
+  X(N \cdot Y) = X^{b} \nabla_b (Y^{a} N_a) = N_{a} X^{b} \nabla_b Y^{a}.
+\end{equation}
+If $N \cdot Y \equiv 0$ , then $(\nabla_X Y)_{\perp} = 0$ .
+
+\begin{definition}[extrinsic curvature tensor]
+  Extend $n_a$ to a neighbourhood of $\Sigma$, with $n_a n^a = -1$.
+  The \emph{extrinsic curvature tensor} $K_{ab}$ is defined for $p \in \Sigma$ by $K(X, Y) = -n_a (\nabla_{X_\parallel} Y_{\parallel})^{a}$.
+\end{definition}
+
+\begin{lemma}
+  Independent of the extension of $n_a$, we have
+  \begin{equation}
+    K_{ab} = h\indices{_{a}^{c}} h\indices{_{b}^{d}} \nabla_c n_d.
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  Using the definition of the parallel components, 
+  \begin{equation}
+    -n_d X^{c}_\parallel \nabla_c Y^{d}_\parallel = -X^{c}_\parallel \nabla_c (\cancel{n_d Y_\parallel^d}) + X^{c}_\parallel Y_\parallel^{d} \nabla_c n_d = (h\indices{_{a}^{c}} h\indices{_{b}^{d}} \nabla_c n_d) X^{a} Y^{b}.
+  \end{equation}
+\end{proof}
+\begin{remark}
+  $n^{b} \nabla_c n_b = \frac{1}{2} \nabla_c (n_b n^b) = 0$, so the second index is automatically a tangential index.
+  We have
+  \begin{equation}
+    K_{ab} = h\indices{_{a}^{c}} \nabla_c n_b.
+  \end{equation}
+\end{remark}
+
+\begin{lemma}
+  The extrinsic curvature is a symmetric tensor
+  \begin{equation}
+    K_{ab} = K_{ba}.
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  Let $\Sigma$  be a surface of constant $f$, with $df\rvert_\Sigma \neq 0$ .
+  Then there is some $g$ (fixed by $n_a n^a = -1$) such that $N_a \rvert_{\Sigma} = g(df)_a$ .
+  Use this to extend $n_a$  off $\Sigma$.
+   \begin{equation}
+    \nabla_c n_d = g \nabla_c \nabla_d f + \nabla_c g \underbrace{\nabla_d f}_{\mathclap{g^{-1} n_d}} \implies K_{ab} = g h\indices{_{a}^{c}} h\indices{_{b}^{d}} \nabla_c \nabla_d f.
+  \end{equation}
+\end{proof}
+
+\begin{lemma}
+  There is also a definition in terms of the Lie derivative
+  \begin{equation}
+    K_{ab} = \frac{1}{2} \mathcal{L}_n h_{ab},
+  \end{equation}
+  with respect to $n^a$.
+\end{lemma}
+\begin{proof}
+  Exercise sheet 2.
+\end{proof}
+
+We think of the extrinsic curvature intuitively as how the manifold is bending.
+Of course we also have the intrinsic curvature defined by the metric. The question of how they are related is the matter of the following section.
+
+\section{Gauss--Codacci Equations}%
+\label{sec:gauss_codacci_equations}
+
+\begin{leftbar}
+  Proofs not examinable and will be skipped but can be found in lecture notes.
+\end{leftbar}
+
+\begin{definition}[invariant]
+  A tensor at $p \in \Sigma$ is \emph{invariant under projection} $h\indices{^{a}_{b}}$ if
+  \begin{equation}
+    T\indices{^{a_1 \dots a_r}_{b_1 \dots b_s}} = h\indices{^{a_1}_{c_1}} \dots h\indices{^{a_r}_{c_r}} h\indices{^{d_1}_{b_1}} \dots h\indices{^{d_s}_{b_s}} T\indices{^{c_1 \dots c_r}_{d_1 \dots d_s}}
+  \end{equation}
+  can be identified with tensors on $\Sigma$.
+\end{definition}
+\begin{definition}[covariant derivative]
+  The \emph{covariant derivative} on $\Sigma$ is 
+  \begin{equation}
+    D_a T \indices{^{b_1 \dots b_r}_{c_1 \dots c_s}} = h\indices{_{a}^{d}} h\indices{^{b_1}_{e_1}} \dots h\indices{^{b_r}_{e_r}} h\indices{^{f_1}_{c_1}} \dots h\indices{^{f_s}_{c_s}} \nabla_d T \indices{^{e_1 \dots e_r}_{f_1 \dots f_s}}
+  \end{equation}
+\end{definition}
+
+\begin{lemma}
+  The covariant derivative $D_a$ is the Levi--Civita connection associated with $h_{ab}$.
+\end{lemma}
+\begin{claim}
+  The Riemann tensor of $D_a$ is given by \emph{Gauss' equation}
+  \begin{equation}
+    R'{} \indices{^{a}_{bcd}} = h\indices{^{a}_{e}} h\indices{^{f}_{b}} h\indices{^{g}_{c}} h\indices{^{h}_{d}} R\indices{^{e}_{fgh}} -2 K\indices{_{[c}^{a}} K_{d] b}.
+  \end{equation}
+\end{claim}
+\begin{lemma}
+  The Ricci scalar of $D_a$ is
+  \begin{equation}
+    \label{eq:7-star}
+    R' = R + 2 R\indices{_{ab}} n^{a} n^{b} - K^2 + K^{ab} K_{ab},
+  \end{equation}
+  where $K = K\indices{^{a}_{a}} = g^{ab} K_{ab} = h^{ab} K_{ab}$, where the contraction can be done with either metric since it is purely tangential.
+\end{lemma}
+\begin{claim}
+  \emph{Codacci's equation}
+  \begin{equation}
+    D_a K_{bc} - D_{b} K_{ac} = h\indices{_{a}^{d}} h\indices{_{b}^{e}} h\indices{_{c}^{f}} n^{g} R_{defg}.
+  \end{equation}
+\end{claim}
+\begin{lemma}
+  Taking a contraction of this, we get
+  \begin{equation}
+    \label{eq:7-dag}
+    D_a K\indices{^{a}_{b}} - D_{b} K = h\indices{^{c}_{b}} R^{cd} n^{d}.
+  \end{equation}
+\end{lemma}
+
+\section{The Constraint Equations}%
+\label{sec:the_constraint_equations}
+
+Take Einstein's equations $G_{ab} = 8 \pi T_{ab}$. Contract with $n^{a}$ to get
+\begin{equation}
+  G_{ab} n^{a} n^{b} = R_{ab} n^{a} n^{b} + \frac{1}{2} R.
+\end{equation}
+Observe that we get this in Eq.~\eqref{eq:7-star}. Can rewrite this as 
+\begin{equation}
+  G_{ab} n^{a} n^{b} = \frac{1}{2} (R' -K^{ab} K_{ab} + K^2),
+\end{equation}
+rewritten in terms of intrinsic and extrinsic curvature of our hypersurface.
+
+Then considering the right-hand side gives the \emph{Hamiltonian constraint}
+\begin{equation}
+  R' - K^{ab} K_{ab} + K^2 = 16 \pi \rho,
+\end{equation}
+where $\rho = T_{ab} n^{a} n^{b}$ is the energy density seen by an observer that moves with velocity $n^{a}$.
+We see $K$ like a time derivative, so this is not an evolution equation. Instead, it is a constraint.
+This comes from the normal-normal components of the Einstein equation.
+Considering instead the 
+\begin{equation}
+  8 \pi h\indices{_{a}^{b}} T_{bc} n^{c} = h\indices{_{a}^{b}} G_{bc} n^{c} = h\indices{_{a}^{b}} R_{bc} n^{c},
+\end{equation}
+then Eq.~\eqref{eq:7-star} now tells us that
+\begin{equation}
+  D_b K\indices{^{b}_{a}} - D_{a} K = 8 \pi h\indices{_{a}^{b}} T_{bc} n^c,
+\end{equation}
+where $h\indices{_{a}^{b}} T_{bc} n^{c}$ is (minus) the momentum density seen by an observer with velocity $n^a$.
+This can be seen as an equation involving a space and a time derivative, rather than two time derivatives. It is therefore not an evolution equation. We call this the \emph{momentum constraint}.
+The remaining equations have two time derivatives and give the time-evolution.

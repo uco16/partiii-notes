@@ -1,0 +1,147 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 11: February 10}
+
+
+%Missed first 10 mins
+
+\begin{description}
+  \item[Weak energy condition:] $T_{ab} V^{a} V^{b} \geq 0$ for all causal $V^a$.
+  \item[Null energy condition:] $T_{ab} V^{a} V^{b} \geq 0$ for all null $V^a$.
+    \begin{equation}
+      \text{DEC} \implies \text{WEC} \implies \text{NEC}
+    \end{equation}
+  \item[Strong energy condition:] $(T_{ab} - \frac{1}{2} T\indices{^{c}_{c}} g_{ab}) V^{a} V^{b} \geq 0$ for all causal $V^a$.
+
+    If this is imposed and the Einstein equation is satisfied, then $ R_{ab} V^{a} V^{b} \geq 0$.
+    This is the statement that ``gravity is attractive''; geodesics converge.
+    The SEC does not imply the DEC.
+\end{description}
+
+\section{Penrose Singularity Theorem}%
+\label{sec:penrose_singularity_theorem}
+
+\begin{lemma}
+  Suppose the spacetime $(M, g)$  satisfies the Einstein equation and the null energy condition. 
+  The generators of a null hypersurface obey
+  \begin{equation}
+    \label{eq:11-star}
+    \dv{\theta}{\lambda} \leq -\frac{1}{2} \theta^2.
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  This is a consequence of the Raychandhuri equation
+  \begin{equation}
+    \dv{\theta}{\lambda} = -\frac{1}{2} \theta^2 - \hat{\sigma}^{ab} \hat{\sigma}_{ab} + \hat{\omega}^{ab} \hat{\omega}_{ab} - R_{ab} U^{a} U^{b}.
+  \end{equation}
+  Since the expansion of $\hat{\sigma}$ is in terms of a spacelike basis $T_\perp$, we have $\hat{\sigma}^{ab} \hat{\sigma}_{ab} \geq 0$.
+  And $\hat{\omega}_{ab} = 0$.
+
+  The null energy condition implies
+  \begin{equation}
+    0 \leq 8 \pi T_{ab} U^a U^b = (R_{ab} - \frac{1}{2} R g_{ab}) U^{a} U^{b} = R^{ab} U^{a} U^{b},
+  \end{equation}
+  since $U$ is null.
+\end{proof}
+
+\begin{corollary}
+  If $\theta = \theta_0 < 0$ at a point $p$ on the generator $\gamma$ of the null hypersurface, then $\theta \to - \infty$ along $\gamma$ within affine parameter distance $2 / \abs{\theta_0}$ (provided the generator extends this far).
+\end{corollary}
+\begin{proof}
+  Choose an affine parameter that has $\lambda = 0$  at $p$. 
+  Equation \eqref{eq:11-star} gives an inequality, which we can integrate with respect to $\lambda$
+  \begin{equation}
+    \dv{\theta^{-1}}{\lambda} \geq \frac{1}{2} \implies \theta^{-1} \theta_0^{-1} \geq \frac{1}{2} \lambda \implies \theta \leq \frac{\theta_0}{1 + \lambda \theta_0 / 2}.
+  \end{equation}
+  For $\theta_0 < 0$, the right-hand side diverges to $- \infty$ as $\lambda \to 2/ \abs{\theta_0}$.
+\end{proof}
+
+\begin{theorem}[Penrose 1965]
+  Let $(M, g)$ be a globally hyperbolic spacetime with a non-compact Cauchy surface $\Sigma$.
+  Assume the Einstein equation and the null energy condition. Assume further that there exist a trapped surface $T \subset M$.
+  Let $\theta_0 < 0$ be the maximum value of the expansion of both families of null geodesics orthogonal to $T$.
+
+  Then at least one of these geodesics is future-inextendible with affine length $\leq 2 / \abs{\theta_0}$.
+\end{theorem}
+
+Let us discuss the consequences of this.
+Trapped surfaces are very common. There is a numerical argument, but also a mathematical argument called `Cauchy stability', illustrated in Diagram ??.
+
+\begin{remark}
+  This theorem basically tells us that whenever we have a trapped surface we expect (assuming SCC) a singularity to show up. It does not tell us anything about the nature of this singularity, or anything about black holes.
+  There is also the Weak Cosmic Censorship conjecture that states that any singularity forms inside a black hole.
+\end{remark}
+
+\chapter{Asymptotic Flatness}%
+\label{cha:asymptotic_flatness}
+
+We have discussed asymptotic flatness of initial data; we now want to discuss asymptotic flatness of spacetime.
+
+\section{Conformal Compactification}%
+\label{sec:conformal_compactification}
+
+On $(M, g)$  let $\overline{g}{} = \Omega^2 g$ , where $\Omega \colon M \to \mathbb{R}$  and $\Omega > 0$.
+We want to choose  $\Omega$  to understand the structure of $g$ near infinity.
+We want $\Omega \to 0$ at infinity.
+
+Choose  $\Omega$  such that $(M, \overline{g}{})$  is extendible to $(\overline{M}{}, \overline{g}{})$ .
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l11f1.pdf_tex}
+  \caption{}
+  \label{fig:l11f1}
+\end{figure}
+The boundary $\partial M$  of $M$  in $\overline{M}{}$  is such that $\Omega \rvert_{\partial M} = 0$ .
+\begin{example}[]
+  Consider $\mathbb{M}^4$ with $g = - dt^2 + dr^2 + r^2 d \omega^2$, where $d\omega^2 = d \theta^2 + \sin ^2 \theta d \phi^2$.
+  Then $(\overline{M}{}, \overline{g})$ is the Einstein static universe $\mathbb{R} \times S^{3}$ with 
+  \begin{equation}
+    \overline{g}{} = - dT^2 + d \chi^2 + \sin^2 \chi d\omega^2.
+  \end{equation}
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l11f2.pdf_tex}
+    \caption{}
+    \label{fig:l11f2}
+  \end{figure}
+  Suppress $S^2$ to obtain the Penrose diagram.
+   \begin{figure}[tbhp]
+     \centering
+     \begin{minipage}[t]{0.5\columnwidth}
+       \centering
+       \def\svgwidth{0.4\columnwidth}
+       \input{lectures/l11f3.pdf_tex}
+       \caption{Penrose diagram of Minkowski space $\mathbb{M}^4$ (GEODESICS MISSING).}
+       \label{fig:l11f3}
+     \end{minipage}%
+     \begin{minipage}[t]{0.5\columnwidth}
+       \centering
+       \def\svgwidth{0.8\columnwidth}
+       \input{lectures/l11f4.pdf_tex}
+       \caption{Penrose diagram of $\mathbb{M}^2$.}
+       \label{fig:l11f4}
+     \end{minipage}
+  \end{figure}
+  Each point is a two-sphere $S^2$, boundary is axis of symmetry ($r =0$) or at $\infty$ with respect to $g$ (or singular).
+  Radial null geodesics are lines at $45^\circ$ .
+\end{example}
+
+Penrose diagram for the Kruskal diagram: 
+Let $P = P(U)$, $Q  = Q(V)$ such that $P, Q \in (-\frac{\pi}{2}, \frac{\pi}{2})$, say.
+Find $\Omega$ such that $(M, \overline{g}{})$ is extendible to $(\overline{M}{}, \overline{g}{})$. The boundary $\partial M$ as $4$ components $P$ or $Q$ is $\pm \frac{\pi}{2}$ ($U$ or $V$ is $\pm \infty$).
+Thus we have $\mathscr{I}^+, \mathscr{I}^-$ in $I$ and $\mathscr{I}^+, \mathscr{I}^-$ in IV.
+
+The Penrose diagram is depicted in Fig.~\ref{fig:l11f5}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.9\columnwidth}
+  \input{lectures/l11f5.pdf_tex}
+  \caption{The surfaces of constant $r$ are depicted in red, while radial null geodesics are in yellow.}
+  \label{fig:l11f5}
+\end{figure}
+
+The extended metric $\overline{g}{}$ is singular at $\mathscr{I}^{\pm}, \mathscr{I}^{\pm}{}'$ and not smooth at $\mathscr{I}^0, \mathscr{I}^0{}'$.
+
+Spherical symmetric collapse is depicted in Fig ??.

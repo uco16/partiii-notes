@@ -1,0 +1,167 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 9: February 06}
+
+\section{Vertex Functions}%
+\label{sec:vertex_functions}
+
+Recall that $W[J]$ and $\Gamma[\Phi]$ are the sum of connected and 1PI diagrams respectively.
+Generalising the definition \eqref{eq:qee} from $d =0$, the quantum effective action is the Legendre transform
+\begin{equation}
+  \Gamma[\Phi] = W[J] - \int \dd[4]{x} J(x) \Phi(x).
+\end{equation}
+Then we have the familiar relations, which are now functional derivatives
+\begin{equation}
+  \frac{\delta W[J]}{\delta J(x)} = \Phi(x),\qquad \frac{\delta \Gamma[\Phi]}{\delta \Phi(x)} = - J(x).
+\end{equation}
+The connected $n$-point functions are
+\begin{equation}
+  G^{(n)} (x_1, \dots, x_n) = (-1)^{n+1} \prod_{i = 1}^n \frac{\delta }{\delta J(x_{i})} W[J] = \langle \phi(x_1) \dots \phi(x_n) \rangle^{\text{connected}}.
+\end{equation}
+Analogously, we define the $n$ -point vertex functions
+\begin{equation}
+  \Gamma^{(n)} (x_1, \dots, x_n) = (-1)^{n} \prod_{i = 1}^n \frac{\delta }{\delta \Phi(x_i)} \Gamma[\Phi].
+\end{equation}
+
+\begin{example}[$n = 2$]
+  The $2$ -point functions are
+  \begin{align}
+    G^{(2)}(x, y) &= - \frac{\delta^2 W}{\delta J(x) \delta J(y)} = -\frac{\delta \Phi(y)}{\delta J(x)}, \\
+    \Gamma^{(2)}(x, y) &= + \frac{\delta^2 \Gamma}{\delta \Phi(x) \delta \Phi(y)} = - \frac{\delta J(x)}{\delta \phi(y)}.
+  \end{align}
+  These are inverses of each other
+  \begin{equation}
+    \int \dd[4]{z} G^{(2)} (x, z) \Gamma^{(2)} (z, y) = \delta^{(4)} (x - y).
+  \end{equation}
+\end{example}
+\begin{example}[Sheet I Question 4]
+  We can calculate
+  \begin{equation}
+    \label{eq:9-star}
+    G^{(3)}(x_1, x_2, x_3) = \int \dd[4]{z_1} \dd[4]{z_2} \dd[4]{z_3} \cdot G^{(n)} (x_1, z_1) G^{(n)} (x_2, z_2) G^{(n)} (x_3, z_3) \underbrace{\left( - \frac{\delta^3 \Gamma}{\delta \Phi(z_1) \delta \Phi(z_2) \delta\Phi(z_3)} \right)}_{\mathclap{\coloneqq \Gamma^{(3)}(z_1, z_2, z_3)}}
+  \end{equation}
+  Diagrammatically, this can be represented
+  \begin{equation}
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+        a [particle=\(x_1\)] -- v [blob] -- b [particle=\(x_3\)],
+	c [particle=\(x_2\)] -- v,
+      };
+    \end{gathered}
+    = 
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+	a [particle=\(x_1\)] -- d [small, blob] -- v [blob, label={right:$\Gamma^{(3)}$}] -- e [small, blob, label={right:$G^{(2)}$}] -- b [particle=\(x_3\)],
+	c [particle=\(x_2\)] -- f [small, blob] -- v,
+      };
+    \end{gathered},
+  \end{equation}
+  where the central blob on the right hand side corresponds to the 1PI diagrams $\Gamma^{(3)}$ and the small blobs are the propagators $G^{(2)}$.
+  The vertex functions $\Gamma^{(3)}$ come from \emph{amputated} $n$-point functions.
+  Equation \eqref{eq:9-star} can be inverted
+  \begin{equation}
+    \Gamma^{(3)}(y_1, y_2, y_3) = \int \dd[4]{x_1} \dd[4]{x_2} \dd[4]{x_3} \Gamma^{(2)}(x_1, y_1) \Gamma^{(2)}(x_2, y_2) \Gamma^{(2)}(x_3, y_3) G^{(3)}(x_1, x_2, x_3).
+  \end{equation}
+  It is useful to compare this to the LSZ reduction formula.
+  We can generalise this to $n$ and in momentum space. This is done in Ryder Section 7.3.
+\end{example}
+
+\section{Renormalisation}%
+\label{sec:renormalisation}
+
+Consider our favourite $\phi^4$ scalar field theory in Euclidean spacetime
+\begin{equation}
+  S[\phi] = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4.
+\end{equation}
+The full propagator
+\begin{equation}
+  \widetilde{G}^{(2)}(p) = \int \dd[4]{x} e^{-i p \cdot x}\langle \phi(x) \phi(0) \rangle^{\text{conn}}
+\end{equation}
+can be written as a geometric series to make the connection between connected and 1PI diagrams.
+Diagrammatically, 
+\begin{align}
+  \widetilde{G}^{(n)}(p) &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- b,
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[left=1cm of a] (d);
+	\vertex[blob] (a) {1PI};
+	\vertex[right=1cm of a] (b);
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (d) -- (a) -- (b),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[left=1cm of a] (d);
+	\vertex[blob] (a) {1PI};
+	\vertex[blob, right=1cm of a] (e) {1PI};
+	\vertex[right=1cm of e] (f);
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+	  (d) -- (a) -- (e) -- (f),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  + \dots
+  \\
+  &= \frac{1}{p^2 + m^2} + \frac{1}{p^2 + m^2} \Pi(p^2) \frac{1}{p^2 + m^2} + \dots \\
+  &= \frac{1}{p^2+ m^2 - \Pi(p^2)},
+\end{align}
+where $\Pi(p^2) = \widetilde{\Gamma}^{(2)}(p)$.
+Perturbatively
+\begin{equation}
+  \Pi(p^2) = DIAGRAMS
+\end{equation}
+The first term in particular is
+\begin{equation}
+  DIAGRAM = -\frac{\lambda}{2} \int \bdd[4]{k} \frac{1}{k^2+ m^2}.
+\end{equation}
+Now in spherical polar coordinates $\dd[4]{k} = k^{3} \dd[]{k} \dd[]{\Omega}$  and in general $\dd[d]{k} = S_d \abs{k}^{d-1} \dd[]{\abs{k}}$  with $S_d = (2 \pi)^{d / 2} / \Gamma(d / 2)$ is the surface area of the unit $d$-sphere, where $\Gamma$ is the Euler-Gamma function.
+We see that this integral diverges.
+To tackle it, we introduce a cutoff  $\Lambda$ and change variables to $x = k^2 / m^2$ so that
+ \begin{align}
+   -\frac{\lambda}{2} \int^{\Lambda} \frac{\bdd[4]{k}}{k^2 +m^2} &= -\frac{\lambda S_4}{4 (2 \pi)^4} \int^{\Lambda^2 / m^2} \frac{x \dd[]{x}}{1 + x}, \\
+   \Pi_i(p^2) &= -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right]. \label{eq:9-pi}
+\end{align}
+As expected, this is divergent as $\Lambda \to \infty$. We call this a \emph{UV divergence}.
+
+The $4$-point function at $1$-loop is given by the following sum of diagrams
+\begin{align}
+  DIAGRAMS &= \frac{\lambda^2}{2} \int^\Lambda \bdd[4]{k} \frac{1}{k^2+ m^2} \sum_{p \in \{p_1 + p_2, p_1 + p_3, p_1 + p_4\}} \frac{1}{(p + k)^2 + m^2}. \\
+	   &= \widetilde{\Gamma}^{(4)}(p_1, p_2, p_3, p_4)
+\end{align}
+As $k \to \infty$, we have $\dd[]{k} / k^4$ in the integral and we expect a logarithmic $\ln(\Lambda / m)$ divergence.
+Since this integral is independent of the $p$'s, it is convenient to evaluate the integral with external momenta set to zero.
+\begin{align}
+  \widetilde{\Gamma}^{(4)}(0,0,0,0) &= \frac{3 \lambda^2}{2} \int^\Lambda \bdd[4]{k} \frac{1}{(k^2 + m^2)^2} = \frac{3 \lambda^2}{16 \pi^2} \int^\Lambda \frac{k^3 \dd[]{k}}{(k^2+ m^2)^2} \\
+				    &= \frac{3 \lambda^2}{32 \pi^2} \left[ \ln(1 + \frac{\Lambda^2}{m^2}) - \frac{\Lambda^2}{\Lambda^2 + m^2} \right]
+\end{align}
+These diagrams must be dealt with.
+
+On general grounds, we expect the full propagator to be of the form
+\begin{equation}
+  \widetilde{G}^{(3)} = \sum_{n} \frac{\abs{\bra{\Omega} \phi(0) \ket{n}}^2}{p^2 + m^2}
+\end{equation}
+where the sum (or the integral) over the states $n$ comes about from inserting a complete set of states.
+The assumption is that the first excited state is a single particle $n = 1$, which dominates the expression:
+ \begin{equation}
+   \widetilde{G}^{(3)} = \frac{\abs{\bra{\Omega} \phi(0) \ket{1}}^2}{p^2 + m_1^2} + \dots,
+\end{equation}
+where the additional terms are finite when $p^2 = -m_1^2$.
+We expect $m_1^2$ to be a physical mass with $\bra{\Omega}\phi(0)\ket{1} = 1$.
+Loop diagrams spoil this; we have to renormalise the theory to control the divergences.

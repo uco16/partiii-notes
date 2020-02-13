@@ -1,0 +1,190 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 12: February 12}
+
+\section{Asymptotic Flatness}%
+\label{sec:asymptotic_flatness}
+
+\begin{definition}[manifold with boundary]
+  A \emph{manifold with boundary} has charts $\phi \colon M \to \mathbb{R}^n / 2$.
+  The boundary $\partial M$ is the set of points with $x' = 0$ in some chart.
+  \begin{equation}
+    \partial M = \{(x^1, \dots, x^n) \suchthat x^1 \leq 0\}.
+  \end{equation}
+\end{definition}
+
+\begin{definition}[asymptitically flat at null infinity]
+  A time orientable manifold $(M, g)$  is \emph{asymptotically flat at null infinity} if there is $(\overline{M}{}, \overline{g}{})$  such that
+  \begin{enumerate}[1.]
+    \item There is $\Omega \colon M \to \mathbb{R}$ with $\Omega > 0$ such that $(\overline{M}{}, \overline{g}{})$ is an extension of $(M, \Omega^2 g)$.
+      (We regard $M < \overline{M}{}$ and $\overline{g}{} = \Omega^2 g$ on $M$.)
+    \item Can extend $M$ within $\overline{M}{}$ to obtain a manifold with boundary $M \cup \partial M$.
+    \item $\Omega$ extends to a function on $\overline{M}{}$ such that $\Omega\rvert_{\partial M} = 0$ and $d \Omega \rvert_{\partial M} \neq 0$.
+    \item $\partial M$ is the disjoint union\footnote{This just means that their intersection is empty.} of $\mathscr{I}^+, \mathscr{I}^-$, each of which are diffeomorphic to $\mathbb{R} \times S^2$.
+    \item No past (future) directed causal curve starting in $M$ intersects $\mathscr{I}^+$ ($\mathscr{I}^-$).
+    \item $\mathscr{I}^\pm$ are ``complete''.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  Points $1-3$ say that there is a conformal compactification of the manifold, ensuring that the spacetime approaches Minkowski at the appropriate rate.
+  The other points ensure that the spacetime has the same structure as $\mathbb{M}$, with $\mathscr{I}^+$ lying to the future and $\mathscr{I}^-$ lying to the past of $M$.
+\end{remark}
+\begin{example}[Schw.]
+  For $\mathscr{I}^+$, use outgoing Eddington--Finkelstein coordinates $(u, r, \theta, \phi)$.
+  $\mathscr{I}^+$ is $r \to \infty$, $u$ finite.
+  \begin{equation}
+    r = \frac{1}{x} \implies g = - (1 - 2 M x) du^2 + \frac{2 du dx}{x^2} + \frac{1}{x^2} d\omega^2.
+  \end{equation}
+  Let $\Omega = x$ to multiply by $x^2$:
+  \begin{equation}
+    \label{eq:12-star}
+    \overline{g}{} = - x^2 (1 - 2 M x) du^2 + 2 du dx + d \omega^2.
+  \end{equation}
+  This extends across $\{x = 0\} \coloneqq \mathscr{I}^+$ parametrised by $\{u, \theta, \phi\}$.
+  This means that $\mathscr{I}^+$ is indeed diffeomorphic to $\mathbb{R} \times S^2$.
+  Similarly for $\mathscr{I}^-$ we use the ingoing EF coordinates.
+  Importantly, the area radius function $r$ is the same. Therefore, exactly the same choice of $\Omega$ gives us an extension to $\mathscr{I}^-$.
+\end{example}
+
+\begin{exercise}[Sheet 2]
+  \begin{equation}
+    R_{ab} = \overline{R}{}_{ab} + 2 \Omega^{-1} \overline{\nabla}{}_a \overline{\nabla}{}_b \Omega + \overline{g}{}_{ab} \overline{g}{}^{cd} \left( \Omega^{-1} \overline{\nabla}{}_c \overline{\nabla}{}_c \Omega - 3 \Omega^{-2} \partial_c \Omega \partial_d \Omega \right).
+  \end{equation}
+\end{exercise}
+Assume $R_{ab} = 0$ . Then
+\begin{equation}
+  0 = \Omega\overline{R}{}_{ab} + 2 \overline{\nabla}{}_a \overline{\nabla}{}_b \Omega + \overline{g}{}_{ab} \overline{g}{}^{cd} \left( \overline{\nabla}{}_c \overline{\nabla}{}_c \Omega - 3 \Omega^{-1} \partial_c \Omega \partial_d \Omega \right).
+\end{equation}
+Since the first three summands are smooth at $\Omega = 0$, i.e.~at$\mathscr{I}^{\pm}$ , the fourth term
+\begin{equation}
+  \Omega^{-1} \overline{g}{}^{cd} \partial_c \Omega \partial_d \Omega
+\end{equation}
+is also smooth at $\Omega = 0$.
+Therefore, at $\mathscr{I}^{\pm}$, we have
+ \begin{equation}
+  \overline{g}{}^{cd} \partial_c \Omega \partial_d \Omega = 0
+\end{equation}
+
+But $d\Omega$  is normal to $\mathscr{I}^{\pm}$ . 
+Therefore, $g^{\pm}$  are \emph{null hypersurfaces} in the unphysical spacetime $(\overline{M}{}, \overline{g}{})$ .
+
+The point $6.$  ``complete'' means that the generators of $\mathscr{I}^{\pm}$  are complete.
+\begin{example}[]
+  Consider the null generators of \eqref{eq:12-star}. Let $n = d\Omega = dx$ be the normal to  $\mathscr{I}^+$ .
+  \begin{exercise}
+    Show that on $\mathscr{I}^+$, $n$ is tangent to affinely parametrised geodesics
+    \begin{equation}
+      n^b \nabla_b n_a \rvert_{x = 0} = 0 \qquad n^a \rvert_{x = 0} = \left( \frac{\partial }{\partial u} \right)^a.
+    \end{equation}
+  \end{exercise}
+  This implies that $u$ is an affine parameter along the generators of $\mathscr{I}^+$. This extends to $\pm \infty$, which means it is complete.
+\end{example}
+
+\section{Definition of a Black Hole}%
+\label{sec:definition_of_a_black_hole}
+
+(We are going to use some definitions that we did not introduce in these lectures. They can be found in the printed notes in Section 4.11.)
+\begin{definition}[]
+  Let $(M, g)$ be time orientable and pick some subset $U \subset M$.
+  The \emph{choronological future} of $U$ is the set of points $I^+(U)$ that you can reach along a future-directed timelike curve from $U$ to $p$.
+\end{definition}
+\begin{definition}[]
+  The \emph{causal future} $J^+(U)$ is the set of points reachable along a future-directed causal curve from $U$, but it also includes all of $U$ as well.
+\end{definition}
+We define similarly the \emph{chronological / causal past} $I^-(U), J^-(U)$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l12f1.pdf_tex}
+  \caption{}
+  \label{fig:l12f1}
+\end{figure}
+
+We also need to introduce some topological notions
+\begin{definition}[open]
+  A set $S \subset M$ is \emph{open} if $\forall p \in S$ there exists a neighbourhood\footnote{defined using the chart} $U$ of $p$ such that $V \subset S$ $I^{\pm}(U)$ are open.
+\end{definition}
+\begin{definition}[closure]
+  The \emph{closure} $\overline{S}{}$ of $S$ is the union of $S$ with all its limit points.
+\end{definition}
+\begin{example}[Mink]
+  In Minkowski space, $\overline{I^{\pm}(p)}{} = J^{\pm}(p)$, so $J^{\pm}(p)$ is closed.
+  This is not true in general, as is illustrated in Fig.~\ref{fig:l12f2} for $\mathbb{M}^2$.
+\end{example}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l12f2.pdf_tex}
+  \caption{$2d$ Minkowski.}
+  \label{fig:l12f2}
+\end{figure}
+
+\begin{definition}[interior point]
+  A point $p \in S$ is an \emph{interior point} of $S$ if $\exists$ a neighbourhood $V$ of $p$ such that $V \subset S$
+  \begin{equation}
+    \text{int}(S) = \{\text{interior points of } S\} \qquad S \text{ open} \iff S = \text{int}(S)
+  \end{equation}
+\end{definition}
+\begin{definition}[boundary]
+  The \emph{boundary} of $S$ is
+  \begin{equation}
+    \dot{S} = \overline{S}{} \setminus \text{int}(S).
+  \end{equation}
+\end{definition}
+\begin{remark}
+  This is a different notion of boundary than we had for manifolds. 
+\end{remark}
+
+For $\mathscr{I}^+ \supset \overline{M}{}$  then we can define $J^- (\mathscr{I}^+) \subset \overline{M}{}$ . 
+Region of $M$ that can send signal to  $\mathscr{I}^+$  is $M \cap J^- (\mathscr{I}^+)$ .
+
+\begin{definition}[black hole]
+  Let $(M, g)$ be asymptotically flat at null $\infty$. The \emph{black hole region} is
+  \begin{equation}
+    \mathcal{B} = M \setminus \left[ M \cap J^- (\mathscr{I}^+) \right],
+  \end{equation}
+  where $J^-(\mathscr{I}^+)$ defined with respect to $(\overline{M}{}, \overline{g}{})$.
+  Its boundary $\mathcal{H}^+ = \dot{\mathcal{B}} (= M \cap \dot{J}^-(\mathscr{I}^+))$ is the \emph{future event horizon}.
+\end{definition}
+\begin{definition}[white hole]
+  Analogously we define the \emph{white hole region} $\mathcal{W} = M \setminus \left[ M \cap J^+ (\mathscr{I}^-) \right]$ with \emph{past event horizon} $\mathcal{H}^- = \dot{\mathcal{W}} (= M \cap \dot{J}^+ (\mathscr{I}^-))$.
+\end{definition}
+
+\begin{example}[Kruskal]
+  The black hole region is $\mathcal{B} = II \cup IV$ (including $U = 0$) with future event horizon $\mathcal{H}^+ = \{U = 0\}$.
+  The white hole region is $\mathcal{W} = III \cup IV$ (including $V = 0$) with future event horizon $\mathcal{H}^- = \{V = 0\}$.
+\end{example}
+
+\begin{claim}
+  Can show that $\mathcal{H}^{\pm}$ are null hypersurfaces.
+  Furthermore, the generators of $\mathcal{H}^+$ cannot have future end points; light rays skimming the future end horizon cannot leave it.
+  However, they can have past endpoints, an example of which is shown in Fig.~\ref{fig:l12f3}.
+\end{claim}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l12f3.pdf_tex}
+  \caption{The marked point is the past endpoint of generators of $\mathcal{H}^+$.}
+  \label{fig:l12f3}
+\end{figure}
+
+\begin{definition}[]
+  An \emph{asymptotically flat spacetime} $(M, g)$ is \emph{strongly asymptotically predictable} if there exists and open unphysical $\bar{V}{} \subset \overline{M}{}$ such that the closure
+  \begin{equation}
+    \overline{M \cap J^-(\mathscr{I}^+)}{} \supset \bar{V}{}
+  \end{equation}
+  and $(\overline{V}{}, \overline{g}{})$ is globally hyperbolic.
+\end{definition}
+\begin{remark}
+  This means that ``the physics is predictable on and outside $\mathcal{H}^+$''.
+\end{remark}
+
+\begin{theorem}[]
+  Let $(M, g)$ be strongly asymptotically predictable. Let $\Sigma_1$ and $\Sigma_2$ be surfaces for $\overline{V}{}$ such that $\Sigma_2 \subset I^+(\Sigma_1)$. 
+  Let $B$ be a connected component of $\mathcal{B} \cap \Sigma_1$. Then $J^+(B) \cap \Sigma_2$ is contained within a connected component of $\mathcal{B} \cap \Sigma_2$.
+\end{theorem}
+\begin{remark}
+  $\mathcal{B} \cap \Sigma_i$ is the ``Black hole region at time $\Sigma_1$''.
+  This theorem says that black holes do not bifurcate.
+\end{remark}

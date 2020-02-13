@@ -1,0 +1,148 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 7: February 10}
+
+Last time, we discussd Poisson structures, which we can now specialise.
+
+\begin{definition}[symplectic manifold]
+  A \emph{symplectic manifold} is a smooth manifold $M$  of dimension $2n$  with a closed 2-form $\omega \in \Lambda^{2}(\mathcal{M})$ , which is non-degenerate, meaning that
+  \begin{equation}
+    \underbrace{\omega \wedge \omega \wedge \dots \wedge \omega}_{\mathclap{n}} \neq 0,
+  \end{equation}
+  or $\omega$ is a $2 \times 2$ matrix of maximal rank.
+\end{definition}
+
+The symplectic form $\omega$ provides an isomorphism between $TM$ and $T^*M$ as
+\begin{equation}
+  v \in TM \mapsto v \rightharpoonup \omega \in T^*M.
+\end{equation}
+However, we tave to be more careful as this is now antisymmetric.
+If $f \colon M \to \mathbb{R}$, then $df$ is a 1-form and is naturally associated to a Hamiltonian vector field $X_f$,
+\begin{equation}
+  X_f \rightharpoonup \omega = -d f,
+\end{equation}
+where $f$ is the Hamiltonian.
+
+\begin{claim}
+  We can define a Poisson bracket by
+  \begin{equation}
+    \{ f, g \}_{\text{PB}} \coloneqq X_g(f) = \omega(X_g, X_f)
+  \end{equation}
+\end{claim}
+\begin{remark}
+  Note that this is antisymmetric since $\omega(X_g, X_f) = - \omega(X_f, X_g)$.
+\end{remark}
+
+In local coordinates, the Poisson bracket is
+\begin{equation}
+  \{f, g\} = \sum_{i, j = 1}^{2n} \omega^{ij} \frac{\partial f}{\partial x^{j}} \frac{\partial g}{\partial x^{i}}.
+\end{equation}
+\begin{exercise}
+  The Jacobi identity follows from the closure $d\omega = 0$.
+\end{exercise}
+
+If we compute the Lie bracket of two vector fields $X_f, X_g$, we find the \emph{anti-homomorphism}
+\begin{equation}
+  [X_f, X_g] = - X_{\{f, g\}}.
+\end{equation}
+
+Hamiltonian vector fields preserve the symplectic form.
+The finite way of saying this is that they generate a flow under which the symplectic form is invariant.
+Infinitesimally this is expressed with the Lie derivative as
+\begin{equation}
+  \mathcal{L}_{X_f} \omega = d(X_f \rightharpoonup \omega) + X_f \rightharpoonup \cancel{d\omega} = - d(df) = 0.
+\end{equation}
+
+\begin{theorem}[Darboux]
+  Let $(M, \omega)$  be a $2n$ -dimensional symplectic manifold. There exist \emph{local} coordinates $x^1 = q^1, \dots, x^n = q^n, x^{n+1} = p_1, \dots, x^{2n} = p_n$ around any point in $M$, such that 
+  \begin{equation}
+    \omega = \sum_{a=1}^{n} dp_a \wedge dq^a,
+  \end{equation}
+  and the Poisson bracket takes the standard form.
+\end{theorem}
+\begin{proof}
+  The proof proceeds by induction with respect to half of the dimension of the symplectic manifold.
+  We first choose an arbitrary function $p_1 \colon M \to \mathbb{R}$ (which will later become the first momentum coordinate).
+  Given this function, we search for another function $q^1 \colon M \to \mathbb{R}$ such that 
+  \begin{equation}
+    \label{eq:7-1}
+    X_{p_1}(q^1) = 1.
+  \end{equation}
+  We denote this as $\dot q^1 = 1$.
+  This is an ordinary differential equation, which will have a solution\footnote{The assumption for the existence theorem would be that we work in a Lipshitz-class of functions.} subject to some initial condition.
+
+  The second step is as follows.
+  Consider the surface $M_1 = \{x \in M, p_1 = \text{const.}, q^1 = \text{const.}\}$.
+  This is a submanifold $M_1 \subset M$, which we can prove from the embedding theorem; the maximal rank condition of the Jacobian is encoded in \eqref{eq:7-1}.
+  This $M_1$ is locally symplectic with symplectic form $\omega_1 \equiv \omega\rvert_{p_1, q^1 \text{ const.}}$
+
+  Now look for $p_2, q^2$ and so on.
+  A full proof is given in the book by Arnold.
+\end{proof}
+
+\begin{claim}
+  Let $Q$, which will play the role of configuration space, be an $n$-dimensional manifold.
+  The cotangent bundle $T^* Q$ admits a global symplectic structure.
+\end{claim}
+\begin{proof}
+  Our goal is to describe what this symplectic structure is.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.6\columnwidth}
+    \input{lectures/l7f1.pdf_tex}
+    \caption{}
+    \label{fig:l7f1}
+  \end{figure}
+  We have a projection $\pi \colon T^* Q \to Q$ acting as $\pi(q, p) = q$. 
+  \begin{definition}[pull-back]
+    Given a map $f \colon M \to N$, the  \emph{pull-back} $f^* \colon T^*_{f(p)} N \to T_p^* M$  defined as
+    \begin{equation}
+      f^*(p) (V) = p(f_* V).
+    \end{equation}
+    In local coordinates, taking $x^i$, with  $i = 1, \dots, \dim M$  coordinates on $M$ and  $y^a$ with  $a = 1, \dots, \dim N$  coordinates on $N$, we can use the chain rule to write explicitly
+     \begin{equation}
+      f^*(dy^a) = \sum_i \frac{\partial f^a}{\partial x^{i}} dx^{i}.
+    \end{equation}
+  \end{definition}
+
+  The pull-back of $\pi$ is a map
+  \begin{equation}
+    \pi^* \colon T^*(Q) \to T^* (T^* Q).
+  \end{equation}
+  Say that $p \in T^* (Q)$ is a one-form on $Q$. We can define $\theta = \pi^* (p)$ and from this we get our canonical symplectic form
+  \begin{equation}
+    \omega = d \theta.
+  \end{equation}
+  This is manifestly closed.
+  This construction does not depend on coordinates, but usually in $(p_{\dot{a}}, q^{\dot{a}})$ coordinates we have
+  \begin{equation}
+    \theta = p_{\dot{a}} dq^{\dot{a}}, \qquad \omega = d\theta = dp_a \wedge dq^a.
+  \end{equation}
+\end{proof}
+
+We can define yet another structure that symplectic geometry gives us.
+\begin{definition}[Canonical transformations]
+  Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold. An endomorphism $f \colon M \to M$ is called \emph{canonical} when $f^* (\omega) = \omega$.
+\end{definition}
+
+The one-parameter groups of canonical transformations are generated by Hamiltonian vector fields.
+For dimension $n = 1$, these are area preserving maps.
+
+Consider the canonical transformation  $(p_a, q^a) \xrightarrow{f} (P_a, Q^a)$ .
+\begin{equation}
+  d(\vb{p} \cdot d\vb{q}) = - d(\vb{Q} \cdot d\vb{P}),
+\end{equation}
+where $\vb{P} = P(p, q)$ and $Q = Q(p, q)$ .
+Then
+\begin{equation}
+  d(\vb{p} \cdot d\vb{q} + \vb{Q} d \vb{P}) = 0.
+\end{equation}
+So the one-form $\vb{p} \cdot d \vb{q} + \vb{Q} \cdot d\vb{P}$  is a closed-one form. Locally, this implies that it is exact, meaning that there is some \emph{generating function} $S = S(\vb{q}, \vb{P})$  such that
+\begin{equation}
+  \vb{p} \cdot d \vb{q} + \vb{Q} d \vb{P} = d S.
+\end{equation}
+From this function we can define $Q$  and $p$ as
+ \begin{equation}
+  Q^a = \frac{\partial S}{\partial p_a}, \qquad p_a = \frac{\partial S}{\partial q^a}.
+\end{equation}
+This gives $\vb{P} (q, p)$ and $Q(q, p)$.

@@ -1,0 +1,186 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 10: February 07}
+
+\section{Expansion and Shear of Null Hypersurface}%
+\label{sec:expansion_and_shear_of_null_hypersurface}
+
+As before, let us look at a null geodesic congruence that contains the generators of our hypersurface $\mathcal{N}$, where $\hat{\omega}_{ab} \rvert_\mathcal{N} = 0$ .
+
+Since this is a three-dimensional hypersurface, we will draw Fig.~\ref{fig:l10f1}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.8\columnwidth}
+  \input{lectures/l10f1.pdf_tex}
+  \caption{The expansion effect of $\theta > 0$ (left) and the shearing effect of $\hat{\sigma}_{ab}$ (right).}
+  \label{fig:l10f1}
+\end{figure}
+
+\subsection{Gaussian Null Coordinates}%
+\label{sub:gaussian_null_coordinates}
+
+Construct \emph{Gaussian null coordinates} near $\mathcal{N}$ in the following way.
+Let $S$ be a spacelike surface inside $\mathcal{N}$ with coordinates $y^{i}$, $i = 1, 2$.
+Assign coordinates $(\lambda , y^i)$ to a point, which lies an affine parameter distance $\lambda$ along the geodesic of $\mathcal{N}$ that intersects $S$ at $y^i$.
+This gives coordinates $\lambda, y^i$ on $\mathcal{N}$ such that $U^a = \left( \frac{\partial }{\partial \lambda} \right)^a$.
+
+Pick a null $V^a$ on $\mathcal{N}$ such that $V \cdot \frac{\partial}{\partial y^i} = 0$ and $V \cdot U = 1$ .
+Assign coordinates $(r, \lambda, y^i)$  to a point lying an affine parameter $r$  along the null geodesic starting at $(\lambda, y^i) \in \mathcal{N}$  with tangent $V^a$ there.
+
+By definition,  $\mathcal{N}$  is the surface of $r = 0$. Then 
+ \begin{equation}
+   U^a \rvert_\mathcal{N} = \left(\frac{\partial }{\partial \lambda} \right)^a, \qquad V^a\vert_\mathcal{N} = \left( \frac{\partial }{\partial r} \right)^a,
+\end{equation}
+and $\frac{\partial }{\partial r}$  is tangent to affinely parametrised null geodesics. Thus  $g_{rr} = 0$ .
+
+\begin{exercise}
+  Show that the geodesic equation for $\frac{\partial }{\partial r}$  implies $g_{r\mu, r} = 0$, $\forall \mu$.
+\end{exercise}
+
+On $\mathcal{N}$ , where  $r = 0$,
+\begin{equation}
+  g_{r\lambda} = U \cdot V = 1 \qquad g_{ri} = V \cdot \frac{\partial }{\partial y^{i}} = 0.
+\end{equation} 
+Since these equations do not depend on $r$ , they must hold everywhere! We write this as
+\begin{equation}
+  g_{r\lambda} \equiv 1 \qquad g_{ri} \equiv 0.
+\end{equation}
+Moreover, the following components of the metric vanish
+\begin{equation}
+  g_{\lambda\lambda} = U^2 = 0 \qquad g_{\lambda i} = U \cdot \frac{\partial }{\partial y^{i}} = 0.
+\end{equation}
+Thus, we find that 
+\begin{equation}
+  g_{\lambda\lambda} = r F \qquad g_{\lambda i} = r h_i, 
+\end{equation}
+where $F$ and $h_I$ are smooth.
+Putting everything together, we find that the metric is
+\begin{equation}
+  ds^2 = 2 dr d\lambda + r F d\lambda^2 + 2 r h_i d \lambda y^{i} + h_{ij} d y^{i} dy^{j}.
+\end{equation}
+These are the \emph{Gaussian null coordinates.}
+
+These coordinates are very nice when working on $\mathcal{N}$, since
+\begin{equation}
+  g \rvert_\mathcal{N} = 2 dr d\lambda + h_{ij} dy^{i} dy^{j}.
+\end{equation}
+On our hypersurface, $U^{\mu}\rvert_\mathcal{N} = (0,1,0,0)$ and $U_{\mu}\rvert_\mathcal{N} = (1,0,0,0)$.
+
+Since $U \cdot B = B \cdot U = 0$, these expressions give $B\indices{^{r}_{\mu}} = B\indices{^{\mu}_{\lambda}} = 0$ on $\mathcal{N}$.
+We can now calculate the expansion on $\mathcal{N}$ to be
+\begin{equation}
+  \theta\rvert_{\mathcal{N}} = B\indices{^{\mu}_{\mu}} = B\indices{^{i}_{i}} = \nabla_i U^{i} = \partial_{i} U^{i} + \Gamma^{i}_{i \mu} U^{\mu} = \Gamma^{i}_{i\lambda},
+\end{equation}
+where the last equality holds since $\partial_{i}$ is tangential and $U^i$ vanishes on $\mathcal{N}$.
+The definition of the Christoffel symbols is 
+\begin{equation}
+  \Gamma = \frac{1}{2} g^{i\mu} (g_{\mu i , \lambda} + g_{\mu\lambda, i} - g_{i \lambda, \mu}).
+\end{equation}
+Now $g^{i \mu} = 0$ unless $\mu = j$. Therefore, the inverse is $g^{ij} \rvert_\mathcal{N} = h^{ij}$, the inverse of $h_{ij}$.
+Therefore, we find
+\begin{equation}
+  \theta\rvert_\mathcal{N} = \frac{1}{2} h^{ij} (g_{ji, \lambda} + \cancel{g_{j\lambda, i}} - \cancel{g_{i\lambda, j}}) = \frac{1}{2} h^{ij} h_{ij, \lambda} = \frac{1}{\sqrt{h}} \partial_{\lambda} \sqrt{h}, 
+\end{equation}
+where we write as usual $h = \det h_{ij}$ .
+
+We interpret the equation
+\begin{equation}
+  \frac{\partial }{\partial \lambda} \sqrt{h} = \theta \sqrt{h}
+\end{equation}
+by recognising that $\sqrt{h}$  is the area element on surfaces of constant $\lambda$  inside $\mathcal{N}$ . Hence $\theta$  measures the rate of increase of area with respect to the affine parameter.
+
+\section{Trapped Surfaces}%
+\label{sec:trapped_surfaces}
+
+Consider a two-dimensional spacelike surface $S$.
+If $p \in S$, we can find two future-directed null vectors $U_{1, 2}^a$, defined up to an overall factor due to the freedom in choosing the affine parameter, orthogonal to  $S$ .
+Suppressing one of the dimensions of this two-dimensional surface, we draw this as Fig.~\ref{fig:l10f2}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l10f2.pdf_tex}
+  \caption{}
+  \label{fig:l10f2}
+\end{figure}
+As illustrated, this gives two families of null geodesics starting on $S$ perpendicular to $S$.
+Hence we have two null hypersurfaces $\mathcal{N}_{1, 2}$.
+
+\begin{example}[]
+  Let $S$ be the two-sphere and $U = U_0, V = V_0$ in Kruskal spacetime..
+  The generators of $N_i$ are radial null geodesics.
+  $\mathcal{N}_1$ has tangent $U_1 \propto d U$, which means  $U_i^a = r e^{\frac{r}{2M}} \left( \frac{\partial}{\partial V} \right)^a$.
+  Similarly, $U_2^a = r e^{\frac{r}{2M}} \left( \frac{\partial }{\partial V} \right)^a$.
+  \begin{equation}
+    \theta_1 = \nabla_a U_1^a = \frac{1}{\sqrt{-g}} \partial_{\mu} (\sqrt{-g} U_1^{\mu}) = r^{-1}e^{\frac{r}{2M}} \partial_{V} \left( r e^{-\frac{r}{2M}} r e^{\frac{r}{2M}}  \right) = 2 e^{\frac{r}{2M}} \partial_{V} r.
+  \end{equation}
+  Now $r = r(U, V)$, so  
+  \begin{equation}
+    \theta_1 = -\frac{8 M^2}{r} U \qquad \text{and similarly} \qquad \theta_2 = -\frac{8 M^2}{r} V.
+  \end{equation}
+  On $S$, we have $U = U_0, V = V_0$. For region $I \supset S$, we have $\theta_1 > 0$ and $\theta_2 < 0$. The \emph{outgoing} null geodesics are expanding and the \emph{ingoing} contracting.
+  For Region $IV \supset S$, $\theta_1 < 0$ and $\theta_2 > 0$, where ingoing and outgoing are flipped.
+  In $II \supset S$, $\theta_1 , \theta_2< 0$ and both families are converging.
+  Similarly for $III \supset S$ $\theta_1, \theta_2 > 0$ both families are expanding.
+\end{example}
+
+\begin{definition}[traped]
+  A compact, orientable spacelike $2$-surface $S$ is \emph{trapped} if both families of null geodesics perpendicular to $S$ have $\theta < 0$ everywhere on $S$
+  (\emph{marginally trapped} for $\theta \leq 0$).
+\end{definition}
+
+\begin{example}[Kruskal]
+  The surface of $U = U_0, V = V_0$ in $II$ is trapped. The event horizon $U_0 =0$ and $V_0 > 0$ is marginally trapped.
+\end{example}
+
+\section{Raychandhuri Equation}%
+\label{sec:raychandhuri_equation}
+
+\begin{claim}
+  The derivative of the expansion with respect to the affine parameter is
+  \begin{equation}
+    \label{eq:10-star}
+    \dv{\theta}{\lambda} = -\frac{1}{2} \theta^2 - \hat{\sigma}^{ab} \hat{\sigma}_{ab} + \hat{\omega}^{ab} \hat{\omega}_{ab} - R_{ab} U^{a} U^{b}
+  \end{equation}
+\end{claim}
+\begin{proof}
+  By the definition of $\theta$,
+  \begin{equation}
+    \dv{\theta}{\lambda} = U \cdot \nabla (B\indices{^{a}_{b}} P\indices{^{b}_{a}}).
+  \end{equation}
+  We can pull out $P$ since it is parallelly transported 
+  \begin{equation}
+    P\indices{^{b}_{a}} U \cdot \nabla B\indices{^{a}_{b}} = P^b_a U^c \nabla_c \nabla_b U^a.
+  \end{equation}
+  Using the definition of the Riemann tensor, we can commute the derivatives
+  \begin{align}
+    \dots &= P_a^b U^c (\nabla_b \nabla_c U^a + R\indices{^{a}_{dcb}} U^d)  \\
+	  &= P\indices{_{a}^{b}} \left[ \nabla_b (U^c \nabla_c U^a) - (\nabla_b U^c) \nabla_c U^a \right] + P_a^b R\indices{^{a}_{dcb}} U^c U^d.
+  \end{align}
+  Now the first term in the bracket vanishes identically $U^c \nabla_c U^a \equiv 0$.
+  The remaining terms can be rewritten using the definition of $P$ as
+  \begin{equation}
+    \dots = -B\indices{^{c}_{b}} P\indices{^{b}_{a}} B\indices{^{a}_{c}} - R_{cd} U^{c} U^{d}.
+  \end{equation}
+  Using the definition of $\hat{B}$, we can show (exercise) that
+  \begin{equation}
+    \dots = -\hat{B}\indices{^{c}_{a}} \hat{B}\indices{^{a}_{c}} - R_{ab} U^a U^b.
+  \end{equation}
+  Using the expansion of $\hat{B}$ in terms of expansion, rotation and shear, we find the Raychandhuri equation.
+\end{proof}
+
+\section{Energy Conditions}%
+\label{sec:energy_conditions}
+
+The energy-momentum tensor should reflect physically reasonable matter. What do we mean by this?
+Any observer measures an \emph{energy-momentum current} $j^a = -T\indices{^{a}_{b}} u^b$, where $u^b$ is the observer's $4$-velocity.
+A natural criterion is that no observer seeing energy moving faster than the speed of light.
+\begin{description}
+  \item[Dominant energy condition:]  Contracting the energy momentum tensor with a future-directed timelike vector field $V^a$, we have $-T\indices{^{a}_{b}} V^a$, which should be future-direct causal (or zero).
+\end{description}
+
+\begin{claim}
+  If $T_{ab} = 0$ in some subset $S$ of the initial data surface $\Sigma$, then the dominant energy condition implies that $T_{ab} \equiv = 0$ in the domain of dependence $D^+(S)$.
+\end{claim}
+\begin{proof}
+  Hawking and Ellis.
+\end{proof}

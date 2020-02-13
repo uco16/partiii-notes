@@ -1,0 +1,141 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 10: February 08}
+
+Let us decorate the original theory by adding $0$ subscripts
+\begin{equation}
+  \mathscr{L}_0 = \frac{1}{2} (\partial \phi_0)^2 + \frac{1}{2} m_0^2 \phi_0^2 + \frac{\lambda_0}{4!}\phi_0^4.
+\end{equation}
+Generically, contribution from loops spoil this and we have to rescale 
+\begin{equation}
+  \phi_0 = Z_{\phi}^{\frac{1}{2}} \phi.
+\end{equation}
+The rescaling $Z_\phi$  is determined by proper normalisation for LSZ, namely that 
+\begin{equation}
+  \bra{\Omega} \widetilde{\phi}(0) \ket{1} = 1.
+\end{equation}
+The Lagrangian becomes
+\begin{equation}
+  \mathscr{L}_0 = \frac{Z_\phi}{2} (\partial \phi)^2 + \frac{Z_\phi}{2}m_0^2 \phi^2 + \frac{Z_\phi^2\lambda}{4!} \phi^4.
+\end{equation}
+
+What we want to do is separate out two sets of terms.
+We want to write the original Lagrangian in terms of the renormalised Lagrangian and any counter terms.
+In particular, the renormalised Lagrangian should be of the same form as the original action, giving
+\begin{align}
+  \mathscr{L}_0 &= \mathscr{L}_{\text{ren}} + \mathscr{L}_{\text{ct}}, \label{eq:renct} \\
+		&= \left[ \frac{1}{2} (\partial \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4 \right] + 
+		\left[ \frac{\delta Z_\phi}{2} (\partial \phi)^2 + \frac{\delta m^2}{2} \phi^2 + \frac{\delta \lambda}{4!} \phi^4 \right] \label{eq:10-star}.
+\end{align}
+Equating coefficients, we have
+\begin{equation}
+  \delta Z_\phi = Z_\phi - 1, \qquad \delta m^2 = Z_\phi m_0^2 - m^2, \qquad \delta \lambda = Z_\phi^2 \lambda_0 - \lambda .
+\end{equation}
+Of course the Feynman rules for the renormalised Lagrangian $\mathscr{L}_{\text{ren}}$ are the same as for the original Lagrangian $\mathscr{L}_0$ but with the coefficients, $m^2 \& \lambda$, interpreted as the renormalised ones.
+We need to find the Feynman rules for the counter terms $\mathscr{L}_{\text{ct}}$:
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- b[square dot] -- c,
+    }; \\
+    -p^2 \delta Z_\phi
+  \end{gathered}, \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [insertion=1] b -- c,
+    }; \\
+    -\delta m^2
+  \end{gathered}, \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][horizontal=a to b] {
+      a -- v [dot, red] -- b,
+      c -- v -- d,
+    };
+  \end{gathered}
+  - \delta \lambda.
+\end{equation}
+Generally, $\delta Z_\phi, \delta m^2, \delta \lambda$ are $O(\hbar)$ at most.
+Therefore, tree diagrams containing $\mathscr{L}_{\text{ct}}$ vertices are the same order as 1-loop diagrams from $\mathscr{L}_{\text{ren}}$.
+
+The 2-point vertex is
+\begin{equation}
+  \widetilde{\Gamma}^{(2)}(p) = [\widetilde{G}^{(2)}(p)]^{-1} = p^2 + m^2 - \Pi(p^2).
+\end{equation}
+From $\mathscr{L}_{\text{ren}}$, we get $\Pi_1(p^2)$ at one loop just as in \eqref{eq:9-pi}, but with $m^2, \lambda$ interpreted as renormalised quantities of \eqref{eq:10-star}.
+From $\mathscr{L}_{\text{ct}}$, 
+\begin{equation}
+  \Pi_{1, \text{ct}} = AMPUTATED DIAGRAMS = - \delta m^2 - p^2 \delta Z_\phi.
+\end{equation}
+Finite result for $\Pi_{i \text{ren}} = \Pi_1(p^2) + \Pi_{1, \text{ct}}$  is obtained by choosing
+ \begin{equation}
+  \delta Z_\phi = 0 \qquad \text{and} \qquad \delta m^2 = -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right].
+\end{equation}
+With this choice $\Pi_{1, \text{ren}} = 0$ .
+The freedom to choose where to put finite points is called the \emph{renormalisation scheme}.
+This arbitrary choice obviously looses some predictability, but we do it to make progress with the divergences.
+The above scheme is called the \emph{on-shell} scheme, based on the requirement that
+\begin{equation}
+  \Pi_{\text{ren}}(-m^2_{\text{phys}}) \stackrel{!}{=} m^2 - m^2_{\text{phys}} \qquad \text{and} \qquad
+  \left.\frac{\partial \Pi_{\text{ren}}}{\partial p^2}\right\rvert_{p^2 = -m^2_{\text{phys}}} = 0.
+\end{equation}
+The first term usually cancels out $m^2 - m^2_{\text{phys}} = 0$.
+
+With the on-shell scheme, 
+\begin{equation}
+  \widetilde{G}^{(2)}(p) = \frac{1}{p^2+ m^2 - \Pi_{\text{ren}}(p^2)} = \frac{1}{p^2 + m^2_{\text{phys}}}.
+\end{equation}
+This has a pole at $p^2 = -m^2_{\text{phys}}$, which is the reason for the name \emph{on-shell}.
+We are giving up on predicting the mass of the particle; we dial it in by hand after obtaining it from some experimental measurement.
+The residue from the LSZ is $1$.
+
+Next, choose $\delta \lambda$ to cancel the divergences in $\Gamma_1^{(4)}(0,0,0,0)$.
+We have $\widetilde\Gamma_{1, \text{ct}}^{(4)} = -\delta \lambda$. Choosing
+\begin{equation}
+  \delta \lambda = \frac{3 \lambda^2}{32 \pi^2} \ln(\frac{\Lambda^2}{m^2} - 1).
+\end{equation}
+After a bit of algebra, this gives
+\begin{align}
+  \lambda_{\text{eff}} \coloneqq \widetilde{\Gamma}_{\text{ren}}^{(4)}(0,0,0,0) &= \lambda + \widetilde{\Gamma}_1^{(4)}(0,0,0,0) + \widetilde{\Gamma}_{1, \text{ct}}^{(4)} \\
+										&= \lambda - \frac{3\lambda^2}{32 \pi^2} \left[ \ln(1 + \frac{m^2}{\Lambda^2}) + \frac{m^2}{m^2 + \Lambda^2} \right].
+\end{align}
+This is finite as $\Lambda \to \infty$ . (In fact, the infinite piece is chosen such that $\lambda_{\text{eff}} \to \lambda$.)
+
+This term really acts like an effective coupling, which---at least to one-loop order---incorporates the quantum corrections.
+If we did this calculation to all orders in a well defined theory, it would be solved.
+
+\section{Dimensional Regularisation}%
+\label{sec:dimensional_regularisation}
+
+Since physical predictions come from tree diagrams with effective couplings like $\lambda_{\text{eff}}$, physical quantities should be independent of the cutoff $\Lambda$ in the end.
+We will do this not with a hard momentum cutoff, but with a method that works more generally for gauge theories.
+Hard momentum cutoff are not compatible with gauge invariance, so we want to come up with a different regularisation method.
+
+A more mathematically elegant way to do this is given by \emph{dimensional regularisation}.
+It is a trick we do order-by-order in perturbation theory.
+
+In the context of perturbation theory, divergences can be regulated by working in $d = 4 - \epsilon$ dimensions.
+Usually, we think about  $0 < \epsilon \ll 1$, but we have already seen that taking $\epsilon \to 1$ gave us useful results in  \emph{Statistical Field Theory}.
+
+Let us start from the original Lagrangian (and drop the zero subscripts)
+\begin{equation}
+  S = \int \dd[d]{x} \left[ \frac{1}{2} (\partial \phi)^2 + \frac{1}{2} (m \phi)^2 + \frac{\lambda}{4!} \phi^4 \right].
+\end{equation}
+
+\subsection{Dimensional Analysis}%
+\label{sub:dimensional_analysis}
+
+Denote by square brackets $[\bullet]$ the mass dimension and let $\hbar = c = 1$.
+Given that $[S] = 0$ and $[\partial] = [m] = -[x] = 1$, we find that the field has mass dimension
+\begin{equation}
+  [m^2 \phi^2] = 2[m] + 2[\phi] = d \implies [\phi] = \frac{d}{2} -1.
+\end{equation}
+From this we find that the coupling has dimension
+\begin{equation}
+  [\lambda \phi^4] = d \implies [\lambda] = 4 - d = \epsilon.
+\end{equation}
+Working with a dimensionful coupling is annoying, so we introduce an arbitrary renormalisation scale $\mu$ with mass dimension $[\mu] = 1$, which is not to be taken to $\infty$ like the cutoff was. 
+Then we write
+\begin{equation}
+  \lambda = \mu^\epsilon g(\mu)
+\end{equation}
+such that $g$ is dimensionless. Of course, $g$ will depend on whichever choice we end up making for the renormalisation scale $\mu$.

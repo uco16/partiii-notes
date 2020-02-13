@@ -1,0 +1,135 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 9: February 13}
+
+\chapter{Nonlinear Sigma Models}%
+\label{cha:nonlinear_sigma_models}
+
+This is a theory of maps $x \colon [0, \beta] \to (M, g)$  to a Riemannian manifold.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l9f1.pdf_tex}
+  \caption{A map $x\colon [0, \beta] \to (M, g)$.}
+  \label{fig:l9f1}
+\end{figure}
+As illustrated in Fig.~\ref{fig:l9f1} the target space, in which we worldline lives, may now be curved.
+
+The natural action in the bosonic case is
+\begin{equation}
+  S[x] = \frac{1}{2} g (\dot{x}, \dot{x}) \dd[]{\tau} = \frac{1}{2} \int g_{ab} \dot{x}^{a} \dot{x}^{b} \dd[]{\tau}
+\end{equation}
+as we know from general relativity.
+Classically, trajectories are geodesics in $M$.
+\begin{remark}
+  This is an interacting theory on $[0, \beta]$. If we consider perturbing around the constant map $x([0, \beta]) = x_0 \in M$, use Riemann normal coordinates to write $g_{ab}(x_0 + \delta x) = \delta_{ab} - \frac{1}{3} R_{abcd} (x_0) \delta x^{c} \delta x^{d} + O(\delta x^2)$ and the $\delta x$ terms gives us interactions on the worldline.
+\end{remark}
+We can try to quantise as usual by finding the canonical momenta
+\begin{equation}
+  p_a = \frac{\delta L}{\delta \dot{x}^a} = g_{ab}(x) \dot{x}^b
+\end{equation}
+and then imposing canonical commutation relations
+\begin{equation}
+  [\hat{p}_a, \hat{x}^b] = i \delta^{b}_a.
+\end{equation}
+If we represent the Hilbert space as $\mathscr{H} = L^2 (M, \sqrt{g} \dd[n]{x})$, then the momentum operator is a derivative operator $\hat{p}_a = -i \frac{\partial }{\partial x^a}$.
+However, the Hamiltonian is ambiguous:
+classically, $H = \dot{x}^a p_a - L = \frac{1}{2} g^{ab}(x) p_a p_b$, but we have to decide how to order the $p$'s vs the $x$'s in the curved metric $g^{ab}(x)$.
+Once we turn $p$ into a derivative operator all these choices of positioning matter.
+There are a number of things we could require.
+\begin{itemize}
+  \item $\hat{H}$ is at most second order in derivatives acting on $\mathscr{H}$.
+  \item We could ask that $\hat{H}$ is compatible with $\text{Diff}(M)$, so that $\hat{H}$ is some sort of covariant operator.
+  \item Reduces to the usual Laplacian $-\frac{1}{2} \partial^{a} \partial_{a}$ in flat space when $g = \delta$.
+\end{itemize}
+However, these conditions are obeyed by the covariant Laplacian \emph{plus} any multiple of the scalar curvature: 
+\begin{equation}
+  \hat{H} \Psi = - \frac{1}{2} \nabla^a \nabla_a \Psi + \alpha R \Psi = -\frac{1}{\sqrt{g}} \partial_{a} (\sqrt{g} g^{ab} \partial_b \Psi) + \alpha R \Psi,
+\end{equation}
+for any $\alpha \in \mathbb{R}$.
+Exactly which $\alpha$ we find depends on our normal ordering / path integral (from different regularisation procedures).
+This ambiguity is annoying and we would like to do better. We \emph{can} do better in the $\mathcal{N} = 1$ supersymmetric version.
+
+We have the action
+\begin{align}
+  S[x, \psi] &= \frac{1}{2} \int g(\dot{x}, \dot{x})  + i g (\psi, \nabla_\tau \psi) \dd[]{\tau} \\
+	     &= \frac{1}{2} \int g_{ab}(x) \dot{x}^a \dot{x}^{b} + i g_{ab} (x) \psi^{a} \left( \dot{\psi}^{b} + \dot{x}^{c} \Gamma^{b}_{cd} \psi^{d} \right) \dd[]{\tau}, \label{eq:8-1}
+\end{align}
+where $\Gamma = \Gamma(x(\tau))$.
+This action is invariant under the same supersymmetric transformations \eqref{eq:n1susy} as it was in flat space $(M, g) = (\mathbb{R}^n, \sigma)$, 
+\begin{equation}
+  \delta x^{a} =  \epsilon \psi^{a} \qquad \delta \psi^{a} = i \epsilon \dot{x}^{a}.
+\end{equation}
+In fact, not only is the action supersymmetric, but we also have
+\begin{equation}
+  \mathcal{Q} \left( -\frac{i}{2} \int g_{ab} \psi^{a} \dot{x}^{b} \dd[]{\tau} \right)  =\frac{1}{2} \int \left( g_{ab} \dot{x}^{a} \dot{x}^{b} + i g_{ab} \psi^{a} \dot{\psi}^{b} - i \partial_{c} g_{ab} \psi^{c} \psi^{a} \dot{x} ^{b} \right) \dd[]{\tau}.
+\end{equation}
+Comparing this to \eqref{eq:8-1}, we recognise the first two terms, but it is not obvious that the final term is the Christoffel symbol.
+In fact it is:
+we have
+\begin{equation}
+  \partial_{c} g_{ab} \psi^{c} \psi^{a} = -\frac{1}{2} \left( \partial_{a} g_{bc} + \partial_{b} g_{ac} - \partial_{c} g_{ba} \right) \psi^{c} \psi^{a} = -g_{cd} \Gamma^{d}_{ab} \psi^{c} \psi^{a}.
+\end{equation}
+So the action itself is $S = \mathcal{Q} (\dots)$, we say it is  \emph{$\mathcal{Q}$-exact}.
+This will be crucial for localisation of the path integral.
+
+It will be useful to do the canonical quantisation first. We are expecting to get some sort of spinors in curved space, like we did in flat space.
+We expect the Dirac operators that we got in the flat case to turn into some sort of covariant Dirac operators.
+
+The momenta $(p_a, \pi_a)$  are
+\begin{equation}
+  p_a = \frac{\delta L}{\delta \dot{x}^a} = g_{ab} \dot{x}^b + i g_{bc} \psi^{b} \Gamma^{c}_{ad} \psi^{d}, \qquad
+  \pi_a = \frac{\delta L}{\delta \psi^a} = i g_{ab} \psi^{b}.
+\end{equation}
+Therefore, upon quantisation we find our usual commutation relations for the $x$  and $p$:  $[\hat{x}^a, \hat{p}_b] = i \delta^{c}_b$ , and similarly for the $\pi$'s and $\psi$'s, but the anticommutation relation for the fermions is now
+\begin{equation}
+  \{\hat{\psi}^a, \hat{\psi}^b\} = 2 g^{ab}(x).
+\end{equation}
+The fact that the $\hat{\psi}$  anticommutators involve the field $x$ is a little awkward. How can it be that the commutators of the different fields know about each other?
+
+To do better, we introduce at each point  $x \in M$  an orthonormal set of basis vectors $\{e_i = e_i^a(x) \frac{\partial }{\partial x^{a}}\}$ on the tangent space $T_x M$, often called a \emph{frame}.
+Orthonormality here means that 
+\begin{equation}
+  g(e_i, e_j) = g_{ab} e\indices{^{a}_{i}} e\indices{^{b}_{j}} = \delta_{ij}.
+\end{equation}
+We have a dual basis of 1-forms, often called \emph{vielbeins}, unfortunately conventionally denoted by the same letter $\{e^i = e\indices{^{i}_{a}} dx^{a}\}$, which are dual in the sense $e_{i} (e^{j}) = e\indices{_{i}^{a}} e\indices{_{a}^{j}} = \delta^{i}_{j}$.
+
+Since the $e_i$ are a basis, we have completeness relations
+\begin{align}
+  g^{-1} &= \delta^{ij} e_{i} \otimes e_{j} & g &= \delta_{ij} e^{i} \otimes e^{j} \\
+  \text{i.e.} \quad g^{ab} &= e\indices{^{a}_{i}} e\indices{^{b}_{j}} \delta^{ij} & \text{i.e.} \quad g_{\alpha\beta} &= e\indices{^{i}_{a}} e\indices{^{j}_{b}} \delta_{ij}.
+\end{align}
+\begin{remark}
+  You might interpret this by saying that the $e_j$ are the `square root' of the metric.
+\end{remark}
+
+Expanding our fermions in this basis, we have $\psi^{a} = \psi^{i} e\indices{^{a}_{i}}$ or $\psi^{i} = e\indices{^{i}_{a}} \psi^{a}$, where the $\hat{\psi}^{i}$'s obey 
+\begin{equation}
+  \{\hat{\psi}^{i}, \hat{\psi}^{j}\} = \{e\indices{^{i}_{a}} \hat{\psi}^{a} , e\indices{^{j}_{b}} \hat{\psi}^{b}\} = e\indices{^{i}_{a}} e\indices{^{j}_{b}} \{\hat{\psi}^{a}, \hat{\psi}^{b}\} = 2 e\indices{^{i}_{a}} e\indices{^{j}_{b}} g^{ab} = 2 \delta^{ij}.
+\end{equation}
+In the vielbein basis, the $\hat{\psi}$'s obey exactly the same anticommutation relations as in flat space.
+
+So far, we have an orthonormal frame $\{e_i (x)\}$ at each point $x \in M$, and in general this choice may vary over $M$.
+To compare, we introduce a connection $\nabla$ on the tangent bundle $T M$ by 
+\begin{equation}
+  \label{eq:8-w}
+  \nabla (e_{i}) = d e_i + \omega\indices{_{i}^{j}} e_{j},
+\end{equation}
+where the connection 1-form $\omega\indices{^{i}_{j}} = dx^{a} \omega_{a}(x)\indices{^{i}_{j}}$ is the \emph{spin connection}.
+\begin{remark}
+  In \eqref{eq:8-w} we supressed the spacetime index $a$.
+\end{remark}
+Each of the spin connection components is an antisymmetric matrix $\omega^{ij} = \delta^{jk} \omega\indices{^{i}_{k}} = - \omega^{ji}$, since it preserves orthonormality.
+A priori, $\omega$ has nothing to do with $\Gamma$, but we usually (basically always) impose compatibility by the torsion-free condition
+\begin{gather}
+  \nabla_a e\indices{^{b}_{i}} = \partial_{a} e\indices{^{b}_{i}} + \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{i}} + \omega_{a}{}\indices{^{j}_{i}} e\indices{^{b}_{j}} = 0 \\
+  \text{i.e.} \quad (\omega_a)\indices{^{i}_{j}} = e\indices{^{i}_{b}} \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{j}} + e\indices{^{i}_{b}} \partial_{a} e\indices{^{b}_{j}}.
+\end{gather}
+We get exactly the same expression from our fermion action:
+\begin{align}
+  g (\psi, \nabla_\tau \psi) = g_{ab} \psi^{a} \nabla_\tau \psi^{b} &= g_{ab} e\indices{^{a}_{i}} \psi^{i} \left( \frac{\partial }{\partial \tau} (e\indices{^{b}_{j}} \psi^{j}) + \dot{x}^{c} \Gamma\indices{^{b}_{cd}} e\indices{^{d}_{j}} \psi^{j} \right) \\
+				       &= \delta_{ij} \psi^{i} \partial_{\tau} \psi^{j} + e_{bi} \dot{x}^{a} \partial_{a} e\indices{^{b}_{j}} \psi^{i} \psi^{j} + e_{ib} \dot{x}^{a} \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{j}} \psi^{i} \psi^{j} \\
+				       &= \delta_{ij} \psi^{i} \left( \partial_{\tau} \psi^{j} + \dot{x}^{a} (\omega_a)\indices{^{j}_{k}} \psi^{k} \right) \\
+				       &= \delta(\psi, \nabla_\tau \psi)
+\end{align}
+where $e_{bi} = g_{ab} e\indices{^{a}_{i}}$.

@@ -3,10 +3,10 @@
 \lhead{Lecture 4: January 29}
 
 \begin{definition}[Lie derivative]
-  Let $V, W$ be vector fields. Let $V$ generate a flow $V = \dot{\gamma}$. The \emph{Lie derivative} is
-  \begin{align}
-    \mathcal{L}_V W \rvert_p &= \lim_{\epsilon \to 0} \frac{W(p) - \gamma(\epsilon)_* W(p)}{\epsilon} \\
-  \end{align}
+  Let $V, W$ be vector fields, where $V$ generates a flow $V = \dot{\gamma}$. The \emph{Lie derivative} is
+  \begin{equation}
+    \mathcal{L}_V W \rvert_p \coloneqq \lim_{\epsilon \to 0} \frac{W(p) - \gamma(\epsilon)_* W(p)}{\epsilon}
+  \end{equation}
   We can extend this definition over the whole manifold.
 \end{definition}
 \begin{exercise}
@@ -15,10 +15,12 @@
 \begin{definition}[]
   On functions $f \colon M \to \mathbb{R}$, we define the Lie derivative as $\mathcal{L}_V(f) = V(f)$.
 \end{definition}
-On differential forms, we can use the Leibniz rule to show that
-\begin{equation}
-  \mathcal{L}_V \Omega = d(\iota_V \Omega) + \iota_V (d\Omega).
-\end{equation}
+\begin{claim}[Cartan's Magic Formula]
+  On differential forms, we can use the Leibniz rule to show that
+  \begin{equation}
+    \mathcal{L}_V \Omega = d(\iota_V \Omega) + \iota_V (d\Omega) = d (V \rightharpoonup \Omega) + V \rightharpoonup d\Omega.
+  \end{equation}
+\end{claim}
 \begin{definition}[]
   We define the cotangent space $T^*_p M = \text{Span}\left\{dx^1, \dots, dx^n\right\}$ as the space of one-forms.
   The cotangent bundle is then
@@ -26,21 +28,25 @@ On differential forms, we can use the Leibniz rule to show that
     \bigcup_{p\in M} T^*_p M = T^* M.
   \end{equation}
 \end{definition}
-Using the wedge product, which is anti-commutative on one-forms $dx^{i} \wedge dx^{j} = -dx^{j} \wedge dx^{i}$, we can define an $r$ -form 
-\begin{equation}
-  \Omega = \frac{1}{r!} \Omega_{ij \dots k} dx^{i} \wedge dx^{j} \wedge \dots \wedge dx^k.
-\end{equation}
-\begin{definition}[contraction]
-  We write a contraction as
+\begin{definition}[$r$-form]
+  Using the wedge product, which is anti-commutative on one-forms $dx^{i} \wedge dx^{j} = -dx^{j} \wedge dx^{i}$, we can define an $r$-form 
   \begin{equation}
-    \frac{\partial }{\partial x^{i}} (HOOK) dx^{j} = \iota_{\frac{\partial }{\partial x^{i}}} dx^{j} = \delta\indices{_{i}^{j}}.
+    \Omega = \frac{1}{r!} \Omega_{ij \dots k} dx^{i} \wedge dx^{j} \wedge \dots \wedge dx^k.
+  \end{equation}
+\end{definition}
+\begin{definition}[contraction]
+  We write a \emph{contraction} as
+  \begin{equation}
+    \frac{\partial }{\partial x^{i}} \rightharpoonup dx^{j} = \iota_{\frac{\partial }{\partial x^{i}}} dx^{j} = \delta\indices{_{i}^{j}}.
   \end{equation}
 \end{definition}
 For a general vector field $V$ and one-form $ \Omega$, we have
 \begin{equation}
-  \iota_V \Omega = V^{i} \frac{\partial }{\partial x^{i}} (HOOK) \Omega_j dx^{j} = V^{j} \Omega_{j} \delta\indices{^{j}_{i}} = V^{i} \Omega_{i}.
+\iota_V \Omega = V \rightharpoonup \Omega = V^{i} \frac{\partial }{\partial x^{i}} \rightharpoonup \Omega_j dx^{j} = V^{i} \Omega_{j} \delta\indices{^{j}_{i}} = V^{i} \Omega_{i}.
 \end{equation}
-No metric is needed.
+\begin{remark}
+  No metric is needed to define contraction.
+\end{remark}
 
 \begin{definition}[]
   A \emph{Lie algebra} $\mathfrak{g}$ of a Lie group $G$ is the tangent space $T_e G$ to $G$ at the identity.
@@ -49,14 +55,30 @@ No metric is needed.
 
 \begin{definition}[Left translations]
   For all $\mathfrak{g} \in G$, we define the \emph{left translations} 
-  \begin{align}
-    L_g \colon G &\to G \\
-    g &\mapsto g \cdot h.
-  \end{align}
+  \begin{equation}
+    \begin{gathered}
+      L_g \colon \\
+      \qquad
+    \end{gathered}
+    \begin{gathered}
+      G \\
+      h
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \to \\
+      \mapsto
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      G \\
+      g \cdot h
+    \end{gathered}
+  \end{equation}
 \end{definition}
 \begin{definition}[left invariant vector fields]
-  Using the left translation maps, we define their push forward $(L_g)_* \colon \mathfrak{g} \equiv T_e G \to T_g G$, which maps $v \in g$ to vector fields $(L_g)_* (V)$ on $G$.
-  This defines \emph{left invariant vector fields}.
+  Using the left translation maps, we define their push forward $(L_g)_* \colon \mathfrak{g} \equiv T_e G \to T_g G$, which maps $V \in \mathfrak{g}$ to vector fields $(L_g)_* (V)$ on $G$.
+  This defines \emph{left invariant vector fields} as sections $V \in TG$ such that $(L_g)_* V = V$ for all $g \in G$. Therefore, 
 \end{definition}
 \begin{equation}
   [(L_g)_* V, (L_g)_* W] = (L_g)_* [V, W]_\mathfrak{g}.
@@ -65,7 +87,10 @@ No metric is needed.
   It is important to understand the notation!
 \end{remark}
 
-These form a basis of $\mathfrak{g}$ , meaning that $\dim(G)$  is the number of global, non-vanishing vector fields on $G$.
+Left-invariant vector fields form a basis of $\mathfrak{g}$, meaning that $\dim(G)$ is the number of global, non-vanishing vector fields on $G$.
+\begin{definition}[parallelisable]
+  A manifold $M$  is \emph{parallelisable} if there exists a set of vector fields $\{V_i\}$, where $i = 1, \dots, \dim M$, such that $\forall p \in M$, the tangent vectors $\{V_i(p)\}$ form a basis for the tangent space $T_p M$.
+\end{definition}
 \begin{claim}
   Lie groups are parallelisable manifolds.
 \end{claim}
@@ -76,27 +101,24 @@ These form a basis of $\mathfrak{g}$ , meaning that $\dim(G)$  is the number of 
   $S^1, S^3, S^7$  are the only parallelisable spheres.
 
   The first two are indeed manifolds:
-  $S^1 = U(1)$ , $S^3 = SU(2) = \left\{ 
+  \begin{equation}
+    S^1 = U(1), 
+  \qquad S^3 = SU(2) = \left\{ 
     \begin{pmatrix}
      a & b \\
-     -b^* & a \\
+     -\overline{b} & \overline{a} \\
     \end{pmatrix} \suchthat \abs{a}^2 + \abs{b}^2 = 1
-  \right\}$,
-  but $S^7$ is not a Lie group.
+  \right\}.
+  \end{equation}
+  However, $S^7$ is not a Lie group.
 \end{proof}
 \begin{leftbar}
-  This has introduced the field of $k$-theory.
+  This has introduced the field of $K$-theory.
 \end{leftbar}
 
 \begin{claim}
-  Let $L_{\alpha}$, $\alpha = 1, \dots, \dim \mathfrak{g}$ be a basis of left invariant vector fields with structure constants
-  \begin{equation}
-    [L_{\alpha}, L_{\beta}] = \sum_\gamma f\indices{_{\alpha\beta}^{\gamma}}L_{\gamma}.
-  \end{equation}
-  Let $\sigma^{\alpha}$ be a dual basis of left-invariant one-forms
-  \begin{equation}
-    L_{\alpha} (hook) \sigma^{\beta} = \delta\indices{_{\alpha}^{\beta}}.
-  \end{equation}
+  Let $\{L_{\alpha}\}$, $\alpha = 1, \dots, \dim \mathfrak{g}$ be a basis of left invariant vector fields with $ [L_{\alpha}, L_{\beta}] = \sum_\gamma f\indices{_{\alpha\beta}^{\gamma}}L_{\gamma}$.
+  Let $\sigma^{\alpha}$ be a dual basis of left-invariant one-forms, meaning that $ L_{\alpha} \rightharpoonup \sigma^{\beta} = \delta\indices{_{\alpha}^{\beta}}$.
   Then
   \begin{equation}
     d\sigma^{\alpha} + \frac{1}{2} f\indices{^{\alpha}_{\beta\gamma}} \sigma^{\beta} \wedge \sigma^{\gamma} = 0 \label{eq:4-star}.
@@ -112,51 +134,49 @@ These form a basis of $\mathfrak{g}$ , meaning that $\dim(G)$  is the number of 
   Watch out for signs and factors in the upcoming derivations! Things can easily go wrong.
 \end{leftbar}
 
-\begin{definition}[Maurer--Cartan]
-  Assume that $G$ is a matrix Lie group.
-  The \emph{Maurer--Cartan 1-form} on $G$ is
+\begin{definition}[Maurer--Cartan 1-form]
+  Assume that $G$ is a matrix Lie group. The \emph{Maurer--Cartan one-form} on $G$ is then defined as
   \begin{equation}
     \rho \coloneqq g^{-1} d g.
   \end{equation}
 \end{definition}
 \begin{claim}
-  This one-form
-  \begin{itemize}
-    \item is left invariant.
-    \item takes values in the Lie algebra.
-  \end{itemize}
+  The Maurer--Cartan 1-form
+  \begin{enumerate}
+    \item is left invariant,
+    \item takes values in the Lie algebra,
+    \item obeys the \emph{Maurer--Cartan equation}
+      \begin{equation}
+	d\rho + \rho \wedge \rho = 0.
+      \end{equation}
+  \end{enumerate}
 \end{claim}
 \begin{proof}
-  \begin{itemize}
-    \item $(g_0 g)^{-1} d(g_0 g) = g^{-1} dg$, $g_0 = ??$
+  \begin{enumerate}
+    \item With $g_0 \in G$ we have
+      \begin{equation}
+	(g_0 g)^{-1} d(g_0 g) = g^{-1} dg.
+      \end{equation}
     \item Take $C$  a smooth curve $g(s) \subset G$ .
     \begin{equation}
       g^{-1}(s) g(s + \epsilon) = \underbrace{\epsilon}_{\mathclap{\mathbb{1}}} + \epsilon \underbrace{g^{-1} \dv{g}{\epsilon}}_{\mathclap{\in T_e G \simeq \mathfrak{g}}} \rvert_{\epsilon = 0} + O(\epsilon^2).
     \end{equation}
     So $g^{-1} d g = \sum_\alpha \sigma^{\alpha} \otimes T_\alpha$, where $T_\alpha$ are matrices with $[T_\alpha, T_\beta] = \sum_\gamma f\indices{_{\alpha\beta}^\gamma} T_{\gamma}$.
-  \end{itemize}
-\end{proof}
-
-\begin{claim}
-  It obeys the Maurer--Cartan equation:
-  \begin{equation}
-    d\rho + \rho \wedge \rho = 0.
-  \end{equation}
-\end{claim}
-\begin{proof}
-  Consider first the exterior derivative term
-  \begin{equation}
-    d \rho = \sum_\alpha d\sigma^{\alpha} \cdot T_{\alpha} = -\frac{1}{2} f\indices{^{\alpha}_{\beta\gamma}} \sigma^{\beta} \wedge \sigma^{\gamma} \cdot T_{\alpha}.
-  \end{equation}
-  The wedge product term is
-  \begin{equation}
-    \rho \wedge \rho = \sigma^{\alpha} T_{\alpha} \wedge \sigma^{\beta} T_{\beta} = \frac{1}{2} \sigma^{\alpha} \wedge \sigma^{\beta} [T_{\alpha}, T_{\beta}]
-    = \frac{1}{2} \sigma^{\alpha} \wedge \sigma^{\beta} f\indices{_{\alpha\beta}^{\gamma}} T_{\gamma}.
-  \end{equation}
+    \item Consider first the exterior derivative term
+      \begin{equation}
+	d \rho = \sum_\alpha d\sigma^{\alpha} \cdot T_{\alpha} = -\frac{1}{2} f\indices{^{\alpha}_{\beta\gamma}} \sigma^{\beta} \wedge \sigma^{\gamma} \cdot T_{\alpha}.
+      \end{equation}
+      The wedge product term is
+      \begin{equation}
+	\rho \wedge \rho = \sigma^{\alpha} T_{\alpha} \wedge \sigma^{\beta} T_{\beta} = \frac{1}{2} \sigma^{\alpha} \wedge \sigma^{\beta} [T_{\alpha}, T_{\beta}]
+	= \frac{1}{2} \sigma^{\alpha} \wedge \sigma^{\beta} f\indices{_{\alpha\beta}^{\gamma}} T_{\gamma}.
+      \end{equation}
+  \end{enumerate}
 \end{proof}
 \begin{example}[Heisenberg group]
-  The \emph{Heisenberg group} (sometimes just called \emph{Nil}) is the group of upper triangular matrices
+  The \emph{Heisenberg group} (sometimes just called \emph{Nil}) is the group of upper-triangular matrices
   \begin{equation}
+    \label{eq:4-g}
     g = 
     \begin{pmatrix}
      1 & x & z \\
@@ -165,32 +185,33 @@ These form a basis of $\mathfrak{g}$ , meaning that $\dim(G)$  is the number of 
     \end{pmatrix}
     = \mathbb{1} + x T_1 + yT_2 + z T_3,
   \end{equation}
-  with
+  where $\{T_i\}$ are also the generators of the Lie algebra. Explicitly, we have
   \begin{equation}
     T_1 = 
     \begin{pmatrix}
-      & 1 &  \\
-      &  &  \\
-      &  &  \\
+      0& 1 & 0 \\
+      0& 0 & 0 \\
+      0& 0 & 0 \\
     \end{pmatrix}
     \qquad
     T_2 = 
     \begin{pmatrix}
-      &  &  \\
-      &  & 1 \\
-      &  &  \\
+      0& 0 & 0 \\
+      0& 0 & 1 \\
+      0& 0 &  0\\
     \end{pmatrix}
     \qquad
     T_3 = 
     \begin{pmatrix}
-      &  & 3 \\
-      &  &  \\
-      &  &  \\
+     0 & 0 & 1 \\
+     0 & 0 & 0 \\
+     0 & 0 & 0 \\
     \end{pmatrix}
   \end{equation}
-  The commutation relations are
+  and so their commutation relations are
   \begin{equation}
-    [T_1, T_2] = T_3 \quad [T_1, T_3] = 0 = [T_2, T_3].
+    \label{eq:heis-la}
+    [T_1, T_2] = T_3, \quad [T_1, T_3] = 0 = [T_2, T_3].
   \end{equation}
-  We can interpret $T_1$ as position, $T_2$ as momentum and $T_3$ as the identity $i \hbar$.
+  We can interpret $T_1 = \hat{x}$ as position, $T_2 = \hat{p}$ as momentum, and $T_3 = i \hbar \hat{\mathbb{1}}$ as the identity.
 \end{example}

@@ -1,0 +1,145 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 6: February 05}
+
+Assume $z$ is periodic.
+On $G$, the Laplacian is
+\begin{equation}
+  \nabla^2 = L_1^2 + L_2^2 + L_3^2.
+\end{equation}
+The Schrödinger equation is then $-\nabla^2 \phi = E \phi$. 
+\begin{equation}
+  \phi_{xx} + \phi_{zz} + (\partial_y + x d_z)^2 \phi = -E \phi.
+\end{equation}
+Changing variables to $\phi = \Psi (x, y) e^{i e z}$ , we have
+\begin{equation}
+  \Psi_{xx} - e^2 \Psi + (\partial_y + i x e)^2 \Psi = -E \Psi.
+\end{equation}
+We can package some of the terms together to obtain a Maxwell potential.
+Recall that $F = dy \wedge dx = dA$ .
+The equation for a charged particle moving in a magnetic field is
+\begin{equation}
+  (\partial_x - i e A_x)^2 \Psi + (\partial_y - i e A_y)^2 \Psi = -(E - e^2)\Psi.
+\end{equation}
+Comparing these equations, find that $A_x = 0$  and $A_y = -x$ , which means that we have
+\begin{equation}
+  A = -x dy, \qquad dA = -dx \wedge dy = F.
+\end{equation}
+Landau problem; $0 \leq z < 2 \pi L$ .
+Charge quantisation $e \cdot L \in \mathbb{Z}$ .
+
+\subsection{Killing Metric}%
+\label{sub:killing_metric}
+
+Recall the Maurer--Cartan one-form $\rho = g^{-1} d g = \sigma^{\alpha} \otimes T_{\alpha}$ .
+Define a metric to be
+\begin{align}
+  h &\coloneqq -\Tr(g^{-1} dg \odot g^{-1} dg) \\
+    &= -\Tr(T_{\alpha} \cdot T_{\beta}) \sigma^{\alpha} \odot \sigma^{\beta} \\
+    &= h_{\alpha\beta} \sigma^{\alpha} \odot \sigma^{\beta} \\
+    &= -\Tr(dg \cdot g^{-1} \odot dg g^{-1}).
+\end{align}
+This is both left-invariant and right-invariant. We say that the metric is \emph{bi-invariant}.
+
+\begin{example}[$G = SU(2)$]
+  As a manifold, $SU(2)$ is the three-dimensional sphere $S^3$. The Killing metric will be the round metric on $S^3$.
+  Its isometry group is $SO(4)$. It fits into $SO(3) \rtimes SO(3)$; one of these generates the left-invariant vector fields and the other the right-invariant ones.
+\end{example}
+
+\chapter{Hamiltonian Mechanics and Symplectic Geometry}%
+\label{cha:hamiltonian_mechanics_and_symplectic_geometry}
+
+Let $M$  be a $2n$-dimensional manifold, which we refer to as the \emph{phase space}.
+It does not come equipped with a metric, but there is another structure on it.
+\begin{definition}[Poisson bracket]
+  If $f, g \colon M \to \mathbb{R}$ are functions on the phase space, then their \emph{Poisson bracket} is
+  \begin{equation}
+    \Bigl\{ f, g \Bigr\}_{\text{PB}} = \frac{\partial f}{\partial q^a} \frac{\partial g}{\partial p_a} - \frac{\partial f}{\partial p_a} \frac{\partial g}{\partial q^a},
+  \end{equation}
+  where $(q^a, p_a)$, with $a = 1, \dots, n$ is a local coordinate system on $M$.
+\end{definition}
+
+\begin{definition}[Hamiltonian]
+  The \emph{Hamiltonian} is a function $H\colon M \to \mathbb{R}$  such that Hamilton's equations hold:
+  \begin{equation}
+    \dot{p}_a = -\frac{\partial H}{\partial q^a}, \qquad \dot{q}^a = \frac{\partial H}{\partial p_a}.
+  \end{equation}
+\end{definition}
+\begin{definition}[Hamiltonian vector field]
+  The \emph{Hamiltonian vector field} is
+  \begin{equation}
+    X_H = \frac{\partial H}{\partial p_a} \frac{\partial }{\partial q^a} - \frac{\partial H}{\partial q^a} \frac{\partial }{\partial p_a},
+  \end{equation}
+  whose integral curves are $t \to (\vb{p}(t), \vb{q}(t))$.
+\end{definition}
+
+A more general framework is kicked off by the following definition.
+\begin{definition}[Poisson manifold]
+  Let $M$ be phase space and $\omega^{ij} = \omega^{[ij]}$, for $i, j = 1, \dots, \dim M = m$, be a tensor field on $M$.
+  We call $(M, \omega^{ij} = \omega)$ a \emph{Poisson manifold} and $\omega$ a \emph{Poisson structure}, if the Poisson bracket
+  \begin{equation}
+    \Bigl\{ f, g \Bigr\}_{\text{PB}} = \omega^{ij}(x) \frac{\partial f}{\partial x^{i}} \frac{\partial g}{\partial x^{j}}
+  \end{equation}
+  is such that the Jacobi identity
+  \begin{equation}
+    \Bigl\{ f, \Bigl\{ g, h \Bigr\}_{\text{PB}} \Bigr\}_{\text{PB}} + \Bigl\{ h, \Bigl\{ f, g \Bigr\}_{\text{PB}} \Bigr\}_{\text{PB}} + \Bigl\{ g, \Bigl\{ h, f \Bigr\}_{\text{PB}} \Bigr\}_{\text{PB}} = 0,
+  \end{equation}
+  holds for all functions $f, g, h$ on $M$.
+\end{definition}
+\begin{leftbar}
+  Not any anti-symmetric $\omega^{ij}$ satisfies this; the Jacobi identity gives conditions on $\omega^{ij}$.
+\end{leftbar} 
+\begin{remark}
+  We do not distinguish between position and momenta $x^{i}$.
+\end{remark}
+In the following, we will drop the subscript 'PB' to denote the Poisson bracket.
+\begin{example}[]
+  Let $M = \mathbb{R}^3$ and $\omega^{ij} = \epsilon^{ijk} x^{k}$.
+  The Poisson brackets are
+  \begin{equation}
+    \{ x^1, x^2 \}= x^3, \qquad
+    \{ x^3, x^1 \}= x^2, \qquad
+    \{ x^2, x^3 \}= x^4.
+  \end{equation}
+  We can then define the Casimir
+  \begin{equation}
+    f(r) = r^2 = (x^1)^2 + (x^2)^2 + (x^3)^2.
+  \end{equation}
+  This Poisson commutes with the $x^i$, meaning that $\{ f(r), x^{i} \} =0$. For example, we have
+  \begin{equation}
+    \{ (x^1)^2 + (x^2)^2 + (x^3)^2, x^1 \} = 2 x^2 \overbrace{\{ x^2, x^1 \}}^{\mathclap{-x^3}} + 2 x^3 \overbrace{\{ x^3, x^1 \}}^{\mathclap{x^2}} = 0.
+  \end{equation}
+  Take the Hamiltonian to be 
+  \begin{equation}
+    H = \frac{1}{2} \left( \frac{(x^1)^2}{a_1} + \frac{(x^2)^2}{a_2} + \frac{(x^3)^2}{a_3}\right).
+  \end{equation} 
+  Then the time-evolution is given by
+  \begin{equation}
+    \dot{g} = \{ g, H \}, \qquad \underbrace{\dot{x}^{i} = \omega^{ij} \frac{\partial H}{\partial x^{j}}}_{\mathclap{\text{Hamilton's equations}}}.
+  \end{equation}
+  Writing Hamilton's equations out explicitly gives Euler's equations for a rigid body
+  \begin{equation}
+    \dot{x}^1 = \frac{a_3 - a_2}{a_2 a_3} x^2 x^3, \qquad
+    \dot{x}^2 = \frac{a_1 - a_3}{a_1 a_3} x^1 x^3, \qquad
+    \dot{x}^3 = \frac{a_2 - a_1}{a_2 a_1} x^2 x^1.
+  \end{equation}
+\end{example}
+
+\begin{example}[]
+  Let us restrict the Poisson structure from the first example to $S^2 \subset \mathbb{R}^3$.
+  \begin{equation}
+    x^1 = \sin \theta \cos \phi, \qquad
+    x^2 = \sin \theta \sin \phi, \qquad
+    x^3 = \cos \\theta.
+  \end{equation}
+  So $\theta, \phi$ are functions of $\mathbb{R}^3$ .
+  Get 
+  \begin{equation}
+    \{ \theta, \phi \} = \frac{1}{\sin \theta}
+  \end{equation}
+  (Exercise) and a Poisson structure on $S^2$, which is non-degeneate, 
+  \begin{equation}
+    (\omega^{-1})_{ij} dx^{i} \wedge dx^{j} = \underbrace{\sin \theta d\theta \wedge d\phi}_{\mathclap{\text{symplectic structure}}},
+  \end{equation}
+  where $x^1 = (\theta, \phi)$.
+\end{example}

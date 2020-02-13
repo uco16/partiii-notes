@@ -1,0 +1,155 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 11: February 11}
+
+Thus our action is 
+\begin{equation}
+  S = \int \dd[d]{x} \left[ \frac{1}{2} (\partial \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{g \mu^\epsilon}{4!} \gamma^4 \right].
+\end{equation}
+
+\subsection{Mathematical Notes}%
+\label{sub:mathematical_notes}
+
+Let us briefly collect a few mathematical results.
+\begin{enumerate}[1.]
+  \item Surface area $S_d$ of a unit sphere in $d$ dimensions:
+    For integer $d$, we can do $d$ Gaussian integrals and convert to polar coordinates
+    \begin{equation}
+      (\sqrt{\pi})^d = \int_{\mathbb{R}^d} \prod_{i=1}^d \dd[]{x_i} e^{-x_i^2} = S_d \int_0^{\infty} \dd[]{r} r^{d-1} e^{-r^2} = \frac{1}{2} S_d \, \Gamma(\frac{d}{2}).
+    \end{equation}
+    For non-integer $d \in \mathbb{C}$, we define $S_d$ via analytic continuation as
+    \begin{equation}
+      S_d = \frac{2 \pi^{d / 2}}{\Gamma(\frac{d}{2})}.
+    \end{equation}
+  \item Analytic continuation of the $\Gamma$-function:
+    Use, for $\alpha > 0$
+    \begin{equation}
+      \Gamma(\alpha) = \int_0^\infty \dd[]{x} x^{\alpha -1} e^{-x} \qquad \alpha \Gamma(\alpha) = \Gamma(\alpha + 1), \qquad \Gamma(1), \qquad \Gamma(\frac{1}{2}) = \sqrt{-\pi}.
+    \end{equation}
+  \item Expansion of the $\Gamma$-function
+    \begin{equation}
+      \ln \Gamma(\alpha + 1) = -\gamma \alpha - \sum_{k=2}^{\infty} (-1)^k \frac{1}{k} \zeta(k),
+    \end{equation}
+    where $\gamma = \gamma_E \approx 0.577216$  is the Euler--Mascheroni constant and $\zeta(k) = \sum_{n=1}^{\infty} \frac{1}{n^k}$ is the Riemann $\zeta$-function.
+    Usually we exponentiate this
+    \begin{equation}
+      \Gamma(\epsilon) = \frac{1}{\epsilon} - \gamma + O(\epsilon).
+    \end{equation}
+  \item Euler beta function:
+    \begin{equation}
+      B(s, t) = \int_{\gamma}^{1}\dd[]{x} u^{s-1} (1-u)^{t-1} = \frac{\Gamma(s) \Gamma(t)}{\Gamma(s + t)}.
+    \end{equation}
+\end{enumerate}
+\begin{remark}
+  You will not be asked to prove these or even have these at hand in the exam.
+\end{remark}
+
+Let us now return to the amputated diagram DIAGRAM
+\begin{equation}
+  \Pi_1(p^2) = - \frac{g \mu^\epsilon}{2} \int_{}^{}\frac{\bdd[d]{k}}{k^2+ m^2} = -\frac{g \mu^\epsilon}{2} \frac{S_d}{2 (2\pi)^d} \int_{0}^{\infty}\frac{k^{d-1} \dd[]{k}}{k^2 + m^2}.
+\end{equation}
+The integral can be performed by changing integration variables $u = m^2 / (k^2 + m^2)$
+\begin{align}
+  \mu^\epsilon \int_{0}^{\infty}\frac{k^{d-1}\dd[]{k}}{k^2 + m^2} = \frac{1}{2} \mu^\epsilon \int_{0}^{\infty}\frac{(k^2)^{d / 2-1}\dd[]{k^2}}{k^2 + m^2} &= \frac{m^2}{2} (\frac{\mu}{m})^\epsilon \int_{0}^{1}\dd[]{u} u^{-d / 2} (1-u)^{d / 2 - 1} \\
+																			  &= \frac{m^2}{2} (\frac{\mu}{m})^\epsilon \frac{\Gamma(\frac{d}{2}) \Gamma(1 - \frac{d}{2})}{\Gamma(1)},
+\end{align}
+where we used the Euler beta function. Hence,
+\begin{equation}
+  \Pi_1 = -\frac{g m^2}{2 (4 \pi)^{d/2}} (\frac{\mu}{m})^\epsilon \Gamma(1 - \frac{d}{2}).
+\end{equation}
+Using that
+\begin{equation}
+  \Gamma(1- \frac{d}{2}) = \Gamma( \frac{\epsilon}{2} - 1) = -\frac{1}{1 - \frac{\epsilon}{2}} \Gamma(\frac{\epsilon}{2}) = -\frac{2}{\epsilon} + \gamma - 1 + O(\epsilon).
+\end{equation}
+We have thus exposed the divergence as $\epsilon \to 0$ that we want to tame.
+
+Also
+ \begin{equation}
+   \left( \frac{4 \pi \mu^2}{m^2} \right)^{\epsilon / 2} = 1 + \frac{\epsilon}{2} \ln(\frac{4\pi \mu^2}{m^2}) + O(\epsilon^2).
+\end{equation} 
+
+The result of putting the Lagrangian $\mathscr{L}_0$ into the diagram and finding the one-loop contribution to the vertex function is
+\begin{equation}
+  \Pi_1(p^2) = -\frac{g m^2}{32 \pi^2} \left[ \frac{2}{\epsilon} - \gamma + 1 + \ln(\frac{4\pi\mu^2}{m^2}) \right] + O(\epsilon).
+\end{equation}
+
+As in \eqref{eq:renct}, we must add a counter term $\frac{1}{2} \delta m^2 \phi^2$ to the Lagrangian with the intention to cancel the divergence.
+There are various possible renormalisation schemes we can choose. In practice, we often use one of
+\begin{description}
+  \item[Minimal subtraction (MS):]  Just absorb the pole
+    \begin{equation}
+      \delta m^2 = - \frac{g m^2}{16 \pi^2 \epsilon}.
+    \end{equation}
+  \item[Modified minimal subtraction ($\overline{\text{MS}}{}$)]:
+    \begin{equation}
+      \delta m^2 = - \frac{g m^2}{32 \pi^2} \left( \frac{2}{\epsilon} - \gamma + \ln 4 \pi \right)
+    \end{equation}
+    Under this scheme, our result for the two-point function is
+    \begin{equation}
+      \Pi_1^{\overline{\text{MS}}{}} = \frac{g m^2}{32 \pi^2} \left( \ln \frac{\mu^2}{m^2} - 1 \right).
+    \end{equation}
+\end{description}
+
+Let us also calculate the four-point vertex function.
+The divergent piece is given by setting all external momenta to zero:
+\begin{equation}
+  \widetilde{\Gamma}^{(4)} (0,0,0,0) = \frac{3 g^2 \mu^{2 \epsilon}}{2} \int \frac{\bdd[d]{k}}{(k^2 + m^2)^2}.
+\end{equation}
+We perform exactly the same tricks as before, performing angular integration and changing variables to make it dimensionless, as well as identifying the Euler-beta function.
+In the end, we get a very similar result
+\begin{equation}
+  \widetilde{\Gamma}^{(4)} (0,0,0,0) = \frac{3 g^2 \mu^\epsilon}{32 \pi^2} \left( \frac{2}{\epsilon} - \gamma + \ln \frac{4 \pi \mu^2}{m^2} \right) + O(\epsilon).
+\end{equation}
+We have left one $\mu^\epsilon$ outside on dimensional grounds in the next step.
+Again, this is divergent, so we introduce a counter term for $g$ as well:
+\begin{equation}
+  \label{eq:11-dg}
+  \mu^\epsilon \delta g = \frac{3 g^2 \mu^{\epsilon}}{32 \pi^2} \biggl( \underbrace{ \overbrace{\frac{2}{\epsilon}}^{\mathclap{\text{MS}}} {} - \gamma + \ln 4 \pi }_{\mathclap{\overline{\text{MS}}{}}} \biggr).
+\end{equation}
+
+\section{Calculating \texorpdfstring{$\beta$}{beta}-functions}%
+\label{sec:calculating_beta_functions}
+
+\subsection{The Old-Fashioned Approach to Investigating \texorpdfstring{$\mu$}{mu}-dependence}%
+\label{sub:the_old_fashioned_approach_to_investigating_mu_dependence}
+
+We have the original Lagrangian
+\begin{equation}
+  \mathscr{L}_0 = \frac{1}{2} (\partial \phi)^2 + \frac{1}{2} m_0^2 \phi_0^2 + \frac{\lambda_0}{4!} \phi_0^4.
+\end{equation}
+Adding counter terms we have
+\begin{equation}
+  \mathscr{L}_{\text{ren}} + \mathscr{L}_{\text{ct}} = \frac{1 + \delta Z_\phi}{2} (\partial \phi)^2 + \frac{m^2 + \delta m^2}{2} \phi^2 + \frac{(g + \delta g) \mu^{\epsilon}}{4!} \phi^4.
+\end{equation}
+This is just supposed to be a reshuffling of terms and divergences, so the two Lagrangians should be the same. Equating coefficients: the original parameters are $\mu$ -independent, since this splitting scale is arbitrarily chosen.
+
+Look at dimensionless derivatives of the couplings (and masses)
+\begin{equation}
+  \dv{\ln \mu} g = \mu \dv{\mu} g.
+\end{equation}
+This is called the $\beta$ -function, which tells us how the coupling constant `runs' depending on the renormalisation scale.
+
+We want 
+\begin{equation}
+  0 \stackrel{!}{=} \dv{\ln \mu} \lambda_0 = \dv{\ln \mu} \left[ (g + \delta g) \mu^{\epsilon} \right] 
+  = \epsilon g (1 + \frac{3 g}{16 \pi^2 \epsilon}) + \beta(g) \left( 1 + \frac{3 g}{8 \pi \epsilon^2} \right),
+\end{equation}
+where we employed the MS-scheme result of \eqref{eq:11-dg} (to save writing).
+The $\beta$-function is
+\begin{equation}
+  \beta(g) = - \left( \frac{3 g^2}{16 \pi^2} + \epsilon g \right) \left( 1 + \frac{3 g}{8 \pi \epsilon^2} \right)^{-1}.
+\end{equation}
+With a little bit of slight of hand, we forget that we want to take $\epsilon \to 0$ and hold $\epsilon$  fixed. We then expand the latter term in a binomial series
+\begin{equation}
+  \label{eq:11-beta}
+  \beta(g) = \frac{3g^2}{16 \pi^2} - \epsilon g + O(\frac{g^2}{\epsilon}, 2 \text{ loop}).
+\end{equation}
+\begin{remark}
+  In this whole calculation, we have ignored two-loop diagrams and higher.
+\end{remark}
+As $\epsilon \to 0$, only the first term survives.
+Note that  $\beta(\gamma) > 0$.
+As such, we obtained a differential equation, which tells us how $g$  depends on $\mu$:
+ \begin{equation}
+  \mu \dv{g}{\mu} = \frac{3 g^2}{16 \pi^2}.
+\end{equation}

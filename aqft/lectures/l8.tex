@@ -1,0 +1,218 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 8: February 04}
+
+\chapter{Scalar Field Theory}%
+\label{cha:scalar_field_theory}
+
+\section{Wick Rotation}%
+\label{sec:wick_rotation}
+
+Let us make the connection between Euclidean and Minkowski spacetime a bit more concrete.
+It is convenient to start from the Minkowski metric with signature (${}+ - - -{}$) and go to the Euclidean one with (${}+ + + +{}$).
+The Lagrangian density in Minkowski space is
+\begin{equation}
+  \label{eq:8-minkl}
+  \mathscr{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - V[\phi].
+\end{equation}
+We now use square brackets instead of parentheses to indicate that the function $\phi$ is itself a function of spacetime, so that $V[\phi]$ is a functional.
+In particular, the potential is
+\begin{equation}
+  V[\phi] = \frac{1}{2} m^2 \phi^2 + \sum_{n > 2} \frac{1}{n!} V^{(n)} \phi^n.
+\end{equation}
+The partition function is
+\begin{equation}
+  Z = \int \pdd{\phi} e^{i \int \dd[]{x}^0 L}, 
+\end{equation}
+where the Lagrangian $L$  is the integral of the Lagrangian density $\mathscr{L}$  over space
+\begin{equation}
+  L = \int \dd[3]{x} \mathscr{L}.
+\end{equation}
+The free propagator is
+\begin{equation}
+  \frac{i}{k^2 - m^2 + i \epsilon} = \frac{i}{(k^0)^2 - \abs{\vb{k}}^2 - m^2 + i \epsilon}.
+\end{equation}
+
+Let $i x^0 = x_4$ and use the Euclidean metric (${}+ + + +{}$).
+Arrange the signs so that we have a Lagrangian density that has the same sign as \eqref{eq:8-minkl} in the kinetic term
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + V[\phi].
+\end{equation}
+The partition function is 
+\begin{equation}
+  Z = \int \pdd{\phi} e^{- \int \dd[]{x_4} L}.
+\end{equation}
+\begin{leftbar}
+  One argument put forward for using the mostly plus metric in Minkowski space is that this transition to Euclidean space simply involves switching only one of the signs, rather than having to keep track of $i$'s and minus signs as we do it here.
+\end{leftbar}
+The propagator is
+\begin{equation}
+  \widetilde{\Delta}_0 (k) = \frac{1}{k^2 + m^2} = \frac{1}{(k_4)^2 + \abs{\vb{k}}^2 + m^2}.
+\end{equation}
+This means that we rotate the contour integral so that the poles lie on the imaginary axis, as illustrated in Fig.~\ref{fig:l8f1}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l8f1.pdf_tex}
+  \caption{}
+  \label{fig:l8f1}
+\end{figure}
+
+\section{Feynman Rules}%
+\label{sec:feynman_rules}
+
+Take the free propagator as in Ch.~??.
+\begin{equation}
+  S_0 [\phi, J] = \int_{\mathbb{R}^4} \dd[4]{x}  \left[ \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} m^2 \phi^2 + J(x) \phi(x) \right].
+\end{equation}
+Now write $\phi(x)$  and $J(\phi)$ as a Fourier integral
+\begin{equation}
+  \phi(x) = \int \bdd[4]{k} e^{i k \cdot x} \widetilde{\phi} (k).
+\end{equation}
+The action then becomes
+\begin{align}
+  S_0[\widetilde{\phi}, \widetilde{J}] &= \frac{1}{2} \int_{\mathbb{R}^4} \bdd[4]{k} \left[ \widetilde{\phi}(-k) (k^2 + m^2) \widetilde{\phi}(k) + \widetilde{J}(-k) \widetilde{\phi}(k) + \widetilde{J}(k) \widetilde{\phi}(-k) \right] \\
+				       &= \frac{1}{2} \int \bdd[4]{k} \left[ \widetilde{\chi}(-k) (k^2 + m^2) \widetilde{\chi}(k) - \frac{\widetilde{J}(-k) \widetilde{J}(k)}{k^2 + m^2} \right],
+\end{align}
+where $\widetilde{\chi} = \widetilde{\phi} + \widetilde{J} / (k^2+ m^2)$ .
+Assume that the partition function is normalised such that $Z_0[0] = 1$ . Then
+\begin{equation}
+  Z_0[\widetilde{J}] = \exp[\frac{1}{2} \int \bdd[4]{k} \frac{\widetilde{J}(-k) \widetilde{J}(k)}{k^2 + m^2}].
+\end{equation}
+The propagator is
+\begin{equation}
+  \widetilde{\Delta}_0(q) = \frac{\delta^2 Z_0 [\widetilde{J}]}{\delta \widetilde{J}(-q) \delta \widetilde{J}(q)} \rvert_{\widetilde{J} = 0} = \frac{1}{q^2 +m^2}.
+\end{equation}
+The functional derivative is defined in position and momentum space as
+\begin{equation}
+  \frac{\delta }{\delta f(x_1)} f(x_2) = \delta^{4}(x_1 - x_2) \qquad \frac{\delta }{\delta \widetilde{g}(k_1)} \widetilde{g}(k_2) = \bdelta^{4}(k_1 - k_2).
+\end{equation}
+
+We can now Fourier transform back to obtain the propagator in position space
+\begin{equation}
+  \Delta_0(x - x') = \int \bdd[4]{k} \frac{e^{i k \cdot (x - x')}}{k^2 + m^2}.
+\end{equation}
+The partition functional in real space is then
+\begin{equation}
+  Z_0[J] = \exp[\frac{1}{2} \int \dd[4]{x} \dd[4]{x'} J(x) \Delta(x - x') J(x')].
+\end{equation}
+
+\subsection{Interactions}%
+\label{sub:interactions}
+
+Let us now include interactions. The Lagrangian density becomes 
+\begin{equation}
+  \mathscr{L} = \mathscr{L}_0 + \mathscr{L}_1,
+\end{equation}
+where $\mathscr{L}_0 = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} m^2 \phi^2$  is the free Lagrangian density.
+In presenting the following results we will skip a few steps since the derivations are very similar to what we have seen in $d = 1$ in the previous chapter.
+The partition functional is
+\begin{align}
+  Z[J] &= \int \pdd{\phi} \exp[-\int \dd[4]{x} (\mathscr{L}_0 + \mathscr{L}_1 + J \phi)] \\
+       &= \exp{-\int \dd[4]{y} \mathscr{L}_1 \left[ - \frac{\delta }{\delta J(y)} \right]} \exp[\frac{1}{2} \int \dd[4]{x} \dd[4]{x'} J(x) \Delta_0 (x - x') J(x')] \\
+       &\sim \sum_{V=0}^{N} \frac{1}{V!} \left( - \int \dd[4]{y} \mathscr{L}_1 \left[ -\frac{\delta }{\delta J(y)} \right] \right)^V \sum_{P = 0} \frac{1}{P!} \left[ \frac{1}{2} \int \dd[4]{x} \dd[4]{x'} J(x) \Delta_0(x - x') J(x') \right]^P.
+\end{align}
+For each term in $Z[J]$  there is a graph, as we have done before.
+\begin{itemize}
+  \item Each of the $P$ propagators  $\Delta_0(x - x')$  is represented by
+    \begin{equation}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+	  a [particle=\(x\)] -- b [particle=\(x'\)],
+	};
+      \end{gathered}
+      = \Delta_0 (x - x').
+    \end{equation}
+  \item We have $V$ vertices with $n$ lines from $\mathscr{L}_1 \left[ - \frac{\delta }{\delta J(y)} \right]$.
+  \item We integrate over positions of all vertices.
+  \item We have symmetry factors as before.
+  \item Sources, represented by external large dots need to come in pairs; one derivative to bring down a $J$ and the other to annihilate it.
+    \begin{equation}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \tikzfeynmanset{every vertex={large, dot}};
+	  \vertex[label=180:$J(x)$] (a);
+	  \vertex[label=0:$J(x')$, right=2cm of a] (b);
+          %\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \diagram* {
+            (a) -- (b),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{equation}
+\end{itemize}
+
+\begin{example}[$\phi^3$ theory]
+  With the Wilsonian effective action $W[J] = - \ln Z[J]$, the two-point correlation is
+  \begin{equation}
+    \langle \phi(x_2) \phi(x_1) \rangle = - \left( -\frac{\delta }{\delta J(x_2)} \right) \left( -\frac{\delta }{\delta J(x_1)} W[J] \right).
+  \end{equation}
+  Take $\mathscr{L}_1 = \frac{\lambda}{3!} \phi^3$. Then we have
+  \begin{equation}
+    \langle \phi(x_2) \phi(x_1) \rangle = 
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+       a [particle=\(x_2\)] -- b [particle=\(x_1\)],
+      };
+    \end{gathered}
+     + 
+     \begin{gathered}
+       \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+         a [particle=\(x_2\)] -- b [particle=\(y_2\)] 
+	 -- [half right, looseness=1] c [particle=\(y_1\)]
+	 -- [half right, looseness=1] b,
+	 c -- d [particle=\(x_1\)]
+       };
+     \end{gathered}
+     + \dots
+  \end{equation}
+  The second diagram is
+  \begin{equation}
+    D = \frac{\lambda^2}{2} \int \dd[4]{y_1} \dd[4]{y_2} \Delta_0 (x_2 - y_2) \Delta_0 (y_1-x_1) (\Delta_0(y_2-y_1))^2
+  \end{equation}
+  with symmetry factor $S = 2$.
+  Fourier transforming this gives
+   \begin{equation}
+     \langle \widetilde{\phi}(p_2) \widetilde{\phi}(p_1) \rangle \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)} \langle \phi(x_2) \phi(x_1) \rangle,
+  \end{equation}
+  where the exponential is a convention.
+  This phase convention implies that all momenta are outward (see Brown Ch.~5.1).
+  We then have the Fourier transform of the above diagram
+  \begin{equation}
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+        a -- [rmomentum=\(p_1\)] b [blob] -- [momentum=\(p_2\)] c,
+      };
+    \end{gathered}
+  \end{equation}
+  \begin{multline}
+    \widetilde{D} = \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)}
+    \int \dd[4]{y_1} \dd[4]{y_2} \int \left[ \prod_{j = 1}^4 \bdd[4]{k_j} \right] \\
+    \times e^{i k_2 \cdot (x_2 - y_2)} e^{i k_1 \cdot (y_1 - x_2)} e^{i (k_3 + k_4) \cdot (y_2 - y_1)} \\
+    \times \widetilde{\Delta} \widetilde{\Delta} \widetilde{\Delta} ??
+  \end{multline}
+  The only terms containing $x_1$ and $x_2$ are $e^{-i (p_1 + k_1) \cdot x_1}$ and $e^{-i (p_2  - k_2) \cdot x_2}$.
+  These integrate to $\bdelta^4(p_1 + k_1)$ and $\bdelta^4(p_2 - k_2)$ .
+  \begin{multline}
+    \widetilde{D} = \lambda^2 \int \dd[4]{y_1} \dd[4]{y_2} \int \bdd[4]{k_3} \bdd[4]{k_4} e^{-i (p_1 + k_3 + k_4) \cdot y_1} e^{-i (p_2 - k_3 - k_4) \cdot y_2}  \\
+    \times \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(k_3) \widetilde{\Delta}_0(k_4)
+  \end{multline}
+  \begin{equation}
+    \dots = \lambda^2 \int \bdd[4]{k} \bdelta^4(p_1 + p_2) \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(p_2 - k) \widetilde{\Delta}_0(k).
+  \end{equation}
+\end{example}
+
+It is conventional to write loop diagrams with the momenta flowing in a consistent direction
+\begin{equation}
+  \widetilde{D} = NOTES
+\end{equation}
+
+The momentum space Feynman rules can be summarised to be
+\begin{itemize}
+  \item lines propagator $1 / (k^2 + m^2)$
+  \item vertices $-V^(n)$ in $\mathscr{L}_1$
+  \item Momentum conserved at each vertex
+  \item each loop gives a momentum integral
+  \item overall momentum conservation comes from $\bdelta^4(\sum_j p_j)$ 
+  \item symmetry factors
+\end{itemize}

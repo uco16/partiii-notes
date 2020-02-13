@@ -1,0 +1,163 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 8: February 03}
+
+\section{Initial Value Problem for GR}%
+\label{sec:initial_value_problem_for_gr}
+
+In the following section we will assume throughout that we have a triple of initial data $(\Sigma, h_{ab}, K_{ab})$, where $\Sigma$ is a three-manifold, $h_{ab}$ a Riemannian metric on $\Sigma$, and $K_{ab}$ a symmetric tensor on $\Sigma$.
+
+\begin{theorem}[]
+  Given such date in vacuum ($T_{ab} = 0$), there exists a (up to diffeomorphism) unique spacetime $(M, g)$ , called the \emph{maximal Cauchy development} of $(\Sigma, h_{ab}, K_{ab})$ , such that
+  \begin{enumerate}[i)]
+    \item $(M, g)$ obeys the vacuum Einstein equation
+    \item $(M, g)$ is globally hyperbolic with Cauchy surface $\Sigma$, which means that we can predict the physics from the initial date
+    \item the induced metric and extrinsic curvature of $\Sigma$ are $h_{ab}$ and $K_{ab}$
+    \item any other spacetime that obeys conditions (i - iii) is isometric to a subset of $(M, g)$.
+  \end{enumerate} 
+\end{theorem}
+\begin{example}[]
+  \label{ex:8-1}
+  Let $\Sigma = \mathbb{R}^3$ and choose coordinates such that $h_{\mu\nu}= \delta_{\mu\nu}$ and $K_{\mu\nu} = 0$.
+  This satisfies the constraints in vacuum.
+  We can view $\Sigma$ as a surface of constant time in $\mathbb{M}^4$, which is its maximal Cauchy development.
+\end{example}
+
+The spacetime $(M, g)$ so obtained may be extendible.
+By property (iv), $\Sigma$ cannot be Cauchy for the extended spacetime $(M', g')$.
+Therefore, 
+\begin{equation}
+  M = D(\Sigma) \supset M'.
+\end{equation}
+This means that there exist Cauchy horizons for $\Sigma$ in $M'$.
+We cannot predict $g'_{ab}$ in $M' \setminus D(\Sigma)$ from data on $\Sigma$.
+
+\begin{example}[]
+  Let $\Sigma = \{(x, y, z) \suchthat x > 0\}$ with $h_{\mu\nu} = \delta_{\mu\nu}$ and $K_{\mu\nu} = 0$.
+  We have cut $\Sigma$ in half compared to Example \ref{ex:8-1}.
+  The maximal Cauchy development is illustrated in Fig.~\ref{fig:l8f1}.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l8f1.pdf_tex}
+    \caption{Maximal Cauchy development of the positive $x$-axis.}
+    \label{fig:l8f1}
+  \end{figure}
+  This is extendible to infinitely many spacetimes, all of which are flat in $D(\Sigma)$ but may disagree outside, for example by allowing the propagation of gravitational waves that do not enter $D(\Sigma)$.
+  In this example, the \emph{initial data} is extendible (to $x < 0$).
+\end{example}
+
+\begin{example}[]
+  Consider $M< 0$ Schwarzschild spacetime with metric
+   \begin{equation}
+    ds^2 = -\left( 1 + \frac{2 \abs{M}}{r} \right) dt^2 + \left( 1 + \frac{2 \abs{M}}{r} \right)^{-1} dr^2 +r^2 d\Omega_2^2.
+  \end{equation}
+  This has a curvature singularity at $r = 0$, but no coordinate singularity. There is no black hole.
+  Take $\Sigma  = \{t = 0\}$ , The induced metric is
+  \begin{equation}
+    h = \left( 1 + \frac{2 \abs{M}}{r} \right)^{-1} dr^2 + r^2 d\Omega_2^2.
+  \end{equation}
+  The extrinsic curvature can be calculated to vanish: $K_{ab} = 0$ .
+  Since there is a singularity at $r = 0$ , $(\Sigma, h_{ab})$  is not geodesically complete.
+  The maximal Cauchy development is \emph{not} all of $M< 0$ Schwarzschild: it is not globally hyperbolic.
+   \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l8f2.pdf_tex}
+    \caption{}
+    \label{fig:l8f2}
+  \end{figure}
+  The outgoing (ingoing) radial null geodesics is the future (past) Cauchy horizon.
+  Again the maximal Cauchy development is extendible, this time because the initial date is singular.
+  The solution outside $D(\Sigma)$ need not be spherically symmetric (unlike $M < 0$ Schwarzschild).
+\end{example}
+
+\begin{example}[]
+  Take $\Sigma$ to be the hyperboloid 
+  \begin{equation}
+    \{-t^2 + x^2 + y^2 + z^2 = -1 \suchthat t < 0\} \subset \mathbb{M}^4.
+  \end{equation}
+  Let $h_{ab}$ and $K_{ab}$ be the induced metric and extrinsic curvature.
+  The situation is illustrated in Fig.~\ref{fig:l8f3}
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l8f3.pdf_tex}
+    \caption{}
+    \label{fig:l8f3}
+  \end{figure}
+  Again this is extendible.
+  The solution does not need to be Minkowski outside $D(\Sigma)$.
+  The reason for the extendibility this time is that $\Sigma$ is \emph{asymptotically null}, meaning that it is asymptotic to the orange lightcone.
+  Information can arrive from infinity without intersecting $\Sigma$.
+\end{example}
+
+\section{Asymptotically Flat Initial Data}%
+\label{sec:asymptotically_flat_initial_data}
+
+\begin{definition}[asymptotically flat ends]
+  \begin{enumerate}[(a)]
+    \item Initial data $(\Sigma, h_{ab}, K_{ab})$  is an \emph{asymptotically flat end} if 
+      \begin{enumerate}[(i)]
+        \item $\Sigma \simeq \mathbb{R}^3 \setminus B$, where $B$ a closed ball centered on the origin in $\mathbb{R}^3$
+	\item if we pull-back $\mathbb{R}^3$ coordinates, we get coordinates $x^{i}$ on $\Sigma$. The $h_{ij} = \delta_{ij} + O(\frac{1}{r})$ and $K_{ij} = O(\frac{1}{r^2})$ as $r \to \infty$ where $r = \sqrt{x^{i} x^{i}}$.
+	\item derivatives of these conditions hold. For example, $h_{ij,k} = O(1(r^2))$ and so forth.
+      \end{enumerate}
+    \item Initial data is \emph{asymptotically flat with $N$ ends} if it is the union of a compact set with $N$ asymptotically flat ends.
+  \end{enumerate}
+\end{definition}
+\begin{exercise} \label{exe:8-1}
+  Consider $M> 0$ Schwarzschild with $\Sigma$ a surface of constant $t$ and $r > 2M$.
+  Take $h_{ab}$ and $K_{ab}$ to be the induced data.
+  This is an asymptotically flat end.
+\end{exercise}
+\begin{example}[Einstein--Rosen bridge]
+  Consider Kruskal with $\Sigma$ a surface of constant $t$, together with the induced data.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l8f4.pdf_tex}
+    \caption{}
+    \label{fig:l8f4}
+  \end{figure}
+  Here, $\Sigma$ is the union of two copies of Exercise~\ref{exe:8-1} with compact set $\{U = V = 0\}$.
+  This is asymptotically flat with two ends.
+\end{example}
+
+\section{Strong Cosmic Censorship (CSS)}%
+\label{sec:strong_cosmic_censorship_css_}
+
+\begin{conjecture}[Strong Cosmic Censorship]
+  Let $(\Sigma, h_{ab}, K_{ab})$ be geodesically complete, asymptotically flat initial data for the vacuum Einstein equation with $N$ ends.
+  Then, generically\footnote{Later we will find that rotating, charged black holes violate this.
+  `Generically' means that small perturbations to these special cases give inextendible Cauchy developments.}, the maximum Cauchy development is inextendible.
+\end{conjecture}
+Christodoulou and Klainerman proved  in 1994 that this holds for $(\Sigma, h_{ab}, K_{ab})$ close to data of the constant $t$ surface in Minkowski. (The spacetime `settles down' to Minkowski.)
+
+\chapter{The Singularity Theorem}%
+\label{cha:the_singularity_theorem}
+
+\begin{definition}[null hypersurface]
+  A hypersurface $\mathcal{N}$ is \emph{null} if its normal $n_a$ is null everywhere.
+\end{definition}
+\begin{example}[]
+  Consider a surface of constant $r$  in Schwarzschild spacetime. Its normal is $n = dr$.
+  In ingoing Eddington--Finkelstein coordinates, we have
+   \begin{equation}
+    g^{\mu\nu} = 
+    \begin{pmatrix}
+     0 & 1 & 0 & 0 \\
+     1 & 1- \frac{2M}{r} & 0 & 0 \\
+     0 & 0 & \frac{1}{r^2} & 0 \\
+     0 & 0 & 0 & \frac{1}{r^2 \sin^2 \theta} \\
+    \end{pmatrix}
+  \end{equation}
+  Now the norm of $n_a$  is 
+  \begin{equation}
+    g^{\mu\nu} n_{\mu} n_{\nu} = g^{rr} = 1 - \frac{2M}{r}.
+  \end{equation}
+  Thus we can see that the hypersurface defined by $r = 2M$ has  a normal $n_a$  that is null everywhere; $r = 2M$  defines a null hypersurface.
+  \begin{equation}
+    n^{\mu} = g^{\mu\nu} n_{\nu} = g^{\mu r} \implies n^a \rvert_{r = 2M} = \left( \frac{\partial }{\partial v} \right)^a.
+  \end{equation}
+\end{example}

@@ -2,19 +2,15 @@
 % course: aqft
 \lhead{Lecture 3: January 23}
 
-\section{Interacting Theory}%
-\label{sec:interacting_theory}
+\subsection{Interacting Theory}%
+\label{sub:interacting_theory}
 
 We want to go beyond the free theory.
 The way we are going to achieve this is by an expansion about the classical result $\hbar$.
 The resulting integral will end up not being convergent.
 
 \begin{claim}
-  Integrals like
-  \begin{equation}
-    \int \dd[]{\phi} f(\phi) e^{- S / \hbar}
-  \end{equation}
-  do not have a Taylor expansion about $\hbar = 0$.
+  Integrals like $ \int \dd[]{\phi} f(\phi) e^{- S / \hbar} $ do not have a Taylor expansion about $\hbar = 0$.
 \end{claim}
 \begin{proof}[Proof (Dyson)]
   If the expansion about $\hbar = 0$ existed for $\hbar > 0$, then in the complex plane, there must be some open neighbourhood of $\hbar$ in which the expansion converges.
@@ -127,31 +123,31 @@ The first non-trivial terms are $(V, P) = (1, 2), (2, 4), \dots$.
   Z(0) \propto 1 + \quad
   \begin{gathered}
     \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-       a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+       a [small, dot] -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
      };}
   \end{gathered} \quad
   + \
   \begin{gathered}
     \feynmandiagram[transform shape, scale=0.8][small, horizontal=a to b, layered layout] {
-      a -- [half left] b -- [half left] a,
+      a [small, dot] -- [half left] b [small, dot] -- [half left] a,
       a -- [half left, looseness=0.5] b -- [half left, looseness=0.5] a,
     };
   \end{gathered} \
   +\quad
   \mathclap{\begin{gathered}
      \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
-       a -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b -- [loop, min distance=2cm, in=-135, out=-45] b,
+       a[small, dot] -- [loop, min distance=2cm, in=135, out=45] a -- [half left] b[small, dot] -- [loop, min distance=2cm, in=-135, out=-45] b,
        b -- [half left] a,
      };
    \end{gathered}}\quad
   +
   \begin{gathered}
     \quad \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-       a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+       a[small, dot] -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
      };
    } \qquad
      \mathclap{\feynmandiagram[transform shape, scale=0.5][small, horizontal=a to b] {
-        a -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
+        a[small, dot] -- [loop, min distance=2cm, in=-135, out=-45] a -- [loop, min distance=2cm, in=135, out=45] a,
       };}\quad
   \end{gathered}
   + 

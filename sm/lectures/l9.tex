@@ -1,0 +1,82 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 9: February 06}
+
+We describe interactions between initial states at the infinite past $t \to -\infty$ to final states in the infinite future $t \to +\infty$, where both are assumed to act just like free states.
+This is described by the $S$-matrix:
+\begin{equation}
+  S_{\beta\alpha} \coloneqq \bra{\beta^{\text{out}}}\ket{\alpha^{\text{in}}} = \delta_{\beta\alpha} + \delta(p^2 -m^2) M_{\beta\alpha}.
+\end{equation}
+The $\ket{\alpha}$  and $\ket{\beta}$  are many particle states.
+
+We can write the Hilbert space as
+\begin{equation}
+  \mathcal{H} = \mathcal{H}_0 \oplus \mathcal{H}_1 \oplus \mathcal{H}_2 \oplus \dots,
+\end{equation}
+where $H_n$  is the space of $n$ -particle states.
+Notably, the vacuum $\ket{0}$ is the only state in $\mathcal{H}_0$, whereas $\mathcal{H}_1$ are the massless states $\ket{p^{\mu}, \lambda} = a^{\dagger}(p^{\mu}, \lambda) \ket{0}$.
+Furthermore, two particle states in $\mathcal{H}_2$  are then obtained from states in $\mathcal{H}_1$ as
+\begin{align}
+  \ket{p^{\mu}_1, \lambda_1; p^{\mu}_2, \lambda_2} &= a^{\dagger}(p_2, \lambda_2) \ket{p^{\mu}_1, \lambda} \\
+  &= a^{\dagger}(p_2, \lambda_2) a^{\dagger}(p_1, \lambda_1) \ket{0} \\
+  &= \pm a^{\dagger}(p_1, \lambda) a^{\dagger}(p_2, \lambda_2) \ket{0},
+\end{align}
+where the sign depends on the type of particle. \emph{Bosons} commute and have integer spin (helicity), whereas \emph{fermions}, which have half-integer spin (helicity), anticommute.
+
+\subsection{General Conditions on Interactions}%
+\label{sub:general_conditions_on_interactions}
+
+The conditions that we outlined earlier can now be written slightly differently:
+\begin{enumerate}[(i)]
+  \item Unitarity (probabilities add up to $1$) preserve by unitary time evolution $U = e^{-i H t}$. The $S$-matrix is unitary $S_{\beta\alpha} = \bra{\beta} \ket{S \alpha}$, $S^{\dagger} S = 1$.
+  \item Amplitudes ($S$-matrix) invariant under Poincaré transformations.
+  \item Locality (Cluster decomposition)
+    \begin{itemize}
+      \item The Hamiltonian  has to be a local function $H = \int \dd[3]{x} \mathscr{H}(x, t)$; it is the sum of energy densities at each point. Similarly with the Lagrangian $L = \int \dd[3]{x} \mathscr{L}(x, t)$  and the Action $S = \int \dd[4]{x} \mathscr{L}(x^{\mu})$.
+      \item $\mathscr{H}$ and $\mathscr{L}$ are operators in position space $x^{\mu}$, but particle states are defined in momentum space $p^{\mu}$. Therefore, we need to Fourier transform to move to $x$-space.
+	This leads us to defining a field. For instance, for a massless particle we can write down
+	\begin{equation}
+	  A_{\alpha}(x) \coloneqq \int \bdd[]{p} e^{i p x} u_{\alpha}(p, \lambda) a(p, \lambda).
+	\end{equation}
+      \item Causality: operators at different spatial locations have to commute at the same time
+	\begin{equation}
+	  \label{eq:9-caus}
+	  [\phi_{\alpha}(x, t), \phi^{\dagger}_{\alpha}(y, t)] = 0.
+	\end{equation}
+	The field $A_{\alpha}$ itself is local but not causal. To make it causal we introduce another field
+	\begin{equation}
+	  B_{\alpha}(x) \coloneqq \int \bdd[]{p} e^{i p x} v_{\alpha}(p, \lambda) b(p, \lambda),
+	\end{equation}
+	so that the total field, which satisfies \eqref{eq:9-caus} is
+	\begin{equation}
+	  \phi_{\alpha} = A_{\alpha} + \xi B^{\dagger}_{\alpha}.
+	\end{equation}
+	Therefore, field theory requires the existence of \emph{antiparticles}!
+    \end{itemize}
+  \item Stability: Energy bounded from below ($\ket{0}$)
+  \item Effective Field Theories ($\supset$ renormalisability and non-renormalisability)
+    \begin{itemize}
+      \item Physics is organised by scales. For instance, in QED we talk about electrons and photons. This is okay until we hit the energy threshold $E = 2 m_{\mu}$ of the muon mass.
+      \item The Lagrangian density can be written $\mathscr{L} = c_{i} \mathcal{O}_{i}(\phi_{\alpha})$, where $\mathcal{O}_{i}$ are operators.
+	We know $[\mathscr{L}] = 4$. The theory is said to be \emph{renormalisable} if $[c_{i}] \geq 0$.
+	This is very restrictive since $[\mathcal{O}_i] \geq 0$. 
+	\begin{equation}
+	  [c_{i}] + [\mathcal{O}_i] = 4.
+	\end{equation}
+	This is very predictive since it allows only a few $c_i$.
+
+	The theory is non-renormalisable  if there is a $c_i$ with $[c_i] \leq 0$. For example, consider the scalar field with Lagrangian density
+	\begin{equation}
+	  \mathscr{L} = \underbrace{\overbrace{\partial^{\mu} \phi \partial_{\mu} \phi - m^2 \phi^2 -\lambda \phi^4}^{\mathclap{\text{renormalisable}}} + \frac{\alpha_1}{M} \phi^5 + \frac{\alpha_2}{M^2} \phi^6 + \dots}_{\mathclap{\text{non-renormalisable}}}.
+	\end{equation}
+	There is nothing wrong with this theory \emph{as long as} we are working on energies much smaller than $M$, so that the expansion in $(E / M)$ is under control.
+	However, this fails for $E \sim M$. We require UV completion.
+
+	In a renormalisable theory like the Standard Model we cannot predict when the theory will break down, since we do not know of the scale of $M$.
+	For gravity, which is non-renormalisable, we can be much more certain about the energy scales on which our predictions should be valid.
+
+	\begin{leftbar}
+	  This is why in the standard model we will only tend to draw quadratic and quartic potentials; the requirement of renormalisability means that we cannot go beyond quartic and these are the only symmetric choices we have.
+	\end{leftbar}
+    \end{itemize}
+\end{enumerate}

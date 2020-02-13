@@ -38,14 +38,14 @@ where in the last equation we used that $d\omega = 0$.
   So translations are Hamiltonian with $p_{i}$ as the Hamiltonian function.
 \end{example}
 
-We will be interested in compact $(M, \omega)$ with $\partial M = \emptyset$. We will also require that $X$ generates a $U(1)$ action on $M$, meaning that generic orbits of  $X$  are circles.
+We will be interested in compact $(M, \omega)$ with $\partial M = \emptyset$. We will also require that $X$ generates a $U(1)$\footnote{Strictly speaking it does not need to be $U(1)$. It can be other groups as well, but this is the simplest case.} action on $M$, meaning that generic orbits of  $X$  are circles.
 \begin{example}[]
   Consider $M = S^2$  with  $\omega = \sin \theta d\theta \wedge d\phi$ .
   \begin{figure}[tbhp]
     \centering
     \def\svgwidth{0.4\columnwidth}
     \input{lectures/l4f2.pdf_tex}
-    \caption{}
+    \caption{Integral curves on $S^2$.}
     \label{fig:l4f2}
   \end{figure}
   Take $X = \frac{\partial }{\partial \phi}$. There are two fixed points at the north and south poles, as illustrated in \ref{fig:l4f2}.
@@ -59,6 +59,7 @@ localises to fixed points $x_* \in M$, where $X(x_*) = 0$ .
 \begin{example}[$(M, \omega) = (S^2, \sin \theta d\theta \wedge d\phi)$]
   Have $X = - \frac{\partial }{\partial \phi}$ and $h = \cos \theta$. The integral can simply be done without using a fancy localisation theorem. Use the substitution $z = \cos \theta$:
   \begin{equation}
+    \label{eq:4-int}
     \int_{S^2} e^{i \alpha \cos \theta} \sin \theta d\theta \wedge d\phi = 2 \pi \int_{-1}^{+1} e^{i \alpha z} \dd[]{z} = \frac{2 \pi}{i \alpha} \left[ e^{i \alpha} - e^{-i \alpha} \right],
   \end{equation}
   which is simply the value of $e^{i \alpha h(x_*)}$ at the north and south poles.

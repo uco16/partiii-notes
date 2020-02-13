@@ -1,0 +1,123 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 12: February 13}
+
+We can solve this differential equation by separation of variables
+\begin{equation}
+  \frac{\dd[]{g}}{g^2} = \frac{3}{16 \pi^2} \frac{\dd[]{\mu}}{\mu}.
+\end{equation}
+Integrating gives
+\begin{equation}
+  \frac{1}{g(\mu')} = \frac{1}{g(\mu)} - \frac{3}{16 \pi^2} \ln \frac{\mu'}{\mu},
+\end{equation}
+so 
+\begin{equation}
+  g(\mu') = \frac{g(\mu)}{1 - \frac{3g}{16 \pi^2} \ln \frac{\mu'}{\mu}} \stackrel{g \text{ small}}{\approx} g(\mu) + \frac{3 (g(\mu))^2}{16 \pi^2} \ln \frac{\mu'}{\mu}.
+\end{equation}
+For $\mu' > \mu$,  $g(\mu') > g(\mu)$ .
+The coupling ``runs'' to larger values as $\mu$  increases.
+\begin{remark}
+  If $\mu' \to \Lambda_{\phi^4}$ , where $\Lambda_{\phi^4}$  is defined via
+  \begin{equation}
+    \frac{3g}{16 \pi^2} \ln \frac{\Lambda_{\phi^4}}{\mu} = 1, \qquad \text{1-loop}
+  \end{equation}
+  then $g(\mu') \to \infty$ . This $\Lambda_{\phi^4}$  can be used as a scheme-dependent reference mass scale.
+  \begin{equation}
+    g(\mu) = \frac{16\pi^2}{3} \left[\ln(\frac{\Lambda_{\phi^4}}{\mu})\right]^{-1}.
+  \end{equation}
+  The appearance of the scale $\Lambda_{\phi^4}$ is ``dimensional transmutation''; it seems like magic / alchemy that the regularisation of a dimensionless interaction introduces a scheme-dependent scale.
+  It is an order-of-magnitude estimate of where the theory becomes non-perturbative.
+\end{remark}
+\begin{remark}
+  Perturbation theory requires $\mu \ll \Lambda_{\phi^4}$.
+\end{remark}
+
+\subsection{The Modern Approach}%
+\label{sub:the_modern_approach}
+
+Quantum effective action and the vertex functions $\Phi^{(n)}( \dots)$ should be physical.
+These go into the LSZ formula \eqref{eq:lsz}.
+Write $\phi_0 = Z_\phi^{\frac{1}{2}} \phi$ , then
+\begin{equation}
+  \Gamma^{(?)}_{0} (x_1, \dots, x_n) = (-1)^n \frac{\delta^{n} \Gamma[\phi_0]}{\delta \phi_0 (x_1) \dots \delta\phi_0(x_n)} = (-1)^n Z_{\phi}^{1/ 2} \frac{\delta^n \Gamma[\phi]}{\delta \phi(x_1) \dots \delta \phi(x_n)}.
+\end{equation}
+\begin{definition}[anomalous dimension]
+  We define the analogue of the beta function, the \emph{anomalous dimension} of $\phi$ , to be
+  \begin{equation}
+    \gamma_\phi = -\frac{\mu}{2} \dv{\mu} \ln Z_\phi.
+  \end{equation}
+\end{definition}
+With this definition, we have
+\begin{equation}
+  \mu \dv{\mu} Z_\phi^{1 / 2} = -\frac{n}{2} Z_\phi^{-n / 2} \mu \dv{\mu} \ln Z_\phi = (n \gamma_\phi) Z_\phi^{-n / 2}.
+\end{equation}
+We require that terms in $\Gamma$ should be independent of scale, which implies
+\begin{equation}
+  \mu \dv{\mu} \Gamma^{(n)} = 0 = \left( \mu \pdv{\mu} + \mu \dv{m^2}{\mu} \frac{\partial }{\partial m^2} + \beta(g) + n \gamma_\phi \right) \Gamma^{(n)}_{\text{ren}} (x_1, \dots, x_n).
+\end{equation}
+Equations like this, which govern the running of the parameters of the theory by looking at $n$ -point functions, are called \emph{Callan--Symanzyk equations}.
+
+All but the first term in the parentheses are (at least) order $\hbar$  at $1$ -loop.
+In $\phi^4$  theory $Z_\phi = 1$ to 1-loop order. 
+\begin{gather}
+  \Pi_1^{\overline{\text{MS}}{}} = \frac{g m^2}{32 \pi^2} \left( \ln \frac{\mu^2}{\mu^2} - 1 \right) \\
+  \widetilde{\Gamma}^{(2)} (p^2 = 0) = \cancel{p^2} + m^2 - \frac{g m^2}{32 \pi^2} \left( \ln \frac{\mu^2}{m^2} - 1 \right).
+\end{gather}
+Using the Callan--Symanzyk equation, we have
+\begin{equation}
+  0 = \mu \dv{\mu} \widetilde{\Gamma}^{(2)}(0) = \mu \dv{m^2}{\mu} - \frac{g m^2}{16 \pi^2} + O(\hbar^2).
+\end{equation}
+From this we see that the dimensionally regularised mass changed as 
+\begin{equation}
+  \mu \dv{m^2}{\mu} = \frac{g m^2}{16 \pi^2}.
+\end{equation}
+
+Including the  leading order term and one-loop correction, we have
+\begin{equation}
+  \widetilde{\Gamma}^{(4)}(0,0,0,0) = - g \mu^\epsilon + \frac{3 g^2 \mu^\epsilon}{32 \pi^2} \ln \frac{\mu^2}{m^2}.
+\end{equation}
+Differentiating this (and ignoring the $\mu^\epsilon$ since the derivatives of those will vanish at $\epsilon \to 0$), we have
+\begin{equation}
+  0 = \mu \dv{\mu} \widetilde{\Gamma}^4 = - \beta(g) \mu^\epsilon + \frac{3 g^2 \mu^\epsilon}{16 \pi^2} + O(\hbar^2).
+\end{equation}
+Once again, our beta function is
+\begin{equation}
+  \beta(g) = \frac{3 g^2}{16 \pi^2},
+\end{equation}
+which is the same as \eqref{eq:11-beta}.
+This argument is the more modern approach.
+
+\chapter{The Renormalisation (Semi-)Group}%
+\label{cha:the_renormalisation_semi_group}
+
+The idea coming from statistical field theory is that we are studying quantum field theories that fall into universality classes.
+
+We impose some cutoff, which has a degree of arbitrariness to it, in the UV. However, at lower energies, we want to see the same universal IR physics emerging from theories with different regularisation and renormalisation schemes and scales.
+We will have to tune these scales to get the correct low-energy physics.
+
+\begin{remark}
+  When we say \emph{UV}, we mean an unobtainable high-energy regime, such as the Planck scale, which we cannot probe with experiment.
+  In contrast, the \emph{IR} is all the interesting physics that is accessible to us.
+\end{remark}
+
+The idea behind the renormalisation group (RG) is that we want to study how the microscopic features (i.e.~the couplings) change along the ``lines of constant IR physics''.
+%We have seen in detail by looking at loop diagrams and $\beta$-functions how the couplings behave, but we now want to see also how ??
+
+Consider a real scalar field with momentum cutoff $\Lambda_0$ in $d \in \mathbb{N}$ dimensions.
+Generically, the action will be
+\begin{equation}
+  S_{\Lambda_0} [\phi] = \int_{}^{}\dd[d]{x} \left[ \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \sum_{\text{terms } i} \frac{1}{\Lambda_0^{d_i - d}} g_{iO} \mathcal{O}_i(x) \right],
+\end{equation}
+where the ``operators'' $\mathcal{O}_i[\phi(x)]$ are simply some functions of the fields $\phi$ and their derivatives $\partial \phi$.
+We could have $ \mathcal{O}_i = (\partial \phi)^{r_i} \phi^{s_i}$ for example.
+ In particular, they are \emph{local} operators with mass dimension $d_i > 0$. 
+
+The partition function with cutoff $\Lambda_0$ is a function of all the couplings $g_{iO}$
+\begin{equation}
+  \mathcal{Z}_{\Lambda_0} (g_{iO}) = \int^{\mathrlap{\Lambda_0}} \pdd{\phi} e^{-S_{\Lambda_0}[\phi]}.
+\end{equation}
+
+The notation on the path integral indicates that the integral is over field modes that have $\abs{p} \leq \Lambda_0$, meaning that the Fourier integral of $\phi$  in $\mathcal{Z}_{\Lambda_0}$ is
+\begin{equation}
+  \phi(x) = \int_{\abs{p} \leq \Lambda_0} \bdd[d]{p} e^{i p \cdot x} \widetilde{\phi}(p).
+\end{equation}

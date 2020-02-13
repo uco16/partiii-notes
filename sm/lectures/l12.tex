@@ -1,0 +1,104 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 12: February 13}
+
+\subsection{Non Abelian}%
+\label{sub:non_abelian}
+
+First, consider Compton scattering $e^+ \gamma \to e^+ \gamma$ in QED:
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
+      a -- [fermion, edge label=$u(p)$] b [dot, label=$e$] -- [fermion] c [dot, label=$e$] -- [fermion, edge label=$\overline{u}{}(p')$] d,
+      e -- [boson, edge label=$\epsilon_{\mu}(q)$] b,
+      c -- [boson, edge label=$\epsilon_{\mu}(q')$] f,
+    };
+  \end{gathered}
+\end{equation}
+The matrix element can be written $M = M_{\mu\nu} \epsilon^{\nu}_{\text{in}} \epsilon^{\mu} _{\text{out}}$ where
+\begin{equation}
+  M_{\mu\nu} = i (-i e)^2 \overline{u}{}(p', \sigma') \left( \frac{\gamma_{\mu}(\cancel{p} + \cancel{q} + m)\gamma_{\nu}}{(p + q)^2 - m^2} + \frac{\gamma_{\nu}(\cancel{p} - \cancel{q'} + m)\gamma_{\mu}}{(p - q')^2 - m^2} \right) u(\vb{p}, \sigma),
+\end{equation}
+where $\sigma = g_s$.
+Consider the Ward identity $M_{\mu\nu} q^{\nu} \epsilon^{\mu} _{\text{out}} = 0$.
+Let us check whether this holds by considering the left hand side
+\begin{equation}
+  M_{\mu\nu} q^{\nu} \epsilon^{\mu} _{\text{out}} = i (-i e)^2 \overline{u}{}(p', \sigma') 
+  \left( \frac{\cancel{\epsilon}_{\text{out}}(\cancel{p} + \cancel{q} + m)\cancel{q}}{(p + q)^2 - m^2} 
+  + \frac{\cancel{q}(\cancel{p} - \cancel{q'} + m)\cancel{\epsilon}_{\text{out}}}{(p' - q)^2 - m^2} \right) u(\vb{p}, \sigma),
+\end{equation}
+where we used momentum conservation $p + q = p' + q'$.
+Using another trick: writing $\cancel{q} = \cancel{q} + \cancel{p}-m - (\cancel{p} - m)$ and using the Dirac equation
+\begin{equation}
+  (\cancel{p} - m) u = 0 \qquad \overline{u}{} (\cancel{p'} - m) = 0,
+\end{equation}
+we have
+\begin{equation}
+  \label{eq:12-1}
+  M_{\mu\nu} q^{\nu} \epsilon^{\mu} _{\text{out}} = i (-i e)^2 \overline{u}{}(p', \sigma') \cancel{\epsilon} _{\text{out}} u(p, \sigma) \left( \frac{2 p \cdot q}{\underbrace{(p + q)^2 - m^2}_{\mathclap{2 p \cdot q}}} + \frac{2 p' \cdot q}{\underbrace{(p' - q)^2 - m^2}_{\mathclap{-2 p' \cdot q}}} \right) = 0.
+\end{equation}
+Thus, the Ward identity holds as expected.
+
+Now take
+\begin{equation}
+  \label{eq:12-diag}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
+      a -- [fermion, edge label=$i$] b [dot, label=$T_{ik}^a$] -- [fermion, edge label=$k$] c[dot, label=$T^a_{kj}$] -- [fermion, edge label=$j$] d,
+      e [particle=\(a\)] -- [boson] b,
+      c -- [boson] f [particle=\(b\)]
+    };
+  \end{gathered}
+\end{equation}
+
+Imagine we had called the couplings $e_1$ and $e_2$. We could not have factored it out in \eqref{eq:12-1} and the terms in the brackets would be $e_1 e_2 - e_2 e_1$. For our couplings $T^a_{ij}$ in diagram \eqref{eq:12-diag}, we have
+\begin{equation}
+  T^a_{ik} T^{b}_{kj} - T^b_{ik} T^a_{kj}  = 0
+\end{equation}
+unless there is a coupling between the photons themselves
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=e to c] {
+      a [particle=\(a\)] -- [boson] v [dot, label=0:$f^{abc}$] -- [boson] b [particle=\(b\)],
+      c -- [fermion, edge label'=$i$] d [dot, label=0:$T^c_{ij}$] -- [fermion, edge label=$j$] e,
+      v -- [boson, edge label=$c$] d,
+    };
+  \end{gathered}
+\end{equation}
+In this case, we have
+\begin{align}
+  T_{ik}^a T^b_{kj} - T^b_{ik} T^a_{kj} &= f^{abc} T^c_{ij}. \\
+  [T^a, T^b] &= i f^{abc} T^c,
+\end{align}
+where the factor $i$ in the second line is a matter of normalisation of the structure constants $f^{abc}$.
+This is the Lie algebra of a non-Abelian gauge (Yang--Mills) theory!
+
+\subsection*{General Remarks}%
+
+\begin{enumerate}[(i)]
+  \item A system with many massless helicity $1$  fields is either 
+    \begin{itemize}
+      \item many photon-like particles which do not interacting with themselves
+      \item non-Abelian Yang--Mills gauge bosons with algebra $[T^a, T^b] = i f^{abc} T^c$.
+    \end{itemize}
+  \item group elements $U = e^{i \theta^a T^a} \simeq \mathbb{1} + i \theta^a T^a$. The $T^a$ are the generators and  $\theta^a$ are the parameters or coordinates in the group manifold.
+   \item $U$  acting on matter field $i U \psi$. 
+     \begin{itemize}
+       \item We can then introduce the covariant derivative $D_{\mu} \coloneqq \partial_{\mu} - i g A_{\mu}$, which acts on $\psi$ covariantly
+       \begin{equation}
+         D_{\mu} \psi \to U D_{\mu} \psi.
+       \end{equation} 
+       Requiring this, one can check that $A_{\mu}$ has to transform as
+       \begin{equation}
+         A_{\mu} \to U A_{\mu} U^{-1} - \frac{i}{g} \partial_{\mu} U.
+       \end{equation}
+       Infinitesimally, we may expand $U$ in terms of the generators to give
+       \begin{equation}
+         A_{\mu}'{}^a = A^a_{\mu} + \frac{i}{g} \partial_{\mu} \alpha^a - f^{abc} \alpha^b A^c_{\mu}
+       \end{equation}
+       \item The curvature / field strength tensor, obtained from the commutator $[D_{\mu}, D_{\nu}]$ is
+	 \begin{equation}
+	   F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i g [A_{\mu}, A_{\nu}].
+	 \end{equation}
+     \end{itemize}
+\end{enumerate}

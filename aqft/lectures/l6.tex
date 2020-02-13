@@ -1,0 +1,136 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 6: January 30}
+
+\begin{example}[]
+  Take the $N$-component scalar $\phi_a$, $a = 1, \dots, N$.
+  Then the connected propagator is
+  \begin{equation}
+    \langle \phi_a \phi_b \rangle^{c}_{J} = -\hbar \frac{\partial^2 W}{\partial J_a \partial J_b} = -\hbar \frac{\partial \Phi_b}{\partial J_a},
+  \end{equation}
+  since $\Phi_b = \frac{\partial W}{\partial J_b}$. Using $J_a = -\frac{\partial \Gamma}{\partial \Phi_a}$ then gives
+  \begin{equation}
+    \langle \phi_a \phi_b \rangle^c_J = -\hbar \left( \frac{\partial J_a}{\partial \Phi_b} \right)^{-1} = \hbar \left( \frac{\partial^2 \Gamma}{\partial \Phi_b \Phi_a} \right)^{-1}.
+  \end{equation}
+  The full connected propagator is $\hbar$ times the inverse of the quadratic term in $\Gamma(\Phi)$.
+\end{example}
+
+\section{Fermions}%
+\label{sec:fermions}
+
+\begin{definition}[Grassmann numbers]
+  The \emph{Grassmann numbers} are a set of $n$ elements $\{\theta_a\}$ obeying $\theta_a \theta_b = -\theta_b \theta_a$.
+  For any scalar $\phi \in \mathbb{C}$, we have $\theta_a \phi = \phi \theta_a$.
+\end{definition}
+\begin{remark}
+  Anti-symmetry implies that $\theta^2 = 0$.
+\end{remark}
+\begin{remark}
+  The product of an even number of $\theta$'s acts like a scalar and commutes with other $\theta$'s, for example $\theta_a (\theta_c \theta_d) = (\theta_c \theta_d) \theta_a$.
+  \begin{leftbar}
+    Compare this with the behaviour of fermions (Grassmann variables, half integer spin) and bosons (scalars, integer spin) under exchange.
+  \end{leftbar}
+\end{remark}
+\begin{leftbar}
+  The anticommuting Grassmann variables are frequently called \emph{a-numbers}, in contrast to commuting \emph{c-numbers}.
+\end{leftbar}
+A general function of Grassmann variables can be written
+\begin{equation}
+  f(\{\theta_a\}) = f(\theta) = f + \phi_a \theta_a + \frac{1}{2} g_{ab} \theta_a \theta_b + \dots + \frac{1}{n!} h_{a_1, \dots, a_n} \theta_{a_1} \dots \theta_{a_n}.
+\end{equation}
+The coefficients are anti-symmetric in their indices.
+
+\subsection{Grassmann Analysis}%
+\label{sub:grassmann_analysis}
+
+\begin{definition}[differentiation]
+  On Grassmann variables, we define \emph{differentiation} via
+  \begin{equation}
+    \left( \frac{\partial }{\partial \theta_a} \theta_b + \theta_b \frac{\partial }{\partial \theta_a} \right) \bullet = \delta_{ab} \bullet.
+  \end{equation}
+\end{definition}
+
+For a single Grassmann variable $\theta$, where possible functions are of the form $F(\theta) = f + \phi \theta$, we need only specify $\int d\theta$ and $\int \theta d\theta$ to define \emph{integration}.
+Requiring translational invariance gives
+\begin{equation}
+  \int d\theta (\theta - \mu) = \int d\theta \theta,
+\end{equation}
+when $\mu$ is a constant Grassmann variable.
+We can then choose a normalisation:
+\begin{equation}
+  \int d\theta = 0 \qquad \int d\theta \theta = 1.
+\end{equation}
+\begin{remark}
+  There is a similarity between differentiation and integration.
+\end{remark}
+
+The \emph{Berenzin rules} give
+\begin{equation}
+  \int d\theta \frac{\partial }{\partial \theta} F(\theta) = 0.
+\end{equation}
+
+Similarly, for $n$  Grassmann variables, we define
+\begin{equation}
+  \int \theta_1 \dots \theta_n \dd[n]{\theta} = 1.
+\end{equation}
+
+\begin{definition}[Berenzin integration]
+  In general, we define \emph{Berenzin integration} over Grassmann variables as
+  \begin{equation}
+    \int \theta_{a_1} \dots \theta_{a_n} \dd[n]{\theta} = \epsilon_{a_1 \dots a_n}.
+  \end{equation}
+\end{definition}
+
+Let us consider how this integration measure changes under change of variables $\theta'_a = A_{ab} \theta_b$ . Consider the integral
+\begin{align}
+  \int \dd[n]{\theta} \theta'_{a_1} \dots \theta'_{a_n} &= A_{a_1 b_1} \dots A_{a_n b_n} \int \dd[n]{\theta} \theta_{b_1} \dots \theta_{b_n} \\
+  &= \det{A} \epsilon_{a_1 \dots a_n} \\
+  &= \det{A} \int \dd[n]{\theta'} \theta'_{a_1} \dots\theta'_{a_n}.
+\end{align} 
+Therefore, the measure changes as $\dd[n]{\theta'} = [\det{A}]^{-1} \dd[n]{\theta}$, which is the inverse to bosonic integration!
+
+\subsection{Free Fermion Field Theory \texorpdfstring{($d = 0$)}{in Zero Dimensions}}%
+\label{sub:free_fermion_field_theory_($d = 0$)_in_zero_dimensions_}
+
+Consider two fermionic fields $\theta_1, \theta_2$. The action must be bosonic, so up to an additive constant which can be absorbed into the normalisation of the partition function, we have $S = \frac{1}{2} A \theta_1 \theta_2$, where $A \in \mathbb{R}$. The free partition function can be calculated explicitly by expanding the exponential
+ \begin{equation}
+   \mathcal{Z}_0 = \int \dd[2]{\theta} e^{-S(\theta) / \hbar} = \int \dd[2]{\theta} \left( 1- \frac{A}{2 \hbar} \theta_1 \theta_2 \right) = -\frac{A}{2\hbar}.
+\end{equation}
+Now, for $n = 2m$  fields $\theta_a$  have the action $S = \frac{1}{2}A_{ab} \theta_a \theta_b$ , where $A_{ab}$  is an anti-symmetric real matrix.
+The partition function is
+\begin{equation}
+  \mathcal{Z}_0 = \int \dd[2m]{\theta} \sum_{j = 0}^m \frac{(-1)^j}{(2 \hbar)^j j!} (A_{ab} \theta_a \theta_b)^j
+\end{equation}
+Since the sum terminates, we can exchange the order of differentiation and integration, giving
+\begin{align}
+  \mathcal{Z}_0 &= \frac{(-1)^m}{(2 \hbar)^m m!} \int \dd[2m]{\theta} A_{a_1 a_2} A_{a_3 a_4} \dots A_{a_{2m-1} a_{2m}} \theta_{a_1} \dots \theta_{a_{2m}} \\
+		&= \frac{(-1)^m}{(2 \hbar)^m m!} A_{a_1 a_2} \dots A_{a_{2m-1} a_{2m}} \epsilon^{a_1 a_2 \dots a_{2m}} \\
+		&\coloneqq \frac{(-1)^m}{ \hbar^m} \Pf{A},
+\end{align}
+which defines the \emph{Pfaffian} $\Pf{A}$ of the matrix $A$ .
+\begin{exercise}
+  Show that $(\Pf{A})^2 = \det A$.
+\end{exercise}
+\begin{remark}
+  Again, this result is, up to prefactors, the inverse of the bosonic free partition function
+  \begin{equation}
+    \mathcal{Z}_0 = \sqrt{\frac{(2 \pi \hbar)^n}{\det M}}.
+  \end{equation}
+\end{remark}
+
+Introducing external, Grassmann-valued sources $\eta_a$ to the action gives
+\begin{equation}
+  S(\theta, \eta) = \frac{1}{2} A_{ab} \theta_a \theta_b + \eta_a \theta_a.
+\end{equation}
+To compute the partition function, we complete the square as in the bosonic case:
+\begin{equation}
+  S(\theta, \eta) = \frac{1}{2} \left(\theta_a + \eta_c (A^{-1})_{ca}\right) A_{ab} \left(\theta_b + \eta_d (A^{-1})_{db}\right) + \frac{1}{2} \eta_a (A^{-1})_{ab} \eta_b.
+\end{equation}
+Using the translation invariance of Berezin integration, we have
+\begin{equation}
+  \mathcal{Z}_0(\eta) = \mathcal{Z}_0 (0) \exp(-\frac{1}{2 \hbar} \eta^T A^{-1} \eta).
+\end{equation}
+The propagator too can be evaluated explicitly to be
+\begin{equation}
+  \langle \theta_a \theta_b \rangle = \left.\frac{\hbar^2}{\mathcal{Z}_0 (0)} \frac{\partial^2 \mathcal{Z}_0 (\eta)}{\partial \eta_a \partial \eta_b} \right\rvert_{\eta = 0} = \hbar (A^{-1})_{ab}
+\end{equation}

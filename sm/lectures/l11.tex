@@ -1,0 +1,148 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 11: February 11}
+
+\section{Origin of Gauge (Local) Symmetries}%
+\label{sec:origin_of_gauge_local_symmetries}
+
+Consider a massless helicity-1 field.
+\begin{equation}
+  A_{\mu}(x) = \sum_{\lambda=\pm 1} \int \dd[]{p} \left( \epsilon_{\mu}(p^{\mu}, \lambda) a_{p \lambda} e^{i p x} + \epsilon^*_{\mu} (p^{\mu}, \lambda) a^{\dagger}_{p \lambda} e^{-i p x} \right),
+\end{equation}
+where $\epsilon_{\mu}$  is the polarisation vector.
+As it is written, $A_{\mu}$  has four degrees of freedom $\mu = 0,1,2,3$.
+However, we know that the massless helicity-1 field only has two degrees of freedom $\lambda = \pm 1$, so we need to impose  (Lorentz invariant) constraints:
+Imposing
+\begin{equation}
+  \label{eq:11-1}
+  p^{\mu} \epsilon_{\mu} = 0,
+\end{equation}
+leads us from $4$  to $3$  degrees of freedom; this would be enough for a massive vector with $j_3 = -1, 0, 1$, but it is not satisfactory for the massless particle. 
+In fact, there are no other Lorentz invariant constraints. Thus we know that the $\epsilon_{\mu}$  have some extra degree of freedom. The constraint \eqref{eq:11-1} leaves open a redundancy
+\begin{equation}
+  \label{eq:11-2}
+  \epsilon_{\mu} \equiv \epsilon_{\mu} + \alpha p_{\mu},
+\end{equation}
+which defines an equivalence class for the $\epsilon_{\mu}$ .
+Transforming back to position space, the redundancy \eqref{eq:11-2} becomes the gauge invariance condition
+\begin{equation}
+  A_{\mu} \equiv A_{\mu} + \partial_{\mu} \alpha.
+\end{equation}
+The origin of gauge invariance lies in the Lorentz invariant description of a massless helicity-1 field.
+One might say that Lorentz invariance implies gauge invariance!
+\begin{remark}
+  The polarisation vector $\epsilon_{\mu}$ is not a Lorentz covariant object despite carrying a vector index.
+  This is because it transforms as $\epsilon_{\mu} \to \Lambda\indices{_{\mu}^{\nu}} \epsilon_{\nu} + \alpha p_{\mu}$.
+\end{remark}
+
+Similarly, for  helicity $\lambda = 2$, we work with a field $h_{\mu\nu}$ and polarisations $\epsilon_{\mu\nu}$. One then has to impose the redundancy 
+\begin{equation}
+  \epsilon_{\mu\nu} \equiv \epsilon_{\mu\nu} + \alpha_{\mu} p_{\nu} + p_{\mu} \alpha_{\nu} \implies h_{\mu\nu} \equiv h_{\mu\nu} + \partial_{\mu} \alpha_{\nu} + \partial_{\nu} \alpha_{\mu}.
+\end{equation}
+Again, the diffeomorphism invariance of (linearised) general relativity is implied by the Lorentz invariance of a massless helicity-2 particle.
+
+All the beauty of the geometry of general relativity, or the gauge symmetry, is gone. It is all really Lorentz invariance.
+
+Any amplitude (recall: $S_{\alpha\beta} = \delta_{\beta\alpha} + (2\pi) \delta (p_\alpha - p_{\beta}) M_{\alpha\beta}$) will be of the form
+\begin{equation}
+  M_{\alpha\beta} (p^{\mu}_i, \lambda_i) = \epsilon^{\mu} M_{\mu}.
+\end{equation}
+The redundancy \eqref{eq:11-2} due to Lorentz invariance implies the \emph{Ward identity}
+\begin{equation}
+  \boxed{p^{\mu} M_{\mu} = 0}
+\end{equation}
+
+\subsection{Charge Conservation}%
+\label{sub:charge_conservation}
+
+Consider the following interaction
+\begin{equation}
+  \begin{tikzpicture}
+    \begin{feynman}
+
+      \vertex (a) at (-2, 0.33);
+      \vertex (b) at (-2, 1);
+      \vertex (c) at (-2, -1);
+      \vertex (d) at (-2, -0.33);
+
+      \vertex (e) at (2, 0.33);
+      \vertex (f) at (2, 1);
+      \vertex (g) at (2, -1);
+      \vertex (h) at (2, -0.33);
+
+      \tikzfeynmanset{every vertex={blob}};
+      \vertex (v) at (0,0);
+
+      \diagram* {
+	(a) -- [fermion] (v) --[fermion] (e),
+	(b) -- [fermion] (v) --[fermion] (f),
+	(c) -- [fermion] (v) --[fermion] (g),
+	(d) -- [fermion] (v) --[fermion] (h),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{equation}
+This is described by a matrix element $M_0$.
+
+Now add a `soft photon'
+\begin{equation}
+  \begin{tikzpicture}
+    \begin{feynman}
+
+      \vertex (a) at (-2, 0.33);
+      \vertex (b) at (-2, 1);
+      \vertex (c) at (-2, -1);
+      \vertex (d) at (-2, -0.33);
+
+      \vertex (e) at (2, 0.33);
+      \vertex (f) at (2, 1);
+      \vertex (g) at (2, -1);
+      \vertex (h) at (2, -0.33);
+
+      \vertex (j) at (1.2, -1);
+
+      \tikzfeynmanset{every vertex={blob}};
+      \vertex (v) at (0,0);
+
+      \tikzfeynmanset{every vertex={small, dot}};
+      \vertex (i) at ($(0,0)!0.5!(g)$);
+
+      \diagram* {
+	(a) -- [fermion] (v) --[fermion] (e),
+	(b) -- [fermion] (v) --[fermion] (f),
+	(c) -- [fermion] (v) --[fermion] (i) -- [fermion] (g),
+	(d) -- [fermion] (v) --[fermion] (h),
+	(i) -- [boson] (j),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{equation}
+which has matrix element $\mathcal{M}$. 
+
+LOTS OF STUFF MISSED
+
+Adding soft photons to all external lines gives the Ward identity
+\begin{equation}
+  M = M_0 \left( -\sum_{\text{incoming}} \frac{p_i \cdot \epsilon}{2 p_i \cdot q} F_i(0) + \sum_{\text{outgoing}} \frac{p_i^{\mu} \epsilon_{\mu}}{2 p_i \cdot \vb{q}} F_i(0) \right).
+\end{equation}
+This gives \emph{charge conservation}
+\begin{equation}
+  \sum_{\mathclap{\text{ingoing}}} F_i (0) - \sum_{\mathclap{\text{outgoing}}} F_i(0) = 0,
+\end{equation}
+where $F_i(0) \coloneqq Q_i$.
+
+Let us do the same for $\lambda = 2$.
+SOFT GRAVITON DIAGRAM
+At the end, the Ward identity will tell us
+\begin{equation}
+  \sum_{\text{in}} k_i p_i^{\nu} - \sum_{\text{out}} k_i p^{\nu}_i = 0.
+\end{equation}
+The extra factors of the $p_i^{\nu}$ complicate this.
+How can you have an interaction where all the momenta are conserved and then this new combination of momenta is also conserved? This is not possible except if all $k_i$ are equal!
+This is the \emph{principle of equivalence}: all particles interact gravitationally with the same strength.
+
+What happens for $\lambda = 3$?
+We find that $ \sum g_i p_i^{\mu} p_j^{\nu} $ is conserved.
+This implies that all $g_i = 0$.
+This is an extremely important result: there are no interacting theories for massless particles with helicity higher than $\lambda = 2$.
+The proof is given in Chapter 13 of Weinberg Vol.~1 and also in Schwarz' book Chapter 9.

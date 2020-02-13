@@ -1,0 +1,144 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 7: February 06}
+
+Just as for the harmonic oscillator, we have fermionic \emph{coherent states} labelled by a fixed Grassmann parameter $\eta^a$ defined as
+ \begin{equation}
+  \ket{\eta} = e^{-\eta^a \hat{\overline{\psi}{}}_a} \ket{0},
+\end{equation}
+which are eigenstates of the lowering operators $\hat{\psi}^a \ket{\eta} = \eta^a \ket{\eta}$ .
+These are analogous to position eigenstates $\hat{x}^a \ket{x'} = x'{}^a \ket{x'}$  in the bosonic system.
+As such, they are useful building blocks for the path integral.
+\begin{claim}
+  \begin{itemize}
+    \item The unit operator on the Hilbert space can be expanded as
+    \begin{equation}
+      1_\mathcal{H} = \int e^{- \overline{\eta}{}_a \eta^a} \ket{\eta} \bra{\overline{\eta}{}} \dd[]{\eta}
+    \end{equation}
+    \item If $\hat{A} \colon \mathcal{H}_B \oplus \mathcal{H}_F \to \mathcal{H}_B \oplus \mathcal{H}_F$ , then the supertrace is
+      \begin{equation}
+	\text{Str}_{\mathcal{H}}(\hat{A}) \coloneqq \Tr_{\mathcal{H}_B}(\hat{A}) - \Tr_{\mathcal{H}_F}(\hat{A}) = \int e^{- \overline{\eta}{}_a \eta^a} \bra{\overline{\eta}{}} \hat{A} \ket{\eta} \dd[2]{\eta},
+      \end{equation}
+      whereas the normal trace is
+      \begin{equation}
+	Tr_{\mathcal{H}_B}(\hat{A}) + \Tr_{\mathcal{H}_F}(\hat{A}) = \int e^{-\overline{\eta}{}_a \eta^a} \bra{-\overline{\eta}{}} \hat{A} \ket{\eta} \dd[2]{\eta},
+      \end{equation}
+      where $\bra{\overline{\eta}{}} = \bra{0} \exp(- \hat{\psi}^a \overline{\eta}{}_a)$ is conjugate to $\ket{\eta}$.
+  \end{itemize}
+\end{claim}
+\begin{proof}
+  Exercise.
+\end{proof}
+\begin{exercise}
+  Check signs!
+\end{exercise}
+
+\section{Path Integral for Fermions}%
+\label{sec:path_integral_for_fermions}
+
+With the action $S = \int i \overline{\psi}{}_a \dot{\psi}^a - V(\overline{\psi}{}, \psi) \dd[]{\tau}$, then $H = V(\overline{\psi}{}, \psi)$ . 
+Taking anticommutators if needed, we can choose to bring the $\hat{\psi}$  operators to the right of all $\hat{\overline{\psi}{}}$  operators in $\hat{H}$ .
+
+Let $\ket{\chi}$ , $\ket{\chi'}$  be fermionic coherent states. As before, we define the heat kernel, the propagator between $\ket{\chi}$  and $\ket{\chi'}$  to be 
+\begin{align}
+  \bra{\overline{\chi}{}'} e^{-\beta H} \ket{\chi} &= \bra{\overline{\chi}{}'} e^{- \Delta \tau H} e^{- \Delta \tau H} \dots e^{- \Delta \tau H} \ket{\chi} \\
+  &= \bra{\overline{\chi}{}'} e^{-\Delta \tau H} \ket{\eta_{N-1}} \dots \bra{\overline{\eta}{}_2} e^{-\Delta \tau H} \ket{\eta_1} \bra{\overline{\eta}{}_1} e^{- \Delta \tau H} \ket{\chi} \prod_{i = 1}^{N-1} e^{- \overline{\eta}{}_i \eta_i} \dd[2n]{\eta_i}.
+\end{align}
+We have for very small time intervals, $\Delta \tau$ infinitesimal, 
+\begin{equation}
+  \bra{\overline{\eta}{}_{i+1}} e^{- \Delta \tau H (\hat{\overline{\psi}{}}, \hat{\psi})} \ket{\eta_{i}} = e^{-\Delta \tau H(\overline{\eta}{}_{i + 1}, \eta_i)} \bra{\overline{\eta}{}_{i + i}} \ket{\eta_i} = e^{-\Delta \tau H(\overline{\eta}{}_{i+1}, \eta_i)} e^{\overline{\eta}{}_{i + 1} \eta_i}
+\end{equation}
+where we just took the linear term from the right hand side. The normal ordered Hamiltonian can then be replaced (to linear order) by the value on its eigenfunctions.
+
+Thus 
+\begin{align}
+  \bra{\overline{\chi}{}'} e^{- \beta H} \ket{\chi} &= \lim_{N \to \infty} \int \exp(\sum_{i=1}^{N} \overline{\eta}{}_i \eta_{i-1} - \Delta \tau V(\overline{\eta}{}_i, \eta_{i-1}))
+  \prod_{i = 1}^{N-1} e^{- \overline{\eta}{}_i \eta_i} \dd[2n]{\eta_i} \\
+				       &= \lim_{N \to \infty}  \int \exp(-\sum_{i=1}^{N} \left[ \overline{\eta}{}_i \frac{\eta_i - \eta_{i-1}}{\Delta \tau} - V(\overline{\eta}{}_i, \eta_{i-1}) \right]\Delta \tau) e^{\overline{\eta}{}_N \eta_N} \prod_{i = 1}^{N-1} \dd[2n]{\eta_i},
+\end{align}
+where $\eta_0 \coloneqq \chi$ and $\eta_N \coloneqq\chi'$. The argument of $\exp(\dots)$ is a discretised version of the Euclidean action
+\begin{equation}
+  S[\eta, \overline{\eta}{}] = \int_0^{\beta} \left[ \overline{\eta}{} \dot{\eta} + V(\overline{\eta}{}, \eta) \right] \dd[]{\tau}.
+\end{equation}
+
+Thus, formally
+\begin{equation}
+  \bra{\overline{\chi}{}'} e^{-\beta H} \ket{\chi} = \int e^{-S[\overline{\psi}{}, \psi]} e^{\overline{\psi}{}(\beta) \psi(\beta)} \pdd{\psi} \pdd{\overline{\psi}{}},
+\end{equation}
+where $\psi(0) = \chi$  and $\psi(\beta) = \chi'$ .
+
+To construct the partition function, we must first choose whether $\psi$  is periodic, meaning $\psi(\tau + \beta) = \psi(\tau)$ , or antiperiodic $\psi(\tau + \beta) = -\psi(\tau)$ . The antiperiodic version is allowed since each term in the action $S[\overline{\psi}{}, \psi]$ must contain an even number of fermions.
+
+Let us look at both of these cases separately.
+\begin{description}
+  \item[periodic] This gives the supertrace, since
+    \begin{equation}
+      \text{Str}_{\mathcal{H}}(e^{-\beta H}) = \bra{\overline \chi} e^{- \beta H} \ket{\chi} e^{- \overline{\chi}{} \chi} \dd[2n]{\chi} = \int_{\mathrlap{\text{periodic}}} e^{-S[\overline{\psi}{}, \psi]} \pdd{\psi} \pdd{\overline{\psi}{}}.
+    \end{equation}
+  \item[antiperiodic] We now obtain the trace, since
+    \begin{equation}
+      \Tr(e^{-\beta H}) = \int \bra{- \overline{\chi}{}} e^{- \beta H} \ket{\chi} e^{- \overline{\chi}{} \chi} \dd[2n]{\chi} = \int_{\mathrlap{\text{antiperiodic}}} e^{-S[\overline{\psi}{}, \psi]} \pdd{\psi} \pdd{\overline{\psi}{}}.
+    \end{equation}
+\end{description}
+\begin{remark}
+  Often, the `usual' trace is called the \emph{partition function} of the theory, whereas the supertrace is (in SUSY theories) known as the \emph{Witten index}.
+\end{remark}
+
+\section{Supersymmetric Quantum Mechanics (SQM)}%
+\label{sec:supersymmetric_quantum_mechanics_sqm_}
+
+There are two different (closely related) types, depending on whether we have complex fermions ($\mathcal{N} = 2$ SQM) or real fermions ($\mathcal{N} = 1$ SQM).
+
+For complex $\mathbb{C}$-fermions, the simplest action is
+\begin{equation}
+  S[x, \overline{\psi}{}, \psi] = \int \frac{1}{2} \delta_{ab} \dot{x}^a \dot{x}^b + i \delta_{ab} \overline{\psi}{}^a \dot{\psi}^b \dd[]{t},
+\end{equation}
+where we have Minkowski time on the worldline.
+We have canonical momenta $p_a = \delta_{ab} \dot{x}^b$ and $\pi = i \overline{\psi}{}_a$.
+Quantising this theory leads to canonical commutation relations for the bosons and anticommutation relations for the fermions, 
+\begin{equation}
+  [\hat{p}_a, \hat{x}^b] = -i \delta^b_a, \qquad \{\hat{\overline{\psi}{}}_a, \hat{\psi}^b\} = \delta_a^b,
+\end{equation}
+just as it did for the two theories separately.
+
+It is natural to take the Hilbert space to be $\mathcal{H} = \Omega^*(\mathbb{R}^n, \mathbb{C})$ the space of all ($\mathbb{C}$-valued) forms on $\mathbb{R}^n$. Explicitly, if $\hat{\psi}^a \ket{0} = 0$  for all $a = 1, \dots, n$ , then
+\begin{equation}
+  f^{ab \dots c} (x) \hat{\overline{\psi}{}}{}^a \hat{\overline{\psi}{}}{}^b \dots \hat{\overline{\psi}{}}{}^c \ket{0} \leftrightarrow f(x) = f_{ab \dots c} (x) dx^a \wedge dx^b \wedge \dots \wedge dx^c.
+\end{equation}
+If $f$ and $g$ are forms of the same degree, then we have
+\begin{equation}
+  (f, g) = 
+  \int_{\mathbb{R}^n} \overline{f}{} \wedge \star g = \int_{\mathbb{R}^n} \overline{f^{ab \dots c} (x)}{} g_{ab \dots c} (x) \dd[n]{x}.
+\end{equation}
+If their degree differs, then $(f, g) = 0$.
+We also require the norm to be finite $ \norm{f}^2 = (f, f) < \infty$.
+
+The $\mathcal{N} = 2$ SQM action is invariant under SUSY transformations
+\begin{equation}
+  \delta x^a = \epsilon \overline{\psi}{}^a - \overline{\epsilon}{} \psi^a, \qquad \delta \psi^a = i \epsilon \dot{x}^a, \qquad \delta \overline{\psi}{}^a = -i \overline{\epsilon}{} \dot{x}^a,
+\end{equation}
+where $\epsilon, \overline{\epsilon}{}$  are constant Grassmann parameters. Unlike in $d = 0$ , here we have Noether charges $Q$  and $\overline{Q}{}$, which generate these (by Poisson brackets).
+\begin{equation}
+  Q = +i \delta_{ab} \dot{x}^a \overline{\psi}{}^b, \qquad
+  \overline{Q}{} = -i \delta_{ab} \dot{x}^a {\psi}{}^b,
+\end{equation}
+where $\delta = \overline{\epsilon}{} Q + \epsilon \overline{Q}{}$ .
+
+As usual, we have a Hamiltonian
+\begin{equation}
+  H = p_a \dot{x}^a + \pi_a \dot{\psi}^a - L = \frac{1}{2} \delta^{ab} p_a p_b.
+\end{equation}
+\begin{claim}
+  The Poisson brackets of our charges turn out to be
+  \begin{equation}
+    \{ Q, \overline{Q}{} \}_{\text{PB}} = -2i H,
+  \end{equation}
+  realising the SUSY algebra in $d = 1$.
+\end{claim} 
+
+Representing the Hilbert space in terms of polyforms $\mathscr{H} \simeq \Omega^* (\mathbb{R}^n, \mathbb{C})$, then the supercharge becomes
+\begin{equation}
+  \hat{Q} = i \hat{p}_a \hat{\overline{\psi}}{}^a \rightarrow dx^a \wedge \frac{\partial }{\partial x^a} = d,
+\end{equation}
+the exterior derivative.
+The interpretation of $\hat{\overline{Q}{}}$ is slightly more subtle.

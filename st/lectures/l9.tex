@@ -1,0 +1,127 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 9: February 07}
+
+\section{Fadeev--Popov Determinant}%
+\label{sec:fadeev_popov_determinant}
+
+Our goal will be to find some effective way to make sense of the path integral. When integrating over the worldsheet metrics, we want to count each physical metric only once, and avoid overcounting from to diffeomorphism and Weyl equivalence.
+
+In other words, we heuristically want to mod out the equivalences of physical states
+\begin{equation}
+  \label{eq:9-1}
+  Z[0] = \frac{1}{\abs{\text{Diff} \times \text{Weyl}}} \int \pdd{X} \pdd{h} e^{i S[h, X]}
+\end{equation}
+\begin{definition}[Fadeev--Popov determinant]
+  To that end, we will introduce the \emph{Fadeev--Popov} (FP) determinant $\Delta_{\text{FP}}$, defined by
+  \begin{equation}
+    \label{eq:9-2}
+    1 = \Delta_{\text{FP}}[h] \int_{\mathrlap{M_g}} \dd[3]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \delta[h - \hat{h}] \prod_{\substack{i = 1 \\ a = 1, 2}}^k \delta(v^a (\hat{\sigma}_i))
+  \end{equation}
+  where $M_g$ is the integral over all Riemann surfaces of genus $g$ and the delta-functional
+  \begin{equation}
+    \delta[h - \hat{h}] = \prod_{\substack{a, b\\ \sigma, \tau}} \delta(h_{ab}(\sigma, \tau) - \hat{h}_{ab}(\sigma, \tau)),
+  \end{equation}
+  fixes the metric to be a specifically chosen metric, where
+  \begin{equation}
+    h_{ab} - \hat{h}_{ab} = \delta h_{ab} = (Pv)_{ab} + 2 \overline{\omega}{} h_{ab} + t^I \mu_{I\,ab}, \qquad \overline{\omega}{} = \omega + \dots
+  \end{equation}
+\end{definition}
+We need to fix the CKG ($\text{Diff} \cap \text{Weyl}$).
+
+\begin{leftbar}
+  We will use the physical path integral methods, but in this particular case one can do the functional analysis rigorously, say with heat kernel methods.
+\end{leftbar}
+
+\section{Gauge-Fixing the Path Integral}%
+\label{sec:gauge_fixing_the_path_integral}
+
+Let us put \eqref{eq:9-2} into \eqref{eq:9-1}:
+\begin{align}
+  Z[0] &= \frac{1}{\text{Diff} \times \text{Weyl}} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a(\sigma_i)) \int_{M_g} \dd[3]{t} \int \pdd{X} \pdd{h} \delta[h - \hat{h}] \Delta_{\text{FP}} e^{i S[h, X]} \\
+       &= \frac{1}{\text{Diff} \times \text{Weyl}} \int \pdd{X} \int_{M_g} \dd[3]{t} \left( \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a (\hat\sigma_i)) \right) e^{i S[\hat{h}, X]} \Delta_{\text{FP}}[\hat{h}].
+\end{align}
+In the parentheses, we have
+\begin{equation}
+  \int_{\mathrlap{\text{Diff} \times \text{Weyl}}}\pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a (\hat{\sigma}_i)) = \frac{\abs{\text{Diff} \times \text{Weyl}}}{\abs{\text{CKG}}}.
+\end{equation}
+\begin{leftbar}
+  If this makes you uncomfortable, it should. We are trying to divide out infinite dimensional equivalence classes. There are also ways to make this rigorous using the theory of Riemann surfaces. However, they lack the physical intuition and would take much longer to derive.
+\end{leftbar}
+We find a more respectable starting point
+\begin{equation}
+  \label{eq:9-3}
+  Z[0] = \frac{1}{\abs{CKG}} \int_{M_g} \dd[3]{t} \int \pdd{X} e^{i S[X, \hat{h}]} \Delta_{\text{FP}}[\hat{h}].
+\end{equation}
+This looks much more reasonable. The conformal Killing group is finite-dimensional. 
+For this to be a good starting point for the quantisation of the theory, we have to think a bit more about $\Delta_{\text{FP}}[\hat{h}]$ .
+
+\section{A Field Theory Representation for \texorpdfstring{$\Delta_{\text{FP}}$}{the Fadeev--Popov Determinant}}%
+\label{sec:a_field_theory_representation_for_FP}
+
+Inverting \eqref{eq:9-2}, we find that the inverse of the Fadeev--Popov determinant is
+\begin{equation}
+  \Delta_{\text{FP}}^{-1}[\hat{h}] = \int_{\mathrlap{M_g}} \dd[3]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\overline{\omega}{}} \pdd{v} \delta[\delta h ] \prod_{a, i} \delta(v^a(\hat{\sigma}_i)).
+\end{equation}
+Let us find an integral expression for the $\delta$-function(al)s by introducing auxiliary fields $\beta_{ab}(\sigma, \tau)$ and $2k$ elements $\xi^i_a$:
+\begin{equation}
+  \Delta^{-1}_{\text{FP}}[\hat{h}] =\int_{\mathrlap{M_g}} \dd[3]{t} \int \pdd{v} \pdd{\overline{\omega}{}} \pdd{\beta} \dd[2k]{{\xi}} \exp(i (\beta \mid Pv + 2 \overline{\omega}{} h + t^I \mu_I) + i \sum_{i=1}^{k} \xi^i_a \delta(v^a(\hat{\sigma}_i))),
+\end{equation}
+where the inner product is defined as
+\begin{equation}
+  (\beta \mid Pv + 2 \overline{\omega}{} h + t^I \mu_I) \coloneqq \int_\xi \dd[2]{\sigma} \sqrt{-h} \beta^{ab} ((Pv)_{ab} + 2 \overline{\omega}{} h_{ab} + t^I \mu_{I\, ab}).
+\end{equation}
+We can do the $\overline{\omega}{}$ integral, which constrains $\beta_{ab} h^{ab} = 0$.
+
+\begin{leftbar}
+  We have $\Delta_{\text{FP}^{-1}}$ but we want $\Delta_{\text{FP}}$.
+  We introduce Grassmann variables. These are variables $\theta_i$ that anticommute $\theta_1 \theta_2 = - \theta_2 \theta_1$. They have lots of interesting properties, such as $\theta^2_i = 0$.
+  This means we can expand a function $f(x, \theta) = f(x) + f'(x) \theta$. 
+  Moreover, the delta function of a Grassmann variable is simply $\delta(\theta) = \theta$ and integral and derivative are equal $\int \dd[]{\theta} f(\theta) = \frac{\partial f}{\partial \theta}$.
+\end{leftbar}
+
+Let us consider some finite-dimensional Gaussian integral over a complex vector space $V$:
+\begin{equation}
+  \frac{1}{\det M} = \int_V \dd[]{z} \dd[]{\overline{z}{}} e^{-(\overline{z}{}, Mz)},
+\end{equation}
+where $(\cdot, \cdot)$ denotes some inner product on $V$.
+Writing the same type of integral with Grassmann variables, 
+\begin{equation}
+  \det M = \int \dd[]{\theta} \dd[]{\overline{\theta}{}} e^{-(\overline{\theta}{}, M \theta)}.
+\end{equation}
+(See Ryder's QFT book if curious).
+We can get from an integral expression for a determinant to the reciprocal by replacing the $c$-numbers with Grassmann numbers.
+
+Similarly, we replace all the fields we integrate over in $\Delta_{\text{FP}}^{-1}$ with Grassmann-valued fields:
+\begin{equation}
+  v^a(\hat{\sigma}_i) \to c^a(\sigma, \tau), \qquad 
+  \beta_{ab}(\sigma, \tau) \to b_{ab}(\sigma, \tau), \qquad
+  t^I \to \zeta^I, \qquad
+  \xi^i_a \to \eta\indices{^{i}_{a}}.
+\end{equation}
+Just like $\beta_{ab}$, we take $b_{ab}$ to be traceless also.
+With these Grassmann fields in place, we take $\Delta_{\text{FP}}[\hat{h}]$ to be given by
+\begin{equation}
+  \Delta_{\text{FP}}[\hat{h}] = \int \dd[3]{\zeta} \pdd{c} \pdd{b} \dd[2k]{\eta} \exp[i (b \mid Pc + \zeta^I \mu_I + i \sum_{i=1}^{\kappa} \eta\indices{^{i}_{a}} c^a(\hat{\sigma}_i))],
+\end{equation}
+where $\kappa = \abs{\text{CKG}}$.
+We can do these finite-dimensional integrals.
+The integral over $\zeta^I$ gives a $\delta$-functional.
+\begin{equation}
+  \prod_{I =1}^s \delta(b \mid \mu_I) = \prod_{I = 1}^s (b \mid \mu_I),
+\end{equation}
+where $s = \dim M_g$.
+
+The $\eta\indices{^{i}_{a}}$  integral gives
+\begin{equation}
+  \prod_{\substack{a= i, ? \\i = 1, \dots, \kappa}} \delta(c^a(\hat{\sigma}_i))  = \prod_{i, a} c^a(\hat{\sigma}_i).
+\end{equation}
+The expression for the Fadeev--Popov determinant becomes rather simple
+\begin{equation}
+  \boxed{\Delta_{\text{FP}}[\hat{h}] = \int \pdd{c} \pdd{b} e^{i S[b, c]} \prod_{I = 1}^s (b \mid \mu_I) \prod_{i, a} c^a (\hat{\sigma}_i)}
+\end{equation}
+where the action for the $b, c$  (\emph{ghost}) fields is
+\begin{equation}
+  S[b, c] = (b \mid Pc) = \int_\Sigma \dd[2]{\sigma} \sqrt{-\hat{h}} b^{ab} (Pc)_{ab} = 2 \int_\Sigma \dd[2]{\sigma} \sqrt{-\hat{h}} b^{ab} (\nabla_a c_b),
+\end{equation}
+where we used that $b_{ab}$ is symmetric and traceless.

@@ -1,0 +1,136 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 9: February 05}
+
+\begin{claim}
+  \label{cl:9-1}
+  The integral curves of $n^{a}$ are null geodesics, the \emph{generators} of $\mathcal{N}$.
+\end{claim}
+\begin{proof}
+  Assume $\mathcal{N}$ is a surface of constant $f$ with $df\rvert_\mathcal{N} \neq 0$. Therefore $n = h df$ for some $h$.
+  Write $N = df$, which has the same integral curves as $n$.
+  Then $N_a N^a \rvert_{\mathcal{N}} = 0$, which implies that 
+  \begin{equation}
+    \label{eq:9-star}
+    \nabla_a (N_b N^b) \rvert_{\mathcal{N}} = 2 \alpha N_a
+  \end{equation} 
+  for some $\alpha \colon \mathcal{N} \to \mathbb{R}$.
+  \begin{equation}
+    \nabla_a N_b = \nabla_a \nabla_b f = \nabla_b \nabla_a f = \nabla_b N_a.
+  \end{equation}
+  \begin{equation}
+    \therefore \nabla_a (N_b N^{b}) = 2 N^{b} \nabla_a N_b = 2 N^{b} \nabla_b N_a.
+  \end{equation}
+  So \eqref{eq:9-star} is the geodesic equation 
+  \begin{equation}
+    N^{b} \nabla_b N_a \rvert_\mathcal{N} = \alpha N_a.
+  \end{equation}
+\end{proof}
+
+\begin{example}[]
+  Consider Kruskal with $N = dU$. This is \emph{globally null} ($g^{UU} = 0$) normal to a \emph{family} of null hypersurfaces with constant $U$.
+  In this case we can get a stronger result than we obtained in Cl.~\ref{cl:9-1}.
+  \begin{equation}
+    N^{b} = \nabla_b N_a = N^{b} \nabla_b \nabla_a U = N^{b} \nabla_a \nabla_b U = N^{b} \nabla_a N_b = \frac{1}{2} \nabla_a (\underbrace{N_b N^b}_{\equiv 0}) = 0.
+  \end{equation}
+  This means that $N^a$ is tangent to affinely parametrised geodesic. For example, we have
+  \begin{equation}
+    N^a =  \frac{r}{16 M^3} e^{\frac{r}{2M}} \left( \frac{\partial }{\partial V} \right)^a.
+  \end{equation}
+  Let $\mathcal{N}$ be a surface of constant $U = 0$. Then $r = 2M$ gives $N^a\rvert_{\mathcal{N}}$ constant multiple of $(\frac{\partial}{\partial V})^a$.
+  This means that $V$ is an affine parameter for generators of $\{U = 0\}$. Similarly, $U$ is an affine parameter for generators of $\{V = 0\}$.
+\end{example}
+
+\section{Geodesic Deviation}%
+\label{sec:geodesic_deviation}
+
+Consider a one-parameter family of geodesics $x^{\mu}(s, \lambda)$, where $s$ labels the geodesics and $\lambda$ is the affine parameter.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l9f1.pdf_tex}
+  \caption{One-parameter family of geodesics.}
+  \label{fig:l9f1}
+\end{figure}
+
+Let $U^{\mu} = \frac{\partial x^{\mu}}{\partial \lambda}$ be the tangent vectors to the geodesics and $S^{\mu} = \frac{\partial x^{\mu}}{\partial s}$  be the deviation vector.
+We have $[S, U] = 0$ , which means that $U^{b} \nabla_b S^{a} = S^{b} \nabla_b U^{a}$ . This gives the geodesic deviation equation
+\begin{equation}
+  U^c \nabla_c (U^b \nabla_b S^a) = R\indices{^{a}_{bcd}} U^{b} U^{c} S^{d},
+\end{equation}
+which we have already seen in last term's \emph{General Relativity} course.
+
+\section{Geodesic Congruences}%
+\label{sec:geodesic_congruences}
+
+\begin{definition}[]
+  Let $\mathcal{U} \subset M$. A \emph{geodesic congruence} in $\mathcal{U}$ is a family of geodesics such that exactly one passes through each point $p \in \mathcal{U}$.
+\end{definition}
+Assume all geodesics are of the same time (timelike/spacelike/null).
+Then $U^2 = \pm 1$  or $U^2 \equiv 0$ since  $U^a$  is tangent to the geodesics.
+
+The one-parameter family in a congruence satisfies
+\begin{equation}
+  U^{b} \nabla_b S^{a} = B\indices{^{a}_{b}} S^{b}, \qquad B\indices{^{a}_{b}} = \nabla_b U^a.
+\end{equation}
+Then $B\indices{^{a}_{b}} = 0$  since $U^{b}$  is affinely parametrised.
+\begin{equation}
+  U_a B\indices{^{a}_{b}} = U_a \nabla_b U^{a}  =\frac{1}{2} \nabla_b (\underbrace{U_{a} U^a}_{\mathclap{\text{const}}}) = 0
+\end{equation}
+\begin{equation}
+  U \cdot \nabla (U \cdot S) = \cancel{(U \nabla U^a)} S_a + U^a U \cdot \nabla S_a = U^a B_{ab} S^b = 0.
+\end{equation}
+Therefore, $U \cdot S$  is constant along each geodesic in the congruence.
+Let $\lambda' = \lambda - a(s)$ , then $S'{}^a = S^a + \dv{a}{s} U^a$ .
+\begin{exercise}
+  The deviation vector gives the same geodesic; we have a gauge-freedom in choosing our deviation vector.
+\end{exercise}
+\begin{equation}
+  U \cdot S' = U \cdot S + \dv{a}{s} U^2
+\end{equation}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l9f2.pdf_tex}
+  \caption{}
+  \label{fig:l9f2}
+\end{figure}
+For the case of timelike/spacelike, we have $U^2 = \pm 1$. We can then choose $a(s)$ such that the right-hand side vanishes at $\lambda =0$ on each geodesic.
+This means that $U \cdot S' = 0$ at $\lambda = 0$, but $U \cdot S'$ is constant.
+Thus $U \cdot S' \equiv 0$.
+
+For the null congruences we have to work harder.
+\section{Null Geodesic Congruences}%
+\label{sec:null_geodesic_congruences}
+
+Pick $N^a$  such that $N^2 \rvert_{\Sigma} = 0$, $N \cdot U \rvert_\Sigma = -1$ .
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l9f3.pdf_tex}
+  \caption{}
+  \label{fig:l9f3}
+\end{figure}
+Extend $N^a$  off $\Sigma$  by demanding parallel transport $U \cdot \nabla N^a = 0$ .
+\begin{exercise}
+  This gives $N^2 \equiv 0$ and $N \cdot U \equiv -1$.
+\end{exercise}
+However, $N$  is not uniquely defined.
+Now 
+\begin{equation}
+  S^a = \alpha U^a + \beta N^a + \hat{S}^a,
+\end{equation}
+where $U \cdot \hat{S} = N \cdot \hat{S} = 0$ , meaning that $\hat{S}^a$  is spacelike.
+Let us now look at the scalar product
+\begin{equation}
+  U \cdot S = -\beta.
+\end{equation}
+This means that $\beta$  is constant along each geodesic.
+Therefore, we can rearrange our expression to be
+\begin{equation}
+  S^a = \underbrace{\alpha U^a + \hat{S}^a}_{\mathclap{\perp U^a}} + \overbrace{\beta N^a}^{\mathclap{\text{parallel transported}}}
+\end{equation}
+
+\begin{example}[]
+  Suppose we have a congruence containing the generators of a null hypersurface $\mathcal{N}$.
+\end{example}

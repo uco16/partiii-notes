@@ -1,0 +1,109 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 8: February 04}
+
+\section{Discrete Spacetime Symmetries}%
+\label{sec:discrete_spacetime_symmetries}
+
+We know of two discrete symmetries already. We have seen parity $P$ , with $\Lambda_P = \text{diag}(+1, -1, -1, -1)$  and time reversal $T$  with $\Lambda_T = \text{diag}(-1, +1, +1, +1)$ .
+Previously we ignored them because these are not continuously connected to the identity.
+These transformations move us between the various disconnected pieces of the Lorentz group.
+
+We can represent these as operators acting on a Hilbert space
+\begin{equation}
+  P = U(\Lambda_P, 0) \qquad T = U(\Lambda_T, 0).
+\end{equation}
+\begin{leftbar}
+  It will turn out that $P$ is unitary while $T$ is not.
+\end{leftbar}
+
+Let us first consider how $P$ and $T$ act on operators of the Hilbert space.
+For any $U(\Lambda, a)$ , these act as
+\begin{equation}
+  P U P^{-1} = U (\Lambda_P, \Lambda, \Lambda_P^{-1}, \Lambda_P a), \qquad
+  T U T^{-1} = U (\Lambda_T, \Lambda, \Lambda_T^{-1}, \Lambda_T a).
+\end{equation}
+Infinitesimally, where we take the Lorentz transformations to be $\Lambda\indices{^{\mu}_{\nu}} = \delta\indices{^{\mu}_{\nu}} + \omega\indices{^{\mu}_{\nu}}$  and $\alpha^{\mu} = \epsilon^{\mu}$ , with $\omega\indices{^{\mu}_{\nu}}, \epsilon^{\mu} \ll 1$. We also write its unitary representation as $ U(\Lambda, a) = \mathbb{1} - \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} + i \epsilon_{\mu} P^{\mu}$.
+Then
+\begin{equation}
+  P J_i P^{-1} = J_i, \qquad
+  P K_i P^{-1} = -K_i, \qquad
+  P P_i P^{-1} = -P_i, \qquad
+  P P_0 P^{-1} = P_0.
+\end{equation}
+
+Naively, we expect $T P_0 T = -P_0$ , but this would imply negative energy.
+\begin{theorem}[Wigner]
+  Transformations on a Hilbert space preserving probabilities are either unitary and linear or antiunitary and antilinear.
+\end{theorem}
+\begin{proof}
+  Weinberg Vol 1.
+\end{proof}
+\begin{description}
+  \item[Unitary and Linear:] We have two states $\ket{\phi}, \ket{\psi}$. Then
+    \begin{equation}
+      \bra{U \phi} \ket{U \psi} = \bra{\phi}\ket{\psi} \qquad U (\alpha \phi + \beta \psi) = \alpha U \phi + \beta U \psi.
+    \end{equation}
+  \item[Antiunitary and Antilinear:] With similar states, we have instead
+    \begin{equation}
+      \bra{U \phi} \ket{U \psi} = \bra{\phi}\ket{\psi}^* \qquad U (\alpha \phi + \beta \psi) = \alpha^* U \phi + \beta^* U \psi.
+    \end{equation}
+    In particular, if $\alpha$ is imaginary, then it changes sign, so `$U$ does not commute with $i$'.
+\end{description}
+Then pick $T$ to be antiunitary and antilinear ($Ti = -i T$).
+\begin{equation}
+  T J_i T^{-1} = -J_i, \qquad
+  T K_i T^{-1} = K_i, \qquad
+  T P_i T^{-1} = -P_i, \qquad
+  T P_0 T^{-1} = P_0.
+\end{equation}
+
+Now we want to know how these act on particle states.
+\begin{claim}
+  For massive particles, we have
+  \begin{align}
+    \ket{m, i; p^{\mu}, j_3} &\xrightarrow{P} \eta_P \ket{m, j; -p^{\mu}, j_3}, \\
+			     &\xrightarrow{T} \eta_T (-1)^{j-j_3} \ket{m, j; -p^{\mu}, -j_3},
+  \end{align}
+  where $\eta_P$ and $\eta_T$ represent some phase.
+  For massless particles, 
+  \begin{align}
+    \ket{p^{\mu}, \lambda} &\xrightarrow{P} \eta_P e^{\mp i \pi \lambda} \ket{-p^{\mu}, -\lambda}, \\
+			     &\xrightarrow{T} \eta_T e^{\pm i \pi \lambda} \ket{-p^{\mu}, -\lambda}.
+  \end{align}
+\end{claim}
+\begin{proof}
+  See Weinberg Vol I.
+\end{proof}
+
+\subsection*{Comments}%
+
+\begin{itemize}
+  \item If $\lambda \neq 0$, then $\ket{p^{\mu}, \lambda} \to \ket{-p^{\mu}, -\lambda}$, so the states come in two polarisations $\pm\lambda$, so $\lambda = 0, \pm \frac{1}{2}, \pm 1, \pm \frac{3}{2}, \dots$
+    This happens whenever parity is conserved. For most of the interactions, such as the photon or the graviton, this is true.
+    However, for the weak interaction, parity is not conserved.
+    We interpret the second helicity eigenvalue to belong to its antiparticle.
+  \item For a massive particle of spin $j$, there are $2j+1$ polarisation states, since $j_3 = -j, \dots, +j$.
+    For instance, a massive spin-1 particle has $3$ polarisation states. However, the massless object of helicity $\lambda$ has always only two states $\pm \lambda$. This difference between becomes even more pronounced for higher spins.
+  \item We have not yet talked about any fields here. Special relativity and quantum mechanics is enough to imply the existence of particles.
+    Fields will be introduced as a way to describe interactions.
+\end{itemize}
+
+\section{From Particles to Fields}%
+\label{sec:from_particles_to_field}
+
+We do not only want to see that single particle states exist, but it is also extremely important to be able to describe \emph{interactions} among many particles.
+Such interactions can be described by a Hamiltonian
+\begin{equation}
+  H = H_0 + H_{\text{interaction}},
+\end{equation}
+where $H_0$  is the Hamiltonian of the free, non-interacting theory.
+
+There are some conditions on the observables:
+\begin{enumerate}[(i)]
+  \item Lorentz and translation invariance
+  \item Unitarity (guarantees that probabilities are conserved). Unitary evolution $U = e^{-i H t}$, where $H$ is Hermitian.
+  \item Locality. This is where fields enter. We want to describe interactions at spacetime points, so we need some local structure there. The interactions are described as functions of $x$ and $t$ and those functions are the fields.
+    The principle of \emph{Cluster decomposition} means that things that are far away do not interact.
+\end{enumerate}
+If all of these conditions are satisfied, then we are necessarily driven towards the introduction of fields.

@@ -1,0 +1,97 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 10: February 08}
+
+\chapter{Internal Symmetries}%
+\label{cha:internal_symmetries}
+
+The most general symmetries of the $S$-matrix are of the form
+\begin{equation}
+  \text{spacetime} \otimes \text{internal}.
+\end{equation}
+We have already seen the spacetime symmetries $P^{\mu}$ and $M^{\mu\nu}$ .
+In general, the spacetime symmetries include supersymmetries $Q_{\alpha}^I$ , which anticommute $\{Q_{\alpha}^J, Q_{\alpha}^{-J}\} = 2 \sigma ??_{\alpha \alpha'} P_{\mu}$.
+These imply the representation $n_{\text{boson}} = n_{\text{fermions}}$ , which is not observed in nature so far.
+We will therefore not think about these further in this course, other than saying that the \emph{gravitino} with $\lambda = \frac{3}{2}$  can only exist with supersymmetry.
+
+Internal symmetries are transforming the operators and fields but leave them at the same spacetime position $x$
+\begin{equation}
+  \ket{\psi} \to U \ket{\psi}, \qquad \mathcal{O}(x) \to \mathcal{O}'(x) = U^{\dagger} \mathcal{O} U.
+\end{equation}
+These are symmetries if $[U, H] = 0$ and the action $S$  is left invariant under these transformations.
+
+\subsection{Types of Symmetries}%
+\label{sub:types_of_symmetries}
+
+\begin{enumerate}[(i)]
+  \item Spacetime or internal
+  \item Continuous or discrete
+
+    For example, a continuous $U(1)$ symmetry is $\phi \to e^{i \alpha} \phi$, whereas an example of a discrete symmetry is $\phi \to -\phi$.
+    Imposing this latter symmetry, odd terms $\phi^{2n+1}$ cannot exist in the Lagrangian.
+  \item Global or local
+
+    For example, the transformation $\phi \to e^{i \alpha \phi}$ is global if $\alpha$ is constant, and is local if $\alpha = \alpha(x)$ depends on position.
+    In the latter case, we would need to adjust the Lagrangian to be invariant under this by replaying the partial with the covariant derivative $D_{\mu} \phi = \partial_{\mu} \phi - i e A_{\mu} \phi$. The symmetry not only transforms $\phi$ but also $A_{\mu} \to A_{\mu} + \partial_{\mu} \alpha$.
+    This $A_{\mu}$ is called the \emph{gauge field} and we add to the Lagrangian a kinetic term $F^{\mu\nu} F_{\mu\nu}$, where $F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}$.
+    The interactions between $A_{\mu}$ and $\phi$ are hidden in $D^{\mu} \phi D_{\mu} \phi^*$.
+    This is a nice story: the interaction between electrons and photons comes from local symmetry. The beauty of this story will be questioned in Sec.~\ref{sec:origin_of_gauge_local_symmetries}.
+
+    Also for Dirac fields, the Lagrangian is
+    \begin{equation}
+      \mathscr{L} = \overline{\psi}{}\cancel{\partial}\psi = \overline{\psi}{}_L i \cancel{\partial} \psi_L + \overline{\psi}{}_R i \cancel{\partial} \psi_R - m (\overline{\psi}{}_R \psi_L + \overline{\psi}{}_L \psi_R).
+    \end{equation}
+    These fields transform as $\psi_{L, R} \to e ^{i \alpha_{L, R}} \psi_{L, R}$.
+    The kinetic terms have $U(1)_L \otimes U(1)_R$, which is a chiral symmetry.
+    The mass terms $m \neq 0$ break this since $\alpha_R = \alpha_L$ and we only have $U(1)$.
+    If $\alpha_L(x), \alpha_R(x)$ are local, then
+    \begin{equation}
+      \overline{\psi}{} \cancel{\partial} \psi \to \overline{\psi}{} \cancel{D} \psi; \qquad D_{\mu} = \partial_{\mu} - i e A_{\mu}.
+    \end{equation}
+    We have made a separation between left- and right-handed since we already know that some interactions treat them differently.
+  \item Manifest or hidden
+
+    For example, in a spontaneous symmetry broken sombrero potential, the local vacuum does not see the overall symmetry, even though it is still there.
+  \item Anomalous or non-anomalous
+
+    An anomalous symmetry is broken by quantum corrections, whereas non-anomalous symmetries are exact.
+
+  \item Real or accidental
+  \item Compact or non-compact
+
+    We will reserve the non-compact class only for the spacetime symmetries, since we know that the Poincaré group is non-compact.
+    However, all the internal symmetries will be compact, since we want to have finite-dimensional representations.
+
+  \item Abelian or non-Abelian
+
+    An Abelian group is $U(1)$, whereas the non-Abelian ones are $SU(N), SO(N), Sp(2N), G_2, F_4$, $E_6$, and $E_8$, as we have seen from the Cartan classification in the \emph{Symmetries, Particles, and Fields} course in Michaelmas term.
+\end{enumerate}
+
+\section{Noether's Theorem}%
+\label{sec:noether_s_theorem}
+
+If a Lagrangian $\mathscr{L}(\phi_\alpha)$ has a continuous symmetry for $\phi_a  \to \phi'_\alpha$, then there exists a current  $j^{\mu}$  that is conserved, $\partial_{\mu} j^{\mu} = 0$, when the field equations are satisfied.
+This implies that there exists a conserved charge
+\begin{equation}
+  Q = \int \dd[3]{x} j^0, \qquad \dv{Q}{t} = \int \dd[3]{x} \partial_0 j^0 = - \int \dd[3]{x} \nabla \cdot j = 0.
+\end{equation}
+
+\begin{example}[Poincaré group]
+  We have already seen that translations $x^{\mu} \to x^{\mu} + a^{\mu}$  have an associated current $T\indices{^{\mu}_{\nu}}$  with charges $P^0 = E = \int \dd[3]{x} T^{00}$  and $P^i = \int \dd[3]{x} T^{0i}$.
+
+  For rotations, $M^{ij} =  \int \dd[3]{x} \left( x^{i} T^{0j} - x^j T^{0i} \right)$.
+
+  This is true for classical mechanics as well. What is different in QFT is that each of these conserved charges are also the generators of their corresponding group.
+\end{example}
+\begin{example}[Internal symmetry]
+  If you have an internal symmetry generated by a non-Abelian group $G$, then 
+   \begin{equation}
+    G\colon \psi^{i} \to \psi^{i} + i \alpha^a (T_a)\indices{^{i}_{j}} \psi^{j}, 
+  \end{equation}
+  where the conserved charge is $T_a = \int \dd[3]{x} J\indices{^{0}_a}$ .
+  Again, the conserved charge in the Noether theorem is the generator of the corresponding theory:
+  \begin{equation}
+    [T_a, \psi^{i}] = -(T_a)\indices{^{i}_{j}} \psi_j.
+  \end{equation}
+  For $U(1)$, the conserved charge $Q$ is the electric charge.
+\end{example}

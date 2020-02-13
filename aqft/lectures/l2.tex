@@ -19,8 +19,8 @@ In QFT, we solve this problem by demoting $x$ from a field to another label. We 
   String theory gives another ansatz to this problem by promoting again, instead of demoting operators to labels.
 \end{leftbar}
 
-\chapter{Integrals and their Diagrammatic Expansions}%
-\label{cha:integrals_and_their_diagrammatic_expansions}
+\section{Integrals and their Diagrammatic Expansions}%
+\label{sec:integrals_and_their_diagrammatic_expansions}
 
 In QFT, we are interested in correlation functions.
 The following discussion will be very similar to what we have seen in the \emph{Statistical Field Theory} course in Michaelmas term, also no knowledge from that course will be assumed here.
@@ -37,8 +37,8 @@ We will be interested in expectation values
 \end{equation}
 Again, assume $f$ does not grow too fast as $\varphi \to \pm \infty$. Usually, $f$ is polynomial in $\varphi$.
 
-\section{Free Theory}%
-\label{sec:free_theory}
+\subsection{Free Theory}%
+\label{sub:free_theory}
 
 Say we have $N$ scalar fields (in $0+1$ dimensions we should really just say `variables') $\varphi_{a}$ with $a = 1, \dots, N$, with action
 \begin{equation}
@@ -107,27 +107,45 @@ This is Wick's theorem.
   + (M^{-1})_{ad} (M^{-1})_{bc} \right] \\
   &= 
   \begin{gathered}
-    \feynmandiagram[small, horizontal=a to b] {
-      a [particle=\(a\)] -- [draw=none] b [particle=\(b\)]
-      -- c [particle=\(d\)]
-      -- [draw=none] d [particle=\(c\)]
-      -- a,
-    };
-  \end{gathered}
-  +
-  \begin{gathered}
-    \feynmandiagram[small, horizontal=a to b] {
-      a [particle=\(a\)] -- [draw] b [particle=\(b\)]
-      -- [draw=none] c [particle=\(d\)]
-      -- d [particle=\(c\)]
-      -- [draw=none] a,
-    };
+    \begin{tikzpicture}
+      \begin{feynman}[transform shape, scale=0.35]
+	\diagram[horizontal=a to b] {
+	  a [particle=\(a\)] 
+	  -- [draw=none] b [particle=\(b\)]
+	  -- [draw=none] d [particle=\(d\)]
+	  -- [draw=none] c [particle=\(c\)]
+	  -- [draw=none] a,
+	};
+	\diagram* {
+	  (a) -- (c),
+	  (b) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
   \end{gathered}
   +
   \begin{gathered}
     \begin{tikzpicture}
-      \begin{feynman}
-	\diagram[small, horizontal=a to b] {
+      \begin{feynman}[transform shape, scale=0.35]
+	\diagram[horizontal=a to b] {
+	  a [particle=\(a\)] 
+	  -- [draw=none] b [particle=\(b\)]
+	  -- [draw=none] d [particle=\(d\)]
+	  -- [draw=none] c [particle=\(c\)]
+	  -- [draw=none] a,
+	};
+	\diagram* {
+	  (a) -- (b),
+	  (c) -- (d),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  +
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}[transform shape, scale=0.35]
+	\diagram[horizontal=a to b] {
 	  a [particle=\(a\)] 
 	  -- [draw=none] b [particle=\(b\)]
 	  -- [draw=none] c [particle=\(d\)]

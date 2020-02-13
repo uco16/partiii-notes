@@ -1,0 +1,142 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 6: January 31}
+
+We found that $\ket{k} = e^{i k \cdot x} \ket{0}$  has a tachyon in the spectrum, so we are off to an inauspicious start.
+This problem can be cured by adding supersymmetry, but we will not do that in this course.
+
+\subsection{Massless States}%
+\label{sub:massless_states}
+
+Consider states of the form 
+\begin{equation}
+  \label{eq:6-ep}
+  \ket{\epsilon} = \epsilon_{\mu\nu} \alpha^{\mu}_{-1} \overline{\alpha}^{\nu}_{-1} \ket{k},
+\end{equation}
+where $\epsilon_{\mu\nu}$ is a constant tensor.
+
+\subsection*{Physical State Conditions}%
+
+Clearly $N = \overline{N} = 1$, so $L_0^- \ket{\phi} = 0$.
+We can look at the energy-momentum condition $(L_0^+ - 2) \ket{\epsilon} = 0$.
+Since $N = \overline{N} = 1$, a calculation like \eqref{eq:5-lp} implies that $\frac{1}{2} \alpha' k^2 = 0$, so we require that $k^2 = 0$ is null.
+
+Consider next $L_1 \ket{\epsilon} = 0$:
+\begin{equation}
+  0 = \frac{1}{2} \left( \sum_n \alpha_{1 - n} \cdot \alpha_n \right) \epsilon_{\mu\nu} \alpha^{\mu}_{-1} \overline{\alpha}_{-1}^{\nu} \ket{k} = \epsilon_{\mu\nu} \overline{\alpha}_{-1}^{\nu} \alpha_0 \cdot \alpha_1 \alpha_{-1}^{\mu} \ket{k}.
+\end{equation}
+We require then
+\begin{align}
+  0 = \epsilon_{\mu\nu} k_\rho \alpha^{\rho}_1 \alpha^{\mu}_{-1}\ket{k} &= \epsilon_{\mu\nu} k_{\rho} \left( [\alpha_1^{\rho}, \alpha_{-1}^{\mu}] + \alpha_{-1}^{\mu} \alpha^{\rho}_{1} \right) \ket{k} \\
+  &=\epsilon_{\mu\nu} \eta^{\mu\rho} k_{\rho} \ket{k} = \epsilon_{\rho\nu} k^{\rho} \ket{k} = 0.
+\end{align}
+The condition $L_1 \ket{\epsilon} = 0$ requires us to impose $\epsilon_{\mu\nu} k^{\mu} = 0$.
+Interpreting $k^{\mu}$ as the centre of mass momentum, this means that there are no longitudinal polarisations.
+Similarly, $\overline{L_1}\ket{\epsilon} =0$ requires that $\epsilon_{\mu\nu} k^{\nu} = 0$.
+
+For all higher $n$, the $L$'s will commute with anything and annihilate the $\ket{k}$ in the definition \eqref{eq:6-ep} of $\ket{\epsilon}$; there is nothing else to check.
+
+In summary, the physical state conditions on $\ket{\epsilon}$ are:
+\begin{equation}
+  k^2 = 0, \qquad \epsilon_{\mu\nu} k^{\mu} = 0, \qquad \epsilon_{\mu\nu} k^{\nu} = 0.
+\end{equation}
+
+We can decompose $\epsilon_{\mu\nu}$ into traceless symmetric ($h_{\mu\nu}$), traceless antisymmetric ($b_{\mu\nu}$), and trace part ($\phi$).
+
+We call these parts by the following names:
+\begin{align}
+  \text{Dilaton}: \qquad \ket{\phi} &= \phi \alpha_{-1}^{\mu} \overline{\alpha}_{-1}{}_{\mu} \ket{k} && \\
+  \text{Graviton}: \qquad \ket{h} &= h_{\mu\nu} \alpha_{-1}^{\mu} \overline{\alpha}_{-1}^{\nu} \ket{k} & (h_{\mu\nu} &= h_{\nu\mu}) \\
+  \text{B-field}: \qquad \ket{b} &= b_{\mu\nu} \alpha_{-1}^{\mu} \overline{\alpha}_{-1}{}^{\nu} \ket{k} & (b_{\mu\nu} &= -b_{\nu\mu})
+\end{align}
+
+\subsection{Massive States}%
+\label{sub:massive_states}
+
+We could then look at the states with $N = \overline{N} = 2$ .
+\begin{equation}
+  A_{\mu\nu} \alpha^{\mu}_{-2} \overline{\alpha}_{-2}{}^{\nu} \ket{k} + A_{\mu\nu\lambda} \alpha_{-2}^{\mu} \overline{\alpha}_{-1}{}^{\nu} \overline{\alpha}_{-1}{}^{\lambda} \ket{k}
+  + \widetilde{A}_{\mu\nu\lambda} \overline{\alpha}_{-2}{}^{\mu} \alpha^{\nu}_{-1} \alpha^{\lambda}_{-1} \ket{k}
+  + A_{\mu\nu\lambda\rho} \alpha^{\mu}_{-1} \alpha^{\nu}_{-1} \overline{\alpha}_{-1}{}^{\lambda} \overline{\alpha}{}^{\rho}_{-1} \ket{k}.
+\end{equation}
+The mass of such states is $m^2 = \frac{4}{\lambda'}$ .
+
+\section{The Big(-ish) Picture}%
+\label{sec:the_big_ish_picture}
+
+We started with our Polyakov action
+\begin{equation*}
+  S = -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} \eta_{\mu\nu} \partial_{a} X^{\mu} \partial^{a} X^{\nu}.
+\end{equation*}
+We could deform this theory by adding a small (plane wave) deformation to the spacetime metric:
+\begin{equation}
+  \eta_{\mu\nu} \to \eta_{\mu\nu} + h_{\mu\nu} e^{i k \cdot X}.
+\end{equation}
+The action changes by 
+\begin{equation}
+  \Delta S = -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} h_{\mu\nu} \partial_{a} X^{\mu} \partial^{a} X^{\nu} e^{i k \cdot X}.
+\end{equation}
+The idea is that any deformation of the spacetime metric is in some sense associated with an operator
+\begin{equation}
+  \mathcal{O} = h_{\mu\nu} \partial_{a} X^{\mu} \partial^{a} X^{\nu} e^{i k \cdot X}.
+\end{equation}
+What makes string theory (or any 2-dimensional CFT) special is that there is a one-to-one correspondence between such operators $\mathcal{O}$, which correspond to a physical\footnote{We will make this notion of `physical' or `reasonable' more precise in the language of CFT.} deformation of the theory, and states in the Hilbert space.
+This \emph{state-operator correspondence} will look something like
+\begin{equation}
+  '' \lim_{\tau \to -\infty} \mathcal{O} \ket{0} = \ket{h} ''
+\end{equation}
+We will make this more precise as we go on.
+
+\begin{leftbar}
+  The physical Hilbert space contains the information on how to deform the spacetime metric. This is in part why string theory allows us to talk about quantum gravity, where worldline field theory does not.
+\end{leftbar}
+
+\subsection*{Comment}%
+
+What if we choose to start with a general metric?
+\begin{equation}
+  S = -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} g_{\mu\nu} (X) \partial_{a} X^{\mu} \partial^{a} X^{\nu}.
+\end{equation}
+There are two things to note about this:
+\begin{enumerate}[1.]
+  \item This is highly \emph{nonlinear}.
+    We might expand this metric as a power series in $X$ in Riemann normal coordinates. We get additional interaction terms in addition to the free kinetic term.
+  \item If we want to quantise this, we want all the classical symmetries to go through. Requiring the condition of Weyl-invariance ($h_{ab} \to e^{\omega(\sigma, \tau)} h_{ab}$) in the quantum theory constrains what $g_{\mu\nu}(X)$ we can have.
+    One finds that $g_{\mu\nu}(X)$ has to satisfy
+    \begin{equation}
+      R_{\mu\nu}(g) + O(\alpha') = 0.
+    \end{equation}
+    To leading order in $\alpha'$, the metric must satisfy the vacuum Einstein equations. The higher order terms are \emph{stringy corrections} to general relativity.
+    More generally, if we have other background fields, we find that Weyl-invariance requires the full Einstein equations to be satisfied to leading order in $\alpha'$.
+\end{enumerate}
+
+\section{Spurious States and Gauge-invariance}%
+\label{sec:spurious_states_and_gauge_invariance}
+
+We took $a = 1$ in the conditions \eqref{eq:5-a}, which are $(L_0 - a) \ket{\phi} = (\overline{L}_0 - a) \ket{\phi} = 0$.
+Why?
+Consider the state
+\begin{equation}
+  \ket{\chi} = \sqrt{\frac{2}{\alpha'}} \left( \lambda_{\lambda} \alpha^{\mu}_{-1} \overline{L}_{-1} + \widetilde{\lambda}_{\mu} \overline{\alpha}_{-1}{}^{\mu} L_{-1} \right) \ket{k}
+\end{equation}
+
+Clearly $\ket{\chi}$ is orthogonal to all physical states:
+If $\ket{\phi} \in \mathcal{H}$, then $\bra{\phi} \ket{\chi} = 0$ because $L_1 \ket{\phi} = \overline{L}_1 \ket{\phi} = 0$ .
+What conditions do $\lambda_{\mu}$ , $\widetilde{\lambda}_{\mu}$ , and $k$  have to satisfy for $\ket{\chi}$  to be physical?
+It is useful to write $\ket{\chi}$  as 
+\begin{equation}
+  \ket{\chi} = \left( \lambda_{\mu} k_{\nu} + \widetilde{\lambda}_{\nu} k_{\mu} \right) \alpha^{\mu}_{-1} \overline{\alpha}{}^{\nu}_{-1} \ket{k}.
+\end{equation}
+Keeping $a$  arbitrary, we find
+\begin{equation}
+  (L^+_0 -2a) \ket{\chi} = 0 \quad \implies \quad k^2 = \frac{4 (a-1)}{\alpha'}.
+\end{equation} 
+We see that the physical state conditions are, unless $n = 1$, trivially satisfied since $N = \overline{N} = 1$. For these special cases with $n = 1$, we need to do a small calculation, which gives
+\begin{align}
+  L_1 \ket{\chi} &= 0 & \text{if} \quad (\lambda \cdot k) k_{\mu} + \widetilde{\lambda}_{\mu} k^2 &= 0 \\
+  \overline{L}_1 \ket{\chi} &= 0 & \text{if} \quad (\widetilde{\lambda} \cdot k) k_{\mu} + \lambda_{\mu} k^2 &= 0
+\end{align}
+
+Is there any situation in which we can make sense of this?
+If $a = 1$, then $k^2 = 0$, and $\ket{\chi}$ is physical if in addition $\lambda \cdot k = 0 = \overline{\lambda} \cdot k$. 
+Since $\bra{\chi} \ket{\chi} =  \lambda^2 k^2 + 2 ( \lambda \cdot k) (\overline{\lambda} \cdot k) + \overline{\lambda}{2} k^2$, this guarantees that $\bra{\chi} \ket{\chi} = 0$.

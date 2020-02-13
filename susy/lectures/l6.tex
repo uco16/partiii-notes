@@ -1,0 +1,144 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 6: February 04}
+
+\section{A Free Particle on a Circle}%
+\label{sec:a_free_particle_on_a_circle}
+
+Let $S[x] = \oint \frac{1}{2} \dot{x} \dd[]{\tau}$ be the action for a free particle, where $x(\tau) \sim x(\tau) + 2\pi R$ , so the target space is $S^1_{2\pi R}$ .
+The Hamiltonian for this free particle is, after canonical quantisation
+\begin{equation}
+  \hat{H} = -\frac{1}{2} \frac{\partial^2}{\partial x^2},
+\end{equation}
+the Laplacian on a circle.
+Consequently, a basis of $\hat{H}$-eigenstates is $\phi_n(x) = e^{\flatfrac{i n x}{R}}$ , where $n \in \mathbb{Z}$ , with corresponding $\hat{H}$ -eigenvalues $E_n = \flatfrac{n^2}{2R^2}$.
+Quantisation arises here because the target space is compact.
+Thus the partition function is
+\begin{equation}
+  Z(\beta) = \Tr_{\mathscr{H}} (e^{-\beta H}) = \sum_{n \in \mathbb{Z}} e^{\flatfrac{\beta n^2}{2 R^2}}.
+\end{equation}
+We can recast this using the Poisson resummation identity:
+\begin{align}
+  \sum_{n \in \mathbb{Z}} e^{- \frac{a}{2}(2\pi n)^2} &= \int e^{-\frac{ax^2}{2}} \sum_{n \in \mathbb{Z}}^{\infty} \delta(x + 2 \pi n) \dd[]{x} \\
+						      &= \frac{1}{2\pi} \int e^{-\frac{ax^2}{2}} (\sum_{m\in \mathbb{Z}} e^{imx}) \dd[]{x} \\
+						      &= \frac{1}{\sqrt{2\pi a}} \sum_{m \in \mathbb{Z}} e^{-\frac{m^2}{2a}},
+\end{align}
+where in going to the second line we used that $\sum_{n \in \mathbb{Z}} \delta(x + 2 \pi n) = \sum_{m \in \mathbb{Z}} e^{imx} \frac{1}{2\pi}$.
+In our case, 
+\begin{equation}
+  Z(\beta) = \sum_{n\in \mathbb{Z}} e^{-\frac{\beta n^2}{2R^2}} = \sqrt{\frac{2\pi R^2}{\beta}} \sum_{m\in \mathbb{Z}} e^{-2 \pi^2 m^2 R^2 / \beta}.
+\end{equation}
+Let us now recompute this using a path integral over all continuous maps $S'_\beta \to S'_{2\pi R}$ . Such maps are classified by their winding number $m \in \mathbb{Z}$ , as illustrated in Fig.~\ref{fig:l6f1}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l6f1.pdf_tex}
+  \caption{A map which winds around $S^1_{2\pi R}$ twice.}
+  \label{fig:l6f1}
+\end{figure}
+We can write this set of maps as the disjoint union
+\begin{equation}
+  \text{Maps}(S^1, S^1) = \bigsqcup_{m \in \mathbb{Z}} \text{Maps}_m (S^1, S^1).
+\end{equation}
+We take the path integral to include a sum $\sum_{m \in \mathbb{Z}}$ over these different topological sectors.
+To do this, let $x(\tau) = y(\tau) + \flatfrac{2 \pi R m \tau}{\beta}$, where $y(\tau + \beta) = y(\tau)$ is periodic, so $\oint \dot{y}(\tau) \dd[]{\tau} = 0$.
+Then
+\begin{equation}
+  \int \pdd{x} e^{-S[x]} = \sum_{m \in \mathbb{Z}} \int \pdd{y} e^{-S[y + 2 \pi R m \tau / \beta]}.
+\end{equation}
+For winding number $m$ , the action is
+\begin{equation}
+  S_m[x] = \frac{2 m^2 \pi^2 R^2}{\beta} -\frac{1}{2} \oint_{S^1_\beta} y \ddot y \dd[]{\tau}.
+\end{equation}
+Since $y(\tau)$  is periodic, it has a Fourier series
+\begin{equation}
+  y(\tau) = \frac{y_0}{\sqrt{\beta}} + \sum_{n=1}^{\infty} \left[ y_n \sqrt{\frac{2}{\beta}} \cos(\frac{2\pi n \tau}{\beta}) + \widetilde{y}_n \sqrt{\frac{2}{\beta}} \sin(\frac{2\pi n \tau}{\beta}) \right]
+\end{equation}
+and we take the path integral measure to be
+\begin{equation}
+  \pdd{y} = \frac{\dd[]{y_0}}{\sqrt{2\pi}} \prod_{n=1}^\infty \frac{\dd[]{y_n} \dd[]{\widetilde{y}_n}}{2\pi}.
+\end{equation}
+Then, inserting this into the action, formally we find
+\begin{equation}
+  Z(\beta) = \sum_{m\in Z} e^{-2 m^2 \pi^2 R^2 / \beta} \left( 2 \pi R \sqrt{\frac{\beta}{2\pi}} \right) \prod_{n=1}^\infty \left( \frac{\beta}{2\pi n} \right)^2.
+\end{equation}
+\begin{exercise}
+  Do the Gaussian integrals to check this!
+\end{exercise}
+
+\subsection{\texorpdfstring{$\zeta$}{Zeta}-function Regularisation}%
+\label{sub:zeta_function_regularisation}
+
+
+This is formal because we have an infinite product, which requires regularisation.
+A nice way to do this is to use $\zeta$ -function regularisation.
+The Riemann $\zeta$ -function is defined for $\Re(s) > 1$  by an infinite sum
+\begin{equation}
+  \zeta(s) = \sum_{n=1}^{\infty} n^{-s}.
+\end{equation}
+It is then extended by analytic continuation to $s\in \mathbb{C} \setminus \{1\}$.
+In particular, $\sigma(0) = -\frac{1}{2}$ and $\zeta'(0) = -\frac{1}{2} \ln(2\pi)$.
+We will borrow this for our regularisation.
+In our case, we have a modified function
+\begin{equation}
+  \widetilde{\zeta}(s) = \sum_{n=1}^{\infty} \left( \frac{2\pi n}{\beta} \right)^{-2s} = \left( \frac{\beta}{2\pi} \right)^{2s} \zeta(2s).
+\end{equation}
+Differentiating term-by-term, we have
+\begin{align}
+  \widetilde{\zeta}'(0) &= 2 \zeta(0) \ln(\frac{\beta}{2\pi}) + 2 \zeta'(0) \\
+			&= -\ln(\frac{\beta}{2\pi})- \ln 2\pi = - \ln \beta.
+\end{align}
+Thus, with $\zeta$-function regularisation of the infinite product, we have
+\begin{equation}
+  Z(\beta) = \sum_{m\in \mathbb{Z}} e^{- 2 \pi^2 R^2 m^2 / \beta} \sqrt{\frac{2\pi R^2}{\beta}},
+\end{equation}
+in agreement with the canonical quantisation result.
+
+\section{Fermionic Quantum Systems}%
+\label{sec:fermionic_quantum_systems}
+
+Take $n$  $\mathbb{C}$-fermions $\psi^a(\tau)$  with action
+\begin{equation}
+  S[\overline{\psi}{}, \psi] = \int \left[ i \overline{\psi}{}_a \dot{\psi}^a - V(\overline{\psi}{}, \psi) \right] \dd \tau.
+\end{equation}
+The conjugate momentum to $\psi^a$ is  $\pi_a = \frac{\delta L}{\delta \dot{\psi}^a} = i \overline{\psi}{}_a$.
+Hence in canonical quantisation, we have
+\begin{gather}
+  \{\hat{\psi}^a, \hat{\psi}^b\} = \hat{0} = \{\hat{\overline{\psi}{}}_b, \hat{\overline{\psi}{}}_a\}, \\
+  \{\hat{\psi}^a, \hat{\pi}_b\} = i \delta\indices{^{a}_{b}} \quad \text{or equivalently}\quad \{\hat{\psi}^a, \hat{\overline{\psi}{}}_b\} = \delta\indices{^{a}_{b}}.
+\end{gather}
+These relations are reminiscent of the raising and lowering operators which obey $[A^a, A^{\dagger}_b] = \delta\indices{^{a}_{b}}$ of a simple harmonic oscillator with $H = \hbar \omega (A^{\dagger}_a A^{a} + \frac{n}{2})$.
+We also define the fermion number operator $\hat{F} = \hat{\overline{\psi}{}}_a \hat{\psi}^a$, which obeys
+\begin{equation}
+  [\hat{F}, \hat{\psi}^a] = - \hat{\psi}^a \qquad \& \qquad [\hat{F}, \hat{\overline{\psi}{}}_a] = + \hat{\overline{\psi}{}}_a.
+\end{equation}
+This suggests that we treat $\hat{\overline{\psi}{}}_a$ as a raising and $\hat{\psi}^a$ as a lowering operator.
+
+We define the vacuum $\ket{0}$ by being annihilated $\hat\psi^a\ket{0} = 0$ for all $a$.
+The Hilbert space is spanned by states ($\abs{\{\psi^a\}} = n$)
+\begin{equation}
+  \{\ket{0}, \hat{\overline{\psi}}_a \ket{0}, \hat{\overline{\psi}}_a \hat{\overline{\psi}}_b \ket{0}, \dots, \hat{\overline{\psi}}_{a_1} \dots \hat{\overline{\psi}}_{a_n} \ket{0} \}.
+\end{equation}
+We can split the Hilbert space $\mathscr{H}$  into $\mathscr{H} = \mathscr{H}_B \oplus \mathscr{H}_F$ , where $\mathscr{H}_B$  ($\mathscr{H}_F$) contain states with an even (odd) number of $\hat{\overline{\psi}}$'s.
+
+We also have
+ \begin{equation}
+  (-1)^F \ket{\Psi} = 
+  \begin{cases}
+    + \ket{\Psi}, & \text{if } \Psi \in \mathscr{H}_B \\
+    - \ket{\Psi}, & \text{if } \ket{\Psi} \in \mathscr{H}_F,
+  \end{cases}
+\end{equation}
+so $(-1)^F$  gives the \emph{parity} of our state. Finally, we give $\mathscr{H}$  an inner product by declaring
+\begin{equation}
+  \left( \hat{\overline{\psi}}_{a} \hat{\overline{\psi}}_{b} \dots \hat{\overline{\psi}}_{c} \ket{0} \right)^{\dagger} = \bra{0} \hat{\psi}^{c} \dots \hat{\psi}^{b} \hat{\psi}^{a}
+\end{equation}
+and $\bra{0}\ket{0} = 1$ .
+
+\begin{example}[]
+  The inner product between $\hat{\overline{\psi}}_{a} \ket{0}$ and $\hat{\overline{\psi}}_{b} \ket{0}$ is
+  \begin{equation}
+    \bra{0} \hat{\psi}^{b} \hat{\overline{\psi}}_{a} \ket{0} = \bra{0} \left( \{\hat{\psi}^{b}, \hat{\overline{\psi}}_{a}\} - \hat{\overline{\psi}}_{a} \hat{\psi}^{b} \right) \ket{0} = \delta\indices{^{b}_{a}} \braket{0} = \delta\indices{^{b}_{a}}.
+  \end{equation}
+\end{example}
+In fact, all states are orthonormal.

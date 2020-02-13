@@ -1,0 +1,199 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 6: January 30}
+
+Mixed $SO(3, 1)$ and $SL(2, \mathbb{C})$
+\begin{equation}
+  \widetilde{X}_{\alpha \dot{\alpha}} = (X_{\mu} \sigma^{\mu})_{\alpha \dot{\alpha}} \to N\indices{^{\beta}_{\alpha}} (X_{\nu} \sigma^{\nu})_{\beta \dot{\gamma}} (N^*)\indices{^{\dot{\gamma}}_{\alpha}} = 1
+\end{equation}
+\begin{equation}
+  \implies \sigma\indices{^{\mu}_{\alpha \dot{\alpha}}} = N\indices{_{\alpha}^{\beta}} (\sigma^{\nu})_{\beta \dot{\gamma}} (\Lambda^{-1})\indices{^{\mu}_{\nu}} (N^*) \indices{^{\dot{\gamma}}_{\dot{\alpha}}}
+\end{equation}
+and similarly
+\begin{equation}
+  (\overline{\sigma}^{\mu})^{\alpha \dot{\alpha}} \coloneqq \epsilon^{\alpha\beta} \epsilon^{\dot{\alpha} \dot{\beta}} (\sigma^{\mu})_{\beta \dot{\beta}}
+\end{equation}
+
+Can choose
+\begin{equation}
+  \sigma^{\mu} \overline{\sigma}{}^{\nu} + \sigma^{\nu} \overline{\sigma}{}^{\mu} = 2 \eta^{\mu\nu}.
+\end{equation}
+These are the \emph{Dirac generators} of $SL(2, \mathbb{C})$.
+\begin{definition}[]
+  From these, we can define new matrices
+  \begin{align}
+    (\sigma^{\mu\nu})\indices{_{\alpha}^{\beta}} &\coloneqq \frac{i}{4} \left( \sigma^{\mu} \overline{\sigma}{}^{\nu} - \sigma^{\nu} \overline{\sigma}{}^{\mu} \right)\indices{_{\alpha}^{\beta}}, \\
+    (\overline{\sigma}{}^{\mu\nu})\indices{^{\dot{\alpha}}_{\dot{\beta}}}&= \frac{i}{4} \left( \overline{\sigma}{}^{\mu} \sigma^{\nu} - \overline{\sigma}{}^{\nu} \sigma^{\mu} \right) \indices{^{\dot{\alpha}}_{\dot{\beta}}}.
+  \end{align}
+\end{definition}
+\begin{claim}
+  The $\sigma^{\mu\nu}$ and $\overline{\sigma}{}^{\mu\nu}$ are generators of the Lorentz group in spinor representations, meaning that they obey the commutation relations
+  \begin{equation}
+    [\sigma^{\mu\nu}, \sigma^{\lambda\rho}] = i \left( \eta^{\mu\rho} \sigma^{\nu\lambda} + \eta^{\nu\lambda} \sigma^{\mu\rho} - \eta^{\mu\lambda} \sigma^{\nu\rho} - \eta^{\nu\rho} \sigma^{\mu\lambda} \right)
+  \end{equation}
+  and similar for $\overline{\sigma}{}$.
+\end{claim}
+
+For $SL(2, \mathbb{C})$:
+Left handed (fundamental)
+\begin{equation}
+  \psi_{\alpha} \to (e^{-\frac{i}{2} \omega_{\mu\nu} \sigma^{\mu\nu}})\indices{_{\alpha}^{\beta}} \psi.
+\end{equation}
+Right handed (conjugate)
+\begin{equation}
+  \overline{\chi}{}^{\dot\alpha} \to \left( e^{-\frac{i}{2}m_{\mu\nu} \overline{\sigma}{}^{\mu\nu}} \right)\indices{^{\dot\alpha}_{\dot\beta}} \overline{\chi}{}^{\beta}.
+\end{equation}
+Fundamental
+\begin{equation}
+  J_i = \frac{1}{2}\epsilon_{ijk} \sigma_{jk} = \frac{1}{2} \sigma_{i}, \quad K_i = \sigma_{0i} = -\frac{i}{2} \sigma_i.
+\end{equation}
+\begin{exercise}
+  Check $[\sigma_i, \sigma_j] = 2 i \epsilon^{ijk} \sigma_k$.
+\end{exercise}
+\begin{equation}
+  A_i = \frac{1}{2} (J_i + i K_i) = \frac{\sigma_i}{2} \qquad B_i = \frac{1}{2} (J_i - i K_i) = 0
+\end{equation}
+\begin{equation}
+  (A, B) = (\frac{1}{2}, 0) \qquad \text{representation}
+\end{equation}
+Conjugate:
+\begin{equation}
+  (A, B) = (0, \frac{1}{2})
+\end{equation}
+Parity:
+\begin{equation}
+  (A, B) \xrightarrow{P} (B, A)
+\end{equation}
+\begin{definition}[product]
+  Product of Weyl spinors:
+  \begin{align}
+    \chi \psi \coloneqq \chi^{\alpha} \psi_{\alpha} &= -\chi_{\alpha} \psi^{\alpha} \\
+    \overline{\chi}{}\overline{\psi}{} \coloneqq \overline{\chi}{}_{\dot\alpha} \overline{\psi}{}^{\dot\alpha} &= - \overline{\chi}{}^{\dot\alpha} \overline{\psi}{}_{\dot\alpha}
+  \end{align}
+\end{definition}
+In particular, 
+\begin{equation}
+  \psi\psi = \psi^{\alpha} \psi_{\alpha} = \epsilon^{\alpha\beta} \psi_{\beta} \psi_{\alpha} = \psi_2 \psi_1 - \psi_1 \psi_2.
+\end{equation}
+Choose $\psi_{\alpha}$  to be Grassmann numbers
+\begin{equation}
+  \psi_1 \psi_2 = - \psi_2 \psi_1.
+\end{equation}
+Then $\psi\psi = 2 \psi_2 \psi_1$.
+
+All representations of Lorentz algebra can be obtained from products of  $(\frac{1}{2}, 0)$  and $(0, \frac{1}{2})$ :
+\begin{equation}
+  (\frac{1}{2}, 0)^{m} \otimes (0, \frac{1}{2})^{n} \quad \text{use } j_1 \otimes j_2 = \abs{j_1 - j_2} \oplus \dots \oplus j_1 + j_2.
+\end{equation}
+\begin{example}[]
+  \begin{equation}
+    (\frac{1}{2}, 0) \otimes (0, \frac{1}{2}) = (\frac{1}{2}, \frac{1}{2})
+  \end{equation}
+  \begin{equation}
+    \psi_{\alpha} \overline{\chi}{}_{\dot\alpha} = \frac{1}{2} (\psi \sigma_{\mu} \overline{\chi}{})\sigma\indices{^{\mu}_{\alpha\dot\alpha}}.
+  \end{equation}
+\end{example}
+\begin{example}[]
+  \begin{equation}
+    (\frac{1}{2}, 0) \otimes (\frac{1}{2}, 0) = (1, 0) \oplus (0, 0)
+  \end{equation}
+  \begin{equation}
+    \psi_{\alpha} \psi_{\beta} = \frac{1}{2} \epsilon_{\alpha\beta} \underbrace{(\psi \chi)}_{\mathclap{\text{scalar}}} + \frac{1}{2} (\sigma^{\mu\nu} \epsilon^T)_{\alpha\beta} \underbrace{(\psi \sigma_{\mu\nu} \chi)}_{\mathclap{(1, 0)}}
+  \end{equation}
+\end{example}
+
+\subsection*{Connection to Dirac Matrices and Spinors}%
+
+\begin{definition}[Dirac spinor]
+  We define the \emph{Dirac spinor} to be
+  \begin{equation}
+    \psi_D \coloneqq 
+    \begin{pmatrix}
+    \psi_{\alpha} \\
+    \overline{\chi}{}^{\dot\alpha} \\
+    \end{pmatrix}.
+  \end{equation}
+\end{definition}
+\begin{definition}[gamma matrices]
+  The Dirac $\gamma$-matrices are defined such that $\{\gamma^{\mu}, \gamma^{\nu}\} = 2 \eta^{\mu\nu} \mathbb{1}$, for example
+  \begin{equation}
+    \gamma^{\mu} = 
+    \begin{pmatrix}
+     0 & \sigma^{\mu} \\
+     \overline{\sigma}{}^{\mu} & 0 \\
+    \end{pmatrix}
+  \end{equation}
+\end{definition}
+Lorentz generators:
+\begin{equation}
+  \Sigma^{\mu\nu} = \frac{i}{4}\gamma^{\mu\nu} = 
+  \begin{pmatrix}
+   \sigma^{\mu\nu} & 0 \\
+   0 & \overline{\sigma}{}^{\mu\nu} \\
+  \end{pmatrix}
+\end{equation}
+\begin{definition}
+  We define a fifth gamma matrix
+  \begin{equation}
+    \gamma^5 \coloneqq i \gamma^0 \gamma^1 \gamma^2 \gamma^3.
+  \end{equation}
+\end{definition}
+\begin{claim}
+  This acts on Dirac spinors as
+  \begin{equation}
+    \gamma^5 \psi_D = 
+    \begin{pmatrix}
+    -\psi_{\alpha} \\
+    +\overline{\chi}{}^{\dot\alpha} \\
+    \end{pmatrix}.
+  \end{equation}
+\end{claim}
+
+\begin{definition}[projection operators]
+  We define \emph{projection operators}
+  \begin{equation}
+    P_L \coloneqq \frac{1}{2} (\mathbb{1} - \gamma^5), \qquad 
+    P_R \coloneqq \frac{1}{2} (\mathbb{1} + \gamma^5)
+  \end{equation}
+\end{definition}
+\begin{definition}[Dirac conjugation]
+  We define the \emph{Dirac conjugate} of a Dirac spinor as
+  \begin{equation}
+    \overline{\psi}{}_D \coloneqq (\chi^{\alpha}, \overline{\chi}{}_{\dot\alpha}).
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  \begin{equation}
+    \psi_D^C \coloneqq 
+    \begin{pmatrix}
+    \chi_{\alpha} \\
+    \overline{\psi}{}^{\dot\alpha} \\
+    \end{pmatrix}
+  \end{equation}
+\end{definition}
+\begin{claim}
+  \begin{equation}
+    \psi_D^C = C \overline{\psi}{}_D^T, \qquad
+    C = 
+    \begin{pmatrix}
+     \epsilon_{\alpha\beta} & 0 \\
+     0 & \epsilon^{\dot\alpha\dot\beta} \\
+    \end{pmatrix}
+  \end{equation}
+\end{claim}
+
+\begin{definition}[Majorano spinor]
+  \begin{equation}
+    \psi_M \coloneqq 
+    \begin{pmatrix}
+    \psi_{\alpha} \\
+    \overline{\psi}{}^{\dot\alpha} \\
+    \end{pmatrix}
+    = \psi_M^C
+  \end{equation}
+\end{definition}
+We have
+\begin{equation}
+  \psi_D = \psi^1_M + i \psi_M^2.
+\end{equation}
+No Majorana + Weyl spinor.

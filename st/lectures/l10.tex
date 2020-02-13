@@ -1,0 +1,143 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 10: February 10}
+
+We shall refer to the (Grassmann) fields $b_{ab}$ and $c^a$ as Fadeev--Popov  \emph{ghosts}.
+
+\section{Calculating Observables}%
+\label{sec:calculating_observables}
+
+Our final form for $Z[0]$  for Riemann surfaces of genus $g$ is
+\begin{equation}
+  Z_g[0] = \frac{1}{\abs{\text{CKG}}} \int_{\mathrlap{M_g}} \dd[3]{t} \int \pdd{X} \pdd{b} \pdd{c} e^{i S[X, b, c]} \prod_{I} (b \mid \mu_I) \prod_{i, a} c^a(\hat \sigma_i).
+\end{equation}
+In general, we want to sum over all Riemann surfaces
+\begin{equation}
+  Z[0] = \sum_{g=0}^{\infty} e^{\lambda \chi} Z_g[0],
+\end{equation}
+where $\lambda$ is a constant and $\chi = lg - l$ is the Euler characteristic of the worldsheet.
+It will turn out that the constant weighting $\lambda$  will be determined by the theory rather than being a free parameter.
+
+We can compute correlation functions of observables by including them in our path integral
+\begin{equation}
+  \langle \phi_1 \dots \phi_n \rangle = \mathcal{N} \int \pdd{\phi} \phi_1 \dots \phi_n e^{i S[\phi]}
+\end{equation}
+What might our observables look like?
+They will certainly need to be invariant under diffeomorphisms and Weyl transformations.
+We can build diffeomorphism-invariant observables by taking an operator $\mathcal{O}(\sigma, \tau)$  on a genus $g$  worldsheet $\Sigma_g$  and integrating it over $\Sigma_g$:
+ \begin{equation}
+   \mathcal{O} = \int_{\Sigma_g} \dd[2]{\sigma} \mathcal{O}(\sigma, \tau).
+\end{equation}
+We will need to choose the $\mathcal{O}(\sigma, \tau)$  carefully in order for this to be Weyl invariant as well. We will talk about this when we come to CFTs.
+
+So a correlation function of such observables would be:
+\begin{equation}
+  \langle \mathcal{O}_1 \dots \mathcal{O}_n\rangle = \sum_{g=0}^{\infty} \frac{e^{\lambda \chi}}{\abs{\text{CKG}}} \int \prod_{i=0}^{n} \dd[2]{\sigma_i} \int_{\mathrlap{M_g}} \dd[3]{t} \int \pdd{ X} \pdd{b} \pdd{c} e^{i S[X, b , c]} \prod_I (b \suchthat \mu_I) \prod_{i, a} c^a(\hat{\sigma}_i) \mathcal{O}_1(\sigma_1) \dots \mathcal{O}_n(\sigma_n),
+\end{equation}
+using the shorthand $\sigma_i = (\sigma_i, \tau_i)$.
+
+\begin{remark}
+  We have the instruction to divide by the conformal Killing group, and to integrate over the moduli space of Riemann surfaces $M_g$ as well as all locations $\sigma_i$. 
+  We know we can fix the CKG on a sphere by keeping three locations fixed, and one on a torus.
+  Instead of integrating over all points of the Riemann surface, we can thus write the instruction of dividing by the CKG as restricting what we integrate over:
+  \begin{equation}
+    \frac{1}{\text{CKG}} \int_{\mathrlap{M_g}} \dd[3]{t} \int \prod_{i=1}^n \dd[2]{\sigma_i} = \int_{\mathrlap{M_g}} \dd[3]{t} \int_{i=1}^{n-\kappa} \dd[2]{\sigma_i} = \int_{M_{g, n}}.
+  \end{equation}
+\end{remark}
+
+So when computing the correlation functions, we end up integrating only over $n - \kappa$ locations
+\begin{equation}
+  \boxed{\langle \mathcal{O}_1 \dots \mathcal{O}_n \rangle = \sum_{g=0}^{\infty} e^{\lambda \chi} \int_{M_{g, n}} \int \pdd{X} \pdd{b} \pdd{c} e^{i S[X, b, c]} \int_I (b \suchthat \mu_I) \prod_{i, a} c^a (\hat{\sigma}_i) \mathcal{O}_1 \dots \mathcal{O}_n}
+\end{equation}
+This might seem like the final result depends on some locations, but as we will see the ghosts will take care of this.
+
+\section{Conformal Field Theory}%
+\label{sec:conformal_field_theory}
+
+This is a wonderful topic. There could be a whole Part III course in CFT alone. It is important in String Theory but also in Statistical and Condensed Matter Physics.
+Moreover, when trying to really understand QFT with mathematical rigour, your best bet is to start with low-dimensional CFT.
+
+\subsection{Conformal Invariance in General Dimension}%
+\label{sub:conformal_invariance_in_general_dimension}
+
+Let us consider transformations that preserve angles. In particular, transformations $x^{\mu} \to x'{}^{\mu}(x)$  such that the metric on our space transforms as 
+\begin{equation}
+  \Lambda(x) \, \eta_{\mu\nu} = \eta_{\rho\sigma} \frac{\partial x'{}^{\rho}}{\partial x^{\mu}} \frac{\partial x'{}^{\sigma}}{\partial x^{\nu}},
+\end{equation}
+preserving the metric up to a local scale $\Lambda(x)$ .
+
+Infinitesimally, we write a transformation as $x^{\mu} \to x^{\mu}(x) = x^{\mu} + \epsilon v^{\mu}(x) + \dots$ , where $\epsilon \ll 1$.
+The first order in $\epsilon$, the metric transforms as
+ \begin{equation}
+  \eta_{\mu\nu} \to \eta_{\mu\nu} + \epsilon(\partial_{\mu} v_{\nu} + \partial_{\nu} v_{\mu}) = \Lambda(x) \, \eta_{\mu\nu}.
+\end{equation}
+Let $\Lambda(x) = e^{\epsilon \omega(x)} \approx 1 + \epsilon \omega(x) + \dots$ .
+Thus, vector fields $v^{\mu}$ must satisfy
+\begin{equation}
+  \partial_{\mu} v_{\nu} + \partial_{\nu} v_{\mu} = \omega(x)\, \eta_{\mu\nu}.
+\end{equation}
+Taking the trace of both sides,
+\begin{equation}
+  \omega(x) = \frac{2}{d} \partial_{\mu} v^{\mu},
+\end{equation}
+where $d$ is the dimension few the spacetime.
+Therefore, vector fields that generate such conformal transformations satisfy
+\begin{equation}
+  \label{eq:10-star}
+  \partial_{\mu} v_{\nu} + \partial_{\nu} v_{\mu} = \frac{2}{d} \partial_{\lambda} v^{\lambda} \eta_{\mu\nu}.
+\end{equation}
+
+\subsection{In Two Dimensions}%
+\label{sub:in_two_dimensions}
+
+Something special happens in $d = 2$ dimensions.
+Let us take the coordinates in two dimensions to be $\sigma$ and $\tau$. We take $\eta$ to be the Euclidean metric, $\text{diag}(1, 1)$.
+With this metric, Eq.~\eqref{eq:10-star} boils down to two independent equations
+\begin{equation}
+  \boxed{\frac{\partial v_\tau}{\partial \tau} = \frac{\partial v_{\sigma}}{\partial \sigma}, \qquad \frac{\partial v_{\sigma}}{\partial \tau} = - \frac{\partial v_{\tau}}{\partial \sigma}}
+\end{equation}
+where $v = 
+\begin{pmatrix}
+v_{\sigma} \\
+v_{\tau} \\
+\end{pmatrix}$.
+These are the Cauchy--Riemann equations!
+\begin{remark}
+  We can now bring to bear the full power of complex analysis to understand quantum gravity.
+\end{remark}
+If we introduce complex coordinates
+\begin{equation}
+  w = \tau + i \sigma, \qquad \overline{w}{} = \tau -i \sigma, \qquad (\omega \in \mathbb{C}),
+\end{equation}
+then the condition for the vector $v$ to generate a conformal transformation is that $v$ is holomorphic, meaning that $\overline{\partial}{}v = 0$.
+
+If a theory is conformally invariant, then there is a conserved charge associated with every holomorphic $v$; there is an infinite number of conserved charges!
+\begin{remark}
+  Given our current understanding, this is special in $d = 2$.
+  This allows us to do quantum field theory with an easy that we just do not see in higher dimensions.
+\end{remark}
+
+A particularly useful set of coordinates for our worldsheet is the exponential of $w$:
+\begin{equation}
+  \label{eq:z}
+  z = e^{\tau + i \sigma}, \qquad \overline{z}{} = e^{\tau - i \sigma}.
+\end{equation}
+Under this map, the cylindrical worldsheet is mapped to the complex plane (if we choose a Euclidean metric, which we will do from now on).
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l10f1.pdf_tex}
+  \caption{}
+  \label{fig:l10f1}
+\end{figure}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l10f2.pdf_tex}
+  \caption{}
+  \label{fig:l10f2}
+\end{figure}
+
+Cylinder becomes radial evolution on the complex plane.

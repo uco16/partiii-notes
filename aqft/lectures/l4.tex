@@ -100,7 +100,7 @@ Let us focus on those diagrams that have $E = 2$ external currents.
   \ + \ \dots ]
 \end{equation}
 
-Factor out vacuum bubble diagrams
+First we factor out the vacuum bubble diagrams
 \begin{equation}
   [ \dots ] = 
   \underbrace{ [ \
@@ -144,11 +144,11 @@ Factor out vacuum bubble diagrams
   ]}_{\mathclap{Z(0)}}
 \end{equation}
 
-The $2$-point expectation value is then given by
+The $2$-point expectation value, which is normalised by $Z(0)$, is then given by those diagrams with two external sources that do not have any vacuum bubbles
 \begin{align}
   \expectationvalue{\phi^2} &= \frac{(-\hbar)^2}{Z(0)} \left.\frac{\partial^2 Z(J) }{\partial J^2} \right\rvert_{J = 0} \\
   &=
-  \underbrace{ [ \
+  \underbrace{ 
     \begin{gathered}
       \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
         a [large, dot] -- b [large, dot],
@@ -209,11 +209,10 @@ The $2$-point expectation value is then given by
 	\end{feynman}
       \end{tikzpicture}
     \end{gathered}
-    \ + \dots ]}_{\mathclap{\text{no vacuum bubbles}}}
+    \ + \dots }_{\mathclap{\text{no vacuum bubbles}}}
     \label{eq:4-2pt}
 \end{align}
-
-\subsection*{Symmetry factors}%
+In this case, all diagrams are connected. This will not be true for higher moments.
 
 From $Z(J)$ \eqref{eq:3-star}, the $E = 2$, $V = 0$ ($P = 1$) term is
 \begin{equation}
@@ -232,7 +231,7 @@ The expectation value is $\langle \phi^2 \rangle = \frac{\hbar}{m^2} =
   };
 \end{gathered} $ as expected!
 
-$\langle \phi^{2n} \rangle$ proceeds similarly, but note that there \emph{are} disconnected diagrams
+$\langle \phi^{2n} \rangle$ proceeds similarly, but note that there \emph{are} disconnected diagrams. For example, for $n = 2$ we have
 \begin{equation}
   \langle \phi^4 \rangle = 
   \begin{gathered}
@@ -249,7 +248,34 @@ $\langle \phi^{2n} \rangle$ proceeds similarly, but note that there \emph{are} d
     };
   \end{gathered}
   + 
-  COPY FROM NOTES
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[below=0.5cm of a] (b);
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of b] (d);
+        \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \diagram* {
+          (a) -- (d),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b, layered layout] {
+      a [large, dot] -- b [large, dot],
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][small, vertical=a to b] {
+      a [large, dot] -- v [small, dot] -- [half left, looseness=1] g[small, dot] -- [half left, looseness=1] v,
+      v -- b [large, dot],
+      c [large, dot] -- g -- d [large, dot],
+    };
+  \end{gathered}
+  + \dots
 \end{equation}
 
 \section{Effective Actions}%
