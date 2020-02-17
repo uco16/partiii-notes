@@ -73,14 +73,18 @@ In this case, we have
 where the factor $i$ in the second line is a matter of normalisation of the structure constants $f^{abc}$.
 This is the Lie algebra of a non-Abelian gauge (Yang--Mills) theory!
 
-\subsection*{General Remarks}%
+We find that a system with many massless helicity-1 fields is either
+\begin{itemize}
+  \item many photon-like particles which do not interacting with themselves
+  \item non-Abelian Yang--Mills gauge bosons with algebra $[T^a, T^b] = i f^{abc} T^c$.
+\end{itemize}
+
+\section{Yang--Mills Theory}%
+\label{sec:yang_mills_theory}
+
+Yang--Mills theory is the theory of a non-Abelian gauge group $G$.
 
 \begin{enumerate}[(i)]
-  \item A system with many massless helicity $1$  fields is either 
-    \begin{itemize}
-      \item many photon-like particles which do not interacting with themselves
-      \item non-Abelian Yang--Mills gauge bosons with algebra $[T^a, T^b] = i f^{abc} T^c$.
-    \end{itemize}
   \item group elements $U = e^{i \theta^a T^a} \simeq \mathbb{1} + i \theta^a T^a$. The $T^a$ are the generators and  $\theta^a$ are the parameters or coordinates in the group manifold.
    \item $U$  acting on matter field $i U \psi$. 
      \begin{itemize}
@@ -90,15 +94,25 @@ This is the Lie algebra of a non-Abelian gauge (Yang--Mills) theory!
        \end{equation} 
        Requiring this, one can check that $A_{\mu}$ has to transform as
        \begin{equation}
-         A_{\mu} \to U A_{\mu} U^{-1} - \frac{i}{g} \partial_{\mu} U.
+         A_{\mu} \to A'_{\mu} = U A_{\mu} U^{-1} - \frac{i}{g} \partial_{\mu} U U^{-1}.
        \end{equation}
        Infinitesimally, we may expand $U$ in terms of the generators to give
        \begin{equation}
          A_{\mu}'{}^a = A^a_{\mu} + \frac{i}{g} \partial_{\mu} \alpha^a - f^{abc} \alpha^b A^c_{\mu}
        \end{equation}
-       \item The curvature / field strength tensor, obtained from the commutator $[D_{\mu}, D_{\nu}]$ is
+       \item From the commutator
 	 \begin{equation}
-	   F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i g [A_{\mu}, A_{\nu}].
+	   [D_{\mu}, D_{\nu}] \langle = \left[ -i g (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) -g^2 [A_{\mu}, A_{\nu}] \right] \psi,
 	 \end{equation}
+	 we obtain the gauge (Yang--Mills) field strength
+	 \begin{equation}
+	   \label{eq:12-f}
+	   F_{\mu\nu} \coloneqq \frac{i}{g} [D_{\mu}, D_{\nu}] = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i g [A_{\mu}, A_{\nu}].
+	 \end{equation}
+	 It transforms covariantly as
+	 \begin{align}
+	   F_{\mu\nu} \to F_{\mu\nu}'{} &= U F_{\mu\nu} U^{-1} \\
+	   \implies F'{}^a_{\mu\nu} &= F_{\mu\nu}^a - f^{abc} \alpha^b F_{\mu\nu}^c.
+	 \end{align}
      \end{itemize}
 \end{enumerate}

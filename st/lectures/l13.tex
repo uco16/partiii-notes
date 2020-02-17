@@ -1,0 +1,129 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 13: February 17}
+
+Much of the discussion will be familiar from QFT although the setting will be different and the machinery of CFT will be much more potent.
+
+A novel thing in two dimensions is that the fields transform in $2$-dimensions as a contour integral.
+It will be quite common to see integrals around loops enclosing a pole, so we want to make sure those integrals are well-defined.
+In other words, we want to make sense of the expression
+\begin{equation}
+  \oint_{C(w)} dz \mathcal{R} \bigl( A(z) B(w) \bigr),
+\end{equation}
+where $C(w)$ is a contour around the point $z = w$.
+
+The difficulty is that different points of the contour, illustrated in Fig.~\ref{fig:l13f1}, are different distance from $w$; in general, $\abs{z} > \abs{w}$ on some parts of $C(w)$ and $\abs{z} < \abs{w}$ on other parts.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.9\columnwidth}
+  \input{lectures/l13f1.pdf_tex}
+  \caption{}
+  \label{fig:l13f1}
+\end{figure}
+Since $\abs{z} > \abs{w}$ on $C_1$ and $\abs{z} < \abs{w}$ on $C_2$, we have
+\begin{equation}
+  \oint_{C(w)} dz \mathcal{R} \bigl( A(z) B(w) \bigr) = \oint_{C_1} \dd[]{z} A(z) B(w) - \oint_{C_2} \dd[]{z} B(w) A(z).
+\end{equation}
+In particular, consider
+\begin{equation}
+  \mathcal{O} = \oint \dd[]{z} A(z), \qquad B(w)
+\end{equation}
+then
+\begin{equation}
+  \oint_{C(w)} \dd[]{z} \mathcal{R} \bigl( A(z) B(w) \bigr) \coloneqq [\mathcal{O}, B(w)].
+\end{equation}
+This plays the role of a commutator in our radially ordered theory.
+If we consider the variation of a chiral primary field $\phi(w)$
+\begin{align}
+  \delta_v \phi(w) &= \oint_{C(w)} \frac{\dd[]{z}}{2 \pi i} \mathcal{R} \bigl( v(z) T(z) \phi(w) \bigr) \\
+		   &= \oint_{\abs{z} > \abs{w}} \frac{\dd[]{z}}{2 \pi i} v(z) T(z) \phi(w) - \oint_{\abs{z} < \abs{w}} \frac{\dd[]{z}}{2 \pi i } \phi(w) v(z) T(z) \label{eq:13-1} \\
+		   &= [Q, \phi(w)],
+\end{align}
+where the charge $Q$ is given by
+\begin{equation}
+  Q = \oint_{C(w)} \frac{\dd[]{z}}{2 \pi i} v(z) T(z).
+\end{equation}
+This is similar to the Classical Poisson bracket expression for a transformation of a field $\phi(w)$.
+
+The non-trivial contributions to $\delta_v \phi(w)$ will come from the poles of the contour integrals in \eqref{eq:13-1}.
+
+\section{Mode Expansions and Conformal Weights}%
+\label{sec:mode_expansions_and_conformal_weights}
+
+This is a very brief aside that will give use the notation we need to evaluate these contour integrals.
+We are interested in the map \eqref{eq:z} from the cylindrical worldsheet to the complex plane.
+On the cylinder, the mode expansion for a field $\phi(\tau, \sigma)$ might naturally be written as $\phi_{\text{cyl}}(w) = \sum_{n} \phi_n e^{-n w}$, where $w = \tau + i \sigma$ and similarly for a field with $\overline{\omega}{}$-dependence.
+Suppose $\phi_{\text{cyl}}$ has conformal weight $h$ (i.e.~$\phi_{\text{cyl}}$ is a chiral primary). If we now transform to the complex plane with $z = e^{w} = e^{\tau + i \sigma}$,
+\begin{equation}
+  \phi_{\text{cyl}}(w) \to \phi(z) = \left( \frac{\partial z}{\partial w} \right)^{-h} \phi_{\text{cyl}}(w) = z^{-h} \phi_{\text{cyl}}(w).
+\end{equation}
+Therefore, on the complex plane with a Euclidean metric, the natural mode expansion of chiral primary fields is
+\begin{equation}
+  \boxed{\phi(z) = \sum_{n} \phi_n z^{-n - h}}.
+\end{equation}
+The only thing that has changed is the newly introduced exponent $-h$.
+
+More generally, for a primary field of weight $(h, \overline{h}{})$, the natural mode expansion is
+\begin{equation}
+  \boxed{\phi(z, \overline{z}{}) = \sum_{n, m} \phi_{nm} z^{-n-h} \overline{z}{}^{-m-\overline{h}{}}}.
+\end{equation}
+\begin{example}[]
+  For example, we will see that the stress tensor has weight $(h, \overline{h}{}) = (2, 0)$ for $T(z)$ and $(0,2)$ for $\overline{T}{}(\overline{z}{})$.
+  \begin{equation}
+    T(z) = \sum_{n} L_n z^{-n - 2}, \qquad
+    \overline{T}{}(\overline{z}{}) = \sum_{n} \overline{L}{}_n \overline{z}{}^{-n-2}.
+  \end{equation}
+\end{example}
+\begin{example}[]
+  For reference, 
+  \begin{equation}
+    X^{\mu}(z, \overline{z}{}) = x^{\mu} - i\frac{ \alpha'}{2} p^{\mu} \ln \abs{z}^2 + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{1}{n} \left( \alpha_n^{\mu} z^{-n} - \overline{\alpha}{}^{\mu}_n \overline{z}{}^{-n} \right).
+  \end{equation}
+  The holomorphic derivative has a nice Laurent expansion
+  \begin{equation}
+    \partial X^{\mu}(z) = -i \sqrt{\frac{\alpha'}{2}} \sum_{n} \alpha^{\mu}_n z^{n-1}, 
+  \end{equation}
+  where $\alpha_0^{\mu} = \sqrt{\frac{\alpha'}{2}} p^{\mu}$. So $\partial X^{\mu}$ looks to be a conformal field of weight $(1, 0)$, but we will derive this later.
+\end{example}
+
+\section{Radial Ordering and Normal Ordering}%
+\label{sec:radial_ordering_and_normal_ordering}
+
+In QFT, we learned that Wick's theorem relates time-ordered and normal-ordered products of operators.
+The role of time-ordering is played here by radial ordering.
+For simplicity, let us consider the weight-$(1, 0)$ chiral field $j^{\mu}(z) = \sum_{n} \alpha^{\mu}_n z^{-n -1}$.
+The reason we use the $\alpha^{\mu}_n$ as the modes is that we will eventually think of $j^{\mu}(z)$ as 
+\begin{equation}
+  j^{\mu} (z) = i \sqrt{\frac{2}{\alpha'}} \partial X^{\mu}(z).
+\end{equation}
+Since $\alpha_n^{\mu} \ket{ 0} = 0$ for $n \geq 0$, we can split $j^{\mu}(z)$ into creation and annihilation modes:
+\begin{equation}
+  j^{\mu}(z) = j^{\mu}_+ (z) + j^{\mu}_-(z), \qquad j_+^\mu (z) = \sum_{n>= 0} \alpha^{\mu}_n z^{-n-1} \quad \text{etc.}
+\end{equation}
+\begin{definition}[normal ordering]
+  We define \emph{normal ordering} $\normalorder{\mathcal{O}}$ as moving all creation operators to the left in any string of operators $\mathcal{O}$.
+\end{definition}
+In this case in particular, this means that
+\begin{equation}
+  \normalorder{j^{\mu}(z) j^{\nu}(w)} = j^{\mu}_+(z) j^{\nu}_-(w) + j^{\mu}_-(z) j^\nu_-(w) + j^{\mu}_+(z) j^{\nu}_+(w) + j^{\mu}_-(z) j^{\nu}_-(w).
+\end{equation}
+Note that the relationship between the normal ordered product and the general product
+\begin{equation}
+  \normalorder{j^{\mu}(z) j^{\nu}(w)} = j^{\mu}(z) j^{\nu}(w) + [j^{\nu}_-(w), j^{\mu}_+(z)],
+\end{equation}
+involves a commutator of our chiral primary. In QFT, we associated this commutator with a contraction or propagator of fields.
+We can evaluate this commutator by using the mode expansion: We know the algebra of the $\alpha^{\mu}_n$, so
+\begin{align}
+  [j^{\mu}_-(w), j_+^{\nu}(z)] &= \sum_{\substack{m \geq 0 \\ z > 0}} [\alpha^{\mu}_{-m}, \alpha^{\nu}_{n}] w^{m-1} z^{-n-1} \\
+  &= -\sum_{m, n} n \delta_{m, n} \eta^{\mu\nu} w^{m-1} z^{-n-1} \\
+  &= -\frac{\eta^{\mu\nu}}{z^2} \sum_{n> 0} n \left( \frac{w}{z} \right)^{n-1}.
+\end{align}
+This converges if $\abs{z} > \abs{w}$, giving
+\begin{equation}
+  [j^{\mu}_-(w), j^{\nu}_+(z)] = \frac{\eta^{\mu\nu}}{(z - w)^2}.
+\end{equation}
+As such, the normal ordered product is
+\begin{equation}
+  \normalorder{j^{\mu}(z) j^{\nu}(w)} = j^{\mu}(z) j^{\nu}(w) + \frac{\eta^{\mu\nu}}{(z - w)^2}, \qquad \abs{z} > \abs{w}.
+\end{equation}
+This requirement that $\abs{z} > \abs{w}$ tells us that there is some connection between normal and radial ordering.

@@ -1,0 +1,204 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 14: February 17}
+
+\begin{notation}[]
+  We define the quadratic polynomial
+  \begin{equation}
+    \Delta \coloneqq r^2 - 2 M r + e^2 = (r - r_+) (r - r_-), \qquad r_{\pm} = M \pm \sqrt{M^2 - e^2}.
+  \end{equation}
+\end{notation}
+The metric can then be written
+\begin{equation}
+  ds^2 = -\frac{\Delta}{r^2}  dt^2 + \frac{r^2}{\Delta} dr^2 + r^2 d\Omega^2.
+\end{equation}
+
+If $M < e$, then $\Delta > 0$ for $r > 0$. We have a curvature singularity at $r = 0$. This is a naked singularity like $M < 0$ Schwarzschild.
+Naked singularities are excluded physically by the WCC.
+What would happen to a ball of charged matter with $M < e$? It could not collapse to $r = 0$.
+An elementary particle like an electron has $M > e$; however, they are described quantum mechanically not classically, so there is no sense in which this describes the gravitational field of an elementary particle.
+
+\section{Eddington--Finkelstein Coordinates}%
+\label{sec:eddington_finkelstein_coordinates}
+
+For $M> e$,$\Delta$ two real roots $r_{\pm} > 0$.
+In exactly the same way as we did for Schwarzschild, we start in a region $r > r_+$ and introduce coordinates
+\begin{equation}
+  dr_* = \frac{r^2}{\Delta} dr \implies r_* = r + \frac{1}{2 \kappa_+} \ln \abs{\frac{r - r_+}{r_+}} + \frac{1}{2 \kappa_-} \ln \abs{\frac{r - r_-}{r_-}} + \text{const.}
+\end{equation}
+where we introduced two constants 
+\begin{equation}
+  \label{eq:14-kappa}
+  \kappa_{\pm} = \frac{r_{\pm} - r_{\mp}}{2 r_{\pm}^2}
+\end{equation}.
+We define $u = t - r_*$ and $v = t + r_*$. 
+The ingoing Eddington--Finkelstein coordinates are $(v, r, \theta, \phi)$ with metric
+\begin{equation}
+  ds^2= - \frac{\Delta}{r^2} dv^2 + 2 d v d r + r^2 d\Omega^2.
+\end{equation}
+These are smooth and Lorentzian for all $r > 0$. Again we analytically continue to $0 < r < r_+$ to the curvature singularity at $r = 0$.
+
+A constant-$r$ surface has normal $n = dr$. This is null when $g^{rr} = \frac{\Delta}{r^2} = 0$, i.e.~at $r = r_{\pm}$.
+Therefore $\{r = r_{\pm}\}$ are null hypersurfaces.
+\begin{exercise}
+  Show that $r$ decreases along any future-directed causal curve in $r_- < r < r_+$.
+\end{exercise}
+So the region $r \leq r_+$ is the black hole region with event horizon being the null hypersurface $\mathcal{H}^+ = \{r = r_*\}$.
+
+Using the outgoing EF coordinates $(u, r, \theta, \phi)$, we have
+\begin{equation}
+  ds^2 = -\frac{\Delta}{r^2} du^2 - 2du dr + r^2 d\Omega^2.
+\end{equation}
+This, as for Schwarzschild, defines a white hole.
+
+\section{Kruskal-like coordiates}%
+\label{sec:kruskal_like_coordiates}
+
+For future use, we will define two sets of $U$ and $V$ coordinates:
+\begin{equation}
+  \label{eq:14-star}
+  U^{\pm} = -e^{-\kappa_{\pm} u} \qquad V^{\pm} = \pm e^{\kappa_{\pm} v},
+\end{equation}
+where $\kappa$ is defined in \eqref{eq:14-kappa}.
+The reason for this sign choice will become apparent shortly.
+
+For $r > r_+$ in Kruskal coordinates $(U^+, V^+, \theta, \phi)$, the metric is
+\begin{equation}
+  ds^2 = -\frac{r-+ r_-}{\kappa_+^2 r^2} e^{-2 \kappa_+ r} \left( \frac{r - r_-}{r_-} \right)^{1 + \kappa_+/\abs{\kappa_-}} dU^+ dV^+ + r^2 d\Omega^2,
+\end{equation}
+where $r(U^+, V^+)$ is defined by
+\begin{equation}
+  -U^+ V^+ = e^{2 \kappa_+ r} \left( \frac{r - r_+}{r_+} \right) \left(\frac{r_-}{r - r_-} \right)^{\kappa_+/\abs{\kappa_-}},
+\end{equation}
+which is monotonically increasing for $r > r_-$.
+
+Initially, $U^+ < 0$ and $V^+ > 0$.
+Can now analytically continue to $U^+ \geq 0$ or $V^+ \leq 0$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{lectures/l14f1.pdf_tex}
+  \caption{}
+  \label{fig:l14f1}
+\end{figure}
+
+Have $r > r_-$ everywhere.
+$k^a = 0$ at $U^+ = V^+ = 0$ (bifurcation 2-sphere).
+
+Ingoing EF: ingoing radial null geo.~reaches $r = r_-$ in finite affine parameter ($U^+ V^+ \to -\infty$).
+
+In region II, we start with ingoing EF ($v, r, \theta, \phi$) and reintroduce static coordinates.
+Let $t = v - r_*$.
+Converting the metric back to $(t, r, \theta, \phi)$ to get
+\begin{equation}
+  ds^2 =-\frac{\Delta}{r^2} dt^2 + \frac{r^2}{\Delta} dt^2 + r^2 d\Omega^2,
+\end{equation}
+which is now defined in region $II$.
+
+Let $u = t - r_* = v - 2 r_*$.
+We can use the definition \eqref{eq:14-star} to define $U^- < 0$ and $V^- < 0$ in region II.
+In these coordinates, the metric takes the form
+\begin{equation}
+  ds^2 = - \frac{r_+ r_-}{\kappa_-^2 r^2} r^{2 \abs{\kappa_-} r} \left( \frac{r_+ - r}{r_+} \right)^{1 + \abs{\kappa_-}/\kappa_+} dU^- dV^ + r^2 d\Omega^2,
+\end{equation}
+where $r(U^-, V^-)$ is defined by
+\begin{equation}
+  U^- V^- = e^{-2 \abs{\kappa_-} r} \left( \frac{r - r_-}{r_-} \right) \left( \frac{r_+}{r_+ - r} \right)^{\abs{\kappa}/ \kappa_+},
+\end{equation}
+which is monotonic for $r < r_+$.
+
+We can now analytically continue this to $U^- \geq 0$ or $V^- \geq 0$.
+We can draw another Kruskal diagram, illustrated in Fig.~\ref{fig:l14f2}.
+We need to introduce new regions V and VI, and for reasons to become apparent we wrote one of them as III'.
+The region $r = 0$ corresponds to $U^- V^- = -1$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f2.pdf_tex}
+  \caption{}
+  \label{fig:l14f2}
+\end{figure}
+
+When we talked about the white hole, we said that the black and white holes are isometric, however reversing time orientation.
+Here, III' is isometric to III, and the isometry preserves the time-orientation; they are indistinguishable, except that III' is in the white hole region!
+We can define $(U^+{}', V^+{}')$ in III' analytically continue.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f3.pdf_tex}
+  \caption{}
+  \label{fig:l14f3}
+\end{figure}
+This gives another diagram \ref{fig:l14f3}, and we can keep going on and on.
+As such, there are infinitely many regions and the Penrose diagram looks something like \ref{fig:l14f4}, which repeats infinitely many times.
+As always, radial null geodesics are lines at $45^\circ$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f4.pdf_tex}
+  \caption{}
+  \label{fig:l14f4}
+\end{figure}
+
+ANOTHER FIG.
+
+We have a geodesically complete $\Sigma$, which is asymptotically flat with 2 ends.
+There exists a Cauchy horizons $H^{\pm}(\Sigma): r = r_-$.
+The solution beyond $H^{\pm}(\Sigma)$ is not deterred by data on $\Sigma$.
+(e.g.~need not be spherically symmetric or analytic.)
+This appears to violate CSS. However there is a get-out: the word ``generic''.
+If this violation is only for single solution we have no problem.
+We need to perturb around this.
+
+Consider two observers Alice $A$ and Bob $B$, as illustrated in \ref{fig:l14f6}.
+Bob is immortal; he lives forever. He is also sensible and stays out of the black hole region. Alice is more adventurous. For reassurance, Bob sends infinitely many light signals to Alice, one every second.
+Alice receives all signals, infinitely many of them, as she crosses the Cauchy horizon $H^+(\Sigma)$.
+This gives an infinite blueshift; she measures the gradient associated with these waves to be very large.
+We get infinite energy (as measured by $A$).
+If the energy is diverging, it gives a large gravitational effect. 
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f5.pdf_tex}
+  \caption{}
+  \label{fig:l14f5}
+\end{figure}
+
+This suggests that a small portion in I causes a large gravitational backreaction at $H^+(\Sigma)$. This is an instability! So this is indeed non-generic.
+Expect $H^+(\Sigma)$ to be replaced by a curvature singularity in perturbed spacetime.
+ANOTHER FIGURE
+
+\section{Extreme RN}%
+\label{sec:extreme_rn}
+
+For $M = e$, 
+\begin{equation}
+  ds^2 = - \left( 1 - \frac{M}{r} \right)^2 dt^2 + \left( 1 - \frac{M}{r} \right)^{-2} dt^2 + r^2 d\Omega^2.
+\end{equation}
+
+Again we define
+\begin{equation}
+  dr_* = \frac{dr}{\left( 1 - \frac{M}{r} \right)^2} \rightarrow r_* = \dots ,\quad v =t + r_*, 
+\end{equation}
+giving the metric
+\begin{equation}
+  ds^2 = - \left( 1 - \frac{M}{r} \right) dv^2 + 2 d v d r + r^2 d\Omega^2.
+\end{equation}
+We can go through the whole spiel analytically continuing to $0 < r < M$ giving the black and white hole regions and so on.
+Finally, we obtain the Penrose diagram \ref{fig:l14f8}.
+
+\begin{remark}
+  $H\mathcal{S}^{\pm} = H^{\pm}(\Sigma)$.
+\end{remark}
+
+Consider a surface of constant $t$, such as illustrated in Fig.~\ref{fig:l14f8}. Let us calculate the proper length of a line of constant $t, \theta, \phi$ from $r = r_0 > M$ to $r = M$:
+\begin{equation}
+  \int_M^{r_0} \frac{dr}{1 - M / r} = \infty.
+\end{equation}
+So the end points are actually points at infinity.
+Approaching this point on an Einstein--Rosen bridge corresponds geometrically to going down the infinite throat in Fig.~\ref{fig:l14f9}.
+
+The geometry of this throat is quite interesting. Let $r \coloneqq M (1 + \lambda)$. To leading order in $\lambda$, we have
+\begin{equation}
+  ds^2 \approx - \lambda^2 dt^2 + M^2 \frac{d\lambda^2}{\lambda^2} + M^2 d\Omega^2 \qquad (\text{AdS}_2 \times S^2).
+\end{equation}

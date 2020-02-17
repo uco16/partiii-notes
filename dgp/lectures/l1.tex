@@ -108,35 +108,43 @@ As such, manifolds are topological spaces with additional structure, allowing us
   There are other possibilities. In fact, there are infinitely many smooth structures on $\mathbb{R}^4$ (Proof by Donaldson in $1984$ in his PhD. He used Gauge theory).
 \end{example}
 \begin{example}[sphere $S^n = \left\{ \vb{r} \in \mathbb{R}^{n + 1}, \abs{\vb{r}} = 1 \right\}$ ]
-  Have two open sets 
-  \begin{equation}
-    U = S^n / \left\{ 0,0,0,, \dots, 0, 1 \right\} \qquad
-    \widetilde{U} = S^n / \left\{ 0,0,0,, \dots, 0, - 1 \right\}
-  \end{equation}
+  Intuitively, the $n$-sphere $S^n$ is an $n$-dimensional manifold. To show this, we will construct a map $\phi \colon S^n \to \mathbb{R}^n$ by projecting the north pole $N: (0, 0 \dots, 0, 1) \in \mathbb{R}^{n+1}$, through the point $p \in S^n$ onto the hyperplane defined by $r_{n+1} = 0$. This is illustrated for $S^2$ in Fig.~\ref{fig:l1f5}.
   \begin{figure}[tbhp]
     \centering
     \def\svgwidth{0.4\columnwidth}
     \input{lectures/l1f5.pdf_tex}
-    \caption{}
+    \caption{The map $\phi$ projects the north pole $N$ through a point $p \in S^2$ onto $\phi(p)$, which lies in the $R^2$-plane defined by $z = 0$. This map is not defined for the north-pole itself.}
     \label{fig:l1f5}
   \end{figure}
-  We then define charts, where $\mathbb{R}^n = (x_1, \dots, x_n)$:
+  From this figure, we can already see that this projection map is ill-defined at the north pole itself.
+  However, the definition of a manifold allows us to work with multiple charts. Let us cover $S^n$ with the following two open sets 
   \begin{equation}
-    \begin{gathered}
-      \phi(r_1, \dots, r_{n+1}) = \left( \frac{r_1}{1 - r_{n+1}}, \dots, \frac{r_n}{1-r_{n+1}} \right) \\
-      \text{on } \widetilde{U}, \qquad \widetilde{\phi}(r_1, \dots, r_{n+1}) = \left( \frac{r_1}{1 - r_{n+1}}, \dots, \frac{r_n}{1-r_{n+1}} \right) = (\widetilde{x}_1 , \dots, \widetilde{x}_n).
-    \end{gathered}
+    U = S^n / \left\{ 0,0,0,, \dots, 0, 1 \right\}, \qquad
+    \widetilde{U} = S^n / \left\{ 0,0,0,, \dots, 0, - 1 \right\},
   \end{equation}
-  On $U \cap \widetilde{U}$ , 
+  so $U$ does not include the north pole and $\widetilde{U}$ does not include the south pole.
+  We can then define two maps, $\phi$ and $\widetilde{\phi}$, which project from the north pole and the south pole respectively.
+  Using $x_i$ to denote coordinates in $\mathbb{R}^n$ and $r_i$ to denote coordinates in $\mathbb{R}^{n+1}$ we take maps
   \begin{align}
-    \frac{r_k}{1 + r_{n+1}} &= \frac{1 - r_{n+1}}{1 + r_{n+1}} \frac{r_k}{1 - r_{n+1}}, \qquad k = 1, \dots, n \\
-    \frac{1 - r_{n+1}}{1 + r_{n+1}} &= \frac{(1 - r_{n+1})^2}{r^2_1 + r^2_2 + \dots + r^2_n} = \frac{1}{x^2_1 + x^2_2 + \dots + x^2_n}
+    \text{defined on $U$:} \qquad \phi(r_1, \dots, r_{n+1}) &= \left( \frac{r_1}{1 - r_{n+1}}, \dots, \frac{r_n}{1-r_{n+1}} \right) = (x_1 , \dots, x_n) \\
+    \text{defined on $\widetilde U$:} \qquad \widetilde{\phi}(r_1, \dots, r_{n+1}) &= \left( \frac{r_1}{1 + r_{n+1}}, \dots, \frac{r_n}{1+r_{n+1}} \right) = (\widetilde{x}_1 , \dots, \widetilde{x}_n).
   \end{align}
-  So on $\phi(U \cap \widetilde{U})$,
+  On the overlap $U \cap \widetilde{U}$, the coordinates are related
   \begin{equation}
-    (\widetilde{x}_1, \dots, \widetilde{x}_n) = \left( \frac{x_1}{x^2_1 + \dots + x^2_n}, \dots, \frac{x_n}{x^2_1 + \dots + x^2_n} \right)
+    \overbrace{\frac{r_k}{1 + r_{n+1}}}^{\mathclap{\widetilde{x}_k}} = \frac{1 - r_{n+1}}{1 + r_{n+1}} \overbrace{\frac{r_k}{1 - r_{n+1}}}^{\mathclap{x_k}}, \qquad k = 1, \dots, n,
   \end{equation}
-  are smooth maps from $\mathbb{R}^n \to \mathbb{R}^n$
+  where we can write the transition factor on the right in terms of the coordinates $x_i$:
+  \begin{equation}
+    \frac{1 - r_{n+1}}{1 + r_{n+1}} = \frac{(1 - r_{n+1})^2}{r^2_1 + r^2_2 + \dots + r^2_n} = \frac{1}{x^2_1 + x^2_2 + \dots + x^2_n}.
+  \end{equation}
+  So on $U \cap \widetilde{U}$, the transition function is
+  \begin{equation}
+    \widetilde{\phi} \circ \phi^{-1}\colon 
+    (x_1, \dots, x_n)
+    \mapsto
+    (\widetilde{x}_1, \dots, \widetilde{x}_n) = \left( \frac{x_1}{x^2_1 + \dots + x^2_n}, \dots, \frac{x_n}{x^2_1 + \dots + x^2_n} \right),
+  \end{equation}
+  which is a smooth map from $\mathbb{R}^n \to \mathbb{R}^n$.
 \end{example}
 \begin{example}[]
   A Cartesian product of manifolds is a manifold, for example we have the $n$-torus $T^n = S^1 \times S^1 \times \dots \times S^1$.

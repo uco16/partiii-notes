@@ -1,0 +1,126 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 13: February 15}
+
+\section{Effective Actions}%
+\label{sec:effective_actions}
+
+The next step is to look at a slightly smaller cutoff $\Lambda$ and split the fields into high and low momentum modes
+\begin{align}
+  \phi(x) &= \phi^- (x) + \phi^+(x) \\
+	  &= \int_{\abs{p} < \Lambda} \bdd[d]{p} e^{i p \cdot x} \widetilde{\phi} (p) + \int _{\Lambda < \abs{p} \leq \Lambda_0} \dots.
+\end{align}
+We then want to obtain a Wilsonian effective action $S_\Lambda^{\text{eff}}[\phi]$ (like a $W$) by integrating out the $\phi^+$ as
+\begin{equation}
+  S_\Lambda^{\text{eff}}[\phi] = -\ln \int_\Lambda^{\Lambda_0} \pdd{\phi^+} e^{-S_{\Lambda_0}[\phi ⁻ + \phi^+]}.
+\end{equation}
+The RG equations will tell us how $S_\Lambda^{\text{eff}}$  and $S_{\Lambda_0}$  are related.
+Separate out the terms in the action that couple UV and IR modes
+\begin{equation}
+  S_{\Lambda_0}[\phi ⁻ + \phi^+] = S^0[\phi^-] + S^0[\phi^+] + S_{\Lambda_0}^{\text{int}} [\phi^-, \phi^+],
+\end{equation}
+with free action $S^0[\phi] = \int \dd[d]{x} \left[ (\partial \phi)^2 + m^2 \phi^2 \right]$.
+There is no quadratic term $\phi^- \phi^+$ since in Fourier space we would get a delta function
+ \begin{equation}
+  \widetilde{\phi^-}(k) \phi^+(k') \delta^{(d)}(k + k'),
+\end{equation}
+which vanishes for all $k$  both above or below $\Lambda$. 
+Another way of saying this is that $\phi^+$ and $\phi^-$ have disjoint support in the momentum space.
+An example of a non-zero term is $\widetilde{\phi^-}(k) \widetilde{\phi^-}(k') \widetilde{\phi}^+(k'') \delta(k + k' + k'')$ .
+We also have effective interactions
+\begin{equation}
+  S^{\text{int}}_\Lambda[\phi] = - \ln \int \pdd{\phi^+} e^{-S^0[\phi^+] - S^{\text{int}}_{\Lambda_0}[\phi^-, \phi^+]}.
+\end{equation}
+
+\section{Running Couplings}%
+\label{sec:running_couplings}
+
+If we want the physics to be independent of $\Lambda, \Lambda_0$, then  we need the partition functions to be equal
+\begin{equation}
+  \mathcal{Z}_\Lambda(g_i) (g_i (\Lambda)) = \mathcal{Z}_{\Lambda_0} (g_{i0}; \Lambda_0).
+\end{equation}
+The right-hand side is independent of $\Lambda$ , which means that the left-hand side must be, too.
+Thus the couplings $g_i(\Lambda)$  must ``run'' to compensate.
+We have the Callan--Symanzik (or RG) equation
+\begin{equation}
+  \Lambda \dv{\mathcal{Z}_\Lambda(g)}{\Lambda} = \left( \Lambda \left.\frac{\partial }{\partial \Lambda}\right\rvert_{g_i} + \Lambda \dv{g_i}{\Lambda} \frac{\partial }{\partial g_i} \right) \mathcal{Z}_\Lambda (g) = 0.
+\end{equation}
+
+The effective action $S_\Lambda^{\text{eff}}$  has the same form as $S_{\Lambda_0}$ :
+\begin{equation}
+  \label{eq:13-1}
+  S_\Lambda^{ \text{eff}} [\phi] = \int \dd[d]{x} \left[ \frac{1}{2} Z_\Lambda (\partial \phi)^2 + \sum_{i} \frac{Z_\Lambda^{n_i / 2}}{\Lambda^{d_i - d}} g_i(\Lambda) \mathcal{O}_i(x) \right],
+\end{equation}
+where $n_i$  is the number of fields $\phi$  in the operator $\mathcal{O}_i(x)$ .
+Integrating out $\phi^+$  modes may imply that $Z_\Lambda \neq 1$ .  We thus renormalise the field to restore the quadratic term in the action:
+\begin{equation}
+  \phi^r = Z^{1 / 2}_\Lambda \phi,
+\end{equation}
+where we use the field-renormalisation function $Z$ (not the $\mathcal{Z}$).
+
+Any remaining $\Lambda$ -dependence must be described by $g_i(\Lambda)$ .
+The classical $\beta$-function is $\beta_i^{\text{cl}} = d_i - d$ from the sum in \eqref{eq:13-1}. The quantum $\beta$ -function is $\beta^{\text{qu}} = \Lambda \dv{g_i}{\Lambda}$, which gives the total $\beta = \beta^{\text{cl}} + \beta^{\text{qu}}$.
+
+\section{Vector Functions}%
+\label{sec:vector_functions}
+
+Recall the anomalous dimension $\gamma_\phi = -\frac{1}{2} \dv{\Lambda} \ln Z_\Lambda$.
+Look at $n$-point functions.
+Iterate this mode-thinning (the integrating-out of high-momentum modes). Let $0 < s < 1$.
+\begin{equation}
+  Z_{s \Lambda}^{-n / 2} \Gamma^{(n)}_{s \Lambda} (x_1, \dots, x_n; g_i(s \Lambda)) = Z_\Lambda^{-n / 2} \Lambda_{\Lambda}^{(n)} (x_1, \dots, x_n; g(\Lambda)).
+\end{equation}
+The infinitesimal version of this is the differential equation
+\begin{equation}
+  \Lambda \dv{\Lambda} \Gamma^{(n)}_\Lambda \bigl(x_1, \dots, x_n; g(\Lambda) \bigr) = \left( \Lambda \frac{\partial }{\partial \Lambda} + \beta_i \frac{\partial }{\partial g_i} + n \gamma_\phi \right) \Gamma_\Lambda^{(n)} (x_1, \dots, x_n; g(\Lambda)).
+\end{equation}
+This can be obtained by letting $s \Lambda = \Lambda'$ for fixed $\Lambda$. Differentiate with respect to $s$
+\begin{equation}
+  s \dv{s} Z_s^{-n / 2} = n \gamma_\phi
+\end{equation}
+using $s \dv{s} = \Lambda' \dv{\Lambda'}$.  Then relabel $\Lambda'$ as $\Lambda$.
+
+The RG transformation constitutes two steps:
+\begin{enumerate}[1)]
+  \item Integrate out momentum modes over the annulus $(s \Lambda, \Lambda]$ in momentum-space.
+  \item Rescale coordinates $x' = s x$ so that the cutoff again sits at $\Lambda$.
+\end{enumerate}
+
+Under rescaling, the kinetic term must be made properly renormalised
+\begin{equation}
+  \phi^r(sx) = s^{1 - \frac{d}{2}} \phi^r(x).
+\end{equation}
+Then the rest of the action is invariant if we also rescale $\Lambda \to \Lambda / s$.
+
+The $n$-point vertex functions should be the same
+\begin{equation}
+  \Gamma_\Lambda^{(n)} (x_1, \dots, x_n ; g(\Lambda)) = \left( \frac{Z_\Lambda}{Z_{s\Lambda}} \right)^{n / 2} \Gamma^{(n)}_{s \Lambda} (x_1, \dots, x_n ; g(s\Lambda)).
+\end{equation}
+However, these have different cutoffs, so they are difficult to compare.
+We want to compare the theory after performing both RG steps, not just the first one.
+We rescale coordinates / cutoff and the field, giving
+\begin{equation}
+  \dots = \left( s^{2 - d} \frac{Z_\Lambda}{Z_{s\Lambda}} \right)^{n / 2} \Gamma^{(n)}_\Lambda (s x_1, \dots, sx_n ; g(s \Lambda)).
+\end{equation}
+But the numerical values of $Z_{s\Lambda}$ and $g(s \Lambda)$ do not get rescaled.
+
+Reconsider points we look at. Instead of $x_I$ argument, look at $x_i / s$. 
+\begin{equation}
+  \Gamma_\Lambda^{(n)} (\frac{x_1}{s}, \dots, \frac{x_n}{s}; g(\Lambda)) = \left( s^{2 - d} \frac{Z_\Lambda}{Z_{s\Lambda}} \right)^{n / 2} \Gamma_\Lambda^{(n)} \bigl( x_1, \dots, x_n ; g(s \Lambda) \bigr).
+\end{equation}
+As $s$ gets smaller, the left-hand side $\abs{x_i - x_j}$ gets bigger.
+On the right-hand side, the couplings are running to the IR.
+From this we see a connection between the running of the coupling and the physics of scale.
+
+What about the pre-factor?
+This is the coefficient of the quantum action.
+For small $\delta s = 1 - s$, 
+\begin{equation}
+  \left( s^{2 - d} \frac{Z_\Lambda}{Z_{s \Lambda}} \right)^{1 / 2} = 1 + \left[ \frac{d - 2}{2} + \gamma_\phi \right] \delta s.
+\end{equation}
+Therefore, the fields, $n$ of which are in the $n$-point vertex function, behave as if their mass-dimensions were
+\begin{equation}
+  \Delta_\phi \coloneqq \frac{d - 2}{2} + \gamma_\phi.
+\end{equation}
+The first term $(d - 2) / 2$ is the ``engineering dimension'', which we obtained from looking at the dimension of the Lagrangian. The $\gamma_\phi$ is the ``anomalous dimension''.
+Both of these sum to give the ``scaling dimension'' $\Delta_\phi$.

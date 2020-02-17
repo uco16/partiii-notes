@@ -1,0 +1,114 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 13: February 15}
+
+We can build a gauge invariant (renormalisable) Lagrangian as
+\begin{equation}
+  \label{eq:lym}
+  \mathscr{L} = -\frac{1}{4} g_{ab} F^{a}_{\mu\nu} F^{b}{}^{\mu\nu} + \mathscr{L}_M (\psi, D_M \psi) + \theta F^{a}_{\mu\nu} \widetilde{F}^{a}{}^{\mu\nu}, 
+\end{equation}
+where $\widetilde{F}^{a}{}^{\mu\nu} = \epsilon^{\mu\nu\rho\sigma} F_{\rho\sigma}$. Usually people do not write the (topological) $\theta$-term since it is a total derivative and does not influence the physical classically. However, quantum mechanically it does!
+Non-perturbative features of Yang--Mills theories like instantons come from this term.
+Moreover, it is related to Chern--Simons theory and has some amazing mathematics behind it.
+
+The second term $\mathscr{L}_M$ is the matter Lagrangian, coupling the gauge field to the matter fields $\psi$.
+
+What about the first term? In order to behave like a real propagating field, we want positive kinetic energy. This implies that $g_{ab}$ is constant, invariant $\mathscr{L}$, and positive definite.
+This implies that $G$ cannot just be any group; it has to be compact, simple, or semi-simple.
+This is where it pays off that we studied the Cartan classification of these groups!
+We are restricted to work with the groups listed in Table \ref{tab:l13t1}.
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c c c}
+  $G$ & rank & dimension \\
+  \hline
+  $SU(N)$ & $N-1$ & $N^2 - 1$ \\
+  $SO(N)$ & $\frac{N}{2},  \frac{N-1}{2}$  & $\frac{N (N-1)}{2}$  \\
+  $Sp(N)$ & $N$ & $N (2N + 1)$ \\
+  $G_2$ & $2$ & $14$ \\
+  $F_4$ & 4 & 52 \\
+  $E_6$ & 6 & 78 \\
+  $E_7$ & 7 & 133 \\
+  $E_8$ & 8 & 248 \\
+  \end{tabular}
+  \caption{Cartan Classification}
+  \label{tab:l13t1}
+\end{table}
+
+Compactness implies $\Tr(T^a T^a) > =0 $, which means that we have finite-dimensional representations with hermitian generators.
+For $SU(N)$, we have the representations:
+\begin{description}
+  \item[fundamental:] $\phi_i \to \phi_i + i \alpha^a (T^a_F)_{ij} \phi_j$, where $T_F^a$ are hermitian.
+  \item[antifundamental:] Generators are $T_{AF}^a = - (T^a_F)^*$, so the corresponding elements of the representation $\phi_i^* \to \phi_i^* + i \alpha^a (T^a_{AF})_{ij} \phi^*_j = \phi^*_i - i \alpha^a (T_F^a)_{ji} \phi^*_j$.
+  \item[adjoint:] $(T_A^a)^{bc} \coloneqq -i f^{abc}$. This is an $(N^2 - 1)$-dimensional representation.
+\end{description}
+These are normalised as
+\begin{gather}
+  \Tr(T^a T^b) = \frac{1}{2} \delta^{ab} \\
+  T^a T^b = \frac{1}{2 N} \delta^{ab} + \frac{1}{2} d^{abc} T^c + \frac{1}{2} i f^{abc} T^c,
+\end{gather}
+where $d^{abc} = 2 \Tr[T^a, \left\{ T^b, T^c \right\}]$ is symmetric.
+The quadratic Casimir of the representation $R$ is
+\begin{equation}
+  C(R) = T^a_R T^a_R.
+\end{equation}
+The index $T(R)$ is obtained as the trace of the product
+\begin{equation}
+  \Tr[T^a_R T^b_R] = T(R) \delta^{ab}.
+\end{equation}
+
+With the Lagrangian \eqref{eq:lym} we can look for the field equations.
+We take $g_{ab} =\delta_{ab}$ and ignore the $\theta$-term since it is a total derivative, so that the Lagrangian is
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} (F_{\mu\nu} F^{\mu\nu}) + \mathscr{L}_M (\psi, D \psi).
+\end{equation}
+The Euler--Lagrange equations are
+\begin{equation}
+  \partial_{\mu} \left( \frac{\partial  \mathscr{L}}{\partial (\partial_{\mu} A^a_{\nu})} \right) = \frac{\partial \mathscr{L}}{\partial A_{\nu}^a}, 
+\end{equation}
+which give the field equations
+\begin{equation}
+  -\partial_{\mu} F^a{}^{\mu\nu} = -g F^c{}^{\nu\mu} f^{abc} A^{b}_{\mu} - i \frac{\partial \mathscr{L}_{\mu}}{\partial (D_{\nu} \psi)} T^a \psi.
+\end{equation}
+
+These field equations can also be written
+\begin{equation}
+  \partial_{\mu} F^{\mu\nu}_a = -J^{\nu}_a,
+\end{equation}
+with the current $J^{\nu}_a$  being defined as
+\begin{equation}
+  J^{\nu}_a = -g f_{abc} F^{\nu\mu}_c A_b{}_{\mu} - i \frac{\partial \mathscr{L}_{\mu}}{\partial (D_{\nu} \psi)} T_a \psi.
+\end{equation}
+This current is conserved (by Noether's theorem), meaning that $\partial_{\nu} J^{\nu}_a =0$ .
+However, it is not gauge-covariant!
+
+On the other hand, the field equations can be rewritten
+\begin{equation}
+  \label{eq:13-mw1}
+  \boxed{D_{\mu} F^{\mu\nu}_a = -j^{\nu}_a}
+\end{equation}
+in terms of the covariant derivative and another current
+\begin{equation}
+  j^{\nu}_a = -i \frac{\partial \mathscr{L}_{\mu}}{\partial (D_{\nu} \psi)} T_a \psi.
+\end{equation}
+This current is not conserved, but it is covariantly conserved, meaning $D_{\nu} j^{\nu}_a = 0$!
+\begin{leftbar}
+  This is very reminiscent of gravity, where the stress tensor is covariantly conserved.
+\end{leftbar}
+
+We also have the Bianchi identity
+\begin{equation}
+  D_{\mu} F^{a}_{\nu\lambda} + D_{\nu} F^{a}_{\lambda\mu} + D_{\lambda} F^{a}_{\mu\nu} =0.
+\end{equation}
+This gives
+\begin{equation}
+  \label{eq:13-mw2}
+  \boxed{D_{\mu} \widetilde{F}^{\mu\nu} = 0}
+\end{equation}
+Equations \eqref{eq:13-mw1} and \eqref{eq:13-mw2} generalise Maxwell's equations.
+
+This is very similar but not identical to electromagnetism. It generalises it in several ways.
+The term $F^a_{\mu\nu} F^a{}^{\mu\nu}$ has terms $\partial A A A$ and $A A A A$, which are self-interactions between the field that were absent for the classical photon!
+On the other hand, the similarity with gravity is compelling.
+There is a geometrical interpretation of definition \eqref{eq:12-f} of the Maxwell tensor $F$ as the curvature of the internal gauge space with $A$ being the connection on the fibre bundle.

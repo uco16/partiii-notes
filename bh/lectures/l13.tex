@@ -1,0 +1,184 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 13: February 14}
+
+\begin{proof}
+  Global hyperbolicity implies that every causal curve from $\Sigma_1$ intersects $\Sigma_2$, since they are both Cauchy surfaces.
+  By definition, the causal future of any point in the black hole region must be in the black hole region, so $J^+(B) \subset \mathcal{B}$.
+  Let us look at the intersection $J^+ (B) \cap \Sigma_2 \subset \mathcal{B} \cap \Sigma_2$. We claim that the left-hand side lies entirely in a single connected component of the right.
+  Assume for contradiction that this is not the case.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l13f1.pdf_tex}
+    \caption{}
+    \label{fig:l13f1}
+  \end{figure}
+  Then, as shown in Fig.~\ref{fig:l13f1}, there exist open $\mathcal{O}, \mathcal{O}'$ such that 
+  \begin{gather}
+    J^+ (B) \cap \Sigma_2 \subset \mathcal{O} \cup \mathcal{O}', \qquad \mathcal{O} \cap \mathcal{O}' = \emptyset\\
+    \text{and} \qquad J^+(B) \cap \mathcal{O} \neq \emptyset \qquad J^+(B) \cap \mathcal{O}' \neq \emptyset \\
+    B \cap I^- (\mathcal{O}) \neq \emptyset \qquad B \cap I^-(\mathcal{O}') \neq \emptyset \\
+    B \subset I^- (\mathcal{O}) \cup I^- (\mathcal{O}') \label{eq:13-star}
+  \end{gather}
+  If $p \in B \cap I^- (\mathcal{O})$ and $p \in B \cap I^-(\mathcal{O}')$, then we can divide future-directed timelike geodesics from $p$ into 2 sets according to whether they go to $\mathcal{O}$ or $\mathcal{O}'$.
+  Therefore, we can divide future-directed timelike vectors at $p$ into two disjoint open sets.
+  This contradicts the connectedness of the future light-cone at $p$.
+  Thus, $B \cap I^-( \mathcal{O})$ and $B \cap I⁻ (\mathcal{O}')$ have empty intersection.
+  Hence, $B = [B \cap I^-(\mathcal{O})] \cup[B \cap I^-(\mathcal{O}')]$ is a disjoint union, which contradicts the connectedness of $B$.
+\end{proof}
+
+\begin{definition}[future Cauchy horizon]
+  The \emph{future Cauchy horizon} of a partial Cauchy surface $\Sigma$ is $H^+(\Sigma) = \overline{D^+ (\Sigma)}{} \setminus I^- [D^+(\Sigma)]$.
+\end{definition}
+We similarly define $H^-(\Sigma)$ and $\dot{D}(\Sigma) = H^+(\Sigma) \cup H^-(\Sigma)$ .
+The $H^{\pm}(\Sigma)$  are null hypersurfaces.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l13f2.pdf_tex}
+  \caption{}
+  \label{fig:l13f2}
+\end{figure}
+
+\section{Weak Cosmic Censorship}%
+\label{sec:weak_cosmic_censorship}
+
+We have already seen three different kinds of singularity:
+% Three diagrams
+% 1: Black hole singularity
+% 2: 5.5 without all the lines, only a lightlike line to the topright
+% 3: M < 0 Schw with singularity at 0
+These are all naked singularities.
+
+\begin{figure}[tbhp]
+  \centering
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l13f3.pdf_tex}
+    \caption{Collapse to a naked singularity.}
+    \label{fig:l13f3}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l13f4.pdf_tex}
+    \caption{}
+    \label{fig:l13f4}
+  \end{minipage}
+\end{figure}
+
+But the solution beyond $H^+(\Sigma)$  is not determined by data on $\Sigma$. We drew one possible extension in Fig.~\ref{fig:l13f3}, but there are infinitely many others.
+We should only really draw the maximal Cauchy development as in Fig.~\ref{fig:l13f4}.
+However, this has two problems:
+\begin{itemize}
+  \item It is extendible across $H^+(\Sigma)$. This violates SCC.
+  \item $\mathscr{I}^+$ is incomplete (violates asymptotic flatness).
+\end{itemize}
+
+\begin{description}
+  \item[Weak Cosmic Censorship conjecture:] Let $(\Sigma, h_{ab}, K_{ab})$ be geodesically complete, asymptotically flat data. Suppose matter fields obey hyperbolic equations and the DEC. Then \emph{generically}, the maximal Cauchy development is an asymptotically flat spacetime ($\implies$ complete $\mathscr{I}^+$) that is strongly asymp.~predictable.
+\end{description}
+
+The `generic' statement in the conjecture is explained by examining the following example.
+\begin{example}[gravity and massless scalar, sph.~sym.]
+  There exists initial data labelled by a parameter $p$ such that
+  \begin{align}
+    p &< p_* \longrightarrow \text{scalar disperses} \\
+    p &> p_* \longrightarrow \text{collapse to a black hole}
+  \end{align}
+  Finte~tuned data $p = p_*$ gives incomplete $\mathscr{I}^+$, but this is non-generic.
+\end{example}
+
+Despite the name, the strong and weak cosmic censorship conjectures are logically independent.
+This can be shown by considering the following Penrose diagrams.
+\begin{figure}[tbhp]
+  \centering
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l13f5.pdf_tex}
+    \caption{}
+    \label{fig:l13f5}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\columnwidth}
+    \centering
+    \def\svgwidth{0.7\columnwidth}
+    \input{lectures/l13f6.pdf_tex}
+    \caption{}
+    \label{fig:l13f6}
+  \end{minipage}
+\end{figure}
+The diagram in Fig.~\ref{fig:l13f5} satisfies WCC but not SCC, while the diagram Fig.~\ref{fig:l13f6} satisfies SCC but not WCC.
+
+Moreover, a spherically symmetric system of gravity and (unphysical) pressureless fluid (``dust'') violates both SCC and WCC.
+Gravity and a massless scalar, with spherical symmetry satisfies both SCC and WCC.
+
+Numerical simulations provide a lot of evidence that these singularities are true; singularities seem to always form inside black holes.
+
+\section{Apparent Horizon}%
+\label{sec:apparent_horizon}
+
+\begin{theorem}[]
+  Let $T$ be a trapped surface in strongly asymp.~pred(??) $(M, g)$ obeying NEC, then $T \subset B$.
+\end{theorem}
+
+Strong.~asymp.~pred.~ foliate with Cauchy surfaces $\Sigma_t = \{t = const.\}$ , where $t$  is a time function.
+We would like to call the ``black hole region at time $t$ '' $B_t = \mathcal{B} \cap \Sigma_t$  and the ``event horizon at time $t$ '' $H_t = \mathcal{H}^+ \cap \Sigma_t$ .
+This motivates the following definition:
+\begin{definition}[trapped region]
+  Let $\Sigma_t$ be a Cauchy surface. The \emph{trapped region} $\mathcal{T}_t$ of $\Sigma_t$ is
+  \begin{equation}
+    \mathcal{T}_t \coloneqq \{p \in \Sigma_t \suchthat \exists \text{ trapped } S \text{ s.t. } p \in S, S \subset \Sigma_t\}.
+  \end{equation}
+\end{definition}
+\begin{definition}[]
+  The \emph{apparent horizon} $\mathcal{A}_t = \dot{\mathcal{T}}_t$.
+\end{definition}
+
+The basic idea is that you want to regard the trapped region as an approximation to the black hole region and the apparent horizon an approximation to the event horizon.
+WCC implies that $\mathcal{T} \subset \mathcal{B}$  and so $\mathcal{A}_t \subset \mathcal{B}$ . Thus $\mathcal{A}_t$  is inside / on $H_t$.
+
+However, it is important to note that  $A_t$  depends on choice of time function and $\Sigma_t$.
+ \begin{example}[Kruskal]
+  In a spherically symmetric $\Sigma_t$, we have $A_t = H_t$.
+\end{example}
+In general, we expect $\mathcal{A}_t$  to be marginally trapped. In fact, this is how it is determined in numerical simulations.
+
+
+\chapter{Charged Black Holes}%
+\label{cha:charged_black_holes}
+
+These are not very relevant in nature, because we do not get large imbalances in nature. If you did form one, it would attract opposite charges and the charge would equilibrate.
+However, they are a nice warm-up in discussing the rotating Kerr black hole.
+
+\section{Reissner--Nordstrom Solution}%
+\label{sec:reissner_nordstrom_solution}
+
+This is the simplest kind of charged black hole.
+Let us write the Einstein--Maxwell action as
+\begin{equation}
+  S = \frac{1}{16 \pi} \int \dd[4]{x} \sqrt{-g} \left( R - F_{ab} F^{ab} \right),
+\end{equation}
+where $F = dA$, so $dF = 0$.
+The normalisation of the Maxwell action might look different to its presentation in other courses, but we do this only to make the solution as simple as possible.
+The Einstein--Maxwell equations are
+\begin{equation}
+  R_{ab} - \frac{1}{2} R g_{ab} = 2 \left( F\indices{_{a}^{c}} F_{bc} - \frac{1}{4} g_{ab} F_{cd} F^{cd} \right) \qquad \nabla^{b} F_{ab} = 0.
+\end{equation}
+
+There is a generalisation of Birchhoff's theorem to understand maxwell theory:
+\begin{theorem}[]
+  The unique spherically symmetric solution of the Einstein--Maxwell equations with non-constant area radius $r$ is the Reissner--Nordstrom (NS) solution
+  \begin{equation}
+  ds^2 = -\left( 1 - \frac{2M}{r} + \frac{e^2}{r^2} \right) dt^2 + \left( 1 - \frac{2M}{r} + \frac{e^2}{r^2} \right)^{-1} dt^2 + r^2 d\Omega^2,
+  \end{equation}
+  with
+  \begin{equation}
+    A = -\frac{Q}{r} dt - P \cos \theta d\phi \qquad e = \sqrt{Q^2 + P^2}.
+  \end{equation}
+  We interpret $M$ as mass, $Q$ and $P$ as electric and magnetic charge respectively.
+\end{theorem}
+
+This admits a static timelike KVF $k^a = \left( \frac{\partial }{\partial t} \right)^a$ and is asymp.~flat at null $\infty$.

@@ -1,0 +1,142 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 8: February 17}
+
+\section{Geodesics, Killing vectors, Killing tensors}%
+\label{sec:geodesics_killing_vectors_killing_tensors}
+
+We will explore the connection between Riemannian and symplectic geometry.
+Let $(M, g)$ be a (pseudo-)Riemannian manifold of dimension $n$.
+In coordinates, we have
+\begin{equation}
+  g = g_{ij} (x) dx^{i} dx^{j}.
+\end{equation}
+Then we know from the \emph{General Relativity} course, that there exists at unique Levi-Civita connection $\Gamma^{i}_{jk}$ such that for geodesics $x^{i} = x^{i}(\tau)$, we have
+\begin{equation}
+  \ddot{x}^{i} + \Gamma^{i}_{jk} \dot{x}^{i} \dot{x}^{j} = 0.
+\end{equation}
+Geodesics on $M$ are integral curves of a Hamiltonian vector field on $(T^*M, \omega)$.
+
+As illustrated in Fig.~\ref{fig:l8f1}, we are looking for a curve in $(T^*M, \omega)$ specified by a single point $(x^{i}, p_i)$ which projects down to the geodesic in $M$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l8f1.pdf_tex}
+  \caption{}
+  \label{fig:l8f1}
+\end{figure}
+
+\begin{align}
+  \dot{x}^{i} &= p^{i} = g^{ij} p_j = X_H (x^{i}) \\
+  \dot{p}^{i} &= -\Gamma^{i}_{jk} p^{i} p^{k} = X_H (p^{i})
+\end{align}
+
+The Hamiltonian vector field is 
+\begin{equation}
+  X_H = g^{ij} p_i \frac{\partial }{\partial x^{j}} - \Gamma^{i}_{jk} p^{j} p^{k} \frac{\partial }{\partial p^{i}},
+\end{equation}
+where $H = \frac{1}{2} g^{ij}(x) p_{i} p_{j}$.
+
+Canonical symplectic form $\omega = dp_i \wedge dx^{i}$.
+\begin{align}
+  H \rightarrow X_H &= \frac{\partial H}{\partial p_i} \frac{\partial }{\partial x^{i}} - \frac{\partial H}{\partial x^{i}} \frac{\partial }{\partial p_i} \\
+  &= g^{ij} p_j \frac{\partial }{\partial x^{i}} - \frac{1}{2} \frac{\partial g^{jk}}{\partial x^{i}} p_j p_k \frac{\partial }{\partial p_i}.
+\end{align}
+Now use
+\begin{equation}
+  \label{eq:8-star}
+  \nabla_k g_{ij} = \partial_k g_{ij} - \Gamma^{m}_{ki} g_{jm} - \Gamma^{m}_{kj} g_{im} = 0
+\end{equation}
+
+\begin{definition}[Killing vector]
+  \emph{Killing vectors} $K$ satisfy
+  \begin{equation}
+    \mathcal{L}_K g = 0 \iff \nabla_{(i} K_{j)} = 0.
+  \end{equation}
+\end{definition}
+These correspond to first integrals of the Hamiltonian flow which are linear in the momenta.
+Poisson commuting with $H$.
+\begin{align}
+  \{ \underbrace{\kappa^{i} p_i}_{\mathclap{\kappa}}, H \}_{\text{PB}} &= \frac{\partial \kappa^{i}}{\partial x^{j}} p_{i} g^{jk} p_k - \frac{1}{2} \kappa^{i} \frac{\partial g_{jk}}{\partial x^{i}} p^{j} p^{k} \\
+								       &\stackrel{\eqref{eq:8-star}}{=} \nabla_{(i} K_{j)} p^{i} p^{j} = 0
+\end{align}
+Killing vectors are symmetries of the Hamiltonian flow.
+
+\subsection{Killing Tensors}%
+\label{sub:killing_tensors}
+
+\begin{definition}[Killing tensor]
+  Write
+  \begin{equation}
+    \kappa = K^{ij \dots k} \underbrace{p_i p_j \dots p_k}_{\mathclap{r}}.
+  \end{equation}
+  We assume nothing about $\kappa$ except that it Poisson-commutes with the Hamiltonian $H$.
+  We find that this corresponds to
+  \begin{equation}
+    \{ H, \kappa \}_{\text{PB}} = 0 \iff \nabla_{(i} \kappa_{jk \dots l)} = 0.
+  \end{equation}
+  A $\kappa$ satisfying this is called a rank-$r$ \emph{Killing tensor}.
+\end{definition}
+We will see that we can think of Killing tensors as higher / hidden symmetries, since we can see them in the cotangent bundle but not in the manifold itself.
+
+The associated Hamiltonian vector field is
+\begin{align}
+  X_\kappa &= \frac{\partial \kappa}{\partial p_{i}} \frac{\partial }{\partial x^{i}} - \frac{\partial \kappa}{\partial x^{i}} \frac{\partial }{\partial p_i} \\
+  &= r K^{i_1 \dots i_r} p_{i_1} \dots p_{i_{r-1}} \frac{\partial }{\partial x^{i_r}} - \frac{\partial K^{i_1 \dots i_r}}{\partial x^k} p_{i_1} \dots p_{i_r} \frac{\partial }{\partial p_k}.
+\end{align}
+Projecting this down onto the manifold gives
+\begin{equation}
+  \pi_k (X_\kappa) = 
+  \begin{cases}
+    0, & \text{if } r > 1 \\
+    K^i \frac{\partial }{\partial x^{i}}, & \text{if } r = 1. 
+  \end{cases}
+\end{equation}
+If $r >1$, there is no `geometric' symmetry on $M$, but $\kappa$ is constant along geodesic.
+
+\begin{example}[]
+  The Kerr black hole does not have enough Killing vectors to solve the geodesic equations, but using the Killing tensors allows us to find the geodesics.
+\end{example}
+
+\section{Integrability}%
+\label{sec:integrability}
+
+Intuitively, a Hamiltonian system (e.g.~geodesic motion) is \emph{integrable} if there exist sufficiently many first integrals, i.e.~functions constant along the flow of the Hamiltonian vector field $X_H$.
+
+\begin{definition}[integrable system]
+  An \emph{integrable system} is a symplectic manifold $(M, \omega)$ of dimension $\dim M = 2n$, together with $n$ functions $f_i \colon M \to \mathbb{R}$, $i = 1, \dots, n$, with the properties of
+  \begin{description}
+    \item[involution:] $\{f_i, f_j\} = 0$ for all $i, j$,
+    \item[independence:] $df_i \wedge df_j \wedge \dots \wedge df_n \neq 0$.
+  \end{description}
+\end{definition}
+This is a strange definition because it does not specify any dynamics, any equations of motion.
+
+The point is that with such a system any $f_i$ in our system can be declared to be a Hamiltonian. The corresponding Hamilton's equations will be solvable!
+
+\begin{theorem}[Arnold--Liouville]
+  Let $(M, \omega, f_i)$ form an integrable system with the Hamiltonian chosen to be $H = f_1$.
+  Then
+  \begin{itemize}
+    \item The level set $M_f = \{x \in M \suchthat f_1 = c_1, \dots, f_n = c_n\}$ (if connected\footnote{If $M_f$ is not connected, the theorem applies to each connected component.}) is diffeomorphic to $\mathbb{R}^k \times T^{n-k}$ for some $0 \leq k \leq n$.\footnote{Usually this theorem is stated with $M_f$ \emph{compact}. In that case, we have $k = 0$ and we just have a torus $T^n$.}
+    \item There exists a canonical transformation to action-angle vanishes
+      \begin{equation}
+        \phi_1, \dots, \phi_n, I_1, \dots, I_n
+      \end{equation}
+      such that in a neighbourhood of $M_f$ in $M$, $\phi_i$ are the coordinates, called \emph{angles}, on $M_f$, and $I_i$ are first integrals, called the \emph{actions}.
+    \item Hamilton's equations are solvable by quadratures 
+      \begin{equation}
+	\dot{I}_i = \frac{\partial H}{\partial \phi_i} = 0 \qquad \dot{\phi}_i = \frac{\partial H}{\partial I_i} = \Omega_i (I_1, \dots, I_n),
+      \end{equation}
+      so $I_i(t) = I_i(0)$ and $\phi_i(t) = \phi_i(0) + \Omega_i t$.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  The $d f_k$ for $k = 1, \dots, n$ are independent, so $M_f$ is a manifold of dimension $n$.
+  Any function $f_k$ gives rise to a Hamiltonian vector field $X_{f_k}$. 
+  If we contract this with any differential, we have
+  \begin{equation}
+    X_{f_k} \rightharpoonup d f_j = X_{f_k} (f_j) = - \{ f_k, f_j \}_{\text{PB}} = 0, \qquad \forall j,k.
+  \end{equation}
+  If $d f_k$ are normal to $M_f$, then the corresponding Hamiltonian vector fields $X_{f_j}$ are tangent to $M_f$.
+\end{proof}

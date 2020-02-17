@@ -1,0 +1,97 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 12: February 14}
+
+Let us now apply this to the bosonic string theory.
+Take $S$ to be the Polyakov action (with gauge fixed worldsheet metric) and $\delta \phi= v^{a} \partial_{a} \phi$ .
+\begin{exercise}
+  Under such a transformation the action varies as
+  \begin{equation}
+    \delta S[\phi] = \frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} (\partial_a v_b) T^{ab},
+  \end{equation}
+  where $T^{ab}$ is the stress tensor.
+\end{exercise}
+We have
+\begin{equation}
+  \frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} (\partial^{a} v^{b}) \langle T_{ab} \phi_1 \dots \phi_n \rangle = \sum_{k=1}^{n} \langle \phi_1 \dots \delta \phi_k \dots \phi_n \rangle.
+\end{equation}
+
+Our worldsheet looks locally like a cylinder with coordinates $(\sigma, \tau)$.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.8\columnwidth}
+  \input{lectures/l12f1.pdf_tex}
+  \caption{}
+  \label{fig:l12f1}
+\end{figure}
+We map each of these cylinders to the complex plane using $z = e^{\tau +i \sigma}$  and glue the regions together using (holomorphic) transition functions. This is illustrated in Fig.~\ref{fig:l12f1}.
+
+If we take the boundaries $C_i$ to points  (the local $\tau$ coordinate goes to $-\infty$), we can associate the state on the boundary $C_i$ to a local operator  $\phi(z_i, \overline{z}{}_i)$ .
+
+We choose our parameter $v^{a}$  to be:
+\begin{itemize}
+  \item zero on all $C_i$, except at $C_{\omega}$, which is the boundary associate to the operator at $z_i = \omega$, i.e.~$\delta_v \phi_i = 0$ except for $\delta_v \phi(\omega, \overline{\omega}{})$,
+  \item of the form $v^{a} = (v(z), \overline{v}{}(\overline{z}{}))$,
+  \item arbitrary in the interior of $\Sigma$.
+\end{itemize}
+For this choice of $v^{a}$, we have
+\begin{equation}
+  \label{eq:12-1}
+  \frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} (\partial_{a} v_{b}) T^{ab} = \langle \phi_1 \dots \delta \phi(\omega, \overline{\omega}{}) \dots \phi_n \rangle.
+\end{equation}
+To put it another way, we look at a transformation where only one field changes for simplicity.
+We can rewrite the left-hand side of \eqref{eq:12-1} as
+\begin{equation}
+  \frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} \partial^{a} (v^{b} \langle T_{ab}(\sigma) \phi_1 \dots \phi_n \rangle) -\frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} v^{b} \partial^{a} \langle T_{ab}(\sigma) \phi_1 \dots \phi_n \rangle.
+\end{equation}
+The first term is a boundary term ($\partial \Sigma = \bigcup_i C_i$).
+The only boundary contribution comes from $C_{\omega}$, where $v^{a}$ has holomorphic ($v(z)$) and antiholomorphic ($\overline{v}{}(\overline{z}{})$) components and is
+\begin{equation}
+  \frac{1}{2\pi i} \oint_{C_\omega} \dd[]{z} v(z) \langle T(z) \phi_1 \dots \phi_n \rangle - \frac{1}{2\pi i} \oint_{C_\omega} \dd[]{\overline{z}{}} \langle \overline{T}{}(\overline{z}{})) \phi_1 \dots \phi_n \rangle,
+\end{equation}
+where $T_{zz}(z) = T(z)$  and $T_{\overline{zz}{}} (\overline{z}{}) = \overline{T}{}(\overline{z}{})$.
+Thus
+\begin{multline}
+  \langle \phi_1 \dots \delta_v \phi(\omega, \overline{\omega}{}) \dots \phi_n \rangle = - \frac{1}{2\pi} \int_{\Sigma} \dd[2]{\sigma} v^{b}  \partial^{a} \langle T_{ab} \phi_1 \dots \phi_n \rangle  \\
+  + \frac{1}{2\pi i} \oint_{C_{\omega}} \dd[]{z} v(z) \langle T(z) \phi_1 \dots \phi_n \rangle
+  + \frac{1}{2\pi i} \oint \dd[]{\overline{z}{}} \langle \overline{T}{}(\overline{z}{}) \phi_1 \dots \phi_n \rangle
+\end{multline}
+The $v$'s appear in very different ways here.
+In the term on the left hand side and the other two terms on the right, $v$ appears as a puncture.
+However, the first term on the right is different.
+But $v^{a}$ is arbitrary in the interior of $\Sigma$, so we must have
+\begin{equation}
+  \partial^{a} \langle T_{ab} (\sigma) \phi_1 \dots \phi_n \rangle = 0.
+\end{equation}
+This is the analogue of the classical (Noether) statement $\partial^{a} T_{ab} = 0$.
+
+All fields $\phi_i \neq \phi(\omega, \overline{\omega}{})$ did not contribute to the calculation and just came along for the ride.
+We conclude that we have the general operator statement
+\begin{equation}
+  \boxed{\delta_v \phi(\omega, \overline{\omega}{}) = \oint_{C_{\omega}} \frac{\dd[]{z}}{2\pi i } v(z) T(z) \phi(\omega, \overline{\omega}{}) - \oint_{C_{\omega}} \frac{\dd[]{\overline{z}{}}}{2\pi i } \overline{v}{}(\overline{z}{}) T(\overline{z}{}) \phi(\omega, \overline{\omega}{})}
+\end{equation}
+This is understood to hold as an equality once inserted into a correlation function.
+
+We can start to see why it was so important to go to complex coordinates.
+By the residue theorem, the contributions on the right-hand side come from points where the functions on the right have poles.
+The singularity structure of operators as we bring them close together contains information about the physics.
+It will turn out that the local structure of the theory is contained within these singularities; not all singularities are bad!
+
+
+\section{Radial Ordering}%
+\label{sec:radial_ordering}
+
+Our task now is to understand better the singularity structure of these operators.
+Let us go back to the cylindrical worldsheet of Fig.~\ref{fig:l10f1}.
+Mapping to the complex plane with $z = e^{\tau + i \sigma}$ in Fig.~\ref{fig:l10f2}, we see that the notion of time ordering $\tau_1 > \tau_2$  translates into radial ordering $\abs{z_1} > \abs{z_2}$ .
+\begin{definition}[radial ordering]
+  We introduce the notion of \emph{radial ordering}:
+  \begin{equation}
+    \boxed{\mathcal{R}(A(z) B(w)) \coloneqq
+    \begin{cases}
+      A(z) B(w), & \text{if } \abs{z} > \abs{w} \\
+      B(w) A(z), & \text{if } \abs{z} < \abs{w}
+    \end{cases}}
+  \end{equation}
+\end{definition}
+We will eventually work our way towards Wick's theorem for radial ordered products.
