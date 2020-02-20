@@ -1,0 +1,142 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 9: February 19}
+
+\begin{proof}
+  \textcolor{red}{MISSED 15 Mins}
+  
+  Through every point of $M$, there is exactly one torus. We say that $M$ is \emph{foliated} by tori (different choices of $c_i$).
+  
+  Moreover, $M_f \subset M$ is a \emph{Lagrangian} submanifold, meaning that $\omega \rvert_{M_f} = 0$.
+  This is because we proved that the $n$ Hamiltonian vector fields are tangent to $M_f$. These are independent, so at each point $p \in M_f$ they span the tangent space $T_p M_f$.
+  It is thus sufficient to show that
+  \begin{equation}
+    \omega (X_{f_i}, X_{f_j}) = 0,
+  \end{equation}
+  which is indeed the case since $\{f_i, f_j\} = 0$.
+  
+  Now let us construct the action-angle variables $(I, \phi)$.
+  Local argument in a neighbourhood of $M_f$ in $M$.
+  $\omega = d \theta$.
+  
+  Taking any closed contractable curve $C$, which does not wind around the whole of the torus, as shown in Fig.~\ref{fig:l9f2}, we have
+  \begin{equation}
+    \iint_{D \in M_f} \omega = \oint_C \theta = 0.
+  \end{equation}
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l9f2.pdf_tex}
+    \caption{}
+    \label{fig:l9f2}
+  \end{figure}
+  
+  \textcolor{red}{missed something}
+  
+  The canonical transformation is
+  \begin{equation}
+    (\vb{p}, \vb{q}) \to (I, \phi)\qquad
+    \omega = d \theta = d (\vb{p} \cdot d\vb{q})
+  \end{equation}
+  In analogy to last time, we define the generating function to be
+  \begin{equation}
+    S (q, I) = \int_{q_0}^{q} \theta.
+  \end{equation}
+  The canonical transformations obtained from this generating function are independent of the path taken.
+  This is because we can use Stokes' theorem to integrate to zero around the closed loop obtained by concatenating two different paths. Their difference is thus zero.
+  If the path winds around the whole in the torus, we can add a bit to the action, which will not impact the derivatives with respect to the action, and thus will not impact the canonical transformations.
+  
+  We define the angles $\phi_k$ for $k = 1, \dots,  n$ as
+  \begin{equation}
+    \phi_k = \frac{\partial S}{\partial I_k}.
+  \end{equation}
+  These obey
+  \begin{equation}
+    \{ \phi_k, \phi_j \} = 0, \qquad \{ \phi_k, I_j \} = \delta_{kj}.
+  \end{equation}
+  The Hamiltonian $H = f_i = H(I_1, \dots, I_n)$ gives time-evolution:
+  \begin{equation}
+    \dot{I}_k = - \frac{\partial H}{\partial \phi_k} = 0, \qquad \dot{\phi}_k = \frac{\partial H}{\partial I_k} = \text{const.}
+  \end{equation}
+  As in A-L.
+\end{proof}
+
+\begin{example}[$M = \mathbb{R}^2$]
+  All Hamiltonian systems are integrable.
+  Take $H = \frac{1}{2}(p^2+ \omega_0^2 q^2)$, where $(p, q)$ are coordinates on $\mathbb{R}^2$ and $\omega_0$ is a constant frequency.
+  Construct
+  \begin{equation}
+    M_f = \{(p, q) \in \mathbb{R}^2 \suchthat H = E\} = \Gamma.
+  \end{equation}
+  Imposing one condition on $\mathbb{R}^2$ gives a curve. So $M_f$ is a one-dimensional torus, which has just one cycle $\Gamma$.
+  The integral is
+  \begin{equation}
+    I = \frac{1}{2\pi} \oint_\Gamma \phi d\phi.
+  \end{equation}
+  We can solve this in two ways. Either ??.
+  Or we can use Stokes' theorem, by considering Fig.~\ref{fig:l9f3}.
+  \begin{figure}[tbhp]
+    \centering
+    \def\svgwidth{0.4\columnwidth}
+    \input{lectures/l9f3.pdf_tex}
+    \caption{}
+    \label{fig:l9f3}
+  \end{figure}
+  We have
+  \begin{equation}
+    I = \frac{1}{2\pi} \oint_\Gamma \phi d\phi = \frac{1}{2\pi} \iint_{\mathcal{E}} dp dq = \frac{E}{\omega}.
+  \end{equation}
+  So $I = \frac{H}{\omega}$ and $\dot{\phi} = \frac{\partial H}{\partial I} = \omega$. Therefore, $\phi(t) = \phi(0) + \omega (t)$.
+\end{example}
+
+\section{Geodesics in Non-Riemannian Geometries}%
+\label{sec:geodesics_in_non_riemannian_geometries}
+
+We want to look at trajectories in Newtonian physics.
+These are governed by Newton's equations
+\begin{equation}
+  \label{eq:9-star}
+  \ddot{\vb{x}} = - \grad V, \qquad V \colon \mathbb{R}^3 \to \mathbb{R}^3,
+\end{equation}
+where the dot represents derivative with respect to an absolute time $t$.
+These are invariant under the Galilean transformations.
+We can reformulate (after Cartan) \eqref{eq:9-star} as geodesic motion.
+Newtonian spacetime, like the spacetime of GR, is also four-dimensional. However, the geometry is different.
+We assemble time and space into a vector $x^a = (t, x^{i})$ and look for a connection such that the geodesic equation $ \ddot x^{a}  + \Gamma^{a}_{bc} \dot x^{b} \dot x^{c} = 0 $ is the same as \eqref{eq:9-star}.
+The unparametrised solution (i.e.~parametrised by a coordinate $t$) is
+\begin{equation}
+  \Gamma^{i}_{00} = \delta^{ij} \frac{\partial V}{\partial x^{j}},
+\end{equation}
+and all other components vanishing.
+Importantly, this is not a Levi-Civita connection, which means that there is no metric underlying it!
+We call this a \emph{non-Riemannian} connection.
+Cartan asked what geometry underlies Newtonian physics.
+
+\section{Newton--Cartan Geometry}%
+\label{sec:newton_cartan_geometry}
+
+Newton--Cartan geometry in $n$ dimensions is a triple $(h, \theta, \nabla)$, where
+\begin{itemize}
+  \item $h = h^{ab} \frac{\partial }{\partial x^{a}} \odot \frac{\partial }{\partial x^{b}}$ is a degenerate rank-$(n-1)$ symmetric tensor
+  \item $\theta$ is a closed 1-form, called the \emph{clock}, in the kernel of $h$. This means
+    \begin{equation}
+      h^{ab} \theta_{a} = 0 \qquad d\theta = 0 \rightarrow \theta = d t,
+    \end{equation}
+    where $t$ is \emph{global time}.
+  \item torsion-free connection $\nabla$ preserving $\theta$ and $h$, meaning that
+    \begin{equation}
+      \nabla_a h^{bc} = 0 \qquad \nabla_a \theta_b = 0.
+    \end{equation}
+\end{itemize}
+In our example, $h = \text{diag}(0,1, \dots, 1)$. The connection $\nabla$ has symbols
+\begin{equation}
+  \Gamma^i_{00} = h^{ij} \frac{\partial V}{\partial x^{j}}.
+\end{equation}
+The Newton--Cartan spacetime is drawn in Fig.~\ref{fig:l9f4}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l9f4.pdf_tex}
+  \caption{Newton--Cartan spacetime. The fibres define a notion of \emph{simultaneity}. A geodesic of $\nabla$ cuts through the fibres. A contravariant metric on the fibre is given by $h$.}
+  \label{fig:l9f4}
+\end{figure}

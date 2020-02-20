@@ -2,7 +2,13 @@
 % course: aqft
 \lhead{Lecture 10: February 08}
 
-Let us decorate the original theory by adding $0$ subscripts
+\subsection{Renormalisation Schemes: Separating the Divergences from the Finite Pieces}%
+\label{sub:separating_the_divergences_from_the_finite_pieces}
+
+Clearly we have to do something about the divergences in the one-loop calculations of the previous section.
+A practical approach is to prescribe a way of separating the divergences from the finite pieces.
+In doing so, we will introduce some arbitrary choice in the theory and sacrifice some predictability; however, it turns out that we do not loose as much as one might at first expect.
+Let us decorate the original theory by adding $0$-subscripts
 \begin{equation}
   \mathscr{L}_0 = \frac{1}{2} (\partial \phi_0)^2 + \frac{1}{2} m_0^2 \phi_0^2 + \frac{\lambda_0}{4!}\phi_0^4.
 \end{equation}
@@ -31,7 +37,7 @@ Equating coefficients, we have
 \begin{equation}
   \delta Z_\phi = Z_\phi - 1, \qquad \delta m^2 = Z_\phi m_0^2 - m^2, \qquad \delta \lambda = Z_\phi^2 \lambda_0 - \lambda .
 \end{equation}
-Of course the Feynman rules for the renormalised Lagrangian $\mathscr{L}_{\text{ren}}$ are the same as for the original Lagrangian $\mathscr{L}_0$ but with the coefficients, $m^2 \& \lambda$, interpreted as the renormalised ones.
+Of course the Feynman rules for the renormalised Lagrangian $\mathscr{L}_{\text{ren}}$ are the same as for the original Lagrangian $\mathscr{L}_0$ but with the coefficients, $m^2$ and $\lambda$, interpreted as the renormalised ones.
 We need to find the Feynman rules for the counter terms $\mathscr{L}_{\text{ct}}$:
 \begin{equation}
   \begin{gathered}
@@ -88,7 +94,7 @@ This has a pole at $p^2 = -m^2_{\text{phys}}$, which is the reason for the name 
 We are giving up on predicting the mass of the particle; we dial it in by hand after obtaining it from some experimental measurement.
 The residue from the LSZ is $1$.
 
-Next, choose $\delta \lambda$ to cancel the divergences in $\Gamma_1^{(4)}(0,0,0,0)$.
+Next, choose $\delta \lambda$ to cancel the divergences in $\widetilde{\Gamma}_1^{(4)}(0,0,0,0)$.
 We have $\widetilde\Gamma_{1, \text{ct}}^{(4)} = -\delta \lambda$. Choosing
 \begin{equation}
   \delta \lambda = \frac{3 \lambda^2}{32 \pi^2} \ln(\frac{\Lambda^2}{m^2} - 1).

@@ -6,10 +6,11 @@
 \label{cha:lsz_reduction_formula}
 
 We will now start to move beyond $d = 0$ and transition to using path integrals.
+We will connect scattering amplitudes to correlation functions, specifically vacuum expectation values.
 This transitory topic will also allow us to have a glimpse at renormalisation.
-We will have in mind a weakly interacting theory, so that we can tell the story the way that Sredniki does. However, the results that we will show can also be rigorously proved non-perturbatively, which usually happens in the final chapters of quantum field theory textbooks.
+We will have in mind a weakly interacting theory, so that we can use the free theory as a good aproximation. Afterwards, we comment on how the interactions lead to deviations from the free theory.
+In doing so, we tell the story the way that Srednicki \cite{srednicki} does. However, the results that we will show can also be rigorously proved non-perturbatively, which usually happens in the final chapters of quantum field theory textbooks \cite{peskin, weinberg}.
 
-We will connect scattering amplitudes to correlation functions.
 \section{\texorpdfstring{$2 \to 2$ }{}Scattering}%
 \label{sec:$2 to 2$ _scattering}
 
@@ -17,90 +18,99 @@ Consider a free scalar field in $3 + 1$ dimensions, built out of plane waves
 \begin{equation}
   \phi(x) = \int \frac{\bdd[3]{k}}{2E_{\vb{k}}} \left[ a(\vb{k}) e^{-i k \cdot x} + a^{\dagger} (\vb{k}) e^{i k \cdot x} \right],
 \end{equation}
-where we are using the mostly minus metric in Minkowski space
-\begin{equation}
-  k \cdot x = E t - \vb{k} \cdot \vb{x},
-\end{equation}
-and the relativistic normalisation for $a (\vb{k})$ , changing the factor from $\sqrt{2 E} \to 2 E$  as compared to the conventions from our \emph{Quantum Field Theory} lectures.
+where $E_{\vb{k}}^2 = \abs{\vb{k}}^2 + m^2$ and we are using the mostly-minus metric in Minkowski space so $ k \cdot x = E t - \vb{k} \cdot \vb{x}$.
+The creation and annihilation operators are relativistically normalised, changing the factor from $\sqrt{2 E} \to 2 E$  as compared to the conventions from our \emph{Quantum Field Theory} lectures.
 In a free theory, where we do not need to do any perturbative expansion, we set $\hbar = c = 1$.
-Look at $\int \dd[3]{x} e^{i k \cdot x} \phi(x)$  and $\int \dd[3]{x} e^{i k \cdot x} \partial_0 \phi(x)$. These have
+Let us find expressions for $a(\vb{k}) = a_{\vb{k}}$ and $a^{\dagger}_{\vb{k}}$ by looking a the following integrals:
+\begin{align}
+  \int \dd[3]{x} e^{i k \cdot x} \phi(x) &= \frac{1}{2E} a_{\vb{k}} + \frac{1}{2E} e^{2 i E t} a^{\dagger}_{-\vb{k}} \\
+  \int \dd[3]{x} e^{i k \cdot x} \partial_0 \phi(x) &= -\frac{i}{2} a_{\vb{k}} + \frac{i}{2} e^{2 i E t} a^{\dagger}_{-\vb{k}}.
+\end{align}
+We can solve these equations for $a_{\vb{k}}$ and $a^{\dagger}_{\vb{k}}$ to get
 \begin{align}
   a(\vb{k}) &= \int \dd[3]{x} e^{i k \cdot x} \left[ i \partial_0 \phi(x) + E \phi(x) \right] \\
-  a^{\dagger}(\vb{k}) &= \int \dd[3]{x} e^{-i k \cdot x} \left[ -i \partial_0 \phi(x) + E \phi(x) \right].
+  a^{\dagger}(\vb{k}) &= \int \dd[3]{x} e^{-i k \cdot x} \left[ -i \partial_0 \phi(x) + E \phi(x) \right]. \label{eq:7-a-dag}
 \end{align}
 Let the initial state for the free theory be a one-particle state
 \begin{equation}
   \ket{\vb{k}} = a^{\dagger}(\vb{k}) \ket{\Omega},
 \end{equation}
-where $\ket{\Omega}$ satisfies $a(\vb{k}) \ket{\Omega} = 0$ for all $\vb{k}$ and is normalised to $\bra{\omega}\ket{\Omega} = 1$.
-The one-particle states are normalised to
+where the vacuum $\ket{\Omega}$ satisfies $a(\vb{k}) \ket{\Omega} = 0$ for all $\vb{k}$ and is normalised to $\bra{\Omega}\ket{\Omega} = 1$.
+The one-particle states are normalised to $ \bra{\vb{k}} \ket{\vb{k}'} = (2 E) \bdelta^3(\vb{k} - \vb{k}')$.
+We can take superpositions of these to introduce two Gaussian wavepackets with mean momentum $\vb{k}_1 \neq \vb{k}_2$ and width $\sigma$:
 \begin{equation}
-  \bra{\vb{k}} \ket{\vb{k}'} = (2 E) \bdelta^3(\vb{k} - \vb{k}'),
-\end{equation}
-where $E = \sqrt{\vb{k}^2 + m^2}$ .
-We can take superpositions of these to introduce two Gaussian wavepackets
-\begin{equation}
+  \label{eq:7-free-gauss}
   a_n^{\dagger} \coloneqq \int \dd[3]{k} f_n (\vb{k}) a^{\dagger}(\vb{k}),
   \qquad f_n(\vb{k}) \propto \exp[- \frac{\abs{\vb{k} - \vb{k}_n}^2}{4 \sigma^2}], \qquad n = 1, 2.
 \end{equation}
 
-Let us now evolve the Gaussians into the distant past and future, where the overlap in coordinate space is negligible.
-We will also assume that this works when including interactions. There is a complication since $a^{\dagger}(\vb{k})$ becomes time dependent, wherefore $a_1^{\dagger}(t)$ and $a_2^{\dagger}(t)$ depend on time.
-Assume that as $t \to \pm \infty$, the interacting $a_1^{\dagger}$ and $a_2^{\dagger}$ coincide with their free theory expressions.
-The initial and final states are
-\begin{align}
-  \ket{i} &= \lim_{t \to -\infty} a_1^{\dagger}(t) a_2^{\dagger}(t) \ket{\Omega}  \\
-  \ket{f} &=\lim_{t \to +\infty}  a_{1'}^{\dagger}(t) a_{2'}^{\dagger}(t) \ket{\Omega}.
-\end{align}
-These are also normalised $\bra{i}\ket{i} = 1 = \bra{f}\ket{f}$ and have $\vb{k}_1 \neq \vb{k}_2$ and $\vb{k}_1' \neq \vb{k}_2'$ respectively.
+Let us now evolve the Gaussians into the distant past and future, $t \to \pm \infty$, where the overlap in coordinate space is negligible.
+We will also assume that this works when including interactions. Interacting theories introduce the complication that $a^{\dagger}$ becomes time dependent, wherefore $a_1^{\dagger}$ and $a_2^{\dagger}$ depend on time.
+However, we will assume that the interacting $a_1^{\dagger}(t)$ and $a_2^{\dagger}(t)$ coincide with their free theory expressions \eqref{eq:7-free-gauss} in the limit of $t \to \pm \infty$.
 
-We want to find the \emph{scattering amplitude} $\bra{f}\ket{i}$.
-\begin{remark}
-  We have for example
-  \begin{align}
-    a_1^{\dagger}(\infty) - a_1^{\dagger}(-\infty) &= \int_{-\infty}^{\infty}\dd[]{t} \partial_0 a_1^{\dagger} (t) \\
-					     &= \int \dd[3]{k} f_1(\vb{k}) \int \dd[4]{x} \partial_0 \left[ e^{-i k \cdot x} (-i \partial_0 \phi + E \phi) \right] \\
-					     &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial_0^2 + E^2) \phi \\
-					     &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial_0^2 - \stackrel{\leftarrow}{\nabla}{}^2 + m^2) \phi \\
-					     &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial^2 + m^2) \phi,
-  \end{align}
-  where in the last line we integrated by parts twice.
-  In the free theory, the Klein--Gordon equation therefore implies that $a_1^{\dagger}(\infty) - a_1^{\dagger}(-\infty) = 0$.
-  Using a similar calculation for $a^{\dagger}_j$ and then $a_j$, we obtain
-  \begin{subequations}
-    \label{eq:7-creations}
-     \begin{align}
-       a_j^{\dagger}(-\infty) &= a_j^{\dagger}(\infty) + i \int \dd[3]{k} f_j(\vb{k}) \int \dd[4]{x} e^{-i k \cdot x} (\partial^2 + m^2) \phi \\
-       a_j(\infty) &= a_j(-\infty) + i \int \dd[3]{k} f_j(\vb{k}) \int \dd[4]{x} e^{i k \cdot x} (\partial^2 + m^2) \phi.
-    \end{align}
-  \end{subequations}
-\end{remark}
-Using the time-ordering operator $\mathcal{T}$, we have
+We want to consider the case where the initial and final states are two-particle states
 \begin{equation}
-  \bra{f}\ket{i} = \bra{\Omega} \mathcal{T} a_{1'}(\infty) a_{2'}(\infty)a_{1}^{\dagger}(-\infty) a_2^{\dagger}(-\infty) \ket{\Omega}.
+  \ket{i} = \lim_{t \to -\infty} a_1^{\dagger}(t) a_2^{\dagger}(t) \ket{\Omega}, \qquad
+  \ket{f} =\lim_{t \to +\infty}  a_{1'}^{\dagger}(t) a_{2'}^{\dagger}(t) \ket{\Omega}.
 \end{equation}
-We can use the integral expressions \eqref{eq:7-creations}, to commute these annihilation and creation operators, giving the rather unwieldy equation
-\begin{multline}
-  \label{eq:lsz}
-  \bra{f}\ket{i} = i^4 \int \dd[4]{x_1} \dd[4]{x_2} \dd[4]{x_1'}\dd[4]{x_2'} e^{-i k_1 \cdot x_1} e^{-i k_2 \cdot x_2} e^{i k_1' \cdot x_1'} e^{i k_2' \cdot x_2'} \\
-   \times (\partial_1^2 + m^2) (\partial^2_2 + m^2) (\partial_{1'}^2 + m^2) (\partial_{2'}^2 + m^2) \\
-   \times \bra{\Omega} \mathcal{T} \phi(x_1) \phi(x_2) \phi(x_1') \phi(x_2') \ket{\Omega},
-\end{multline}
-where we have taken $\sigma \to 0$ such that $f(\vb{k}_j) \to \delta^3 (\vb{k} - \vb{k}_j)$.
-This is the \emph{LSZ reduction} formula.
+These are also normalised so that $\bra{i}\ket{i} = 1 = \bra{f}\ket{f}$ and we have $\vb{k}_1 \neq \vb{k}_2$ and $\vb{k}_1' \neq \vb{k}_2'$ respectively.
+Our goal is to find the \emph{scattering amplitude} $\bra{f}\ket{i}$.
+
+Let us find an expression that allows us to relate creation (annihilation) operators from the distant past (future) to the distant future (past).
+We employ the expressions \eqref{eq:7-free-gauss} and \eqref{eq:7-a-dag} and the fundamental theorem of calculus to rewrite the difference of $a_1^{\dagger}$ at $t = \pm \infty$ as
+\begin{align}
+  a_1^{\dagger}(\infty) - a_1^{\dagger}(-\infty) &= \int_{-\infty}^{\infty}\dd[]{t} \partial_0 a_1^{\dagger} (t) \\
+					   &= \int \dd[3]{k} f_1(\vb{k}) \int \dd[4]{x} \partial_0 \left[ e^{-i k \cdot x} (-i \partial_0 \phi + E \phi) \right] \\
+					   &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial_0^2 + E^2) \phi \\
+					   &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial_0^2 - \stackrel{\leftarrow}{\nabla}{}^2 + m^2) \phi \\
+					   &= -i \int \dd[3]{k} f_1(\vb{k}) \int \dd[3]{x} e^{-i k \cdot x} (\partial^2 + m^2) \phi,
+\end{align}
+where in the fourth line the dispersion relation $E^2 = \abs{\vb{k}}^2 + m^2$ is used and $\abs{\vb{k}}^2$ turns into the laplacian $\nabla^2$ acting leftward onto the exponential. In the last line we integrated by parts twice with $f_1(\vb{k})$ ensuring that surface terms vanish.
+In the free theory, the Klein--Gordon equation therefore implies that $a_1^{\dagger}(\infty) - a_1^{\dagger}(-\infty) = 0$.
+After a similar calculation for $a^{\dagger}_2$ and $a_{1', 2'}$, we obtain
+\begin{subequations}
+  \label{eq:7-creations}
+   \begin{align}
+     a_j^{\dagger}(-\infty) &= a_j^{\dagger}(\infty) + i \int \dd[3]{k} f_j(\vb{k}) \int \dd[4]{x} e^{-i k \cdot x} (\partial^2 + m^2) \phi \\
+     a_j'(\infty) &= a_j'(-\infty) + i \int \dd[3]{k} f_j(\vb{k}) \int \dd[4]{x} e^{i k \cdot x} (\partial^2 + m^2) \phi.
+  \end{align}
+\end{subequations}
+
+The $2 \to 2$ scattering amplitude is
+\begin{equation}
+  \label{eq:7-amp}
+  \bra{f}\ket{i} = \bra{\Omega} \mathcal{T} a_{1'}(\infty) a_{2'}(\infty)a_{1}^{\dagger}(-\infty) a_2^{\dagger}(-\infty) \ket{\Omega},
+\end{equation}
+where we were able to trivially insert the time-ordering operator $\mathcal{T}$, since the operators were already time-ordered.
+
+We then use the integral expressions \eqref{eq:7-creations} to replace the creation (annihilation) operators of \eqref{eq:7-amp} with their counterparts at the distant future (past).
+The time-ordering operator then moves the resulting $a_i^{\dagger}(\infty)$ to the left and the $a_{j'}(-\infty)$ to the right, annihilating the vacuum. The only non-zero term is the one with the products of the integrals, yielding the unwieldy formula
+\begin{simplebox}
+  \begin{multline}
+    \label{eq:lsz}
+    \bra{f}\ket{i} = i^4 \int \dd[4]{x_1} \dd[4]{x_2} \dd[4]{x_1'}\dd[4]{x_2'} e^{-i k_1 \cdot x_1} e^{-i k_2 \cdot x_2} e^{i k_1' \cdot x_1'} e^{i k_2' \cdot x_2'} \\
+     \times (\partial_1^2 + m^2) (\partial^2_2 + m^2) (\partial_{1'}^2 + m^2) (\partial_{2'}^2 + m^2) \\
+     \times \bra{\Omega} \mathcal{T} \phi(x_1) \phi(x_2) \phi(x_1') \phi(x_2') \ket{\Omega},
+  \end{multline}
+\end{simplebox}
+where we have taken the narrow-width limit $\sigma \to 0$ of the Gaussian wave packets, turning $f(\vb{k}_j) \to \delta^3 (\vb{k} - \vb{k}_j)$.
+This is a specific case of the \emph{LSZ reduction} formula.
+In its more general form, it states that the information of $n \to n'$ scattering amplitudes can be recovered from the correlation functions $\bra{\Omega} \mathcal{T} \phi(x_1) \dots \phi(x_n) \phi(x'_1) \dots \phi(x'_{n'}) \ket{\Omega}$.
 
 This result can be proven without recourse to the free theory as we have done. However, the machinery needed to build this up is more involved.
-This general derivation requires only weaker assumptions
+Our derivation assumed that the interactions do not alter the creation operators \eqref{eq:7-free-gauss} at $t \to \pm \infty$.
+In fact, the general derivation requires only weaker assumptions:
 \begin{enumerate}[1)]
   \item We need a unique ground state $\ket{\Omega}$ and the first excited state has to be a single particle, which means that we need a single simple pole, rather than a continuum of particles for example.
   \item We want the field $\phi \ket{\Omega}$ to be that single particle state, meaning that $ \bra{\Omega} \phi \ket{\Omega} = 0$.
     Usually, this is not a problem; if we have $\bra{\Omega} \phi \ket{\Omega} = v \neq 0$, say when we have some spontaneous symmetry breaking, then we let $\widetilde{\phi} = \phi - v$ to obtain $\bra{\Omega} \widetilde{\phi} \ket{ \Omega} = 0$.
   \item We want $\phi$ normalised such that $\bra{k} \phi(x) \ket{\Omega} = e^{i k \cdot x}$ as in the free case.
-    Usually, interactions spoil this and require us to rescale $\phi \to \mathcal{Z}_\phi^{1 / 2} \phi$.
-
-    We see the need to `renormalise', e.g.
-    \begin{equation}
-      \mathscr{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 \to 
-      \mathscr{L} = \frac{\mathcal{Z}_\phi}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{Z_m}{2} m^2 \phi^2 - \frac{\lambda}{4!} Z_\lambda \phi^4.
-    \end{equation}
+  Usually, interactions spoil this and require us to rescale the field $\phi \to \mathcal{Z}_\phi^{1 / 2} \phi$.
 \end{enumerate}
+
+This hints at the fact that we need to `renormalise' the field and couplings when includng interactions. For example, in $\phi^4$ theory we need to introduce renormalisation factors $Z_\phi, Z_m$, and $Z_\lambda$:
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 \to 
+  \frac{\mathcal{Z}_\phi}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{Z_m}{2} m^2 \phi^2 - \frac{\lambda}{4!} Z_\lambda \phi^4.
+\end{equation}
+We will meet this Lagrangian again in Sec.~\ref{sec:renormalisation}.

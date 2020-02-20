@@ -44,6 +44,7 @@ There are a number of things we could require.
 \end{itemize}
 However, these conditions are obeyed by the covariant Laplacian \emph{plus} any multiple of the scalar curvature: 
 \begin{equation}
+  \label{eq:9-r}
   \hat{H} \Psi = - \frac{1}{2} \nabla^a \nabla_a \Psi + \alpha R \Psi = -\frac{1}{\sqrt{g}} \partial_{a} (\sqrt{g} g^{ab} \partial_b \Psi) + \alpha R \Psi,
 \end{equation}
 for any $\alpha \in \mathbb{R}$.
@@ -120,10 +121,10 @@ where the connection 1-form $\omega\indices{^{i}_{j}} = dx^{a} \omega_{a}(x)\ind
   In \eqref{eq:8-w} we supressed the spacetime index $a$.
 \end{remark}
 Each of the spin connection components is an antisymmetric matrix $\omega^{ij} = \delta^{jk} \omega\indices{^{i}_{k}} = - \omega^{ji}$, since it preserves orthonormality.
-A priori, $\omega$ has nothing to do with $\Gamma$, but we usually (basically always) impose compatibility by the torsion-free condition
+A priori, $\omega$ has nothing to do with $\Gamma$, but we usually (basically always) impose compatibility by the torsion-free condition on the frames
 \begin{gather}
   \nabla_a e\indices{^{b}_{i}} = \partial_{a} e\indices{^{b}_{i}} + \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{i}} + \omega_{a}{}\indices{^{j}_{i}} e\indices{^{b}_{j}} = 0 \\
-  \text{i.e.} \quad (\omega_a)\indices{^{i}_{j}} = e\indices{^{i}_{b}} \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{j}} + e\indices{^{i}_{b}} \partial_{a} e\indices{^{b}_{j}}.
+  \text{i.e.} \quad (\omega_a)\indices{^{i}_{j}} = e\indices{^{i}_{b}} \Gamma\indices{^{b}_{ac}} e\indices{^{c}_{j}} + e\indices{^{i}_{b}} \partial_{a} e\indices{^{b}_{j}} \label{eq:9-omega}.
 \end{gather}
 We get exactly the same expression from our fermion action:
 \begin{align}

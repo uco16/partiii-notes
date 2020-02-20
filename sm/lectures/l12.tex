@@ -5,16 +5,17 @@
 \subsection{Non Abelian}%
 \label{sub:non_abelian}
 
-First, consider Compton scattering $e^+ \gamma \to e^+ \gamma$ in QED:
-\begin{equation}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
-      a -- [fermion, edge label=$u(p)$] b [dot, label=$e$] -- [fermion] c [dot, label=$e$] -- [fermion, edge label=$\overline{u}{}(p')$] d,
-      e -- [boson, edge label=$\epsilon_{\mu}(q)$] b,
-      c -- [boson, edge label=$\epsilon_{\mu}(q')$] f,
-    };
-  \end{gathered}
-\end{equation}
+\begin{figure}[tbhp]
+  \centering
+  \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
+    a -- [fermion, edge label=$u(p)$] b [dot, label=$e$] -- [fermion] c [dot, label=$e$] -- [fermion, edge label=$\overline{u}{}(p')$] d,
+    e -- [boson, edge label=$\epsilon_{\mu}(q)$] b,
+    c -- [boson, edge label=$\epsilon_{\mu}(q')$] f,
+  };
+  \caption{Compton scattering.}
+  \label{fig:compton}
+\end{figure}
+First, consider Compton scattering $e^+ \gamma \to e^+ \gamma$ in QED, illustrated by the Feynman diagram in Fig.~\ref{fig:compton}.
 The matrix element can be written $M = M_{\mu\nu} \epsilon^{\nu}_{\text{in}} \epsilon^{\mu} _{\text{out}}$ where
 \begin{equation}
   M_{\mu\nu} = i (-i e)^2 \overline{u}{}(p', \sigma') \left( \frac{\gamma_{\mu}(\cancel{p} + \cancel{q} + m)\gamma_{\nu}}{(p + q)^2 - m^2} + \frac{\gamma_{\nu}(\cancel{p} - \cancel{q'} + m)\gamma_{\mu}}{(p - q')^2 - m^2} \right) u(\vb{p}, \sigma),
@@ -39,33 +40,37 @@ we have
 \end{equation}
 Thus, the Ward identity holds as expected.
 
-Now take
-\begin{equation}
-  \label{eq:12-diag}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
-      a -- [fermion, edge label=$i$] b [dot, label=$T_{ik}^a$] -- [fermion, edge label=$k$] c[dot, label=$T^a_{kj}$] -- [fermion, edge label=$j$] d,
-      e [particle=\(a\)] -- [boson] b,
-      c -- [boson] f [particle=\(b\)]
+\begin{figure}[tbhp]
+  \centering
+  \begin{minipage}[t]{0.45\columnwidth}
+    \centering
+      \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
+        a -- [fermion, edge label=$i$] b [dot, label=$T_{ik}^a$] -- [fermion, edge label=$k$] c[dot, label=$T^b_{kj}$] -- [fermion, edge label=$j$] d,
+        e [particle=\(a\)] -- [boson] b,
+        c -- [boson] f [particle=\(b\)]
+      };
+    \caption{General couplings $T^{a}_{ik}$ between two fermions $i$ and $k$ and a boson $a$.}
+    \label{fig:12-diag}
+  \end{minipage}%
+  \qquad
+  \begin{minipage}[t]{0.45\columnwidth}
+    \centering
+    \feynmandiagram[transform shape, scale=1][horizontal=e to c] {
+      a [particle=\(a\)] -- [boson] v [dot, label=0:$f^{abc}$] -- [boson] b [particle=\(b\)],
+      c -- [fermion, edge label=$i$] d [dot, label=0:$T^c_{ij}$] -- [fermion, edge label=$j$] e,
+      v -- [boson, edge label=$c$] d,
     };
-  \end{gathered}
-\end{equation}
+    \caption{Allowing a general coupling $f^{abc}$ between three bosons $a, b$, and $c$.}
+    \label{fig:12-diag2}
+  \end{minipage}
+\end{figure}
 
-Imagine we had called the couplings $e_1$ and $e_2$. We could not have factored it out in \eqref{eq:12-1} and the terms in the brackets would be $e_1 e_2 - e_2 e_1$. For our couplings $T^a_{ij}$ in diagram \eqref{eq:12-diag}, we have
+However, this is not the most general case we could have considered. Imagine that the couplings $e_1$ and $e_2$ at the two vertices would have been different. The terms in the big parenthesis in \eqref{eq:12-1} would be $e_1 e_2 - e_2 e_1$ and, assuming these couplings do not commute, we could not have factored them out as we did. For the most general possible couplings $T^a_{ij}$ between two fermions and a gauge boson, illustrated in Fig.~\ref{fig:12-diag}, the ward identity implies
 \begin{equation}
   T^a_{ik} T^{b}_{kj} - T^b_{ik} T^a_{kj}  = 0
 \end{equation}
-unless there is a coupling between the photons themselves
-\begin{equation}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=e to c] {
-      a [particle=\(a\)] -- [boson] v [dot, label=0:$f^{abc}$] -- [boson] b [particle=\(b\)],
-      c -- [fermion, edge label'=$i$] d [dot, label=0:$T^c_{ij}$] -- [fermion, edge label=$j$] e,
-      v -- [boson, edge label=$c$] d,
-    };
-  \end{gathered}
-\end{equation}
-In this case, we have
+unless there is a coupling $f^{abc}$ between the photons themselves.
+In that case, which is depicted in diagram \ref{fig:12-diag2}, we have instead
 \begin{align}
   T_{ik}^a T^b_{kj} - T^b_{ik} T^a_{kj} &= f^{abc} T^c_{ij}. \\
   [T^a, T^b] &= i f^{abc} T^c,
@@ -73,10 +78,10 @@ In this case, we have
 where the factor $i$ in the second line is a matter of normalisation of the structure constants $f^{abc}$.
 This is the Lie algebra of a non-Abelian gauge (Yang--Mills) theory!
 
-We find that a system with many massless helicity-1 fields is either
+We find that a system with many massless helicity-1 fields comprises
 \begin{itemize}
-  \item many photon-like particles which do not interacting with themselves
-  \item non-Abelian Yang--Mills gauge bosons with algebra $[T^a, T^b] = i f^{abc} T^c$.
+  \item either photon-like particles, which do not interacting with themselves, 
+  \item or non-Abelian Yang--Mills gauge bosons with algebra $[T^a, T^b] = i f^{abc} T^c$.
 \end{itemize}
 
 \section{Yang--Mills Theory}%
@@ -102,7 +107,7 @@ Yang--Mills theory is the theory of a non-Abelian gauge group $G$.
        \end{equation}
        \item From the commutator
 	 \begin{equation}
-	   [D_{\mu}, D_{\nu}] \langle = \left[ -i g (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) -g^2 [A_{\mu}, A_{\nu}] \right] \psi,
+	   [D_{\mu}, D_{\nu}] = \left[ -i g (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) -g^2 [A_{\mu}, A_{\nu}] \right] \psi,
 	 \end{equation}
 	 we obtain the gauge (Yang--Mills) field strength
 	 \begin{equation}

@@ -1,0 +1,121 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 11: February 20}
+
+Let us now examine this determinant.
+We decompose the tangent space $T_{x_0} M$ into eigenspaces of $\mathcal{R}\indices{^{a}_{b}}$ such that restriction of $\mathcal{R}\rvert$ to the $i$\textsuperscript{th} eigenspace, which is even-dimensional since we are on an even-dimensional manifold, looks like
+$
+  \mathcal{R}_i = 
+  \begin{pmatrix}
+   0 & \omega_{i} \\
+   -\omega_i & 0 \\
+  \end{pmatrix}.
+$
+Let $D_i$ be the restriction of the operator we are interested in, $\delta\indices{^{a}_{b}}  \partial_{\tau} - \mathcal{R}\indices{^{a}_{b}}$ to this subspace.
+Moreover, we write $\delta(x^{a})(\tau) = \sum_{k \neq 0} \delta x\indices{^{a}_{k}} e^{2 \pi i k \tau}$ in terms of (non-zero) Fourier modes.
+Then the eigenvalues of $D_i$ are $2 \pi i k \pm \omega_i$, where the factor of $2\pi i k$ is picked up by the derivative. Hence, the determinant of the non-zero modes of the restricted operator is
+\begin{equation}
+  \label{eq:11-det}
+  \text{det}'(D_i) = \prod_{k \in \mathbb{Z} \setminus \{0\}} (2 \pi i k + \omega_i) (2 \pi i k - \omega_i) = \prod_{k\neq 0} (- (2 \pi k)^2 - w_i^2) = \prod_{k = 1}^\infty (2 \pi k)^4 \prod_{k = 1}^\infty \left( 1 + \frac{\omega_i^2}{(2 \pi k)^2} \right)^2.
+\end{equation}
+Again we can use $\zeta$-function regularisation, from which we obtain
+\begin{equation}
+  \prod_{n = 1}^\infty (2 \pi k)^2 = (4 \pi^2)^{\zeta(0)} e^{-2 \zeta'(0)} = 1.
+\end{equation}
+This is us waving our hands and not looking too closely, so that we can drop the infinite divergent product.
+\begin{leftbar}
+If we were doing a more careful job, we would have had to regularise both the fermionic and the bosonic path integrals; if we are doing the regularisation for both in the same way everything works out.
+\end{leftbar}
+The remaining factor is the product expansion 
+\begin{equation}
+  \frac{\sinh (z)}{z} = \prod_{n = 1}^\infty \left( 1 + \frac{z^2}{\pi^2 n^2} \right).
+\end{equation}
+Comparing this to \eqref{eq:11-det}, with $z = \omega_i/2$, we find that
+\begin{equation}
+\sqrt{\text{det}' D_i} = \frac{\sinh (\omega_i / 2)}{(\omega_i / 2)}.
+\end{equation}
+Combining the factors from the $n / 2$ eigenspaces of $\mathcal{R}\indices{^{a}_{b}}$, we have that the term \eqref{eq:10-zmap} coming from the fluctuations around the zero-map is
+\begin{equation}
+  \frac{1}{\sqrt{\text{det}' (\delta\indices{^{a}_{b}} \partial_\tau - \mathcal{R}\indices{^{a}_{b}})}} = \prod_{i = 1}^{n / 2} \frac{(\omega_i / 2)}{\sinh (\omega_i / 2)} = \det( \left( \frac{\mathcal{R} / 2}{\sinh(\mathcal{R} / 2)} \right) \indices{^{a}_{b}}),
+\end{equation}
+where the matrix inside the determinant is understood via its Taylor expansion.
+
+This was the term coming from fluctuations about constant zero modes. Finally, we must perform the integral over the zero modes $(x_0, \psi_0)$. The action vanishes on these zero modes, but they enter through $\mathcal{R}\indices{^{a}_{bcd}} (x_0)\; \psi_0^{c} \psi_0^{d}$. We obtain
+\begin{equation}
+  Z(\beta) = \int \det(\frac{R(x_0, \psi_0) / 2}{\sinh(\mathcal{R}(x_0, \psi_0) / 2)}) \dd[n]{x_0} \dd[n]{\psi_0}
+\end{equation}
+We expand the (slightly complicated) Taylor series until we hit the term with $n$ fermions.
+Performing the fermionic integration then gives
+\begin{equation}
+  Z(\beta) = \int_M \det(\frac{\mathcal{R} / 2}{\sinh(\mathcal{R} / 2)})^{(n)} = \int \hat{A}(M).
+\end{equation}
+Where the fermionic integral can be written as extracting the top-form ($n$-form) part of an integral over $M$.
+In other words, we now think of $\mathcal{R}\indices{^{a}_{b}}(x_0) = \mathcal{R}\indices{^{a}_{bcd}} dx^{c} \wedge dx^{d}$. This combination is often knows as the $\hat{A}$-genus of $M$.
+Explicitly, we have
+\begin{align}
+  \hat{A}(M) &= 1 - \frac{1}{24} p_1 (M) + \frac{7 p_1^2(M) - 4 p_2(M)}{5760} + \dots , \\
+  p_1(M) &= -\frac{1}{2} \frac{1}{(2 \pi)^2} \tr(\mathcal{R} \wedge \mathcal{R}), \\
+  p_2(M) &= \frac{1}{8 (2 \pi)^4} \left( (\tr \mathcal{R} \wedge \mathcal{R})^2 - 2 \tr (\mathcal{R} \wedge \mathcal{R} \wedge \mathcal{R} \wedge \mathcal{R}) \right).
+\end{align}
+The \emph{Pontryagin classes} $p_1$ and $p_2$ are polynomials in traces of powers of the curvature.
+We see that
+\begin{equation}
+  \text{ind}(\cancel{\nabla}) = \int_M \hat{A}(M).
+\end{equation}
+This is the \emph{Atiyah--Singer} theorem for the Dirac operator.
+Since $z / \sinh(z)$ is an even function, we only get expansions in $z^2 \rightarrow \mathcal{R}^2$.
+Hence $\text{ind}(\cancel{\nabla}) = 0$ whenever $\dim(M) = 4 k + 2$.
+
+\subsection{Coupling to a Vector Bundle}%
+\label{sub:coupling_to_a_vector_bundle}
+
+We may wish to describe a charged spinor (electron!) moving on $M$.
+To do this (in the Abelian case), we modify the action to include a coupling to a gauge field $A_a (x)$ on $M$.
+\begin{equation}
+  S[x, \psi] = \int \left[ \frac{1}{2} g(\dot{x}, \dot{x}) + \frac{i}{2} g(\psi, \nabla_\tau \psi) + i A_a (x) \dot{x}^{a} + \frac{1}{2} F_{ab}(x) \psi^{a} \psi^{b} \right] \dd[]{\tau},
+\end{equation}
+where $F = dA = \frac{1}{2} (\partial_{a} A_b - \partial_{b} A_a) dx^{a} \wedge dx^{b}$ is the EM fieldstrength, pulled back to the worldline.
+The bosonic term involves $\dot{x}$, so modifies the momentum operator $p_{a} = g_{ab} \dot{x}^{b} + i A_a + \text{ferms}$.
+Upon quantisation, the supercharge 
+\begin{equation}
+  Q = i g_{ab} \psi^{a} \dot{x}^{b} \to \gamma^{i} e\indices{^{a}_{i}} (\partial_{a} + (\omega_a)_{ij} \Sigma^{ij} + i A_).
+\end{equation}
+The insertion 
+\begin{equation}
+  \exp(-i \oint_{S^1} A_a(x (\tau)) \dv{x^{a}}{\tau} \dd[]{\tau})
+\end{equation}
+is the holonomy / Wilson line around $x(S^1)$, i.e.~the \emph{phase} a charged particle would acquire as it travels around a loop $x(S^1) \subset M$.
+
+\begin{wrapfigure}{R}{0.3\columnwidth}
+  \centering
+  \def\svgwidth{0.2\columnwidth}
+  \input{lectures/l11f1.pdf_tex}
+  \caption{A charged fermion moving along trajectory $\Gamma$ in a background field $A$.}
+  \label{fig:l11f1}
+\end{wrapfigure}
+Consider Fig.~\ref{fig:l11f1}. If $\Psi$ is parallel transported from $x$ to $y$ along $\Gamma$, meaning that $V^{a} (\partial_a + i A_a) \Psi = 0$, where $V$ is tangent to $\Gamma$, 
+\begin{equation}
+  \Psi(y) = \exp(-i \int_x^y A_a(x) V^{a}(x) \dd[]{\tau}) \Psi(x).
+\end{equation}
+Since our $\mathcal{N} = 1$ theory gives a spinor on $M$, we also get a contribution from its magnetic moment
+\begin{equation}
+  \frac{1}{2} F_{ab} \gamma^{a} \gamma^{b} = \frac{1}{4} F_{ab} [\gamma^{a}, \gamma^{b}] = F_{ab} \Sigma^{ab}.
+\end{equation}
+\begin{example}[]
+  In $n = \dim (M) = 3$, then $\Sigma^{ab} = \epsilon^{abc} \sigma^{c}$ and $F_{ab} \Sigma^{ab} \mapsto \boldsymbol \sigma \cdot \vb{B}$.
+\end{example}
+The modified action is still invariant under the original supersymmetry transformations
+\begin{equation}
+  \delta x^{a} = \epsilon \psi^{a} \qquad \delta \psi^{a} = i \epsilon \dot{x}^{a},
+\end{equation}
+with supercharge $Q = i g_{ab} \psi^{a} \dot{x}^{b}$. This is quantised as the gauge covariant Dirac operator $\cancel{D}$.
+Thus, when computing the supertrace we still get cancellation
+\begin{equation}
+  \text{Str}_{\mathscr{H}} (e^{-\beta \hat{H}}) = \text{ind}(\cancel{D}).
+\end{equation}
+
+What will happen on the path integral side? The new terms in $S[x, \psi]$ are independent of the target space metric $g$ so they do not change the fact that we localise on constant maps. They also do not affect the fluctuation contributions, because they do not come with any $\lambda$.
+They the result is only modified by $S[x_0, \psi_0] = -\frac{1}{2} F_{ab} (x_0) \psi_0^{a} \psi_0^{b}$.
+\begin{equation}
+  \implies \text{ind} (\cancel{D}) = \int_M \left( \hat{A}(M) e^{-F} \right)^{(n)}.
+\end{equation}

@@ -1,0 +1,108 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 14: February 18}
+
+\section{Renormalisation Group Flow}%
+\label{sec:renormalisation_group_flow}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f1.pdf_tex}
+  \caption{RG flow in coupling constant space.}
+  \label{fig:l14f1}
+\end{figure}
+
+\begin{definition}[RG Flows]
+  An \emph{RG flow} is a line in coupling constant space corresponding to how the set of couplings $\{g_i\}$ change as we integrate modes.
+\end{definition}
+These RG flows are governed by the $\beta$-functions $\{\beta_i(\{g_i\})\}$ and are illustrated in Fig.~\ref{fig:l14f1}.
+
+Theories lying along the same flow line describe the same IR physics.
+
+\subsection{Fixed Points of RG Equations}%
+\label{sub:fixed_points_of_rg_equations}
+
+\begin{definition}[fixed point]
+  A \emph{fixed point} or \emph{critical point} is a point $\{g_i^*\}$ in coupling constant space where the $\beta$-functions vanish:
+  \begin{equation}
+    \beta_i\rvert_{\{g^*_j\}} = 0.
+  \end{equation}
+\end{definition}
+Recall that the $\beta$-functions are comprised of two parts:
+\begin{equation}
+  \beta_i (\{g_i\}) = \underbrace{(d_i - d) g_i}_{\mathclap{\text{classical part}}} + \overbrace{\Lambda \dv{g_i}{\Lambda} (\{g_i\})}^{\mathclap{\text{quantum part}}}.
+\end{equation}
+For the moment we will neglect dimensionful couplings like the mass, which contribute to the classical part.
+
+\begin{example}[Gaussian fixed point]
+  We can consider a free massless theory in which $g^*_j = 0$ for all $j$. This is called the \emph{Gaussian fixed point}.
+\end{example}
+In general, there are also non-trivial fixed points. However, these require cancellation of the classical and quantum parts of the $\beta$-function; these are hard to find.
+
+Let us think about what must happen at a fixed point.
+
+\subsection*{Scale Invariance at Fixed Points}%
+
+Part of the RG transformations was rescaling the fields and couplings after integrating out high-momentum modes. If all the couplings are invariant under RG transformations, there must be scale invariance.
+The fixed-point couplings $g_i^*$ are independent of scale. 
+Thus, other dimensionless functions of $g_i$ are scale invariant as well. One example of this is the anomalous dimension $\gamma_\phi (g_i^*) \coloneqq \gamma_\phi^*$.
+
+The $\beta$-functions vanish. This means that the Callan--Symanzik equation becomes
+\begin{equation}
+  \Lambda \frac{\partial }{\partial \Lambda} \Gamma^{(2)}_{\Lambda} (x, y) = - 2 \gamma_\phi^* \Gamma^{(2)} (x, y).
+\end{equation}
+If we impose translational and rotational invariance, the two-point function $\Gamma^{(2)}(x, y) = \Gamma^{(2)} (\abs{x - y})$ should only depend on the relative separation of the points, rather than their absolute positions.
+Like $\langle \phi(x) \phi(y) \rangle$, the engineering dimension of $\Gamma^{(2)}$ is $\Lambda^{d-2}$.
+Putting these together, accounting for anomalous dimension, dimensional analysis gives us
+\begin{equation}
+  \Gamma^{(2)}_{\Lambda}(x, y; g^*_i) = \frac{\Lambda^{d - 2}}{\Lambda^{2 \Delta_\phi}} \frac{c(g_i^*)}{\abs{x - y}^{2 \Delta_\phi}},
+\end{equation}
+where $\Delta_\phi = \frac{1}{2} (d - 2) + \gamma_{\phi}^*$ is the scaling dimension of $\phi$.
+This power law behaviour of $2$-point functions or propagators is characteristic of scale invariant theories (think about classical gravity or electromagnetism, which obey power law force equations).
+You can contrast this to theories with a characteristic scale, $M = \frac{1}{\xi}$ (a mass or inverse correlation length).
+In such theories, the functions typically fall of exponentially like $\Gamma^{(2)}(x, y) \sim \frac{e^{-M \abs{x - y}}}{\abs{x - y}^{2 \Delta_\phi}}$.
+
+\subsection*{Behaviour Near a Fixed Point}%
+
+In this course, we do not want to consider the conformal symmetry arising at a fixed point, but rather consider behaviour near a fixed point.
+Near a fixed point, we can linearise the RG equations. Let $\delta g_i = g_i - g_i^*$. Then we can write the RG equation as a matrix equation
+\begin{equation}
+  \left.\Lambda \dv{g_i}{\Lambda} \right\rvert_{\{g_i^* + \delta g_i\}} = B_{ij} \delta g_j + O(\delta g^2).
+\end{equation}
+Understanding the flow near a fixed point now amounts to a set of first order differential equations.
+Naturally, we want to look at the eigenvectors $\sigma_i$ and eigenvalues $\Delta_i - d$ of the matrix $B_{ij}$.
+We call $\Delta_i$ the \emph{scaling dimension} associated with the eigenvector $\sigma_i$.
+\begin{remark}
+  Each axis in the coupling constant space corresponds to an operator in the action. 
+  Thus the eigenvectors $\sigma_i$, which represent a combination of directions in coupling constant space, generally consist of linear combinations of operators $\mathcal{O}_i$ in $S[\phi]$.
+\end{remark}
+
+The linearised RG flow equations then become
+\begin{align}
+  \Lambda \dv{\sigma_i}{\Lambda} &= (\Lambda_i - d) \sigma_I \\
+  \implies \sigma_i (\Lambda) &= \left( \frac{\Lambda}{\Lambda_0} \right)^{\Delta_i - d} \sigma_i(\Lambda_0),
+\end{align}
+with initial scale $\Lambda_0 > \Lambda$.
+If the exponent is positive, when $\Lambda_i > d$, then we have $\sigma_i (\Lambda) < \sigma_i(\Lambda_0)$. In other words, we flow back to the fixed point as $\Lambda$ decrease.
+These are accordingly called \emph{irrelevant} directions.
+Conversely, if the signs are reversed, $\Lambda_i < d$, then we have a \emph{relevant} direction, where $\sigma_i (\Lambda) > \sigma_i(\Lambda_0)$ and we flow away from the fixed point.
+Finally, we also have the \emph{marginal} case $\Lambda_i = d$, where we cannot tell the direction of the flow.
+\begin{remark}
+  Usually, including the second order in the calculation allows us to determine the direction of the flow when the first order approximation yields a marginal fixed point.
+\end{remark}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f2.pdf_tex}
+  \caption{Coupling space with one relevant direction.}
+  \label{fig:l14f2}
+\end{figure}
+
+Consider the case of a theory in which we have one relevant direction at a given fixed point in coupling space.
+As illustrated in Fig.~\ref{fig:l14f2}, we can then have a ``surface'' (submanifold) $S$ of irrelevant couplings, called the \emph{critical surface}.
+
+In general, in infinite-dimensional coupling space, the critical surface is $\infty$-dimensional.
+Its co-dimension is finite, and is equal to the number of relevant operators.
+The trajectory leaving the fixed point is the \emph{renormalised trajectory}.

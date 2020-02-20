@@ -1,0 +1,96 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 10: February 18}
+
+The result \eqref{eq:9-omega} is just what we would get by changing coordinates $x^{a} \mapsto x^{i}$, where $e\indices{^{i}_{a}} = \frac{\partial y^{i}}{\partial x^{a}}$. In particular, $R[\omega]\indices{^{i}_{j}} = R[\Gamma]\indices{^{c}_{d}} e\indices{^{i}_{c}} e\indices{^{d}_{j}}$ where $R[\omega] = d \omega + \frac{1}{2} [\omega, \omega]$ is the curvature 2-form of the spin connection and $R[\Gamma]\indices{^{c}_{d}} = R\indices{_{ab}^{c}_{d}} dx^{a} \wedge dx^{b} = (d\Gamma + \frac{1}{2} [\Gamma, \Gamma])\indices{^{c}_{d}}$ is the Riemann curvature tensor.
+
+In terms of the $\psi^{i}$'s ($\psi^{i} = e\indices{^{i}_{a}} \psi^{a}$), our supercharge becomes
+\begin{equation}
+  Q = i g_{ab} \dot{x}^{a} \psi^{b} = e\indices{^{a}_{i}} \psi^{i} (i p_{a} + \frac{1}{2} \omega_{a\, jk} \psi^{j} \psi^{k}).
+\end{equation}
+There is now no longer any ordering ambiguity between the $\psi$'s and $p$'s. We teased this ambiguity out into the frames $e\indices{^{a}_{i}}$, and the $\psi$'s and $p$'s simply commute.
+
+So under quantisation with $\hat{p}_a \mapsto -i \partial_a$ and $\hat{\psi}^{i} \to \gamma^{i}$, we find that $\hat{Q}$ is the \emph{covariant Dirac operator}
+\begin{equation}
+  \hat{Q} = e\indices{^{a}_{i}} \gamma^{a} (\partial_{a} + \frac{1}{2} \omega_{a\, jk} \gamma^{j} \gamma^{k}) = e\indices{^{a}_{i}} \gamma^{i} (\underbrace{\partial_{a} + \omega_{a\, jk} \Sigma^{jk}}_{\nabla_a})) = \cancel{\nabla}, 
+\end{equation}
+where $\Sigma^{jk} = \frac{1}{4} [\gamma^{j}, \gamma^{k}]$ are the generators of $so(n)$ in Dirac spinor representations.
+
+Furthermore, the normal ordering ambiguity in $\hat{H}$ is resolved in the $\mathcal{N} = 1$ model, since our supersymmetry algebra tells us that 
+\begin{align}
+\hat{H} &= -\hat{Q}^2 = \cancel{\nabla} \cancel{\nabla} = \gamma^{i} e\indices{^{a}_{i}} \nabla_a \left( \gamma^{j} e\indices{^{b}_{j}} \nabla_b \right)
+= \gamma^{i} \gamma^{j} e\indices{^{a}_{i}} e\indices{^{b}_{j}} \nabla_a \nabla_b \\
+&= \left( \frac{1}{2} \{\gamma^{i}, \gamma^{j}\} + \frac{1}{2} [\gamma^{i}, \gamma^{j}] \right) e\indices{^{a}_{i}} e\indices{^{b}_{j}} \nabla_a \nabla_b \\
+&= g^{ab} \nabla_a \nabla_b + \Sigma^{ij} e\indices{^{a}_{i}} e\indices{^{b}_{j}} [\nabla_a, \nabla_b] \\
+&= \Delta + \Sigma^{ij} e\indices{^{a}_{i}} e\indices{^{b}_{j}} R^{abkl} \Sigma^{kl} \stackrel{\text{ex.}}{=} \Delta + R,
+\end{align}
+where showing the last equality, with $R$ being the Ricci scalar curvature, is an exercise.
+The fact that we want our Hamiltonian to be $\hat{H} = \hat{Q}^2$ fixes the amount of scalar curvature, which we we previously had some freedom in, as demonstrated in Eq.~\eqref{eq:9-r}.
+
+\section{The Atiyah--Singer Theorem}%
+\label{sec:the_atiyah_singer_theorem}
+
+We work with $n = \dim M$ even.
+Let us now compute the supersymmetric partition function of our $\mathcal{N} = 1$ NLSM. In the canonical framework, this is $\text{Str}_{\mathscr{H}} \left( e^{-\beta \hat{H}} \right)$.
+It is easy to see we only get contributions from states with $E = 0$: suppose $\ket{\Phi} \in \mathscr{H}_B$ and $\hat{H} \ket{\Phi} = E \ket{\Phi}$ with $E \neq 0$. Then we can write the state as
+\begin{equation}
+  \ket{\Phi} = -\frac{1}{E} Q^2 \ket{\Phi} = Q \ket{\chi}, 
+\end{equation}
+where $\ket{\chi} = -\frac{1}{E} Q \ket{\Phi} \in \mathscr{H}_F$ is a fermionic state. And since $[\hat{H}, \hat{Q}] = 0$ we have $\hat{H} \ket{\chi} = E \ket{\chi}$.
+Thus states with $E \neq 0$ come in boson/fermion pairs, and their contribution cancels in $\text{Str}( e^{-\beta \hat{H}} )$.
+Also, since $H = -Q^2$, if $Q \ket{\Phi}  =0$, then $\hat{H} \ket{\Phi} = 0$, so $\text{ker}(\hat{H}) \supset \text{ker}(\hat{Q})$. Furthermore, if $\hat{H} \ket{\chi} = 0$, then
+\begin{equation}
+  0 = \bra{\chi} \hat{H} \ket{\chi} = -\bra{\chi} Q^2 \ket{\chi} = - \norm{Q \ket{\chi}}^2,
+\end{equation}
+since $Q^{\dagger} = Q$ with real fermions $\psi^a$. Therefore, $Q \ket{\chi} = 0$ and $\text{ker}(Q) \supset \text{ker}(H)$.
+Combining these, we have $\text{ker}(Q) = \text{ker}(H)$. Therefore, since $\gamma = (-1)^F$, the supersymmetric partition function is
+\begin{equation}
+  \text{STr}_{\mathscr{H}} (e^{-\beta H}) = \Tr_{\mathscr{H}}(e^{-\beta H} \gamma) = \Tr_{\mathscr{H}}(e^{-\beta H} \frac{1 + \gamma}{2}) - \Tr_{\mathscr{H}}(e^{-\beta H} \frac{1 - \gamma}{2}).
+\end{equation}
+However, we know that we will just get contributions of the ground state, so this counts the number of chiral minus the number of antichiral ground states.
+\begin{equation}
+  \label{eq:10-pint}
+  \text{STr}_{\mathscr{H}} (e^{-\beta H}) = \dim \ker (\cancel{\nabla}_+) - \dim \ker (\cancel{\nabla}_-) \coloneqq \text{ind}(\cancel{\nabla}),
+\end{equation}
+where $\cancel{\nabla}_\pm = \cancel{\nabla} \left( \frac{1 \pm \gamma}{2} \right)$ and $\text{ind} (\cancel{\nabla})$ is called the \emph{index} of the Dirac operator on $(M, g)$.
+We got this by canonical quantisation and understanding the spinor states on the Hilbert space.
+
+We get an alternative expression for the $\text{ind}(\cancel{\nabla})$ by examining the path integral
+\begin{equation}
+  \text{STr} (e^{-\beta H}) = \int_P \pdd{x} \pdd{\psi} e^{-S[x, \psi]},
+\end{equation}
+where the important thing about the action was that it was itself the supersymmetry transformation of something:
+\begin{equation}
+  S[x, \psi] = Q \left( \frac{i}{2} \oint_{S^1_\beta} g (\dot{x}, \psi) \dd[]{\tau} \right) = \frac{1}{2} \oint_{S^1_\beta} g(\dot{x}, \dot{x}) + i g (\psi, \nabla_\tau \psi) \dd[]{\tau}.
+\end{equation}
+The path $P$ in \eqref{eq:10-pint} is periodic with $x^{a}(\tau + \beta) = x^{a}(\tau)$ and $\psi^{a}(\tau + \beta) = \psi^{a}(\tau)$.
+
+Since the action is $Q$-exact, we can rescale $g \mapsto \lambda g$ for $\lambda \in \mathbb{R}_+$ and the super partition function will be invariant. As $\lambda \to \infty$, it only receives contributions from a neighbourhood of \emph{constant} maps $x(S^1_\beta) = x_0 \in M$, so $\dot{x} =0$.
+Since any rescaling $\lambda \to \infty$ will give an infinitely large contribution to the action, which then suppresses its contribution in the path integral.
+By the same reasn, we also localise to constant fermions $\dot{\psi} = 0$.
+Let us expand around such maps
+\begin{equation}
+  x(\tau) = x_0^a + \delta x^a(\tau), \qquad \psi(\tau) = \psi^a_0 + \delta \psi^a(\tau),
+\end{equation}
+where $\oint \delta x^{a} (\tau) \dd[]{\tau} = 0 = \oint \delta\psi^a (\tau) \dd[]{\tau}$ and $\psi_0^a \in \Pi T_{x_0} M$.
+
+To expand the action $S[x, \psi]$ to quadratic order in fluctuations, it is helpful to use Riemann normal coordinates: The metric near any point $x_0$ can always be written as 
+\begin{equation}
+  g_{ab}(x_0 + \delta x) = \delta_{ab} - \frac{1}{3} R^{acbd} (x_0) \delta x^{c} \delta x^{d} + O (\delta x^3).
+\end{equation}
+Similarly, the connection components in this system of coordinates is
+\begin{equation}
+\Gamma^{c}_{ab} (x_0 + \delta x) = -\frac{1}{3} (R\indices{^{c}_{abd}}(x_0) + R\indices{^{c}_{bad}}(x_0)) \delta x^{d} + O(\delta x^2).
+\end{equation}
+Putting everything together, we find that the quadratic part of the action, expanded to quadratic order in the fluctuations, is
+\begin{equation}
+  S^{(2)} [x_0 + \delta x, \psi_0 + \delta \psi] = \frac{1}{2} \int -\delta_{ab} \delta x^{a} \dv[2]{\tau} \delta x^{b} + i \delta_{ab} \delta \psi^{a} \dv{\tau} \delta \psi^{b} - \frac{1}{2} R_{abcd} \psi^{a}_0 \psi_0^b \delta x^{c} \dv{\tau} \delta x^{d}.
+\end{equation}
+where we have integrated by parts to put both derivatives on one of the $\delta x$'s in the first term and the last term comes from careful application of the Bianchi identity.
+
+Performing the (Gaussian) path integrals over the fluctuations $\delta x$ and $\delta \psi$, we obtain
+\begin{equation}
+  \label{eq:10-zmap}
+  \frac{\sqrt{\det'(\delta\indices{^{a}_{b}} \partial_\tau)}}{\sqrt{\det'(-\delta\indices{^{a}_{b}} \partial^2_\tau + R\indices{^{a}_{b}} \partial_\tau)}} = \frac{1}{\sqrt{\det' (-\delta\indices{^{a}_{b}} \partial_\tau + R\indices{^{a}_{b}})}},
+\end{equation}
+where $R\indices{^{a}_{b}} = R\indices{^{a}_{b}}(x_0, \psi_0) = R\indices{_{cd}^{a}_{b}}(x_0) \; \psi^{c}_0 \psi^{d}_0$ and $\det'$ is the determinant removing zero modes of the operators\footnote{We are going to integrate over those later.}.

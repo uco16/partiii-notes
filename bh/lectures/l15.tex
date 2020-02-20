@@ -1,0 +1,159 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 15: February 19}
+
+\chapter{Rotating Black Holes}%
+\label{cha:rotating_black_holes}
+
+In this chapter we will be dealing with one of the, if not the single most important solution in general relativity.
+To motivate why we want to study this \emph{Kerr black hole}, we will examine a set of theorems.
+
+\section{Uniqueness Theorems}%
+\label{sec:uniqueness_theorems}
+
+We have to relax our definition of stationarity slightly, since otherwise the Kerr black hole will not be stationary.
+\begin{definition}[stationary]
+  A spacetime $(M, g)$ asymptotically flat at null-infinity is \emph{stationary} if there exists a Killing vector field $k^{a}$ such that $k^{a}$ is timelike in a neighbourhood of $\mathscr{I}^+$.
+\end{definition}
+\begin{definition}[static]
+  The spacetime is \emph{static} if it is stationary and $k^{a}$ is hypersurface orthogonal.
+\end{definition}
+
+We refer to our previous definition, Def.~\ref{def:stationary} ($k^{a}$ timelike everywhere), as ``strictly stationary'' (e.g.~Minkowski).
+Kruskal is static but not strictly static ($k^{a}$ spacelike in II, III).
+
+In the case of a rotating black hole, we can no longer assume spherical symmetry. However, we can have axisymmetry.
+\begin{definition}[stationary and axisymmetric]
+  A spacetime $(M, g)$ asymptotically flat at null infinity is \emph{stationary and axisymmetric} if (i) it is stationary, and (ii) there exists a Killing vector field $m^{a}$, spacelike near $\mathscr{I}^+$, which (iii) generates a 1-parameter family of isometries isomorphic to $U(1)$, the group of rotations about an axis.
+  Finally, (iv) the two Killing vector fields should be compatible, meaning $[k, m] = 0$.
+\end{definition}
+
+If we have a spacetime satisfying these definitions, we can choose coordinates such that $k = \frac{\partial}{\partial t}$ and $m = \frac{\partial }{\partial \phi}$, with $\phi \sim \phi + 2 \pi$.
+
+\begin{theorem}[Israel '67, Bunting--Masood '87]
+  If $(M, g)$ is a static, asymptotically flat vacuum black hole spacetime suitably regular\footnote{Stating these theorems precisely requires quite a lot of technology, which we do not have time to develop in this course.} on and outside the event horizon $\mathcal{H}^+$, then $(M, g)$ is isometric to the Schwarzschild spacetime.
+\end{theorem}
+\begin{leftbar}
+  There is an Einstein--Maxwell generalisation of this result.
+\end{leftbar}
+
+\begin{theorem}[Hawing '73, Wald '92]
+  Let $(M, g)$ be a stationary, non-static, asymptotically flat, analytic\footnote{All the components are analytic functions, so they converge in a power series.} solution of the Eintein--Maxwell equations, suitably regular on and outside $\mathcal{H}^+$, then $(M, g)$ is stationary and axisymmetric.
+\end{theorem}
+\begin{leftbar}
+  This is often taken to be that stationary implies axisymmetric for black holes.
+  Now, mathematicians are quite concerned about the analyticity assumption, since a single point determines the behaviour of the whole spacetime, which is quite unphysical.
+\end{leftbar}
+
+\begin{theorem}[Carter '71, Robinson '75]
+  Let $(M, g)$ be a stationary and axisymmetric, asymptotically flat vacuum spacetime suitably regular on and outside a connected $\mathcal{H}^+$, then $(M, g)$ is a member of the Kerr (1963) family of solutions, which are parametrised by mass ($M$) and angular momentum ($J$).
+\end{theorem}
+\begin{leftbar}
+  The final state of gravitational collapse, if stationary and axisymmetric, is fully determined by its mass and angular momentum.
+\end{leftbar}
+
+The Einstein--Maxwell version of this theorem replaces the Kerr family with the Kerr--Newman family with four parameters $M, J, Q, P$, which adds electric and magnetic charges.
+
+\section{The Kerr--Newman Solution}%
+\label{sec:the_kerr_newman_solution}
+
+This is usually written down in the \emph{Beyer--Lindquist coordinates}
+\begin{equation}
+  ds^2 = -\frac{(\Delta - a^2 \sin^2 \theta)}{\Sigma} d t^2 - 2 a \sin^2 \theta \frac{(r^2+ a^2 - \Delta)}{\Sigma} dt d\phi
+  + \left( \frac{(r^2 + a^2)^2 - \Delta a^2 \sin^2 \theta}{\Sigma} \right) \sin^2 \theta d\phi^2
+  + \frac{\Sigma}{\Delta} dt^2 + \Sigma d\theta^2,
+\end{equation}
+\begin{equation}
+  A = -\frac{Qr (dt - a \sin^2 \theta d\phi) + P \cos \theta (a dt - (r^2 + a^2) d\phi)}{\Sigma}
+\end{equation}
+\begin{equation}
+  \Sigma = r^2 + a^2 \cos ^2 \theta
+\end{equation}
+\begin{equation}
+  \Delta = r^2 - 2 M r + a^2 + e^2, \qquad e = \sqrt{Q^2 + P^2}
+\end{equation}
+
+At large $r$, $(t, r, \theta, \phi) \sim$ polar coordinates on $\mathbb{M}^4$.
+The $(\theta, \phi)$ parametrise $S^2$ with $0 < \theta < \pi$ and $\phi \sim \phi + 2 \pi$.
+
+The KN solution is asymptotically flat at null infinity.
+It is also stationary and axisymmetric with $k = \frac{\partial }{\partial t}$ and $m = \frac{\partial }{\partial \phi}$.
+It also admits an isometry $t \to - t, \phi \to - \phi$.
+
+The parameter $M$ is identified with the mass, $Q, P$ are the electric and magnetic charge respectively, $a = \frac{J}{M}$ and $J$ is the angular momentum.
+Taking $a =0$ reduces the KN to RN.
+Taking $\phi \to - \phi$ is equivalent to taking $a \to -a$. Thus, without loss of generality, we take $a \geq 0$.
+
+\section{Kerr Solution}%
+\label{sec:kerr_solution}
+
+As we argued before, charged black holes are not physical. Let us therefore consider $Q = P = 0$.
+The RN was a warm-up to Kerr and we proceed in the same way by factorising $\Delta$ as
+\begin{equation}
+  \Delta = (r - r_+)(r - r_-), \qquad r_{\pm} = M \pm \sqrt{M^2 - a^2}.
+\end{equation}
+For $M^2 < a^2$ we have a naked singularity.
+Therefore, assuming WCC, we have $M^2 > a^2$.
+The metric is singular when $\Delta = 0$ (at $r = r_\pm$) and at $\Sigma = 0$ ($r = 0, \theta = \frac{\pi}{2}$).
+
+Consider first the case where $r > r_+$.
+The (outgoing) Kerr coordinates are $(v, r, \theta, \chi)$, where the new coordinates are defined as
+\begin{equation}
+  dv = dt + \frac{r^2 + a^2}{\Delta} dr, \qquad d\chi = d\phi + \frac{a}{\Delta} dr.
+\end{equation}
+Since $\chi$ and $\phi$ are linearly related, it follows that $\chi \sim \chi + 2 \pi$.
+Moreover, since $v$ and $t$ are simply related by a shift, we have $k = \frac{\partial }{\partial v}$. Similarly, we have $m = \frac{\partial }{\partial \chi}$.
+The Kerr metric in Kerr coordinates is
+\begin{multline}
+  ds^2 = -\frac{(\Delta - a^2 \sin^2 \theta)}{\Sigma} dv^2 + 2 d v dr - 2a \sin^2 \theta \frac{(r^2 + a ^2 - \Delta)}{\Sigma} d v d\chi - 2a \sin^2 \theta d\chi dr \\
+  + \left( \frac{(r^2 + a^2)^2 - \Delta a^2 \sin^2 \theta}{\Sigma} \right) \sin^2 \theta d \chi^2 + \Sigma d\theta^2.
+\end{multline}
+You can check that this is smooth and Lorentzian when $\Delta$ vanishes at $r = r_+$. Hence, we can analytically continue this to $0 < r \leq r_+$.
+
+\begin{claim}
+  $r = r_+$ is a null hypersurface with normal $\xi^{a} = k^{a} + \Omega_H m^{a}$, where $\Omega_H = \frac{a}{r^2_+ + a^2}$.
+\end{claim}
+\begin{proof}
+  \begin{exercise}
+    Calculate $\xi_\mu$. Show that $\xi_\mu d x^{\mu} \rvert_{r = r_+} \propto dr$.
+  \end{exercise}
+  From this exercise, we find that $\chi_a$ is normal to $r = r_+$.
+  Moreover, it is null $\chi^{\mu} \chi_{\mu} \rvert_{r = r_+} = 0$ as $\xi^r = 0$.
+  Hence, $r = r_+$ is a null hypersurface.
+\end{proof}
+
+For $r \leq r_+$ inside the black hole region, $r = r_*$ is part of $\mathcal{H}^+$.
+Take black hole coordinates $\xi = \frac{\partial }{\partial t} + \Omega_H \frac{\partial }{\partial \phi}$. Then $\chi^{\mu} \partial_{\mu} (\phi - \Omega_H t) = 0$. 
+Therefore, $\phi = \Omega_H t + \text{const.}$ on integral curves of $\xi$.
+Since $\phi$ is constant on integral curves of $k$, it is also constant on trajectories of stationary observers, which have $u^{a} \propto k^{a}$.
+Therefore, orbits of $\xi$ rotate with angular velocity $\Omega_H$ with respect to a stationary observer.
+In particular, we may take a stationary observer at infinity.
+But $\chi^{a}$ is tangent to generators of $\mathcal{H}^+$. This means that these generators rotate at angular velocity $\Omega_H$ with respect to a stationary observer at infinity.
+In other words, the black hole is rotating with angular velocity $\Omega_H$.
+
+
+\section{Maximally Analytic Extension}%
+\label{sec:maximally_analytic_extension}
+
+We can also introduce outgoing Kerr coordinates, and Kruskal-like coordinates, to recover the black hole and other regions.
+The whole `Penrose diagram' will look like RN.
+Strictly speaking it does not have a Penrose diagram since it is not spherically symmetric.
+However, we can look at submanifolds.
+
+We can draw a Penrose diagram for the axis of symmetry ($\theta = 0$ or $\theta = \pi$) or the equatorial plane ($\theta = \frac{\pi}{2}$).
+Both of these submanifolds are examples of \emph{totally geodesic} submanifolds.
+\begin{definition}[totally geodesic]
+  Any geodesic that is initially tangent to a \emph{totally geodesic submanifold} remains tangent.
+\end{definition}
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l15f1.pdf_tex}
+  \caption{}
+  \label{fig:l15f1}
+\end{figure}
+
+The Cauchy horizons $H^{\pm}(\Sigma)$ are unstable for RN. Again, as for RN, most of the diagram \ref{fig:l15f1} is unphysical.
+
+Kerr is not the spacetime outside a rotating star, only describes the final state of gravitational collapse. 
+$M = a$ is extreme Kerr similar to extreme RN.

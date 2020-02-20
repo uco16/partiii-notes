@@ -1,0 +1,138 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 14: February 19}
+
+Similarly, swapping $z \leftrightarrow w$ and $\mu \leftrightarrow \nu$ in \eqref{eq:13-j},
+\begin{equation}
+  j^{\nu}(w) j^{\mu}(z) = \normalorder{j^{\mu}(z) j^{\nu}(w)} + \frac{\eta^{\mu\nu}}{(z - w)^2},  \qquad \abs{z} < \abs{w}.
+\end{equation}
+
+Putting these together, 
+\begin{equation}
+  \mathcal{R} (j^{\mu}(z) j^{\nu}(w)) = \normalorder{j^{\mu}(z) j^{\nu}(w)} + \frac{\eta^{\mu\nu}}{(z-w)^2}.
+\end{equation}
+We often write
+\begin{equation}
+  \wick{\c j^{\mu}(z) \c j^{\nu}(w)} = \frac{\eta^{\mu\nu}}{(z - w)^2}
+\end{equation}
+and refer to this as a \emph{contraction} between $j^{\mu}(z)$ and $j^{\nu}(w)$.
+
+For example, if we write $\partial X ^{\mu}(z) = -i \sqrt{\frac{\alpha'}{2}} j^{\mu}(z)$, we have that
+\begin{equation}
+  \wick{\c {\partial_z X^{\mu}(z)} \c {\partial_w X^{\nu}(w)}} = -\frac{\lambda'}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}.
+\end{equation}
+Integrating
+\begin{equation}
+  \boxed{\wick{\c X^{\mu}(z) \c X^{\nu}(w)} = -\frac{\alpha'}{2} \eta^{\mu\nu} \ln (z-w)}
+\end{equation}
+and there is of course an analogous statement for the antiholomorphic sector. 
+Here we are splitting $X^{\mu}(z, \overline{z}{}) = X^{\mu}(z) + \overline{X}{}^{\mu}(\overline{z}{})$.
+\begin{remark}
+  $\partial \overline{\partial}{} X^{\mu}(z, \overline{z}{}) = 0$
+\end{remark}
+
+The generalisation of these statements are given by \emph{Wick's theorem}:
+\begin{align}
+  \mathcal{R} l(\phi_1(z_1) \dots \phi_n (z_n)) &= \normalorder{\phi_1(z_1) \dots \phi_n(z_n)} \\
+						&+ \sum_{(i, j)} \normalorder{\phi_1 (z_1) \dots \wick{\c \phi_i(z_i) \dots \c \phi_j (z_j)} \dots \phi_n(z_n)} \\
+						&+ \sum_{(i, j)(k, l)} \normalorder{\phi_1 (z_1) \dots \wick{\c \phi_i(z_i) \dots \c \phi_j (z_j)} \dots \wick{\c \phi_k(z_k) \dots \c \phi_l (z_l)} \dots \phi_n(z_n)}  \\
+						&+ \dots.
+\end{align}
+
+\section{Operator Product Expansions}%
+\label{sec:operator_product_expansions}
+
+Given a set of local operators $\mathcal{O}_i(w)$, the operator product expansion (OPE) characterises the behaviour of the theory at short distances.  In particular, we are interested in how the operators behave when we bring them close together:
+\begin{equation}
+  \lim_{w \to z} \mathcal{O}_i(w) \mathcal{O}_j(z).
+\end{equation}
+The operator product expansion is a description of this composite operator in terms of the operators in the theory. In other words, we can think of it as
+\begin{equation}
+  \lim_{z \to w} \mathcal{O}_i(w) \mathcal{O}_j(z) = \sum_{k} f\indices{_{ij}^{k}} (z-w) \mathcal{O}_k(z).
+\end{equation}
+We want to extract the singular terms of this limit.
+
+For example, we could look at the following radial ordering operator:
+\begin{equation}
+  \mathcal{R} \left( \partial X^{\mu}(z) \partial X^{\nu} (w) \right) = \normalorder{\partial X^{\mu}(z) \partial X^{\nu}(w)} - \frac{\lambda'}{2} \frac{\eta^{\mu\nu}}{(z - w)^2}.
+\end{equation}
+As $z \to w$, the first term is regular, while the second term is singular (and therefore contains the bits we are interested in!)
+We may write this as
+\begin{equation}
+  \label{eq:14-parxope}
+  \mathcal{R} \left( \partial X^{\mu}(z) \partial X^{\nu} (w) \right)  = -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z - w)^2} + \dots,
+\end{equation}
+where the dots denote the regular terms.
+More often than not, we will assume that radial ordering is implicitly applied, unless otherwise stated.
+
+We could compute the correlation function (where radial ordering is understood)
+\begin{align}
+  \langle X^{\mu}(z) X^{\nu}(w) \rangle &= \langle \normalorder{X^{\mu}(z) X^{\nu}(w)} \rangle - \frac{\alpha'}{2} \eta^{\mu\nu} \ln(z - w), \\
+					&= -\frac{\alpha'}{2} \eta^{\mu\nu} \ln(z - w),
+\end{align}
+where we used that, by design, the vacuum expectation value of any normal ordered quantity will vanish.
+This is the Green's function for $\frac{1}{2\pi \alpha'} \partial \overline{\partial}{}$.
+
+Some useful operator product expansions are
+\begin{equation}
+  X^{\mu}(z) X^{\nu}(w) = -\frac{\alpha'}{2} \eta^{\mu\nu} \ln (z-w), \qquad
+  \overline X{}^{\mu}(\overline{z}{}) \overline{X}{}^{\nu}(\overline{w}{}) = -\frac{\alpha'}{2} \eta^{\mu\nu} \ln (\overline{z}{}-\overline{w}{}).
+\end{equation}
+The operator product expansion of $X^{\mu}(z) \overline{X}{}^{\nu}(\overline{w}{})$ is regular.
+
+We can use the knowledge of the $X^{\mu}$ operator product expansion to define composite operators such as the stress tensor, which, classically, is $ T(z) = -\frac{1}{\alpha'} \partial X^{\mu}(z) \partial X_{\mu}(z) $.
+Using the operator product expansion \eqref{eq:14-parxope} we define the composite operator as
+\begin{equation}
+  T(z) = -\frac{1}{\alpha'} \lim_{m \to z} \left( \partial X^{\mu}(w) \partial X_{\mu}(z) + \frac{\alpha'}{2} \frac{D}{(z - w)^2} \right),
+\end{equation}
+where the dimension $D = \eta_{\mu\nu} \eta^{\mu\nu}$.
+
+
+\section{\texorpdfstring{$T(z) X^{\mu}(w)$}{Stress tensor position} Operator Product Expansion and Conformal Transformations}%
+\label{sec:t_x_ope_cft}
+
+Consider $ T(z) X^{\mu}(w) = -\frac{1}{\alpha'} \normalorder{\partial X^{\nu} \partial X_{\nu} (z)} X^{\mu}(w)$.
+We use Wick's theorem and the operator product expansion
+\begin{equation}
+  \partial X^{\mu}(z) X^{\nu}(w) = -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{z - w} + \dots
+\end{equation}
+to get
+\begin{align}
+  T(z) X^{\mu}(w) &= -\frac{2}{\alpha'} \wick{\normalorder{ \partial X^{\nu} \partial \c X_{\nu}(z)} \c X^{\mu}(w)} \\
+		  &= -\frac{2}{\alpha'} \partial X_{\nu}(z) \left( -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{z - w}  \right) + \dots \\
+		  &= \frac{\partial X^{\mu}(z)}{z - w} + \dots
+\end{align}
+We could expand $\partial X^{\mu}(z)$ about $z = w$ as $\partial X^{\mu}(z) = \partial X^{\mu}(w) + (z-w) \partial^2 X^{\mu}(w) + \dots$.
+Then we have
+\begin{equation}
+  T(z) X^{\mu}(w) = \frac{\partial X^{\mu}(w)}{z - w} + \dots.
+\end{equation}
+We can compute the conformal transformation of $X^{\mu}(w)$:
+\begin{equation}
+  \delta_v X^{\mu}(w) = \oint_{z = w} \frac{ \dd[]{z}}{2 \pi i} v(z) T(z) X^{\mu}(w) = \oint_{z = w} \frac{\dd[]{z}}{2 \pi i} v(z) \frac{\partial X^{\mu}(w)}{z - w} = v(w) \partial X^{\mu}(w).
+\end{equation}
+More generally, we expect a weight $(h, 0)$ primary field $\phi(z)$ to transform as
+\begin{equation}
+  \delta_v \phi(z) = v(z) \partial \phi(z) + h \partial v (z) \phi(z),
+\end{equation}
+at which point it is very tempting to call $X^{\mu}(z)$ a chiral primary of weight $h = 0$. However, we will see later that it is more subtle than that; there is something deeply non-local about the $X$'s.
+Here we used the residue theorem:
+\begin{equation}
+  \frac{1}{(n - 1)!} \partial_z^{n-1} f(z) = \oint_{w = z} \frac{\dd[]{w}}{2 \pi i} \frac{f(w)}{(w - z)^n}.
+\end{equation}
+
+\begin{claim}
+  This requirement fixes the $T(w) \phi(z)$ operator product expansion to have the form
+  \begin{equation}
+    \label{eq:14-ope}
+    \boxed{T(w) \phi(z) = \frac{h}{(z - w)^2} \phi(z) + \frac{1}{z - w} \partial \phi(z) + \dots}
+  \end{equation}
+\end{claim}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+From now on, we shall take this OPE \eqref{eq:14-ope} as the definition for a field $\phi(z)$ to be a chiral primary of weight $(h, 0)$.
+
+We will be interested in OPEs for composite operators like $ T(z) e^{i k \cdot X(w))} $ or what you might consider a consistency conditions $T(z) T(w) = ?$.
+Given $T$ lies at the heart of what it means for a theory to be conformally invariant, we want it to transform in a certain way. This will have interesting repercussions for the spacetime in our theory.

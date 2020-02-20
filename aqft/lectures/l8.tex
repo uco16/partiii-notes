@@ -143,76 +143,108 @@ For each term in $Z[J]$  there is a graph, as we have done before.
 \end{itemize}
 
 \begin{example}[$\phi^3$ theory]
-  With the Wilsonian effective action $W[J] = - \ln Z[J]$, the two-point correlation is
+  With the Wilsonian effective action $W[J] = - \ln Z[J]$, the two-point correlation (i.e.~the propagator) is
   \begin{equation}
     \langle \phi(x_2) \phi(x_1) \rangle = - \left( -\frac{\delta }{\delta J(x_2)} \right) \left( -\frac{\delta }{\delta J(x_1)} W[J] \right).
   \end{equation}
-  Take $\mathscr{L}_1 = \frac{\lambda}{3!} \phi^3$. Then we have
+  For $\phi^3$ theory, we have the interaction Lagrangian $\mathscr{L}_1 = \frac{\lambda}{3!} \phi^3$. Then we can expand the propagator in the diagrammatic series
   \begin{equation}
     \langle \phi(x_2) \phi(x_1) \rangle = 
     \begin{gathered}
-      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-       a [particle=\(x_2\)] -- b [particle=\(x_1\)],
-      };
+      \begin{tikzpicture}
+        \begin{feynman}
+          \tikzfeynmanset{every vertex={dot}};
+          \vertex[label=180:$x_2$] (a);
+          \vertex[right=of a, label=0:$x_1$] (b);
+          %\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \diagram* {
+            (a) -- (b),
+          };
+        \end{feynman}
+      \end{tikzpicture}
     \end{gathered}
      + 
-     \begin{gathered}
-       \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-         a [particle=\(x_2\)] -- b [particle=\(y_2\)] 
-	 -- [half right, looseness=1] c [particle=\(y_1\)]
-	 -- [half right, looseness=1] b,
-	 c -- d [particle=\(x_1\)]
-       };
-     \end{gathered}
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex[label=180:$x_2$] (a);
+          \tikzfeynmanset{every vertex={small, dot}};
+	  \vertex[label=0:$y_2$, right=of a] (c);
+	  \vertex[label=180:$y_1$, right=of c] (d);
+          \tikzfeynmanset{every vertex={large, dot}};
+          \vertex[right=of d, label=0:$x_1$] (b);
+          \diagram* {
+	    (a) -- (c) -- [half left, looseness=1] (d) -- [half left, looseness=1] (c),
+	    (d) -- (b),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
      + \dots
   \end{equation}
-  The second diagram is
+  The second diagram $D$ represents the integral
   \begin{equation}
     D = \frac{\lambda^2}{2} \int \dd[4]{y_1} \dd[4]{y_2} \Delta_0 (x_2 - y_2) \Delta_0 (y_1-x_1) (\Delta_0(y_2-y_1))^2
   \end{equation}
   with symmetry factor $S = 2$.
-  Fourier transforming this gives
+  The Fourier transform of the whole propagator is defined to be
    \begin{equation}
-     \langle \widetilde{\phi}(p_2) \widetilde{\phi}(p_1) \rangle \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)} \langle \phi(x_2) \phi(x_1) \rangle,
+     \label{eq:8-fourier-d}
+     \langle \widetilde{\phi}(p_2) \widetilde{\phi}(p_1) \rangle  = \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)} \langle \phi(x_2) \phi(x_1) \rangle,
   \end{equation}
-  where the exponential is a convention.
-  This phase convention implies that all momenta are outward (see Brown Ch.~5.1).
-  We then have the Fourier transform of the above diagram
+  where the sign in the exponential is a convention, which corresponds to choosing the momenta in the diagram to be direct outward \cite{brown}, which is illustrated in Fig.~\ref{fig:momconv}.
+  \begin{figure}[tbhp]
+    \centering
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [rmomentum=\(p_1\)] b [blob] -- [momentum=\(p_2\)] c,
+    };
+    \caption{The Fourier sign convention in \eqref{eq:8-fourier-d} corresponds to outward-directed external momenta in momentum-space Feynman diagrams.}
+    \label{fig:momconv}
+  \end{figure}
+
+  Thus, the Fourier transform $\widetilde{D}$ of the second diagram $D$ is
+  \begin{multline}
+    \widetilde{D} = \frac{\lambda^2}{2} \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)} \int \dd[4]{y_1} \dd[4]{y_2} \\
+    \times \int \left[ \prod_{j = 1}^4 \bdd[4]{k_j} \right]e^{i k_2 \cdot (x_2 - y_2)} e^{i k_1 \cdot (y_1 - x_2)} e^{i (k_3 + k_4) \cdot (y_2 - y_1)}
+    \widetilde{\Delta}_0(k_1) \widetilde{\Delta}_0(k_2) \widetilde{\Delta}_0(k_3) \widetilde{\Delta}_0(k_4),
+  \end{multline}
+  where we also expanded the position-space $\Delta_0$ in terms of their momentum-space Fourier modes $\widetilde{\Delta}_0$.
+  The only terms containing $x_1$ and $x_2$ are $e^{-i (p_1 + k_1) \cdot x_1}$ and $e^{-i (p_2  - k_2) \cdot x_2}$.  The integral over $x_1$ and $x_2$ can therefore be performed to give the Fourier-normalised $\delta$-functions $\bdelta^4(p_1 + k_1)$ and $\bdelta^4(p_2 - k_2)$.
+  These allow us to perform the integrals over $k_1$ and $k_2$, giving
+  \begin{multline}
+    \widetilde{D} = \frac{\lambda^2}{2} \int \dd[4]{y_1} \dd[4]{y_2} \int \bdd[4]{k_3} \bdd[4]{k_4} e^{-i (p_1 + k_3 + k_4) \cdot y_1} e^{-i (p_2 - k_3 - k_4) \cdot y_2}  \\
+    \times \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(k_3) \widetilde{\Delta}_0(k_4).
+  \end{multline}
+  In the same way, the $y_1$ and $y_2$ integrals give $\bdelta^4(p_1 + k_3 + k_4)$ and $\bdelta^4(p_2 - k_3 - k_4)$ respectively. Using these and performing the integral over $k_3$, we are left with the integral
   \begin{equation}
+    \widetilde{D} = \frac{\lambda^2}{2} \int \bdd[4]{k} \bdelta^4(p_1 + p_2) \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(p_2 - k) \widetilde{\Delta}_0(k),
+  \end{equation}
+  where we relabeled $k_4 \to k$.
+  We represent this diagrammatically as
+  \begin{equation}
+    \label{eq:8-tild}
+    \widetilde{D} \quad = \quad
     \begin{gathered}
-      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-        a -- [rmomentum=\(p_1\)] b [blob] -- [momentum=\(p_2\)] c,
+      \feynmandiagram[transform shape, scale=1][horizontal=a to d, layered layout] {
+	a  -- [solid,  rmomentum=\(p_1\)] b [small, dot] -- [half left, looseness=1, momentum=$k$] c [small, dot] -- [solid,  momentum=\(p_2\)] d ,
+	c -- [half left, looseness=1, momentum=$k - p_2$] b,
       };
     \end{gathered}
   \end{equation}
-  \begin{multline}
-    \widetilde{D} = \int \dd[4]{x_1} \dd[4]{x_2} e^{-i (p_1 \cdot x_1 + p_2 \cdot x_2)}
-    \int \dd[4]{y_1} \dd[4]{y_2} \int \left[ \prod_{j = 1}^4 \bdd[4]{k_j} \right] \\
-    \times e^{i k_2 \cdot (x_2 - y_2)} e^{i k_1 \cdot (y_1 - x_2)} e^{i (k_3 + k_4) \cdot (y_2 - y_1)} \\
-    \times \widetilde{\Delta} \widetilde{\Delta} \widetilde{\Delta} ??
-  \end{multline}
-  The only terms containing $x_1$ and $x_2$ are $e^{-i (p_1 + k_1) \cdot x_1}$ and $e^{-i (p_2  - k_2) \cdot x_2}$.
-  These integrate to $\bdelta^4(p_1 + k_1)$ and $\bdelta^4(p_2 - k_2)$ .
-  \begin{multline}
-    \widetilde{D} = \lambda^2 \int \dd[4]{y_1} \dd[4]{y_2} \int \bdd[4]{k_3} \bdd[4]{k_4} e^{-i (p_1 + k_3 + k_4) \cdot y_1} e^{-i (p_2 - k_3 - k_4) \cdot y_2}  \\
-    \times \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(k_3) \widetilde{\Delta}_0(k_4)
-  \end{multline}
-  \begin{equation}
-    \dots = \lambda^2 \int \bdd[4]{k} \bdelta^4(p_1 + p_2) \widetilde{\Delta}_0 (-p_1) \widetilde{\Delta}_0(p_2) \widetilde{\Delta}_0(p_2 - k) \widetilde{\Delta}_0(k).
-  \end{equation}
-\end{example}
 
-It is conventional to write loop diagrams with the momenta flowing in a consistent direction
-\begin{equation}
-  \widetilde{D} = NOTES
-\end{equation}
+  It is conventional to write loop diagrams with the momenta flowing in a consistent direction. 
+\end{example}
 
 The momentum space Feynman rules can be summarised to be
 \begin{itemize}
-  \item lines propagator $1 / (k^2 + m^2)$
-  \item vertices $-V^(n)$ in $\mathscr{L}_1$
-  \item Momentum conserved at each vertex
+  \item lines are propagators, which contribute factors $\widetilde{\Delta}_0(k) = (k^2 + m^2)^{-1}$
+  \item each $n$-point vertex contributes a factor of $-V^{(n)}$ in $\mathscr{L}_1$
+  \item overall momentum conservation of outgoing momenta gives a factor $\bdelta^4(\sum_j p_j)$ 
   \item each loop gives a momentum integral
-  \item overall momentum conservation comes from $\bdelta^4(\sum_j p_j)$ 
-  \item symmetry factors
+    \begin{itemize}
+      \item take one of the propagators in the loop to be $k$ (e.g.~\eqref{eq:8-tild} it is the top one)
+      \item the momenta of the other propagators are given by momentum-conservation at the vertices (e.g.~this determines the bottom momentum\footnote{Why did we not choose the bottom momentum to be $k + p_1$? The momentum conserving $\bdelta^4(p_1 + p_2)$ guarantees that these choices are equivalent!} one in \eqref{eq:8-tild})
+    \end{itemize}
+  \item divide by the diagram's symmetry factor
 \end{itemize}

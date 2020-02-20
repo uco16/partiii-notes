@@ -1,0 +1,133 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 15: February 20}
+
+\section{Continuum Limit and Renormalisability}%
+\label{sec:continuum_limit_and_renormalisability}
+
+So far we have integrated out the high-momentum modes from $\Lambda_0$ down to $\Lambda$ and obtained a family of effective actions
+\begin{equation}
+  e^{-S_\Lambda^{\text{eff}}[\phi^-]} = \int_\Lambda^{\Lambda_0} \pdd{\phi^+} e^{-S_{\Lambda_0} [\phi^- + \phi^+]}.
+\end{equation}
+Requiring that we get the same physics out of this gave us the $\beta$-functions.
+\begin{equation}
+  \beta_i (\{g_j\}) = (d_i - d)g_i + \Lambda \left( \dv{\Lambda} g_i \right) (\{g_j\}).
+\end{equation}
+
+We want to take the \emph{continuum limit}\footnote{This terminology is a bit more natural in the context of a lattice theory in condensed matter systems, where $\Lambda^{-1}$ is the lattice spacing.} $\Lambda_0 \to \infty$.
+Renormalisability is the sensitivity to initial couplings $g_{0 i}$.
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l15f1.pdf_tex}
+  \caption{}
+  \label{fig:l15f1}
+\end{figure}
+
+Cases:
+\begin{enumerate}[(i)]
+  \item The theory has only irrelevant couplings.
+    Then $g_{0 i}$ must lie in $C$.
+    The $g_i(\Lambda)$ flow to the fixed point $g_i^*$ irrespective of initial conditions $g_{0 i}$.
+    Therefore, the limit of $S_\Lambda^{\text{eff}}$ as $\Lambda_0 \to \infty$ exists and gives a scale-invariant theory.
+    We have $g_i(\Lambda) = g^*_i$.
+    No renormalisation conditions are needed.
+    An example of this is given by $\mathcal{N} = 4$ Super-Yang--Mills (SYM) in $d = 4$ dimensions.
+  \item There is at least $1$ relevant (or marginal) direction.
+    If $\Lambda_0 \to \infty$ for fixed $g_{0i}$, the flow leaves the vicinity of the fixed point (physics no longer universal).
+    Therefore, we are sensitive to initial coupling (corresponds to relevant (or marginal) operators).
+    Solution: Tune initial couplings to be closer to $C$ as $\Lambda_0 \to \infty$.
+    Then the flow is slower and $\Lambda_0 / \Lambda$ can be made larger.
+    Renormalisation conditions are needed to fix $g_{i0}$ for relevant directions (also marginal).
+    Having a finite number of conditions gives a \emph{renormalisable} theory.
+    Examples of this include Yang--Mills, QCD, \dots, which are asymptotically free ($\beta(g) < 0$).
+  \item Irrelevant operators need to be tuned for correct physics.
+    An example of this is Fermi theory with an interaction term $(\overline{\psi}{}_i \Gamma \psi_j) (\overline{\psi}{}_k \Gamma \psi_l)$ and four-point coupling $G_F \sim g^2 / M_W^2$.
+    
+    Then we cannot allow couplings to flow into the fixed point. The $\Lambda_0 \to \infty$ limit cannot be taken.
+    In principle, an infinite number of initial conditions are needed.
+    We call this a \emph{nonrenormalisable} theory. However, this is not entirely useless, since we still have some universality. In practice, there is usually some principle by which we can order the importance of irrelevant operators.
+\end{enumerate}
+
+As we will see, $\phi^4$ and QED are \emph{perturbatively renormalisable}.
+Beyond perturbation theory, one has to do more work to show that these couplings are marginally irrelevant.
+The couplings of $\phi^4$ and, as we will see, QED are marginally irrelevant. We still have a finite number of renormalisation conditions.
+In dimensional regularisation, we have $g(\mu) \propto [\ln \frac{\Lambda_{\phi^4}}{\mu}]^{-1}$, which is called a \emph{Landau pole} at high scales $\mu \simeq \Lambda_{\phi^4}$.
+Logarithmic running is so slow that in practice we never need to worry---we do not get close to $\Lambda_{\phi^4}$.
+
+\chapter{Quantum Electrodynamics}%
+\label{cha:quantum_electrodynamics}
+
+We will work in Euclidean spacetime with action
+\begin{equation}
+  S[\psi, \overline{\psi}{}, A] = \int \dd[4]{x} \left[ \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline{\psi}{}(\cancel{D} + m) \psi \right],
+\end{equation}
+where the covariant derivative\footnote{Many textbooks use the convention $\cancel{D} = \gamma^{\mu} ( \partial_{\mu} -i e A_{\mu})$.} $\cancel{D} = \gamma^{\mu} (\partial_{\mu} + i e A_{\mu})$ and $\psi, \overline{\psi}{}$ are $4$-component Grassmann variables. Moreover, $F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}$ and the partition function is
+\begin{equation}
+  \mathcal{Z} = \int \pdd{\psi} \pdd{\overline{\psi}{}} \pdd{A} e^{-S[\psi, \overline{\psi}{}, A]}.
+\end{equation}
+In Euclidean spacetime, $\{\gamma_{\mu}, \gamma_{\nu}\} = 2 \delta_{\mu\nu}$ and $\gamma_5 = \gamma_1 \gamma_2 \gamma_3 \gamma_4$. We use the convention $\gamma_{\mu}^{\dagger} = \gamma_{\mu}$.
+\begin{example}[]
+  One may use the representation
+  \begin{equation}
+    \gamma_j = 
+    \begin{pmatrix}
+     0 & -i \sigma_j \\
+     i \sigma_j & 0 \\
+    \end{pmatrix}, \qquad 
+    \gamma_4  =
+    \begin{pmatrix}
+     1 & 0 \\
+     0 & -1 \\
+    \end{pmatrix} \quad \text{or} \quad
+    \begin{pmatrix}
+     0 & 1 \\
+     1 & 0 \\
+    \end{pmatrix}.
+  \end{equation}
+\end{example}
+
+\section{Fermionic Feynman Rules}%
+\label{sec:fermionic_feynman_rules}
+
+Let us first find the Feynman propagator.
+We go to momentum space with Fourier convention
+\begin{equation}
+  \psi(x) = \int \bdd[4]{p} e^{i p \cdot x} \psi(p),
+\end{equation}
+where, instead of using another symbol, we distinguish the field $\psi(x)$ from its modes $\psi(p)$ by keeping the argument explicit.
+The free part of the fermion (electron) action is
+\begin{equation}
+  S_f[\psi, \overline{\psi}{}] = \int \bdd[4]{p} \overline{\psi} (-p) (i \cancel{p} + m) \psi(p).
+\end{equation}
+Introducing fermionic charges $\eta, \overline{\eta}{}$, the (momentum space) generating functional is
+\begin{align}
+  \mathcal{Z} [\eta, \overline{\eta}{}] &= \int \pdd{\phi} \pdd{\overline{\psi}{}} \exp{ - \int \bdd[4]{p} \left[ \overline{\psi}{}(i \cancel{p} + m) \psi - \overline{\eta}{} \psi + \overline{\psi}{} \eta \right] } \\
+					&= \mathcal{Z}[0, 0] e^{-\int \overline{\eta}{}(i \cancel{p} + m)^{-1} \eta}.
+\end{align}
+The free propagator is therefore 
+\begin{equation}
+  S_F(p) = \left.\frac{\delta^2 \mathcal{Z}}{\delta \overline{\eta}{} \delta \eta}\right\rvert_{\eta, \overline{\eta}{} = 0} = \frac{1}{i \cancel{p} + m}.
+\end{equation}
+The EM propagator is obtained as
+\begin{align}
+  S_? [A] &= \frac{1}{4} \int \dd[4]{x} F_{\mu\nu} F^{\mu\nu} \\
+	  &= \frac{1}{2} \int \bdd[4]{k} A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k) \\
+  D^{\mu\nu}(k) &= \frac{1}{k^2} (\delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2}) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\mu\)] -- [boson, momentum=$k$] b [particle=\(\nu\)],
+    };
+  \end{gathered}.
+\end{align}
+The vertex is
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a -- [fermion] v -- [fermion] b,
+      c -- [boson] v, 
+    };
+  \end{gathered}
+\end{equation}
+which corresponds to the interaction Lagrangian $\mathscr{L} = \overline{\psi}{} (ie \cancel{A}) \psi$.

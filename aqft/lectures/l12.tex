@@ -106,11 +106,12 @@ The idea behind the renormalisation group (RG) is that we want to study how the 
 Consider a real scalar field with momentum cutoff $\Lambda_0$ in $d \in \mathbb{N}$ dimensions.
 Generically, the action will be
 \begin{equation}
-  S_{\Lambda_0} [\phi] = \int_{}^{}\dd[d]{x} \left[ \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \sum_{\text{terms } i} \frac{1}{\Lambda_0^{d_i - d}} g_{iO} \mathcal{O}_i(x) \right],
+  S_{\Lambda_0} [\phi] = \int_{}^{}\dd[d]{x} \left[ \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \sum_{i} \frac{1}{\Lambda_0^{d_i - d}} g_{i\mathcal{O}} \mathcal{O}_i(x) \right],
 \end{equation}
-where the ``operators'' $\mathcal{O}_i[\phi(x)]$ are simply some functions of the fields $\phi$ and their derivatives $\partial \phi$.
-We could have $ \mathcal{O}_i = (\partial \phi)^{r_i} \phi^{s_i}$ for example.
- In particular, they are \emph{local} operators with mass dimension $d_i > 0$. 
+where the ``operators'' $\mathcal{O}_i[\phi(x)]$ are products of the field $\phi$ and its derivatives $ \mathcal{O}_i = (\partial \phi)^{r_i} \phi^{s_i}$.
+In particular, they are \emph{local} operators with mass dimension $d_i > 0$. 
+The factors $\Lambda_0$ are introduced so that $g_{i0}$ are dimensionless.
+Note that the mass term is included in the sum over all possible operators.
 
 The partition function with cutoff $\Lambda_0$ is a function of all the couplings $g_{iO}$
 \begin{equation}

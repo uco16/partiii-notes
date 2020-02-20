@@ -38,55 +38,245 @@ Analogously, we define the $n$ -point vertex functions
   We can calculate
   \begin{equation}
     \label{eq:9-star}
-    G^{(3)}(x_1, x_2, x_3) = \int \dd[4]{z_1} \dd[4]{z_2} \dd[4]{z_3} \cdot G^{(n)} (x_1, z_1) G^{(n)} (x_2, z_2) G^{(n)} (x_3, z_3) \underbrace{\left( - \frac{\delta^3 \Gamma}{\delta \Phi(z_1) \delta \Phi(z_2) \delta\Phi(z_3)} \right)}_{\mathclap{\coloneqq \Gamma^{(3)}(z_1, z_2, z_3)}}
+    G^{(3)}(x_1, x_2, x_3) = \int \dd[4]{z_1} \dd[4]{z_2} \dd[4]{z_3} G^{(2)} (x_1, z_1) G^{(2)} (x_2, z_2) G^{(2)} (x_3, z_3) \underbrace{\left( - \frac{\delta^3 \Gamma}{\delta \Phi(z_1) \delta \Phi(z_2) \delta\Phi(z_3)} \right)}_{\mathclap{\coloneqq \Gamma^{(3)}(z_1, z_2, z_3)}}
   \end{equation}
   Diagrammatically, this can be represented
   \begin{equation}
     \begin{gathered}
-      \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-        a [particle=\(x_1\)] -- v [blob] -- b [particle=\(x_3\)],
+      \feynmandiagram[transform shape, scale=1][vertical=c to v] {
+        a [particle=\(x_3\)] -- v [blob] -- b [particle=\(x_1\)],
 	c [particle=\(x_2\)] -- v,
       };
     \end{gathered}
     = 
     \begin{gathered}
       \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-	a [particle=\(x_1\)] -- d [small, blob] -- v [blob, label={right:$\Gamma^{(3)}$}] -- e [small, blob, label={right:$G^{(2)}$}] -- b [particle=\(x_3\)],
-	c [particle=\(x_2\)] -- f [small, blob] -- v,
+	a [particle=\(x_1\)] -- d [small, blob, label={above:$G^{(2)}$}] -- v [blob, label={below:$\Gamma^{(3)}$}] -- e [small, blob, label={above:$G^{(2)}$}] -- b [particle=\(x_3\)],
+	c [particle=\(x_2\)] -- f [small, blob, label={right:$G^{(2)}$}] -- v,
       };
     \end{gathered},
   \end{equation}
   where the central blob on the right hand side corresponds to the 1PI diagrams $\Gamma^{(3)}$ and the small blobs are the propagators $G^{(2)}$.
-  The vertex functions $\Gamma^{(3)}$ come from \emph{amputated} $n$-point functions.
-  Equation \eqref{eq:9-star} can be inverted
-  \begin{equation}
-    \Gamma^{(3)}(y_1, y_2, y_3) = \int \dd[4]{x_1} \dd[4]{x_2} \dd[4]{x_3} \Gamma^{(2)}(x_1, y_1) \Gamma^{(2)}(x_2, y_2) \Gamma^{(2)}(x_3, y_3) G^{(3)}(x_1, x_2, x_3).
-  \end{equation}
-  It is useful to compare this to the LSZ reduction formula.
-  We can generalise this to $n$ and in momentum space. This is done in Ryder Section 7.3.
+  The vertex functions $\Gamma^{(3)}$ come from \emph{amputated} $3$-point functions.
 \end{example}
+
+Equation \eqref{eq:9-star} can be inverted
+\begin{equation}
+  \Gamma^{(3)}(y_1, y_2, y_3) = \int \dd[4]{x_1} \dd[4]{x_2} \dd[4]{x_3} \Gamma^{(2)}(x_1, y_1) \Gamma^{(2)}(x_2, y_2) \Gamma^{(2)}(x_3, y_3) G^{(3)}(x_1, x_2, x_3).
+\end{equation}
+It is useful to compare this to the LSZ reduction formula.
+We can generalise this to $n > 3$ and to momentum space. This is done in \cite[Sec.~7.3]{ryder}.
 
 \section{Renormalisation}%
 \label{sec:renormalisation}
+
+\subsection{Self-Energy and Amputated Diagrams}%
+\label{sub:self_energy_operator_and_truncated_graphs}
 
 Consider our favourite $\phi^4$ scalar field theory in Euclidean spacetime
 \begin{equation}
   S[\phi] = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4.
 \end{equation}
-The full propagator
+
+If we ignore numerical factors, the (connected) $2$-point function, also called the \emph{complete} or \emph{dressed} propagator, is the sum of all connected diagrams
 \begin{equation}
-  \widetilde{G}^{(2)}(p) = \int \dd[4]{x} e^{-i p \cdot x}\langle \phi(x) \phi(0) \rangle^{\text{conn}}
-\end{equation}
-can be written as a geometric series to make the connection between connected and 1PI diagrams.
-Diagrammatically, 
-\begin{align}
-  \widetilde{G}^{(n)}(p) &=
+  \label{eq:9-complete-propagator}
+  G^{(2)}(x, y) = \quad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-      a -- b,
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\vertex[large, dot, label=0:$x$] (x) {};
+	\vertex[label=0:$x$, large, dot] (a) {};
+	\vertex[below=0.6cm of a, small, blob] (b) {};
+	\vertex[below=0.6cm of b, label=0:$y$, large, dot] (c) {};
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (a) -- (b) -- (c),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  = \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.4][vertical=a to b] {
+      a [large, dot] -- b [large, dot],
     };
   \end{gathered}
-  + 
+  \quad + \quad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[below=0.5cm of a] (b);
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of b] (c);
+        \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \diagram* {
+          (a) -- (c),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[below=0.5cm of a] (b);
+        \vertex[below=0.5cm of b] (c);
+        \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of c] (d);
+        \diagram* {
+          (a) -- (d),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[below=0.5cm of a] (b);
+	\vertex[right=0.4cm of b] (d);
+        \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \draw (d) arc [start angle=180, end angle=-180, radius=0.2cm];
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of b] (c);
+        \diagram* {
+          (a) -- (c),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (b);
+	\draw (b) circle (0.2cm);
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[above=0.5cm of b] (a);
+        \tikzfeynmanset{every vertex={small, dot}};
+        \vertex[above=0.15cm of b] (e);
+        \vertex[below=0.15cm of b] (d);
+        \tikzfeynmanset{every vertex={large, dot}};
+        \vertex[below=0.5cm of b] (c);
+        \diagram* {
+          (a) -- (c),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  \quad + \quad O(\lambda^3)
+\end{equation}
+The first term is the 2-point vertex $G_0$ of the free theory, called the \emph{bare propagator}. Including the interactions $O(\lambda)$ effects the propagator by changing the physical mass away from the \emph{bare mass} $m$, and hence giving rise to \emph{self-energy}.
+The first and last factors common to all diagrams are external propagators, so we define \emph{amputated} or \emph{truncated} graphs by multiplying the external legs by inverse propagators. We denote them then by dotted lines, for example the amputated diagrams of order $\lambda^2$ are shown in Fig.~\ref{fig:l9d1}.
+\begin{figure}[tbhp]
+  \centering
+  \begin{equation}
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a);
+          \vertex[below=0.5cm of a, small, dot] (b) {};
+          \vertex[below=0.5cm of b, small, dot] (c) {};
+          \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \vertex[below=0.5cm of c] (d);
+          \diagram* {
+  	  (a) -- [dotted] (b) -- (c) --[dotted] (d),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \qquad
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a);
+          \vertex[below=0.5cm of a, small, dot] (b) {};
+  	\vertex[right=0.4cm of b, small, dot] (d) {};
+          \draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \draw (d) arc [start angle=180, end angle=-180, radius=0.2cm];
+          \vertex[below=0.5cm of b] (c);
+          \diagram* {
+            (a) -- [dotted] (c),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+    \qquad
+    \begin{gathered}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a);
+          \vertex[below=0.5cm of a] (b);
+  	\draw (b) circle (0.2cm);
+          \vertex[above=0.15cm of b, small, dot] (e) {};
+          \vertex[below=0.15cm of b, small, dot] (d) {};
+          \vertex[below=0.35cm of d] (c);
+          \diagram* {
+  	  (a) -- [dotted] (e) -- (d) -- [dotted] (c),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+  \end{equation}
+  \caption{Amputated diagrams with two vertices in $\phi^4$ theory.}
+  \label{fig:l9d1}
+\end{figure}
+
+The first of these contains a propagator, along which it may be cut, and can therefore be viewed as a product of graphs of lower order; it is a $1$-particle reducible graph.
+THe other two graphs are $1$-particle irreducible (1PI).
+\begin{definition}[proper self-energy]
+  The (momentum space) \emph{proper self-energy} function $\Pi(p^2)$ is the sum of 1PI graphs
+  \begin{equation}
+    \Sigma(p^2) \quad = \quad
+    \begin{gathered}
+      \begin{tikzpicture}
+	\begin{feynman}
+	  \vertex[left=1cm of a] (d);
+	  \vertex[blob] (a) {1PI};
+	  \vertex[right=1cm of a] (b);
+	  \diagram* {
+	    (d) -- [dotted] (a) -- [dotted] (b),
+	  };
+	\end{feynman}
+      \end{tikzpicture}
+    \end{gathered}
+  \end{equation}
+\end{definition}
+
+The complete propagator (in momentum space) $\widetilde{G}^{(2)}(p)$ may therefore be written in terms of the bare propagator $G_0(p) = (p^2 + m^2)^{-1}$ and the proper self-energy function $\Pi(p)$ as the following geometric series, which establishes the connection between connected and 1PI diagrams:
+\begin{align}
+  \begin{gathered}
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\tikzfeynmanset{every vertex={large, dot}};
+	\vertex[left=1cm of a] (d);
+	\vertex[blob] (a) {};
+	\vertex[right=1cm of a] (b);
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (d) -- [momentum=$p$] (a) -- [momentum=$p$] (b),
+	};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{gathered}
+  &=
+  \feynmandiagram[transform shape, scale=1][inline=(a.base), horizontal=a to b] {
+    a -- [momentum=$p$] b,
+  };
+  \quad + \quad
   \begin{gathered}
     \begin{tikzpicture}
       \begin{feynman}
@@ -96,54 +286,84 @@ Diagrammatically,
 	\vertex[right=1cm of a] (b);
 	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
 	\diagram* {
-      (d) -- (a) -- (b),
+      (d) -- [momentum=$p$] (a) -- [momentum=$p$] (b),
 	};
       \end{feynman}
     \end{tikzpicture}
   \end{gathered}
-  + 
+  \qquad +  \qquad
   \begin{gathered}
     \begin{tikzpicture}
       \begin{feynman}
 	%\tikzfeynmanset{every vertex={large, dot}};
 	\vertex[left=1cm of a] (d);
 	\vertex[blob] (a) {1PI};
-	\vertex[blob, right=1cm of a] (e) {1PI};
+	\vertex[blob, right=1.5cm of a] (e) {1PI};
 	\vertex[right=1cm of e] (f);
 	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
 	\diagram* {
-	  (d) -- (a) -- (e) -- (f),
+	  (d) --[momentum=$p$] (a) --[momentum=$p$] (e) --[momentum=$p$] (f),
 	};
       \end{feynman}
     \end{tikzpicture}
   \end{gathered}
   + \dots
   \\
-  &= \frac{1}{p^2 + m^2} + \frac{1}{p^2 + m^2} \Pi(p^2) \frac{1}{p^2 + m^2} + \dots \\
-  &= \frac{1}{p^2+ m^2 - \Pi(p^2)},
+  \widetilde{G}^{(2)}(p) &= \frac{1}{p^2 + m^2} + \overbrace{\frac{1}{p^2 + m^2} \Pi(p^2) \frac{1}{p^2 + m^2}} + \overbrace{\frac{1}{p^2 + m^2} \Pi(p^2) \frac{1}{p^2 + m^2} \Pi(p^2) \frac{1}{p^2 + m^2}} + \dots  \\
+  &= \frac{1}{p^2+ m^2 - \Pi(p^2)}. \label{eq:9-mass}
 \end{align}
-where $\Pi(p^2) = \widetilde{\Gamma}^{(2)}(p)$.
-Perturbatively
+
+Thus, we find that the 2-point vertex function is
 \begin{equation}
-  \Pi(p^2) = DIAGRAMS
+  \widetilde{\Gamma}^{(2)}(p) = [\widetilde{G}^{(2)}(p)]^{-1} = p^2 + m^2 - \Pi(p^2).
 \end{equation}
-The first term in particular is
+
+Moreover, defining the physical mass $m_{\text{phys}}$ by the pole in the complete propagator
 \begin{equation}
-  DIAGRAM = -\frac{\lambda}{2} \int \bdd[4]{k} \frac{1}{k^2+ m^2}.
+  G^{(2)}(p) = \frac{1}{p^2 + m^2_{\text{phys}}},
+\end{equation}
+gives, on comparison with \eqref{eq:9-mass},
+\begin{equation}
+  m_{\text{phys}}^2 = m^2 - \Pi(p^2), 
+\end{equation}
+which justifies the appellation ``self-energy'' term to $\Pi$; it represents the mass from the `bare' to the `physical' value, calculated to all orders in perturbation theory.
+
+\subsection{Divergences}%
+\label{sub:divergences}
+
+Perturbatively, we can write down the loop expansion in the same way as \eqref{eq:9-complete-propagator}.
+In particular, the $1$-loop contribution is
+\begin{equation}
+  \Pi_1(p^2) = \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][horizontal=a to b, layered layout] {
+      a -- [dotted] v [small, dot] -- [loop, min distance=2cm, in=+135, out=+45, rmomentum'=$k$] v -- [dotted] b,
+    };
+  \end{gathered}
+  \quad
+  = -\frac{\lambda}{2} \int \bdd[4]{k} \frac{1}{k^2+ m^2}.
 \end{equation}
 Now in spherical polar coordinates $\dd[4]{k} = k^{3} \dd[]{k} \dd[]{\Omega}$  and in general $\dd[d]{k} = S_d \abs{k}^{d-1} \dd[]{\abs{k}}$  with $S_d = (2 \pi)^{d / 2} / \Gamma(d / 2)$ is the surface area of the unit $d$-sphere, where $\Gamma$ is the Euler-Gamma function.
 We see that this integral diverges.
 To tackle it, we introduce a cutoff  $\Lambda$ and change variables to $x = k^2 / m^2$ so that
  \begin{align}
-   -\frac{\lambda}{2} \int^{\Lambda} \frac{\bdd[4]{k}}{k^2 +m^2} &= -\frac{\lambda S_4}{4 (2 \pi)^4} \int^{\Lambda^2 / m^2} \frac{x \dd[]{x}}{1 + x}, \\
-   \Pi_i(p^2) &= -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right]. \label{eq:9-pi}
+   \Pi_1(p^2) = -\frac{\lambda}{2} \int^{\Lambda} \frac{\bdd[4]{k}}{k^2 +m^2} &= -\frac{\lambda S_4}{4 (2 \pi)^4} \int^{\Lambda^2 / m^2} \frac{x \dd[]{x}}{1 + x}, \\
+    &= -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right]. \label{eq:9-pi}
 \end{align}
 As expected, this is divergent as $\Lambda \to \infty$. We call this a \emph{UV divergence}.
 
-The $4$-point function at $1$-loop is given by the following sum of diagrams
+The (momentum space) $4$-point function at $1$-loop in $\phi^4$-theory is given by the following sum of diagrams
 \begin{align}
-  DIAGRAMS &= \frac{\lambda^2}{2} \int^\Lambda \bdd[4]{k} \frac{1}{k^2+ m^2} \sum_{p \in \{p_1 + p_2, p_1 + p_3, p_1 + p_4\}} \frac{1}{(p + k)^2 + m^2}. \\
-	   &= \widetilde{\Gamma}^{(4)}(p_1, p_2, p_3, p_4)
+  \widetilde{\Gamma}^{(4)}(p_1, p_2, p_3, p_4) &= \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=l to r, layered layout] {
+      i -- [rmomentum=$p_1$] l [small, dot] -- [half left, looseness=1, momentum=$k$] r [dot] -- [momentum=$p_3$] f,
+      ii -- [rmomentum=$p_2$] l -- [half right, looseness=1, rmomentum'=$k + p_1 + p_2$] r -- [momentum=$p_4$] ff,
+    };
+  \end{gathered}
+  \quad + \quad (\text{permutations of momenta})
+  \\
+  &= \frac{\lambda^2}{2} \int^\Lambda \bdd[4]{k} \frac{1}{k^2+ m^2} \sum_{p \in \{p_1 + p_2, p_1 + p_3, p_1 + p_4\}} \frac{1}{(p + k)^2 + m^2}.
 \end{align}
 As $k \to \infty$, we have $\dd[]{k} / k^4$ in the integral and we expect a logarithmic $\ln(\Lambda / m)$ divergence.
 Since this integral is independent of the $p$'s, it is convenient to evaluate the integral with external momenta set to zero.
@@ -155,13 +375,13 @@ These diagrams must be dealt with.
 
 On general grounds, we expect the full propagator to be of the form
 \begin{equation}
-  \widetilde{G}^{(3)} = \sum_{n} \frac{\abs{\bra{\Omega} \phi(0) \ket{n}}^2}{p^2 + m^2}
+  \widetilde{G}^{(3)} = \sum_{n} \frac{\abs{\bra{\Omega} \phi(0) \ket{n}}^2}{p^2 + m_{\text{phys}}^2}
 \end{equation}
 where the sum (or the integral) over the states $n$ comes about from inserting a complete set of states.
 The assumption is that the first excited state is a single particle $n = 1$, which dominates the expression:
  \begin{equation}
    \widetilde{G}^{(3)} = \frac{\abs{\bra{\Omega} \phi(0) \ket{1}}^2}{p^2 + m_1^2} + \dots,
 \end{equation}
-where the additional terms are finite when $p^2 = -m_1^2$.
-We expect $m_1^2$ to be a physical mass with $\bra{\Omega}\phi(0)\ket{1} = 1$.
+where the additional terms are finite when $p^2 = -m_{\text{phys}}^2$.
+We expect $m_{\text{phys}}^2$ to be a physical mass with $\bra{\Omega}\phi(0)\ket{1} = 1$.
 Loop diagrams spoil this; we have to renormalise the theory to control the divergences.

@@ -1,0 +1,123 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 14: February 18}
+
+\chapter{Broken Symmetries}%
+\label{cha:broken_symmetries}
+
+\section{Motivation}%
+\label{sec:motivation}
+
+So far spin/helicity $0, \pm \frac{1}{2}$ OK
+
+massless helicity $\pm 1 \implies$  QED, Yang--Mills
+
+massless helicity $\pm 2 \implies$ gravity
+
+No more interactions.
+
+But massless Yang--Mills fields have not been observed.
+
+What about massive $s = 1$?
+A massive spin-1 field $A_{\mu}(x, t)$ is associated with a polarisation vector $\epsilon_{\mu}(p)$.
+It has three polarisation states $j_z = -1, 0, 1$.
+Since $A_{\mu}(x, t)$ has 4 degrees of freedom, we impose the condition $p^{\mu}\epsilon_{\mu} = 0$ to get three polarisations. There is no gauge redundancy.
+
+Pick $p^{\mu} = (E, 0,0, p_z)$ with the condition that $E^2 - p_z^2 = m^2$.
+We have two transverse polarisations $\epsilon^{\mu}_1 = (0,1,0,0)$ and $\epsilon^{\mu}_2 = (0,0,1,0)$ and one longitudinal polarisation.
+With the normalisation condition $\epsilon_{\mu}^2 = -1$, there is only one possibility: $\epsilon^{\mu}_L = (\frac{p_z}{m}, 0,0, \frac{E}{m})$.
+
+Suppose we are at high energies, where $E \gg m$. We then have $p \approx E$.
+Then the longitudinal polarisation becomes $\epsilon^{\mu}_L \approx \frac{E}{m}(1,0,0,1)$.
+The amplitudes will have a term $M \sim g^2 \epsilon^0_L \epsilon^z_L \sim g^2 \frac{E^2}{m^2}$. This blows up!
+However, the amplitudes are probabilities, which have to be less than one; so this blowing-up breaks unitarity. The theory of massless spin-1 particles must have a cutoff; it cannot be valid until high energies since it breaks perturbative unitarity.
+\begin{example}[]
+  For a mass $m \simeq 100$GeV and coupling $g \sim 0.1$, the energy has to be less than $E \lesssim 1$Tev.
+\end{example}
+Massive spin-1 particles lead to interactions that can be valid only at small energies and have to be superseded by a consistent UV completion.
+
+To search for a UV completion?
+
+\section{Spontaneously Broken Discrete Symmetries}%
+\label{sec:spontaneously_broken_discrete_symmetries}
+
+Let us warm up to this concept slowly by considering discrete symmetries.
+Take the theory of a real scalar field with symmetry $\phi \to -\phi$.
+The most general renormalisable Lagrangian is
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - V_{\pm}(\phi).
+\end{equation}
+There are two possible scalar potentials
+\begin{equation}
+  V_{\pm}(\phi) = \pm \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4} \phi^4 + \kappa_{\pm}.
+\end{equation}
+Here, $\lambda > 0$ for stability and $\kappa_{\pm}$ is introduced to be able to tune the value of $V$ at the minimum.
+\begin{remark}
+  Gauge invariance is imposed only for massless particles. For massive particles, the most general theory involves a mass-term, which breaks gauge invariance. This is totally okay, since gauge invariance is only secondary, coming from our requirement of Lorentz invariance.
+\end{remark}
+
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f1.pdf_tex}
+  \caption{}
+  \label{fig:l14f1}
+\end{figure}
+The potential $V_+$ has a minimum at $\phi = \phi_0 = 0$ and is symmetric under $\phi \to -\phi$, as illustrated in Fig.~\ref{fig:l14f1}.
+We say the ``symmetry is manifest''.
+
+In the quantum theory, we want to investigate vacuum expectation values (VEV)
+\begin{equation}
+  \langle \phi \rangle \coloneqq \bra{0}\phi \ket{0} = \int \pdd{\phi} \phi e^{\frac{i}{\hbar} \int \mathscr{L} \dd[4]{x}}.
+\end{equation}
+Taking the classical limit $\hbar \to 0$, we recover the minimum of the potential $\langle \phi \rangle \to \phi_0$.
+
+Perturbations around the vacuum
+\begin{equation}
+  \phi = \phi_0 + \sigma(x) = \sigma(x).
+\end{equation}
+The Lagrangian becomes
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial^{\mu} \sigma \partial_{\mu} \sigma - \frac{1}{2} m^2 \sigma^2 - \frac{\lambda}{4} \sigma^4,
+\end{equation}
+so  $\sigma$ is a particle of mass $m$.
+
+We can write the quartic $V_-$ as 
+\begin{equation}
+  V_- = \frac{\lambda}{2} \left( \phi^2 - v^2 \right)^2, \qquad v \coloneqq \sqrt{\frac{m^2}{\lambda}}.
+\end{equation}
+This potential is illustrated in Fig.~\ref{fig:l14f2}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l14f2.pdf_tex}
+  \caption{If you sit in the vacua $\phi = \pm v$, you do not see the symmetry of the potential.}
+  \label{fig:l14f2}
+\end{figure}
+We have two vacua $\langle \phi \rangle = \pm v$ degenerate.
+Perturbing around the vacuum $\phi = \pm v + \sigma(x)$ gives
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial_{\mu} \sigma \partial_{\mu} \sigma - \left( \lambda v^2 \sigma^2 \pm \lambda v \sigma^3 + \frac{\lambda}{4} \sigma^4 \right).
+\end{equation}
+In this case $\lambda v^2 \sigma^2 = m^2 \sigma^2 + \dots$. So $\sigma$ is a particle of squared mass $2m^2 \geq 0$.
+The second derivative of the potential gives the mass of the particle.
+\begin{equation}
+  m^2 = \left.\frac{\partial^2 V_-}{\partial \phi^2} \right\rvert_{\phi^2 = v^2} = 2 m^2.
+\end{equation}
+We got a cubic term in the Lagrangian potential.
+The symmetry $\phi \to -\phi$ is \emph{hidden} (spontaneously broken).
+However, the symmetry is of course still there since we have $\sigma \to -\sigma \mp 2v$. Some people say the symmetry is ``non-linearly realised'', when we have $\phi \to a\phi + X$, where $X$ is something else.
+
+If we would have expanded around $\phi = 0$, we have a tachyonic mass 
+\begin{equation}
+  \left.\frac{\partial^2 V}{\partial \phi^2} \right\rvert_{\phi = 0} = - m^2.
+\end{equation}
+In principle, you can consider superpositions of the two vacua, which recovers the symmetry.
+This is discussed in \cite[Vol.~2]{weinberg}; the upshot is that in large systems you still always have to choose one particular vacuum.
+
+This system is very simple, just possessing a discrete symmetry, but is nonetheless very rich.
+Consider a thermodynamic system where the coefficient of $\phi^2$ depends on the temperature.
+We have $m^2 \propto (T - T_c)$.
+For very high temperatures, $T \gg T_c$, we have a potential like $V_+$. Reducing the temperature to $T < T_c$, the symmetry is broken to the potential $V_-$.
+This model explains systems ranging from magnetic materials to cosmological systems.
+These models can have rich properties such as domain walls and other things we discussed in the \emph{Statistical Field Theory} course.

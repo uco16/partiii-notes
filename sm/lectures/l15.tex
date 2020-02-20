@@ -1,0 +1,115 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 15: February 20}
+
+\section{Spontaneous Breaking of Continuous Global Symmetries}%
+\label{sec:spontaneous_breaking_of_continuous_global_symmetries}
+
+Let us generalise Sec.~\ref{sec:spontaneously_broken_discrete_symmetries}.
+Instead of a single field, consider an $N$-component scalar field $\phi = (\phi_1, \phi_2, \dots, \phi_N)^T$ with Lagrangian
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \partial^{\mu} \phi \cdot \partial_{\mu} \phi - V_{\pm}(\phi)..
+\end{equation}
+In the case of $V_+$, the minima are symmetric. We will consider the more interesting case of $V_-$, which is given by
+\begin{equation}
+  V_-(\phi) = \frac{\lambda}{4} (\phi \cdot \phi - v^2)^2, \qquad v^2 = \frac{m^2}{\lambda}, \quad \lambda > 0.
+\end{equation}
+This Lagrangian is symmetric under the rotation group $O(N)$.
+The vacua lie at $\phi \cdot \phi = v^2$.
+The potential is shown in Fig.~\ref{fig:l15f1}; we have a continuum of vacua.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l15f1.pdf_tex}
+  \caption{The curvature of the vacuum in the (a)-direction gives $m_\sigma^2$. The (c)-directions correspond to $\pi$'s with $0$ mass. The curvature at (b) gives the tachyon.}
+  \label{fig:l15f1}
+\end{figure}
+
+Pick $\langle \phi_0 \rangle = (0, \dots, 0, v)^T$. Fluctuations are then $\phi(x) = (\pi_1(x), \dots, \pi_{N-1}(x), V + \sigma(x))$.
+Making the substitution, the Lagrangian and potential are
+\begin{align}
+  \mathscr{L} &= \frac{1}{2} \partial_{\mu} \pi \cdot \partial^{\mu} \pi + \frac{1}{2} \partial_{\mu} \sigma \partial^{\mu} \sigma - V_-(\pi_i, \sigma), \\
+  V_-(\pi, \sigma) &= \frac{1}{2} (2 \lambda v^2) \sigma^2 + \lambda (\sigma^2 + \pi^2) \sigma + \frac{\lambda}{4} (\sigma^2 + \pi^2)^2
+\end{align}
+This is essentially the same thing we did for the discrete case.
+The only field that has a quadratic piece by itself in the potential is $\sigma$.
+There is no mass term for $\pi$, only for $\sigma$, where $m_\sigma^2 = 2 \lambda v^2$.
+The mass matrix is
+\begin{equation}
+  M_{ij} = \frac{\partial^2 V}{\partial \phi_i \partial \phi_j} \rvert_{\phi = \langle \phi \rangle} = 
+  \begin{pmatrix}
+   0 &  &  &  \\
+    & 0 &  &  \\
+    &  & \ddots &  \\
+    &  &  & m_\sigma^2 \\
+  \end{pmatrix}
+\end{equation}
+We have $N-1$ massless fields $\pi$, called \emph{Goldstone bosons}.
+The symmetry is broken from $O(N) \to O(N-1)$.
+
+\subsection{Goldstone's Theorem}%
+\label{sub:goldstone_s_theorem}
+
+In general, if the Lagrangian $\mathscr{L}$ is invariant under a continuous (compact and semisimple) $G$ such that the vacuum expectation value $\langle \phi \rangle \neq 0$ breaks symmetry $G \to H \subset G$.
+Define the \emph{vacuum manifold} to be the space of all minima
+\begin{equation}
+  \mathcal{M} = \{\phi_0 \suchthat V(\phi_0) = V_{\text{minimum}}\}, \qquad \phi_0 \coloneqq \langle \phi \rangle.
+\end{equation}
+Different vacua are related by group transformations $g \in G$ as $\phi_0' = g \phi_0$.
+We also define the invariant or stability group $H = \{h \in G \suchthat h \phi_0 = \phi_0\}.$
+Observing now that
+\begin{equation}
+  \phi_0' = g h \phi_0 = (g h g^{-1}) \phi'.
+\end{equation}
+Therefore $g h g^{-1} \in H$. As such, $g \in G$, mapping one vacuum to another, defines equivalence classes: $g_1 \sim g_2$ if $\exists h \in H$ such that $g_1 = g_2 h$.
+We then have
+\begin{equation}
+  \mathcal{M} \simeq \frac{G}{H}.
+\end{equation}
+
+Consider now an infinitesimal transformation 
+\begin{equation}
+  g \phi = \phi + \delta \phi, \qquad \delta \phi = i \alpha^{a} T^{a} \phi, \quad a = 1, \dots, \dim G.
+\end{equation}
+We can expand in a Taylor expansion and use the symmetry $V(\phi + \delta \phi) = V(\phi)$:
+\begin{equation}
+  \label{eq:15-star}
+  V(\phi + \delta \phi) - V(\phi) = i \alpha^{a} (T^{a} \phi)_r \frac{\partial V}{\partial \phi_r} = 0.
+\end{equation}
+This is an important expression, which we will use later.
+If $\phi_0$ is a minimum, then
+\begin{equation}
+  V(\phi) - V(\phi_0) = \frac{1}{2}(\phi - \phi_0)_{r} \left.\frac{\partial^2 V}{\partial \phi_r \phi_s} \right\rvert_{\phi = \phi_0} (\phi - \phi_0)_s.
+\end{equation}
+We recognise the mass matrix appearing here.
+Differentiate \eqref{eq:15-star} and evaluate at $\phi = \phi_0$:
+\begin{equation}
+(T^{a} \phi_0)_r \left.\frac{\partial^2 V}{\partial \phi_r \phi_r} \right\rvert_{\phi_0} = 0.
+\end{equation}
+
+The lessons from this are twofold.
+\begin{itemize}
+  \item If the symmetry is unbroken and the vacuum unique, meaning that $g \phi_0 = \phi_0, \forall g \in G$, then $\delta \phi = 0$, then $(T^{a} \phi_0) = 0$ for all $a$.
+  \item If $\exists g \in G$ such that there exists $T^a \phi_0 \neq 0$, then $T^a \phi_0$ is an eigenvector of the mass matrix with zero eigenvalue; these are the Goldstone bosons.
+    \begin{equation}
+      (T^a \phi_0)_r M^2_{rs} = 0.
+    \end{equation}
+\end{itemize}
+How many massless states do we have?
+Let us split the generators $T^a$ into two groups. We denote by $\widetilde{T}^i$ the elements of $H$ and by $R^{\hat{a}}$ the remaining ones.
+The assumptions of compactness and semisimplicity mean that we have the orthogonality condition
+\begin{equation}
+  \Tr \widetilde{T}^i R^{\hat{a}} = 0.
+\end{equation}
+This means that each vector $R^{\hat{a}}_0$ is a unique eigenvector of $M_{rs}$.
+Since $i = 1, \dots, \dim H$ and $\hat{a} = \dim H, \dots, \dim G$, we find that the number of Goldstone bosons is
+\begin{equation}
+  \dim \frac{G}{H} = \dim G - \dim H.
+\end{equation}
+
+\begin{example}[$O(N)$]
+  Take $G = O(N)$ and $H = O(N-1)$, then the number of Goldstone bosons is
+  \begin{equation}
+    \dim O(N) - \dim O(N-1) = \frac{N (N-1)}{2} - \frac{(N-1)(N-2)}{2} = N-1.
+  \end{equation}
+\end{example}

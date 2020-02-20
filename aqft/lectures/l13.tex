@@ -3,7 +3,7 @@
 \lhead{Lecture 13: February 15}
 
 \section{Effective Actions}%
-\label{sec:effective_actions}
+\label{sec:ren-effective_actions}
 
 The next step is to look at a slightly smaller cutoff $\Lambda$ and split the fields into high and low momentum modes
 \begin{align}
@@ -35,24 +35,24 @@ We also have effective interactions
 \section{Running Couplings}%
 \label{sec:running_couplings}
 
-If we want the physics to be independent of $\Lambda, \Lambda_0$, then  we need the partition functions to be equal
+If we want the physics to be independent of whether we use the cutoff $\Lambda$ or $\Lambda_0$, then we need the associated partition functions to be equal
 \begin{equation}
-  \mathcal{Z}_\Lambda(g_i) (g_i (\Lambda)) = \mathcal{Z}_{\Lambda_0} (g_{i0}; \Lambda_0).
+  \mathcal{Z}(g_i (\Lambda)) = \mathcal{Z}_{\Lambda_0} (g_{i0}; \Lambda_0).
 \end{equation}
 The right-hand side is independent of $\Lambda$ , which means that the left-hand side must be, too.
 Thus the couplings $g_i(\Lambda)$  must ``run'' to compensate.
 We have the Callan--Symanzik (or RG) equation
 \begin{equation}
-  \Lambda \dv{\mathcal{Z}_\Lambda(g)}{\Lambda} = \left( \Lambda \left.\frac{\partial }{\partial \Lambda}\right\rvert_{g_i} + \Lambda \dv{g_i}{\Lambda} \frac{\partial }{\partial g_i} \right) \mathcal{Z}_\Lambda (g) = 0.
+  \Lambda \dv{\mathcal{Z}_\Lambda(g)}{\Lambda} = \left( \Lambda \left.\frac{\partial }{\partial \Lambda}\right\rvert_{g_i} + \Lambda \dv{g_i}{\Lambda} \left.\frac{\partial }{\partial g_i}\right\rvert_{\Lambda} \right) \mathcal{Z}_\Lambda (g) = 0.
 \end{equation}
 
 The effective action $S_\Lambda^{\text{eff}}$  has the same form as $S_{\Lambda_0}$ :
 \begin{equation}
   \label{eq:13-1}
-  S_\Lambda^{ \text{eff}} [\phi] = \int \dd[d]{x} \left[ \frac{1}{2} Z_\Lambda (\partial \phi)^2 + \sum_{i} \frac{Z_\Lambda^{n_i / 2}}{\Lambda^{d_i - d}} g_i(\Lambda) \mathcal{O}_i(x) \right],
+  S_\Lambda^{ \text{eff}} [\phi] = \int \dd[d]{x} \left[ \frac{1}{2} Z_\Lambda (\partial \phi)^2 + \sum_{i} \frac{Z_\Lambda^{n_i / 2}}{\Lambda^{d_i - d}} g_i(\Lambda_0) \mathcal{O}_i(x) \right],
 \end{equation}
 where $n_i$  is the number of fields $\phi$  in the operator $\mathcal{O}_i(x)$ .
-Integrating out $\phi^+$  modes may imply that $Z_\Lambda \neq 1$ .  We thus renormalise the field to restore the quadratic term in the action:
+We have also accounted for the fact that integrating out $\phi^+$ modes may give us a normalisation $Z_\Lambda \neq 1$ .  We thus renormalise the field to restore the quadratic term in the action:
 \begin{equation}
   \phi^r = Z^{1 / 2}_\Lambda \phi,
 \end{equation}
@@ -61,8 +61,8 @@ where we use the field-renormalisation function $Z$ (not the $\mathcal{Z}$).
 Any remaining $\Lambda$ -dependence must be described by $g_i(\Lambda)$ .
 The classical $\beta$-function is $\beta_i^{\text{cl}} = d_i - d$ from the sum in \eqref{eq:13-1}. The quantum $\beta$ -function is $\beta^{\text{qu}} = \Lambda \dv{g_i}{\Lambda}$, which gives the total $\beta = \beta^{\text{cl}} + \beta^{\text{qu}}$.
 
-\section{Vector Functions}%
-\label{sec:vector_functions}
+\section{Vertex Functions}%
+\label{sec:ren:vertex_functions}
 
 Recall the anomalous dimension $\gamma_\phi = -\frac{1}{2} \dv{\Lambda} \ln Z_\Lambda$.
 Look at $n$-point functions.
