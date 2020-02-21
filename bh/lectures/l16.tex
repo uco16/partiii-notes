@@ -1,0 +1,200 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 16: February 21}
+
+\section{Ergosphere \& Penrose Process}%
+\label{sec:ergosphere_&_penrose_process}
+
+Let us look, in BL coorinates, at the norm of the Killing field:
+\begin{equation}
+  k^2 = g_{tt} = -\frac{(\Delta - a^2 \sin^2 \theta)}{\Sigma} = \leftrightarrow(1 - \frac{2 M r}{r^2 + a^2 \cos^2 \theta}).
+\end{equation}
+$k$ is timelike when $r^2 - 2M r + a^2 \cos^2 \theta > 0$.
+This happens for $r > M + \sqrt{M^2 - a^2 \cos^2 \theta}$. This is greater than $r_+$. This means that there is a region $r_+ = M + \sqrt{M^2 -a^2} < r < M + \sqrt{M^2 - a^2 \cos^2\theta}$ outside the event horizon $\mathcal{H}^+$ where $k$ is spacelike.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.4]{l16f1}
+    \caption{Ergosphere}
+    \label{fig:l16f1}
+\end{figure}
+This region, depicted in Fig.~\ref{fig:l16f1}, is called the \emph{ergosphere}.
+Its boundary is the \emph{ergosurface}. A stationary observer $(u^{a} \parallel k^{a})$ cannot exist in the ergosphere. Any causal curve in the ergosphere must rotate relative to $\infty$, in the same direction as the black hole.
+
+Consider a particle with $4$-momentum $P^{a} = \mu u^{a}$, where $\mu$ is its rest mass and $u^{a}$ its $4$-velocity.
+Along a geodesic $E = -k \cdot P$ is conserved. This is the energy according to an observer at infinity.
+Assume the particle decays inside the ergosphere. 
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [fermion, edge label=$P^a$] b [dot, label=$p$] -- [fermion, edge label=$P_1^a$] c,
+      b -- [fermion, edge label=$P_2^a$] d,
+    };
+  \end{gathered}
+\end{equation}
+The $4$-momentum is conserved at $p$:
+\begin{equation}
+  P^{a} = P^{a}_1 + P^{a}_2 \implies E = E_1 + E_2, \qquad E_i = -k \cdot P_i.
+\end{equation}
+Since $k$ is spacelike in the ergosphere, we can have $E_1 < 0$, which means that we can have $E_2 = E + \abs{E_1} > E$. Particle $1$ must fall into the hole, but $2$ can escape to $\infty$, carrying more energy than the initial particle! Particle 1 carries negative energy into the hole, so the energy (mass) of the hole decreases.
+This extraction of energy from the black hole is called the \emph{Penrose process}.
+
+Particle crossing $\mathcal{H}^+$: 
+\begin{equation}
+  -P \cdot \xi \geq 0, 
+\end{equation}
+since both $P^{a}, \xi^{a}$ are future-directed causal.
+\begin{equation}
+  \xi = k + \Omega_H m \qquad E - \Omega_H L \geq 0 \qquad L = m c P,
+\end{equation}
+where $L$ is the angular momentum of the particle. 
+Therefore
+\begin{equation}
+  \therefore L  \leq E / \Omega_H \qquad \delta M = E, \quad \delta J = L
+\end{equation}
+\begin{equation}
+  \therefore \delta J \leq \delta M / \Omega_H =  \frac{2 M (M^2 + \sqrt{M^4 - J^2})}{J} \delta M.
+\end{equation}
+\begin{exercise}
+  Show that this inequality is equivalent to $\delta M_{\text{irr}} \geq 0$, where 
+  \begin{equation}
+    M_{\text{irr}} = \left[ \frac{1}{2} (M^2 + \sqrt{M^4 - J^2}) \right]^{\frac{1}{2}}
+  \end{equation}
+  is the \emph{irreducible mass}. In other words, in the Penrose process $M_{\text{irr}}$ cannot decrease.
+\end{exercise}
+Inverting this gives
+\begin{equation}
+  M^2 = M^2_{\text{irr}} + \frac{J^2}{4 M^2_{\text{irr}}} \geq M^2 _{\text{irr}}.
+\end{equation}
+The Penrose process cannot reduce $M$ below the initial value of $M_{\text{irr}}$; it gives an upper bound on the energy we can extract.
+\begin{exercise}
+  The quantity $A = 16 \pi M^2_{\text{irr}}$ is the \emph{area of the event horizon} (area of $\mathcal{H}^+ \cap \Sigma$, where $\Sigma$ is a partial Cauchy surface, e.g.~$v = \text{const.}$)
+\end{exercise}
+This means $\delta A \geq 0$ in the Penrose process (special case of the 2\textsuperscript{nd} law of black hole mechanics).
+\begin{equation}
+  A = 8 \pi (M^2 + \sqrt{M^4 - J^2}).
+\end{equation}
+
+\chapter{Charge, Mass, and Angular Momentum}%
+\label{cha:charge_mass_and_angular_momentum}
+
+\section{Charges in Curved Spacetime}%
+\label{sec:charges_in_curved_spacetime}
+
+\begin{definition}[]
+  \label{def:charges}
+  $(\Sigma, h_{ab}, K_{ab})$ asymp.~flat end. The \emph{electric and magnetic charges} are 
+  \begin{equation}
+    Q = \frac{1}{4 \pi} \lim_{r \to \infty} \int_{S^2_r} \star F,  \qquad
+    P = \frac{1}{4 \pi} \lim_{r \to \infty} \int_{S^2_r} F,
+  \end{equation}
+  where $S^2_r$ is the sphere $x^{i} x^{i} = r^2$ where $x^{i}$ are the coordinates in the definition of the asymptotically flat end.
+\end{definition}
+\begin{leftbar}
+  We can have a non-zero charge even though no matter is present. In a sense, the topology of the spacetime can support charge, such as in the RN solution.
+\end{leftbar}
+
+\section{Komar Integrals}%
+\label{sec:komar_integrals}
+
+In a stationary spacetime $(M, g)$, we can define $J_a = - T_{ab} k^{b}$, the conserved energy-momentum current.
+\begin{equation}
+  \nabla_a J^{a} = 0 \qquad \iff \qquad d \star J = 0.
+\end{equation}
+Given this conserved current, we can define the related conserved charge, interpreted as the total energy of matter on a spacelike hypersurface $\Sigma$
+\begin{equation}
+  E[\Sigma] = -\int_\Sigma \star J.
+\end{equation}
+\begin{wrapfigure}{R}{0.3\columnwidth}
+  \centering
+  \inkfig[0.2]{l16f2}
+  \caption{}
+  \label{fig:l16f2}
+\end{wrapfigure}
+It is conserved in the sense that if we have Fig.~\ref{fig:l16f2}, then 
+\begin{equation}
+  E[\Sigma'] - E[\Sigma] = - \int_{\partial R} \star J = -\int_R d \star J  = 0.
+\end{equation}
+Consider the 1-form
+\begin{equation}
+  (\star d \star k)_a = - \nabla^{b} (d k)_{ab},
+\end{equation}
+using the identity
+\begin{multline}
+  \epsilon^{a_1 \dots a_p c_{p+1} \dots c_{n}} \epsilon_{b_1 \dots b_p c_{p+1} \dots c_p} = -p! (n-p)! \delta^{a_1}_{[b_1} \dots \delta^{a_p}_{b_p]} \\
+  \implies (\star d \star X)_{a_1 \dots a_{p-1}} = -(-1)^{p (n-p)} \nabla^{b} X_{a_1 \dots a_{p-1} b}.
+\end{multline}
+Using the Killing vector field, we have
+\begin{equation}
+  (\star d \star d k)_a = -\nabla^{b} \nabla_{a} k_b + \nabla^{b} \nabla_{b} k_a = 2 \nabla^{b} \nabla_{\beta} k_a.
+\end{equation}
+\begin{lemma}
+  For a Killing vector field $k^{a}$, we have 
+  \begin{equation}
+    \nabla_a \nabla_b k^{c} = R\indices{^{c}_{bad}} k^{d}.
+  \end{equation}
+\end{lemma}
+Thus, using the Einstein equation, and assuming that $T$ is the energy-momentum tensor, we have
+\begin{equation}
+  (\star d \star d k)_a = -2 R_{ab} k^{b} = 8 \pi J'_a, \qquad J'_a = -2 (T_{ab} - \frac{1}{2} T\indices{^{c}_{c}} g_{ab}) k^{b}.
+\end{equation}
+Since $d \star d k = 8 \pi \star J'$, we find that $\star J'$ is \emph{exact} ($\implies $ conserved $d \star J' =0$).
+Consider a surface $\Sigma$ with a single asymptotically flat end, 
+\begin{equation}
+  \label{eq:16-star}
+  \therefore -\int_\Sigma \star J' = -\frac{1}{8 \pi} \int_\Sigma d \star d k = -\frac{1}{8 \pi} \int_{\partial \Sigma} \star dk.
+\end{equation}
+This equation tells us something about the energy of matter.
+\begin{exercise}
+  Consider a static, spherically symmetric perfect fluid star. Take $\Sigma = \{t = \text{const.} \suchthat r \leq r_0\}$, $r_0 > R$.
+  Show that the RHS of \eqref{eq:16-star} is $M$.
+  Show that in the Newtonian limit, where $P \ll \rho$, $\abs{\Phi} \ll 1$, $\abs{\Psi} \ll 1$, the LHS really is the total mass of the fluid.
+\end{exercise}
+
+\begin{definition}[Komar mass]
+  Let $(\Sigma, h_{ab}, K_{ab})$ be an asymp.~flat end in a stationary spacetime. The \emph{Komar mass} (or energy) is
+  \begin{equation}
+    M_{\text{Komar}} = -\frac{1}{8\pi} \lim_{r \to \infty}  \int_{S^2_r} \star dk.
+  \end{equation}
+\end{definition}
+This is entirely analogous to the definition \ref{def:charges} of electric and magnetic charges.
+This is the total mass of matter and gravity in the spacetime.
+We can do this for any Killing vector field. In particular, we could have done this for an axisymmetric spacetime.
+\begin{definition}[Komar angular momentum]
+  Let $(\Sigma, h_{ab}, K_{ab})$ be an asymp.~flat end in an axisymmetric spacetime. The \emph{Komar angular momentum} is
+  \begin{equation}
+    J_{\text{Komar}} = \frac{1}{16 \pi} \lim_{r \to \infty}  \int_{S^2_r} \star dm.
+  \end{equation}
+\end{definition}
+The normalisation ensures that this reduces to Newtonian angular momentum in the appropriate limit.
+
+It is not obvious why this should be the definition of energy or angular momentum.
+Classically, the energy is the value of the Hamiltonian. Surely the `correct' way to understand energy then is to understand the Hamiltonian treatment of general relativity.
+As we will see, this `correct' definition agrees with the above in a stationary spacetime, and these are ultimately the more useful for calculations.
+
+\section{Hamilonian Formulation}%
+\label{sec:hamilonian_formulation}
+
+Set $16 \pi G = 1$.
+In a $3 + 1$ split, we define the lapse function and the shift and we have metric
+\begin{equation}
+  ds^2 = N^2 dt^2 + h_{ij} (dx^{i} + N^{i} dt) (dx^{j} + N^{j} dt).
+\end{equation}
+\begin{equation}
+  S = \int \dd[4]{x} \sqrt{-g } R = \int \dd[]{t} \dd[3]{x} \sqrt{h} N ({}^{(3)} R + K_{ij} K^{ij} - K^2) = \int \dd{t} \dd[3]{x} \mathscr{L}.
+\end{equation}
+
+\begin{exercise}[Sheet 2]
+  A formula for the extrinsic curvature is
+  \begin{equation}
+    K_{ij} = \frac{1}{2 N} (\dot{h}_{ij} - D_{i} N_j - D_j N_i),
+  \end{equation}
+  where the dot denotes time-derivative.
+\end{exercise}
+\begin{remark}
+  $S$ is independent of the time derivatives of the lapse and the shift,$\dot{N}, \dot{N}^{i}$. Hamilton's equations are constraints
+  \begin{equation}
+    \frac{\delta S}{\delta N} \rightarrow \text{Ham.~constraint}, \qquad 
+    \frac{\delta S}{\delta N^{i}} \rightarrow \text{momentum constraint}
+  \end{equation}
+  On the other hand $\frac{\delta S}{\delta h_{ij}}$ gives evolution equations for $h_{ij}$.
+\end{remark}

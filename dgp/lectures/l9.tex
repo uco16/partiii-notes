@@ -3,9 +3,23 @@
 \lhead{Lecture 9: February 19}
 
 \begin{proof}
-  \textcolor{red}{MISSED 15 Mins}
-  
-  Through every point of $M$, there is exactly one torus. We say that $M$ is \emph{foliated} by tori (different choices of $c_i$).
+  Then using \eqref{eq:anti-homomorphism} we have the anti-homomorphism $ [X_{f_i}, X_{f_j}] = -X_{\{f_i, f_j\}} = 0 $.
+  The $X_f$ generate the action of $n$-dimensional Abelian group $\mathbb{R}^n$ on $M$ and on $M_f$. 
+  Let $p_0 \in M$ and consider the lattice $\Gamma$ of vectors in $\mathbb{R}^n$, which preserve $p_0$.
+  This $\Gamma \subset \mathbb{R}^n$ is a discrete subgroup. Therefore, by the orbit-stabiliser theorem, 
+  \begin{equation} 
+    M_f \simeq \flatfrac{\mathbb{R}^n}{\Gamma} = 
+    \begin{cases}
+      T^n, & \text{if compact} \\
+      T^{n-k} \times \mathbb{R}^k, & \text{otherwise}  
+    \end{cases}.
+  \end{equation}
+  Assume $M_f$ is compact, so that
+  \begin{equation}
+    M_f = T^n \coloneqq \underbrace{S^1 \times S^1 \times \dots \times S^1}_{\mathclap{n}}.
+  \end{equation}
+  Different constants $c_i$ give us different choices. For every choice, we can find a torus.
+  Through every point $p_0 \in M$, there is exactly one torus. We say that $M$ is \emph{foliated} by tori (different choices of $c_i$).
   
   Moreover, $M_f \subset M$ is a \emph{Lagrangian} submanifold, meaning that $\omega \rvert_{M_f} = 0$.
   This is because we proved that the $n$ Hamiltonian vector fields are tangent to $M_f$. These are independent, so at each point $p \in M_f$ they span the tangent space $T_p M_f$.

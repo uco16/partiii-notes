@@ -26,6 +26,16 @@
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{tikz-cd}
 
+% GILLES CASTELs inkscape-figure
+% https://github.com/gillescastel/inkscape-figures
+\usepackage{pdfpages}
+%\usepackage{transparent}
+\newcommand{\inkfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \input{lectures/#2.pdf_tex}
+}
+%\pdfsuppresswarningpagegroup=1
+
 % Mathematical Symbols
 \usepackage{amsmath}
 \usepackage{mathtools}

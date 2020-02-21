@@ -1,0 +1,110 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 15: February 21}
+
+Today we will look at how another pair of operators transforms.
+
+\subsection{\texorpdfstring{$T(z) \normalorder{e^{i k_{\mu} X^{\mu}(w)}}$}{An Important} OPE}%
+\label{sub:an_important_ope}
+
+Our composite field is $\normalorder{\exp(i k_{\mu} X^{\mu}(w))}$, where $k_{\mu}$ is some constant spacetime (i.e.~target space) momentum vector. This will be a fundamental ingredient to any scattering amplitude, where $k_{\mu}$ is the centre-of-mass momentum of the string.
+
+It is useful to write this
+\begin{equation}
+  T(z) \normalorder{e^{i k \cdot X(w)}} = T(z) \sum_{k \geq 0} \frac{i^n}{n!} k_{\mu_1} \dots k_{\mu_n} \normalorder{X^{\mu_1}(w) \dots X^{\mu_n}(w)},
+\end{equation}
+where $T(z) = -\frac{1}{\alpha'} \normalorder{\partial X^{\mu} (z) \cdot \partial X_{\mu}(z)}$.
+In the free theory, we can work this out exactly using Wick's theorem.
+The normal ordering reminds us that there are no internal contractions, only ones between the $\partial X$'s in $T$ and the $X$'s in $e^{i k \cdot X}$.
+
+We shall make use of the OPE \eqref{eq:14-pxxope}. There are two types of contribution to the OPE:
+\begin{description}
+  \item[Single Contractions:] These contribute
+    \begin{equation}
+      \wick{-\frac{2}{\alpha'} \normalorder{\partial X (z) \cdot \c2{\partial X(z)}} \sum_{n \geq 0} \frac{i^n}{n!} k_{\mu_1} \dots k_{\mu_n} \normalorder{\c2 X^{\mu_1} (w) \dots X^{\mu_n}(w)}}
+    \end{equation}
+    where the factor $2$ comes from the two ways to contract any given $X^{\mu_i}$ with any of the two $\partial X$.
+    Of course, we get $n$ such terms, one for each $X^{\mu_i}$:
+    \begin{align}
+      \dots &= \sum_{n > 0} \frac{i^n}{n!} n (k \cdot X(w))^{n-1} k_{\nu} \left( \frac{\partial X^{\nu} (w)}{ z - w} \right) \\
+	    &= \sum_{n \geq 0} \frac{i^n}{n!} (k \cdot X(w))^n i k_{\nu} \left( \frac{\partial X^{\nu}(w)}{z - w} \right) \\
+	    &= \frac{1}{z - w} \partial \left( e^{i k \cdot X(w)} \right).
+    \end{align}
+  \item[Double Contractions:] These contribute
+    \begin{align}
+      \begin{split}
+	&\wick{ -\frac{1}{\alpha'} \normalorder{\partial \c1 X \cdot \partial \c2 X(z)} \sum_{(i, j)} \sum_{n \geq 0} \frac{i^n}{n!} k_{\mu_1} \dots k_{\mu_i} \dots k_{\mu_j} \dots k_{\mu_n} \normalorder{X^{\mu_1} (w) \dots \c1 X^{\mu_i}(w) \dots \c2 X^{\mu_j}(w) \dots X^{\mu_n}(w)} } \\
+	&= -\frac{1}{\alpha'} \sum_{n \geq 2} k_{\mu_2} \dots k_{\mu_{n-1}} \frac{i^n}{n!} n (n-1) X^{\mu_2}(w) \dots X^{\mu_n} \left( -\frac{\alpha'}{2} \right)^2 \frac{k^2}{(z - w)^2}
+      \end{split} \\
+      &= -\frac{\alpha'}{4} \frac{k^2}{(z - w)^2} \normalorder{\sum_{n \geq 2} (k \cdot X(w))^{n-2}} i^2 i^{n-2} \frac{n!}{n! (n-2)!} \\
+      &= \frac{\alpha'}{4} \frac{k^2}{(z - w)^2} \normalorder{e^{i k \cdot X(w)}}
+    \end{align}
+    \begin{leftbar}
+      This is the second worst OPE you will have to do in this course.
+    \end{leftbar}
+\end{description}
+
+This gives:
+\begin{equation}
+  T(z) \normalorder{e^{i k \cdot X (w)}} = \left( \frac{\alpha' k^2 / 4}{(z - w)^2}  + \frac{\partial}{z - w}\right) e^{i k \cdot X(w)} + \dots.
+\end{equation}
+From this we read off that $h = \frac{\alpha' k^2}{4}$.
+It is easy to see that a similar result holds for $ \overline{T}{}(\overline{z}{}) e^{i k \cdot \overline{X}{} (\overline{w}{})} $ and more generally the operator $ \normalorder{ \exp(i k_{\mu} X^{\mu}(w, \overline{w}{}))} $ has conformal weight
+\begin{equation}
+  \boxed{(h, \overline{h}{}) = \left( \frac{\alpha' k^2}{4}, \frac{\alpha' k^2}{4} \right)}
+\end{equation}
+
+There is a sense in which this is a purely quantum mechanically result since our string coupling $\alpha'$ appears explicitly in exactly the same way $\hbar$ would appear.
+The other thing to note is that these numbers depend on $k^2$.
+
+\subsection{The \texorpdfstring{$T(z) T(w)$}{TT} OPE and the Virasoro Algebra}%
+\label{sub:the_tt_stress_ope_and_the_virasoro_algebra}
+
+This is basically the one field we cannot do without in a conformal field theory, so if it does not transform in the correct way we have a problem.
+We use
+\begin{equation}
+  T(z) = -\frac{1}{\alpha'} \normalorder{ \partial X \cdot \partial X(z)} \qquad \text{and} \qquad 
+  \partial X^{\mu}(z) \partial X^{\nu}(w) = -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z - w)^2} + \dots
+\end{equation}
+\begin{align}
+  \begin{split}
+    T(z) T(w) &= 4 \left( -\frac{1}{\alpha'} \right) \wick{\normalorder{ \partial X^{\mu}  \partial \c X_{\mu}(z)} \normalorder{\partial \c X^{\nu} \partial X_{\nu} (w)}} \\
+	      &\qquad {} + 2 \left( - \frac{1}{\alpha'} \right)^2 \wick{ \normalorder{\partial \c2 X_{\mu} \partial \c1 X^{\mu}(z) } \normalorder{\partial \c2 X^{\nu} \partial \c1 X_{\nu}(w)} }
+  \end{split} \\
+  &= -\frac{2}{\alpha'} \frac{\eta_{\mu\nu}}{(z - w)^2} \normalorder{\partial X^{\mu}(z) \partial X^{\nu}(w)} + \frac{1}{2} \frac{\delta\indices{^{\mu}_{\nu}}}{(z - w)^2} \frac{\delta\indices{^{\nu}_{\mu}}}{(z - w)^2}.
+\end{align}
+For the first term we can write 
+\begin{equation}
+  \partial X^{\mu} (z) = \partial X^{\mu}(w) + (z - w) \partial^2 X^{\mu}(w) + \dots
+\end{equation}
+In the second term, we recognising the dimension of spacetime as $D = \tr(\eta_{\mu\nu})$. Then we have
+\begin{equation}
+  T(z) T(w) = \frac{D/2}{(z - w)^4} - \frac{2}{\alpha'} \frac{1}{(z - w)^2} \normalorder{\partial X_{\mu} \partial X^{\mu} (w)} - \frac{2}{\alpha'} \frac{1}{(z - w)} \normalorder{\partial X_{\mu} \partial^2 X^{\mu}(w)}
+\end{equation}
+\begin{equation}
+  \boxed{T(z) T(w) = \frac{D / 2}{(z - w)^4} + \frac{2}{(z - w)^2} T(w) + \frac{1}{z - w} \partial T(w) + \dots}
+\end{equation}
+\begin{leftbar}
+  This implicitly assumes radial ordering on the left-hand side.
+\end{leftbar}
+The second term gives us $h = 2$. However, the first term should not be there; we do not expect to see a pole of order $4$.
+The stress tensor only transforms as a conformal field as we expect if $D = 0$.
+It will turn out that what we have been studying so far is only part of the stress tensor.
+We have forgotten about the ghosts, which will give a contribution of the stress tensor as well!
+Their contribution will allow for $D$ to be a finite integer, which is therefore determined by the consistency of the theory.
+
+\section{The Virasoro Algebra}%
+\label{sec:the_virasoro_algebra}
+
+We talked about the Witt algebra and saw that it had something to do with conformal transformations.
+This was a purely classical consideration. Only quantum mechanical effects, like double contractions, ??
+
+The stress tensor is a field of weight $2$ so we can expand it in terms of modes $L_n$:
+\begin{equation}
+  T(z) = \sum_n L_n z^{-n-2}.
+\end{equation}
+This may be inverted to give 
+\begin{equation}
+  L_n = \oint_{z = 0} \frac{\dd[]{z}}{2 \pi i } z^{n+1} T(z)
+\end{equation}
+and similarly for the tensor $\overline{T}{}(\overline{z}{})$ and its modes $\overline{L}{}_n$.

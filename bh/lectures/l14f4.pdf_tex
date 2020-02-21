@@ -69,7 +69,7 @@
     \put(0.2385757,0.12458446){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
     \put(0.67323182,0.53854254){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+$\end{tabular}}}}%
     \put(0.25927363,0.53854254){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+{}'$\end{tabular}}}}%
-    \put(0.56974225,0.3936571){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}r = r_+\end{tabular}}}}%
+    \put(0.56974225,0.3936571){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}%
     \put(0.56974225,0.29016765){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}%
     \put(0.52834639,0.55924041){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}%
     \put(0.38346108,0.55924041){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}%
