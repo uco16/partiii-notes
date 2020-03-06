@@ -1,0 +1,237 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 17: February 24}
+
+The Hamiltonian is given by the Legendre transform
+\begin{equation}
+  H = \int \dd[3]{x} (\pi^{ij} \dot{h}_{ij} - \mathscr{L}) = \int \dd[3]{x} \sqrt{h} (N \mathcal{H} + N^{i} \mathcal{H}) \label{eq:17-star}.
+\end{equation}
+In doing this calculation, we need to integrate by parts and neglect surface terms. Upon doing this, we get
+\begin{align}
+  \mathcal{H} &= - {}^(3) R + h^{-1} \pi^{ij} \pi_{ij} - \frac{1}{2} h^{-1} \pi^2, \qquad \pi = h^{ij} \pi^{ij}. \\
+  \mathcal{H}_i &= - 2 h_{ik} D_{j} (h^{-1 / 2} \pi^{jk}).
+\end{align}
+The $N, N^{i}$ have the interpretation as Lagrange multipliers: varying the action $\frac{\delta S}{\delta N} = \frac{\delta S}{\delta N^{i}} = 0$ gives constraints $\mathcal{H} = \mathcal{H}_i = 0$.
+We have rewritten the Hamiltonian and momentum constraints in terms of $\pi^{ij}$ and $h_{ij}$.
+
+Hamilton's principle says that the time derivative of $h_{ij}$ and $\pi^{ij}$ are given by
+\begin{equation}
+  \dot{h}_{ij} = \frac{\delta H}{\delta \pi^{ij}} \qquad \dot{\pi}^{ij} =- \frac{\delta H}{\delta h_{ij}} \label{eq:17-dag}.
+\end{equation}
+The equation for $\dot{h}_{ij}$ recovers the definition of $\pi^{ij}$.
+
+Given the Hamiltonian \eqref{eq:17-star}, we would like to define the energy to be the value of the Hamiltonian.
+But there is a problem; the only terms involved in the Hamiltonian are constraint equations, which vanish if the constraints are satisfied.
+So the energy of the spacetime is always zero with this definition.
+
+The resolution of this problem is that we have been rather cavalier about neglecting surface terms.
+When calculating variational derivatives, you generate surface terms that are generally non-zero and will contribute to $H$.
+We can trust this conclusion if there are no surface terms. When the surface of constant $t$ is compact (i.e.~for a closed universe), then the energy vanishes exactly.
+
+However, we are mostly interested in the case of black holes. Assume that our constant-$t$ surfaces are asymptotically flat with one end.
+Therefore, asymptotically,
+\begin{equation}
+  h_{ij} = \delta_{ij} + \mathcal{O}\left(\frac{1}{r}\right) \qquad \pi^{ij} = \mathcal{O} \left( \frac{1}{r^2} \right).
+\end{equation}
+We would like to discuss variations $\delta_{ij} = \mathcal{O} \left( \frac{1}{r} \right)$ and $\delta \pi^{ij} = \mathcal{O} \left( \frac{1}{r^2} \right)$.
+Assume $N =1 + \mathcal{O} \left( \frac{1}{r} \right)$ and $N^{i} \to 0$ as $r \to \infty$.
+
+Vary the Hamiltonian in the region inside $S^2_r$, the two-sphere of radius $r$.
+From the variation $ \frac{\delta H}{\delta \pi^{ij}} $, we obtain a surface term that vanishes as $r \to \infty$.
+The variation $\frac{\delta H}{\delta h_{ij}}$ gives two surface terms $S_1 + S_2$. It turns out that $S_2 \to 0$ as $r \to \infty$.
+However,
+\begin{equation}
+  \lim_{r \to \infty} S_1  =- \lim_{r \to \infty}   \int_{S_r^2} \dd[]{A} n_i (\partial_j \delta h_{ij} - \partial_{i} \delta h_{ij}),
+\end{equation}
+where $dA$ is the area element on $S^2_r$ and $n_i$ the outward unit normal to $S_r^2$.
+The nice thing about this formula is that we can pull the variation outside of the integral:
+\begin{equation}
+  \lim_{r \to \infty} S_1 = - \delta E_{\text{ADM}},
+\end{equation}
+where
+\begin{equation}
+  E_{\text{ADM}} = \lim_{r \to \infty} \int_{S_r^2}  dA n_i (\partial_j h_{ij} - \partial_i h_{jj}),
+\end{equation}
+so the surface term $S_1$ is itself the variation of something.
+Let $H' = H + E_{\text{ADM}}$, so that the variations cancel.
+In other words, this quantity $H'$ is the correct Hamiltonian of GR for asymptotically flat data.
+
+\section{ADM Energy}%
+\label{sec:adm_energy}
+
+Let us revert back to units $G = 1$, rather than $16 \pi G = 1$, so we will get some new factors appearing.
+\begin{definition}[ADM energy]
+  The \emph{ADM energy} of an asymptotically flat end is
+  \begin{equation}
+    E_{\text{ADM}} = \lim_{r \to \infty} \frac{1}{16 \pi} \int_{S_r^2} \dd[]{A} n_i (\partial_j h_{ij} - \partial_{i} h_{jj}).
+  \end{equation}
+\end{definition}
+If we have multiple asymptotically flat ends, we have for each end an associated ADM energy.
+
+For a stationary spacetime,
+\begin{equation}
+  E_{\text{ADM}} = M_{\text{Komar}},
+\end{equation}
+at least if $t$-constant surfaces are orthogonal to $k^{a}$ as $r \to \infty$.
+For the Kerr--Newmann spacetime,
+\begin{equation}
+  E_{\text{ADM}} = M,
+\end{equation}
+which is why we called $M$ the mass in the first place.
+
+This gives us a satisfactory notion of energy for any asymptotically flat end.
+
+We can define a notion of energy, but also something analogous to the three-momentum:
+\begin{definition}[ADM $3$-momentum]
+  The \emph{ADM $3$-momentum} is 
+  \begin{equation}
+    P_i = \frac{1}{8 \pi} \lim_{r \to \infty} \int_{S_r^2}  \dd{A} (K_{ij} n_{j} - K n_{i}).
+  \end{equation}
+\end{definition}
+This gives a non-zero value if we have objects moving, i.e.~are not working in the object's rest frame.
+
+The energy of the Newtonian gravitational field is negative, so you might wonder whether the $E_{\text{ADM}}$ might be negative. Yes it can!
+In fact, taking $M <0$ Schwarzschild, we get $E_{\text{ADM}}< 0$ .
+However, we have already discussed how the spacetime is pathological; it has a naked singularity at $r  = 0$ and is not geodesically complete.
+Another way you can get negative $E_{\text{ADM}}$ is by considering negative-energy matter.
+
+The interesting case is if we have the dominant energy condition and the spacetime is non-singular. Can the $E_{\text{ADM}}$ be negative in that case?
+\begin{theorem}[Positive Energy Theorem (Shoen--Yau '79, Witten '81)]
+  Let $(\Sigma, h_{ab}, K_{ab})$ be geodesically complete, asymptotically flat initial data.
+  Assume dominant energy condition. 
+  Then
+  \begin{equation}
+    E_{\text{ADM}} \geq \sqrt{P_{i} P_{i}},
+  \end{equation}
+  with equality iff $(\Sigma, h_{ab}, K_{ab})$ is surface in Minkowski.
+\end{theorem}
+
+If we had a black hole, we might not want to assume what happens inside a black hole.
+There is another version of the theorem which has an inner boundary on $\Sigma$, corresponding to the black hole horizon.
+
+\begin{definition}[ADM mass]
+  Finally, we can regard $(E_{\text{ADM}}, P_i)$ as a $4$-vector at spatial infinity $i^0$.  We can then look at the norm of this.
+  The \emph{ADM} mass is
+  \begin{equation}
+    M_{\text{ADM}} = \sqrt{E_{\text{ADM}}^2 - P_{i} P_{i}} \geq 0.
+  \end{equation}
+\end{definition}
+
+\chapter{Black Hole Mechanics}%
+\label{cha:black_hole_mechanics}
+
+\section{Killing Horizons and Surface Gravity}%
+\label{sec:killing_horizons}
+
+\begin{definition}[Killing horizon]
+  A null hypersurface $\mathcal{N}$ is a \emph{Killing horizon} if there exists a Killing vector field $\xi^{a}$ in a neighbourhood of $\mathcal{N}$ such that $\xi^{a}$ is normal to $\mathcal{N}$.
+\end{definition}
+\begin{theorem}[Hawking '72]
+  In a stationary, analytic, asymptotically flat vacuum black hole spacetime, the event horizon $\mathcal{H}^+$ is a Killing horizon.
+\end{theorem}
+\begin{remark}
+  In fact, this is why Killing horizons are important.
+\end{remark}
+
+For the Kerr black hole, the event horizon $\mathcal{H}^+$ is a Killing horizon of $\xi^{a} = k^{a} + \Omega_H m^{a}$, not $k^{a}$.
+We can fix the freedom $\xi^{a} \to c \xi^{a}$ by $\xi^{a} = k^{a} + \Omega_H m^{a}$ with $k^2 \to -1$ at $\infty$.
+
+Looking at the normal of the Killing field $\xi$ on the hypersurface $\mathcal{N}$, we have
+\begin{equation}
+  \xi^{a} \xi_{a} \rvert_{\mathcal{N}} = 0,
+\end{equation}
+so $\mathcal{N}$ is a surface of constant $\xi^2$.
+This means that
+\begin{equation}
+  d (\xi^{a} \xi_{a}) \rvert_{\mathcal{N}} \perp \mathcal{N}.
+\end{equation}
+Thus, since $\xi^{a}$ is the normal to $\mathcal{N}$, we must have
+\begin{equation}
+  \nabla_a (\xi^{b} \xi_{b}) \rvert_{\mathcal{N}} = -2 \kappa \xi_{a}, \label{eq:17-star2}
+\end{equation}
+for some $\kappa \colon \mathcal{N} \to \mathbb{R}$ called the \emph{surface gravity} of $\mathcal{N}$.
+
+The left-hand side of \eqref{eq:17-star2} is
+\begin{equation}
+  2 \xi^{b} \nabla_a \xi_{b} \stackrel{\text{KVF}}{=} -2 \xi^{b} \nabla_b \xi_{a}.
+\end{equation}
+Therefore, we obtain the geodesic equation
+\begin{equation}
+  \xi^{b} \nabla_{b} \xi^{a} \rvert_{\mathcal{N}} = \kappa \xi^{a}.
+\end{equation}
+In other words, $\kappa$ measures the failure of $\xi$ to follow an affinely parametrised geodesic.
+
+Let $n^{a}$ be tangent to the affinely parametrised generators of $\mathcal{N}$ .
+Then $\xi^{a} \rvert_\mathcal{N} = f n^{a}$ for some $f \colon \mathcal{N} \to \mathbb{R}$.
+\begin{equation}
+  \therefore \xi^{b} \nabla_b \xi^{a} = f n^{b} \nabla_b (f n^{a}) = f^2 \cancel{n^{b} \nabla_{b} n^{a}} + f n^{a} n^{b} \nabla_b f = f^{-1} \xi^{a} \xi^{b} \partial_{b} f.
+\end{equation}
+From this we can read off
+\begin{equation}
+  \kappa = \xi \cdot \partial \log \abs{f},
+\end{equation}
+where $f$ might be negative, which is why we used the modulus here.
+
+\begin{example}[RN, ingoing EF]
+  The metric is
+  \begin{equation}
+    ds^2 = - \frac{\Delta}{r^2} d v^2 + d 2 v dr + r^2 d\Omega^2,
+  \end{equation}
+  with $\Delta = (r - r_+) (r - r_-)$ with $r_\pm = M \pm \sqrt{M^2 - e^2}$ and $k = \frac{\partial }{\partial v}$.
+  \begin{equation}
+    k_a \rvert_{r = r_{\pm}} = (d r)_a.
+  \end{equation}
+  Now $\Delta = 0$, therefore
+  \begin{equation}
+    k^{a} \perp r = r_{\pm},
+  \end{equation}
+  so this gives Killing horizons.
+  \begin{equation}
+    d (k^{b} k_{\beta}) = d \left( -\frac{\Delta}{r^2} \right) = \left( - \frac{\Delta'}{r^2} + \frac{2 \Delta}{r^3} \right) d r \stackrel{r = r_\pm}{=} -\frac{r_\pm - r_\mp}{r_\pm^2} d r = -\frac{(r_\pm - r_\mp)}{r_\pm^2} k \rvert_{r = r_\pm}
+  \end{equation}
+  Therefore, we have
+  \begin{equation}
+    \kappa = \kappa_{\pm} \equiv \frac{r_\pm - r_\mp}{2 r_\pm^2}
+  \end{equation}
+  which is why we called it $\kappa_{\pm}$ before; this is the surface gravity.
+\end{example}
+
+\begin{example}[Schw.]
+  This is obtained from $e = 0$, giving
+  \begin{equation}
+    \kappa = \frac{1}{4 M}.
+  \end{equation}
+\end{example}
+\begin{example}[extreme RN]
+  Here $r_+ = r_{-}$, so $\kappa = 0$.
+\end{example}
+
+\begin{exercise}[Kruskal]
+  Show that the horizons $\mathcal{H}^+ = \{U = 0\}$ and $\mathcal{H}^- = \{V = 0\}$ are Killing horizons of
+  \begin{equation}
+    k = \frac{1}{4 M} \left( V \frac{\partial }{\partial V} - U \frac{\partial }{\partial U} \right).
+  \end{equation}
+  Show further that the surface gravity is $\kappa = \pm \frac{1}{4M}$.
+\end{exercise}
+
+
+\subsection*{Bifurcate Killing Horizon}%
+
+Let $N^{\pm}$ be Killing horizons of the \emph{same} $\xi^{a}$.
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{bifurcate-killing-horizon}
+  \caption{Bifurcate Killing horizon}
+  \label{fig:bifurcate-killing-horizon}
+\end{figure}
+The bifurcation surface $B = \mathcal{N}^+ \cap \mathcal{N}^-$.
+On it, $\xi^{a}\rvert_B = 0$.
+
+\begin{equation}
+  X^{a} \parallel B \implies X^{a} \parallel \mathcal{N}^+ \text{ and } \mathcal{N}^- \implies X^{a} \text{ spacelike}.
+\end{equation}
+However, since it cannot be normal to both $\mathcal{N}^{\pm}$ at $B$, we have that $B$ is a spacelike surface.
+
+\begin{example}[Kruskal]
+  For the Kruskal spacetime, this is the 2-sphere $B = \{U = V = 0\}$.
+\end{example}

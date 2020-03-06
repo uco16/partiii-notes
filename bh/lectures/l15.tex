@@ -19,7 +19,7 @@ We have to relax our definition of stationarity slightly, since otherwise the Ke
   The spacetime is \emph{static} if it is stationary and $k^{a}$ is hypersurface orthogonal.
 \end{definition}
 
-We refer to our previous definition, Def.~\ref{def:stationary} ($k^{a}$ timelike everywhere), as ``strictly stationary'' (e.g.~Minkowski).
+We refer to our previous definition, Def.~\ref{def:stationary} ($k^{a}$ timelike everywhere), as ``strictly stationary'' (e.g. Minkowski).
 Kruskal is static but not strictly static ($k^{a}$ spacelike in II, III).
 
 In the case of a rotating black hole, we can no longer assume spherical symmetry. However, we can have axisymmetry.
@@ -58,11 +58,11 @@ The Einstein--Maxwell version of this theorem replaces the Kerr family with the 
 \label{sec:the_kerr_newman_solution}
 
 This is usually written down in the \emph{Beyer--Lindquist coordinates}
-\begin{equation}
-  ds^2 = -\frac{(\Delta - a^2 \sin^2 \theta)}{\Sigma} d t^2 - 2 a \sin^2 \theta \frac{(r^2+ a^2 - \Delta)}{\Sigma} dt d\phi
+\begin{multline}
+  ds^2 = -\frac{(\Delta - a^2 \sin^2 \theta)}{\Sigma} d t^2 - 2 a \sin^2 \theta \frac{(r^2+ a^2 - \Delta)}{\Sigma} dt d\phi \\
   + \left( \frac{(r^2 + a^2)^2 - \Delta a^2 \sin^2 \theta}{\Sigma} \right) \sin^2 \theta d\phi^2
   + \frac{\Sigma}{\Delta} dt^2 + \Sigma d\theta^2,
-\end{equation}
+\end{multline}
 \begin{equation}
   A = -\frac{Qr (dt - a \sin^2 \theta d\phi) + P \cos \theta (a dt - (r^2 + a^2) d\phi)}{\Sigma}
 \end{equation}
@@ -111,12 +111,10 @@ The Kerr metric in Kerr coordinates is
 You can check that this is smooth and Lorentzian when $\Delta$ vanishes at $r = r_+$. Hence, we can analytically continue this to $0 < r \leq r_+$.
 
 \begin{claim}
-  $r = r_+$ is a null hypersurface with normal $\xi^{a} = k^{a} + \Omega_H m^{a}$, where $\Omega_H = \frac{a}{r^2_+ + a^2}$.
+  The surface $r = r_+$ is a null hypersurface with normal $\xi^{a} = k^{a} + \Omega_H m^{a}$, where $\Omega_H = \frac{a}{r^2_+ + a^2}$.
 \end{claim}
 \begin{proof}
-  \begin{exercise}
-    Calculate $\xi_\mu$. Show that $\xi_\mu d x^{\mu} \rvert_{r = r_+} \propto dr$.
-  \end{exercise}
+  Exercise: Calculate $\xi_\mu$. Show that $\xi_\mu d x^{\mu} \rvert_{r = r_+} \propto dr$.
   From this exercise, we find that $\chi_a$ is normal to $r = r_+$.
   Moreover, it is null $\chi^{\mu} \chi_{\mu} \rvert_{r = r_+} = 0$ as $\xi^r = 0$.
   Hence, $r = r_+$ is a null hypersurface.
@@ -145,11 +143,11 @@ Both of these submanifolds are examples of \emph{totally geodesic} submanifolds.
 \begin{definition}[totally geodesic]
   Any geodesic that is initially tangent to a \emph{totally geodesic submanifold} remains tangent.
 \end{definition}
-\begin{figure}[tbhp]
+\begin{figure}[ptbh]
   \centering
-  \def\svgwidth{0.4\columnwidth}
+  \def\svgwidth{0.5\columnwidth}
   \input{lectures/l15f1.pdf_tex}
-  \caption{}
+  \caption{Penrose diagram of the maximally extended Kerr solution. The dotted lines denote the ``ring'' singularity at $r = 0$, $\theta = \pi / 2$. }
   \label{fig:l15f1}
 \end{figure}
 

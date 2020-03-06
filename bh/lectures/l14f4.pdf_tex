@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{362.35546669bp}%
+    \setlength{\unitlength}{357.85546237bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,34 +50,39 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.36770732)%
+  \begin{picture}(1,1.67941061)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l14f4.pdf}}%
-    \put(0.61113798,1.01459434){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I'\end{tabular}}}}%
-    \put(0.46625267,1.18017776){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II'\end{tabular}}}}%
-    \put(0.30066943,1.01459434){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV'\end{tabular}}}}%
-    \put(0.46625267,0.82831317){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III'\end{tabular}}}}%
+    \put(0.60624807,1.17503513){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I'\end{tabular}}}}%
+    \put(0.45954084,1.34270093){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II'\end{tabular}}}}%
+    \put(0.2918754,1.17503513){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV'\end{tabular}}}}%
+    \put(0.45954084,0.98641119){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III'\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l14f4.pdf}}%
-    \put(0.61113798,0.35226125){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
-    \put(0.46625261,0.51784467){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
-    \put(0.30066943,0.35226125){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
-    \put(0.46625261,0.1659802){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
-    \put(0.65253384,0.14528221){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
-    \put(0.85951299,0.35226137){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^0$\end{tabular}}}}%
-    \put(0.07299246,0.35226137){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^0{}'$\end{tabular}}}}%
-    \put(0.2385757,0.12458446){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
-    \put(0.67323182,0.53854254){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+$\end{tabular}}}}%
-    \put(0.25927363,0.53854254){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+{}'$\end{tabular}}}}%
-    \put(0.56974225,0.3936571){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}%
-    \put(0.56974225,0.29016765){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}%
-    \put(0.52834639,0.55924041){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}%
-    \put(0.38346108,0.55924041){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}%
-    \put(0.67634038,0.68380899){\color[rgb]{0,0.50196078,0}\rotatebox{-90}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = 0$\end{tabular}}}}}%
+    \put(0.60624807,0.50437284){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
+    \put(0.45954078,0.67203846){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
+    \put(0.2918754,0.50437284){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
+    \put(0.45954078,0.31574956){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
+    \put(0.6649308,0.29898276){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
+    \put(0.84517164,0.4959898){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^0$\end{tabular}}}}%
+    \put(0.07391034,0.4959898){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^0{}'$\end{tabular}}}}%
+    \put(0.24625004,0.2910821){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-{}'$\end{tabular}}}}%
+    \put(0.66912274,0.6929966){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+$\end{tabular}}}}%
+    \put(0.24995905,0.6929966){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+{}'$\end{tabular}}}}%
+    \put(0.57054091,0.56144278){\color[rgb]{0,0,0}\rotatebox{45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}}%
+    \put(0.55811782,0.43149069){\color[rgb]{0,0,0}\rotatebox{-45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}}%
+    \put(0.51620149,0.72909675){\color[rgb]{0,0,0}\rotatebox{-45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}}%
+    \put(0.39449212,0.72491671){\color[rgb]{0,0,0}\rotatebox{45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}}%
+    \put(0.67227038,0.84008977){\color[rgb]{0,0.50196078,0}\rotatebox{-90}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = 0$\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l14f4.pdf}}%
-    \put(0.75602341,0.22807404){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathscr{I}^-$\end{tabular}}}}%
+    \put(0.75295543,0.37862399){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathscr{I}^-$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{l14f4.pdf}}%
-    \put(0.88021086,0.53854266){\color[rgb]{0.50196078,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}radial null geo.\end{tabular}}}}%
+    \put(0.87870452,0.69299672){\color[rgb]{0.50196078,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}radial null geo.\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{l14f4.pdf}}%
+    \put(0.73199729,0.60916403){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\mathscr{I}^+$\end{tabular}}}}%
+    \put(0.54337353,0.83970383){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}VI\end{tabular}}}}%
+    \put(0.37570815,0.83970383){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}V\end{tabular}}}}%
+    \put(0.54337353,1.51036568){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}VI'\end{tabular}}}}%
+    \put(0.36732487,1.50617404){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}V'\end{tabular}}}}%
   \end{picture}%
 \endgroup%

@@ -1,0 +1,179 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 20: March 04}
+
+\chapter{Scattering Amplitudes (S-matrix)}%
+\label{cha:scattering_amplitudes_s_matrix_}
+
+\begin{figure}[ht]
+    \centering
+    \inkfig[1]{propagator}
+    \caption{Propagator}
+    \label{fig:propagator}
+\end{figure}
+
+As $\tau_1 \to -\infty$ and $\tau_2 \to \infty$, our picture Fig.~\ref{fig:propagator} turns into Fig.~\ref{fig:l20f2}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[1]{l20f2}
+    \caption{}
+    \label{fig:l20f2}
+\end{figure}
+
+Interactions are depicted in Fig.~\ref{fig:l20f3}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.9]{l20f3}
+    \caption{l20f3}
+    \label{fig:l20f3}
+\end{figure}
+Let $w_2 = e^{\tau + i \sigma}$ be local coordinates on the free bits on the right-hand side. Then we have on the right a coordinate $z$, which compasses all of the punctures such that $z(w_2 = 0) = z_2$.
+
+More generally, we can have any worldsheet topology, such as the one illustrated in Fig.~\ref{fig:l20f4}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.8]{l20f4}
+    \caption{l20f4}
+    \label{fig:l20f4}
+\end{figure}
+We use the state-operator correspondence to associate to each asymptotic state an operator at the given puncture.
+For example on the cylinder, 
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.4]{l20f5}
+    \caption{}
+    \label{fig:l20f5}
+\end{figure}
+\begin{equation}
+  \lim_{t \to 0}  \phi(z, \overline{z}{}) \ket{0} = \ket{\phi}.
+\end{equation}
+
+\section{The Dilaton and the String Coupling}%
+\label{sec:the_dilaton_and_the_string_coupling}
+
+The massless spectrum of the string includes the dilaton $\phi$, the graviton $g_{\mu\nu}$ and the (Kalb--Ramond) $B$-field $B_{\mu\nu}$.
+
+What is a sensible starting point?
+We might try to add a curved metric to the Polyakov action and a similar background for the $B$-field and the dilaton:
+\begin{align}
+  S &= -\frac{1}{4 \pi \alpha'} \int_\Sigma \dd[2]{\sigma} \sqrt{-h} h^{ab} \partial_{a} X^{\mu} \partial_{b} X^{\nu} g_{\mu\nu}(X) \\
+    & -\frac{1}{4 \pi \alpha'} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} \epsilon^{ab} \partial_{a} X^{\mu} \partial_{b} X^{\nu} B_{\mu\nu}(X) \\
+    &+ \frac{1}{4 \pi} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} R_{\Sigma}(h) \Phi(X).
+\end{align}
+The first two terms are Weyl-invariant. However, the worldsheet Ricci scalar $R_{\Sigma}(h)$ does transform under Weyl transformations. However, these are cancelled out.
+
+There are no dynamics here; recall that the Einstein--Hilbert like term just gives the Euler characteristic $\chi = 2 g -2$ of the space, where $g$ is the genus.
+If $\Phi(X)$ is a constant (i.e.~$\Phi_0 = \langle \Phi(X) \rangle$), then the dilaton term is a topological invariant
+\begin{equation}
+  \frac{1}{4 \pi} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} R_{\Sigma}(h) \Phi_0 = \Phi_0 \chi = \Phi_0 (2 g - 2).
+\end{equation}
+These were previously not interesting.
+However, for the scattering amplitudes, topological invariants give you some notion of loop order and are useful to keep track of.
+The dilaton contribution to the path integral is therefore
+\begin{equation}
+  e^{\Phi_0 (2 g - 2)}.
+\end{equation}
+We see that $g_c \coloneqq e^{\Phi_0}$ acts in the same way as a (spacetime) coupling constant. We add a factor of $g_c$ each time we add another loop into the worldsheet.
+The $c$ index refers to \emph{closed}, since we are doing closed string theory.
+Most of our understanding of string theory comes from perturbation theory. There might be situations where $\Phi_0$ becomes large and we cannot say very much using perturbation theory.
+We are in a bizarre situation where we have the Feynman rules for our theory but have no deep understanding of where they are coming from. They are probably not coming from the same place as the QFT pendant.
+
+From now on we will take $B_{\mu\nu}(X) = 0$, $g_{\mu\nu}(X) = \eta_{\mu\nu}$ and $\Phi(X) = \Phi_0$.
+
+\section{Tree Level}%
+\label{sec:tree_level}
+
+We shall focus on tree level amplitudes, which have $g = 0$.
+\subsection{Vertex Operators}%
+\label{sub:vertex_operators}
+
+We know that physical states are in the BRST cohomology:
+\begin{equation}
+  \mathcal{Q}_B \ket{\phi} = 0, \qquad \text{but} \quad \ket{\phi} \neq \mathcal{Q}_B \ket{\Lambda}.
+\end{equation}
+The requirement that an operator $\phi(z, \overline{z}{})$ gives a physical state (under the state operator correspondence) is that the operator is in the BRST cohomology:
+\begin{equation}
+  [\mathcal{Q}_B, \phi(z, \overline{z}{})] = 0, \qquad \text{and} \quad \phi(z, \overline{z}{}) \neq \{\mathcal{Q}_B, \Lambda(z, \overline{z}{})\}.
+\end{equation}
+Here we are assuming that $\phi(z, \overline{z}{})$ is bosonic. Since $\mathcal{Q}_B$ is fermionic the left-hand side uses the commutator, while the right-hand side uses the anti-commutator.
+
+\begin{claim}
+  If we can find an operator $\phi(z, \overline{z}{})$ such that, if we split our BRST operator into chiral and anti-chiral pieces
+  \begin{equation}
+    \mathcal{Q}_B = Q_B + \overline{Q}{}_B,
+  \end{equation}
+  we have commutators
+  \begin{equation}
+    \label{eq:20-star}
+    [Q_B, \phi(z, \overline{z}{})] = \partial(c \phi) \qquad \text{and} \qquad [\overline{Q}{}_B, \phi(z, \overline{z}{})] = \overline{\partial}{} (\overline{c}{}\phi),
+  \end{equation}
+  then we can easily write down a pair of BRST-invariant operators.
+\end{claim}
+\begin{proof}
+  The operators
+  \begin{equation}
+    V_{\phi} = \int_{\Sigma} \dd[2]{z} \phi(z, \overline{z}{}),
+    \qquad
+    U_{\phi}(z, \overline{z}{}) = c(z) \overline{c}{}(\overline{z}{}) \phi(z, \overline{z}{})
+  \end{equation}
+  are BRST invariant.
+  We have for example
+  \begin{align}
+    [Q_B, U_{\phi}] &= (c \partial c) \overline{c}{} \phi + c \overline{c}{} \partial(c \phi) \\
+		    &= (c \partial c) \overline{c}{} \phi + c \overline{c}{} (\partial c) \phi + c \overline{c}{} c \partial \phi = 0.
+  \end{align}
+\end{proof}
+\begin{remark}
+  Note that one of them is local and the other non-local.
+  You cannot construct local diffeomorphism invariant operators, but you can construct operators like $V_\phi$, which are trivially diffeomorphism invariant.
+  In the case of $U_\phi(z, \overline{z}{})$, we use the ghost fields.
+\end{remark}
+
+Let us assume that $\phi(z, \overline{z}{})$ is a primary field of weight $(h, \overline{h})$. 
+Let us further assume that $\phi$ does not depend on ghosts.
+This means that under a conformal transformation with vector field $v(z)$
+\begin{equation}
+  \delta_v \phi = h (\partial v) \phi + v \partial \phi.
+\end{equation}
+The BRST transformation is then given by replacing $v(z)$ with $c(z)$:
+\begin{align}
+  [Q_B, \phi] &= h (\partial c) \phi + c \partial \phi. \\
+	      &= (h - 1) \partial c \phi + \partial (c \phi).
+\end{align}
+Thus $\phi(z, \overline{z}{})$ transforms as in \eqref{eq:20-star} if $(h, \overline{h}{}) = (1, 1)$.
+\begin{remark}
+  It requires a little bit more thought to show that these are not also BRST-exact.
+\end{remark}
+
+One might ask whether $U_\phi(z, \overline{z}{})$ and $V_\phi$ are two different observables or two different representations of the same observable?
+We will find that they describe the same observable, but we need both kinds to find the scattering amplitudes.
+
+\subsection{The Tachyon}%
+\label{sub:the_tachyon2}
+
+In position space, if we wanted to calculate the scattering amplitude Fig.~\ref{fig:tachyon-scattering}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.6]{tachyon-scattering}
+    \caption{tachyon-scattering}
+    \label{fig:tachyon-scattering}
+\end{figure}
+
+Fourier transform to momentum space:
+\begin{equation}
+  \int \dd[D]{x} \delta[x^{\mu} - X^{\mu}(z, \overline{z}{})] e^{i k \cdot x} = e^{i k_{\mu} X^{\mu}(z, \overline{z}{})}.
+\end{equation}
+We compute the weight of $e^{i k \cdot X(z, \overline{z}{})}$
+\begin{equation}
+  (h, \overline{h}{}) = \left( \frac{\alpha' k^2}{4}, \frac{\alpha' k^2}{4} \right).
+\end{equation}
+So $e^{i k \cdot X(z, \overline{z}{})}$ has weight $(1, 1)$ if 
+\begin{equation}
+  \boxed{\frac{\alpha' k^2}{4} = 1}.
+\end{equation}
+This is the Tachyon mass condition.
+This suggests two vertex operators for the Tachyon
+\begin{equation}
+  V_T = \frac{2 g_c}{\alpha'} \int \dd[2]{z} e^{i k \cdot X(z, \overline{z}{})}, \qquad U_T(z, \overline{z}{}) = \frac{2 g_c}{\alpha'} c(z) \overline{c}{}(\overline{z}{}) e^{i k \cdot X(z, \overline{z}{})},
+\end{equation}
+where the normalisation constants are convention.

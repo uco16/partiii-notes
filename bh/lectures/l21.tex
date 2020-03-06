@@ -1,0 +1,259 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 21: March 04}
+
+\section{Rindler Spacetime}%
+\label{sec:rindler_spacetime}
+
+We think of \emph{Rindler spacetime} as a toy model for the black hole horizon.
+Consider Schwarzschild at
+\begin{equation}
+  r = 2 M + \frac{x^2}{8 M}.
+\end{equation}
+Expanding in small $x$, the metric is
+\begin{equation}
+  ds^2 \approx -k^2 x^2 dt^2 + dx^2 + (2M)^2 d\Omega^2 + \dots, \qquad k = \frac{1}{4 M}.
+\end{equation}
+Rindler spacetime is
+\begin{equation}
+  ds^2 = -k^2 x^2 dt^2 + dx^2, \qquad x > 0.
+\end{equation}
+We have a coordinate singularity at $x = 0$.
+Let $U = -x e^{-kt}$, $V = xe^{kt}$. This gives metric
+\begin{equation}
+  ds^2 = - dU dV = - dT^2 + dX^2,
+\end{equation}
+with $U = T - X$ and $V = T + X$.
+So we see that Rindler space is the subspace of Minkowski with $x > 0$.
+\begin{wrapfigure}{L}{0.35\textwidth}
+  \centering
+  \inkfig[0.3]{l21f1}
+  \caption{Rindler spacetime is the shaded subset of Minkowski spacetime.}
+  \label{fig:l21f1}
+\end{wrapfigure}
+In the Penrose diagram \ref{fig:l21f1}, it occupies region I.
+
+We know that there is an isometry which brings us into IV, which is therefore also Rindler.
+We call region I the \emph{right Rindler region R} and region IV the \emph{left Rindler region L}.
+
+The lines $U = 0$ and $V = 0$ correspond to a bifurcate killing horizon of 
+\begin{equation}
+  k = \frac{\partial }{\partial t} = \kappa (V \frac{\partial }{\partial V} - U \frac{\partial }{\partial U})
+\end{equation}
+with surface gravity $\pm \kappa$.
+
+An orbit of $k$ in Rindler space, drawn in Fig.~\ref{fig:l21f1},  is a line of constant $x$ with proper acceleration $A_{a} = \frac{1}{x} (dx)_a$. Therefore $\abs{A} = \frac{1}{x}$.
+Such a \emph{Rindler observer} would use $k$ to define \emph{positive frequency}.
+Then $S_p$ is the usual Minkowski definition using $\frac{\partial }{\partial T}$.
+
+Consider a massless scalar satisfying the wave-equation
+\begin{equation}
+  (- \partial^2_T + \partial_X^2) \phi = 0 \implies \phi = f(U) + g(V),
+\end{equation}
+where $f(U)$ corresponds to right-moving and $g(V)$ to left-moving waves.
+The usual positive frequency solutions are 
+\begin{equation}
+  u_P (T, X) = c_p e^{-i (\omega T - p X)} = 
+  \begin{cases}
+    c_p e^{-i \omega U}, & \text{if } p > 0 \quad \text{(R movers)} \\
+  c_p e^{-i \omega V}, & \text{if }  p < 0 \quad \text{(L movers)}
+  \end{cases}, \qquad \omega = \abs{p}.
+\end{equation}
+
+Solution with \emph{Rindler frequency} $\sigma$ is
+\begin{equation}
+  \phi \propto e^{-i \sigma t}.
+\end{equation}
+\begin{equation}
+  0 = \nabla^{a} \nabla_{a} \phi = \frac{1}{\sqrt{-g}} \partial_{\mu} (\sqrt{-g} g^{\mu\nu} \partial_{\nu} \phi) = \frac{1}{x^2} [x \partial_x (x \partial_x \phi) + \frac{\sigma^2}{k^2} \phi]
+\end{equation}
+\begin{equation}
+  \implies \phi = e^{-i \sigma t} x^{ip}, \qquad P = \pm \frac{\sigma}{k}
+\end{equation}
+If $\sigma > 0$, then $p> 0$ implies that $x$ increases with $t$ along liens of constant phase (R movers).
+Conversely, $p< 0$ gives L-movers.
+We can write down a basis of positive Rinder-frequency solutions in the right region R
+\begin{equation}
+  u_p^R = C_p e^{-i (\sigma t - P \ln x)}, \qquad \sigma = k \abs{P}.
+\end{equation}
+
+We want to find out the relation between these two definitions of positive frequency.
+Let us extend to all of Minkowski by defining $u_p^R = 0$ in L.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.8]{l20f2}
+    \caption{l20f2}
+    \label{fig:l20f2}
+\end{figure}
+\begin{equation}
+  \label{eq:21-u}
+  u_p^R = 
+  \begin{cases}
+    \begin{cases}
+      c_p e^{i \frac{\sigma}{k} \ln (-U)}, & \text{if } U < 0 \\
+      0, & \text{if } U > 0 
+    \end{cases}
+    , & \text{if } P >0 \\
+    \begin{cases}
+      0, & \text{if } V < 0 \\
+      c_p e^{-i \frac{\sigma}{k} \ln V}, & \text{if } V > 0 
+    \end{cases}
+    , & \text{if }  P < 0
+  \end{cases}
+\end{equation}
+
+Plane waves are non-normalisable but are convenient to work with.
+We can make it rigorous by working with wave-packets instead. However, for convenience we will work with plane waves and assume they are normalisable (even though they are not) with the justification that we could make it rigorous by working with wave-packets.
+
+Since $u_p^R = 0$ in region L, $\{u_p^R, \overline{u}{}_p^R\}$ is not a basis for Minkowski solutions.
+The isometry $(U, V) \to (-U, -V)$ gives solutions vanishing in R. Applying this map to \eqref{eq:21-u} gives
+\begin{equation}
+  \overline{u}{}_p^L = 
+  \begin{cases}
+    \begin{cases}
+      c_p e^{i \frac{\sigma}{k} \ln (U)}, & \text{if } U > 0 \\
+      0, & \text{if } U < 0 
+    \end{cases}
+    , & \text{if } P >0 \\
+    \begin{cases}
+      0, & \text{if } V > 0 \\
+      c_p e^{-i \frac{\sigma}{k} \ln (-V)}, & \text{if } V < 0 
+    \end{cases}
+    , & \text{if }  P < 0
+  \end{cases}
+\end{equation}
+
+Figure \ref{fig:l20f2} changes to Fig.~\ref{fig:l20f3}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \input{lectures/l20f3.pdf_tex}
+  \caption{}
+  \label{fig:l20f3}
+\end{figure}
+Then $ \{u_p^R, \overline{u}{}_p^R, u_p^L, \overline{u}{}_p^L\} $ gives a basis for solutions in Minkowski.
+Let
+\begin{equation}
+  f(U) = \int_{-\infty}^{\infty} \frac{d\omega}{2\pi} e^{-i \omega U} \hat{f}(\omega), \qquad 
+  \widetilde{f}(U) = \int_{-\infty}^{\infty} \dd[]{U} e^{i \omega U} f(\omega).
+\end{equation}
+Assume $f(U)$ analytic in lower half plane. 
+\begin{equation}
+  \text{max}_{\theta \in [-\pi, 0]} \abs{f(R e^{i \theta})} \to 0 \text{ as } R \to \infty.
+\end{equation}
+Take $\omega < 0$. Then Jordan's lemma tells us that $\widetilde{f}(\omega) = 0$.
+Such $f(U)$ is positive frequency ($f \in S_p$) with respect to $\partial / \partial T$.
+\begin{figure}[tbph]
+  \centering
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \inkfig[0.6]{l20f4}
+    \caption{}
+    \label{fig:l20f4}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \inkfig[0.5]{branch-cut}
+    \caption{Branch cut}
+    \label{fig:branch-cut}
+  \end{minipage}
+\end{figure}
+Define the complex logarithm as
+\begin{equation}
+  \ln z = \ln \abs{z} + i \arg z, \qquad \arg z \in \left( -\frac{\pi}{2}, \frac{3\pi}{2} \right).
+\end{equation}
+This has a branch cut, as shown in Fig.~\ref{fig:branch-cut}.
+
+For $P> 0, U > 0$,
+\begin{equation}
+  \overline{u}{}_p^L = C_p e^{i \frac{\sigma}{\kappa} \ln (U)} = C_p e^{i \frac{\sigma}{\kappa} (\ln (-U) -i \pi)} = C_p e^{\sigma \frac{\pi}{\kappa}} e^{i \frac{\sigma}{\kappa}\ln (-U)}.
+\end{equation}
+Since $P > 0$,
+\begin{equation}
+  u_p^R + e^{- \frac{\sigma \pi}{\kappa}} \overline{u}{}_p^L = C_p e^{i \frac{\sigma}{\kappa} \ln (-U)} \qquad \forall U \quad (P> 0)
+\end{equation}
+analytic in lower half plane and therefore in $S_p$.
+
+For $P< 0$, 
+\begin{equation}
+  u_p^R + e^{-\frac{\pi \sigma}{\kappa}} \overline{u}{}_p^L = C_p e^{- \frac{\sigma \pi}{\kappa}} e^{- \frac{i \sigma}{\kappa} \ln (-V)}
+\end{equation}
+analytic in lower half plane $\implies$ in $S_p$.
+
+Similarly
+\begin{equation}
+  u_p^L + e^{-\frac{\pi \sigma}{\kappa}} \overline{u}{}_p^R = 
+  \begin{cases}
+    C_p e^{- \frac{\sigma \pi}{\kappa}} e^{-i \frac{\sigma}{\kappa} \ln (-U)}, & \text{if } P > 0 \\
+    C_p e^{i \frac{\sigma}{\kappa} \ln (-V)}, & \text{if } P < 0
+  \end{cases}
+\end{equation}
+is analytic in lower half $U, V$-planes $\implies$ in $S_p$.
+
+Therefore,
+\begin{equation}
+  \label{eq:21-v}
+  v_p^{(1)} = D_p^{(1)} \left( u_p^R + e^{- \frac{\sigma \pi}{\kappa}} \overline{u}{}_p^L \right) \qquad
+  v_p^{(2)} = D_p^{(2)} \left( u_p^L + e^{- \frac{\sigma \pi}{\kappa}} \overline{u}{}_p^R \right) \qquad
+\end{equation}
+are in $S_p$.
+The set $\{v_p^{(1)}, v_p^{(2)}, \forall p\}$ is a basis for $S_p$. Thus, the vacuum state $\ket{0}$ is defined by $a_p^{(i)} \ket{0} = 0$, where $a_p^{(i)}$ is the annihilation operator of $v_p^{(i)}$.
+This is the usual Minkowski vacuum.
+\begin{align}
+  (u_p^R, \overline{u}{}_p^L) = 0 \implies (v_p^{(1)}, v_p^{(1)}) &= \abs{D_p^{(1)}}^2 \left[ (u_p^R, u_p^R) + e^{- 2 \pi \sigma / \kappa} (\overline{u}{}_p^L, \overline{u}{}_p^L) \right] \\
+								  &= 2 \abs{D_p^{(1)}}^2 e^{- \pi \sigma / \kappa} \sinh(\frac{\pi \sigma}{\kappa}) (u_p^R, r_p^R).
+\end{align}
+A similar expression holds for $v_P^{(2)}$.
+Choose the constant
+\begin{equation}
+  D_P^{(i)} = \frac{e^{\pi \sigma / 2 \kappa}}{\sqrt{2 \sinh (\pi \sigma / \kappa)}}
+\end{equation}
+This means that $v_p^{(i)}$ is normalised in the same way as $u_P^R$.
+
+\begin{exercise}
+  Invert \eqref{eq:21-v} to show that
+  \begin{equation}
+    u_p^R = \frac{1}{\sqrt{2 \sinh (\pi \sigma / \kappa)}} \left( e^{\pi \sigma / \kappa} v_P^{(1)} - e^{- \pi \sigma / \kappa} \overline{v_P^{(2)}}{} \right).
+  \end{equation}
+\end{exercise}
+We can therefore relate the \emph{Rindler annihilation operator} $b_P^R$ to the usual Minkowski annihilation operators $a_P^{(i)}$ as
+\begin{align}
+  b_P^R \coloneqq (u_P^R, \phi) &= \frac{1}{\sqrt{2 \sinh (\pi \sigma / \kappa)}} \left[ e^{\pi \sigma / \kappa} (v_P^{(1)}, \phi) - e^{- \pi \sigma / \kappa} (\overline{v_P^{(2)}}{}, \phi) \right] \\
+				&= \frac{1}{\sqrt{2 \sinh(\pi \sigma / \kappa)}} \left[ e^{\pi \sigma / \kappa} a_P^{(1)} + e^{- \pi \sigma / \kappa} a_P^{(2)} \right].
+\end{align}
+
+Finally, we want to find the Rindler number operator $N_P^R$
+\begin{equation}
+  \bra{0} N_P^R \ket{0} = \frac{e^{- \pi \sigma / \kappa}}{2 \sinh (\pi \sigma / \kappa)} {\bra{0} a_P^{(2)} a_{P}^{(2)}{}^{\dagger}} \ket{0}
+\end{equation}
+Now we use
+\begin{equation}
+  \bra{0} a_P^{(2)} a_{P}^{(2)}{}^{\dagger} \ket{0} = \bra{0} [a_P^{(2)}, a_{P}^{(2)}{}^{\dagger} ] \ket{0} = (v_P^{(2)}, v_P^{(2)}) = (u_P^R, u_P^R),
+\end{equation}
+\begin{equation}
+  \bra{0} N_P^R \ket{0} = \frac{e^{-\pi \sigma / \kappa}}{2 \sinh (\pi \sigma / \kappa)} (u_P^R, u_P^R) = \frac{1}{e^{2 \pi \sigma / \kappa} - 1} (u_P^R, u_P^R).
+\end{equation}
+Now we treat $u_P^R$ as if normalised (justification via wavepackets). Then
+\begin{equation}
+  \bra{0} N_P^R \ket{0} = \frac{1}{e^{2 \pi \sigma / \kappa} - 1}.
+\end{equation}
+A Rindler observer at fixed $x$ with
+\begin{equation}
+  U^{a} = \frac{1}{\kappa x} \left( \frac{\partial }{\partial t} \right)^{a} = \frac{A}{\kappa} \left( \frac{\partial }{\partial t} \right)^{a}, \qquad A = \frac{1}{x},
+\end{equation}
+measures frequency of R-modes as 
+\begin{equation}
+  \hat{\sigma} = \frac{A_{\sigma}}{\kappa}.
+\end{equation}
+\begin{equation}
+  \bra{0} N_P^R \ket{0} = \frac{1}{e^{2 \pi \hat{\sigma} / A} - 1}.
+\end{equation}
+This is the Planck spectrum of thermal radiation at the \emph{Unruh temperature}
+\begin{equation}
+  T_U = \frac{A}{2 \pi},
+\end{equation}
+where we set $k_B = 1$.
+A uniformly accelerated observer perceives the Minkowski vacuum as thermal at temperature $T_U$, which is
+\begin{equation}
+  T_U \approx \left( \frac{A}{10^{19} \text{ms}^{-2}} \right) \text{K}.
+\end{equation}

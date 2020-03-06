@@ -1,0 +1,218 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 18: February 26}
+
+\section{Interpretation of \texorpdfstring{Surface Gravity $\kappa$}{Surface Gravity}}%
+\label{sec:interpretation_of_surface_gravity}
+
+The main reason why $\kappa$ is important is its relation to temperature and Hawking radiation, which we will meet in a later chapter.
+However, $\kappa$ is also of classical interest.
+Consider a static, asymp.~flat black hole spacetime. Assume there is a unit mass particle on orbit of $k^{a}$, with $u^{a} \parallel k^{a}$.
+\begin{figure}[tbph]
+    \centering
+    \inkfig[0.5]{l18f1}
+    \caption{}
+    \label{fig:l18f1}
+\end{figure}
+Illustrated in Fig.~\ref{fig:l18f1}, the force $F$ to hold a particle at this orbit tends to $\kappa$ at infinity.
+Take four-velocity $k^{a} / \sqrt{-k^2}$. Then the proper acceleration is
+\begin{equation}
+  A^{a} = u \cdot \nabla u^{a} = \frac{k \cdot \nabla k^{a}}{-k^2} + \frac{k^{a}}{2 (-k^2)^2} k \cdot \nabla (k^2).
+\end{equation}
+We now evaluate these terms using that $k^{a}$ is a Killing vector field. The first term is
+\begin{equation}
+  k^{b} \nabla_{b} k_{a} = - k^{b} \nabla_{a} k_{b} = - \nabla_{a} (\frac{1}{2} k^2).
+\end{equation}
+The second term vanishes due to symmetry:
+\begin{equation}
+  k \cdot \nabla (k^2) = 2 k^{a} k^{b} \nabla_{a} k_{b} = 0.
+\end{equation}
+Therefore, we can write the $4$-acceleration of this particle as the logarithmic derivative
+\begin{equation}
+  A_{a} = \frac{\partial_{a} (-k^2)}{2 (-k^2)} = \frac{1}{2} \partial_{a} \ln (-k^2).
+\end{equation}
+Thus, since $k^2 \to 0 $ at the horizon, we have $A_{a} \to \infty$.
+\begin{example}[Schw]
+  We have the one-form
+  \begin{equation}
+    A = \frac{1}{2} d \ln (1 - \frac{2M}{r}) = \frac{M}{r^2 \left( 1 - \frac{2M}{r} \right)} \dd[]{r}.
+  \end{equation}
+  The norm of this one-form is
+  \begin{equation}
+    \abs{A} = \sqrt{g^{ab} A_{a} A_{b}} = \sqrt{\frac{M^2}{r^4 (1 - \frac{2M}{r})}} = \frac{M}{r^2 \sqrt{1 - \frac{2M}{r}}},
+  \end{equation}
+  which indeed diverges $\abs{A} \to \infty$ as $r \to 2M$.
+  Therefore, the force needed will also diverge, so that in practice the string breaks.
+\end{example}
+
+\section{The \texorpdfstring{Zero\textsuperscript{th}}{Zeroth} Law of Black Hole Mechanics}%
+\label{sec:the_zeroth_law_of_black_hole_mechanics}
+
+The laws are named in analogy to the laws of thermodynamics.
+
+\begin{claim}
+  Consider a null geodesic congruence containing generators of Killing horizon $\mathcal{N}$.
+  Then the expansion, rotation, and shear vanish $\theta = \hat{\sigma} = \hat{\omega} = 0$ on $\mathcal{N}$.
+\end{claim}
+\begin{proof}
+  Let $U^{a}$ be tangent to affinely parametrised generators of $\mathcal{N}$.
+  Since $U \perp \mathcal{N}$, the rotation $\hat{\omega}\rvert_{\mathcal{N}} = 0$.
+  Moreover, there must be some $\xi \perp \mathcal{N}$ with $\xi^{a} \rvert_\mathcal{N} = h U^{a}$.
+  Take some $h \colon \mathcal{N} \to \mathbb{R}$. Let $\mathcal{N}$ have equation $f = 0$.
+  \begin{equation}
+    U^{a} = h^{-1} \xi^{a} + f V^{a},
+  \end{equation}
+  in other words, $U$ and $\xi$ are proportional on $\mathcal{N}$, but not when we move off $\mathcal{N}$.
+  Now 
+  \begin{equation}
+    B_{ab} = \nabla_{b} U_{a} = \partial_{b} h^{-1} \xi_{a} + h^{-1} \nabla_{b} \xi_{a} + \partial_{b} f V_{a} + f \nabla_{b} V_{a}.
+  \end{equation}
+  To calculate the shear and expansion, we need to symmetrise and evaluate on $\mathcal{N}$:
+  \begin{equation}
+    \left. B_{(ab)} \right\rvert_\mathcal{N} = \left[ \xi_{(a} \partial_{b)} h^{-1} + V_{(a} \partial_{b)} f \right],
+  \end{equation}
+  with $\xi_{a} , \partial_{a} f \parallel U_{a}$ on $\mathcal{N}$.
+  Therefore, 
+  \begin{equation}
+    \hat{B}_{(ab)} \rvert_\mathcal{N} = P\indices{_{a}^{c}} B_{(cd)} P\indices{^{d}_{a}} \rvert_\mathcal{N} = 0, \qquad (P u = 0).
+  \end{equation}
+  Thus, $\theta = \hat{\sigma}_{ab} = 0$ on $\mathcal{N}$.
+\end{proof}
+
+\begin{theorem}[Zero\textsuperscript{th} law]
+  $\kappa$ is constant on $\mathcal{H}^+$ of a stationary black hole, assuming the DEC.
+\end{theorem}
+\begin{proof}
+  The event horizon $\mathcal{N} = \mathcal{H}^+$ is a Killing horizon (Hawking) of some Killing vector field $\xi^{a}$.
+  Let us use the Raychandhuri equation for the generators of $\mathcal{H}^+$:
+  \begin{equation}
+    \dv{\theta}{\lambda} = -\frac{1}{2} \theta^2 - \hat{\sigma}^2 + \hat{\omega}^2 - R_{ab} U^{a} U^{b}.
+  \end{equation}
+  All terms except the last vanish
+  \begin{equation}
+    R_{ab} U^{a} U^{b} \rvert_{\mathcal{H}^+} = 0.
+  \end{equation}
+  Which means that
+  \begin{equation}
+    \therefore 0 = R_{ab} \xi^{a} \xi^{b} \rvert_{\mathcal{H}^+} = 8 \pi (T_{ab} - \frac{1}{2} T\indices{^{c}_{c}} g_{ab}) \xi^{a} \xi^{b} \rvert_{\mathcal{N}} = 8 \pi T_{ab} \xi^{a} \xi^{b} \rvert_\mathcal{N}.
+  \end{equation}
+  And therefore $J \cdot \xi\rvert_\mathcal{N} = 0$, where $J^{a} = -T_{ab} \xi^{b}$. Now the DEC means that $J^{a}$ is future-directed causal (or zero).
+  Now if $\xi$ is future-directed causal, then $J \cdot \xi \rvert_\mathcal{N} = 0$ implies that 
+  \begin{equation}
+    J\rvert_\mathcal{N} \parallel \xi.
+  \end{equation}
+  Using the Einstein equations, we can write the following in terms of the Ricci tensor
+  \begin{align}
+    0 &= \xi_{[a} J_{b]} \rvert_\mathcal{N} = - \xi_{[a} J_{b]} \xi^{c} \rvert_\mathcal{N} \\
+      &= -\frac{1}{8 \pi} \xi_{[a} R_{b] c} \xi^{c} \rvert_\mathcal{N}.
+  \end{align}
+  \begin{exercise}[Sheet 4]
+    \begin{equation}
+      \implies \xi_{[a} \partial_{b]} \kappa \rvert_{\mathcal{H}^+} = 0.
+    \end{equation}
+  \end{exercise}
+  This means that $\partial_{a} \kappa \parallel \xi_{a}$. Taking a tangent vector $t^{a}$ tangent to $\mathcal{H}^+$, we have $t \cdot \partial \kappa = 0$.
+  This means (assuming a single black hole) that the surface gravity $\kappa$ is constant on the event horizon $\mathcal{H}^+$.
+\end{proof}
+
+\section{First Law}%
+\label{sec:first_law}
+
+Consider the change of parameters $M \to M + \delta M$, $a \to \alpha + \delta a$ in Kerr.
+The linearised change $\delta A$ in the event horizon area is related to the change $\delta M$ of mass and $\delta J$ of angular momentum as
+\begin{equation}
+  \label{eq:18-star}
+  \frac{\kappa}{8 \pi} \delta A = \delta M - \Omega_H \delta J.
+\end{equation}
+It turns out that this is true not only for the change of parameters above, but for any change of parameters.
+
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l18f2}
+    \caption{}
+    \label{fig:l18f2}
+\end{figure}
+
+Let $\Sigma$ be asymp.~orthogonal to $k^{a}$ near $i^0$.
+Let $(\Sigma \setminus B, h_{ab}, K_{ab})$, where $h_{ab}$, $K_{ab}$ is the induced data, be an asymptotically flat end.
+Then
+\begin{equation}
+  h_{ab} \to h_{ab} + \delta h_{ab}, \qquad
+  K_{ab} \to K_{ab} + \delta K_{ab}.
+\end{equation}
+If $\delta h_{ab}, \delta K_{ab}$ obey linearised constraint equations, then \eqref{eq:18-star} holds where $\delta A$ is the change in area of $B$, $\delta M$ the change of ADM energy, and $\delta J$ the change in ADM angular momentum (which we have not defined).
+(Proof by Sudarsky and Wald in '92.)
+
+Can generalise this to Einstein--Maxwell, introducing $- \Phi_H \delta Q$ on RHS of \eqref{eq:18-star}.
+We interpret $\Phi_H$ as the potential difference between $\mathcal{H}^+$ and $\infty$.
+This is a particular version of the first law of black hole mechanics, called the \emph{equilibrium state} version.
+We are actually comparing two different spacetimes when writing down this formula.
+
+There is also another version as follows:
+Let $T_{ab} = \mathcal{O}(\epsilon)$, and let $J^{a} = -T\indices{^{a}_{b}} k^{b}$ as well as $L^{a} = T\indices{^{a}_{b}} m^{b}$ be energy and angular momentum currents respectively.
+Due to backreaction on the metric, these are not exactly conserved. However, they are of order $\epsilon$.
+The backreaction is also of order $\epsilon$, so the failure of these to be conserved will be a second order effect in $\epsilon$.
+In other words, the divergence of these currents is
+\begin{equation}
+  \nabla_a J^{a} = \nabla_a L^{a} = \mathcal{O}(\epsilon^2),
+\end{equation}
+so we can safely ignore them.
+\begin{wrapfigure}{R}{0.35\textwidth}
+    \centering
+    \inkfig[0.3]{l18f3}
+    \caption{}
+    \label{fig:l18f3}
+\end{wrapfigure}
+Consider matter crossing over the null hypersurface $\mathcal{N}$ as shown in Fig.~\ref{fig:l18f3}.
+\begin{align}
+  \delta M &= - \int_\mathcal{N} \star J, \\
+  \delta J &= - \int_\mathcal{N} \star L
+\end{align}
+Use Gaussian null coordinates $(r, \lambda, y^{i})$ on $\mathcal{H}^+$. We may choose $\lambda = 0$ on $B$.
+The event horizon is $\mathcal{H}^+$ is $r = 0$ and $\mathcal{N}$ is $r = 0, \lambda > 0$.
+
+Order $y^1, y^2$ such that the volume form at $\mathcal{H}^+$ is $\eta = \sqrt{h} d \lambda \wedge d r \wedge dy^1 \wedge dy^2$.
+An orientation for $\mathcal{N}$ is obtained by viewing it as the boundary of $\{r > 0\}$.
+Finally, Stokes' theorem fixes the orientation $ d \lambda \wedge dy^1 \wedge dy^2.$
+On  $\mathcal{N}$,
+\begin{equation}
+  (\star J)_{\lambda 1 2} = \sqrt{h} J^{r} = \sqrt{h} J_\lambda = \sqrt{h} U \cdot J,
+\end{equation}
+where $U = \frac{\partial }{\partial \lambda}$ is the tangent to affinely parametrised geodesics.
+Therefore, 
+\begin{equation}
+  \delta M = - \int_\mathcal{N}	\dd[]{\lambda} \dd[2]{y} \sqrt{h} U \cdot J.
+\end{equation}
+Similarly, we find
+\begin{equation}
+  \delta J = - \int_\mathcal{N} \dd[]{\lambda} \dd[2]{y} \sqrt{h} U \cdot L.
+\end{equation}
+
+Since $J^{a}, L^{a} = \mathcal{O}(\epsilon)$, we can evaluate $\delta M$ and $\delta J$ to $\mathcal{O}(\epsilon)$ using the Kerr metric.
+
+Take $\mathcal{N}$ to be the Killing horizon of $\xi = k + \Omega_H M$.
+Now $\xi = f U$ for some function $f$.
+We saw previously that $\xi \cdot \partial \ln \abs{f} = \kappa$, so
+\begin{equation}
+  U \cdot \partial f = \kappa \implies \frac{\partial f}{\partial \lambda} = \kappa
+\end{equation}
+Therefore
+\begin{equation}
+  f = \kappa \lambda + f_0(y).
+\end{equation}
+We also know that $\xi \rvert_B = 0$, so $f = 0$ on $B$, meaning that $\lambda = 0$.
+Therefore, 
+\begin{equation}
+  f_0  = 0 \implies \xi^{a} = \kappa \lambda U^{a}
+\end{equation}
+on $\mathcal{N}$.
+Substituting this into our definition $J^{a} = -T\indices{^{a}_{b}} k^{b}$ and the formula for $\delta M$, we have
+\begin{align}
+  \delta M &= \int_\mathcal{N} \dd[]{\lambda} \dd[2]{y} \sqrt{h} T_{ab} U^{a} k^{b} = \int_\mathcal{N} \dd[]{\lambda} \dd[2]{y} \sqrt{h} T_{ab} U^{a} (\xi^{b} - \Omega_H M^{b}) \\
+  &= \int_\mathcal{N} \dd[]{\lambda} \dd[2]{y} \sqrt{h} T_{ab} U^{a} U^{b} \kappa \lambda - \Omega_H \underbrace{\int_\mathcal{N} \dd[]{\lambda} \dd[2]{y} \sqrt{h} U \cdot L}_{\mathclap{- \delta J}}.
+\end{align}
+Finally, let us use the Einstein equation $ 8 \pi T_{ab} U^{a} U^{b} = R_{ab} U^{a} U^{b}, $ we have
+\begin{equation}
+  \implies \delta M - \Omega_H \delta J = \frac{\kappa}{8 \pi} \int \dd[]{\lambda} \dd[2]{y} \sqrt{h} \lambda R_{a} U^{a} U^{b}.
+\end{equation}
+We will show that this is equal to the change in the area of the event horizon.

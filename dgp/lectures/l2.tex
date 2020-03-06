@@ -53,30 +53,30 @@ In other words, this is the space of all lines through the origin in $\mathbb{R}
 Now it turns out that this manifold is equivalent to $\mathbb{RP}^n = S^n / \mathbb{Z}^2$. From quantum mechanics, we know that this means in particular $\mathbb{RP}^3 = SO(3)$.
 This is illustrated in \ref{fig:l2f1}.
 
-\chapter{Vector Fields}%
-\label{cha:vector_fields}
+\section{Vector Fields}%
+\label{sec:vector_fields}
 
 Let $M, \widetilde{M}$ be smooth manifolds of dimension $n, \tilde{n}$.
-
 \begin{definition}[smooth map]
   A map $f\colon M \to \widetilde{M}$ is \emph{smooth} if $\widetilde{\phi}_{\beta} \circ f \circ \phi_{\alpha}^{-1}$ is a smooth map from $\mathbb{R}^n$ to $\widetilde{\mathbb{R}}^n$ for all $\alpha, \beta$.
   We call $f \colon M \to \mathbb{R}$ a \emph{function}, whereas we call $f\colon \mathbb{R} \to M$ a \emph{curve}.
 \end{definition} 
 
 Let $\gamma\colon \mathbb{R} \to M$ be a curve.
-\begin{figure}[tbhp]
+\begin{figure}[tbph]
   \centering
   \def\svgwidth{0.4\columnwidth}
   \input{lectures/l2f2.pdf_tex}
   \caption{}
   \label{fig:l2f2}
 \end{figure}
-For some $U \in M$,  $U \simeq \mathbb{R}^n$ , we can define local coordinates $(x^1, \dots, x^n)$ .
+For some $U \in M$,  $U \simeq \mathbb{R}^n$ , we can define local coordinates $(x^1, \dots, x^n)$.
 % Missed something
 
 \begin{definition}[tangent vector]
   A \emph{tangent vector} $V$  to $\gamma$ at  $p$ is 
    \begin{equation}
+     \label{eq:tv}
      V\rvert_p = \left. \dv{\psi}{\epsilon}\right\rvert_{\epsilon = 0} \in T_p M,
   \end{equation}
   where $T_p M$ is the \emph{tangent space} to $M$ at $p$.
@@ -101,8 +101,8 @@ Vector fields are first order differential operators
 \end{equation}
 The derivatives $\left.\left\{ \frac{\partial }{\partial x^1}, \dots, \frac{\partial }{\partial x^{n}} \right\} \right\rvert_p$ form a basis of $T_p M$. 
 
-\section{Integral curves}%
-\label{sec:integral_curves}
+\subsection{Integral Curves}%
+\label{sub:integral_curves}
 
 \begin{definition}[integral curve]
   An \emph{integral curve} (a \emph{flow}) of a vector field is defined by
@@ -173,9 +173,11 @@ Now you can add vector fields, but there is also another operation.
 \begin{example}[]
   Let $V = x \frac{\partial }{\partial x} + \frac{\partial }{\partial y}$  and $W = \frac{\partial }{\partial x}$ . We then have $[V, W] = - W$.
 \end{example}
-\begin{leftbar}
-  This is not always the case but sometimes the Lie bracket reproduces some of the vector fields. There is an interesting algebraic structure to this.
-\end{leftbar}
+This is not always the case but sometimes the Lie bracket reproduces some of the vector fields. There is an interesting algebraic structure to this.
+
+\section{Lie Algebras}%
+\label{sec:lie_algebras}
+
 \begin{definition}[Lie algebra]
   A \emph{Lie algebra} is a vector space $\mathfrak{g}$ with an anti-symmetric, bilinear operation $[\ ,\ ]\colon \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$, called a \emph{Lie bracket}, which satisfies the \emph{Jacobi identity}
   \begin{equation}

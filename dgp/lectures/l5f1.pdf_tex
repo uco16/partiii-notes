@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{503.56445136bp}%
+    \setlength{\unitlength}{399.3477251bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.38779493)%
+  \begin{picture}(1,0.57350957)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l5f1.pdf}}%
-    \put(0.10453602,0.03034321){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathbb{R}^2$\end{tabular}}}}%
+    \put(0.15965467,0.02968296){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathbb{R}^2$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l5f1.pdf}}%
-    \put(0.97044468,0.24457109){\color[rgb]{1,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$G$\end{tabular}}}}%
+    \put(0.82902817,0.33134858){\color[rgb]{1,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$G$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l5f1.pdf}}%
   \end{picture}%
 \endgroup%

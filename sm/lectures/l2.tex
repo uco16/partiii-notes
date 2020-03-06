@@ -36,16 +36,17 @@ Weinberg has a good paper on advice he gives to young researchers. One of the ad
     \begin{description}
       \item[1932] Anderson\footnote{There were multiple people who arguably should get some more credit for this. Blackett discovered the positron but did not publish it fast enough. There were also a Russian scientist and a graduate student at CalTech who did similar discoveries.} discovered it.
       \item[1932] Chadwick discovered the \emph{neutron}.
-      \item[1930] Pauli predicted the \emph{neutrino}: $\beta$-decay: $n \to p + e^- + \overline{\nu}$. Fermi described this in terms of a four-point field theory
-      \begin{equation}
-	\begin{gathered}
-	  \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-	    a [particle=\(n\)] -- b [dot] -- c [particle=\(p\)],
-	    b -- d [particle=\(e^{-}\)],
-	    b -- e [particle=\(\overline{\nu}\)],
-	  };
-	\end{gathered}
-      \end{equation}
+      \item[1930] Pauli predicted the \emph{neutrino}: $\beta$-decay: $n \to p + e^- + \overline{\nu}$. Fermi described this in terms of a four-point field theory, illustrated in Fig.~\ref{fig:l2d1}.
+      \begin{figure}[tbh]
+	\centering
+	\feynmandiagram[transform shape, scale=0.7][horizontal=a to b, layered layout] {
+	  a [particle=\(n\)] -- b [dot] -- c [particle=\(p\)],
+	  b -- d [particle=\(e^{-}\)],
+	  b -- e [particle=\(\overline{\nu}\)],
+	};
+	\caption{Four-point description of $\beta$-decay.}
+	\label{fig:l2d1}
+      \end{figure}
     \item[1934] Yukawa theory of strong interactions: scalar mediators of strong interactions (Pions).
       Potential $V(r) \sim e^{-mr} / r$, where $m \sim 100$MeV is the pion mass.
       This explained the short range and kept field theory going, so people started to search for this new particle.
@@ -65,7 +66,7 @@ Weinberg has a good paper on advice he gives to young researchers. One of the ad
     \item Parity Violation (Lee and Yang) in 1936, Wu discovered it in 1957
     \item Discovery of (anti-)neutrino (Cowan- Reines, 1956)
     \item $V-A$ property of weak interactions (Marshak, Sudarshan, 1957)\footnote{Four experiements seemed to deny their theory. However, the theory was so strong that they were convinced that these experiments must have been wrong. All four actually turned out to be wrong.}
-    \item Pentecorvo; neutrino oscialltions
+    \item Pontecorvo; neutrino oscillations proposed
     \item Yang--Mills 1954, non-Abelian gauge theory.
       In QED, there is a $U(1)$ gauge theory giving a massless photon.
       In Yang--Mills theory, with a greater group such as $SU(2)$, that this should give further massless / long-range particles. But these have never been seen so Pauli predicted correctly that this theory was not relevant to nature.

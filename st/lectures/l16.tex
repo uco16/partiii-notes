@@ -1,0 +1,143 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 16: February 24}
+
+Let us consider the commutator of two of the Laurent modes
+\begin{equation}
+  \label{eq:16-1}
+  [L_m, L_n] = \oint_{z = 0} \frac{\dd[]{z}}{2 \pi i} \oint_{w =0} \frac{\dd[]{w}}{2 \pi i} z^{m + 1} w^{n + 1} [T(z), T(w)].
+\end{equation}
+We have argued that we should think of
+\begin{equation}
+  \oint_{z = 0} \frac{\dd[]{z}}{2 \pi i} z^{m+1} [T(z), T(w)] = \oint_{z = w} \frac{\dd[]{z}}{2 \pi i } \mathcal{R}(T(w) T(w)) z^{m + 1}.
+\end{equation}
+Therefore, the commutator \eqref{eq:16-1} becomes
+\begin{equation}
+  [L_m, L_n] = \oint_{w = 0} \frac{\dd[]{w}}{2 \pi i} w^{n+1} \oint_{z = w} \frac{\dd[]{z}}{2 \pi i } \mathcal{R} \bigl( T(z) T(w) \bigr).
+\end{equation}
+We use the $TT$ operator product expansion to evaluate this
+\begin{equation}
+  [L_m, L_n] = \oint_{w = 0} \frac{\dd[]{w}}{2 \pi i} w^{n + 1} \oint_{z = w} \frac{\dd[]{z}}{2 \pi i} z^{m+ 1} \left( \frac{D/2}{(z - w)^4} + \frac{2 T(w)}{(z - w)^2} + \frac{\partial T(w)}{z - w} \right).
+\end{equation}
+Noting that
+\begin{align}
+  \oint_{z = w} \frac{\dd[]{z}}{2 \pi i} \frac{z^{m+1}}{(z - w)^2} &= (m+1) w^m \\
+  \oint_{z = w} \frac{\dd[]{z}}{2 \pi i} \frac{z^{m+1}}{(z - w)^4} &= \frac{1}{3!} (m+1) m (m-1) w^{m-2},
+\end{align}
+we have
+\begin{equation}
+  [L_m, L_n] = \oint_{w = 0} \frac{\dd[]{w}}{2 \pi i} w^{n+1} \left( \frac{D}{12} m(m^2 - 1) w^{m-2} + 2T(w) (m+1) w^m + \partial T(w) w^{m+1} \right)
+\end{equation}
+\begin{equation}
+  \boxed{[L_m, L_n] = \frac{D}{12}  (m^2 - 1) \delta_{m+ n, 0} + (m-n) L_{m+n}}
+\end{equation}
+We obtain what we expect from the classical Witt algebra, plus a \emph{central extension}, which is also often called an \emph{anomaly}.
+This is called the \emph{Virasoro algebra}.
+The violation of conformal invariance, which goes away for $D = 0$, is quite implicit in this Lie algebra.
+Similarly for $[\overline{L}{}_m, \overline{L}{}_n]$ and the $T(z) \overline{T}{}(w)$ OPE is regular, so 
+\begin{equation}
+  [L_m, \overline{L}{}_n] = 0.
+\end{equation}
+There is an inconsistency in the theory for $D \neq 0$. 
+
+\section{The \texorpdfstring{$b, c$}{b and c} Ghost System}%
+\label{sec:the_b_and_c_ghost_system}
+
+We have not been considering the whole of the theory.
+The Fadeev--Popov procedure required the introduction of (anti-commuting) ghost fields: $b_{ab}(z)$ and $c^{a}(z)$:
+\begin{equation}
+  c^{a}(z) c^{b}(w) = -c^{b}(w) c^{a}(z).
+\end{equation}
+
+The ghost action is
+\begin{equation}
+  S_{\text{gh}}[b, c] = \frac{1}{2 \pi} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} h^{ac} b_{ab} (\nabla_{c} c^{b})
+\end{equation}
+so the total action is $S = S_{\text{Polyakov}}[X] + S_{\text{gh}}[b, c]$. There will be a contribution to the stress-energy tensor from the ghosts.
+We would like the theory to have conformal symmetry, so we expect $b$ and $c$ to transform in some non-trivial way under those. Since the stress tensor generates these transformations, we expect to have some ghost stress tensor.
+
+\begin{claim}
+  The ghost stress tensor is
+  \begin{equation}
+    (T_{\text{gh}})_{ab} = -\frac{1}{2} c^{c} \nabla_{(c} b_{b) c} - (\nabla_{(a} c^{c}) b_{b) c} - \text{trace}
+  \end{equation}
+\end{claim}
+Since the field theory describing the $X$'s, and the one describing the $b$'s and $c$'s are independent, the total stress tensor is schematically
+\begin{equation}
+  \mathcal{T} = T_X + T_{\text{gh}},
+\end{equation}
+where $T_X$ is the stress tensor from the Polyakov action.
+Working with a Euclidean metric on $\Sigma$ and complex coordinates as before, we can write the two degrees of freedom in $b_{ab}$, which is traceless and symmetric, as $b(z)$ and $\overline{b}{}(\overline{z}{})$.
+Similarly, we write the two degrees of freedom in $c^{a}$ as $c(z)$ and $\overline{c}{}(z)$.
+This latter splitting behaviour can be seen rather directly when considering that the action becomes
+\begin{equation}
+  S_{\text{gh}}[b, c] = \frac{1}{2 \pi} \int_\Sigma \dd[2]{z} b \overline{\partial}{} c + \frac{1}{2\pi} \int_\Sigma \dd[2]{z} \overline{b}{} \partial \overline{c}{}.
+\end{equation}
+\begin{remark}
+  This sector of the theory does not know about $\alpha'$.
+  It also does not depend in any way on the spacetime metric.
+  The ghosts came from dealing with the infinite overcounting in the path integral; nothing to do with the metric.
+\end{remark}
+The $b$, and $\overline{b}{}$ equations of motion just give $\overline{\partial}{} c = 0$ and $\partial \overline{c}{} = 0$, which is why the $c^{a}$ also split into the two sectors claimed above.
+The total stress tensor is $\mathcal{T}(z) = T_x(z) + T_{\text{gh}}(z)$, where
+\begin{align}
+  T_X(z) &= -\frac{1}{\alpha'} \normalorder{\partial X^{\mu} \partial X_{\mu} (z)} \\
+  T_{\text{gh}}(z) &= \normalorder{(\partial b) c(z)} - 2 \partial (\normalorder{b c(z)})
+\end{align}
+with analogous expressions for $\overline{T}{}_X (\overline{z}{})$ and $\overline{T}{}_{\text{gh}}(\overline{z}{})$.
+We will need to compute the OPE of $T_{\text{gh}}$ with itself.
+The ghost sector does not know anything about the spacetime, so we do not expect a term $D$ in a pole of order $4$ to pop up. Instead, there could be a fixed number, which we interpret as the critical dimension of the theory.
+\begin{remark}
+  We will show that the OPE between $T_{\text{gh}}$ and $T_X$ will vanish, which makes sense since the two sectors are independent.
+\end{remark}
+
+\subsection{The \texorpdfstring{$b, c$}{b, c} OPE}%
+\label{sub:the_b_c_ope}
+
+The $2$-point function is given by Wick's theorem
+\begin{align}
+  \langle b(z) c(w) \rangle &= \langle \normalorder{b(z) c(w)} \rangle + \wick{\c b (z) \c c(w)} \\
+			    &= \wick{\c b(z) \c c(w)}.
+\end{align}
+This $2$-point function, which is a Greens function of the $b \overline{\partial}{} c$ part of the ghost action, gives the singular part of the $b(z) c(w)$ OPE.
+\begin{equation}
+  b(z) c(w) = \wick{\c b(z) \c c(w)} + \dots
+\end{equation}
+
+The classical Green's function for the operator $\overline{\partial}{}$ on the (Riemann) sphere is $(z - w)^{-1}$, so our basic OPE is
+\begin{equation}
+  \boxed{b(z) c(w) = \frac{1}{z - w} + \dots = c(z) b(w)}
+\end{equation}
+\begin{remark}
+  We could have done the same thing for the Laplacian to work out the $X$-OPE; the Laplacian Green's function in two dimensions goes as the natural logarithm of the separation, which is the first term of the $X$-OPE.
+\end{remark}
+\begin{remark}
+  The $cc$ and $b b$ operator product expansions are trivial, since there are no propagators between them in the action.
+\end{remark}
+
+\subsection{Conformal weight of \texorpdfstring{b(z)}{b}}%
+\label{sub:conformal_weight_of_b}
+
+The stress tensor is $T = (\partial b) c  - 2 \partial (b c)$ and so the operator product expansion we want is
+\begin{align}
+  T(z)\, b(w) &= (\partial b(z)) \, \wick{\c c(z) \c b(w)} -2 \partial_z (b(z) \, \wick{\c c(z) ) \, \c b(w)} + \dots \\
+	      &= \frac{\partial b(z)}{z - w} - 2 \partial_z \left( \frac{b(z)}{z - w} \right) + \dots \\
+	      &= \frac{\partial b(z)}{z - w} - 2 \frac{\partial b(z)}{z - w} + 2 \frac{b(z)}{(z - w)^2} + \dots \\
+	      &= - \frac{\partial b(z)}{z - w} + 2 \frac{b(z)}{(z - w)^2} + \dots
+\end{align}
+Using $b(z) = b(w) + 2 (z - w) \partial b(w) + \dots$, 
+\begin{equation}
+  T(z) b(w) = - \frac{\partial b(w)}{z - w} + 2 \frac{b(w)}{(z - w)^2} + 2 \frac{\partial b(w)}{(z - w)} + \dots
+\end{equation}
+and so 
+\begin{equation}
+  \boxed{T_{\text{gh}}(z) b(w) = \frac{2 b(w)}{(z - w)^2} + \frac{\partial b(w)}{z - w} + \dots }
+\end{equation}
+We conclude $b(w)$ has weight $h = 2$. 
+\begin{exercise}
+  Similarly, we could compute 
+  \begin{equation}
+    T_{\text{gh}}(z) c(w) = -\frac{1}{(z - w)^2} + \frac{1}{(z - w)} \partial c (w) + \dots
+  \end{equation}
+  to find that $c(w)$ has weight $(h, \overline{h}{}) = (-1, 0)$.
+\end{exercise}

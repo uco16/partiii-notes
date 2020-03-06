@@ -91,14 +91,14 @@ In Euclidean spacetime, $\{\gamma_{\mu}, \gamma_{\nu}\} = 2 \delta_{\mu\nu}$ and
 \section{Fermionic Feynman Rules}%
 \label{sec:fermionic_feynman_rules}
 
-Let us first find the Feynman propagator.
-We go to momentum space with Fourier convention
+Let us first find the Feynman propagator for the fermions.  We go to momentum space with Fourier convention
 \begin{equation}
   \psi(x) = \int \bdd[4]{p} e^{i p \cdot x} \psi(p),
 \end{equation}
 where, instead of using another symbol, we distinguish the field $\psi(x)$ from its modes $\psi(p)$ by keeping the argument explicit.
 The free part of the fermion (electron) action is
 \begin{equation}
+  \label{eq:15-f}
   S_f[\psi, \overline{\psi}{}] = \int \bdd[4]{p} \overline{\psi} (-p) (i \cancel{p} + m) \psi(p).
 \end{equation}
 Introducing fermionic charges $\eta, \overline{\eta}{}$, the (momentum space) generating functional is
@@ -108,19 +108,23 @@ Introducing fermionic charges $\eta, \overline{\eta}{}$, the (momentum space) ge
 \end{align}
 The free propagator is therefore 
 \begin{equation}
-  S_F(p) = \left.\frac{\delta^2 \mathcal{Z}}{\delta \overline{\eta}{} \delta \eta}\right\rvert_{\eta, \overline{\eta}{} = 0} = \frac{1}{i \cancel{p} + m}.
+  G_F(p) = \left.\frac{\delta^2 \mathcal{Z}}{\delta \overline{\eta}{} \delta \eta}\right\rvert_{\eta, \overline{\eta}{} = 0} = \frac{1}{i \cancel{p} + m}.
 \end{equation}
-The EM propagator is obtained as
+We see that we could have just read off the propagator to be the inverse of the operator acting on the quadratic part of the Fouier-transformed action \eqref{eq:15-f}.
+In the same way, the EM propagator is obtained by Fourier-transforming the associated action
 \begin{align}
-  S_? [A] &= \frac{1}{4} \int \dd[4]{x} F_{\mu\nu} F^{\mu\nu} \\
-	  &= \frac{1}{2} \int \bdd[4]{k} A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k) \\
-  D^{\mu\nu}(k) &= \frac{1}{k^2} (\delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2}) = 
+  S_{EM} [A] &= \frac{1}{4} \int \dd[4]{x} F_{\mu\nu} F^{\mu\nu} \\
+	  &= \frac{1}{2} \int \bdd[4]{k} A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k).
+\end{align}
+From this we can read off the EM propagator
+\begin{equation}
+  D^{\mu\nu}(k) = \frac{1}{k^2} (\delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2}) = 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
       a [particle=\(\mu\)] -- [boson, momentum=$k$] b [particle=\(\nu\)],
     };
   \end{gathered}.
-\end{align}
+\end{equation}
 The vertex is
 \begin{equation}
   \begin{gathered}

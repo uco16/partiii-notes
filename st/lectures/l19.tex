@@ -1,0 +1,54 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 19: March 02}
+
+\subsection*{Meaning of $\mathcal{Q}_B^2 = 0$}%
+
+Classically, the charge $\mathcal{Q}_B$ should commute with the Hamiltonian
+\begin{equation}
+  [\mathcal{Q}_B, H] = 0.
+\end{equation}
+The choice of gauge is encoded in the gauge-fixing fermion $\Psi$ of \eqref{eq:gf-ferm}, which we write
+\begin{equation}
+  \Psi = \int_{\Sigma} \dd[2]{\sigma} F_{\text{gf}},
+\end{equation}
+where $F_{\text{gf}} = \sqrt{-h} b^{ab} (h_{ab} - \hat{h}_{ab})$.
+A change of gauge gives a change in the Hamiltonian
+\begin{equation}
+  \delta H = \{\mathcal{Q}_B, \delta F_{\text{gf}}\}.
+\end{equation}
+We expect this new Hamiltonian to preserve $\mathcal{Q}_B$, which requires
+\begin{align}
+  0 &= [\mathcal{Q}_B, \delta H] \\
+    &= [\mathcal{Q}_B, \{\mathcal{Q}_B, \delta F_{\text{gf}}\}] \\
+    &= - [\delta F_{\text{gf}}, \{\mathcal{Q}_B, \mathcal{Q}_B\}] - [\mathcal{Q}_B, \overbrace{\{\mathcal{Q}_B, \delta F_{\text{gf}}\}}^{\mathclap{\delta H}}] \\
+    &= - [\delta F_{\text{gf}}, \{\mathcal{Q}_B, \mathcal{Q}_B\}],
+\end{align}
+where we used the Jacobi identity.
+For this to be true for any $\delta F_{\text{gf}}$, we require that 
+\begin{equation}
+  \{\mathcal{Q}_B, \mathcal{Q}_B\} = 0 \quad \implies \quad \boxed{\mathcal{Q}_B^2 = 0}.
+\end{equation}
+Therefore, $\mathcal{Q}_B^2 = 0$ is resulting from saying that $\mathcal{Q}_B$ generates a symmetry.
+
+\subsection*{States $\ket{\phi} \not\in \text{im}(\mathcal{Q}_B)$}%
+
+Suppose we had a state $\ket{\chi} = \mathcal{Q}_B \ket{\Lambda}$ for some $\ket{\Lambda}$.
+Clearly, since $\mathcal{Q}_B^2 = 0$, $\ket{\chi}$ is closed $\mathcal{Q}_B \ket{\chi} = 0$.
+But also, if $\ket{\phi} \in \text{ker}(\mathcal{Q}_B)$, then
+\begin{equation}
+  \bra{\phi} \ket{\chi} = \bra{\phi} \mathcal{Q}_B \ket{\Lambda} = 0.
+\end{equation}
+Also
+\begin{equation}
+  \bra{\chi} \ket{\chi} = \bra{\Lambda} \mathcal{Q}_B^2 \ket{\Lambda} = 0.
+\end{equation}
+The state $\ket{\chi}$ is orthogonal to all physical states (and itself).
+These are the same properties as for spurious states, which we met in Sec.~\ref{sec:spurious_states_and_gauge_invariance}.
+Such states will decouple from any process that involves physical states (or even itself).
+Hence, physical states are in $\text{ker}(\mathcal{Q}_B)$ but not in $\text{im}(\mathcal{Q}_B)$. 
+In other words, all physical states may be defined up to the addition of an $\mathcal{Q}_B$-exact term
+\begin{equation}
+  \ket{\phi} \sim \ket{\phi} + \mathcal{Q}_B \ket{\Lambda}.
+\end{equation}
+The physical states live in the cohomology of $\mathcal{Q}_B$.

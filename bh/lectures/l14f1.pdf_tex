@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{311.30273623bp}%
+    \setlength{\unitlength}{305.31301753bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,22 +50,25 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.65654029)%
+  \begin{picture}(1,0.62745181)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l14f1.pdf}}%
-    \put(0.76643641,0.57906843){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V^+$\end{tabular}}}}%
-    \put(0.0677596,0.57906843){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$U^+$\end{tabular}}}}%
-    \put(0.57369794,0.26586839){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
-    \put(0.28459037,0.26586839){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
-    \put(0.42914419,0.38632996){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
-    \put(0.42914419,0.14540683){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
-    \put(0.79587157,0.07204825){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}constant $r$\end{tabular}}}}%
+    \put(0.80906827,0.59759004){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V^+$\end{tabular}}}}%
+    \put(0.09668462,0.59759004){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$U^+$\end{tabular}}}}%
+    \put(0.57815749,0.2684197){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
+    \put(0.33250822,0.27824555){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
+    \put(0.46024596,0.38633159){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
+    \put(0.46515895,0.15542074){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
+    \put(0.8783843,0.09044884){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}constant $r$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l14f1.pdf}}%
-    \put(0.74234402,0.26586839){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r > r_+$\end{tabular}}}}%
-    \put(0.40505186,0.62725309){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r_- < r < r_+$\end{tabular}}}}%
+    \put(0.78450323,0.27824555){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r > r_+$\end{tabular}}}}%
+    \put(0.45879789,0.58548864){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r_- < r < r_+$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l14f1.pdf}}%
-    \put(0.76643641,0.41042235){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}constant $t$ (ER bridge)\end{tabular}}}}%
+    \put(0.12234498,0.33022871){\color[rgb]{1,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}constant $t$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{l14f1.pdf}}%
+    \put(0.60526532,0.06999585){\color[rgb]{0,0,0}\rotatebox{-45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}}%
+    \put(0.57316618,0.44339673){\color[rgb]{0,0,0}\rotatebox{45}{\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}}%
+    \put(0.12616266,0.28070152){\color[rgb]{1,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c} (ER bridge)\end{tabular}}}}%
   \end{picture}%
 \endgroup%

@@ -1,0 +1,174 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 15: March 05}
+
+\chapter{Nonlinear Sigma Model with \texorpdfstring{$\mathcal{N} = (2, 2)$}{N=(2, 2)} SUSY}%
+\label{cha:nonlinear_sigma_model_with_susy}
+
+We want to explore the impact of the Kähler potential. The right context to explore this is in NLSMs with $(2, 2)$ supersymmetry. They are closely relate to Kähler geometry.
+
+\section{Complex Manifolds}%
+\label{sec:almost_complex_strucutres}
+
+\begin{definition}[almost complex structure]
+  Given a smooth $2n$ dimensional manifold $M$, an \emph{almost complex structure} is a linear map
+  \begin{equation}
+    J \colon TM_p \otimes \mathbb{C} \to TM_p \otimes \mathbb{C}
+  \end{equation}
+  at each point $p \in M$, such that $J^2 = -1$.
+\end{definition}
+\begin{definition}[holomorphic tangent vectors]
+  In particular, $J$ as eigenvalues $\pm i$ and we define the (anti-)holomorphic tangent vectors at $p$ to be
+  \begin{align}
+    T_p^{1, 0}M &= \{X \in T_p M \otimes \mathbb{C} \suchthat X = \frac{1}{2} (1 - i J) X\} \\
+    T_p^{0,1}M &= \{X \in T_p M \otimes \mathbb{C} \suchthat X = \frac{1}{2} (1 + i J) X\}.
+  \end{align}
+\end{definition}
+
+\begin{example}[]
+  Let $M = \mathbb{R}^2$ with $(\partial_x, \partial_y)$ a basis of the tangent bundle $T M$. Then we can choose 
+  \begin{equation}
+    J (\partial_x) = \partial_y, \qquad J(\partial_y) = -\partial_x.
+  \end{equation}
+  Clearly, this transformation squares to $-1$. This is just rotation of $\pi / 2$ about the origin.
+  The eigenvectors are 
+  \begin{equation}
+    \partial_z = \frac{1}{2} (\partial_x - i \partial_y), \qquad \partial_{\overline{z}{}} = \frac{1}{2} (\partial_x + i \partial_x).
+  \end{equation}
+\end{example}
+
+\begin{definition}[complex structure]
+  $J$ allows us to split $T_p M \otimes \mathbb{C} = T_p^{1, 0} M \oplus T_p^{0,1} M$ at each $p \in M$.
+  A \emph{complex structure} is an almost complex structure where this splitting is consistent as we move around $M$, in the sense that the Lie bracket of the projection of any vectors $X$ and $Y$ into the $+i$ eigenspaces of $J$ is again in the $+i$ eigenspace
+  \begin{equation}
+    (1 + i J)[(1- i J )X, (1 - i J) Y] = 0, \qquad \forall X, Y \in TM \otimes \mathbb{C}.
+  \end{equation}
+\end{definition}
+Taking the real and imaginary parts of this equation, we find that this condition is equivalent to
+\begin{equation}
+  N(X, Y) = [X, Y] + J \left( [JX, Y] + [X, JY] \right) - [JX, JY] = 0,
+\end{equation}
+and $N$ is actually a \emph{tensor} (i.e.~$N(fX, gY) = f g N(X, Y)$ for all $f, g \colon M \to \mathbb{C}$), called the \emph{Nijenhuis tensor}.
+\begin{definition}[holomorphic]
+  A \emph{holomorphic function} is annihilated by an anti-holomorphic derivative.
+\end{definition}
+\begin{definition}[complex manifold]
+  A \emph{complex manifold} $M$ is a manifold whose holomorphic tangent bundle $T^{1, 0} M$ is constructed using transition functions that are holomorphic.
+\end{definition}
+A deep theorem\footnote{the fundamental theory of complex geometry if you want} of Newlander--Nirenberg states that $M$ is a complex manifold iff $N = 0$.
+
+Similarly, we can split $T^* M \otimes \mathbb{C} = T^* opp \overline{T}{}^*$ where a covector $\overline{\alpha}{} \in \overline{T}{}^*$ iff $i_X (\overline{\alpha}{}) = 0$ for all $X \in T^{1, 0} M$.
+Likewise we can decompose
+\begin{equation}
+  \Omega^k(M) \otimes \mathbb{C} = \bigoplus_{p + q = k} \Omega^{p, q}(M), \qquad \text{where} \quad \Omega^{p, q}(M) = \Lambda^p T^* \otimes \Lambda^q \overline{T}{}^*.
+\end{equation}
+In terms of local $\mathbb{C}$ coordinates $(z^{a}, \overline{z}{}^{\overline{a}{}})$, $\rho \in \Omega^{p, q}$, this \emph{Hodge decomposition} states
+\begin{equation}
+  \rho = \rho_{\underbrace{ab \dots c}_{\mathclap{p}} \overline{a}{} \underbrace{\overline{b}{} \dots \overline{d}{}}_{\mathclap{q}}}(z, \overline{z}{}) dz^a \wedge dz^b \wedge \dots \wedge dz^c \wedge d \overline{z}{}^{\overline{a}{}} \wedge d \overline{z}{} ^{\overline{b}{}} \wedge \dots \wedge d \overline{z}{} ^{\overline{d}{}}.
+\end{equation}
+
+\section{Kähler Manifolds}%
+\label{sec:kahler_manifolds}
+
+\begin{definition}[Kähler manifold]
+  A \emph{Kähler manifold} is a smooth manifold $M$ that possess a Riemannian metric $g$, a symplectic form $\omega$, and a complex structure $J$, that are mutually compatible.
+\end{definition}
+\begin{claim}
+  In fact, if we have any two of $(g, \omega, J)$, we get the third for free (if they are all compatible).
+\end{claim}
+\begin{proof}[$\omega + J \to g$]
+  Suppose we have $(M, \omega, J)$ but we do not yet know that it has a Riemannian metric.
+  Assume $\omega, J$ are compatible in the sense that 
+  \begin{equation}
+    \label{eq:15-1}
+    \omega(JX, JY) = \omega(X, Y) \qquad \forall X, Y \in TM \otimes \mathbb{C}.
+  \end{equation}
+  In other words, the 2-form $\omega$ actually lives in $\Omega^{1,1}(M)$.
+  Given these compatible structures, we can define a natural metric
+  \begin{equation}
+    g(X, Y) = \omega(X, JY).
+  \end{equation}
+  \begin{itemize}
+    \item Since $\omega$ is non-degenerate and $J^2 = -1$, $g$ is also non-degenerate, meaning that
+      \begin{equation}
+	g(X, Y) = 0 \quad \forall Y \qquad \iff \qquad X = 0.
+      \end{equation}
+    \item Symmetry is given by the compatibility condition \eqref{eq:15-1}
+      \begin{equation}
+	g(Y, X) = \omega(Y, JX) = -\omega(JX, Y) = \omega(J X, J^2 Y) = \omega(X, J Y) = g(X, Y).
+      \end{equation}
+    \item Finally, $g$ is also of type $(1, 1)$ since
+      \begin{equation}
+	g(JY, J X) = \omega(J Y, J^2 X) = -\omega (J Y, X) = \omega(X, J Y) = g(X, Y) = g(Y, X).
+      \end{equation}
+    \item $g$ is Riemannian (positive definite: $g(X, X) > 0$ for all $X \neq 0$) if $\omega$ is \emph{positive} ($\omega(X, J X) > 0$).
+  \end{itemize}
+\end{proof}
+
+Recall that on any smooth manifold $M$, the Poincaré lemma says that $d\alpha = 0$ iff $\alpha = d \beta$ at least locally.
+On a complex manifold $M$, we can split $d = \partial + \overline{\partial}{}$, where $\partial \colon \Omega^{p, q}(M) \to \Omega^{p + 1, q}(M)$ and $\overline{\partial}{}\colon \Omega^{p, q}(M) \to \Omega^{p, q+ 1}(M)$.
+Locally, if $d = dx^{i} \frac{\partial }{\partial x^{i}}$, where $i = 1, \dots, 2_n$, then $\partial = dz^a \frac{\partial }{\partial z^{a}}$ and $\overline{\partial}{} = d \overline{z}{}^{\overline{a}{}} \frac{\partial }{\partial \overline{z}{}^{\overline{a}{}}}$ for $a = 1, \dots, n$.
+
+\subsection{Kähler Potential}%
+\label{sub:kahler_potential}
+
+The exterior derivative is nilpotent $d^2 = 0$, so
+\begin{equation}
+  (\partial + \overline{\partial}{})^2 = \partial^2 + (\partial \overline{\partial}{} + \overline{\partial}{}\partial) + \overline{\partial}{}^2 = 0.
+\end{equation}
+However, since $\partial^2 \colon \Omega^{p, q} \to \Omega^{p + 2, q}$, $\overline{\partial}{}^2 \colon \Omega^{p, q} \to \Omega^{p, q + 2}$, $\partial \overline{\partial}{} + \overline{\partial}{} \partial \colon \Omega^{p, q} \to \Omega^{p + 1, q+ 1}$, all three must separately be zero, as they live in different vector spaces.
+In particular, on a Kähler manifold, since $d \omega = 0$ and $\omega$ has definite type $\omega \in \Omega^{1,1}(M)$, both the holomorphic and anti-holomorphic derivates must vanish separately
+\begin{equation}
+  \partial \omega = 0 \qquad \text{and} \qquad \overline{\partial}{} \omega = 0.
+\end{equation}
+The complex version of Poincaré's lemma (here called the $\partial \overline{\partial}{}$-lemma) says that $\omega$ must be both the holomorphic and anti-holomorphic derivative
+\begin{equation}
+  \omega = i \partial \overline{\partial}{} K = -i \overline{\partial}{} \partial K,
+\end{equation}
+for some real function $K \colon M \to \mathbb{R}$, called the \emph{Kähler potential}.
+(This will turn out to be the same thing as our supersymmetric Kähler potential.)
+$K$ is defined locally on $M$, and is defined only up to \emph{Kähler transformations}
+\begin{equation}
+  K(z, \overline{z}{}) \to K(z, \overline{z}{}) + f(z) + \overline{f}{}(\overline{z}{}),
+\end{equation}
+where $f(z)$ is holomorphic.
+The metric $g(\bullet, \bullet) = \omega(\bullet, J \bullet)$ then has non-vanishing components
+\begin{equation}
+  g_{a \overline{b}{}} (z, \overline{z}{}) = \partial_a \partial_{\overline{b}{}} K,
+\end{equation}
+whilst the only non-zero values of the
+\begin{itemize}
+  \item Levi-Civita connection are
+    \begin{equation}
+      \Gamma\indices{^{a}_{bc}} = g^{a \overline{d}{}} \partial_b g_{c \overline{d}{}} \qquad \text{and} \qquad \Gamma\indices{^{\overline{a}{}}_{\overline{b}{} \overline{c}{}}} = g^{\overline{a}{} d} \partial_{\overline{b}{}} g_{\overline{c}{} d}.
+    \end{equation}
+  \item Riemann curvature are
+    \begin{equation}
+      R\indices{^{a}_{b \overline{ c}{} d}} = \partial_{\overline{c}{}} \Gamma\indices{^{a}_{bd}} \qquad \text{and} \qquad R\indices{^{\overline{a}{}}_{\overline{b}{} c \overline{d}{}}} = \partial_c \Gamma \indices{^{\overline{a}{}}_{\overline{b}{} \overline{d}{}}} = \overline{(R\indices{^{a}_{b \overline{c}{} d}})}{}.
+    \end{equation}
+  \item Ricci tensor are
+    \begin{equation}
+      \text{Ric}_{\overline{c}{} d} = R\indices{^{a}_{a \overline{c}{} d}} = - \partial_{\overline{c}{}} \partial-d (\sqrt{g}).
+    \end{equation}
+\end{itemize}
+
+\section{SUSY for Kähler Manifolds}%
+\label{sec:susy_for_kahler_manifolds}
+
+For a $d = 1 + 1$ NLSM with $(2, 2)$ supersymmetry, the lowest component $z^a(\sigma, \tau)$ of a chiral superfield $Z^a(x, \theta)$ is interpreted as (the pullback to the worldsheet of) a local holomorphic coordinate on the target space $M$, whilst $\overline{Z}{}^{\overline{a}{}}(x, \theta)$ involve is an antiholomorphic coordinate on $M$. Then the kinetic terms
+\begin{equation}
+  \int_{\mathbb{R}^{2 \mid 4}} K(Z^a, \overline{Z}{}^{\overline{a}{}}) \dd[2]{x} \dd[4]{\theta}
+\end{equation}
+involve the Kähler potential on $M$. Note that this kinetic term is also invariant under Kähler transformations
+\begin{equation}
+  K(z, \overline{z}{}) \mapsto K(z, \overline{z}{}) + f(z) + \overline{f}{}(\overline{z}{}).
+\end{equation}
+Performing the integral over the $\theta$'s gives
+\begin{multline}
+  \int_{\mathbb{R}^{2 \mid 4}} K(Z, \overline{Z}{}) \dd[2]{x} \dd[4]{\theta} = \int_{\mathbb{R}^2} \biggl[ -g_{a \overline{b}{}} (z, \overline{z}{}) \partial_{\mu} z^{a} \partial^{\mu} \overline{z}{}^{\overline{b}{}} + i g_{a \overline{b}{}} \overline{\psi}{}_+^{\overline{b}{}} (\nabla_- \psi_+)^a + i g_{a \overline{b}{}} \overline{\psi}{}_-^{\overline{b}{}} (\nabla_+ \psi_-)^a 
+\\ + R_{a \overline{b}{} c \overline{d}{}} \psi^a_+ \psi^c_- \overline{\psi}{}^{\overline{b}{}}_+ \overline{\psi}{}_-^{\overline{d}{}} + g_{a \overline{b}{}} (F^a - \Gamma\indices{^{a}_{cd}} \psi^{c}_+ \psi^{d}_-)(\overline{F}{}^{\overline{b}{}} - \Gamma\indices{^{\overline{b}{}}_{\overline{c}{} \overline{d}{}}} \overline{\psi}{}^{\overline{c}{}}_- \overline{\psi}{}^{\overline{d}{}}_+) \biggr] \dd[2]{x},
+\end{multline}
+where the $g$ is exactly the Kähler metric.
+\begin{exercise}
+  You should do this derivative expansion and check this.
+\end{exercise}

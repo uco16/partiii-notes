@@ -14,7 +14,7 @@ This happens for $r > M + \sqrt{M^2 - a^2 \cos^2 \theta}$. This is greater than 
 \begin{figure}[ht]
     \centering
     \inkfig[0.4]{l16f1}
-    \caption{Ergosphere}
+    \caption{Ergosphere of a Kerr black hole.}
     \label{fig:l16f1}
 \end{figure}
 This region, depicted in Fig.~\ref{fig:l16f1}, is called the \emph{ergosphere}.
@@ -82,7 +82,7 @@ This means $\delta A \geq 0$ in the Penrose process (special case of the 2\texts
 
 \begin{definition}[]
   \label{def:charges}
-  $(\Sigma, h_{ab}, K_{ab})$ asymp.~flat end. The \emph{electric and magnetic charges} are 
+  Let $(\Sigma, h_{ab}, K_{ab})$ be an asymptotically flat end. The \emph{electric and magnetic charges} associated to this end are 
   \begin{equation}
     Q = \frac{1}{4 \pi} \lim_{r \to \infty} \int_{S^2_r} \star F,  \qquad
     P = \frac{1}{4 \pi} \lim_{r \to \infty} \int_{S^2_r} F,
@@ -171,11 +171,10 @@ It is not obvious why this should be the definition of energy or angular momentu
 Classically, the energy is the value of the Hamiltonian. Surely the `correct' way to understand energy then is to understand the Hamiltonian treatment of general relativity.
 As we will see, this `correct' definition agrees with the above in a stationary spacetime, and these are ultimately the more useful for calculations.
 
-\section{Hamilonian Formulation}%
+\section{Hamilonian Formulation of GR}%
 \label{sec:hamilonian_formulation}
 
-Set $16 \pi G = 1$.
-In a $3 + 1$ split, we define the lapse function and the shift and we have metric
+Set $16 \pi G = 1$.  In a $3 + 1$ split, we define the lapse function and the shift and we have metric
 \begin{equation}
   ds^2 = N^2 dt^2 + h_{ij} (dx^{i} + N^{i} dt) (dx^{j} + N^{j} dt).
 \end{equation}
@@ -184,17 +183,26 @@ In a $3 + 1$ split, we define the lapse function and the shift and we have metri
 \end{equation}
 
 \begin{exercise}[Sheet 2]
-  A formula for the extrinsic curvature is
+  A formula for the extrinsic curvature tensor is
   \begin{equation}
     K_{ij} = \frac{1}{2 N} (\dot{h}_{ij} - D_{i} N_j - D_j N_i),
   \end{equation}
   where the dot denotes time-derivative.
 \end{exercise}
 \begin{remark}
-  $S$ is independent of the time derivatives of the lapse and the shift,$\dot{N}, \dot{N}^{i}$. Hamilton's equations are constraints
+  $S$ is independent of the time derivatives of the lapse and the shift, $\dot{N}, \dot{N}^{i}$. Hamilton's equations are constraints
   \begin{equation}
     \frac{\delta S}{\delta N} \rightarrow \text{Ham.~constraint}, \qquad 
     \frac{\delta S}{\delta N^{i}} \rightarrow \text{momentum constraint}
   \end{equation}
+  They are not really dynamical variables; they are a gauge choice that we can choose to whatever is convenient.
   On the other hand $\frac{\delta S}{\delta h_{ij}}$ gives evolution equations for $h_{ij}$.
+
+  The conjugate momenta of the lapse and shift are zero, since there are no time derivatives.
+  We are left with
+  \begin{equation}
+    \pi^{ij} = \frac{\delta S}{\delta \dot{h}_{ij}} = \sqrt{h} (K^{ij} - K h^{ij}),
+  \end{equation}
+  where we used that $\dot{h}_{ij}$ only lives within $K_{ij}$.
+  Because of the square root of the determinant, this is a tensor density rather than a tensor.
 \end{remark}

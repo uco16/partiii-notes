@@ -1,0 +1,219 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 20: March 02}
+
+We now want to define a Hilbert space for the operators to act on.
+Define $S$ to be the space of complex solutions of 
+\begin{equation}
+  \label{eq:20-star}
+  g^{ab} \nabla_{a} \nabla_{b} \Phi - m^2 \Phi = 0.
+\end{equation}
+By global hyperbolicity, a solution $\Phi \in S$ is uniquely specified by initial data $(\Phi, \partial_{t} \Phi)$ on $\Sigma_0$.
+\begin{definition}[]
+  If we are given two solutions $\alpha, \beta \in S$, we define a sesquilinear form on $S$ as follows
+  \begin{equation}
+    \label{eq:20-dag}
+    (\alpha, \beta) = - \int_{\Sigma_0} \dd[3]{x} \sqrt{h} n_a j^{a} (\alpha, \beta),
+  \end{equation}
+  where the current $j(\alpha, \beta) = -i (\overline{\alpha}{} d \beta - \beta d \overline{\alpha}{})$.
+\end{definition}
+\begin{claim}
+  This current is conserved.
+\end{claim}
+\begin{proof}
+  Using \eqref{eq:20-star}
+  \begin{equation}
+    \nabla^{a} j_{a} = -i (\overline{\alpha}{} \nabla^2 \beta - \beta \nabla^2 \overline{\alpha}{}) = -i m^2 (\overline{\alpha}{} \beta - \beta \overline{\alpha}{}) = 0.
+  \end{equation}
+\end{proof}
+\begin{corollary}
+  We can replace $\Sigma_0$ by $\Sigma_t$ in \eqref{eq:20-dag}.
+\end{corollary} 
+\begin{remark}
+  This form is
+  \begin{enumerate}[(i)]
+    \item Hermitian: $(\alpha, \beta) = \overline{(\beta \alpha)}{}$
+    \item non-degenerate: if $(\alpha, \beta) = 0$ $\alpha \beta \in S$, then $\alpha = 0$
+    \item $(\alpha, \beta) = -(\overline{\beta}{}, \overline{\alpha}{})$. Therefore, $(\alpha, \alpha) = - (\overline{\alpha}{}, \overline{\alpha}{})$. As such, the form is not positive definite and is not an inner product.
+  \end{enumerate}
+\end{remark}
+
+\subsection*{Positive Frequency Solutions}%
+
+In Minkowski space, the form $(, )$ is positive definite on a subspace $S_p \subset S$, the space of \emph{positive frequency solutions}.
+A basis for $S_p$ are the positive frequency plane waves
+\begin{equation}
+  \Psi_{\vb{p}} (x) = \frac{1}{(2\pi)^{3 / 2} (2 p^0)^{1 / 2}}e^{i p \cdot x},
+\end{equation}
+where $p^0 = \sqrt{\vb{p}^2 + m^2}$ and $x$ represents $(t, \vb{x})$; we work in the Heisenberg picture.
+
+Given $k = \frac{\partial }{\partial t}$, we have 
+\begin{equation}
+  \mathcal{L}_k \Psi_{\vb{p}} = -i p^0 \Psi_{\vb{p}},
+\end{equation}
+negative imaginary eigenvalues of $\mathcal{L}_k$.
+
+Similarly, $\overline{\Psi}{}_{\vb{p}}$ are negative frequency plane waves.
+Since $(\Psi_{\vb{p}}, \overline{\Pi}{}_{\vb{q}}) = 0$, we can orthogonally decompose
+\begin{equation}
+  S = S_p \oplus \overline{S}{}_p. \label{eq:20-alpha}
+\end{equation}
+
+For a general spacetime $(M, g)$, there is no preferred definition of `positive frequency'. Just pick $S_p \subset S$ such that $(, )$ is positive definite on $S_p$ and \eqref{eq:20-alpha} holds.
+In general, there are many ways of choosing $S_p$, which can be seen as the main reason why QFT in curved spacetime is different than on $\mathbb{M}^n$.
+
+\subsection*{Fock Space}%
+
+For $f \in S_p$, we define creation and annihilation operators
+\begin{equation}
+  a(f) = (f, \Phi), \implies a(f)^{\dagger} = -(\overline{f}{}, \Phi),
+\end{equation}
+where $\Phi$ is our quantum field, which we want to be Hermitian $\Phi^{\dagger} = \Phi$.
+\begin{example}[]
+  If $f = \Psi_{\vb{p}}$, we get the standard Minkowski definition $a(f) = a_{\vb{p}}$.
+\end{example}
+\begin{exercise}[Sheet 4]
+  Plugging this into our canonical commutation relations, we can show that these operators satisfy
+  \begin{equation}
+    [a(f), a(g)^{\dagger}] = (f, g), \qquad [a(f), a(g)] = [a(f)^{\dagger}, a(g)^{\dagger} = 0].
+  \end{equation}
+\end{exercise}
+\begin{example}[]
+  Again taking $f = \Psi_{\vb{p}}, g = \Psi_{\vb{q}}$, we find $[a_{\vb{p}}, a_{\vb{q}}] = \delta^{(3)}(\vb{p} - \vb{q})$.
+\end{example}
+
+From these, we build up our Hilbert space in the usual way
+\begin{definition}[vacuum]
+  The \emph{vacuum state} $\ket{0}$ is defined by $a(f) \ket{0} = 0$ for all $f \in S_p$.
+  We take it normalised to $\bra{0}\ket{0} = 1$.
+\end{definition}
+\begin{definition}[particles]
+  Taking a basis $\{\Psi_i\}$ for $S_p$, we define $a_i = a(\Psi_i)$ and the \emph{$N$-particle states} as $a^{\dagger}_{i_1} \dots a^{\dagger}_{i_N} \ket{0}$.
+\end{definition}
+\begin{claim}
+  The Hilbert space is then the usual Fock space construction
+  \begin{equation}
+    \mathscr{H} = \text{vacuum} \oplus \text{1-particle states} \oplus \text{2-particle states} \oplus \dots
+  \end{equation}
+\end{claim}
+\begin{proof}
+  To check that this is really a Hilbert space, we need to show that we have a positive definite inner product
+  \begin{equation}
+    \norm{a(f)^{\dagger} \ket{0}}^2 = \bra{0} a(f) a(f)^{\dagger} \ket{0} = \bra{0} [a(f), a(f)^{\dagger}] \ket{0} = (f, f) > 0,
+  \end{equation}
+  as $f \in S_p$ (which is why it was so important to pick this positive frequency subspace $S_p$).
+\end{proof}
+If we have a different choice $S_p'$ of `positive frequency subspace', and $f' \in S_p'$, then \eqref{eq:20-alpha} gives
+\begin{equation}
+  f' = f + \overline{g}{}, \quad f, g \in S_p, \qquad a(f') = a(f) - a(g) ^{\dagger}.
+\end{equation}
+Therefore, $a(f') \ket{0} \neq 0$, so $\ket{0}$ is not the vacuum state if we use $S_p'$.
+The definition of $\ket{0}$, 1-particle states and so on all depend on the choice of $S_p$. In other words, there is no natural notion of particles in a general curved spacetime!
+In Minkowski space, we use the symmetry to pick out a preferred definition of positive frequency subspace.
+\begin{exercise}[Sheet 4]
+  In stationary spacetime $(M, g)$, the Lie derivative $\mathcal{L}_k$ along the stationary Killing vector field $k$ maps $S \to S$ and is antihermitian with respect to the sesquilinear form $(, )$.
+\end{exercise}
+This means that it has imaginary eigenvalues. Using this extra structure, we can make the following definition.
+\begin{definition}[]
+  We say an eigenfunction $u \in S$ is positive frequency if 
+  \begin{equation}
+    \mathcal{L}_k u = -i \omega u, \qquad \omega > 0.
+  \end{equation}
+\end{definition}
+\begin{exercise}[Sheet 4]
+  This implies that $(u, u) > 0$.
+\end{exercise}
+Then $S_p$ is the space spanned by such solutions.
+Taking $\overline{u}{}$ to be the negative frequencies, we split
+\begin{equation}
+  S = S_p \oplus \overline{S}{}_p.
+\end{equation}
+This is an orthogonal decomposition as $\mathcal{L}_k$ is antihermitian and therefore $u \perp \overline{u}{}$.
+
+\section{Bogoliubov Transforms}%
+\label{sec:bogoliubov_transforms}
+
+Let $\{\Psi_i\}$ be an orthonormal basis for $S_p$.
+\begin{equation}
+  (\Psi_i, \Psi_j) = \delta_{ij} \quad \implies \quad (\overline{\Psi}{}_i, \overline{\Psi}{}_j) = -\delta_{ij}.
+\end{equation}
+Then 
+\begin{equation}
+  S_p \perp \overline{S}{}_p \quad \implies \quad (\Psi_i, \overline{\Psi}{}_j) = 0.
+\end{equation}
+We define the quantum field expanded in this basis as
+\begin{equation}
+  \Phi = \sum_i \left( c_{i} \Psi_{i} + d_i \overline{\Psi}{}_i \right).
+\end{equation}
+Then
+\begin{align}
+  a_i &= a(\Psi_i) = (\Psi_i, \Phi) = c_i \\
+  a_i^{\dagger} &= - (\Psi_i, \Phi) = d_i.
+\end{align}
+Therefore, the quantum field is expanded in terms of creation and annihilation operators in this basis as
+\begin{equation}
+  \Phi = \sum_i \left( a_i \Psi_i + a_i^{\dagger} \overline{\Psi}{}_i \right).
+\end{equation}
+
+Now take $S_p'$ to be a different choice of positive frequency subspace, with orthonormal basis $\{\Psi'_i\}$.
+These are related to the first basis by the Bog.~transformation
+\begin{equation}
+  \Psi_i' = \sum_j \left( A_{ij} \Psi_{j} + B_{ij} \overline{\Psi}{}_{j} \right) \qquad
+  \overline{\Psi}{}_i' = \sum_j \left( \overline{B}{}_{ij} \Psi_{j} + \overline{A}{}_{ij} \overline{\Psi}{}_{j} \right), \label{eq:20-dag2}
+\end{equation}
+where $A, B$ are Bog.~coefficients.
+\begin{exercise}
+  Show that \eqref{eq:20-dag2} gives
+  \begin{equation}
+    \label{eq:20-starstar}
+    a'_i = (\Psi_i', \Phi) = \sum_j \left( \overline{A}{}_{ij} a_{j} - \overline{B}{}_{ij} a^{\dagger}_{j} \right).
+  \end{equation}
+\end{exercise}
+\begin{exercise}
+  Show that orthogonality of $\{\Psi_i, \overline{\Psi}{}_i\}$ implies
+  \begin{align}
+    \sum_k \left( \overline{A}{}_{ik} A_{jk} - \overline{B}{}_{ik} B_{jk} \right) &= \delta_{ij} & \text{i.e.}\quad A A^{\dagger} - B B^{\dagger} &= 1 \\
+    \sum_k \left( A_{ik} B_{jk} - B_{ik} A_{jk} \right) &= 0, & A B^T - B A^T &= 0.
+  \end{align}
+\end{exercise}
+
+\section{Particle Production in Non-Stationary Spacetime}%
+\label{sec:particle_production_in_non_stationary_spacetime}
+
+\begin{wrapfigure}{R}{0.3\textwidth}
+  \centering
+  \inkfig[0.25]{l20f1}
+  \caption{}
+  \label{fig:l20f1}
+\end{wrapfigure}
+
+Consider a spacetime
+\begin{equation}
+  M = M_+ \cup M_0 \cup M_-,
+\end{equation}
+where $M_{\pm}$ are stationary.
+Hence, on $(M_{\pm}, g)$ there exists a preferred choice $S_p^{\pm}$.
+Glob.~hyp.: solution in $(M_{\pm}, g)$ extends uniquely to $(M, g)$.
+Therefore $S_p^+, S_p^-$ define two \emph{different} choices of positive frequency subspace.
+Let $\{u_i^{\pm}\}$ be an orthonormal basis for $S_p^{\pm}$. This allows us to find $a_i^{\pm}$.
+For example
+\begin{equation}
+  u_i^{+} = \sum_j \left( A_{ij} u^-_j + B_{ij} \overline{u^-_j}{} \right).
+\end{equation}
+Then \eqref{eq:20-starstar} gives
+\begin{equation}
+  a_i^{\dagger} = \sum_j \left( \overline{A}{}_{ij} a^-_j - \overline{B}{}_{ij} a^-_j{}^{\dagger} \right).
+\end{equation}
+We have vacua $\ket{0 \pm}$ with respect to $S_p^{\pm}$, which satisfy $a^{\pm}_i \ket{0 \pm } = 0$.
+Assume no particles are present initially.
+Then we have the state $\ket{0 -}$. The particle number operator is $N^+_i = a^+_i{}^{\dagger} a^+_i$.
+The expected number of particles of type $i$ in $M_+$ (at `late time')
+\begin{align}
+  \bra{0 -} N_i^+ \ket{0 - } &= \bra{0 - } a_i^+{}^{\dagger} a_i^+ \ket{0 - } = \sum_{j, k} \bra{0 - } a_k^- (- B_{ik}) (-\overline{B}{}_{ij}) a_j^-{}^{\dagger} \ket{0 -} \\
+  &= \sum_{j, k} B_{ik} \underbrace{\overline{B}{}_{ij} \bra{0 - } a_k^- a_k^-{}^{\dagger} \ket{0 -}}_{\delta_{jk}} \\
+  &= \sum_j B_{ij} \overline{B}{}_{ij} = (B B^{\dagger})_{ii}.
+\end{align}
+The expected total number of particles in $M_+$ is $\tr(B B^{\dagger}) = \tr(B^{\dagger} B)$, which vanishes iff $B = 0$, i.e.~$S_p^+ = S_p^-$.
+This is not true generically.
+Therefore, there will be particles present in $M_+$.
+Heuristically, we can think of particles being created by the gravitational field. However, if we do not have a stationary spacetime we cannot define particles uniquely and this heuristic notion is not accurate.

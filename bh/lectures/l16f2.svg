@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.1639169"
-     inkscape:cx="222.75874"
-     inkscape:cy="178.69792"
+     inkscape:zoom="2.7615772"
+     inkscape:cx="200.29382"
+     inkscape:cy="162.21664"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,11 +35,11 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1011"
+     inkscape:window-width="960"
+     inkscape:window-height="487"
      inkscape:window-x="0"
-     inkscape:window-y="32"
-     inkscape:window-maximized="1">
+     inkscape:window-y="556"
+     inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
        id="grid815"
@@ -74,35 +74,41 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="49.171646"
-       y="251.42424"
-       id="text820"><tspan
-         sodipodi:role="line"
-         id="tspan818"
-         x="49.171646"
-         y="251.42424"
-         style="stroke-width:0.26458332px">$R$</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="52.433025"
-       y="242.30908"
+       x="50.344395"
+       y="245.98813"
        id="text824"><tspan
          sodipodi:role="line"
          id="tspan822"
-         x="52.433025"
-         y="242.30908"
+         x="50.344395"
+         y="245.98813"
          style="stroke-width:0.26458332px">$\Sigma'$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="49.924271"
-       y="260.2049"
+       x="50.020081"
+       y="258.04697"
        id="text828"><tspan
          sodipodi:role="line"
          id="tspan826"
-         x="49.924271"
-         y="260.2049"
+         x="50.020081"
+         y="258.04697"
          style="stroke-width:0.26458332px">$\Sigma$</tspan></text>
+    <path
+       style="opacity:0.624;vector-effect:none;fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00157475;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 176.39444,291.5714 c -7.8159,-1.0844 -15.63875,-3.31381 -22.89251,-6.52404 -4.02205,-1.78001 -10.7839,-5.47759 -10.7839,-5.89697 0,-0.7883 10.88845,-5.71333 17.20032,-7.78 12.62465,-4.13363 25.50528,-5.67125 38.38386,-4.58204 8.7782,0.74241 18.63501,2.81658 26.54763,5.5864 4.42791,1.55 11.29306,4.51138 11.29306,4.87143 0,0.28597 -5.90985,3.73225 -9.25662,5.39792 -8.82833,4.39381 -19.4789,7.60447 -29.59843,8.92259 -5.19896,0.67719 -16.0289,0.67963 -20.89341,0.005 z"
+       id="path44"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.26458333,0,0,0.26458333,0,177)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458349px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="49.771473"
+       y="252.35898"
+       id="text820"><tspan
+         sodipodi:role="line"
+         id="tspan818"
+         x="49.771473"
+         y="252.35898"
+         style="stroke-width:0.26458332px">$R$</tspan></text>
   </g>
 </svg>

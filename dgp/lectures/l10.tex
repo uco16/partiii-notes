@@ -1,0 +1,149 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 10: February 24}
+
+\chapter{Topological Charges}%
+\label{cha:topological_charges}
+
+\section{Kinks}%
+\label{sec:kinks}
+
+Consider Minkowski space $\mathbb{M}^2$ with metric $ds^2 = dt^2 - dx^2$, and let $\phi \colon \mathbb{M}^2 \to \mathbb{R}$ be a scalar field with Lagrangian
+\begin{equation}
+  L = \int_\mathbb{R} \left( \frac{1}{2} (\phi_t^2 - \phi_x^2) - U(\phi) \right) \dd[]{x}.
+\end{equation}
+where we denote the partial derivatives $\phi_t = \pdv{\phi}{t}$ and $\phi_x = \frac{\partial \phi}{\partial x}$.
+\begin{equation}
+  L = T - V, \qquad T = \frac{1}{2} \int \phi_t^2 \dd[]{x}
+\end{equation}
+and $T + V$ is the total energy.
+The Euler--Lagrange equations give the equation of motion
+\begin{equation}
+  \phi_{tt} - \phi_{xx} = -\dv{U}{\phi}.
+\end{equation}
+
+Assume $U(\phi) \geq U_0$ for stability and normalise $U_0 = 0$.
+Assume further that $U^{-1}(0) = \{\phi_1, \phi_2, \dots\}$ is a discrete set with at least two elements.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l10f1}
+    \caption{}
+    \label{fig:l10f1}
+\end{figure}
+We can approach this problem in various different ways.
+\begin{description}
+  \item[Perturbation theory:] Choose a ground state $\phi_1$ and let $\phi \approx \phi_1 + \delta \phi$, where $\delta \phi$ is small. The Euler--Lagrange quation becomes the Klein--Gordon equation for a scalar boson
+    \begin{equation}
+      (\Box + m^2) \delta \phi = 0.
+    \end{equation}
+  \item[Solitons:] non-singular, static, finite energy solutions to EL.
+    In general, $\phi \to \varphi \in U^{-1}(0)$.
+\end{description}
+
+\begin{definition}[soliton]
+  \emph{Solitons} are non-singular, static, finite energy solutions to the Euler--Lagrange equations.
+\end{definition}
+
+\begin{example}[Kink]
+  The kink solution has the asymptotic behaviour
+  $\phi \to \phi_1$ as $x \to - \infty$ and $\phi \to \phi_2$ as $x \to + \infty$.
+  This is illustrated in Fig.~\ref{fig:l10f2}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l10f2}
+    \caption{Scalar kink}
+    \label{fig:l10f2}
+\end{figure}
+
+  There is no way we can obtain this in perturbation theory, since $\phi_2$ is finite distance away from $\phi_1$.
+  This kink is inherently a non-perturbative configuration.
+\end{example}
+
+Let us try and get an analytical handle on this.
+Assume
+\begin{equation}
+  U = \frac{1}{2} \left( \dv{W}{\phi} \right), 
+\end{equation}
+for some function $W(\phi)$, which is often called the \emph{superpotential}, although there is no supersymmetry here.
+\begin{align}
+  E &= \frac{1}{2} \int_\mathbb{R} \left[ \phi_t^2 + \phi_x^2 + (W_\phi)^2 \right] \dd[]{x}  \\
+    &= \frac{1}{2} \int_\mathbb{R} \left[ \phi_t^2 + (\phi_x \mp W_\phi)^2 \right] \dd[]{x} 
+    \pm \int_\mathbb{R} \underbrace{\dv{W}{\phi} \dv{\phi}{x} \dd[]{x}}_{\mathclap{\dd[]{W}}} \label{eq:10-1} \\
+    &\underbrace{\geq W(\phi(\infty)) - W(\phi(-\infty))}_{\text{Bogomolny bound}}
+\end{align}
+The B-bound is saturated for the \emph{Bogomolny equations}
+\begin{equation}
+  \boxed{\pdv{\phi}{t} = 0, \qquad \dv{\phi}{x} = \pm \dv{W}{\phi}}
+\end{equation}
+From a variational perspective, they are absolute minimisers of the action.
+Moreover, finding these absolute minima can be obtained by solving first order Bogomolny equations rather than second order Euler--Lagrange equations. We will find that this is often possible even when the theories are not integrable.
+\begin{equation}
+  x - x_0 = \pm \int^\phi \frac{1}{\sqrt{2 U}} \dd[]{\phi}.
+\end{equation}
+
+Let us consider again the boundary term that we managed to integrate in \eqref{eq:10-1}.
+\begin{definition}[topological charge]
+  Define $\phi_{\pm} = \lim_{x \to \pm \infty}\phi$. The \emph{topological charge} $N$ is the difference
+  \begin{equation}
+    N = \phi_+ - \phi_- = \int_{-\infty}^{+\infty} \dv{\phi}{x} \dd[]{x}.
+  \end{equation}
+\end{definition}
+
+To define $N$, we do not need to know the field equations for $\phi$. We just need to know about their limiting behaviour.
+It depends on boundary conditions and is conserved if the energy is finite.
+However, this is not a Noether conservation law, since it does not involve the field equations.
+
+If the field is continuous, we would need to have a continuous deformation of the red curve in Fig.~\ref{fig:l10f2}. Then ??.
+This would imply that the energy is infinite.
+
+There are three possibilities for the topological charge of solitons, depicted in Fig.~\ref{fig:l10f3}.
+\begin{figure}[ht]
+    \centering
+    \inkfig[1]{l10f3}
+    \caption{Topological charges $N$ of solitons.}
+    \label{fig:l10f3}
+\end{figure}
+
+\section{Degree of a Map}%
+\label{sec:degree_of_a_map}
+
+\begin{definition}[topological degree]
+  Let $M, M'$ be oriented, compact manifolds without boundary of the same dimension.
+  Let $f \colon M \to M'$ be a smooth map.
+  The topological degree $\text{def}(f)$ is a number defined by
+  \begin{equation}
+    \label{eq:10-deg}
+    \int_M f^* (\text{vol}(M')) = \text{deg}(f) \int_{M'} \text{vol}(M').
+  \end{equation}
+\end{definition}
+
+\begin{theorem}[]
+  The topological degree is an integer, given by
+  \begin{equation}
+    \text{deg}(f) = \sum_{x \in f^{-1}(y)} \text{sign} (J(x)),
+  \end{equation}
+  with $J = \det(\frac{\partial y^{i}}{\partial x^{j}})$ and $y$ is regular.
+  It does not depend on the volume form $\text{vol(M')}$.
+\end{theorem}
+
+\begin{example}[]
+  Take both $M$ and $M'$ to be circles.
+  We then have $f \colon S^1 \to S^1$. The degree of $f$ is then the winding number.
+  \begin{figure}[ht]
+    \centering
+    \inkfig[0.7]{l10f4}
+    \caption{A function $f \colon S^1 \to S^1$.}
+    \label{fig:l10f4}
+  \end{figure}
+  For the function illustrated in Fig.~\ref{fig:l10f4}, the topological degree is
+  \begin{equation}
+    \text{deg}(f) = \sum_{\mathclap{\theta \colon f(\theta) = f_0}} \text{sign}\left( \frac{\partial f}{\partial \theta} \right) = 1 - 1 + 1 +1 -1 = 1,
+  \end{equation}
+  where we only include the identified point at $\theta = 0 \sim \theta = 2\pi$ once.
+  The fact that $\text{def}(f) = 1$ shows that the function wraps up once.
+  Equivalently, 
+  \begin{equation}
+    \text{deg}(f) = \frac{1}{\text{vol}(S^1)} \int_{S^1} df = \frac{1}{2\pi} \int_0^{2 \pi} \dv{f}{\theta} \dd[]{\theta}.
+  \end{equation}
+  If we view $S^1$ as a set of complex numbers with modulus $1$, and let $f(z) = z^k$, then $\text{deg}(f) = k$.
+\end{example}

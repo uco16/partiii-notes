@@ -1,0 +1,131 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 17: February 25}
+
+We now make use of the following identities:
+\begin{align}
+  \Tr(\gamma^{\mu}\gamma^{\nu}) &= 4 \delta^{\mu\nu},  \\
+  \Tr(\gamma^{\mu} \gamma^{\rho} \gamma^{\nu} \gamma^{\sigma}) &= 4 \left( \delta^{\mu\rho} \delta^{\nu\sigma} - \delta^{\mu\nu} \delta^{\rho\sigma} + \delta^{\mu\sigma} \delta^{\nu\rho} \right).
+\end{align}
+Employing these, the numerator can be brought into the form
+\begin{multline}
+  \Tr \{ \dots \} = 4 \biggl[ - (p + q x)^{\mu} [p - q(1 - x)]^{\nu} + (p + q x) \cdot [p - q (1- x)] \delta^{\mu\nu} \\
+  - (p + q x)^{\nu} [p - q (1 - x)]^{\mu} + m^2 \delta^{\mu\nu} \biggr].
+\end{multline}
+As $d \to 4$, integrals over odd powers of $p^{\mu}$ vanish, so we can drop these terms.
+E.g.~only the diagonal parts of $p^{\mu} p^{\nu}$ will integrate to something non-zero. Replace:
+\begin{align}
+  p^{\mu} p^{\nu} &\to \frac{1}{d} \delta^{\mu\nu} p^2 \\
+  p^{\mu} p^{\rho} p^{\nu} p^{\sigma} &\to \frac{(p^2)^2}{d (d + 2)} (\delta^{\mu\rho} \delta^{\nu\sigma} - \delta^{\mu\nu} \delta^{\rho\sigma} + \delta^{\mu\sigma} \delta^{\nu\rho}).
+\end{align}
+Now the integral depends only on $p^2$:
+\begin{equation}
+  \bdd[d]{p} \to S_{d-1} p^{d-1} \bdd[d]{p} = \frac{(p^2)^{\frac{d}{2} - 1} \dd[]{p^2}}{(4 \pi)^{d / 2} \Gamma \left( \frac{d}{2} \right)}.
+\end{equation}
+Putting things together, we find
+\begin{multline}
+  \Pi_1^{\mu\nu} (q) = 4 \mu^{\epsilon} \frac{g^2}{(4\pi)^{d / 2} \Gamma \left( \frac{d}{2} \right)} \int_{0}^{1}\dd[]{x} \int_{0}^{\infty}\dd[]{p^2} (p^2)^{d / 2 - 1} \frac{1}{(p^2 + \Delta)^2} \\
+  {} \times \biggl[ p^2 \left( 1 - \frac{2}{d} \right) \delta^{\mu\nu} + \left( 2 q^{\mu} q^{\nu} - q^2 \delta^{\mu\nu} \right) x (1 - x) + m^2 \delta^{\mu\nu} \biggr].
+\end{multline}
+These are Euler-$B$-functions:
+\begin{align}
+  \int_{0}^{\infty}\dd[]{p^2}  \frac{(p^2)^{d / 2 - 1}}{(p^2 + \Delta)^2} &= \left( \frac{1}{\Delta} \right)^{2 - d / 2} \frac{\Gamma(2 - d / 2) \Gamma(d / 2)}{\Gamma(2)} \\
+  \int_{0}^{\infty}\dd[]{p^2}  \frac{(p^2)^{d / 2}}{(p^2 + \Delta)^2} &= \left( \frac{1}{\Delta} \right)^{1 - d / 2} \frac{\Gamma(1 + d / 2) \Gamma(1 - d / 2)}{\Gamma(2)}.
+\end{align}
+Hence, 
+\begin{align}
+  \Pi_1^{\mu\nu} (q) &= \frac{4 q^2 \mu^{\epsilon}}{(4 \pi)^{d / 2}}
+  \Gamma \left(\frac{\epsilon}{2}\right) \int_{0}^{1} \frac{\dd[]{x}}{\Delta^{\epsilon / 2}} \biggl(
+    \delta^{\mu\nu} [m^2 - x(1 - x) q^2] - \delta^{\mu\nu} [m^2 + x (1 - x)q^2] + 2 x (1 - x) q^{\mu} q^{\nu} \biggr) \\
+		     &= \frac{8 g^2 \mu^{\epsilon}}{(4 \pi)^{d / 2}} \Gamma \left( \frac{\epsilon}{2} \right) \int_{0}^{1} \frac{\dd[]{x}}{\Delta^{\epsilon / 2}} \left( -q^2 \delta^{\mu\nu} + q^{\mu} q^{\nu} \right) x (1 - x) \\
+		     &= (q^2 \delta^{\mu\nu} - q^{\mu} q^{\nu}) \Pi_1 q(2),
+\end{align}
+where we denote the Lorentz invariant piece
+\begin{equation}
+  \Pi_1(q^2) \coloneqq - \frac{8 g^2}{(4 \pi)^{d / 2}} \Gamma \left( \frac{\epsilon}{2} \right) \int_{0}^{1}\dd[]{x} x(1-x) \left( \frac{\mu^2}{\Delta} \right)^{\epsilon / 2}.
+\end{equation}
+Nore that $\gamma_{\mu} \Pi_1^{\mu\nu} = 0$.
+In the limit $d \to 4$,
+\begin{equation}
+  \Pi_1(q^2) = -\frac{g^2}{2 \pi^2} \int_{0}^{1}\dd[]{x}  x(1-x) \left[ \frac{2}{\epsilon} - \gamma + \log(\frac{4\pi \gamma^2}{\Delta}) \right] + O(\epsilon).
+\end{equation}
+Hence we need to renormalise this: Write
+\begin{align}
+  \mathscr{L}_0 &= \mathscr{L} + \mathscr{L}_{\text{ct}} \\
+  S_0 &= S + S_{\text{ct}}.
+\end{align}
+We thus split the coefficients
+\begin{align}
+  e_0 &= Z_e e = (1 + \delta Z_e) e, & m_0 &= Z_m m = (1 + \delta Z_m) m \\
+  \psi_0 &= \sqrt{Z_2} \psi, & A_0 &= \sqrt{Z_3} A,
+\end{align}
+where the zero subscript denotes the unrenormalised (``bare'') coefficient.
+
+Write the right-hand side
+\begin{equation}
+  S + S_{\text{ct}} = \int \dd[4]{x} 
+  \biggl[ \frac{1}{4} Z_3 F_{\mu\nu} F^{\mu\nu} + Z_2 \overline{\psi}{} \cancel{\partial} \psi + Z_m Z_2 m \overline{\psi}{} \psi + i e Z_1 \overline{\psi}{} \cancel{A} \psi\biggr],
+\end{equation}
+where $Z_1 = Z_e Z_2 \sqrt{Z_3}$. Let $Z_k \coloneqq 1 + \delta Z_k$, with $k = e, m , 1, 2, 3$.
+\begin{remark}
+  These have a matching Taylor expansion
+  \begin{equation}
+    \delta Z_e = \delta Z_1 - \delta Z_2 - \frac{1}{2} \delta Z_3 + \dots
+  \end{equation}
+  We will later show that gauge invariance impleis that $Z_1 = Z_2$, so that
+  \begin{equation}
+    \delta Z_e = -\frac{1}{2} \delta Z_3.
+  \end{equation}
+\end{remark}
+Thus we look at the counterterm diagram, which gives a new 2-pt interaction:
+\begin{align}
+  S_{\text{ct}} &\supset \int \dd[4]{x} \frac{\delta S_3}{4} F^2,\\
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [dotted, boson] b [small, square dot] -- [dotted, boson] c,
+    };
+  \end{gathered}
+  &= - [k^2 \delta^{\mu\nu} - (1 - \xi) k^{\mu} k^{\nu}] \delta Z_3,
+\end{align}
+where $\xi = 0,1$ in Landau / Feynman gauge respectively.
+Choose $\delta Z_3$ such that $\Pi_1^{\text{ren}} (q^2)$ is finite.
+In the $\overline{\text{MS}}{}$ scheme, 
+\begin{equation}
+  \delta Z_3 = - \frac{g^2 (\mu)}{12 \pi^2} \left( \frac{2}{\epsilon} - \gamma + \ln (4 \pi) \right).
+\end{equation}
+Now $\int_0^1 \dd{x} (1 - x) x = \frac{1}{6}$, so $(\Pi_1^{\mu\nu}(q))_{\text{ren}}$, calculated in the ``renormalised perturbation theory'' yields:
+\begin{equation}
+  (\Pi_1^{\mu\nu}(q))_{\text{ren}} = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [boson, dotted] b [small, dot] -- [fermion, half left, looseness=1, edge label=$\Pi_1(q^2)\rvert_{g(\mu)}$] c [small, dot] -- [fermion, half left, looseness=1] b,
+      c -- [boson, dotted] e,
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [boson, dotted] b [small, square dot] -- [boson, dotted] c,
+    };
+  \end{gathered}
+\end{equation}
+with 
+\begin{equation}
+  \Pi_1^{\text{ren}}(q^2) = \frac{g^2(\mu)}{2 \pi^2} \int \dd[]{x} x ( 1 - x) \ln(\frac{m^2 + x (1 - x) q^2}{\mu^2}).
+\end{equation}
+
+\begin{remark}
+  There is a branch cut in the logarithm term when $m^2 + x ( 1 - x)q^2 \leq 0$.
+  For $x \in [0, 1]$, $0 \leq x (1 - x) \leq \frac{1}{4}$. Going back to Minkowski space: $q_0 = i E$ such that the branch cut corresponds to
+  \begin{equation}
+    x (1 - x) (E^2 - \abs{q}^2) \geq m^2.
+  \end{equation}
+  The smallest $E$ on the cut is $E = 2m$, which is shown in Fig.~\ref{fig:l17f1}.
+  \begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l17f1}
+    \caption{}
+    \label{fig:l17f1}
+  \end{figure}
+  In other words, $E = 2m$ is the threshold energy for producing a real $e^+ e^-$ pair.
+\end{remark}

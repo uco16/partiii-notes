@@ -1,0 +1,290 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 18: February 27}
+
+\chapter{Electroweak Interactions}%
+\label{cha:electroweak_interactions}
+
+\section{Introduction}%
+\label{sec:ew-introduction}
+
+\subsection{QED Interaction Processes}%
+\label{sub:qed_interaction_processes}
+
+
+Recall in QED, we had the basic interaction vertex
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small,horizontal=b to c] {
+      a [particle=\(\psi\)] -- b [small, dot] -- [boson] c [particle=\(\gamma\)],
+      d [particle=\(\psi\)] -- b,
+    };
+  \end{gathered}
+\end{equation}
+The current is $J^{\mu} = i \overline{\psi}{}\gamma^{\mu} \psi$.
+We can have various physical processes: \par
+\begin{minipage}{0.5\columnwidth}
+  \begin{itemize}
+  \item $e^- e^- \to e^- e^-$
+  \item $e^+ e^- \to e^+ e^-$
+  \item $e^- \gamma \to e^- \gamma$
+  \end{itemize}
+\end{minipage}%
+\begin{minipage}{0.5\columnwidth}
+  \begin{itemize}
+    \item $e^- e^- \to e^- e^-$
+    \item $e^+ e^- \to \mu^+ e^-$
+    \item  \dots
+  \end{itemize}
+\end{minipage}
+\begin{remark}
+  In the whole standard model, the last interaction is not possible. However, in QED itself, the lepton number does not need to be conserved.
+\end{remark}
+Also, we have scalar QED with the diagrams
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=b to c] {
+      a [particle=\(\phi\)] -- [scalar] b [small, dot] -- [boson] c [particle=\(\gamma\)],
+      d [particle=\(\phi\)] -- [scalar] b,
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to c] {
+      a [particle=\(\phi\)] -- [scalar] b [small, dot] -- [boson] c [particle=\(\gamma\)],
+      d [particle=\(\phi\)] -- [scalar] b -- [boson] e [particle=\(\gamma\)],
+    };
+  \end{gathered}
+\end{equation}
+
+\subsection{Weak Interaction Processes}%
+
+\begin{enumerate}[(i)]
+  \item Leptonic:
+    \begin{itemize}
+      \item $\mu^- \to e^- \nu_{\mu} \overline{\nu}{}_e$
+      \item $\nu_{\mu} e^- \to \nu_{\mu} e^-$
+      \item $\nu_{\mu} e^- \to \nu_e \mu^-$
+    \end{itemize}
+  \item Semi-leptonic:
+    \begin{itemize}
+      \item $n \to p + e^- + \overline{\nu}{}_e$\par
+	($d \to u + e^- + \overline{\nu}{}_e$)
+    \end{itemize}
+  \item Non-leptonic:
+    \begin{itemize}
+      \item $\Lambda^0 \to p + \pi^-$ \par
+	($s \to u + d + u$)
+    \end{itemize}
+\end{enumerate}
+People found all of these interactions and needed to come up with a description to unify these.
+A nice proposal came from Fermi: he realised that all of these are four-body interactions, so we can have a \emph{Fermi coupling}
+\begin{equation}
+  \label{eq:fermi}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a [particle=\(\psi\)] -- v [small, dot, label=$G_F$] -- b [particle=\(\psi\)],
+      c [particle=\(\psi\)] -- v -- d [particle=\(\psi\)],
+    };
+  \end{gathered}
+  \quad 
+  \mathscr{L} = G_F \psi^4
+\end{equation}
+Automatically, looking at the dimension, we have
+\begin{equation}
+  G_F \sim \frac{1}{M^2}
+\end{equation}
+and therefore the Lagrangian is non-renormalisable.
+
+The natural thing to expect is that for energies smaller than a certain mass, this coupling is working, but needs to be replaced by something else at higher energies.
+This is akin to how electromagnetism sees a direct interaction between electrons; the photon does not appear at low energies.
+In such higher energies, we introduce the $W^{\pm}$ such that the first leptonic interaction becomes
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu^-\)] -- [fermion] b -- [fermion] c [particle=\(\nu_{\mu}\)],
+      b -- [boson, edge label=$W^-$] d -- [fermion] e [particle=\(e^-\)],
+      d -- [fermion] f [particle=\(\overline{\nu}{}_e\)],
+    };
+  \end{gathered}
+\end{equation}
+
+\subsection*{Properties of Weak Interactions}%
+
+The basic interaction vertex is
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=b to c] {
+      a -- b -- [boson, edge label=$W^{\pm}\, Z^0$] c,
+      d -- b,
+    };
+  \end{gathered}
+\end{equation}
+These interactions are short range (long lifetimes), which in analogy to the Yukawa potential, going as $e^{-M / r} / r$, means that the mediators must be massive $M_{W^\pm}, M_{Z^0} \neq 0$.
+For energies less than $M_{W^{\pm}}, M_{Z^0}$, we effectively have the Fermi interaction \eqref{eq:fermi}.
+Moreover, interactions are \emph{chiral}, meaning that they break parity.
+
+We know that the only way to describe these interactions in field theory valid at small and large energies is through a spontaneously broken gauge symmetry.
+
+\subsection{Identifying the Gauge theory}%
+
+Start with electrons and neutrinos.
+We know that electrons $e_L, e_R$ can be left- and right-handed.
+However, neutrinos $\nu_L$ only exist in their left-handed version, since we have not observed right-handed neutrinos in experiments.
+We cannot put particles with differing chiralities into the same multiplet, since it would not be Lorentz invariant.
+In general, we could have a doublet $
+\begin{pmatrix}
+\nu_l \\
+e_L \\
+\end{pmatrix} $ and a singlet, which just contains $e_R$.
+This corresponds to the group
+\begin{equation}
+  \label{eq:ew-group}
+  G = SU(2)_L \times U(1) \times U(1)_R
+\end{equation}
+with generators $T^a, Q_L, Q_R$ respectively.
+We know the fundamental representation for $SU(2)$ is given by the Pauli matrices
+\begin{equation}
+  T^a = \frac{1}{2} \sigma^{a},
+\end{equation}
+acting on the doublet $
+\begin{pmatrix}
+\nu_L \\
+e_L \\
+\end{pmatrix} $. Moreover, the $Q_L$ and $Q_R$ act as
+\begin{equation}
+  Q_L \left\{ 
+    \begin{gathered}
+      \begin{pmatrix}
+      \nu_L \\
+      e_L \\
+      \end{pmatrix}
+      = \frac{1}{2}
+      \begin{pmatrix}
+      \nu_L \\
+      e_L \\
+      \end{pmatrix} \\
+      e_R = 0
+    \end{gathered}
+  \right. ;
+  \qquad
+  Q_R \left\{ 
+    \begin{gathered}
+      \begin{pmatrix}
+      \nu_L \\
+      e_L \\
+      \end{pmatrix}
+      = 0 \\
+      e_R = 1
+    \end{gathered}
+  \right.
+\end{equation}
+From this, we define the \emph{hypercharge} $Y$ and \emph{electron lepton number} $L_e$ as
+\begin{align}
+  Y &\coloneqq -Q_R - Q_L & \implies Y 
+  \begin{pmatrix}
+    \nu_L \\
+    e_L \\
+  \end{pmatrix}
+  &= -\frac{1}{2}
+  \begin{pmatrix}
+  \nu_L \\
+  e_L \\
+  \end{pmatrix}
+  , & 
+  Y e_R &= -e_R, \\
+  L_e &\coloneqq 2 Q_L + Q_R & \implies L_e 
+  \begin{pmatrix}
+    \nu_L \\
+    e_L \\
+  \end{pmatrix}
+  &=
+  \begin{pmatrix}
+  \nu_L \\
+  e_L \\
+  \end{pmatrix}
+  , & 
+  L_e e_R &= e_R.
+\end{align}
+We then define the \emph{electric charge}
+\begin{equation}
+  \boxed{Q \coloneqq T^3 + Y}
+\end{equation}
+which acts on the mutliplets as
+\begin{equation}
+  Q 
+  \begin{pmatrix}
+  \nu_L \\
+  e_L \\
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+  0 \\
+  -e_L \\
+  \end{pmatrix}
+  ,\qquad Q e_R = -e_R.
+\end{equation}
+But remember that the gauge group \eqref{eq:ew-group} contains also a $U(1)_{L_e}$ factor.
+However, there is evidence that there is no gauge field corresponding to $U(1)_{L_e}$.
+Therefore, we work with
+\begin{equation}
+  SU(2)_L \times U(1)_Y,
+\end{equation}
+with charge $Q = T^3 + Y$.
+
+\section{Glashow--Weinberg--Salam Model}%
+\label{sec:glashow_weinberg_salam_model}
+
+An element of this group is $U = e^{i \alpha_a T_a} e^{i \beta Y}$.
+The corresponding gauge fields are
+\begin{align}
+  SU(2)_L &\colon W_{\mu}^{a}, & W^{a}_{\mu\nu} &\coloneqq \partial_{\mu} W^{a}_{\nu} - \partial_{\nu} W_{\mu} - i g f^{abc} [W^{b}_{\mu}, W^{c}_{\nu}] \\
+  U(1)_Y &\colon B_{\mu}, & B_{\mu\nu} &\coloneqq \partial_{\mu} B_{\nu} - \partial_{\nu} B_{\mu}.
+\end{align}
+These change as
+\begin{align}
+  \delta W^{a}_{\mu} &= \frac{1}{g} \partial_{\mu} \alpha^{a} - \epsilon^{abc} \alpha^{b} W^{c}_{\mu} \\
+  \delta B_{\mu} &= \frac{1}{g'} \partial_{\mu} \beta,
+\end{align}
+where $g, g'$ are gauge couplings.
+Once we impose renormalisability, the most general Lagrangian that gives us spontaneous symmetry breaking is
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} (W_{\mu\nu})^2 - \frac{1}{4} (B_{\mu\nu})^2 + D_{\mu} H D^{\mu} H^+ + m^2 H^+ H - \lambda (H^+ H)^2 + \kappa,
+\end{equation}
+where the SSB scalar $H$, the \emph{Higgs}, is a complex $SU(2)_L$ doublet.
+It is by convention chosen to give the Higgs a hypercharge of $Y = \frac{1}{2}$:
+\begin{equation}
+  H = 
+  \begin{pmatrix}
+  H_+ \\
+  H_0 \\
+  \end{pmatrix}_{Y = 1 / 2}.
+\end{equation}
+The covariant derivative is
+\begin{equation}
+  D_{\mu} H = \partial_{\mu} H - i g W^{a}_{\mu} T^{a} H - \frac{i}{2} g' B_{\mu} H.
+\end{equation}
+For a broken symmetry, $\langle H \rangle \neq 0$, pick
+\begin{equation}
+  \langle H \rangle = \frac{1}{\sqrt{2}} 
+  \begin{pmatrix}
+  0 \\
+  v \\
+  \end{pmatrix}
+  , \qquad v = \frac{m}{\sqrt{\lambda}},
+\end{equation}
+where $v$ is the vacuum expectation value.
+Expand around the vacuum:
+\begin{equation}
+  H = \frac{1}{\sqrt{2}} e^{-i \xi^{a} ?? T_a}
+  \begin{pmatrix}
+  0 \\
+  h(x) + v \\
+  \end{pmatrix},
+\end{equation}
+where we identify the $\xi_{a}$ as the Goldstones, and $h(x)$ as the real Higgs boson.
+Unitary:
+\begin{equation}
+  \partial_{\mu} \xi^{a} T^{a} - g W^{a}_{\mu} T^{a} - g' B_{\mu}  \to -g W_{\mu}^{a} T^{a} - g'B_{\mu},
+\end{equation}
+eating the Goldstones.

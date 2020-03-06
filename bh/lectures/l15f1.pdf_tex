@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{232.21586788bp}%
+    \setlength{\unitlength}{166.05900642bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,21 +50,32 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.29649857)%
+  \begin{picture}(1,2.44208566)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l15f1.pdf}}%
-    \put(0.48674675,0.32525906){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
-    \put(0.32525911,0.16377133){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
-    \put(0.32525911,0.45444914){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
-    \put(0.19606903,0.29296159){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
-    \put(0.61593683,0.45444914){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathscr{I}^+$\end{tabular}}}}%
-    \put(0.71282943,0.29296159){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^0$\end{tabular}}}}%
-    \put(0.61593683,0.19606899){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathscr{I}^-$\end{tabular}}}}%
-    \put(0.51904422,0.09917638){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
-    \put(0.55134188,0.51904427){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+$\end{tabular}}}}%
+    \put(0.68066359,0.76939604){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I\end{tabular}}}}%
+    \put(0.45484029,0.54357261){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III\end{tabular}}}}%
+    \put(0.45484029,0.95005462){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II\end{tabular}}}}%
+    \put(0.2741817,0.72423145){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV\end{tabular}}}}%
+    \put(0.84857208,0.89641568){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\mathscr{I}^+$\end{tabular}}}}%
+    \put(0.95696713,0.75928462){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$i^0$\end{tabular}}}}%
+    \put(0.84697332,0.60680307){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\mathscr{I}^-$\end{tabular}}}}%
+    \put(0.74865114,0.52654651){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^-$\end{tabular}}}}%
+    \put(0.74549282,0.98462644){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$i^+$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l15f1.pdf}}%
-    \put(0.68053196,0.76127596){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}ring singularity\end{tabular}}}}%
-    \put(0.68053196,0.71282966){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}($r = 0, \theta = \pi / 2$)\end{tabular}}}}%
+    \put(0.45484029,1.44686633){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}III'\end{tabular}}}}%
+    \put(0.45484029,1.89851293){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}II'\end{tabular}}}}%
+    \put(0.68066359,1.6726895){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}I'\end{tabular}}}}%
+    \put(0.22901699,1.6726895){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}IV'\end{tabular}}}}%
+    \put(0.31934628,1.2210429){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}V\end{tabular}}}}%
+    \put(0.59033417,1.2210429){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}VI\end{tabular}}}}%
+    \put(0.19426584,1.23205032){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = 0$\end{tabular}}}}}%
+    \put(0.31934628,2.12433622){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}V'\end{tabular}}}}%
+    \put(0.59033417,2.12433622){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}VI'\end{tabular}}}}%
+    \put(0.5769433,0.68459898){\color[rgb]{0,0,0}\rotatebox{-45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r = r_+$\end{tabular}}}}}%
+    \put(0.50467971,1.07301524){\color[rgb]{0,0,0}\rotatebox{-45}{\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$r = r_-$\end{tabular}}}}}%
+    \put(0.91496126,1.32731955){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$r < 0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{l15f1.pdf}}%
   \end{picture}%
 \endgroup%

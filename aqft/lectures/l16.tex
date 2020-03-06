@@ -1,0 +1,172 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 16: February 22}
+
+\section{Photon Generating Functional}%
+\label{sec:photon_generating_functional}
+
+Let us couple an external source to the photon following Maxwell's equation
+\begin{equation}
+  \label{eq:16-maxwell}
+  \partial^{\nu} F^{\nu\mu} = J^{\mu}.
+\end{equation}
+Then the generating functional is
+\begin{equation}
+  \mathcal{Z}_0[J] = \int \pdd{A} \exp{- \int \dd[4]{x} [F_{\mu\nu} F^{\mu\nu} + J^{\mu} A_{\mu}]}.
+\end{equation}
+Let us check that this is gauge invariant.
+Define the gauge transformation to be $A_{\mu}(x) \to A'_{\mu}(x) = A_{\mu}(x) - \partial_{\mu} \alpha(x)$\footnote{Compared to the \emph{Standard Model} course, we are absorbing the factor of $\frac{1}{e}$ into $\alpha(x)$.}
+, we have
+\begin{align}
+  \int \dd[4]{x} J^{\mu} (A'_{\mu} - A_{\mu}) &= \int \dd[4]{x} J^{\mu}(\partial_{\mu} \alpha) \\
+					      &= \int \dd[4]{x} \partial_{\mu} (J^{\mu} \alpha ) - \int \dd[4]{x} (\partial_{\mu} J^{\mu})\alpha = 0,
+\end{align}
+where the first term is a boundary term, which vanishes for suitable behaviour at $\abs{x} \to \infty$, and the second term vanishes by conservation of the current (evident from Maxwell's equation \eqref{eq:16-maxwell}):
+\begin{equation}
+  \partial_{\mu} J^{\mu} = \partial_{\mu} \partial_{\nu} F^{\mu\nu} = 0,
+\end{equation}
+Since $F^{\mu\nu} = - F^{\nu\mu}$.
+
+The Fourier transform of the action is
+\begin{equation}
+  S_g[A, J] = \frac{1}{2} \int \bdd[4]{k} \left[ A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k) + J^{\mu}(-k) A_{\mu}(k) + J^{\mu}(k) A_{\mu}(-k) \right].
+\end{equation}
+Consider field gauge-equivalent to $A_{\mu}(k) = 0$: The action vanishes and $e^{-S_g} = 1$. Therefore, we have an apparent divergence $\int \pdd{A} \cdot 1$.
+
+From the condition of position space gauge invariance, we get
+\begin{equation}
+  A_{\mu}(x) = \partial_{\mu} \alpha(x) \to A_{\mu}(k) = k_{\mu} \alpha(k).
+\end{equation}
+
+Define the ($4 \times 4$) projection matrix
+\begin{align}
+  P^{\mu\nu}(k) &= \delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2},
+\end{align}
+which obeys $ P\indices{^{\mu}_{\nu}} (k) P^{\nu\rho}(k) = P^{\mu\rho}(k)$.
+Its eigenvalues are either $0$ or $1$.
+The $k_{\nu}$ are the zero-eigenvectors
+\begin{equation}
+  P^{\mu\nu}(k) k_{\nu} = 0
+\end{equation}
+and $k_{\mu} J^{\mu}(k) = 0$ (from $\partial_{\mu} J^{\mu}(p) = 0$).
+The other three eigenvalues of $P^{\mu\nu}(k)$ are $1$.
+The trace is the sum of these eigenvalues
+\begin{equation}
+  \delta_{\mu\nu} P^{\mu\nu} = 3.
+\end{equation}
+
+Solution: Interpret $\int \pdd{A}$ as integration over modes that are not gauge equivalent to $A_{\mu}(k) = 0$.
+In other words, we integrate over only those modes with $k^{\mu} A_{\mu}(k) = 0$.
+In position space, this is $\partial^{\mu} A_{\mu}(x) = 0$, which is called the \emph{Lorenz gauge} or \emph{Landau gauge}.
+As such, we are basically gauge fixing here.
+What we can do is introduce a delta function, which forces us to integrate along a particular path that cuts through all the gauge orbits exactly once.
+We will have to do this anyways in Chapter \ref{cha:nonabelian_gauge_theory}, where we talk about non-Abelian gauge theory, but it is a lot of work and not really necessary to right now, so we defer this discussion to then.
+
+In this subspace, $P^{\mu\nu}$ is just the identity
+\begin{equation}
+  \mathcal{Z}_0[J(k)] = \exp[\frac{1}{2} \int \bdd[4]{k} J_{\mu}(-k) \frac{P^{\mu\nu}}{k^2} J_{\nu}(k)].
+\end{equation}
+The matrix can be identified as $\frac{1}{k^2} P^{\mu\nu}D^{\mu\nu}(k) = \frac{1}{k^2} (\delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2})$, which again is the Lorenz Landau gauge condition.
+
+Again, $k^{\mu} J_{\nu}(k) = 0$, so we can drop the second term in $P^{\mu\nu}(k)$ to find 
+\begin{equation}
+  \mathcal{Z}_0[J(k)] = \exp[\frac{1}{2} \bdd[4]{k} J_{\mu}(-k) \frac{\delta^{\mu\nu}}{k^2} J_{\nu}(k)].
+\end{equation}
+This gives $D^{\mu\nu}(k) = \frac{1}{k^2} \delta^{\mu\nu}$, which is called \emph{Feynman gauge}.
+Of course, we did not need to drop the whole of the second term. We could have introduced a parameter, which leads to a whole family of gauges. We did this in the \emph{Quantum Field Theory} course and will see this again when we discuss the non-Abelian case.
+
+\subsection*{Interactions}%
+
+We can introduce an interaction term into the action
+\begin{equation}
+  ie A_{\mu} (x) \overline{\psi}{}^{\alpha}(x) (\gamma^{\mu})^{\alpha\beta} \psi^{\beta}(x),
+\end{equation}
+where $\alpha, \beta$ are spinor indices.
+Introducing Grassmann-valued sources $\eta$, $\overline{\eta}{}$, the generating functional becomes
+\begin{equation}
+  \mathcal{Z}[\eta, \overline{\eta}{}, J] \propto \exp[-i e (\gamma^{\mu})^{\alpha\beta} \int \dd[4]{x} \left( -\frac{\delta}{\delta J(x)} \right) \left( - \frac{\delta }{\delta \eta^{\alpha}(x)} \right) \left( -\frac{\delta }{\delta \overline{\eta}{}^{\beta}(x)} \right) \mathcal{Z}_0 [\eta, \overline{\eta}{}] \mathcal{Z}_0[J]]
+\end{equation}
+It is a tedious exercise to see that for each fermion loop, we get an overall factor $(-1)$ from anticommuting the Grassmann-valued sources.
+
+Recall the Feynman propagator 
+\begin{equation}
+  S_F^{\alpha\beta}(x - y) = \langle \wick{\c \psi^{\alpha}(x) \c{\overline{\psi}{}^{\beta}(y)}} \rangle.
+\end{equation}
+The one-loop contribution is
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
+      a [large, dot, label=$x_1$] -- [boson] b [small, dot, label=0:$x$] -- [fermion, half left, looseness=1] c [small, dot, label=180:$y$] -- [fermion, half left, looseness=1] b,
+      c --[boson] d [large, dot, label=$x_2$]
+    };
+  \end{gathered}
+\end{equation}
+This contributes
+\begin{align}
+  &(-ie)^2 \int \dd[4]{x} \dd[4]{y} \langle A_{\mu}(x_1) \overline{\psi}{}^{\alpha}(x) \cancel{A}^{\alpha\beta}(x) \psi^{\beta}(x) \overline{\psi}{}^{\gamma} (y) \cancel{A}^{\gamma\delta}(y) \psi^{\delta}(y) A_{\nu}(x_2) \rangle \\
+  = & (-i e)^2 \int \dd[4]{x} \dd[4]{y} \langle A \text{'s} \dots (-1)^3 \underbrace{\psi^{\delta}(y) \overline{\psi}{}^{\alpha}(x)}_{\mathclap{S_F^{\delta\alpha}(y - x)}} \underbrace{\psi^{\beta}(x) \overline{\psi}{}^{\gamma}(y)}_{\mathclap{S_F^{\beta\gamma}}(x - y)} \rangle,
+\end{align}
+and we can see that the $(-1)^3 = (-1)$ contributes the minus sign for the fermion loop.
+
+\section{Vacuum Polarisation}%
+\label{sec:vacuum_polarisation}
+
+Quantum corrections to the photon propagator
+\begin{align}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a --[boson] b [blob] --[boson] c,
+    };
+  \end{gathered}
+  &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [boson] b,
+    };
+  \end{gathered}
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a --[boson] b [blob, label=$1PI$] -- [boson] c,
+    };
+  \end{gathered}
+  + \dots \\
+  &= \frac{1}{1 - \Pi(q)},
+\end{align}
+where 
+\begin{equation}
+  \Pi^{\mu\nu}(q) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [boson, dotted] b [blob, label=$1PI$] -- [boson, dotted] c,
+    };
+  \end{gathered}
+  = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [dotted, boson, edge label=$\mu$, momentum'=$_{\vb{q}}$] b -- [fermion, half left, looseness=1, momentum=$p$] c -- [fermion, half left, looseness=1, momentum=$p - q$] b,
+      c -- [boson, dotted, edge label=$\nu$, momentum'=$q$] d,
+    };
+  \end{gathered}
+  + O( \text{2-loop} ).
+\end{equation}
+Use dimensional regularisation. Let $e^2 = \mu^\epsilon g^2 (\mu)$, where $\epsilon = 4 - d$.
+Then
+\begin{align}
+  \Pi_{\text{1-loop}}^{\mu\nu}(q^2) &= - \mu^\epsilon (-ig)^2 \int \bdd[d]{p} \tr(\frac{1}{i \cancel{p} + m} \gamma^{\mu} \frac{1}{i (\cancel{p} - \cancel{q}) + m} \gamma^{\nu}) \\
+				    &= -\mu^{\epsilon} (ig)^2 \int \bdd[d]{p} \frac{\tr[(-i \cancel{p} + m) \gamma^{\mu} (-i (\cancel{p} - \cancel{q}) + m) \gamma^{\nu}]}{(p^2 + m^2) ((p - q)^2 + m^2)}.
+\end{align}
+Let us now use Feynman parametrisation
+\begin{equation}
+  \frac{1}{AB} = \int_0^1 \dd[]{x} \int_0^1 \dd[]{y} \frac{\delta(x + y - 1)}{[Ay + B x]^2}.
+\end{equation}
+Then looking at just the denominator,
+\begin{equation}
+  \int_0^1 \frac{\dd[]{x}}{\left\{ (p^2 + m^2)(1 - x) + [(p - q)^2 + m^2]x \right\}^2} = \int_0^1 \frac{\dd[]{x}}{[(p - qx)^2 + m^2 + q^2 x(1 - x)]^2}.
+\end{equation}
+Shift integration variables to $p' = p - q x$. Then drop the prime.
+This gives
+\begin{equation}
+  \Pi_{\text{1-loop}}^{\mu\nu}(q) = \mu^{\epsilon} g^2 \int \bdd[d]{p} \int_0^1	\dd[]{x} \frac{\tr{[-i (\cancel{p} + \cancel{q} x) + m] \gamma^{\mu} [-i (\cancel{p} - \cancel{q}(1 - x)) + m] \gamma^{\nu}}}{(p^2 + \Delta)^2},
+\end{equation}
+where we have defined the shorthand $\Delta = m^2 + q^2 x(1 - x)$.

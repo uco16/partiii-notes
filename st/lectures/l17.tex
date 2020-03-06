@@ -1,0 +1,119 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 17: February 26}
+
+These results seem intuitive. We might think of $b_{ab}$ as a metric (but with the wrong statistics) and $c^{a}$ as a vector field (with the wrong statistics).
+
+\subsection{\texorpdfstring{$T_{\text{gh}}(z) T_{\text{gh}}(w)$}{Ghost-Ghost} OPE}%
+\label{sub:ghost_ghost_ope}
+
+We can now find $T_{\text{gh}}(z) T_{\text{gh}}(w)$.
+Proceeding in exactly the same way as the TT-OPE \eqref{eq:tt-ope}, we have
+\begin{equation}
+  T_{\text{gh}}(z) T_{\text{gh}}(w) = -\frac{26 / 2}{(z - w)^4} + \frac{2}{(z - w)^2} T_{\text{gh}}(w) + \frac{1}{(z - w)} \partial T_{\text{gh}}(w) + \dots
+\end{equation}
+So $T_{\text{gh}}(w)$ has weight $h = 2$.
+Combining this with \eqref{eq:tt-ope}, we find that the OPE of total stress tensor $\mathcal{T}(z) = T_X (z) + T_{\text{gh}}(z)$ is
+\begin{equation}
+  \boxed{\mathcal{T}(z) \mathcal{T}(w) = \frac{(D - 26) / 2}{(z - w)^4} + \frac{2}{(z - w)} \mathcal{T}(w) + \frac{1}{(z - w)} \partial \mathcal{T}(w) + \dots}
+\end{equation}
+We see that if $D = 26$, the anomaly term (unwanted pole of order 4) vanishes, and we have a consistent quantum conformal theory on our worldsheet $\Sigma$.
+
+This would have been more complicated if the two sectors interacted.
+Moreover, if there were other fields in our theory, a different value of $D$ might make this vanish.
+In particular, if we made the theory supersymmetric (to cure the tachyon in our spectrum), adding in worldsheet fermions, we would obtain other contributions to the stress tensor.
+Doing the calculation, we would obtain $D = 10$.
+
+There are three possible reactions we can have here.
+One approach is to say, ``Well, nice try. This is obviously nonsense, so back to the drawing board it is.''
+
+Another approach is to consider the possibility of higher dimensions. Other theories do not really answer the question of why the universe has the dimensionality it has. (Or in the case of string theory, explaining why the universe has the dimensionality that it has not.) This makes fruitful contact with Kaluza--Klein theory.
+
+Alternatively, in quantum theory, one may think about the dimensions of spacetime to be emergent.
+An example of this is the AdS/CFT correspondence.
+
+\subsection{Mode Expansions for Ghosts}%
+\label{sub:mode_expansions_for_ghosts}
+
+Having found the weights of the ghosts, we have the mode expansions
+\begin{equation}
+  b(z) = \sum_n b_n z^{-n - 2}, \qquad c(z) = \sum_n c_n z^{-n +1}.
+\end{equation}
+We can invert these to get expressions for the modes
+\begin{equation}
+  b_n = \oint \frac{\dd[]{z}}{2 \pi i} z^{n+1} b(z), \qquad c_n = \oint \frac{\dd[]{z}}{2 \pi i} z^{n-2} c(z).
+\end{equation}
+Ghosts are imposing the classical constraints that the stress tensor must vanish, and keep us on the correct gauge slice, which makes sure that we do not overcount in the Fadeev--Popov determinant.
+So they are physically relevant objects, although not measurable.
+However, despite having integer weights (which is the closest thing to spin we can have in two dimensions), ghosts violate the spin-statistics theorem and obey fermionic statistics.
+To quantise fields, we therefore want to explore anticommutation relations
+\begin{align}
+  \{b_m, c_n\} &\coloneqq b_m c_n + c_n b_m \\
+	       &= \oint_{z = 0} \frac{\dd[]{z}}{2\pi i} z^{m+1} \oint_{w  =0} \frac{\dd[]{w}}{2 \pi i} w^{n-2} \{b(z), c(w)\} \\
+	       &= \oint_{z = 0} \frac{\dd[]{z}}{2\pi i } \oint_{w = z} \frac{\dd[]{w}}{2 \pi i} z^{m+1} w^{n-2} \mathcal{R} \big( b(z) c(w) \big),
+\end{align}
+where we write the radial ordering explicitly, although it is usually implicitly assumed.
+Using the $b(z) c(w)$ OPE, we can evaluate this anticommutation relation as
+\begin{equation}
+  \boxed{ \{b_m, c_n\} = \delta_{m+n, 0} }
+\end{equation}
+
+\section{The State-Operator Correspondence}%
+\label{sec:the_state_operator_correspondence}
+
+Our physical space of states contains, for example, the tachyon $\ket{k} = e^{i k \times X} \ket{0}$ or the graviton $\epsilon_{\mu\nu} \alpha^{\mu}_{-1} \overline{\alpha}{}^{\nu}_{-1} \ket{k}$, together with their physical state conditions.
+On the other hand, we have also been talking about operators, but have not yet explored their connection.
+
+In $2d$ CFT, for each physical state there is a corresponding operator in the operator algebra of the theory.
+For example, 
+\begin{equation}
+  \partial X^{\mu} (z) = -i \sqrt{\frac{\alpha'}{2}} \sum_n \alpha^{\mu}_n z^{-n-1}.
+\end{equation}
+We can construct a (in this case non-physical) state as follows:
+Consider the expression
+\begin{equation}
+  \lim_{z \to 0} \partial X^{\mu}(z) \ket{0} = -i \sqrt{\frac{\alpha'}{2}} \lim_{z \to 0} \sum_n \frac{\alpha^{\mu}_n}{z^{n+1}} \ket{0}.
+\end{equation}
+The terms with $n+1 < 0$ drop out. However, we have potential divergences for $n \geq -1$.
+However, recall that $\alpha^{\mu}_n \ket{0} = 0$ for $n \geq 0$. So all that we are left with is the case of $n+1 = 0$:
+\begin{equation}
+  \lim_{z \to 0}  \partial X^{\mu}(z) \ket{0} = - i \sqrt{\frac{\alpha'}{2}} \alpha^{\mu}_{-1} \ket{0}.
+\end{equation}
+It is not too hard to see that we similarly have
+\begin{equation}
+  \lim_{z, \overline{z}{} \to 0} \partial X^{\mu} \overline{\partial}{}X^{\nu} e^{i k \cdot X(z, \overline{z}{})}\ket{0} = \alpha^{\mu}_{-1} \overline{\alpha}{}^{\nu}_{-1} \ket{k}.
+\end{equation}
+
+And it also goes the other way: given a state in the Hilbert space, there is an associated operator.
+In a quantum theory, this is not always true.
+However, in our case, we can think of physical states and operators interchangeably.
+
+More generally, if we have a weight $h$ chiral field $ \phi(z) = \sum_n \phi_n z^{-n - h}$, then for $ \lim_{z \to 0}  \phi(z) \ket{0} $ to exist, we require that
+\begin{equation}
+  \boxed{\phi_n \ket{0} = 0 \quad \text{for} \quad n> -h}
+\end{equation}
+Knowing the weight of a field tells us something about its relation to the vacuum. Conversely, we might say that the weight tells us about the definition of the vacuum for that field.
+Then
+\begin{equation}
+  \lim_{z \to 0}  \phi(z) \ket{0} = \phi_{-n} \ket{0}.
+\end{equation}
+For example, knowing the weights for the ghosts means that we know the vacuum for the ghosts.
+
+\section{BRST Symmetry}%
+\label{sec:brst_symmetry}
+
+After Fadeev--Popov, we had the action
+\begin{equation}
+  S[X, b, c] = S[X] + S_{\text{gh}}[b, c],
+\end{equation}
+a sum of the Polyakov action and the ghost action.
+Importantly, $h_{ab}$ was fixed to $\hat{h}_{ab}$, for example to the Euclidean metric.
+It is useful to do something a little strange and `unfix it'.
+We would like to see how the choice $\hat{h}_{ab}$ does (not) influence the physics. (We hope that the choice does not affect the physics at all.)
+To that end, we introduce a Lagrange multiplier field $B_{ab}$ and the gauge-fixing term in the action
+\begin{equation}
+  \label{eq:sgf}
+  S_{\text{gf}}[h, B] = \frac{1}{4 \pi \alpha'} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} B^{ab} (\hat{h}_{ab} - h_{ab}).
+\end{equation}
+Since this term appears in the exponential of the partition function path integral, doing a functional integral over the $B$'s gives a delta functional that imposes the gauge-choice $\hat{h}_{ab} = h_{ab}$.
+As such, we are still making a choice in the spirit of Fadeev--Popov, but have the freedom to take any choice $\hat{h}_{ab}$ that we like, such as the Euclidean metric.

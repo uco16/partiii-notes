@@ -1,0 +1,201 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 17: February 25}
+
+The Abelian Higgs model describes the effective field theory of superconductivity.
+In this case, $\langle \phi \rangle \sim e^- e^-$ is the Cooper pair and $A^{\mu} A_{\mu}$ gives a magnetic field, which is energetically disfavoured.  This is the Meissner effect.
+The penetration depth $R = \frac{1}{m_A}$ coincides with the mass of the gauge field.
+In the Yukawa case, it tells us how deeply the magnetic field enters into the superconductor.
+Moreover, we have vortex lines with correlation length $\xi = \frac{1}{m_{\eta}}$ and $\xi >R$ gives type I, whereas $\xi < R$ gives type II, where you can have vortices.
+Superconductivity is an example where you break to a discrete symmetry.
+
+Since we map from a circular vacuum to three dimensional space, we have what is called \emph{cosmic strings}:
+\begin{figure}[ht]
+    \centering
+    \inkfig[0.4]{cosmic-strings}
+    \caption{Cosmic Strings}
+    \label{fig:cosmic-strings}
+\end{figure}
+
+\section{Anomalies}%
+\label{sec:anomalies}
+
+\begin{leftbar}
+  Non-examinable.
+\end{leftbar}
+
+We have finished the spontaneous symmetry breaking part but for completeness we should mention another mechanism of symmetry breaking.
+\begin{definition}[anomalies]
+  \emph{Anomalies} appear whenever you have classical symmetries, which are broken by quantisation.
+\end{definition}
+In quantum theory, we have much for than a Lagrangian. It might be possible that the symmetries of the Lagrangian might disappear upon quantisation.
+Recall that in quantum field theory, we work with the path integral formulation of quantum mechanics
+\begin{equation}
+  \int \pdd{\phi} e^{i S[\phi]}.
+\end{equation}
+Consider a classical symmetry $\phi \to \phi'$, defined by the fact that the action transforms as $S \to S$.
+But the path integral measure also needs to be invariant for the physics to stay the same! The measure transforms as
+\begin{equation}
+  \pdd{\phi} \to \pdd{\phi'} \mathcal{J}.
+\end{equation}
+If the Jacobian $\mathcal{J} \neq 0$, then the symmetry is broken.
+The presence of anomalies has two different effects depending on the type of symmetry.
+In a global symmetry, the symmetry is simply broken and nothing bad happens.
+However, in the case of local (gauge) symmetries, anomalies are a killer: they imply that the theory is inconsistent.
+Every single gauge theory that we deal with has to be free of anomalies.
+It can be shown that chiral theories are automatically anomaly-free.
+This subject is very broad and deep, and we will not go into too much detail here, but it is encouraged to read up more on anomalies.
+
+\subsection{Anomalies in QED}%
+\label{sub:anomalies_in_qed}
+
+Consider for instance QED:
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} F^{\mu\nu} F_{\mu\nu} + \overline{\psi}{}_L (i \cancel{\partial} - e \cancel{A}) \psi_L + \overline{\psi}{}_R (i \cancel{\partial} - e \cancel{A})\psi_R - m \overline{\psi}{}_L \psi_R - m \overline{\psi}{}_R \psi_L.
+\end{equation}
+For the massless limit $m \to 0$, we have two symmetries:
+\begin{align}
+  \psi &\to e^{i \alpha} \psi, & \psi &\to e^{i \beta \gamma_5} \psi \label{eq:17-sym} \\
+  \psi_L & \to e^{i (\alpha + \beta)} \psi_L, & \psi_R &\to e^{i(\alpha + \beta)} \psi_R.
+\end{align}
+We can then find conserved currents
+\begin{equation}
+  J_V^{\mu} = \overline{\psi}{}\gamma^{\mu} \psi \qquad J_A^{\mu} = \overline{\psi}{} \gamma^{\mu} \gamma^5 \psi,
+\end{equation}
+with $\partial^{\mu} J_{\mu} = \partial^{\mu} J_{\mu 5} = 0$.
+We call $J_V^{\mu}$ the \emph{vector current} and $J_A^{\mu}$ the \emph{axial current}.
+For the massive case $m \neq 0$, 
+\begin{equation}
+  \partial_{\mu} J_V^{\mu} = 0, \qquad \partial_{\mu} J_A^{\mu} = 2 i m \overline{\psi}{} \gamma^5 \psi,
+\end{equation}
+only the vector current is conserved.
+
+We will now see that, even in the massless limit, the axial current conservation will be broken.  Consider the following \emph{triangle diagrams}
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- [boson, momentum=$q$] b -- [fermion, momentum'=$l + p$] u -- [boson, momentum=$p$] ru [particle=\(\nu\)],
+      b -- [fermion, rmomentum=$l - k$] d -- [boson, momentum=$k$] rd [particle=\(\lambda\)],
+      u -- [fermion, momentum'=$l$] d,
+      rd -- [draw=none] ru,
+    };
+  \end{gathered}
+  \quad + \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a -- [boson, momentum=$q$] b -- [fermion, momentum'=$l + k$] u -- [boson, momentum=$k$] ru [particle=\(\lambda\)],
+      b -- [fermion, rmomentum=$l - p$] d -- [boson, momentum=$p$] rd [particle=\(\nu\)],
+      u -- [fermion, momentum'=$l$] d,
+      rd -- [draw=none] ru,
+    };
+  \end{gathered}
+\end{equation}
+These kinds of diagrams created a big problem in the community, since people did not know how to deal with it.
+They are the source of the anomalies.
+\begin{equation}
+  \int \dd[4]{x} e^{i q \cdot x} \bra{p, k} J^{\mu}_A(x) \ket{0} = \bdelta^4(p + k - q) \epsilon_{\nu}(p) \epsilon_{\lambda}(k) \mathcal{M}^{\mu\nu\lambda} (p, k).
+\end{equation}
+Computing $\partial_{\mu} J^{\mu}_{A}$ is equivalent to $q_{\mu} \mathcal{M}^{\mu\nu\lambda}$.
+We want to check whether the Ward identity is satisfied:
+\begin{equation}
+  q_{\mu} M^{\mu\nu\lambda} \epsilon_{\nu} \epsilon_{\lambda} \stackrel{?}{=} 0.
+\end{equation}
+We observe that both cannot vanish since
+\begin{align}
+  \bra{p, k} \partial_{\mu} J^{\mu 5} \ket{0} &= -\frac{e^2}{16 \pi^2} \epsilon^{\mu\nu\alpha\beta} (-i p_{\mu}) \epsilon_{\nu} (p) (-i k_{\alpha}) \epsilon_{\beta} (k) \\
+  &= -\frac{e^2}{2\pi^2} \bra{p, k} e^{\alpha\lambda\beta\nu} F_{\alpha\beta} F_{\lambda\nu} \ket{0}. \\
+  \implies \partial_{\mu} J_A^{\mu} &= -\frac{e^2}{16 \pi ^2} \epsilon^{\mu\nu\alpha\beta} F_{\mu\nu} F_{\alpha\beta}.
+\end{align}
+This is caled the \emph{Adler--Bell--Jackiw anomaly}.
+To obtain this, there is an integral
+\begin{equation}
+  \int_{-\infty}^{\infty} \left( f(x + a) - f(x) \right) \dd[]{x}.
+\end{equation}
+Naively, these seem to cancel each other, giving zero.
+However, if we expand the first term in a Taylor series, we obtain 
+\begin{equation}
+  \int \left( f'(x)a + \dots \right) \dd[]{x} = f(\infty)- f(-\infty),
+\end{equation}
+where $f(\infty), f(-\infty)$ are constants that do not cancel each other.
+
+For the path integral,
+\begin{equation}
+  \int \pdd{\psi} \pdd{\overline{\psi}{}} \pdd{A} e^{i \int \dd[4]{x} \left( -\frac{1}{4} F_{\mu\nu}^2 + i \overline{\psi}{} \cancel{D} \psi \right)}.
+\end{equation}
+Under the transformations \eqref{eq:17-sym}, of the form
+\begin{equation}
+  \psi \to \Delta \psi, \qquad \overline{\psi}{} \to \Delta_c \overline{\psi}{},
+\end{equation}
+we have $S \to S$, but the measure transforms as
+\begin{align}
+  \pdd{\overline{\psi}{}} \pdd{\psi} &\to (\mathcal{J}_c \mathcal{J})^{-1} \pdd{\overline{\psi}{}} \pdd{\psi}, \\
+				     &= e^{\Tr \ln \Delta} = e^{\int \dd[4]{x} \bra{x} \Tr \ln \Delta (x) \ket{x}}
+\end{align}
+where $\mathcal{J} = \det \Delta$, $\mathcal{J}_c = \det \Delta_c$.
+For $\Delta = e ^ i \beta \gamma_5$, we have
+\begin{equation}
+  \mathcal{J} = e^{-i \int \dd[4]{x} \left( \beta \frac{e^{2}}{32 \pi^2} \epsilon^{\mu\nu\alpha\beta} F_{\mu\nu} F_{\alpha\beta} \right)}.
+\end{equation}
+The result which we obtain from this:
+\begin{equation}
+  \partial_{\mu} \langle J^{\mu 5} \mathcal{O}(x, \dots) \rangle = -\frac{e^2}{16 \pi^2} \langle \epsilon^{\mu\nu\alpha\beta} F_{\mu\nu} F_{\alpha\beta} \mathcal{O}(x, \dots) \rangle
+\end{equation}
+is in fact true to all loop orders.
+
+\subsection{Anomalies in Yang--Mills Theory}%
+\label{sub:anomalies_in_yang_mills_theory}
+
+In the non-Abelian case, the corresponding diagrams contribute
+\begin{equation}
+  \Tr(T^{a} T^{b} T^{c}) + \Tr(T^{a} T^{c} T^{b})
+\end{equation}
+We define
+\begin{equation}
+  A^{abc} = 2 \Tr[T^{a}_R \{T^{b}_R, T^{c}_R\}] = A(R) d^{abc},
+\end{equation}
+where the subscript $R$ denotes a particular fermion representation and $d$ the fundamental.
+Then the axial current is
+\begin{equation}
+  \partial_{\mu} (J_A^{a})^{\mu} = \left( \sum_{\text{left}} A(R_l) - \sum_{\text{right}} A(R_r) \right) \frac{g^2}{128 \pi^2} d^{abc} \epsilon^{\mu\nu\alpha\beta} F^{b}_{\mu\nu} F^{c}_{\alpha\beta}
+\end{equation}
+The key thing to compute is the quantity in parenthesis.
+If it is equal to zero, the theory is safe. If not, the theory is dead.
+This is a test of consistency for the theory.
+In general, the important thing is the difference between left- and right-handed spinors.
+In a chiral theory, in which left and right handed representations are the same, the anomalies will cancel automatically and the theory is consistent.
+For $U(1)^3$,
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\gamma\)] -- [boson] b -- [fermion] c -- [fermion] d -- [fermion] b,
+      c -- [boson] e [particle=\(\gamma\)],
+      d -- [boson] f [particle=\(\gamma\)],
+      e -- [draw=none] f,
+    };
+  \end{gathered}
+  \quad \sim \quad A \propto \Tr(Q^3)
+  \begin{cases}
+    = 0 , & \text{consistent} \\
+    \neq 0, & \text{inconsistent}  
+  \end{cases}
+\end{equation}
+
+\subsection*{Gravity}%
+
+Finally, we can consider gravity.
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\gamma\)] -- [boson] b -- [fermion] c -- [fermion] d -- [fermion] b,
+      c -- [gluon] e [particle=\(h\)],
+      d -- [gluon] f [particle=\(h\)],
+      e -- [draw=none] f,
+    };
+  \end{gathered}
+  \quad ~ \quad A \propto \Tr(Q)
+  \begin{cases}
+    = 0 , & \text{if consistent} \\
+    \neq 0, & \text{if inconsistent}  
+  \end{cases},
+\end{equation}
+where $h$ denotes a graviton.

@@ -1,0 +1,229 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 19: February 29}
+
+This derivation can be extended for $n$-point functions. For example, 
+\begin{equation}
+  \partial^2_z \langle \phi(z) \phi(x) \phi(y) \rangle = - \delta^{(4)} (z - x) \langle \phi(y) \rangle - \delta^{(4)} (z - y) \langle \phi(x) \rangle.
+\end{equation}
+
+\subsection{Adding Interactions}%
+\label{sub:adding_interactions}
+
+Let us now add an interaction Lagrangian $\mathscr{L}_{\text{int}}[\phi]$ to the action:
+\begin{equation}
+  S = \int \dd[4]{y} \left( -\frac{1}{2} \phi \partial^2 \phi + \mathscr{L}_{\text{int}}[\phi] \right).
+\end{equation}
+The classical equations of motion become $\partial^2 \phi = \mathscr{L}'_{\text{int}}[\phi]$.
+Taylor expand by employing functional derivation
+\begin{equation}
+  \mathscr{L}_{\text{int}} [\phi + \epsilon] = \mathscr{L}_{\text{int}} [\phi] + \epsilon(x) \mathscr{L}'_{\text{int}}[\phi].
+\end{equation}
+Therefore, the addition of the potential $\mathscr{L}_{\text{int}}[\phi]$ contributes and additional term
+\begin{equation}
+  - \int \dd[4]{z} \epsilon(z) \mathscr{L}'_{\text{int}}[\phi(z)]
+\end{equation}
+to the curly brackets in the path integral \eqref{eq:18-2}.
+Thus, \eqref{eq:18-e} is modified to 
+\begin{equation}
+  \int \dd[4]{z} \epsilon(z) \int \pdd{\phi} e^{-S} \left[ \phi(x) \partial^2_z \phi(z) + \delta^{(4)}(z - x) - \phi(x) \mathscr{L}'_{\text{int}}[\phi(z)] \right] = 0.
+\end{equation}
+Hence, the Schwinger--Dyson equation for the $2$-point function for the interacting theory is
+\begin{equation}
+  \partial^2_z \langle \phi(z) \phi(x) \rangle = \langle \mathscr{L}_{\text{int}}'[\phi(z)] \, \phi(x) \rangle - \delta^{(4)} (z - x).
+\end{equation}
+
+If we have more field insertions, the Schwinger--Dyson equations add contact interactions, contractign the field on which the operator acts with all the other fields in the correlator. For example, with three fields:
+\begin{equation}
+  \partial^2_x \langle \phi(x) \phi(y) \phi(z) \rangle = \langle \mathscr{L}'[\phi(x)] \; \phi(y) \phi(z) \rangle - \delta^4 (x - z) \langle \phi(y) \rangle - \delta^4 (x - y) \phi(z).
+\end{equation}
+In this way, the complete set of Schwinger--Dyson equations can be derived.
+
+\subsection*{Variations of the Lagrangian}%
+
+Let us make a bit more precise what we mean when we talk about the variations of $\mathscr{L}$ with respect to $\epsilon$.
+Say we have a transformation $\phi \to \phi + \epsilon$. The Lagrangian changes as
+\begin{equation}
+  \mathscr{L} \to \mathscr{L} + \delta \mathscr{L}.
+\end{equation}
+Then, for a Lagrangian $\mathscr{L} = \mathscr{L}[\phi, \partial \phi]$, we have
+\begin{equation}
+  \delta \mathscr{L}(y) = \frac{\delta \mathscr{L}}{\delta \phi(y)} \epsilon(y) + \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \partial_{\mu} \epsilon(\mu).
+  \label{eq:19-star}
+\end{equation}
+Write
+\begin{equation}
+  \frac{\delta \mathscr{L}(y)}{\delta \epsilon(z)} = \frac{\delta \mathscr{L}}{\delta \phi(y)} \delta^{(4)} (z - y) + \frac{\delta \mathscr{L}}{\delta (\partial _{\mu} \phi)} \partial_{\mu} \delta^{(4)} (z - y).
+\end{equation}
+
+\subsection*{Variations of the Action}%
+
+The action is given by the integral $S = \int \dd[4]{y} \mathscr{L}$.
+The functional derivative with respect to $\epsilon(z)$ is
+\begin{align}
+  \frac{\delta S}{\delta \epsilon(z)} &= \int \dd[4]{y} \frac{\delta \mathscr{L}}{\delta \epsilon(z)} \\
+				      &= \int \dd[4]{y} \left[ \frac{\delta \mathscr{L}}{\delta \phi(y)} \delta^{(4)} (z - y) - \partial_{\mu} \left( \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \delta^{(4)}(z - y) \right) \right] \\
+				      &= \frac{\delta \mathscr{L}}{\delta \phi(z)} - \partial_{\mu} \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi(z))}.
+\end{align}
+This is familiar from classical field theory, where the equations of motion are such as to minimise $S$. This requires the left-hand side to vanish, giving the Euler--Lagrange equations.
+Of course, in quantum field theory, the action is not exactly minimised.
+
+Let us now insert this into \eqref{eq:19-star}.
+We obtain
+\begin{align}
+  \delta \mathscr{L} (y) &= \left( \partial_{\mu} \left( \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \right) + \frac{\delta S}{\delta \epsilon} \right) \epsilon(y) + \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \partial_{\mu} \epsilon \\
+			 &= \partial_{\mu} \left( \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \epsilon(y) \right) + \frac{\delta S}{\delta \epsilon} \epsilon(y).
+\end{align}
+Defining the Noether current
+\begin{equation}
+  j^{\mu} = \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \epsilon(y),
+\end{equation}
+we find that the Lagrangian changes as
+\begin{equation}
+  \label{eq:19-pent}
+  \delta \mathscr{L}(y) = \partial_{\mu} j^{\mu} + \frac{\delta S}{\delta \epsilon(y)} \epsilon(y).
+\end{equation}
+
+For $S$ as given, the variation is
+\begin{equation}
+  \frac{\delta S}{\delta \epsilon(z)} = \frac{\delta \mathscr{L}}{\delta \phi(z)} - \partial_{\mu} \left( \frac{\delta \mathscr{L}}{\delta (\partial_{\mu} \phi)} \right) = \mathscr{L}'_{\text{int}}[\phi] - \partial^2 \phi.
+\end{equation}
+Therefore, the Schwinger--Dyson equation becomes
+\begin{equation}
+  \left\langle \frac{\delta S}{\delta \epsilon(z)} \phi(x) \right\rangle = \delta^{(4)} (z - x).
+\end{equation}
+
+\subsection{Symmetries}%
+\label{sub:symmetries}
+
+Suppose we have a symmetry, meaning that $\delta \mathscr{L} = 0$ under $\phi \to \phi + \epsilon$. (We often have $\epsilon(x) = \alpha(x) \phi(x)$).
+Then \eqref{eq:19-pent} becomes
+\begin{equation}
+  \partial_{\mu} j^{\mu} = - \frac{\delta S}{\delta \epsilon} \epsilon.
+\end{equation}
+This means that we have $\partial_{\mu} j^{\mu} = 0$ when the field equations are satisfied, which we expect from a Noether current.
+Then we obtain the \emph{Ward--Takahashi identity}
+\begin{equation}
+  \frac{\partial }{\partial z^{\mu}} \langle j^{\mu}(z) \phi(x) \rangle = - \delta^{(4)} (z - x) \langle \epsilon(x) \rangle.
+\end{equation}
+
+\section{Schwinger--Dyson for Fermions}%
+\label{sec:schwinger_dyson_for_fermions}
+
+Our aim will be to prove that $Z_1 = Z_2$, as we assumed in the previous chapter.
+
+Consider $\mathscr{L} = \overline{\psi}{} \cancel{\partial} \psi + (\text{non-derivative terms})$.
+Under a transformation
+\begin{equation}
+  \psi(x) \to e^{i \alpha(x)} \psi(x), \qquad \overline{\psi}{}(x) \to \overline{\psi}{} e^{-i \alpha(x)},
+\end{equation}
+we pick up an extra piece
+\begin{equation}
+  \overline{\psi}{} \cancel{\partial} \psi \to \overline{\psi}{}\cancel{\partial} \psi + i \overline{\psi}{} \gamma^{\mu} \psi \partial_{\mu} \alpha.
+\end{equation}
+We want to be able to compute the expectation value of our fields, so let us investigate the propagator $\langle \psi(x_1) \overline{\psi}{}(x_2) \rangle$.
+We expand about small $\alpha(x)$ and follow the same steps as in Sec.~\ref{sec:schwinger_dyson_equations_and_scalars} to find that terms of order $O(\alpha)$ must vanish
+\begin{multline}
+  0 = \int \pdd{\psi} \pdd{\overline{\psi}{}} e^{-S} \left[ i \int \dd[4]{x} \overline{\psi}{}(x) \gamma^{\mu} \psi(x) \partial_{\mu} \alpha(x) \right] \psi(x_1) \overline{\psi}{}(x_2) \\
+  + \int \pdd{\psi} \pdd{\overline{\psi}{}} e^{-S} \left[ i \alpha(x_1) \psi(x_1) \overline{\psi}{}(x_2) - i \alpha(x_2) \psi(x_1) \overline{\psi}{}(x_2) \right].
+\end{multline}
+Once again we integrate by parts and factor out the $\alpha(x)$. Requiring this to vanish for any $\alpha(x)$ gives the Schwinger--Dyson equation for fermions
+\begin{equation}
+  \partial_{\mu} \langle j^{\mu}(x) \psi(x_1) \overline{\psi}{}(x_2) \rangle = \left[ - \delta^{(4)}(x - x_1) + \delta^{(4)}(x - x_2) \right] \langle \psi(x_1) \overline{\psi}{}(x_2) \rangle,
+\end{equation}
+where $j^{\mu} = i \overline{\psi}{} \eta^{\mu} \psi$ is the Noether current.
+
+\subsection*{Fourier Space}%
+
+The Schwinger--Dyson equation is going to be more useful for us in momentum space.
+Let us Fourier transform to obtain ``off-shell'' amplitudes, where we are not imposing momentum conservation.
+The three-point function is
+\begin{equation}
+  \mathcal{M}^{\mu}(p, q_1, q_2) \coloneqq \int \dd[4]{x} \dd[4]{x_1} \dd[4]{x_2} e^{i p \cdot x} e^{i q_1 \cdot x_1} e^{-i q_2 \cdot x_2} \langle j^{\mu}(x) \psi(x_1) \overline{\psi}{}(x_2) \rangle.
+\end{equation}
+Similarly, we have a two-point amplitude
+\begin{equation}
+  \mathcal{M}(q_1, q_2) \coloneqq \int \dd[4]{x_1} \dd[4]{x_2} e^{i q_1 \cdot x_1} e^{-i q_2 \cdot x_2} \langle \psi(x_1) \overline{\psi}{}(x_2) \rangle.
+\end{equation}
+The signs are chosen such that $p$ and $q_1$ are incoming and $p_2$ are outgoing.
+We can represent these integrals diagrammatically as 
+\begin{equation}
+  \mathcal{M}^{\mu}(p, q_1, q_2) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.8][horizontal=a to b] {
+      a -- [fermion, momentum=$q_1$] c [small, dot] -- [fermion, momentum=$p_2$] b,
+      u [particle=\(j^{\mu}\)] -- [scalar, momentum=$p$] c,
+    };
+  \end{gathered}, \qquad
+  \mathcal{M}(q_1, q_2) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [fermion, momentum=$q_1$] v[small, dot] -- [fermion, momentum=$q_2$] b,
+    };
+  \end{gathered}.
+\end{equation}
+
+The Schwinger--Dyson equation in momentum space is then
+\begin{equation}
+  i p_{\mu} \mathcal{M}^{\mu}(p, q_1, q_2) = \mathcal{M}(q_1 + p, q_2) - \mathcal{M}(q_1, q_2 - p).
+\end{equation}
+This is known as a Ward--Takahashi identity.
+Moreover, we have at no point used any perturbation theory, so these hold non-perturbatively.
+We can represent the Ward--Takahashi identity diagrammatically:
+\begin{equation}
+  i p_{\mu}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.8][horizontal=a to b] {
+      a -- [fermion, momentum=$q_1$] c [small, dot] -- [fermion, momentum=$p_2$] b,
+      u [particle=\(j^{\mu}\)] -- [scalar, momentum=$p$] c,
+    };
+  \end{gathered} = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [fermion, momentum=$q_1 + p$] v[small, dot] -- [fermion, momentum=$q_2$] b,
+    };
+  \end{gathered} \quad - \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [fermion, momentum=$q_1$] v[small, dot] -- [fermion, momentum=$q_2 - p$] b,
+    };
+  \end{gathered}.
+\end{equation}
+These are not Feynman diagrams for $S$-matrix elements, since the momenta are not on-shell.
+Instead, they are Feynman diagrams for correlation functions, also sometime called \emph{off-shell $S$-matrix} elements.
+The Feynman rules are the usual momentm space Feynman rules with the addition of propagators for external lines and without the external polarisation (i.e.~without removing the stuff that the LSZ formula removes).
+Momentum is not necessarily conserved, which is why we can have $q_1 + p$ coming in and $q_2$ going out.
+
+\section{Ward--Takahashi Identity and Renormalisation}%
+\label{sec:ward_takahashi_identity_and_renormalisation}
+
+In the derivation of Noether's theorem, we perform a variation of the field that is also a global symmetry of the Lagrangian, which leads to the existence of a classically conserved current.
+Performing a similar variation on the path integral and following the steps that led to the Schwinger--Dyson equations will produce a general and powerful relation among correlation functions known as the Ward--Takahashi identity. This not only implies the usual Ward identity and gauge invariance, but since it is non-perturbative it will also play an important role in the renormalisation of QED \cite[Sec.~14.8]{schwartz}.
+
+\subsection{Ward--Takahashi Identity in QED}%
+\label{sub:ward_takahashi_identity_in_qed}
+
+In QED, we have
+\begin{equation}
+  \mathscr{L} = \frac{1}{4} Z_3 F^2 + Z_2 \overline{\psi}{} \cancel{\partial} \psi + Z_2 Z_m m \overline{\psi}{} \psi + Z_1 e \overline{\psi}{} \cancel{A} \psi.
+\end{equation}
+Let 
+\begin{equation}
+  \mathcal{M}(q_1, q_2) = \bdelta^4(q_1 - q_2) G(\cancel{q_1}).
+\end{equation}
+Also, consider for now a massless electron $m = 0$, since we are not interested in the renormalisation of the mass term for now.
+The renormalised propagator is then
+\begin{equation}
+  G(\cancel{p}) = \frac{1}{Z_2} \frac{1}{i \cancel{q}}.
+\end{equation}
+
+After one-loop renormalisation, we got the vertex function $ \Gamma^{(2)}{}^{\mu} \sim e Z_1 \gamma^{\mu}.$
+We want to extend this vertex function to off-shell.
+This is done by taking the Green's function and amputating (see notes)
+\begin{equation}
+  \Gamma^{\mu}(p, q_1, q_2) \bdelta^4(p + q_1 - q_2) = \int \dd[4]{x} \dd[4]{x_1} \dd[4]{x_2} e^{i p \cdot x} e^{i q_1 \cdot x_1} e^{-i q_2 \cdot x_2} G^{-1} (q_1) \langle j^{\mu}(x) \psi(x_1) \overline{\psi}{}(x_2) \rangle G^{-1} (p + q_1).
+\end{equation}
+Relating the inverse Green's function to what we had before in momentum space, we have
+\begin{equation}
+  G^{-1}(q_1) \mathcal{M}^{\mu}(p, q_1, q_2) ??
+\end{equation}

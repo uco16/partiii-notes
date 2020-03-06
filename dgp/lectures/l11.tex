@@ -1,0 +1,156 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 11: February 26}
+
+\begin{example}[]
+  Consider maps between two-spheres: $f \colon S^2 \to S^2$.
+  Let us think about this $S^2$ concretely as a round sphere in $\mathbb{R}^3$.
+  The coordinates on the image sphere are,
+  \begin{equation}
+    f^a = f^a (\rho^i) \in \mathbb{R}^3, \qquad \abs{\vb{f}} = 1,
+  \end{equation}
+  where the coordinates on the domain are $\rho^{i} = (\theta, \phi)$, $i = 1, 2$.
+  The volume (i.e.~area) form on a sphere is 
+  \begin{equation}
+    \sin \theta d\theta \wedge d\phi = \frac{1}{r^3} [x dy \wedge d z + y dz \wedge dy + z dx \wedge dy].
+  \end{equation}
+  To obtain the degree, we take \eqref{eq:10-deg} and divide both sides by $\text{vol}(S^2)$:
+  \begin{align}
+    \text{deg}(f) &= \frac{1}{\text{vol}(S^2)} \int \epsilon^{abc} f^{a} df^{b} \wedge df^{c} \\
+		  &= \frac{1}{8\pi} \int \epsilon^{ij} \epsilon^{abc} f^{a} \frac{\partial f^{b}}{\partial \rho^{i}} \frac{\partial f^{c}}{\partial \rho^{j}} \dd[2]{\rho}.
+  \end{align}
+\end{example}
+
+\begin{example}[]
+  Let $f \colon M \to SU(2)$, where $\dim(M) = 3$ (compact, no boundary) and $SU(2) \simeq S^3$.
+  \begin{exercise}
+    \begin{equation}
+      \text{deg}(f) = \frac{1}{24 \pi^2} \int_M \Tr[(f^{-1} df)^3]
+    \end{equation}
+  \end{exercise}
+  $f$ is an $SU(2)$-valued matrix. Now $f^{-1} df$ is a Lie algebra valued one-form.
+  Taking the (exterior) group makes it still Lie algebra valued. Taking the trace gives a three-form that we can integrate.
+\end{example}
+
+\section{Applications of Topological Degree in Physics}%
+\label{sec:applications_of_topological_degree_in_physics}
+
+\subsection{Sigma Model Lumps}%
+\label{sub:sigma_model_lumps}
+
+We will talk about a scalar Lagrangian field theory of the following type.
+Our scalar will be a map 
+\begin{equation}
+  \phi \colon \mathbb{R}^{2, 1} \to S^{N_1} \subset \mathbb{R}^N.
+\end{equation}
+We will assume the potential $U(\phi) = 0$. However, the theory is still non-linear. This non-linearity enters on a more fundamental level because the target, on which the fields are constrained to live, is a non-linear space.
+We take the Lagrangian to be
+\begin{equation}
+  \mathscr{L} = \frac{1}{2} \eta^{\mu\nu} \frac{\partial \phi^{a}}{\partial x^{\mu}} \frac{\partial \phi^{b}}{\partial x^{\nu}} \delta_{ab}
+\end{equation}
+with metric $ds^2 = \eta_{\mu\nu} dx^{\mu} dx^{\nu}$ and the constraint
+\begin{equation}
+  \sum_{a=1}^{N} \phi^{a} \phi^{a} = 1.
+\end{equation}
+
+\subsection*{Lagrange Multiplier}%
+
+To incorporate this constraint, we may modify the Lagrangian by introducing a Lagrange multiplier $\lambda$
+\begin{equation}
+  \mathscr{L}' = \mathscr{L} - \frac{1}{2} \lambda (1 - \sum_{a} \abs{\phi}^2).
+\end{equation}
+The resulting equation of motion is
+\begin{equation}
+  \Box \phi^{a} - \lambda \phi^{a} = 0, \qquad \Box = \eta^{\mu\nu} \frac{\partial }{\partial x^{\mu}} \frac{\partial }{\partial x^{\nu}}.
+\end{equation}
+As it stands, this equation is not what we want yet; we need to solve for $\lambda$ and substitute it back into this to obtain the constrained equations of motion.
+We then obtain the non-linear equations
+\begin{equation}
+  \Box \phi^{a} - (\phi^{b} \Box \phi^{b}) \phi^{a} =0.
+\end{equation}
+Moreover, the non-linearity is of a particularly nasty type; the non-linear term arises with the highest derivative, unlike quasi-linear equations like Einstein's equations.
+
+\subsection*{Without Lagrange Multiplier}%
+
+Alternatively, we may solve $\abs{\phi}^2 = 1$ for the final component
+\begin{equation}
+  \phi^N = \pm \sqrt{1 - \phi^{p} \phi^{p}}, \qquad p = 1, \dots, N-1.
+\end{equation}
+We obtain
+\begin{align}
+  \mathscr{L} = \frac{1}{2} g_{pq}(\phi) \eta^{\mu\nu} \partial^{\mu} \phi^{p} \partial^{\nu} \phi^{q}, \label{eq:11-lag}
+\end{align}
+where,
+\begin{equation}
+  g_{pq} = \delta_{pq} + \frac{\phi_p \phi_q}{1 - \sum_{i=1}^{N-1} \phi_i \phi_i}
+\end{equation}
+is the round metric on $S^{N-1}$.
+We are not going to work much with the Lagrangian \eqref{eq:11-lag}, but we want to point it out since it provides a broad framework for
+\begin{equation}
+  (\Sigma, \eta) \to (M, g).
+\end{equation}
+It is useful in a variety of situations:
+\begin{enumerate}[1)]
+  \item Bosonic sector of superstring theory. In this framework, $(\Sigma, \eta)$ the string worldsheet (2D Riemann surface) and $(M, g)$ is a 10-dimensional space-time.
+    Then \eqref{eq:11-lag} gives the basic scalar Lagrangian.
+  \item Point particle moving on a curved space-time. Take $\Sigma = \mathbb{R}$ and $(M, g)$ to be space-time (or any manifold).
+    Then \eqref{eq:11-lag} is the geodesic Lagrangian.
+  \item If $\dim \Sigma = k$, then \eqref{eq:11-lag} describes the behaviour of ``$(k-1)$ branes''.
+\end{enumerate}
+These examples are all scalar theories, but we can also add gauge fields to this Lagrangian.
+
+\subsection{Solitons}%
+\label{sub:solitons}
+
+GO back to $\Sigma = \mathbb{R}^{2}$ and $M= S^{N-1}$.
+Take $N = 3$, so that the target space is a two-sphere.
+We will be interested in solitons --- static solutions to the Euler--Lagrange equations with finite energy.
+The total energy for static solutions is
+\begin{equation}
+  E = \int_{\mathbb{R}^2} (\partial_{i} \phi^{a} \cdot \partial_{i} \phi^{a}) dx dy < \infty,
+\end{equation}
+where $x^{i} = (x, y)$ and $\partial_{i} = \frac{\partial }{\partial x^{i}}$.
+The metric is $\eta = dt^2 - dx^2 - dy^2$, but $\phi = \phi(x^{i})$.
+
+We know that an integral of $r^{-p}$ is logarithmically divergent for $p = 1$, but not for $p > 1$.
+For the integral to be finite, we choose the following boundary conditions
+\begin{equation}
+  r \abs{\nabla \phi^{a}} \to 0 \quad \text{as} \quad r \to \infty.
+\end{equation}
+Therefore, we also have $\nabla \phi^{a} \to 0$, so $\phi \to \phi^{\infty}$ for some constant $\phi^\infty$ at spatial infinity.
+Choose $\phi^\infty = (0,0,1)$, which is the north pole of $S^2$.
+
+We may reinterpret this boundary condition as saying that static, finite energy configurations $\phi$ extend to the one-point compactification of $\mathbb{R}^2$, which is a two-sphere $S^2 = \mathbb{R}^2 + \{\infty\}$, with $\phi(\{\infty\}) = (0,0,1)$.
+We can view
+\begin{equation}
+  \phi \colon S^2 \to S^2.
+\end{equation}
+These maps are classified by the degree $\text{deg}(\psi)$ (topological charge). 
+This is only a partial classification, as fields can have dive different energies in the same topological sector.
+
+\begin{claim}
+  The energy
+  \begin{equation}
+    E = \frac{1}{2} \int_{S^2} \partial_{i} \phi^{a} \partial_{i} \phi^{a} \dd[2]{x} \geq 4 \pi \abs{\text{deg}(\phi)},
+  \end{equation}
+  is bounded from below, with equality when the first order Bogomolny equations
+  \begin{equation}
+    \boxed{\partial_{i} \phi^{a} = \pm \epsilon_{ij} \epsilon^{abc} \phi^{b} \partial_{j} \phi^{c}}
+  \end{equation}
+  are satisfied. Here $i, j = 1, 2$, $\epsilon_{ij} = 
+  \begin{pmatrix}
+   0 & 1 \\
+   -1 & 0 \\
+  \end{pmatrix}$, and $\abs{ \phi} = 1$.
+\end{claim}
+\begin{leftbar}
+  In this case, non-integrable second-order equations reduce to integrable first-order equations.
+\end{leftbar}
+\begin{proof}
+  Consider the identity
+  \begin{equation}
+    \label{eq:11-id}
+    \int (\partial_{i} \phi^{a} \pm \epsilon_{ij} \epsilon^{abc} \phi^{b} \partial_{j} \phi^{c}) \cdot (\partial_{i} \phi^{a} \pm \epsilon_{ik} \epsilon^{ade} \phi^{d} \partial_{k} \phi^{e}) \dd[2]{x} \geq 0.
+  \end{equation}
+  This is a square of scalar quantities, which is therefore non-negative.
+\end{proof}

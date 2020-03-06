@@ -1,0 +1,223 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 18: February 28}
+
+Our action will now be
+\begin{equation}
+  S = S_{\text{Polyakov}}[X, h] + S_{\text{gh}} [b, c, h] + S_{\text{gf}}[B, h].
+\end{equation}
+There is a rigid symmetry of this theory.
+The fields transform under this rigid fermionic symmetry as:
+\begin{equation}
+  \delta_{\mathcal{Q}} X^{\mu} = i \epsilon c^{a} \partial_{a} X^{\mu},
+\end{equation}
+where $\epsilon$ is a Grassmann number (i.e.~$\epsilon \widetilde{\epsilon} = - \widetilde{\epsilon} \epsilon$) and $c^{a}$ is the worldsheet ghost.
+The metric transforms as
+\begin{equation}
+  \delta_{\mathcal{Q}} h_{ab} = \epsilon (\mathcal{P} c)_{ab},
+\end{equation}
+where the operator $\mathcal{P}$, introduced in \eqref{eq:Pv} gives the traceless part of the diffeomorphism:
+\begin{equation}
+  (\mathcal{P}c)_{ab} = \nabla_a c_b + \nabla_b c_a - h_{ab} (\nabla_c c^{c}).
+\end{equation}
+Moreover, the ghosts transform as
+\begin{align}
+  \delta_{\mathcal{Q}} c^{a} &= i \epsilon c^{b} \partial_b c^{a} \\
+  \delta_{\mathcal{Q}} b_{ab} &= i \epsilon B_{ab}, \\
+  \delta_{\mathcal{Q}} B_{ab} &= 0.
+\end{align}
+For $X^{\mu}$ and $h_{ab}$ we see that $\delta_{\mathcal{Q}}$ acts like a diffeomorphism with parameter $v^{a} = \epsilon c^{a}$.
+
+Let us first check that this is genuinely a symmetry of our action, before we discuss why we care at all about this symmetry.
+
+\subsection*{Checking the Symmetry}%
+
+The Polyakov action $S_P[X, h]$ is clearly invariant under this transformation as it is invariant under Diff $\times$ Weyl.
+We notice that $\delta^2_{\mathcal{Q}}$ on any field vanishes.
+To do the calculation with just one example:
+\begin{equation}
+  \delta^2_{\mathcal{Q}} b_{ab} = \delta_{\mathcal{Q}} (i \epsilon B_{ab}) = 0.
+\end{equation}
+So (at least classically)
+\begin{equation}
+  \delta^2_{\mathcal{Q}} = 0.
+\end{equation}
+\begin{exercise}
+  Verify this.
+\end{exercise}
+
+\begin{definition}[gauge-fixing fermion]
+  Furthermore, if we introduce the \emph{gauge-fixing fermion}
+  \begin{equation}
+    \label{eq:gf-ferm}
+    \Psi = \frac{1}{4\pi} \int_\Sigma \dd[2]{\sigma} \sqrt{-h} b^{ab} (h_{ab} - \hat{h}_{ab}),
+  \end{equation}
+  which is a Grassmann valued functional (due to the anticommuting $b^{ab}$).
+\end{definition}
+\begin{remark}
+  Since this is Grassmann valued, we cannot just add this into the action.
+\end{remark}
+One can show that the variation of the gauge-fixing fermion under the BRST transformation is
+\begin{equation}
+  \delta_{\mathcal{Q}} \Psi = i \epsilon \bigl( S_{\text{gh}}[h, b, c] + S_{\text{gf}}[B, h] \bigr).
+\end{equation}
+Let us also introduce a charge $\mathcal{Q}_B$ that generates this transformation, e.g.
+\begin{equation}
+  \delta_{\mathcal{Q}} X^{\mu} = i \epsilon [\mathcal{Q}_B, X^{\mu}].
+\end{equation}
+Then our action is of the form
+\begin{equation}
+  S = S_P[X, h] + \{\mathcal{Q}_B, \Psi\}.
+\end{equation}
+The observation that $\delta^2_{\mathcal{Q}} = 0$ on all fields is equivalent to
+\begin{equation}
+  \mathcal{Q}^2_B = 0.
+\end{equation}
+Since $\{\mathcal{Q}_B, \Psi\}$ is exact in $\mathcal{Q}_B$ (proportional to $\delta_\mathcal{Q} \Psi$), acting with another transformation gives zero. Hence $S_{\text{gh}} + S_{\text{gf}}$ is also invariant.
+Therefore, this is a hidden rigid symmetry in our theory!
+
+\subsection*{Imposing the Equations of Motion}%
+
+This should hold in principle even if we integrate out $B_{ab}$, since that does not change the theory.
+We can integrate out the Lagrange multiplier field $B_{ab}$. At the classical level, this is equivalent to finding and imposing the equations of motion for $B_{ab}$. It does not appear with any derivatives, so it only gives a constraint.
+The gauge fixing term \eqref{eq:sgf} couples the $B_{ab}$ to the metric $h_{ab}$, whose equation of motion gives
+\begin{equation}
+  B_{ab} = \mathcal{T}_{ab},
+\end{equation}
+the total stress tensor.
+
+Integrating out $B^{ab}$ leaves $S_P[X] + S_{\text{gh}}[b, c]$, which has the rigid (i.e.~global, nongauge) \emph{BRST symmetry}
+\begin{align}
+  \delta_\mathcal{Q} X^{\mu} &= i \epsilon c^{a} \partial_{a} X^{\mu} \\
+  \delta_\mathcal{Q} c^{a} &= i \epsilon c^{b} \partial_{b} c^{a} \\
+  \delta_{\mathcal{Q}} b_{ab} &= i \epsilon \mathcal{T}_{ab}.
+\end{align}
+
+\subsection{BRST Cohomology and the Physical Spectrum}%
+\label{sub:brst_cohomology_and_the_physical_spectrum}
+
+We still have to worry about two things. Firstly, why do we care about this symmetry? Secondly, these are symmetries of classical actions and so we need to check that there are no anomalies upon quantisation.
+
+We shall see that physical states of the theory live in the cohomology of $\mathcal{Q}_B$.
+\begin{definition}[kernel]
+  We take a state $\ket{\phi}$ for which $\mathcal{Q}_B \ket{\phi} = 0$ to be in the kernel of $\mathcal{Q}_B$. Such states $\ket{\phi} \in \text{ker}(\mathcal{Q}_B)$ is called \emph{closed}.
+\end{definition}
+\begin{definition}[image]
+  A state $\ket{\phi}$ of the form $\ket{\phi} = \mathcal{Q}_B \ket{\chi}$ are in the \emph{image} of $\mathcal{Q}_B$. Such states $\ket{\phi} \in \text{im}(\mathcal{Q}_B)$ are called \emph{exact}.
+\end{definition}
+\begin{definition}[cohomology]
+  When $\mathcal{Q}_B^2 = 0$, we can define the \emph{cohomology} of $\mathcal{Q}_B$ as
+  \begin{equation}
+    \text{Cohom}(\mathcal{Q}_B) = \frac{\text{ker}(\mathcal{Q}_B)}{\text{im}(\mathcal{Q}_B)}.
+  \end{equation}
+  In other words, $\ket{\phi} \in \text{Cohom}(\mathcal{Q}_B)$ are those states for which $\mathcal{Q}_B \ket{\phi} = 0$, but are not of the form $\mathcal{Q}_B \ket{\chi} = \ket{\phi}$.
+\end{definition}
+\begin{definition}[physical states]
+  \emph{Physical states} are those in the chomology of the BRST charge $\mathcal{Q}_B$.
+\end{definition}
+This is a different starting point than the physically motivated one that we discussed in prior sections, but in some sense it feels a bit deeper; all the previous results will fall out from consideration of this cohomology.
+
+\subsection*{The Kernel $\ket{\phi} \in \text{ker}(\mathcal{Q}_B)$}%
+
+Let us first consider the physical meaning of the statement
+\begin{equation}
+  \ket{\phi} \in \text{ker}(\mathcal{Q}_B).
+\end{equation}
+The transition amplitude between initial and final states in QFT is
+\begin{equation}
+  \bra{\phi_i} \ket{\phi_f} = \int \pdd{\phi} \phi_i \phi_f e^{i S[\phi] + i \{\mathcal{Q}_B, \Psi\}}.
+\end{equation}
+\begin{remark}
+  From our point of view, $S[\phi]$ is the Polyakov action and $\{\mathcal{Q}_B, \Psi\}$ gives the ghosts and gauge fixing action. However, this holds more generally, say for Yang--Mills theory.
+\end{remark}
+Let us now introduce an infinitesimal change of gauge and let us see the effect on $\bra{\phi_i} \ket{\phi_f}$.
+The gauge-fixing action $S_{\text{gf}}$ encodes this.
+\begin{align}
+  \delta \bra{\phi_i} \ket{\phi_f} &= \int \pdd{\phi} \phi_i \phi_f e^{i S[\phi] + i \{\mathcal{Q}_B, \Psi + \delta \Psi\}} - \int \pdd{\phi} \phi_i \phi_f e^{i S[\phi] + i \{\mathcal{Q}_B, \Psi\}} \\
+  &= i \int \pdd{\phi} \phi_i \phi_f \{\mathcal{Q}_B, \delta \Psi\} e^{i S[\phi] + i \{\mathcal{Q}_B, \Psi\}} + \dots \\
+  &= i \bra{\phi_i} \{\mathcal{Q}_B, \delta \Psi\} \ket{\phi_f} + \dots.
+\end{align}
+For $\delta \Psi$ generic, we require $\bra{\phi_i} \mathcal{Q}_B = 0$, and $\mathcal{Q}_B \ket{\phi_f} = 0$ for $\delta \bra{\phi_i} \ket{\phi_f} = 0$.
+Taking $\mathcal{Q}_B = \mathcal{Q}_B^{\dagger}$ to be Hermitian, we find all physical states must satisfy $\mathcal{Q}_B \ket{\phi} = 0$, meaning that $\ket{\phi} \in \text{ker}(\mathcal{Q}_B)$.
+This explains our fascination for the Kernel.
+
+\subsection{The BRST Charge}%
+\label{sub:the_brst_charge}
+
+Let us talk more concretely now about the BRST charge $\mathcal{Q}_B$.
+We shall split the BRST charge into chiral and antichiral pieces
+\begin{equation}
+  \mathcal{Q}_B = Q_B + \overline{Q}{}_B
+\end{equation}
+and the condition $\mathcal{Q}_B^2 = 0$ is
+\begin{equation}
+  Q_B^2 = \frac{1}{2} \{Q_B, Q_B\} = 0, \qquad \overline{Q}{}_B^2 = \frac{1}{2} \{\overline{Q}{}_B, \overline{Q}{}_B\} = 0, \qquad \{Q_B, \overline{Q}{}_B\} = 0.
+\end{equation}
+Let us focus on $Q_B$; there will be an analogous statement for $\overline{Q}{}_B$ and the total BRST charge is the sum of the two.
+
+We want the BRST transformation to act on the $c$ ghost as
+\begin{equation}
+  [Q_B , X^{\mu}(w)] = c(w) \partial X^{\mu}(w).
+\end{equation}
+A good guess for $Q_B$ is
+\begin{equation}
+  Q_B = \oint \frac{\dd[]{z}}{2 \pi i} c(z) T_X (z).
+\end{equation}
+Then, using the singuar part of the OPE
+\begin{equation}
+  \oint \frac{\dd[]{z}}{2 \pi i} c(z) T_X(z) X^{\mu}(w) = \oint \frac{\dd[]{z}}{2 \pi i} c(z) \left( \frac{\partial X^{\mu}(w)}{z - w} + \dots \right) = c(w) \partial X^{\mu}(w).
+\end{equation}
+However, there are two problems with this $Q_B$: for one, it does not square to zero. Moreover, it gives the correct transformation for $X^{\mu}$ but not for the ghosts, which should be
+\begin{equation}
+  \label{eq:18-1}
+  \{Q_B, c(w)\} = c(w) \partial c(w), \qquad \{Q_B, b(w)\} = \mathcal{T}(w) = T_X(w) + T_{\text{gh}}(w).
+\end{equation}
+The correct charge is
+\begin{equation}
+  \boxed{Q_B = \oint \frac{\dd[]{z}}{2 \pi i} c(z) \left[ T_X(z) + \frac{1}{2} T_{\text{gh}}(z) \right]}
+\end{equation}
+This charge satisfies \eqref{eq:18-1}.
+Let us explicitly verify the first relation
+\begin{align}
+  \{Q_B, c(w)\} &= \oint \frac{\dd[]{z}}{2 \pi i} \left\{c(z) \left[ T_X (z) + \frac{1}{2} T_{\text{gh}}(z) \right],  c(w)\right\} \\
+		&= \frac{1}{2} \oint \frac{\dd[]{z}}{2 \pi i} c(z) \left( - \frac{c(w)}{(z - w)^2} + \frac{\partial c(w)}{z + w} + \dots \right),
+\end{align}
+using the $T_{\text{gh}}(z) c(w)$ OPE.
+Expanding $c(z) = c(w) + \partial c (w) (z - w) + \dots$, and noting that $c$ is Grassmann and therefore $c^2(w) = 0$, gives
+\begin{align}
+  \{Q_B, c(w)\} &= \frac{1}{2} \oint \frac{\dd[]{z}}{2 \pi i} \left[ -\frac{ \partial c (w) c(w)}{z - w} - \frac{c(w) \partial c(w)}{z - w} + \dots \right] \\
+		&= \oint \frac{\dd[]{z}}{2 \pi i} \frac{c(w) \partial c(w)}{ z - w} \\
+		&= c(w) \partial c(w).
+\end{align}
+\begin{exercise}
+  Verify $\{Q_B, b(w)\} = \mathcal{T}(w)$.
+\end{exercise}
+
+\subsection*{BRST Current}%
+
+We can write $Q_B$ in terms of a conserved current.
+\begin{equation}
+  Q_B = \oint \frac{\dd[]{z}}{2 \pi i} j_B (z),
+\end{equation}
+where the \emph{BRST current}
+\begin{equation}
+  j_B(z) = c(z) \left[ T_X(z) + \frac{1}{2} T_{\text{gh}}(z) \right] + \frac{3}{2} \partial^2 c(z)
+\end{equation}
+is a $h = 1$ chiral field.
+
+One may also calculate the OPE with two currents
+\begin{equation}
+  j_B(z) j_B(w) = -\frac{D - 18}{2 (z - w)^3} c(w) \partial c(w) - \frac{D- 18}{4 (z - w)^2} c(w) \partial^2 c(w) - \frac{1}{12} \frac{D - 26}{(z - w)} c(w) \partial^3 c(w) + \dots.
+\end{equation}
+Integrating this up should give $Q_B^2$.
+\begin{equation}
+  \{Q_B, Q_B\} = \oint_{z = 0} \frac{\dd[]{z}}{2 \pi i} \oint_{w = z} \frac{\dd[]{w}}{2 \pi i} j_B(z) j_B(w).
+\end{equation}
+On the face of it, it looks like $Q_B^2 = 0$ only if $D$ is both $26$ and $18$.
+We have seen the $D = 26$ case before, but the $D-18$ terms look alarming!
+It turns out that the contributions from the $D-18$ terms cancel.
+\begin{equation}
+  2 Q_B^2 = \{Q_B, Q_B\} = \oint_{z = 0} \frac{\dd[]{z}}{2 \pi i} \frac{D - 26}{12} c(z) \partial^3 c(z).
+\end{equation}
+The $c(z) \partial^3 c(z)$ will not vanish on its own, so $Q_B^2 = 0$ if $D = 26$.
+Similarly for $\overline{Q}{}_B$, so $\mathcal{Q}_B^2 = 0$ if $D = 26$.

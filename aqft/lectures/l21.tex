@@ -1,0 +1,129 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 21: March 05}
+
+\subsection{Nonabelian Case}%
+\label{sub:nonabelian_case}
+
+Take $V(X) \in G$, such as $SU(N)$, in the fundamental representation
+\begin{align}
+  \psi(x) &\to V(x) \psi(x), \\
+  \overline{\psi}{}(x) &\to \overline{\psi}{}(x) V^{\dagger}(x).
+\end{align}
+We have the Wilson line to cancel out differences in transformations at different points
+\begin{equation}
+  W(y, x) \to V(y) W(y, x) V^{\dagger}(x)
+\end{equation}
+with normalisation $W(x, x) = \mathbb{1}$, the identity of $G$.
+
+Consider a small Wilson line (small $a$)
+\begin{equation}
+  W(x + an, x) = 1 + i g a n^{\mu} A_{\mu}^{a} T^{a}.
+\end{equation}
+We use the shorthand $A_{\mu} = A^{a}_{\mu} T^{a}$.
+To find the gauge transformation $A_{\mu}^{a} \to (A'_{\mu})^{a}$, we require that
+\begin{align}
+  D_{\mu}\psi \to D'_{\mu} \psi' &= V D_{\mu} \psi \\
+  (\partial_{\mu} - i g A'_{\mu}) V\psi &= V(\partial_{\mu} - i g A_{\mu} \psi) \\
+  \partial_{\mu} V - i g A'_{\mu} V &= -i g V A_{\mu} \\
+  A'_{\mu} &= V A_{\mu} V^{-1} - \frac{i}{g} (\partial_{\mu} V) V^{-1}.
+\end{align}
+
+For infinitesimal transformations, we want to expand $V(x)$ in a small parameter $\alpha$
+\begin{align}
+  V(x) &= 1 + i \alpha^{a}(x) T^{a} + O(\alpha^2) \\
+  \psi(x) &\to (1 + i \alpha^{a}(x) T^{a})\psi \\
+  A^{a}(x) &\to A^a (x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) + f^{abc} A_{\mu}^{b} (x) \alpha^{c}(x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) \\
+	   &= A^{a}(x) +\frac{1}{g} [\partial_{\mu} \delta^{ac} - i g A^{b}_\mu(x) (\underbrace{-i f^{bac}}_{(T^{b}_{\text{adj}})^{ac}})] \alpha^{c}(x) \\
+	   &\coloneqq A^{a}_{\mu} (x) + \frac{1}{g} D_{\mu}^{ac} \alpha^{c}(x),
+\end{align}
+where we defined the gauge covariant derivative in the adjoint representation as 
+\begin{equation}
+  D_{\mu}^{ac} = \left[ \partial_{\mu} \delta^{ac} - i g A_{\mu}^{b} (T^{b} _{\text{adj}})^{ac} \right].
+\end{equation}
+This justifies our previous statement that the gauge fields transform in the adjoint representation.
+
+We define the field strength tensor through the commutator of the covariant derivatives
+\begin{equation}
+  [D_{\mu}, D_{\nu}] = -i g F_{\mu\nu}^{a} T^{a}.
+\end{equation}
+Then the field strength tensor $F_{\mu\nu}= F_{\mu\nu}^{a} T^{a}$ has components
+\begin{equation}
+  F_{\mu\nu}^{a} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} + g f^{abc} A^{b}_{\mu} A_{\nu}^{c}.
+\end{equation}
+Under an infinitesimal transformation,
+\begin{equation}
+  F_{\mu\nu}^{a} \to F_{\mu\nu}^{a} - f^{abc} \alpha^{b} F^{c}_{\mu\nu},
+\end{equation}
+so $F_{\mu\nu}^{a}$ is not gauge invariant! However, $F_{\mu\nu}^{a} (F^{a})^{\mu\nu} = (F^{a})^2$ is gauge-invariant.
+We have a Lagrangian
+\begin{align}
+  \mathscr{L} &= \underbrace{\frac{1}{4} (F^{a})^2}_{\mathclap{}} + \underbrace{\overline{\psi}{}_{i} \left( \cancel{\partial} \delta_{ij} - i g \cancel{A}^a T^{a}_{ij} + m \delta_{ij} \right) \psi_{j}}_{\mathclap{}} \\
+	      &= \mathscr{L}_{YM} + \overline{\psi}{} (\cancel{D} + m) \psi,
+\end{align}
+where the Yang--Mills Lagrangian is often called the \emph{pure gauge}.
+Also, we can introduce another gauge invariant term
+\begin{equation}
+  \mathscr{L}_{\theta} = \theta \epsilon^{\mu\nu\rho\sigma} F^{a}_{\mu\nu} F^{a}_{\rho\sigma} = 2 \theta \partial_{\mu} (\epsilon^{\mu\nu\rho\sigma} A^{a}_{\nu} F_{\rho\sigma}^{a}).
+\end{equation}
+As this is a total derivative, it is a boundary term which does not contribute to any order in perturbation theory. However, it can contribute a nonperturbative topological term, which we miss out on in the perturbation expansion. It violates CP and therefore also T. Experimentally the strong interaction in QCD seems to conserve CP, constraining the $\theta$ to be vanishingly small. The \emph{Strong CP Problem} is the task of finding a reason for why $\theta$ is so small.
+
+\section{Fadeev--Popov Gauge Fixing}%
+\label{sec:fadeev_popov_gauge_fixing}
+
+Let us first think about an analogy. Consider an integral over two real variables
+\begin{equation}
+  Z \propto \int \dd[]{x} \dd[]{y} e^{-S(x)},
+\end{equation}
+where the action $S(x)$ only depends on one of the variables.
+The integral over $y \in (-\infty, \infty)$ is divergent, but it is also redundant to any physics.
+In QED, i.e.~in $U(1)$ gauge theory, we just set $y = 0$
+\begin{equation}
+  Z = \int \dd[]{x} e^{- S(x)}
+\end{equation}
+Life is more complicated when the gauge fields interact with themselves and the previous method will not work in non-Abelian gauge theory.
+Instead, we may introduce a $\delta$-function to fix $y$ not to zero, but to an arbitrary function of $x$
+\begin{equation}
+  \label{eq:21-1}
+  Z = \int \dd[]{x} \dd[]{y} \delta(y - f(x)) e^{-S(x)}.
+\end{equation}
+Maybe we do not have $y$ explicitly. All we need is that $y = f(x)$ is the unique solution to some equation $G(x, y) = 0$, which we call the \emph{gauge-fixing condition}.
+To rewrite \eqref{eq:21-1} in a more general way, we use the composition rule for $\delta$-functions
+\begin{equation}
+  \delta\bigl(G(x, y)\bigr) = \abs{\frac{\partial G}{\partial y}}^{-1} \delta(y - f(x)),
+\end{equation}
+where we use the assumption that $y - f(x)$ is the unique solution to $G(x, y) = 0$.
+Then, assuming further that $\frac{\partial G}{\partial y} > 0$, 
+\begin{equation}
+  Z = \int \dd[]{x} \dd[]{y} \frac{\partial G}{\partial y} \delta\bigl(G(x, y)\bigr) e^{-S(x)}.
+\end{equation}
+These assumptions are fine in perturbation theory, but we have \emph{Gribov copies} non-perturbatively.
+
+This generalises to $n$ variables as
+\begin{equation}
+  Z = \int \dd[n]{x} \dd[n]{y} \det(\frac{\partial G}{\partial y}) \left[ \prod_{i = 1}^n \delta(G_i) \right] e^{-S(x)}.
+\end{equation}
+In gauge theory, these are really path integrals. The above form means that we can somehow separate the path integral $\pdd{A}$ into the physical fields $x$ and the gauge-equivalent degrees of freedom $y$.
+
+\subsection{Gauge Theory}%
+\label{sub:gauge_theory}
+
+Let us now apply this to gauge field theory. The gauge-fixing condition, generalising $\partial_{\mu} A^{\mu} = 0$ from QED, is
+\begin{equation}
+  G^{a}(x) = \partial^{\mu} A_{\mu}(x) - w^{a}(x)
+\end{equation}
+where now the $x$ represent spacetime labels and $w^{a}(x)$ are field-independent functions of $x$.
+Under gauge transformation,
+\begin{equation}
+  G^{a}(x) \to G^{a}(x) + \frac{1}{g} \partial^{\mu} D^{ab}_{\mu} \alpha^{b}(x).
+\end{equation}
+We can extract the differential operator with a functional derivative
+\begin{equation}
+  \frac{\delta G^{a}(x)}{\delta \alpha^{b}(y)} = \frac{1}{g} \delta^{(4)}(x - y) (\partial^{\mu} D_{\mu}^{ab}).
+\end{equation}
+This gives us the Fadeev--Popov determinant
+\begin{equation}
+  \det( \frac{\delta G^{a}(x)}{\delta \alpha^{b}(y)} ),
+\end{equation}
+which are the components going into the path integral for the generating functional.
+The way to make sense of this formal object, a determinant over differential operators, is to rewrite it as a path integrals over fermionic ghost fields.

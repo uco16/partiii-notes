@@ -50,12 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.8430918)%
+  \begin{picture}(1,0.61933113)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l16f2.pdf}}%
-    \put(0.46502145,0.3703633){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$R$\end{tabular}}}}%
-    \put(0.59004656,0.71979325){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Sigma'$\end{tabular}}}}%
-    \put(0.49387334,0.03375655){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Sigma$\end{tabular}}}}%
+    \put(0.50997882,0.49603257){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Sigma'$\end{tabular}}}}%
+    \put(0.49754622,0.03375655){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Sigma$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{l16f2.pdf}}%
+    \put(0.48801584,0.2518058){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

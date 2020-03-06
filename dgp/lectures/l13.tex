@@ -1,0 +1,171 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 13: March 04}
+
+\section{Yang--Mills Instantons}%
+\label{sec:yang_mills_instantons}
+
+Let $A$ be the gauge potential, a $\mathfrak{g}$-valued 1-form, and 
+\begin{equation}
+  \label{eq:13-F}
+  F = dA + A \wedge A,
+\end{equation}
+a $\mathfrak{g}$-valued $2$-form.
+Taking $G = SU(2)$, minus the trace is positive definite, so we have the action
+\begin{equation}
+  S[A] = - \int_{\mathbb{R}^n} \Tr(F \wedge \star F).
+\end{equation}
+Varying with respect to the gauge potential and requiring $\delta S = 0$, we obtain the Yang--Mills equations
+\begin{equation}
+  D \star F = 0.
+\end{equation}
+We also have the Bianchi identity
+\begin{equation}
+  D F = 0.
+\end{equation}
+
+Take now $n = 4$, $\eta_{ab} = \delta_{ab}$.  This might be viewed as originating from Lorentzian geometry by having transformed a Wick rotation.
+\begin{definition}[instantons]
+  \emph{Instantons} are non-singular solutions of the classical Euler--Lagrange equations in Euclidean space, with finite action.
+\end{definition}
+These are not localised only in space, but also at an instant in time, hence the name.
+
+The motivation for physicists comes from Euclidean quantum gravity. To understand the quasi-classical limit in the WKB approximation, the largest contribution comes from solutions with imaginary time. There is a heuristic argument that claims that this is also valid for quantum field theory, which motivates the study of instantons. However, it is not clear whether they have a direct connection with physics.
+
+In $n = 4$, we have
+\begin{equation}
+  S = - \int_{\mathbb{R}^4} \Tr(F \wedge \star F),
+\end{equation}
+with the following boundary conditions:
+Defining $r^2 = \delta_{ab} x^{a} x^{b}$, we want
+\begin{equation}
+  F_{ab}(x) \sim O\left(\frac{1}{r^3}\right), \qquad \text{as} \quad r \to \infty.
+\end{equation}
+The motivation for this is that the Jacobian in $3$ Euclidean dimensions in spherical polar coordinates is of the form $r^2 \sin\theta dr d\theta d\phi$. For $3$ dimensional Euclidean space, we have instead a volume form containing $r^3 dr$.
+If $F$ was $r^{-2}$, then $F^2 \sim r^{-4}$ and the integral would diverge logarithmically.
+If you were an analyst, you could prove that $r^{-3}$ is the lowest bound that we can have for a convergent integral.
+For the gauge potential, we want
+\begin{equation}
+  A_a(x) \sim- (\partial_{a} g) g^{-1} + O\left(\frac{1}{r^2}\right) \qquad \text{as} \quad r \to \infty.
+\end{equation}
+The gauge transformation $g$ needs only to be defined asymptotically at $\partial R^4 = S_{\infty}^3$.
+So $g \colon S^3_{\infty} \to SU(2) \simeq S^3$.
+This map is partially classified by the topological degree, which we will look out for in the upcoming calculations.
+
+\subsection{Aside: Gauge Theory on \texorpdfstring{$\mathbb{R}^n$}{n-dimensional Euclidean Space}}%
+\label{sub:aside_gauge_theory_on}
+
+$F$ is a matrix, so we can take its determinant. Take the wedge product to be the multiplication operation to calculate the determinant
+\begin{align}
+  C(F) &= \det (\mathbb{1} + \frac{i}{2\pi} F), \\
+       &= 1 + C_1 (F) + C_2(F) + \dots.
+\end{align}
+Then $C_p(F)$ is a $2p$-form (polynomial in traces of powers of $F$), called the $p$\textsuperscript{th} \emph{Chern form}.
+These are
+\begin{itemize}
+  \item gauge invariant
+    \begin{equation}
+      C(g F g^{-1}) = C(F)
+    \end{equation}
+  \item closed (by the Bianchi identity)
+\end{itemize}
+
+Let us compute the first two Chern forms.
+In $\frac{SU}{2}$ gauge theory,
+\begin{align}
+  C_1(F) &= \frac{i}{2 \pi} \Tr(F) = 0 \\
+  C_2(F) &= \frac{1}{8 \pi^2} \bigl( \Tr(F \wedge F) - \Tr(F) - \Tr(F) \bigr) = \frac{1}{8 \pi^2} \Tr(F \wedge F).
+\end{align}
+
+The first Chern form plays a big role in $U(1)$ gauge theory of magnetic monopoles, but we will be more interested in the second Chern form.
+
+Let us explicitly check the closure on the second Chern form
+\begin{align}
+  d C_2 &= \frac{1}{4 \pi^2} \Tr(d F \wedge F) \\
+	&= \frac{1}{4 \pi^2} \Tr(D F \wedge F - A \wedge F \wedge F + F \wedge A \wedge F) = 0,
+\end{align}
+where the first term vanishes by the Bianchi identity and the second and third cancel due to cyclic permutation of the trace.
+
+Since $\mathbb{R}^n$ is contractable, every globally defined closed form is globally exact.
+Therefore, $C_2 = d Y_3$, where $Y_3$ is called the \emph{Chern--Simons $3$-form}
+\begin{equation}
+  Y_3 = \frac{1}{8\pi ^2} \Tr(d A \wedge A + \frac{2}{3} A^3).
+\end{equation}
+\begin{exercise}
+  Check this. Use $\Tr(A^4) = 0$.
+\end{exercise}
+
+There is another way to rewrite the Chern--Simons $3$-form using the Bianchi identity.
+Rewrite \eqref{eq:13-F} to find $d A = F - A \wedge A$, giving
+\begin{equation}
+  Y_3 = \frac{1}{8 \pi^2} \Tr(F \wedge A - \frac{1}{3} A^3).
+\end{equation}
+
+\subsection{Back to \texorpdfstring{$\mathbb{R}^4$}{Four Dimensions}: Chern Number}%
+\label{sub:back_to}
+
+\begin{definition}[Chern number]
+  The \emph{$p$\textsuperscript{th} Chern number} is the integral over the $p$\textsuperscript{th} Chern class.
+\end{definition}
+The second Chern number is
+\begin{align}
+  c_2 &= \int_{\mathbb{R}^4} C_2 = \frac{1}{8 \pi^2} \int_{\mathbb{R}^4} d Y_3. \\
+      &= \frac{1}{8 \pi^2} \int_{S^3_{\infty}} \Tr(F \wedge A - \frac{1}{3} A^3) \qquad \text{(instantons)} \\
+      &= -\frac{1}{24 \pi^2} \int_{S^3_{\infty}} \Tr(A^3) \in \mathbb{Z}
+\end{align}
+as $A_{\infty} = - (dg) g^{-1}$, $F_{\infty} = 0$,
+\begin{equation}
+  c_2 = \frac{1}{24 \pi^2} \int_{S_{\infty}^3} \Tr(dg \cdot g^{-1}) = \text{deg}(g).
+\end{equation}
+If we calculate the Chern number for any solution to Yang--Mills on $\mathbb{R}^4$, then we have no reason to expect it to be an integer.
+However, for instantons, it is an integer that agrees with the topological degree of the map $g \colon S^3_{\infty} \to S^3 = SU(2)$.
+
+We have not yet used the Yang--Mills equations, but we will do so now.
+\begin{theorem}[]
+  Within a given topological sector\footnote{An integer-valued object cannot vary continuously, so it is a topological invariant.} with orientation such that
+  \begin{equation}
+    c_2 = \frac{1}{8\pi^2} \int_{\mathbb{R}^4} \Tr(F \wedge F) \geq 0,
+  \end{equation}
+  the Yang--Mills action $S$ is bounded from below by $8 \pi^2 c_2$. The boundary is saturated if the anti-self-dual Yang--Mills (ASDYM) equations hold
+  \begin{equation}
+    \star F = - F \qquad \text{or} \qquad \left\{
+      \begin{gathered}
+        F_{12} = -F_{31} \\
+        F_{13} = -F_{42} \\
+        F_{14} = -F_{23}
+      \end{gathered}
+      \right.
+  \end{equation}
+\end{theorem}
+\begin{remark}
+  This is the third time we are doing this calculation. We have done it for kinks, and for sigma model lumps before.  In both cases, second order equations reduce to first order Bogomolny equations.
+\end{remark}
+\begin{proof}
+  Note $F \wedge F = \star F \wedge \star F$.
+  Then, using that $\star \star F = 1$, write the action as
+  \begin{equation}
+    S = -\frac{1}{2} \int_{\mathbb{R}^4} \Tr[(F + \star F) \wedge \star(F + \star F)] + \int_{\mathbb{R}^4} \Tr(F \wedge F)
+  \end{equation}
+  The cross-term is $\int \Tr(F \wedge F) = 8 \pi^2 c_2$.
+  As the first integral is non-negative. This gives the inequality
+  \begin{equation}
+    S \geq 8 \pi^2 c_2.
+  \end{equation}
+  This gives the Bogomolny bound for the Yang--Mills action. We obtain equality if
+  \begin{equation}
+    F + \star F = 0.
+  \end{equation}
+\end{proof}
+
+A similar calculation with $c_2 \leq 0$ would give the SDYM $F = \star F$.
+$C$ changes the sign of the volume form interchanges ASDYM and SDYM.
+
+If $\star F = \pm F$, 
+\begin{equation}
+  D \star F = \pm D F = 0
+\end{equation}
+YM follow from Bianchi.
+
+An exciting current area of research is that there is evidence that all integrable systems are symmetry reductions of SDYM.
+
+We define $ \kappa = - c_2 $ to be the instanton number.

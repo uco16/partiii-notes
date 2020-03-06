@@ -1,0 +1,213 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 19: February 28}
+
+To calculate the integral, we look at Raych.~equation (which is essentially one of the components of Eintein's eqaution).
+We are looking at perturbed Kerr, but the generators of the null hypersurface $\mathcal{N}$ still have vanishing rotation $\hat{\omega}\rvert_\mathcal{N} = 0$. However, $\theta, \hat{\sigma} = \mathcal{O}(\epsilon)$ are not zero.
+Therefore,
+\begin{equation}
+  \dv{\theta}{\lambda} = - R_{ab} U^{a} U^{b} + \mathcal{O}(\epsilon^2).
+\end{equation}
+Conveniently, this is exactly the Ricci term in the integral.
+Substituting and integrating by parts with respect to $\lambda$ gives
+\begin{align}
+  \delta M - \Omega_H \delta J &= -\frac{\kappa}{8 \pi} \int \dd[2]{y} \int_{0}^{\infty} \sqrt{h} \lambda \dv{\theta}{\lambda} \dd[]{\lambda}  \\
+			       &= -\lambda(8\pi) \int \dd[2]{y} \left\{ [\sqrt{h} \lambda \theta]_0^\infty - \int_0^\infty \left( \sqrt{h} + \lambda \dv{\sqrt{h}}{\lambda} \right) \theta \dd[]{\lambda} \right\} \label{eq:19-star}.
+\end{align}
+\begin{equation}
+  \theta = \frac{1}{\sqrt{h}} \dv{\sqrt{h}}{\lambda}, \qquad \theta \dv{\sqrt{h}}{\lambda} = \theta^2 \sqrt{h} = \mathcal{O}(\epsilon^2),
+\end{equation}
+so we can ignore that term.
+If the black hole reaches equilibrium as $\lambda \to \infty$, then $\sqrt{h}$ becomes finite in the limit $\lambda \to \infty$.
+Now
+\begin{equation}
+  \int_0^\infty \sqrt{h} \theta \dd[]{\lambda} = \int_0^\infty \dv{\sqrt{h}}{\lambda} \dd[]{\lambda} = \delta \sqrt{h}.
+\end{equation}
+The right-hand side is finite, which means the left-hand side must be, too.
+Therefore, $\theta = o \left( 1 / \lambda \right)$, meaning that $\theta$ tends to zero faster than $1 / \lambda$ as $\lambda \to \infty$.
+This means that the boundary term in \eqref{eq:19-star} vanishes.
+\begin{equation}
+  \delta M - \Omega_H \delta J = \frac{\kappa}{8 \pi} \dd[2]{y} \delta \sqrt{h} = \frac{\kappa}{8 \pi} \delta \int \dd[2]{y} \sqrt{h} = \frac{\kappa \delta A}{8 \pi}.
+\end{equation}
+This is the first law of black hole thermodynamics.
+
+\section{Second Law}%
+\label{sec:second_law}
+
+One of Stephen Hawking's greatest hits.
+Informally, the area of the event horizon of a black hole can only increase.
+\begin{theorem}[Hawking '72]
+  Let $(M, g)$ be a strongly asymptotic predictable spacetime, satisfying the Einstein equation and the NEC.
+  This means that there is $U \subset M$ a globally hyperbolic region with $\overline{J^- (\mathcal{J}^+)}{} \subset U$. Let $\Sigma_1, \Sigma_2$ be spacelike Cauchy surfaces for $U$ such that $\Sigma_2 \subset J^+(\Sigma_1)$ and $H_i = \mathcal{H}^+ \cap \Sigma_i$. Then
+  \begin{equation}
+    \text{area}(H_2) \geq \text{area}(H_1).
+  \end{equation}
+\end{theorem}
+\begin{proof}[Proof (sketch)]
+  We put an extra assumption in: we assume the generators of the future event horizon $\mathcal{H}^+$ to be future-complete (``$\mathcal{H}^+$ is non-singular'').
+  You can relax this assumption, but it makes the proof harder.
+  \begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l19f1}
+    \caption{Second law of black hole mechanics, showing a horizon generator.}
+    \label{fig:l19f1}
+  \end{figure}
+  \begin{claim}
+    $\theta \geq 0$ on $\mathcal{H}^+$.
+  \end{claim}
+  \begin{proof}
+    Assume $\theta < 0$ at $p \in \mathcal{H}^+$.
+    Let $\gamma$ be a future-inextendible generator of $\mathcal{H}^+$ through $p$.
+    Then $\theta < 0 \implies \theta \to -\infty$ at $r \in \gamma$ within affine parameter $2 / \abs{\theta}$, where $\abs{\theta}$ is the radius of $\theta$ at $p$.
+    This means that the congruence is singular at $r$: infinitesimally nearby geodesics $\gamma'$ from $p$ intersect $\gamma$ at $r$, as shown in Fig.~\ref{fig:l19f2}.
+  \begin{figure}[tbhp]
+    \begin{minipage}[t]{0.5\textwidth}
+      \centering
+      \inkfig[0.6]{l19f2}
+      \caption{}
+      \label{fig:l19f2}
+    \end{minipage}%
+    \begin{minipage}[t]{0.5\textwidth}
+      \centering
+      \inkfig[0.9]{l19f3}
+      \caption{}
+      \label{fig:l19f3}
+    \end{minipage}
+  \end{figure}
+  ``smooth corners'' $\to $ timelike curve from $p$ to $r$. Now move $p$ to $p'$ in the black hole region and $r$ to $r'$ outside $\mathcal{H}^+$ as shown in Fig.~\ref{fig:l19f3}.
+  Since we have a timelike curve from $p$ to $r$, we also have a timelike curve from $p'$ to $r'$. However, $r' \in J^- (\mathcal{J}^+)$ and the existence of such a curve would imply $p' \in J^- (\mathcal{J}^+)$, which contradicts the assumption of a black hole.
+  Therefore, $\theta \geq 0$ on $\mathcal{H}^+$.
+  \end{proof}
+  Let $\phi \colon H_1 \to H_2$, $p \mapsto $ intersection of generator through $p$ with $H_2$ ($\Sigma_2$ Cauchy).
+  Therefore,
+  \begin{equation}
+    \text{area} (H_2) \stackrel{\phi(H_1) \subset H_2}{\geq} \text{area}(\phi(H_1)) \stackrel{\theta \geq 0}{ \geq } \text{area} (H_1).
+  \end{equation}
+\end{proof}
+
+\begin{example}[spherically symmetric collapse]
+  Consider the Finkelstein diagram in Fig.~\ref{fig:l19f4}.
+  \begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l19f4}
+    \caption{Spherically symmetric collapse.}
+    \label{fig:l19f4}
+  \end{figure}
+\end{example}
+
+\begin{example}[Black hole merger]
+  Assume initial black holes are well separated and described by Schw.~and that the final black hole is also described by Schwarzschild.
+  \begin{figure}[ht]
+    \centering
+    \inkfig[0.5]{l19f5}
+    \caption{Black hole merger.}
+    \label{fig:l19f5}
+  \end{figure}
+  The second law then tells us that
+  \begin{equation}
+    A_3 \geq A_1 + A_2 \quad \implies \quad 16 \pi M_3^2 \geq 16 \pi M_1^2 + 16 \pi M_2^2.
+  \end{equation}
+  Thus
+  \begin{equation}
+    M_3 \geq \sqrt{M_1^2 + M_2^2}.
+  \end{equation}
+  The energy radiated in gravitational waves is 
+  \begin{equation}
+    E = M_1 + M_2 - M_3.
+  \end{equation}
+  In principle, an advanced alien civilisation would be able to extract energy from this process. The \emph{efficiency} of the process is
+  \begin{equation}
+    \eta = \frac{E}{M_1 + M_2} = 1 - \frac{M_3}{M_1 + M_2} \leq 1 - \frac{\sqrt{M_1^2 + M_2^2}}{M_1  + M_2} \stackrel{x = M_2 / M_1}{=} 1 - \frac{\sqrt{1 + x^2}}{1 + x} \leq 1 - \frac{1}{\sqrt{2}}.
+  \end{equation}
+\end{example}
+
+\subsection{Penrose Inequality}%
+\label{sub:penrose_inequality}
+
+Initial data asymp.~flat and contains trapped surface begin apparent horizon of area $A_{\text{app}}$.
+The initial ADM energy is $E_i$. By the WCC, a singularity must form, which lies inside the black hole horizon, giving a black hole spacetime.
+The uniqueness theorems imply that we expect this to `settle down' to the Kerr black hole, parameters $(M_f, J_f)$.
+The apparent horizon is inside $\mathcal{H}^+$ so we expect $A_{\text{app}} \leq A_i$, the initial area of $\mathcal{H}^+$.
+By the second law,
+\begin{align}
+  A_{\text{app}} &\leq A_i \\
+		 & \leq A_{\text{Kerr}}(M_f, J_f) \\
+		 &= 8 \pi (M_f^2 + \sqrt{M_f^4 - J_f^2}) \\
+		 & \leq 16 \pi M_f^2 \\
+		 & \leq 16 \pi E_i^2,
+\end{align}
+($M_f \leq E_i$: energy lost to gravitational waves.)
+This gives us a precise mathematical statement: the \emph{Penrose inequality}:
+\begin{equation}
+  E_i \geq \sqrt{\frac{A_{\text{app}}}{16 \pi}}.
+\end{equation}
+Both sides refer only to initial data. This allows us to test our assumptions (for example of weak cosmic censorship).  There has not yet been found a counter example to this.  In fact, the above inequality has been proved (Huisken and Ilmanen '97) for \emph{time-symmetric} initial data ($K_{ab} = 0$) with matter obeying the weak energy condition.
+\begin{remark}
+  The inequality can be regarded as a stronger version of the positive mass theorem.
+\end{remark}
+
+\chapter{QFT in Curved Spacetime}%
+\label{cha:qft_in_curved_spacetime}
+
+\section{Introduction}%
+\label{sec:introduction}
+
+Consider a black hole at rest $E = M$. Now consider a thermodynamic system with the same energy $E$ and momentum $J$ of the black hole.
+The first law of thermodynamics tells us
+\begin{equation}
+  d E = T dS + \mu d J,
+\end{equation}
+where $\mu$ is the chemical potential for angular momentum.
+This looks very much like the first law of black hole mechanics if we make the following identifications:
+\begin{equation}
+  T = \lambda \kappa \qquad S = \frac{A}{8 \pi \lambda}, \qquad \mu = \Omega_H,
+\end{equation}
+where $\lambda$ is some arbitrary constant.
+Similarly, the zero\textsuperscript{th} law of thermodynamics states that $T$ is constant in thermal equilibrium.
+If this identification is correct, we should have $\kappa$ being constant, which is exactly the zero\textsuperscript{th} law of black hole mechanics.
+Similarly, the second law of thermodynamics states that the entropy $S$ can only increase, which corresponds to the statement that the area $A$ can only increase.
+
+This suggests that we should think of a black hole as a thermodynamic system.
+
+Think about a box of hot gas falling into the black hole.
+It seems like this violates the second law of thermodynamics, since the entropy just vanishes. However, we can remedy this by considering the black hole to have an entropy proportional to its area.
+However, temperature would imply that the black hole radiates (which it does not to classically).
+
+Then Hawking in '74 found that (when including QFT considerations) black holes emit thermal radiation at the \emph{Hawking temperature}
+\begin{equation}
+  T_H = \frac{\hbar \kappa}{2 \pi},
+\end{equation}
+which fixes $\lambda$.
+This means that black holes really are thermodynamic objects with a temperature.
+This is the reason why we are interested in QFT in curved spacetime.
+
+\section{Quantisation of a Free Scalar}%
+\label{sec:quantisation_of_a_free_scalar}
+
+Classically, we need to work in a globally hyperbolic spacetime, so we assume the same to be true quantum mechanically.
+Let $(M, g)$ be a globally hyperbolic spacetime with metric
+\begin{equation}
+  ds^2 = -N^2 dt^2 + h_{ij} (dx^{i}  +N^{i} dt) (dx^{j} + N^{j} dt),
+\end{equation}
+where $h_{ij}$ is a metric on $\Sigma_t$, which is a constant-$t$ surface.
+Then it is obvious that $\sqrt{-g} = N \sqrt{h}$.
+We therefore look at a real Klein--Gordon field $\phi$ with action
+\begin{equation}
+  S = \int_M \dd[]{t} \dd[3]{x} \sqrt{-g} \left( -\frac{1}{2} g^{ab} \partial_{a} \phi \partial_{b} \phi - \frac{1}{2} m^2 \phi^2 \right).
+\end{equation}
+The equations of motion are the Klein--Gordon equation in curved spacetime
+\begin{equation}
+  g^{ab} \nabla_a \nabla_b \phi - m^2 \phi = 0.
+\end{equation}
+To quantise, we need to find the canonical momentum
+\begin{align}
+  \pi(x) &= \frac{\delta S}{\delta (\partial_t \phi(x))} = - \sqrt{-g} g^{t \mu} \partial_{\mu} \phi \\
+	 &= - N \sqrt{h} (dt)_\nu g^{\nu\mu} \partial_{\mu} \phi \\
+	 &= \sqrt{h} n^{\mu} \partial_{\mu} \phi.
+\end{align}
+Here, $n_{a} = -N (dt)_a$ is a future-directed unit normal to surfaces of constant $t$.
+Quantisation is done by promoting $\phi, \pi$ to \emph{operators} obeying canonical commutation relations
+\begin{equation}
+  [\phi(t, x), \pi(t, x')] = \delta^{(3)} (x - x'), \qquad [\phi(t, x), \phi(t, x')] = 0 = [\pi(t, x), \pi(t, x')].
+\end{equation}
+We use units of $\hbar = 1$ throughout.

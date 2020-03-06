@@ -1,0 +1,162 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 16: February 22}
+
+\subsection{The Quantum Version}%
+\label{sub:the_quantum_version}
+
+\begin{claim}
+  The Noether charges $Q^{a} = \int \dd[3]{x} J^{a}_0$ are also generators of the symmetry.
+  \begin{equation}
+    [\phi_{i}, Q^{a}] = i T^{a}_{ij} Q_{j},
+  \end{equation}
+  where $T^{a}_{ij}$ are the generators.
+\end{claim}
+
+There are several points of observation we should make:
+
+\subsection{Order Parameter}%
+\label{sub:order_parameter}
+
+The order parameter of spontaneous symmetry breaking is
+\begin{equation}
+  \bra{0} \phi \ket{0} = \langle \phi \rangle
+  \begin{cases}
+    = 0, & \text{if unbroken}  \\
+    \neq 0, & \text{if broken} 
+  \end{cases}.
+\end{equation}
+If broken,
+\begin{equation}
+  \langle \phi \rangle \neq 0 \implies \langle [\phi, Q] \rangle \neq 0 \implies \bra{0} (\phi Q - Q \phi) \ket{0} \neq 0 \implies Q \ket{0} \neq 0.
+\end{equation}
+This is another way to state symmetry breaking: the symmetry is broken if the charges do not annihilate the vacuum.
+Equivalently, we can take an action $U$ of the group on the minimum of the potential $\phi_0$, so that for an unbroken symmetry we have
+\begin{equation}
+  U \phi_0 = e^{i \alpha^{a} T^{a}} \phi_0 = (1 + i \alpha^{a} T^{a}) \phi_0 = 0 \implies i \alpha^{a} T^{a} \phi_0 = 0.
+\end{equation}
+
+\subsection{Degenerate Energies}%
+\label{sub:degenerate_energies}
+
+
+Degenerate energies: Usually in QM, when we have states $\ket{\psi} = Q \ket{\chi}$ related by a symmetry $Q$, which obeys $[Q, H] = 0$, then
+\begin{equation}
+  H \ket{\psi} = E_{\psi} \ket{\psi} = H Q \ket{\chi} = Q H \ket{\chi} = E_{\chi} Q \ket{\chi} = E_\chi \ket{\psi},
+\end{equation}
+so the energies $E_{\psi} = E_{\chi}$ of the two states are degenerate.
+
+However, in Field Theory, if $\phi_1, \phi_2$ are related by an action $i \phi_1 = [\phi_2, Q]$ of the charge $Q$, then
+\begin{equation}
+  \ket{1} a_1^{\dagger} \ket{0} = i [a_2^{\dagger}, Q] \ket{0} = i a_2^{\dagger} Q \ket{0}-i Q a_2^{\dagger} \ket{0} = -i Q \ket{2} + i a_2^{\dagger} Q \ket{0}.
+\end{equation}
+So $\ket{1} \propto Q \ket{2}$ only if $Q \ket{0} = 0$, meaning that the symmetry is unbroken.
+If the vacuum does not preserve the energy, we have an extra term $i a_2^{\dagger} Q \ket{0}$, which prevents energy degeneracy.
+
+Consider the case of a broken symmetry. Since $[H, Q^{a}] = 0$, we have 
+\begin{equation}
+  \label{eq:16-Q}
+  H Q^{a} \ket{0} = Q^{a} H \ket{0} = E_0 Q^{a} \ket{0}.
+\end{equation}
+Therefore, if $Q^{a} \ket{0} \neq 0$, then the corresponding state $Q^{a} \ket{0}$ has the same energy as the vacuum $\ket{0}$ and we have degenerate energies.
+
+Now consider the momentum states
+\begin{equation}
+  \ket{\pi^{a} (\vb{p})} = K \int \dd[3]{x} e^{-i \vb{p} \cdot \vb{x}} J_0^{a} \ket{0}.
+\end{equation}
+These have energy $E(\vb{p}) = \sqrt{\abs{\vb{p}}^2 + m^2}$ due to the momentum and energy $E_0$ due to the vacuum.
+Since $\ket{\pi^{a} (0)} \propto Q^{a}\ket{0}$ has energy $E_0$, as shown in \eqref{eq:16-Q}, this means that $E(\vb{p}) \to 0$ as $\abs{\vb{p}} \to 0$. This in turn means that $m = 0$.
+These states are the Goldstone modes, labelled by broken generators $Q^{a}$.
+This is the quantum proof of the Goldstone theorem.
+
+\subsection*{Effective Action}%
+
+Recall that the Wilsonian effective action $W(J)$ is defined by
+\begin{equation}
+  e^{i W(J)} \coloneqq \int \pdd{\phi} e^{i \int (L + J \phi) \dd[4]{x}}.
+\end{equation}
+It consists of the sum of connected diagrams.
+Taking the variational derivative, we define the classical field $\phi_c(x)$ as
+\begin{equation}
+  \frac{\partial W}{\partial J} \frac{\int \pdd{\phi} \phi e^{i \int (\mathscr{L} + J \phi) \dd[4]{x}}}{\int \pdd{\phi} e^{i \int (\mathscr{L} + J \phi) \dd[4]{x}}}
+  = \frac{\bra{0} \phi \ket{0}}{\bra{0} \ket{0}} \coloneqq \phi_c(x).
+\end{equation}
+The quantum effective action $\Gamma$ is then defined as the Legendre transform
+\begin{equation}
+  \Gamma(\phi_c) = W(J) - \int \dd[4]{x} J \phi_c, \qquad \frac{\delta \Gamma}{\delta \phi_c} = - J.
+\end{equation}
+As we know from \emph{Advanced Quantum Field Theory}, $\Gamma$ consists of the sum of 1PI diagrams and generates the inverse $n$-point functions. In particular, it generates the inverse propagator
+\begin{equation}
+  \frac{\delta^2 \Gamma}{\delta \phi_c \delta \phi_c} = \Delta^{-1}.
+\end{equation}
+This is the mass. Spontaneous symmetry breaking is then the statement that
+\begin{equation}
+  \frac{\delta \Gamma}{\delta \phi_c} = 0 \qquad \text{for} \qquad \phi_c \neq 0.
+\end{equation}
+This means that
+\begin{equation}
+  \Gamma = \int \dd[4]{x} \left( V_{\text{eff}} + \frac{1}{2} (\partial_{\mu} \phi_c)^2 + \dots \right).
+\end{equation}
+At zero momentum, this means that we have
+\begin{equation}
+  \frac{\delta \Phi}{\delta \phi_c} = 0 \implies \frac{\partial V_{\text{eff}}}{\partial \phi_c} = 0.
+\end{equation}
+This is another proof of the Goldstone theorem.
+
+
+\section{Spontaneous Breaking of Gauge Symmetries}%
+\label{sec:spontaneous_breaking_of_gauge_symmetries}
+
+We have met three problems:
+\begin{itemize}
+  \item Massive spin-1 field theory is not valid at high energies (unitary).
+  \item Massless Yang--Mills fields are not seen.
+  \item Massless Goldstone modes are not seen.
+\end{itemize}
+The first is physical but not consistent while the last two are consistent but not physical! We can address them all at once with the Higgs mechanism.
+
+\subsection{Abelian Higgs Model}%
+\label{sub:abelian_higgs_model}
+
+Consider a theory governed by the Lagrangian
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} F^{\mu\nu} F_{\mu\nu} + \frac{1}{2} D^{\mu} \phi D_{\mu} \phi^* - V(\abs{\phi}^2),
+\end{equation}
+where the covariant derivative is $ D_{\mu} \phi = (\partial_{\mu} + i e A_{\mu}) \phi $ and the potential is
+\begin{equation}
+  V = \frac{\lambda}{4} (\abs{\phi}^2 - v^2)^2.
+\end{equation}
+This exhibits a $U(1)$ symmetry
+\begin{equation}
+  \phi \to e^{i \alpha (x) \phi}, \qquad A_{\mu} \to A_{\mu} - \frac{1}{e} \partial_{\mu} \alpha.
+\end{equation}
+The vacuum lies at $\langle \phi \rangle = V \rho$, where $\rho = e^{i \theta}$ is a phase.
+Let us pick the real vacuum at $\theta = 0$.
+
+Just as for the spontaneous symmetry breaking in the $O(N)$ case, we perturb around the vacuum
+\begin{equation}
+  \phi = e^{i \xi(x)} (\eta(x) + v).
+\end{equation}
+The kinetic and potential terms in the Lagrangian change as 
+\begin{align}
+  D^{\mu} \phi D_{\mu} \phi^* &\to \partial^{\mu} \eta \partial_{\mu} \eta + (\eta + v)^2 (\partial^{\mu} \xi + e A^{\mu})^2 \\
+  V &\to \frac{\lambda}{4} [(\eta + v)^2 - v^2]^2 = (v^2 \eta) \eta^2 + (\lambda v)\eta^3 + \frac{1}{4} \eta^4.
+\end{align}
+Now we can see something magical happen. In the Lagrangian we had a kinetic term $F^{\mu\nu} F_{\mu\nu}$, which we did not touch. We also had a kinetic term $D^{\mu} \phi D_{\mu} \phi^*$. 
+In the potential we have a mass term for $\eta$ and self interactions, as well as interactions of $\eta$ and $A$ in the kinetic term of $\phi$.
+However, curiously, $\xi$ does not appear in the potential. It only appears together with $A$. In particular, we can redefine the field $A$ to include the Goldstone mode $\xi$. 
+\begin{equation}
+  A^{\mu} \to A^{\mu} + \frac{1}{e} \partial^{\mu} \xi.
+\end{equation}
+This absorption, sometimes called the \emph{unitary gauge}, is the \emph{Higgs mechanism}.
+It results in $A$ getting a mass term.
+The $F^{\mu\nu} F_{\mu\nu}$ term is unchanged under this gauge transformation and the total Lagrangian becomes
+\begin{align}
+  \mathscr{L} &= \mathscr{L}^{\text{quadratic}} + \mathscr{L}^{\text{interaction}}, \\
+  \mathscr{L}^{\text{quadratic}} &= -\frac{1}{4} + \frac{1}{2} \partial^{\mu} \eta \partial_{\mu} \eta - (V^2 \lambda) \eta^2 + (\frac{1}{2} e^2 v^2) A^{\mu} A_{\mu} \\
+  \mathscr{L}^{\text{interaction}} &= (\lambda v)\eta^3 + \frac{\lambda}{4} \eta^4 + \frac{1}{2} (\eta^2 + 2 v \eta) A^{\mu} A_{\mu}.
+\end{align}
+We can see that the \emph{Higgs boson} $\eta$ has a squared mass $m_{\eta}^2 = \frac{1}{2} v^2 \lambda$ and the gauge field $A_{\mu}$ has squared mass $m_A^2 = e^2 v^2$.
+This Higgs mechanism solves our problems:
+The gauge field acquires a mass, the Goldstone boson is ``eaten'', and we have a consistent theory of a massive spin-1 field.
+We have 3 degrees of freedom; $2$ from $A_{\mu}$ and $1$ from the Goldstone boson.

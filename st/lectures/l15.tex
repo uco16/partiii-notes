@@ -82,12 +82,13 @@ In the second term, we recognising the dimension of spacetime as $D = \tr(\eta_{
   T(z) T(w) = \frac{D/2}{(z - w)^4} - \frac{2}{\alpha'} \frac{1}{(z - w)^2} \normalorder{\partial X_{\mu} \partial X^{\mu} (w)} - \frac{2}{\alpha'} \frac{1}{(z - w)} \normalorder{\partial X_{\mu} \partial^2 X^{\mu}(w)}
 \end{equation}
 \begin{equation}
+  \label{eq:tt-ope}
   \boxed{T(z) T(w) = \frac{D / 2}{(z - w)^4} + \frac{2}{(z - w)^2} T(w) + \frac{1}{z - w} \partial T(w) + \dots}
 \end{equation}
 \begin{leftbar}
   This implicitly assumes radial ordering on the left-hand side.
 \end{leftbar}
-The second term gives us $h = 2$. However, the first term should not be there; we do not expect to see a pole of order $4$.
+The second term gives us the weight $h = 2$. However, the first term should not be there; we do not expect to see a pole of order $4$.
 The stress tensor only transforms as a conformal field as we expect if $D = 0$.
 It will turn out that what we have been studying so far is only part of the stress tensor.
 We have forgotten about the ghosts, which will give a contribution of the stress tensor as well!
@@ -97,9 +98,9 @@ Their contribution will allow for $D$ to be a finite integer, which is therefore
 \label{sec:the_virasoro_algebra}
 
 We talked about the Witt algebra and saw that it had something to do with conformal transformations.
-This was a purely classical consideration. Only quantum mechanical effects, like double contractions, ??
+The Witt algebra came from purely classical consideration. The TT OPE was obtained by including quantum mechanical effects, like double contractions.
 
-The stress tensor is a field of weight $2$ so we can expand it in terms of modes $L_n$:
+The stress tensor is a field of weight $2$ so we can expand it in terms of Laurent modes $L_n$:
 \begin{equation}
   T(z) = \sum_n L_n z^{-n-2}.
 \end{equation}

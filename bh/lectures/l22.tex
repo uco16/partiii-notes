@@ -1,0 +1,216 @@
+% lecture notes by Umut Özer
+% course: bh
+\lhead{Lecture 22: March 06}
+
+\section{Wave Equation in Schwarzschild Spacetime}%
+\label{sec:wave_equation_in_schwarzschild_spacetime}
+
+We are heading towards the calculation of Hawking radiation. Before that we will need to do some preliminary work on waves on Schwarzschild spacetime.
+In Schwarzschild coordinates, expanding our field $\phi$ in spherical harmonics $Y_{lm}$,
+\begin{equation}
+  \phi = \sum_{l=0}^{\infty} \sum_{m = -l}^{l} \frac{1}{r} \phi_{lm}(t, r) Y_{lm}(\theta, \phi).
+\end{equation}
+Assuming that $\phi$ satisfies the wave equation, we have (sheet 4)
+\begin{equation}
+  \nabla^{a} \nabla_{a} \phi = 0 \qquad \iff \qquad \left[ \frac{\partial }{\partial t^2} - \frac{\partial }{\partial r^2_*} + V_l(r_*) \right] \psi_{lm} = 0,
+\end{equation}
+where the potential
+\begin{equation}
+  V_l(r_*) = \left( 1 - \frac{2M}{r} \right) \left( \frac{l (l +1)}{r^2} + \frac{2M}{r^3} \right),
+\end{equation}
+viewing $r = r(r_*)$.
+\begin{figure}[ht]
+  \centering
+  \inkfig[0.7]{l22f1}
+  \caption{Effective potential $V_l(r_*)$ for the wave equation in the Schwarzschild spacetime.}
+  \label{fig:l22f1}
+\end{figure}
+The important property is $V_l \to 0$ as $r_* \to \pm \infty$.
+Consider a solution describing a wavepacket localised at some finite value of $r_*$ at time $t_0$.
+At late time $t \to \infty$, we expect the solution to consist of a superposition of wavepackets propagating to the `left' ($r_* \to -\infty$) and to the `right' ($r_* \to \infty$).
+Tme reversal implies that at early time $t \to -\infty$ the solution consists of a superposition of wavepackets propagating in from the left and the right:
+\begin{align}
+  \phi_{lm}(t, r_*) &\approx f_{\pm}(t - r_*) + g_{\pm}(t+ r_*) \qquad \text{as } t \to \pm \infty, \\
+		    &= f_{\pm}(u) + g_{\pm} (v).
+\end{align}
+The functions $f_{\pm}, g_{\pm}$ are localised around some finite $u$ or $v$. This means that the solution vanishes for $\abs{u} \to \infty$ or $\abs{v} \to \infty$.
+The solution is uniquely determined by either $\{f_+, g_+\}$ or $\{f_-, g_-\}$.
+
+The wavepacket $f_+$ describes the outgoing waves propagating to $\mathscr{I}^+$.
+Similarly, $g_+$ describes ingoing waves to $\mathcal{H}^+$.
+In other words,
+\begin{equation}
+  \phi_{lm}\rvert_{\mathscr{I}^+} \stackrel{v \to \infty}{=} f_+(u), \qquad \phi_{lm}\rvert_{\mathcal{H}^+} \stackrel{u \to \infty}{=} g_+(v).
+\end{equation}
+Similarly,
+\begin{equation}
+  \phi_{lm}\rvert_{\mathscr{I}^-} = g_-(v), \qquad \phi_{lm}\rvert_{\mathcal{H}^-} = f_-(u).
+\end{equation}
+
+This is illustrated in Fig.~\ref{fig:l22f4}.
+\begin{figure}[ht]
+  \centering
+  \inkfig[0.4]{l22f4}
+  \caption{}
+  \label{fig:l22f4}
+\end{figure}
+
+Solution is uniquely determine dby behaviour on $\mathcal{H}^+ \cup \mathscr{I}^+$ or $\mathcal{H}^- \cup \mathscr{I}^-$.
+We have the \emph{out mode} $g_+ = 0$ illustrated in Fig.~\ref{fig:l22f5} as well as a \emph{down mode} $f_+ = 0$ illustrated in Fig.~\ref{fig:l22f6}.
+\begin{figure}[tbhp]
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \inkfig[0.5]{l22f5}
+    \caption{Out mode}
+    \label{fig:l22f5}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \def\svgwidth{0.5\columnwidth}
+    \input{lectures/l22f6.pdf_tex}
+    \caption{Down mode}
+    \label{fig:l22f6}
+  \end{minipage}
+\end{figure}
+Any solution of the type in Fig.~\ref{fig:l22f4} can be decomposed into Figs.~\ref{fig:l22f5} and \ref{fig:l22f6}.
+The out and down modes are \emph{orthogonal} $(\text{out}, \text{down}) = 0$. To show this, evaluate the inner product at late time.
+
+We also have an \emph{in mode} $f_- = 0$, shown in Fig.~\ref{fig:l22f7}
+\begin{figure}[ht]
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \inkfig[0.8]{l22f7}
+    \caption{In mode}
+    \label{fig:l22f7}
+  \end{minipage}%
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \def\svgwidth{0.8\columnwidth}
+    \input{lectures/l22f8.pdf_tex}
+    \caption{Up mode}
+    \label{fig:l22f8}
+  \end{minipage}
+\end{figure}
+and an \emph{up mode} $g_- = 0$, shown in Fig.~\ref{fig:l22f8}.
+
+Any solution is a unique superposition of in and up modes and $(\text{in}, \text{up}) = 0$.
+For example, the out mode is a superposition of in and up, up is a superposition of out and down, and so on.
+
+Let us now look at modes with definite positive frequency with respect to $k = \frac{\partial }{\partial t}$
+\begin{equation}
+  \phi_{wlm} = \frac{1}{r} \underbrace{e^{i \omega t} R_{w l m} (r)}_{\phi_{lm}} Y_{lm} (\theta, \phi)
+\end{equation}
+\begin{equation}
+  \implies \left[ - \dv[2]{r} + V_l(r_*)\right] R_{w l m} = \omega^2 R_{w l m}.
+\end{equation}
+
+Since $V_l \to 0$ as $\abs{r_*} \to \infty$, we have two linearly independent solutions $R_{wlm} \propto e^{ \pm i \omega r_*}$ as $\abs{r_*} \to \infty$
+\begin{equation}
+  \implies \phi_{wlm} \propto e^{-i \omega (t \mp r_*)} = 
+  \begin{cases}
+    e^{-i \omega u}, & \text{outgoing} \\
+    e^{-i \omega v}, & \text{ingoing}
+  \end{cases}
+  \qquad \text{as } \abs{r_*} \to \infty.
+\end{equation}
+
+\section{Hawking Radiation}%
+\label{sec:hawking_radiation}
+
+\begin{wrapfigure}{R}{0.4\columnwidth}
+  \centering
+  \inkfig[0.35]{l22f9}
+  \caption{}
+  \label{fig:l22f9}
+\end{wrapfigure}
+Consider the quantum field theory of a massless scalar field obeying $\nabla^{a} \nabla_{a} \phi =0$ in the spacetime of a collapsing star shown in Fig.~\ref{fig:l22f9}.
+There are no \emph{up}, only \emph{in} modes.
+The spacetime is static near $\mathscr{I}^-$, so we have a preferred definition of ``positive frequency'' there.
+We introduce a basis $f_i$ for the positive frequency in modes at $\mathscr{I}^-$.
+Similarly, the spacetime is static near $\mathscr{I}^+$, so we can similarly define a basis $p_i$ of out modes, which are positive frequency with respect to our Killing field $k$.
+There is no ambiguity in the concept of particles near future and past null infinity.
+
+However, the neighbourhood of the event horizon is not stationary and there is no preferred notion of positive frequency and the notion of particles in ambiguous. We have to make some arbitrary choice of basis $\{q_i, \overline{q}{}_i\}$, since there is no canonical way to do it.
+We have two bases for $S$. An \emph{early time} basis $\{f_i, \overline{f}{}_i\}$ and a \emph{late time} basis $\{p_i, \overline{p}{}_i, q_i, \overline{q}{}_i\}$.
+We assume that we have chosen our norm function for these to be orthonormal
+\begin{equation}
+  (f_i, f_j) = (p_i, p_j) = (q_i, q_j) = \delta_{ij},
+\end{equation}
+and since the out and down modes are orthonormal, 
+\begin{equation}
+  (p_i, q_j) = 0 = (p_i, \overline{q}{}_j).
+\end{equation}
+
+At early time, particles are annihilated by $a_i = (f_i, \phi)$. Similarly, we can define annihilation operators near future null infinity as $b_i = (p_i, \phi)$.
+We want to relate particles at past and future null infinity, so let us use the fact that the $f$'s are a basis to write
+\begin{equation}
+  p_i = \sum_{j} (A_{ij} f_j, B_{ij} \overline{f}{}_j).
+\end{equation}
+Substituting, we have
+\begin{equation}
+  b_i = \sum_j (\overline{A}{}_{ij} a_j - \overline{B}{}_{ij} a_j^{\dagger}).
+\end{equation}
+Let us assume that there are no particles initially at $\mathscr{I}^-$. In other words, the state is a vacuum state $\ket{0}$ with respect to the in modes, meaning $a_i \ket{0} = 0$.
+The expected number of particles in the $i$\textsuperscript{th} out mode is
+\begin{equation}
+  \bra{0} b_i^{\dagger} b_i \ket{0} = (BB^{\dagger})_{ii}.
+\end{equation}
+To calculate the number of particles at late times, we need to calculate the Bogoliubov coefficient $B$.
+
+This is where it gets tricky: the spacetime is time-dependent.
+
+As we discussed in Rindler spacetime, to do things properly, we should really work with wave packets.
+Choose $p_i$ to be a wave packet such that  on $\mathscr{I}^+$ it is localised around a particular value $u = u_i$, containing only frequencies near $\omega_i > 0$.
+The picture we have in mind is Fig.~\ref{fig:l22f10}.
+\begin{figure}[bthp]
+  \centering
+  \inkfig[0.5]{l22f10}
+  \caption{}
+  \label{fig:l22f10}
+\end{figure}
+
+Similarly, $f_i$ is the wave packet on $\mathscr{I}^⁻$ whose dependence on $v$ is the same as dependence on $u$ of $p_i$ at $\mathscr{I}^+$.
+
+In Kruskal, we might imagine evolving $p_i$ backwards in time, as shown in Fig.~\ref{fig:l22f11}.
+\begin{figure}[tbhp]
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \inkfig[0.7]{l22f11}
+    \caption{Kruskal spacetime.}
+    \label{fig:l22f11}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \inkfig[0.4]{l22f12}
+    \caption{Collapse spacetime.}
+    \label{fig:l22f12}
+  \end{subfigure}
+  \caption{Backwards propagation of out modes.}
+\end{figure}
+\begin{equation}
+  p_i = p_i^{(1)} + p_i^{(2)},
+\end{equation}
+where $p_i^{(1)}$ is in and $p_i^{(2)}$ is up.
+Since Kruskal is stationary, these are positive frequency.
+
+We have reflection and transmission coefficients
+\begin{equation}
+  R_i = \sqrt{(p_i^{(1)}, p_{i}^{(1)})}, \qquad T_i = \sqrt{(p_i^{(2)}, p_{i}^{(2)})}.
+\end{equation}
+Then, as $(\text{in}, \text{up}) = 0$,
+\begin{equation}
+  1 = (p_i, p_i) = R_i^2 + T_i^2.
+\end{equation}
+The reflection coefficient $R_i$ is the fraction of $p_i$ reflected to $\mathscr{I}^-$.
+Similarly, $T_i$ is the fraction of $p_i$ transmitted across $\mathcal{H}^-$.
+
+The presence of a time-reversal isometry in Kruskal implies that $R_i$ can also be interpreted as the fraction of $f_i$ reflected to $\mathscr{I}^+$, whereas $T_i$ is the fraction of $f_i$ transmitted across $\mathcal{H}^+$.
+
+For the collapsing star, consider $p_i$ localised at \emph{late} time $u_i$ on $\mathscr{I}^+$.
+Since the geometry is static outside the star, we have exactly the same case as in Kruskal. Therefore, $p_i^{(1)}$ is the same as in Kruskal.
+
+For $p_i^{(2)}$, propagates through time-dep.~geometry inside star, out to $\mathscr{I}^-$.
+Mixture of positive and negative frequency 
+\begin{equation}
+  A_{ij} = A_{ij}^{(1)} + A_{ij}^{(2)} \qquad B_{ij} = \underbrace{B_{ij}^{(1)}}_{= 0} + B_{ij}^{(2)}.
+\end{equation}

@@ -2,35 +2,43 @@
 % course: dgp
 \lhead{Lecture 1: January 20}
 
-\section{Kepler / Newton Orbits}%
+\chapter{Differential Geometry}%
+\label{cha:differential_geometry}
+
+\section{Introduction: Kepler / Newton Orbits}%
 \label{sec:kepler_newton_orbits}
 
+The importance of the role of geometry in physics in undeniable.
+For example, consider Kepler orbits $\vb{r}(t) \in \mathbb{R}^3$ obeying
 \begin{equation}
-  \ddot{\vb{r}} = -\frac{G M v}{r^3} \vb{r} \quad \leftrightarrow \quad \text{conic sections}
+  \ddot{\vb{r}} = -\frac{G M v}{r^3} \vb{r}.
 \end{equation}
+The solutions are conic sections, such as the one illustrated in Fig.~\ref{fig:l1f1}.
 
-%F1
-
-General conic section is
+\begin{wrapfigure}{R}{0.35\textwidth}
+  \centering
+  \inkfig[0.3]{l1f1}
+  \caption{Conic section}
+  \label{fig:l1f1}
+\end{wrapfigure}
+A general conic section can be written as the set of solutions of the equation
 \begin{equation}
-  ax^2 + by^2 + cxy + dx + ey + f = 0
+  \label{eq:1-c}
+  ax^2 + by^2 + cxy + dx + ey + f = 0,
 \end{equation}
-This is nowadays more generally studied in what we now call \emph{algebraic geometry} rather than differential geometry.
-
-Apolonius of Penge (?) asked `what is the unique conic thorugh five points, no three of which are co-linear?'
-
-The space of conics is $\mathbb{R}^6 - \left\{ 0 \right\} / n = \mathbb{RP}^5$  (projective 5-space).
-
+where $a, b, c, d, e, f \in \mathbb{R}$.
+Apollonius of Perga asked `what is the unique conic thorugh five points, no three of which are co-linear?'
+Since multiplying all coefficients by a real constant $y \neq 0$ gives the same conic, the space of conics is the projective 5-space $\mathbb{RP}^5 = (\mathbb{R}^6 \setminus \left\{ 0 \right\}) / \sim$, where $x \sim y$ iff $\exists \gamma \in \mathbb{R} \setminus \{0\}$ s.t.~$x = \gamma y$. In particular, we have homogeneous coordinates
 \begin{equation}
-  [a,b, c, d, e, f] \sim [\gamma a, \gamma b, \gamma c, \gamma d, \gamma c, \gamma f], \gamma \in \mathbb{R}^*
+  [a, b, c, d, e, f] \sim [\gamma a, \gamma b, \gamma c, \gamma d, \gamma c, \gamma f], \gamma \in \mathbb{R}^*,
 \end{equation}
-
+where $\mathbb{R}^* = \mathbb{R} \setminus \{0\}$.
 This is an application of geometry, rather than an application of differential geometry.
 \begin{remark}
   Apolonius proved this geometrically. 
 \end{remark}
-
-In this course however, we will look at the following.
+Equations like \eqref{eq:1-c} are studied in what we now call \emph{algebraic geometry}.
+In this course however, we will be interested in the physical applications of \emph{differential geometry} and will look at the following:
 \begin{enumerate}[1)]
   \item Hamiltonian mechanics ($~$ mid 19\textsuperscript{th}). This is an elegant way of reformulating Newton's mechanics, turning second order differential equations into first order differential equations with the use of a function $H(p, q)$. The system of ODEs is 
     \begin{equation}
@@ -79,8 +87,8 @@ This course: cover 1, 2, 3 in some detail. Unifying feature: Lie groups.
 \end{itemize}
 We will assume that you took either Part III General Relativity, or Part III Differential Geometry, or some equivalent course. 
 
-\chapter{Manifolds}%
-\label{cha:manifolds}
+\section{Manifolds}%
+\label{sec:manifolds}
 
 \begin{definition}[manifold]
   An $n$ -dimensional \emph{smooth manifold} is a set $M$  and a collection\footnote{In all examples that we will look at, there will be finitely $\alpha$.} of open sets $U_{\alpha}$ , labelled by $\alpha = 1, 2, 3, \dots$ , called \emph{charts} such that

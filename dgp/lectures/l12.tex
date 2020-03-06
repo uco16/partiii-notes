@@ -1,0 +1,200 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 12: March 02}
+
+\begin{proof}[Proof (continued)]
+  The indices run from $i, j = 1, 2$ and $a, b, c = 1, 2, 3$.
+  We make use of the following relations
+  \begin{equation}
+    \epsilon_{ij} \epsilon_{ik} = \delta_{jk},  \qquad
+    \epsilon^{abc} \epsilon^{ade} = \delta^{bd} \delta^{ce} - \delta^{be} \delta^{cd}.
+  \end{equation}
+  We will also use that $\phi$ takes values in $S^2$, so if we differentiate,
+  \begin{equation}
+    \phi^{a} \partial_{j} \phi^{a} = 0.
+  \end{equation}
+  Let us now expand \eqref{eq:11-id} as
+  \begin{multline}
+    \int \left[ \partial_{i} \delta^{a} \partial_{i} \phi^{a} + \delta_{jk} (\delta^{bd} \delta^{ce} - \cancel{\delta^{be} \delta^{cd}}) (\phi^{b} \phi^{d} \partial_{j} \phi^{c} \partial_{k} \phi^{e}) \pm 2 \epsilon_{ij} \partial_{i} \phi^{a} \epsilon^{abc} \phi^{b} \partial_{j} \phi^{c} \right] \dd[2]{x} \\
+    = 2 E + 2 E \pm 16 \pi \text{deg}(\phi) \geq 0,
+  \end{multline}
+  where we think of $\phi$ as maps $\phi\colon S^2 \to S^2$.
+  This can only be an equality if \eqref{eq:11-id} is an equality. Since that is a total square, each term must vanish identically, giving the Bogomolny equations.
+\end{proof}
+The solutions to the Bogomolny equations are critical points of the energy functional, so they are also solutions to the 2\textsuperscript{nd} order Euler--Lagrange equations.
+
+\chapter{Gauge Theory}%
+\label{cha:gauge_theory}
+
+We will head towards the Yang--Mills equations in Euclidean signature, so we will pay particular attention to the signs.
+
+\section{Hodge Duality}%
+\label{sec:hodge_duality}
+
+We work in $\mathbb{R}^n$ with metric $\eta = \dd{\vb{x}^2} - \dd{\vb{t}^2}$ with signature $(n - t, t)$.
+We have coordinates $x^{a} = (\vb{x}, t)$ in which the metric has components $\eta_{ab}$.
+
+\begin{definition}[inner product]
+  We define an \emph{inner product on $p$-forms} as
+  \begin{equation}
+    (\alpha, \beta) = \frac{1}{p!} \alpha^{a_1 \dots a_p} \beta_{a_1 \dots a_p} = (\beta, \alpha),
+  \end{equation}
+  where we raised the indices on $\alpha$ with the inverse metric $\eta^{ab}$.
+\end{definition}
+\begin{definition}[volume form]
+  The volume form
+  \begin{equation}
+    \frac{1}{n!} \epsilon_{a_1 \dots a_n} dx^{a_1} \wedge \dots \wedge d x^{a_n}.
+  \end{equation}
+\end{definition}
+
+\begin{definition}[hodge star]
+  The \emph{Hodge operator} $\star \colon \Lambda^p \to \Lambda^{n -p}$ maps $\lambda \in \Lambda^p$ to $\star \lambda$, defined by
+  \begin{equation}
+    \lambda \wedge \eta = (\star \lambda, \eta) \text{vol}, \qquad \forall \eta \in \Lambda^{n - p}.
+  \end{equation}
+  In components,
+  \begin{equation}
+    (\star \lambda)^{b_1 \dots b_q} = \frac{(-1)^{t}}{p!} \epsilon^{a_1 \dots a_p b_1 \dots b_q}  \lambda_{a_1 \dots a_p}.
+  \end{equation}
+\end{definition}
+\begin{claim}
+  Applying the Hodge operator twice on a differential form $\lambda \in \Lambda^p$ gives
+  \begin{equation}
+    \star \star \lambda = (-1)^t (-1)^{p (n - p)} \lambda,
+  \end{equation}
+  which depends on the signature $t$ and dimension $n$ of spacetime.
+\end{claim}
+
+\begin{example}[$n = 4, t = 1, p = 2$]
+  For the Maxwell $2$-form, 
+  \begin{equation}
+    \star \star F = - F.
+  \end{equation}
+  We can check this by writing $\epsilon_{ijk0} = \epsilon_{ijk}$. The volume form is then 
+  \begin{equation}
+    \text{vol} = dx \wedge dy \wedge dz \wedge dt.
+  \end{equation}
+  The Hodge duals are
+  \begin{equation}
+    \star dt \wedge dx =  -dy \wedge dz, \qquad \star dy \wedge dz = dt \wedge dx.
+  \end{equation}
+  The Maxwell tensor is
+  \begin{align}
+    F &= F_{0i} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^{i} \wedge dx^{j} \\
+    &= -E_i dt \wedge dx^{i} + B_1 dx^2 \wedge dx^3 + \dots \\
+    \star F &= B_i dt \wedge dx^{i} + E_1 dx^2 \wedge dx^3 + \dots \\
+    \star (\vb{E}, \vb{B}) &= (-\vb{B}, \vb{E}), 
+  \end{align}
+  using that $B_i = \frac{1}{2} \epsilon_{ijk} F_{jk}$.
+
+  Let 
+  \begin{equation}
+    A = - \phi dt + A_i dx^{i}.
+  \end{equation}
+  Then 
+  \begin{equation}
+    F = dA = \left( - \frac{\partial \phi}{\partial x^{i}} - \frac{\partial A_{i}}{\partial t} \right) dx^{i} \wedge dt + \partial_{[k} A_{i]} dx^{k} \wedge dx^{i}.
+  \end{equation}
+  Alternatively,
+  \begin{equation}
+    \vb{E} = - \frac{\partial \vb{A}}{\partial t} - \boldsymbol \nabla \phi, \qquad \vb{B} = \boldsymbol \nabla \wedge \vb{A}.
+  \end{equation}
+  Then since $d^2 = 0$, we have the Bianchi identity $dF = d^2 A = 0$.
+  The field equations are
+  \begin{equation}
+    d \star F = 0
+  \end{equation}
+  \begin{equation}
+    \boldsymbol \nabla \cdot \vb{E} = 0, \qquad \boldsymbol \nabla \times \vb{B} = \dot{\vb{E}}.
+  \end{equation}
+\end{example}
+
+\begin{example}[self-duality, $n = 4, t = 0$]
+  On two-forms, we have
+  \begin{equation}
+    \star^2 F = F.
+  \end{equation}
+  So if $F = dA$ is exact and $F$ is \emph{self-dual}, meaning
+  \begin{equation}
+    \boxed{F = \star F},
+  \end{equation}
+  then by the Bianchi identity
+  \begin{equation}
+    d \star F = d F = 0.
+  \end{equation}
+  The second order Maxwell equations follow from the first order self-duality condition on $F$.
+  \begin{remark}
+    We can write any two-form as
+    \begin{equation}
+      F = \frac{1}{2} (F + \star F) + \frac{1}{2} (F - \star F) = F_+ + F_-,
+    \end{equation}
+    which is the sum of its self-dual and anti-self-dual parts
+    \begin{equation}
+      \star F_+ = F_+, \qquad \star F_- = - F_-.
+    \end{equation}
+    This splits the $6$-dimensional vector space into two $3$-dimensional subspaces
+    \begin{equation}
+      \Lambda^2 (\mathbb{R}^4) = \Lambda_+^2 \oplus \Lambda_-^2.
+    \end{equation}
+    This would be more complicated in non-Euclidean signatures.
+  \end{remark}
+\end{example}
+
+\section{Yang--Mills Equations}%
+\label{sec:yang_mills_equations}
+
+Again we consider the manifold $(\mathbb{R}^n, \eta, \text{vol})$, where the metric $\eta$ has unspecified signature.
+Let us now consider the Lie algebra $\mathfrak{g}$ of a Lie group $G$.
+Let $A$ be a $\mathfrak{g}$-valued $1$-form, called the \emph{gauge potential}.
+In coordinates,
+\begin{equation}
+  A = A_a dx^{a} = A_a^{\alpha} T_{\alpha} dx^{a}
+\end{equation}
+where the components $A_a$ are not ordinary functions but take values in the Lie algebra $\mathfrak{g}$.
+The $T_{\alpha}$, with indices $\alpha = 1, \dots, \dim(\mathfrak{g})$, are the generators of the Lie algebra, obeying
+\begin{equation}
+  [T_{\alpha}, T_{\beta}] = c_{\alpha\beta\gamma} T_{\gamma}.
+\end{equation}
+\begin{definition}
+  We define the \emph{gauge field} as 
+  \begin{equation}
+    F = \frac{1}{2} F_{ab} dx^{a} \wedge dx^{b} = \boxed{dA + A \wedge A}.
+  \end{equation}
+  In components, we find
+  \begin{align}
+    F_{ab} &= \partial_{a} A_{b} - \partial_{b} A_{a} + [A_{a}, A_{b}] \\
+    &= [D_a, D_b],
+  \end{align}
+  where defined the \emph{covariant derivative}
+  \begin{equation}
+    D = d + A.
+  \end{equation}
+\end{definition}
+
+\subsection{Gauge Transformations}%
+\label{sub:gauge_transformations}
+
+We will identify $(A, A')$ and $(F, F')$ if
+\begin{equation}
+  A' = g A g^{-1} - d g g^{-1}, \qquad F' = g F g^{-1},
+\end{equation}
+where $g = g(x^{a}) \in G$ is \emph{local}, meaning that it is allowed to depend on the position $x^{a}$.
+This property will make the connection to geometry, as we will see shortly.
+
+Let us compute the covariant derivative on $F$:
+\begin{align}
+  D F &\coloneqq d F + [A, F] \\
+  &= d^2 A + dA \wedge A - A \wedge d A + A \wedge d A + A^3 - dA \wedge A - A^3 = 0.
+\end{align}
+This is the \emph{Bianchi identity}.
+
+We will mostly be concerned about the case where $G = SU(2)$.
+The Lie algebra $\mathfrak{su}(2)$ is generated by
+\begin{equation}
+  [T^{\alpha}, T_{\beta]} = -\epsilon_{\alpha\beta\gamma} T_{\gamma}, \qquad \Tr(T_{\alpha} T_{\beta}) = -\frac{1}{2} \delta_{\alpha\beta}.
+\end{equation}
+Then $X \in \mathfrak{su}(2)$ are anti-Hermitian metrics.
+\begin{equation}
+  - \Tr(F \wedge \star F) = -\frac{1}{2} \Tr(F_{ab} F^{ab}) = \frac{1}{4} (F_{ab})^{\alpha} (F^{cb})^{\alpha} \text{vol}.
+\end{equation}

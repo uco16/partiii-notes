@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{385.58281343bp}%
+    \setlength{\unitlength}{249.09404255bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.46924726)%
+  \begin{picture}(1,0.71303776)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l2f2.pdf}}%
-    \put(0.51821917,0.44560205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$m_0$\end{tabular}}}}%
-    \put(0.95868167,0.05220379){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r_0$\end{tabular}}}}%
-    \put(0.27508073,0.33261211){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\sqrt{\frac{16}{243 \pi \rho_0}}$\end{tabular}}}}%
+    \put(0.31483611,0.6668242){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$m_0$\end{tabular}}}}%
+    \put(0.93604167,0.0463963){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$r_0$\end{tabular}}}}%
+    \put(0.10645217,0.53745461){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\sqrt{\frac{16}{243 \pi \rho_0}}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l2f2.pdf}}%
-    \put(0.79550113,0.12035236){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}\eqref{eq:2-1}\end{tabular}}}}%
-    \put(0.56257441,0.23563462){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}\eqref{eq:2-2}\end{tabular}}}}%
+    \put(0.65328036,0.20472266){\color[rgb]{0,0,0}\rotatebox{45}{\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}\eqref{eq:2-1}\end{tabular}}}}}%
+    \put(0.50148822,0.32212457){\color[rgb]{0,0,0}\rotatebox{45}{\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}\eqref{eq:2-2}\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l2f2.pdf}}%
   \end{picture}%
 \endgroup%

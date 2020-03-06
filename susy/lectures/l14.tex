@@ -1,0 +1,182 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 14: March 03}
+
+\section{Non-Renormalisation of \texorpdfstring{$W(\Phi)$}{the Superpotential}}%
+\label{sec:non_renormalisation_of_s_phi}
+
+Recall that in a generic QFT, we expect quantum corrections to couplings.
+We will have some effective action (e.g.~in a theory of a single complex scalar)
+\begin{equation}
+  S_{\text{eff}}[\phi] = \int \left[Z_\phi \partial_{\mu} \overline{\phi}{} \partial^{\mu} \phi + m^2 Z_m \abs{\phi}^2 + \sum g_i Z_g \mathcal{O}_i(\phi)\right] \dd[d]{x},
+\end{equation}
+where $Z_\phi = Z_\phi (\mu)$ is called wavefunction renormalisation, whilst $Z_m = Z_m[\mu]$ is mass renormalisation etc.~for operators $\mathcal{O}_i(\phi)$ (polynomials in $\phi$ and its derivatives) and $\mu$ is the renormalisation scale.
+
+We could introduce a \emph{renormalised field} $\phi_R = \sqrt{Z_\phi} \phi$ so as to regain canonically renormalised kinetic terms.
+Then the quantum dimension of $\phi$ is 
+\begin{equation}
+  \Delta[\phi] = \frac{d - 2}{2} + \frac{\gamma_\phi}{2},
+\end{equation}
+where $\gamma_\phi = - \mu \frac{\partial }{\partial \mu} \ln (Z_\phi)$ is the \emph{anomalous dimension}.
+
+Let us see what happens in a simple supersymmetric theory of a single chiral superfield $\Phi$, with Kähler potential $K({\Phi}, \overline{\Phi}{}) = \abs{\Phi}^2$ and superpotential $W(\Phi) = \frac{1}{2} m \Phi^2 + \frac{1}{3} \lambda \Phi^3$, where $m, \lambda \in \mathbb{R}$ are constants.
+
+After integrating out auxiliary field, we have scalar potential $\abs{W'(\Phi)}^2$ and Yukawa interaction ($W''(\phi) \psi_+ \psi_- + \text{c.c.}$) In this case, the action is
+\begin{multline}
+  S[\Phi] = \int \biggl[\partial_{\mu} \overline{\phi} \partial^{\mu} \phi + i \overline{\psi}{}_+ \partial_- \psi_+ + i \overline{\psi}{}_- \partial_+ \psi_- - m^2 \abs{\phi}^2 - \lambda^2 \phi^2 \overline{\phi}{}^2 - m \lambda (\phi \overline{\phi}{}^2 + \overline{\phi}{} \phi^2) \\
+  - m \psi_+ \psi_- - m \overline{\psi}{}_- \overline{\psi}{}_+ - \lambda \phi \psi_+ \psi_- - \lambda \overline{\phi}{} \overline{\psi}{}_- \overline{\psi}{}_+ \biggr] \dd[2]{x}.
+\end{multline}
+If we forgot that this had some supersymmetry, this action has the following Feynman rules shown in Fig.~\ref{fig:l14d1}
+\begin{figure}[tbhp]
+  \centering
+  \begin{equation*}
+    \begin{gathered}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+	  a [particle=\(\overline{\phi}{}\)] -- [charged scalar] b [particle=\(\phi\)],
+	};
+      \end{gathered}
+      \quad \frac{-i}{p^2 + m^2} \\
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+	  a [particle=\(\overline{\psi}_{\pm}\)] -- [charged scalar] b [particle=\(\psi_{\pm}\)],
+	};
+      \end{gathered}
+      \quad \frac{-i p_{\pm}}{p^2 + m^2} \\
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=a to c, layered layout] {
+	  a [particle=\(\overline{\psi}_{+}\)] -- [charged scalar] b -- [anti charged scalar] c [particle=\(\overline{\psi}_{-}\)],
+	};
+      \end{gathered}
+      \quad \frac{-i m}{p^2 + m^2} \\
+    \end{gathered}
+  \end{equation*}
+  \caption{Propagators}
+  \label{fig:l14d1}
+\end{figure}
+\begin{figure}[tbhp]
+  \centering
+  \begin{equation*}
+    \begin{gathered}
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=a to b, small, layered layout] {
+	  a [particle=\(\overline{\phi}{}\)] -- [charged scalar] v -- [charged scalar] b [particle=\(\phi\)],
+	  c [particle=\(\overline{\phi}{}\)] -- [charged scalar] v -- [charged scalar] d [particle=\(\phi\)]
+	};
+      \end{gathered}
+      \quad = \quad -i \lambda^2 \\
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=v to b, small, layered layout] {
+	  a [particle=\(\overline{\phi}{}\)] -- [charged scalar] v -- [charged scalar] b [particle=\(\phi\)],
+	  c [particle=\(\overline{\phi}{}\)] -- [charged scalar] v,
+	};
+      \end{gathered}
+      \quad = \quad -i m \lambda  \quad = \quad
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=v to b, small, layered layout] {
+	  a [particle=\({\phi}{}\)] -- [anti charged scalar] v -- [anti charged scalar] b [particle=\(\overline{\phi}{}\)],
+	  c [particle=\({\phi}{}\)] -- [anti charged scalar] v,
+	};
+      \end{gathered}
+      \\
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=v to b, small, layered layout] {
+	  a [particle=\({\psi}_+\)] -- [anti fermion] v -- [charged scalar] b [particle=\(\phi\)],
+	  c [particle=\({\psi}_-\)] -- [anti fermion] v,
+	};
+      \end{gathered}
+      \quad = \quad -i \lambda \quad = \quad
+      \begin{gathered}
+	\feynmandiagram[transform shape, scale=1][horizontal=v to b, small, layered layout] {
+	  a [particle=\(\overline{\psi}_+\)] -- [fermion] v -- [anti charged scalar] b [particle=\(\overline{\phi}{}\)],
+	  c [particle=\(\overline{\psi}{}_-\)] -- [fermion] v,
+	};
+      \end{gathered}
+    \end{gathered}
+  \end{equation*}
+  \caption{Vertices}
+  \label{fig:l14d1b}
+\end{figure}
+
+Consider for example the $1$-loop scalar self-energy diagrams $\Pi_{\overline{\phi}{} \phi}(p^2)$. 
+Have
+\begin{multline}
+  \Pi_{\overline{\phi}{} \phi}(p^2) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\overline{\phi}{}\)] -- [charged scalar, edge label=$p$] b [small, dot] -- [half left, looseness=1, anti charged scalar, edge label=$k$] c -- [half left, looseness=1, charged scalar, edge label=$p - k$] b,
+      c -- [charged scalar, edge label=$p$] d [particle=\(\phi\)],
+    };
+  \end{gathered}
+  +
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\overline{\phi}{}\)] -- [charged scalar, edge label=$p$] b [small, dot] -- [half left, looseness=1, anti fermion] c -- [fermion, half left, looseness=1] b,
+      c -- [charged scalar, edge label=$p$] d [particle=\(\phi\)],
+    };
+  \end{gathered} \\
+  + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\overline{\phi}{}\)] -- [charged scalar, edge label=$p$] b -- [loop, min distance=2cm, in=135, out=45, scalar] b -- [charged scalar] c [particle=\(\phi\)],
+    };
+  \end{gathered}.
+\end{multline}
+
+In the limit $p \to 0$, these diagrams produce a 1-loop correction to the mass of $\phi$
+\begin{align}
+  \lim_{p \to 0}  \Pi_{\overline{\phi}{} \phi}  (p^2) &= (-i m \lambda)^2 \int \bdd[2]{k} \left( \frac{-i}{k^2 + m^2} \right)^2 + \underbrace{(-1)}_{\mathclap{\text{fermion loop}}} (-i \lambda)^2 \int \bdd[2]{k} \frac{(-i k_+)(-i k_-)}{(k^2 + m^2)^2} + (-i \lambda^2) \int \bdd[2]{k} \frac{-i}{k^2 + m^2} \\
+						      &= \lambda^2 \int \bdd[2]{k} \frac{m^2 \overbrace{- k_+ k_-}^{\mathclap{+k^2}} - (k^2 + m^2)}{(k^2 + m^2)^2} = 0,
+\end{align}
+so there is no 1-loop correction.
+This cancellation relied on the following facts:
+\begin{itemize}
+  \item fermion and scalar masses were the same
+  \item relation between the coupling constants
+\end{itemize}
+These are consequences of supersymmetry.
+In fact, $W(\Phi)$ receives no quantum corrections to all orders in perturbation theory.
+
+\section{Seiberg's Non-Renormalisation Theorem}%
+\label{sec:seiberg_s_non_renormalisation_theorem}
+
+We would expect the absence of quantum corrections to be a consequence of some symmetry protection. However, $U(1)_A$ is a symmetry of a generic $W(\Phi)$, so does not constraint its form, whilst $U(1)_V$ is (apparently) violated explicitly by $W(\Phi) = \frac{1}{2} m \Phi^2 + \frac{1}{3} \lambda \Phi^3$.
+Seiberg's idea was to promote the couplings ($m, \lambda$) to fields. In other words, we think of the original couplings as VEVs $m = \langle m(x) \rangle$ and $\lambda = \langle \lambda(x) \rangle$, where the dynamics of the background fields $m(x), \lambda(x)$ are determined by some larger theory.
+Since ($m, \lambda$) appear in the superpotential $W(\Phi)$, to preserve supersymmetry, they must be promoted to chiral superfields $M, \Lambda$. The virtue of this is that we can now choose our new superpotential $W(\Phi, M, \Lambda) = \frac{1}{2} M \Phi^2 + \frac{1}{3} \Lambda \Phi^3$ to be invariant under $U(1)_V$ by the charge assignments in Table~\ref{tab:l14t1}, where $U(1)_{\text{global}}$ acts trivially on $\theta$s
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c | c c}
+     & $U(1)_V$ & $U(1)_{\text{glob}}$ \\
+     \hline
+    $\Phi$ & 1 & 1 \\
+    $M$ & 0 & -2 \\
+    $\Lambda$ & -1 & -3 \\
+  \end{tabular}
+  \caption{}
+  \label{tab:l14t1}
+\end{table}
+With these symmetries, quantum corrections will generate a $W_{\text{eff}}(\Phi, M, \Lambda)$, which must
+\begin{enumerate}[i)]
+  \item be a holomorphic function of its arguments, because the theory is supersymmetric
+  \item have $U(1)_V$ symmetry
+  \item reduce to the classical $W(\Phi, M, \Lambda)$ in the free limit $\Lambda \to 0$ and be regular (non-singular) in the massless limit $M \to 0$
+\end{enumerate}
+Condition ii) implies that the effective superpotential must be
+\begin{equation}
+  W_{\text{eff}}(\Phi, M, \Lambda) = M \Phi^2 f(\frac{\Lambda \Phi}{M}).
+\end{equation}
+Condition i) then says that $f(z)$ is holomorphic, so has Laurent series
+\begin{equation}
+  W_{\text{eff}} = \sum_{n = 0}^{\infty} c_n \frac{\Phi^{n - 2} \Lambda^n}{M^{n -1}}
+\end{equation}
+for some constants $c_n$.
+Finally, condition iii) states that $f(z) = \frac{1}{2} + \frac{z}{3}$. (Only $n = 0, 1$ are allowed by $M \to 0$ limit. The $c_0, c_1$ are then fixed by $\Lambda \to 0$.)
+Therefore,
+\begin{equation}
+  W_{\text{eff}}(\Phi, M, \Lambda) = \frac{1}{2} M \Phi^2 + \frac{1}{3} \Lambda \Phi^3 = W_{\text{class}}(\Phi).
+\end{equation}
+The Kähler potential \emph{does} generically receive non-trivial quantum corrections, so we have wavefunction renormalisation $Z_\Phi$ (same for the whole superfield).
+If we define a renormalised chiral superfield $\Phi_R = \sqrt{Z_\Phi} \Phi$ to get canonical kinetic terms, then
+\begin{equation}
+  W_{\text{eff}}\supset g \Phi^k = \underbrace{g Z_\Phi^{-k / 2}}_{\mathclap{g_R}} \Phi_R^k \implies \beta(g_R) = \mu \frac{\partial g_R}{\partial \mu} = - \frac{k}{2} \gamma_{\Phi} g_R.
+\end{equation}

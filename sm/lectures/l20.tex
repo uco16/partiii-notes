@@ -1,0 +1,164 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 20: March 03}
+
+\subsection{Coupling to Fermions}%
+\label{sub:coupling_to_fermions}
+
+We will simultaneously treat the leptons $L^{i}_L$ and quarks $Q^{i}_L$, which come in three families
+\begin{align}
+  L^{i}_L &=
+  \left\{ 
+    \begin{pmatrix}
+    \nu_{e L} \\
+    e_L \\
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+    \nu_{\mu L} \\
+    \mu_L \\
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+    \nu_{\tau L} \\
+    \tau_L \\
+    \end{pmatrix}
+  \right\}_{Y = - 1 / 2} \\
+  Q^{i}_L &=
+  \left\{ 
+    \begin{pmatrix}
+    u_{L} \\
+    d_L \\
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+    c_{L} \\
+    s_L \\
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+    t_{L} \\
+    b_L \\
+    \end{pmatrix}
+  \right\}_{Y = 1 / 6}
+\end{align}
+\begin{align}
+  u^{i}_R &= \left\{ u_R, c_R, t_R \right\}_{Y = -2 / 5} & d_R^{i} &= \left\{ d_R, s_R, b_R \right\}_{Y = -1 / 3} \\
+  e^{i}_R &= \left\{ e_R, \mu_R, \tau_R \right\}_{Y = -1} & \nu_R^{i} &= \left\{ \nu_{e R}, \nu_{\mu R}, \nu_{\tau R} \right\}_{Y = 0}
+\end{align}
+Hypercharges specified by anomaly cancellation:
+\begin{equation}
+  2 \Tr[T^{a} \left\{ T^{b}, T^{c} \right\}]_R = A(R) d^{abc},
+\end{equation}
+where the anomaly consistency condition is $A(R) = 0$.
+\begin{equation}
+  \left.
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(U(1)\)] -- [boson] b -- c --d -- b,
+      c -- [boson] e,
+      d -- [boson] f,
+      e -- [draw=none] f,
+    };
+  \end{gathered}
+  \ \right\} \
+  \text{U(1), SU(2), SU(3), gravity}
+\end{equation}
+\begin{itemize}
+  \item $U(1)^3: \sum_{\text{left}} Y^3 - \sum_{\text{right}} Y^3 = 0$
+  \item $SU(2)^2 \times U(1): Y_L + 3 Y_R = 0$
+  \item $SU(2)^3 \times U(1): 2 Y_Q - Y_u - Y_d = 0$
+  \item gravity$^2 \times U(1): (2 Y_L - Y_e - Y_u) + e(Y_Q - Y_u - Y_d) = 0$
+\end{itemize}
+With $\nu_R$, also $U(1)_{B - L}$ satisfies the conditions.
+
+\subsection{Electroweak Interactions of Fermions}%
+\label{sub:electroweak_interactions_of_fermions}
+
+We split the Lagrangian
+\begin{equation}
+  \mathscr{L}_{\text{fermions}} = \mathscr{L}^{\text{fermions}}_{\text{kinetic}} + \mathscr{L}_{\underbrace{\text{Higgs-fermions}}_{\mathclap{\text{Yukawa}}}}
+\end{equation}
+The general expression for the kinetic energy is
+\begin{equation}
+  \mathscr{L}_{\text{kinetic}}^{\text{fermions}} = i \overline{L}{}_i \cancel{D} L_i + i \overline{Q}{}_{L_i} \cancel{D} Q_{L_i} + i \overline{e}{}_{R_i} \cancel{D} e_{R_i} + i \overline{\nu}{}_{R_i} \cancel{ D} \nu_{R_i} + i \overline{u}{}_{R_i} \cancel{D} u_{R_i}  + i \cancel{d}_{R_i} \cancel{D} d_{R_i},
+\end{equation}
+and the covariant derivative is
+\begin{align}
+  D_{\mu} &= \partial_{\mu} - i g W_{\mu}^{a} T^{a} - i g' B_{\mu} Y \\
+	  &= \partial_{\mu} - \frac{i g}{\sqrt{2}} \left( W_{\mu}^+ T^+ + W^-_{\mu} T^- \right) - \frac{i g Z_{\mu}}{\cos \theta_W} \left( T^3 - \sin^2 \theta_W Q \right)-i e A_{\mu} Q,
+\end{align}
+where $T^{\pm} = T^1 \pm i T^2$.
+
+The Yukawa potential is
+\begin{equation}
+  \mathscr{L}_{\text{Yukawa}} = \mathscr{L}_{\text{Higgs-leptons}} + \mathscr{L}_{\text{Higgs-quarks}},
+\end{equation}
+with
+\begin{equation}
+  \mathscr{L}_{\text{Higgs-quarks}} = - y^{d}_{ij} \overline{Q}{}^{i}_{L} H d_{R}^{j} - y^{u}_{ij} \overline{Q}{}^{i}_{L} \widetilde{H} u^{j}_{R} + \text{h.o.},
+\end{equation}
+where $\widetilde{H} \coloneqq i \sigma_2 H^*$, and $y^{u}_{ij}, y^{d}_{ij}$ are constants, called the Yukawas.
+These couplings are allowed by gauge invariance.
+Since the standard model has chiral symmetry, direct mass mass terms for quarks are not allowed by gauge invariance. Quarks get mass because $\langle H \rangle \neq 0$. Yukawa couplings to the Higgs give mass to fermions.
+This gives a mass term
+\begin{equation}
+  \mathscr{L}_{\text{mass-quarks}} = -\frac{v}{\sqrt{2}} \left[ \overline{d}{}^{i}_{L} y^{d}_{ij} d^{j}_{R} + \overline{u}{}^{i}_{L} y^{u}_{ij} u^{j}_{R} \right] + \text{h.o.}
+\end{equation}
+
+Let us diagonalise the mass matrix
+\begin{equation}
+  y^{d} = U_{d} M_{d} K^{\dagger}_{d}, \qquad y^{u} = U_{u} M_{u} K_{u}^{\dagger},
+\end{equation}
+where $K, U$ are unitary and $M_u, M_d$ are diagonal and real.
+Also
+\begin{equation}
+  d_L \to U_d d_L, \qquad d_R \to K_d d_R \qquad u_L \to U_u u_L \qquad u_R \to K_u u_R.
+\end{equation}
+The mass term is
+\begin{equation}
+  \mathscr{L}_{\text{mass}} = -\frac{v}{\sqrt{2}} \left[ \overline{d}{}^{i}_{L} (M_d)_{ii} d^{i}_{R} + \overline{u}{}^{i}_{L} (M_u)^{ii} u^{i}_R \right] + \text{h.o.}.
+\end{equation}
+Thus, the masses are
+\begin{equation}
+  m_d = \frac{v}{\sqrt{2}} (M_d)_{ii}, \qquad m_{u_i} = \frac{v}{\sqrt{2}} (M_u)_{ii}.
+\end{equation}
+With these transformations, the masses are diagonal but the kinetic terms are not.
+The problem arises with the covariant derivatives.
+\begin{multline}
+  \mathscr{L}_{\substack{\text{quarks} \\ \text{Higgs} \\ \text{gauge}}} = \mathscr{L}_{\text{kin}} + \frac{e}{\sin \theta_W} Z_m J^Z_m + e A_{\mu} J^{\mu}_{EM} - m^{j}_{d} (\overline{d}{}_L^{j} d^{j}_R + \overline{d}{}^{j}_R d^{j}_L) - m^{j}_{u} (\overline{u}{}^{j}_{L} u^{j}_{R} + \overline{u}{}^{j}_{R} u^{j}_{L}) \\
+  + \frac{e}{\sqrt{2} \sin \theta_W} \bigl[ W^+_{\mu} \underbrace{\overline{u}{}_L \gamma^{\mu} (V_{\text{CKM}})^{ii} d^{j}_{L}}_{\mathclap{J^+_{\mu}}} + W^-_{\mu} \underbrace{\overline{d}{}^{i}_{L} \gamma^{\mu} (V_{\text{CKM}}^+)^{ij} u_L^{j}}_{\mathclap{J^-_{\mu}}} \bigr],
+\end{multline}
+where the \emph{Cabibbo--Kobayashi--Maskawa matrix} $V_{\text{CKM}}$ arises from the diagonalisation and is unitary
+\begin{equation}
+  V_{\text{CKM}} = U^{\dagger}_u U_d = 
+  \begin{pmatrix}
+   V_{ud} & V_{us} & V_{ub} \\
+   V_{cd} & V_{cs} & V_{cb} \\
+   V_{td} & V_{ts} & V_{tb} \\
+  \end{pmatrix}.
+\end{equation}
+Note that this is a $3 \times 3$ unitary matrix, which generally has $9$ free parameters.
+We can further reduce this number by $5$ since we have $U(1)^6$ symmetries $d^{i}_{R L} \to e^{i \alpha_i} d_{R, L}$ and $u^{i}_{R, L} \to e^{i \beta_i} u_{R, L}^{i}$, where only the difference of the 6 rotations matters.
+We obtain $9 -5 = 4$ degrees of freedom, with $3$ real angles, $\theta_{12}, \theta_{13}, \theta_{23}$ and 1 complex phase $\delta$.
+Writing $c_{ij} = \cos \theta_{ij}$ and $s_{ij} = \sin \theta_{ij}$, one has
+\begin{equation}
+  \label{eq:20-ckm}
+  V_{\text{CKM}} = 
+  \begin{pmatrix}
+   c_{12} c_{13} & s_{12} c_{13} & s_{13} e^{-i \delta} \\
+   -s_{12} c_{13} - c_{12} s_{23} s_{13} e^{i \delta} & c_{12} c_{2?} -s_{12} s_{??} e^{i \delta} & s_{23} c_{13} \\
+   s_{11} s_{23} - c_{12} c_{2?} s_{??} e^{i \delta} & -c_{12} s_{23} - s_{12} c_{23} s_{13} e^{i \delta} & c_{23} c_{13} \\
+  \end{pmatrix}.
+\end{equation}
+This can be approximated as
+\begin{equation}
+  V_{\text{CKM}} \approx
+  \begin{pmatrix}
+    1 - \lambda^2 / 2 & \lambda & A \lambda^3 (P - i \eta) \\
+   -\lambda & 1 - \lambda^2 & A \lambda^2 \\
+   A \lambda^3 (1 - P - i \eta) & -A \lambda^2 & 1 \\
+ \end{pmatrix} + O(\lambda^4)
+\end{equation}
+where $\lambda = s_{12} = \sin \theta_C \simeq 0.22$ and $\theta_{12} = \theta_C$ is the \emph{Cabibbo angle}.
+The phase $\eta$ implies that there is CP-violation.

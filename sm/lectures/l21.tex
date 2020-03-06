@@ -1,0 +1,93 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 21: March 05}
+
+Taking the modulus and forgetting about the phase we have
+\begin{equation}
+  \abs{V_{\text{CKM}}} \approx
+  \begin{pmatrix}
+   1 - \frac{\lambda^2}{2} & \lambda & \lambda^3 \\
+   -\lambda & 1-\frac{\lambda^2}{2} & \lambda^2 \\
+   \lambda^3 & \lambda^2 & 1 \\
+ \end{pmatrix} + O(\lambda^4).
+\end{equation}
+This is almost diagonal for small $\lambda$.
+
+\subsection*{Historical Remarks}%
+
+The mass eigenstates are not equal to the weak (flavour) eigenstates.
+We have charged currents $J_{\mu}^{\pm}$, which connect fermions of different flavours.
+However, the neutral currents $J_{\mu}^Z$ are flavour diagonal. In other words, interactions mediated by $Z$ bosons do not mix between the different families.
+This is of historical significance. In 1974, people knew about three quarks, $u, d, s$. This means that they knew only about one family and a half. There would be some `flavour changing neutral currents' (FCNC) allowed in that case. However, they were not seen experimentally. As a result, the Glashow--Iliopoulos--Maiani (GIM) mechanism was introduced, which suppressed the FCNCs in loop diagrams and predicted a fourth quark, partnering with the strange quark. This charm quark was discovered in 1974.
+
+The $V_{\text{CKM}}$ having one phase implies CP-violation. However, if we only had two families, this would not be there. Kobayashi and Maskawa predicted a new family to allow for the observed CP-violation.
+Later, the top and bottom quarks were discovered. The top, with $m_t \sim 176$GeV, was discovered in 1955.
+
+Experimentally, 
+\begin{align}
+  \theta_{12} &= 13.02^\circ \pm 0.04^\circ \\
+  \theta_{13} &= 0.2^\circ \pm 0.02^\circ \\
+  \theta_{23} &= 2.56^\circ \pm 0.02^\circ \\
+  \delta &= 69^\circ \pm 5^\circ.
+\end{align}
+
+Also, we have an accidental global symmetry 
+\begin{equation}
+  (d^i, u^i) \to e^{i \alpha} (d^i, u^i),
+\end{equation}
+which leads to the conserved Baryon number
+\begin{align}
+  B(\phi_L) &= B(u_R) = B(d_R) = \frac{1}{3} \\
+  B(\overline{Q}{}_L) &= B(\overline{u}{}_R) = B(\overline{d}{}_R) = -\frac{1}{3}.
+\end{align}
+This accidental symmetry may be broken by introducing higher irrelevant couplings introduced in the process of renormalisation.
+
+\subsection*{Leptons}%
+
+We assume that there are no right-handed neutrinos $\nu^{i}_R$. 
+\begin{equation}
+  \mathscr{L}_{\text{quadratic}}^{\text{leptons}} \supset - y_{ij}^{e} \overline{L}{}^{i} H e^{j}_{R} + \text{h.~o.}
+\end{equation}
+Then when $\langle H \rangle \neq 0$, only the electron gets a mass and the neutrino is massless.
+However, we now have compelling evidence that neutrinos do have a mass. It is therefore natural to include $\nu^{i}_R$. 
+\begin{equation}
+  \mathscr{L}_{\text{quadratic}}^{\text{leptons}} \supset - y^{e}_{ij} \overline{L}{}^{i} H e^{j}_{R} - y^\nu_{ij} \overline{L}{}^{i} \widetilde{H} \nu_R^{j} - i M^{\nu}_{ij} (\nu^{i}_{R})^{c} \nu^{j}_{R} + \text{h.~o.}.
+\end{equation}
+The first two terms are the standard Yukawa couplings for the electrons and neutrinos.
+When $\langle H \rangle \neq 0$, this gives what is called the \emph{Dirac mass} to $e, \nu$.
+We were also allowed to introduce another mass term $M^{\nu}_{ij}$, called the \emph{Majorana mass}, which are the only mass terms allowed in the standard model. This is because the neutrinos are uncharged, often called \emph{sterile}, which means that the introduction of this mass term therefore does not break gauge symmetry.
+
+Mixing:
+\begin{itemize}
+  \item mass eigenstate $\nu_L^{i}$
+  \item couplings to $Z_{\mu}$ diagonal
+  \item Couplings to $W_{\mu}^\pm$: the \emph{charged current} Lagrangian
+    \begin{equation}
+      \mathscr{L}_{cc} = -\frac{g}{\sqrt{2}} U_{\text{PMNS}}^{ij} (\overline{e}{}_{L i} \cancel{W} \nu_{L j} + \text{h.~o.}),
+    \end{equation}
+    where the \emph{Pontecorvo--Maki--Nakagawa--Sakata matrix} $U_{\text{PMNS}}$ is again of the form \eqref{eq:20-ckm}
+    \begin{equation}
+      U_{\text{PMNS}} = 
+      \begin{pmatrix}
+       c_{12} c_{13} & s_{12} c_{13} & s_{13} e^{-i \delta'} \\
+       -s_{12} c_{13} - c_{12} s_{23} s_{13} e^{i \delta} & c_{12} c_{2?} -s_{12} s_{??} e^{i \delta'} & s_{23} c_{13} \\
+       s_{11} s_{23} - c_{12} c_{2?} s_{??} e^{i \delta'} & -c_{12} s_{23} - s_{12} c_{23} s_{13} e^{i \delta'} & c_{23} c_{13} \\
+      \end{pmatrix}
+      \begin{pmatrix}
+       1 &  &  \\
+        & e^{i \alpha_{12} / 2} &  \\
+        &  & e^{i \alpha_{13} / 2} \\
+      \end{pmatrix}
+    \end{equation}
+    The angles $\beta_{12}, \beta_{13}, \beta_{13}, \delta', \alpha_{12}$, and $\alpha_{13}$ are all new parameters, and $c_{ij} = \cos \beta_{ij}$ and $s_{ij} = \sin \beta_{ij}$.  These parameters are not all fully measured yet.
+\end{itemize}
+
+\subsection*{Neutrino Oscillations}%
+
+The masses of neutrinos are difficult to measure. Our best measurements come from the process of \emph{neutrino oscillations}.
+The weak eigenstates are superpositions of mass eigenstates
+\begin{equation}
+  \ket{\nu_\alpha} = \sum U^*_{\alpha_{i}} \ket{\nu_i}.
+\end{equation}
+Not enough neutrinos produced in the sun were observed on the Earth. This was not explained by astrophysical phenomena but rather by the neutrino changing its family along the way of travel, which would require that there is a difference in mass between the families.
+This mass difference is of the order $m_2^2 - m_1^2 \leq 10^{-3}$eV\textsuperscript{2}.

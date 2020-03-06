@@ -1,0 +1,246 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 18: February 27}
+
+\section{QED \texorpdfstring{$\beta$-}{Beta }Function}%
+\label{sec:qed_beta_function}
+
+\begin{equation}
+  e_0 = Z_e e = Z_1 Z_2^{-1} Z_3^{-1 / 2} e,
+\end{equation}
+where we still need to show that $Z_1 = Z_2$.
+In the weak coupling limit,
+\begin{equation}
+  e_0 = g_0 = Z_e g \mu^{\epsilon / 2} = Z_3^{-1 / 2} g \mu^{\epsilon / 2} = \left( 1 - \frac{1}{2} \delta Z_3 \right) g \mu^{\epsilon / 2}.
+\end{equation}
+The Callan--Symanzik equation tells us how the couplings run
+\begin{equation}
+  \mu \dv{g_0}{\mu} = 0 = \left( \mu \frac{\partial }{\partial \mu} + \beta(g) \frac{\partial }{\partial g} \right) \left[ \left( 1 + \frac{g^2}{24 \pi^2} \left( \frac{2}{\epsilon} - \gamma + \log 4\pi \right) \right) \right] g \mu^{\epsilon / 2}.
+\end{equation}
+We want to isolate the beta function by writing
+\begin{equation}
+  \frac{\epsilon}{2} g \left( 1 + \frac{g^2}{12 \pi^2 \epsilon} \right) + \beta(g) \left(  1+ \frac{g^2}{4 \pi^2 \epsilon} \right) = 0,
+\end{equation}
+where we dropped higher order terms in $g$.
+Collecting terms, we have
+\begin{align}
+  \beta(g) &= - \left( \frac{\epsilon g}{2} + \frac{g^3}{24 \pi^2} \right) \left( 1 + \frac{g^2}{4 \pi^2 \epsilon} \right)^{-1} \\
+	   &= - \frac{\epsilon g}{2} + \frac{g^3}{12 \pi^2} + O(\text{2 loop})
+\end{align}
+As $d \to 4$, the first term vanishes and we obtain a positive beta-function
+\begin{equation}
+  \beta(g) = \frac{g^3}{12 \pi^2} > 0.
+\end{equation}
+Just as we did for $\phi^4$ theory, we integrate $\mu$ to $\mu'$, giving
+\begin{equation}
+  \frac{1}{g^2(\mu')} = \frac{1}{g^2 (\mu)} + \frac{1}{6 \pi^2} \ln \frac{\mu}{\mu'}.
+\end{equation}
+Just as for one-loop order, we introduce some scale $\Lambda_{\text{QED}}$, called the \emph{Landau pole}, at which the coupling diverges.
+\begin{equation}
+  g^2 (\mu) = \frac{6 \pi^2}{\ln \frac{\Lambda_{\text{QED}}}{\mu}}.
+\end{equation}
+What scale does this happen at? Taking physical values for the electron mass $m_e = 0.511$MeV and the fine-structure constant $\alpha = 1 / 137 = g^2(m_e) / (4 \pi)$, this gives us a value
+\begin{equation}
+  \Lambda_{\text{QED}} \simeq 10^{286} \text{GeV}.
+\end{equation}
+Therefore, QED as an effective theory for electron-proton interactions is valid up to absurdly high energies.
+\begin{remark}
+  We know that there is more to life than electrons and photons. In particular, the electroweak scale is $M_W = 100$GeV and gravity should become important at $10^{19}$GeV.
+  Effectively, the cutoff scale for QED is much higher than any other physical scales at which corrections arise.
+\end{remark}
+
+\subsection*{Alternate Derivation of $\beta$ using $\Gamma$}%
+
+We can also use the quantum effective action $\Gamma$ to derive the $\beta$-function.
+The free propagator is denoted
+\begin{equation}
+  D_{\mu\nu}(q) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\mu\)] -- [boson] b [particle=\(\nu\)],
+    };
+  \end{gathered}.
+\end{equation}
+The full propagator is
+\begin{align}
+  G^{(2)}_{\mu\nu} (p) &= \int \dd[d]{x} e^{i q \cdot x} \langle A_{\mu}(x) A_{\mu}(0) \rangle \\
+  &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a [particle=\(\mu\)] -- [boson] b [particle=\(\nu\)],
+    };
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+      a [particle=\(\mu\)] -- [boson] c [blob, label=$1PI$] -- [boson] b [particle=\(\nu\)],
+    };
+  \end{gathered}
+  \quad + \dots \\
+  &= D_{\mu\nu} + D_{\mu\rho} \Pi^{\rho\sigma} D_{\sigma\nu} + \dots \\
+  &= D_{\mu\nu} ( 1 + \pi(q^2) + \pi^2(q^2) + \dots) \\
+  &= \frac{D_{\mu\nu} (q)}{1 - \pi(q^2)}.
+\end{align}
+At 1-loop order, $\Pi^{\mu\nu} = \Pi^{\mu\nu}_1$ and $\pi = \pi_1$.
+Ar 1-loop, in Landau gauge, $G^{(2)}_{\mu\nu}(q^2)$ is obtained from
+\begin{equation}
+  \Gamma[\psi, \overline{\psi}{}, A] = \int \bdd[d]{p} \left\{ [1 - \pi(p^2)] [p^2 \delta^{\mu\nu} - p^{\mu} p^{\nu}] \frac{1}{2} A_{\mu}(p) A_{\nu}(-p) + \dots \right\}.
+\end{equation}
+Rescale $A_{\mu} \to \frac{1}{e} A_{\mu}$, moving $e$ from $\overline{\psi}{} \cancel{A} \psi$ term to kinetic term.
+\begin{equation}
+  \Gamma[\psi, \overline{\psi}{}, A] = \int \dd[d]{x} \left\{ \frac{1 - \pi(0)}{4 e^2} F_{\mu\nu} F^{\mu\nu}  + (\partial^2 F^2 \text{ terms}) + (\text{more}) \right\}
+\end{equation}
+As such, the quantum effective action has more operators than we started with. The higher order operators do not lead to divergences.
+In $\phi^4$ theory we did get corrections depending on momenta, but we were just interested in the divergent structure, so we looked at the $p = 0$ case. The finite momentum pieces do not contribute any divergences.
+
+Instead of comparing to the bare Lagrangian, we compare the quantum effective actions $\Gamma[\psi, \overline{\psi}{}, A]$ and demand their coefficients to be $\mu$-independent.
+In particular, we may define
+\begin{equation}
+  \frac{1}{e^2_{\text{phys}}} = \frac{1 - \pi(0)}{e^2} = \frac{1}{\mu^\epsilon g^2} \left[ 1 - \frac{g^2}{2 \pi} \int_0^1 \dd[]{x} x (1 - x) \ln \frac{\Delta}{\mu^2} \right].
+\end{equation}
+Taking the logarithmic derivative $\mu \dv{\mu}$ of both sides, we obtain the same $\beta$-function as before.
+
+\subsection*{Full 1-loop Renormalisation}%
+
+The full 1-loop renormalisation of QED requires taking into account fermion (electron) self-energy.
+\begin{align}
+  G(p) &= \int \dd[4]{x} e^{i p \cdot x} \langle \psi(x) \overline{\psi}{}(y) \rangle \\
+  &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
+      a --[fermion] b,
+    };
+  \end{gathered}
+  \quad + \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+      a -- [fermion] b [blob, label=$1PI$] -- [fermion] c,
+    };
+  \end{gathered}
+  \quad + \dots \\
+  &= \frac{1}{i \cancel{p} + m - \Sigma(p)},
+\end{align}
+with self-energy $\Sigma(p)$ given by the truncated diagram
+\begin{equation}
+  \Sigma(p) = 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+      a -- [fermion, dotted] b [blob, label=$1PI$] -- [fermion, dotted] c,
+    };
+  \end{gathered}.
+\end{equation}
+At 1-loop order, 
+\begin{align}
+  \Sigma_1(p) &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=b to c, layered layout] {
+      a -- [fermion, dotted] b[small, dot] -- [fermion] c[small, dot] -- [fermion, dotted] d,
+      b -- [boson, half left, looseness=1] c,
+    };
+  \end{gathered} \\
+  &= -\frac{g^2}{16 \pi^2} \int_0^1 \dd[]{x} \left[ (2 - \epsilon) x (i \cancel{p}) + (4 - \epsilon) m \right] \left[ \frac{2}{\epsilon} + \gamma + \ln (\frac{4 \pi \mu^2}{\Delta}) + O(\epsilon) \right].
+\end{align}
+\begin{remark}
+  Note that the first terms is not proportional to $(i\cancel{p} + m)$.
+\end{remark}
+Choose counter terms $\delta Z_2, \delta Z_m$ such that
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to c, layered layout] {
+      a -- [fermion] b [square dot] -- [fermion] c,
+    };
+  \end{gathered}
+  \quad = 
+  - \left[ \delta Z_2 (i \cancel{p}) + (\delta Z_2 + \delta Z_m) m \right].
+\end{equation}
+We may now choose renormalisation schemes from $\overline{\text{MS}}{}$, MS, or on-shell.
+In particular, on-shell ($\cancel{p} = i m_{\text{phys}}$) gives
+\begin{equation}
+  \Sigma(p) \rvert_{\cancel{p} = i m_{\text{phys}}} = 0 \quad \& \quad
+  \left.\dv{\Sigma}{\cancel{p}} \right\rvert_{\cancel{p} = i m_{\text{phys}}} = 0
+\end{equation}
+There is nothing wrong with the $\overline{\text{MS}}{}$ scheme, but the masses in the Lagrangian would not be equal to physical masses. 
+
+The correction to the vertex function is
+\begin{equation}
+  \Gamma^{(3), \mu}  = i e \gamma^{\mu} + 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, vertical=a to c] {
+      a -- [boson] c [blob, label=45:$1PI$] -- [fermion] b,
+      d -- [fermion] c,
+    };
+  \end{gathered}.
+\end{equation}
+At 1-loop, we have the diagram in Fig.~\ref{fig:l18d1}.
+\begin{figure}[tbhp]
+  \centering
+  \feynmandiagram[transform shape, scale=1][small, vertical=a to c] {
+    a -- [boson] c -- [fermion] e -- [boson] f -- [fermion] c,
+    e -- [fermion] b,
+    d -- [fermion] f,
+  };
+  \caption{}
+  \label{fig:l18d1}
+\end{figure}
+One integral is divergent: it turns out that this requires $\delta Z_1 = \delta Z_2$.
+
+\chapter{Symmetries and Path Integrals}%
+\label{cha:symmetries_and_path_integrals}
+
+%In classical field theory, the Euler--Lagrange equations are derived by requiring the action be stationary under variations $\phi(x) \to \phi(x) + \epsilon(x)$, where $\epsilon(x)$ is an arbitrary function.
+%Let us now investigate how the derivation is modified in the quantum theory.\footnote{For reference, this discussion seems to follow \cite[Cha.~14.7]{schwartz}.}
+
+\section{Schwinger--Dyson Equations for Scalars}%
+\label{sec:schwinger_dyson_equations_and_scalars}
+
+Consider a massless scalar field $\phi = \phi(x)$ with action
+\begin{equation}
+  S = \frac{1}{2} \int \dd[4]{y} \partial_{\mu} \phi \partial^{\mu} \phi = -\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi.
+\end{equation}
+
+We first consider the 1-point function
+\begin{equation}
+  \label{eq:18-1pt}
+  \langle \phi(x) \rangle = -\left.\frac{1}{Z[0]}\frac{\delta Z[J]}{\delta J(x)} \right\rvert_{J = 0} = \frac{1}{Z} \int \pdd{\phi} e^{\int \dd[4]{y} \frac{1}{2} \phi \partial^2_y \phi} \phi(x).
+\end{equation}
+Consider a small variation $\phi(x) \to \phi(x) + \epsilon(x)$ inside the path integral.
+Since the path integral integrates over all field configurations, this redefinition of the field has to give the same result.
+\begin{equation}
+  \label{eq:18-e}
+  \langle \phi(x) \rangle = \frac{1}{Z} \int \pdd{\phi} [\phi(x) + \epsilon(x)] e^{\frac{1}{2} \int \dd[4]{y} (\phi + \epsilon) \partial^2 (\phi + \epsilon)}.
+\end{equation}
+\begin{leftbar}
+  \begin{remark}
+    The path integral measure is unchanged by this transformation.
+    Formally, the path integral measure changes as
+    \begin{equation}
+      \pdd{\phi'} = \det \left( \frac{\delta \phi'(x)}{\delta \phi(y)} \right) \pdd{\phi}.
+    \end{equation}
+    As long as $\epsilon$ is linear in the fields $\phi$, the Jacobian is field-independent and is cancelled out by the path integral in the normalisation $Z$.
+  \end{remark}
+\end{leftbar}
+Expanding to first order in $\epsilon$, the exponential factor becomes
+\begin{align}
+  e^{\int \dd[4]{y} \frac{1}{2} (\phi + \epsilon) \partial^2 (\phi + \epsilon)} &\approx e^{\frac{1}{2} \int \dd[4]{y} \phi \partial^2_y \phi} \left( 1 + \frac{1}{2} \int \dd[4]{z} (\phi \partial^2_z \epsilon + \epsilon \partial^2_z \phi) \right) \\
+										&= e^{\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi} \left( 1 + \int \dd[4]{z} \epsilon \partial^2 \phi \right),
+\end{align}
+where we have integrated by parts twice to combine the $\epsilon \partial^2 \phi$ and $\phi \partial^2 \epsilon$ terms.
+Inserting the exponential back into \eqref{eq:18-e}, we have
+\begin{equation}
+  \label{eq:18-2}
+  \langle \phi(x) \rangle = \frac{1}{Z} \int \pdd{\phi} e^{\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi} \left[ \phi(x) + \epsilon(x) + \phi(x) \int \dd[4]{z} \epsilon(z) \partial^2_z \phi(z) \right].
+\end{equation}
+The $\phi(x)$ term reproduces the original 1-point function \eqref{eq:18-1pt}, so the remaining two terms must add to zero.
+Writing now $\epsilon(x) = \int	\dd[4]{z} \epsilon(z) \delta^{4} (z - x)$, we can factor out the $\epsilon$, giving 
+\begin{equation}
+  \label{eq:18-3}
+  \int \dd[4]{z} \epsilon(z) \int \pdd{\phi} e^{\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi} \left[ \phi(x) \partial^2_z \phi(z) + \delta^{(4)}(z - x) \right] = 0.
+\end{equation}
+Since this should hold true for any variation $\epsilon(z)$, the term in square brackets must vanish.
+Moreover, as the path integral does not depend on $z$ except through the field insertion $\phi(z)$, we can pull $\partial^2_z$ out of the integral in the first term, giving us the \emph{Schwinger--Dyson equation}
+\begin{equation}
+  \partial_z^2 \langle \phi(z) \phi(x) \rangle = -\delta^{4} (z - x).
+\end{equation}
+In other words, the Schwinger--Dyson equation for the 2-point function in a free scalar field theory simply reproduces the Green's function equation for the Feynman propagator.
+In general, these Schwinger--Dyson equations are related to classical equations of motion and additional contact terms.
+These contact terms indicate how the quantum field theory deviates from the corresponding classical field theory.
