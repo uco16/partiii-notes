@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'plaquette.pdf' (pdf, eps, ps)
+%% Accompanies image file 'l22f1.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{109.36014028bp}%
+    \setlength{\unitlength}{478.56353827bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.74940758)%
+  \begin{picture}(1,0.38306319)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{plaquette.pdf}}%
-    \put(0.15807838,0.01492413){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$y_1 = X$\end{tabular}}}}%
-    \put(0.68046099,0.01985459){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_2 = x + a \hat e_1$\end{tabular}}}}%
-    \put(0.69272028,0.69038684){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_3 = x + a(\hat e_i + \hat e_2)$\end{tabular}}}}%
-    \put(0.16242496,0.66603911){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$y_4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{l22f1.pdf}}%
+    \put(0.20704422,0.00323233){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}QED\end{tabular}}}}%
+    \put(0.79586347,0.01125337){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}QCD\end{tabular}}}}%
+    \put(0.39658784,0.09800409){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mu$\end{tabular}}}}%
+    \put(0.06488652,0.35862658){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$e^2$\end{tabular}}}}%
+    \put(0.65370576,0.35862658){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$g^2_s$\end{tabular}}}}%
+    \put(0.96171404,0.09800409){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mu$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{l22f1.pdf}}%
+    \put(0.70109166,0.03877176){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Lambda_{QCD}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{l22f1.pdf}}%
+    \put(0.20704422,0.00323233){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}QED\end{tabular}}}}%
+    \put(0.39658784,0.09800409){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mu$\end{tabular}}}}%
+    \put(0.06488652,0.35862658){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$e^2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{l22f1.pdf}}%
   \end{picture}%
 \endgroup%

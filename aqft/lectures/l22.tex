@@ -1,0 +1,186 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 22: March 07}
+
+\subsection{Fadeev--Popov Ghost Fields}%
+\label{sub:fadeev_popov_ghost_fields}
+
+We write the Fadeev--Popov determinant as the integral over the \emph{spinless} Grassmann fields $c, \overline{c}{}$
+\begin{equation}
+  \label{eq:22-1}
+  \det \frac{\delta G^{a}(x)}{\delta \alpha^{b}(y)} \propto \int \pdd{c} \pdd{\overline{c}{}} e^{-S_{\text{gh}}},
+\end{equation}
+with ghost action and Lagrangian
+\begin{equation}
+  S_{\text{gh}} = \int \dd[4]{x} \mathscr{L}_{\text{gh}}, \qquad \mathscr{L}_{\text{gh}} = -\overline{c}{}^{a} \partial^{\mu} D_{\mu} ^{ab} c^{b}.
+\end{equation}
+Since this Lagrangian is the adjoint derivative, we see that $c, \overline{c}{}$ have to transform in the adjoint representation.
+We can integrate by parts to have an equivalent Lagrangian
+\begin{align}
+  \mathscr{L}_{\text{gh}} &= \partial^{\mu} \overline{c}{}^{a} D^{ab}_{\mu} c^{b} \\
+			  &= \partial^{\mu} \overline{c}{}^{a} \partial_{\mu} c^{a} - i g (\partial^{\mu} \overline{c}{}^{a}) A^{c}_{\mu} (T^{c} _{\text{adj}})^{ab} c^{b} \\
+			  &= \partial^{\mu} \overline{c}{}^{a} \partial_{\mu} c^{a} - g f^{abc} A_{\mu} ^{c} (\partial^{\mu} \overline{c}{}^{a}) c^{b}
+\end{align}
+which gives the same action $S_{\text{gh}}$.
+In addition to the kinetic term, this gives the interaction vertex between the $c$ ghosts and the gauge field $A$.
+Although \eqref{eq:22-1} is just a mathematical trick, we will treat the ghosts as genuine fields in the Feynman diagrams. Moreover, we will see that this is a completely benign trick since the unphysical $c$-fields, which violate the spin-statistics theorem, will end up not contributing to any scattering amplitudes.
+
+For $U(1)$, the structure constants $f^{abc} = 0$ vanish. So the ghosts decouple and are not needed.
+
+\subsection{Gauge Fixing}%
+\label{sub:gauge_fixing}
+
+We want to rewrite the $\delta$-function as a \emph{gauge fixing} term in the action,
+\begin{equation}
+  \label{eq:22-2}
+  \delta[G^{a}(x)] = \delta[\partial^{\mu} A_{\mu}^{a}(x) - w^{a}(x)] \to e^{-S_{\text{gf}}}.
+\end{equation}
+In order to do this, we want to multiply $Z$ by a Gaussian in $\omega$ with width $\xi$,
+\begin{equation}
+  Z \to \exp(-\int \dd[4]{x} \frac{\omega^2}{2 \xi}) Z
+\end{equation}
+and integrate over $\omega$. As $\xi \to 0$, this becomes a $\delta$-function.
+
+The $\omega$-integral is then easy since the $\delta$-functional \eqref{eq:22-2} simply replaces $\omega^{a}(x)$ with $\partial^{\mu} A_{\mu}^{a}(x)$.
+We then have the action
+\begin{equation}
+  Z \propto \int \pdd{A} \pdd{[c, \overline{c}{}]} \exp(-S_{YM} - S_{\text{gh}} - S_{\text{gf}}),
+\end{equation}
+with
+\begin{equation}
+  S_{\text{gf}} = \int \dd[4]{x} \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a})^2.
+\end{equation}
+
+\section{One-Loop Renormalisation}%
+\label{sec:one_loop_renormalisation}
+
+Our Lagrangian has three different kinds of fields: gauge, fermion, and ghost
+\begin{equation}
+  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{} (\cancel{D} + m) \psi + \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a}) ^2 + \partial_{\mu} c^{a} \partial^{\mu} \overline{c}{}^{a} - g f^{abc} A_{\mu}^{c} \partial^{\mu} \overline{c}{}^{a} c^{b}.
+\end{equation}
+
+The propagators are:
+\begin{align}
+  &\text{Fermions} & 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(i\)] -- [fermion, momentum=$p$] b [particle=\(j\)],
+    };
+  \end{gathered}
+  &= \left( \frac{1}{i \cancel{p} + m} \right)^{ij} = \left( \frac{-i \cancel{p} + m}{p^2 + m^2} \right)^{ij} \\
+  &\text{Gauge bosons} & 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\nu \text{, } b\)] -- [gluon, momentum=$k$] b [particle=\(\mu \text{, } a\)],
+    };
+  \end{gathered}
+  &= \frac{1}{k^2} \left( \delta^{\mu\nu} - (1 - \xi) \frac{k^{\mu} k^{\nu}}{k^2} \right)\delta^{ab} \\
+  &\text{Ghosts} & 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(a\)] -- [ghost, momentum=$q$] b [particle=\(b\)],
+    };
+  \end{gathered}
+  &= \frac{\delta^{ab}}{q^2} \quad \text{(massless)}
+\end{align}
+
+The interactions come from writing out $D_{\mu}$ and $F_{\mu\nu}$:
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(\nu \text{, } b\)] -- [gluon, momentum=$p$] b,
+      u [particle=\(\mu \text{, } a\)] -- [gluon, momentum=$k$] b,
+      d [particle=\(\rho \text{, } c\)] -- [gluon, momentum=$q$] b,
+    };
+  \end{gathered}
+  = -g f^{abc} \left[ \delta^{\mu\nu} (k - p)^{\rho} + \delta^{\nu\rho} (p - q)^{\mu} + \delta^{\rho\mu} (q - k)^{\nu} \right],
+\end{equation}
+from term $g f^{abc} (\partial_{\mu} A^{a}_{\nu}) A^{\mu, b} A^{\nu, c}$.
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to u] {
+      a [particle=\(\nu \text{, } b\)] -- [gluon] b,
+      u [particle=\(\mu \text{, } a\)] -- [gluon] b,
+      d [particle=\(\rho \text{, } c\)] -- [gluon] b,
+      e [particle=\(\sigma \text{, } d\)] -- [gluon] b,
+    };
+  \end{gathered}
+  = -g^2 \left[ f^{abc} f^{cde} (\delta^{\mu\rho} \delta^{\nu\sigma} - \delta^{\mu\sigma} \sigma^{\nu\rho}) + \text{2 permutations} \right],
+\end{equation}
+from the $(f^{abc} A_{\mu}^{b} A_{\nu}^{c})(f^{ade} A^{\mu, d} A^{\nu, e})$ term.
+Moreover, taking $T_{ij}$ to be in the fundamental representation, we have
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=i to j] {
+      i [particle=\(i\)] -- [fermion] v -- [fermion] j [particle=\(j\)],
+      u [particle=\(\mu \text{, }a\)] -- [gluon] v,
+    };
+  \end{gathered}
+  = ig \gamma^{\mu} T^{a}_{ij},
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=i to j] {
+      i [particle=\(b\)] -- [ghost] v -- [ghost, momentum=$p$] j [particle=\(a\)],
+      u [particle=$\mu \text{, } c$] -- [gluon] v,
+    };
+  \end{gathered}
+  = -g f^{abc} p^{\mu},
+\end{equation}
+where the momentum $p^{\mu}$ is the one associated with the outgoing ghost $\overline{c}{}$.
+
+\subsection{Vacuum Polarisation}%
+\label{sub:vacuum_polarisation}
+
+We have $5$ diagrams, all of which are treated as truncated:
+\begin{align}
+  &\text{Fermion loop:} & \mathfrak{M}_F^{ab, \mu \nu} &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, fermion] c -- [half left, looseness=1, momentum=$p - q$, fermion] b,
+      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+    };
+  \end{gathered} \\
+  &\text{Gauge loops:} & \mathfrak{M}_3^{ab, \mu \nu} &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, gluon] c -- [half left, looseness=1, momentum=$p - q$, gluon] b,
+      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+    };
+  \end{gathered} \\
+  & & \mathfrak{M}_4^{ab, \mu \nu} &= 
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [loop, min distance=2cm, in=135, out=45, gluon] b,
+      b -- [gluon] d [particle=\(\nu \text{, } b\)],
+    };
+  \\
+  &\text{Ghost loop:} & \mathfrak{M}_{\text{gh}}^{ab, \mu \nu} &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, ghost] c -- [half left, looseness=1, momentum=$p - q$, ghost] b,
+      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+    };
+  \end{gathered} \\
+  &\text{Counterterm:} & \mathfrak{M}_{ct}^{ab, \mu \nu} &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(\mu \text{, } a\)] -- [gluon] b [square dot] -- [gluon] c [particle=\(\nu \text{, } b\)],
+    };
+  \end{gathered}
+\end{align}
+
+The fermion loop is as in QED: Using dimensional regularisation, we have
+\begin{equation}
+  \mathfrak{M}_F^{ab \mu \nu} = - \Tr(T^{a} T^{b}) (ig)^2 \mu^{\epsilon} \int \bdd[d]{p} \frac{\Tr[(-i \cancel{p} + m) \gamma^{\mu} (-i (\cancel{p} - \cancel{q}) \gamma^\nu)]}{[(p - q)^2 + m^2][p^2 + m^2]}.
+\end{equation}
+Now
+\begin{equation}
+  \Tr(T^{a} T^{b}) = T_F \delta^{ab} = \frac{1}{2} \delta^{ab},
+\end{equation}
+the rest is as in QED.
+\begin{equation}
+  \mathfrak{M}_{F}^{ab \mu \nu} = -\frac{1}{2} \delta^{ab} \left( q^2 \delta^{\mu\nu} - q^{\mu} q^{\nu} \right) \frac{g^2}{2 \pi^2} \int_0^1 \dd[]{x} x(1 - x) \left[ \frac{2}{\epsilon} - \gamma + \ln( \frac{4 \pi \mu^2}{\Delta}) \right]
+\end{equation}
+where the momentum term in parentheses is expected for massless gauge boson and
+\begin{equation}
+  \Delta = m^2 + q^2 x(1 - x).
+\end{equation}

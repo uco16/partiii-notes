@@ -1,0 +1,254 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 22: March 07}
+
+\chapter{Strong Interactions}%
+\label{cha:strong_interactions}
+
+\section{Introduction}%
+\label{sec:introduction}
+
+So far, we have seen electroweak interactions, which go through the phase transition
+\begin{equation}
+  SU(2)_L \times U(1)_Y \xrightarrow{\langle H \rangle \neq 0 } U(1)_{EM}.
+\end{equation}
+The left-hand side is the \emph{Higgs phase}, with massive $W^{\pm}_\mu, Z^0$, which mediate short range interactions.
+The right-hand side is the \emph{Coulomb phase} with a massless $\gamma$, which mediates long range forces with potential $V \sim \frac{1}{r}$.
+
+Can we also describe strong interactions with gauge theory?
+We will find that this is indeed possible, but it is not of a Higgs type.
+We have to ask whether there is another phase of gauge theories, which we have not yet explored.
+
+\section{Finding the Gauge Group}%
+\label{sec:finding_the_gauge_group}
+
+The natural gauge theory to consider is $SU_c(3)$, where the $c$ is for \emph{colour}.
+There are various arguments for this.
+One is the observation of the eightfold way, which predicted a new particle
+\begin{equation}
+  \Omega^- = \ket{s^r} \otimes \ket{s^b} \otimes \ket{s^g},
+\end{equation}
+where people realised they needed to introduce a new quantum number, called colour, since otherwise the $s$ quarks would be in the same quantum state, violating Pauli's exclusion principle.
+\begin{remark}
+  There is nothing special about $\Omega^-$. The same has to be true for particles with multiple $\ket{d}$ quarks for example.
+\end{remark}
+Another argument is that leptons, which have no colour, do not interact with strong interactions.
+It is therefore natural to consider a gauge theory based on the three colours (Greenberg; Nambu and Han).
+
+Since we have three colours, the options for the gauge group are $SO(3)$, $SU(3)$, and $U(3)$.
+In the case of $SO(3)$; we have $q \overline{q}{}$, and $q q$. These have non-integer charges, which we do not want.
+For $U(3) = SU(3) \times U(1)$, we obtain long-range interactions, which we do not want.
+Therefore, we are left with $SU(3)_c$.
+
+In experiments of deep inelastic scattering (DIS) $e^- p \to e^- p + \dots$, we have the following diagrams at progressively higher energies.
+
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
+      a -- [fermion] v --[fermion] b,
+      v -- [boson] x,
+      c --[fermion] x --[fermion] d,
+    };
+  \end{gathered}
+  \xrightarrow{\text{higher energies}}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
+      a [particle=\(e^-\)] -- [fermion] v --[fermion] b [particle=\(e^-\)],
+      v -- [boson] x,
+      c [particle=\(p\)] --[fermion] x --[fermion] d [particle=\(p\)],
+      x -- [scalar] e [particle=\(\pi^0\)],
+    };
+  \end{gathered}
+  \xrightarrow{\text{higher energies}}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
+      a [particle=\(e^-\)] -- [fermion] v --[fermion] b [particle=\(e^-\)],
+      v -- [boson] x,
+      c [particle=\(p\)] --[fermion] x --[fermion] d [particle=\(p\)],
+      x -- [scalar] e [particle=\(\pi^0\)],
+      x -- f [particle=\(\text{hadrons}\)],
+    };
+  \end{gathered}
+\end{equation}
+The first diagram is essentially elastic, whereas the higher energy diagram are inelastic. In these, the protons are behaving as if they had constituents, called \emph{partons} (Feynman). The components seemed to behave more and more free at higher energies. It turns out that these partons were not just quarks, but quarks and gluons.
+
+The parton cross sections $\sigma$ were found to be independent of the total energy $Q^2$ at fixed $x$ (Bjorken scaling), where
+\begin{equation}
+  x = \frac{Q^2}{2 m_p (E - E')},
+\end{equation}
+where $m_p$ is the proton mass and $E, E'$ are the electron energies.
+
+An electron $e^-$ and positron $e^+$ could interact to give $\mu^+ + \mu^-$ or hadrons
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      i [particle=\(e^-\)] -- [fermion] a -- [fermion] f [particle=\(e^+\)],
+      a -- [boson] b,
+      c [particle=\(\mu^+ \text{, hadrons}\)] --[fermion] b --[fermion] g [particle=\(\mu^- \text{, hadrons}\)],
+    };
+  \end{gathered}
+\end{equation}
+
+The ratio of cross-sections of these processes
+\begin{equation}
+  \frac{\sigma(e^+ e^- \to \text{hadrons})}{\sigma(e^+ e^- \to \mu^+ \mu^-)} \propto N_c \sum Q_i^2.
+\end{equation}
+The observations are consistent with $N_c =3$ families.
+
+\section{Quantum Chromodynamics}%
+\label{sec:quantum_chromodynamics}
+
+For the theory of colour charge, quantum chromodynamics (QCD), we have the Lagrangian
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} (G^{a}_{\mu\nu})^2 + i \overline{q}{}_i \cancel{D}_{ij} q_j - m_i \overline{q}{}_i q_i.
+\end{equation}
+Here the $q_i$ are quarks, with $i$ being colour indices.
+The covariant derivative is
+\begin{equation}
+  (D_{\mu})_{ij} = \delta_{ij} \partial_{\mu} - i g_s G_{\mu}^{a} T^{a}_{ij},
+\end{equation}
+where $G^{a}_{\mu}$ are the \emph{gluon} fields and $T^{a} = \frac{1}{2} \lambda^a$ are the generators with \emph{Gell-Mann matrices}
+\begin{align}
+  \lambda^1 &=
+  \begin{pmatrix}
+    & 1 &  \\
+   1 &  &  \\
+    &  &  \\
+  \end{pmatrix},
+    & \lambda^2 &= 
+  \begin{pmatrix}
+    & -i &  \\
+   i &  &  \\
+    &  &  \\
+ \end{pmatrix}, &
+  \lambda^3 &= 
+  \begin{pmatrix}
+   1 &  &  \\
+    & -1 &  \\
+    &  &  \\
+  \end{pmatrix},  \\
+  \lambda^4 &=
+  \begin{pmatrix}
+    &  & 1 \\
+    &  &  \\
+   1 &  &  \\
+  \end{pmatrix},
+	    & \lambda^5 &= 
+  \begin{pmatrix}
+    &  & -i \\
+    &  &  \\
+   i &  &  \\
+ \end{pmatrix}, &
+  \lambda^6 &= 
+  \begin{pmatrix}
+    &  &  \\
+    &  & 1 \\
+    & 1  &  \\
+  \end{pmatrix},  \\
+  \lambda^7 &=
+  \begin{pmatrix}
+    &  &  \\
+    &  & -i \\
+    & i &  \\
+  \end{pmatrix},
+  & \lambda^8 &= \frac{1}{\sqrt{3}}
+  \begin{pmatrix}
+   1 &  &  \\
+    & 1 &  \\
+    &  & -2 \\
+ \end{pmatrix}.
+\end{align}
+The field strength of the corresponding gluon is
+\begin{equation}
+  G^{a}_{\mu\nu} \coloneqq \partial_{\mu} G^{a}_{\nu} - \partial_{n} G^{a}_{\mu} + g_{s} f^{abc} G^{b}_{\mu} G^{c}_{\mu}.
+\end{equation}
+
+Typical vertices include
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [gluon] b [small, dot, label=$f^{abc}$] -- [gluon] c,
+      b -- [gluon] d,
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+      a -- [gluon] b [small, dot] -- [gluon] c,
+      b -- [gluon] d,
+      e --[gluon] b,
+    };
+  \end{gathered}
+  \qquad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      i -- [egde label=$q_i$] a [small, dot, label=$\Gamma^{a}_{ij}$] -- [edge label=$q_j$] f,
+      a -- [gluon] b,
+    };
+  \end{gathered}
+\end{equation}
+
+For example, we have gluon exchange
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      i -- a [small, dot, label=$T^{a}_{ij}$] -- f,
+      a -- [gluon] b [small, dot, label=$T^{a}_{kl}$],
+      e -- b -- g,
+    };
+  \end{gathered}
+  \qquad \propto T^{a}_{ji} T^{a}_{kl}
+\end{equation}
+
+The representation decomposes as $3 \times \overline{3}{} = 8 + 1$.
+The 8 gives the repulsive baryon interactions $T^{a} T^{a} < 0$, whereas the 1 gives the attractive $T^{a} T^{a} > 0$.
+The limitation is that baryons and mesons carry no colour.
+
+\section{Asymptotic Freedom}%
+\label{sec:asymptotic_freedom}
+
+We have the vacuum polarisation diagram
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [gluon] b -- [half left, looseness=1] r -- [half left, looseness=1] b,
+      r -- [gluon] e,
+    };
+  \end{gathered},
+\end{equation}
+where the loop is given by quarks.
+The gauge coupling $g_s$ is energy dependent, described by the $\beta$-function
+\begin{equation}
+  \beta(\alpha_s) = \mu \dv{\alpha_s}{\mu}, \qquad \alpha_s = \frac{g_s^2}{4 \pi},
+\end{equation}
+where $\mu$ is the energy scale that we are working on.
+
+For $SU(N_c)$ with $N_f$ flavours and cutoff $\Lambda^2_{UV}$, 
+\begin{equation}
+  \frac{1}{g^2_s(\mu)} = \frac{1}{g^2_{s 0}} - \frac{1}{(4 \pi)^2} \left[ \frac{11}{3} N_c - \frac{2}{3} N_f \right] \ln \frac{\Lambda^2_{UV}}{\mu^2}.
+\end{equation}
+For the standard model, where $N_c = 3$ and $N_f = 6$, the quantity in square brackets is positive.
+
+This minus sign in the $\beta$-function makes the theory so different from QED.
+Recall that in QED the $\beta$-function was
+\begin{equation}
+  \frac{1}{e^2(\mu)} = \frac{1}{e^2_0} + \frac{1}{12 \pi^2} \ln \frac{\Lambda^2}{\mu^2}.
+\end{equation}
+
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.7]{l22f1}
+  \caption{}
+  \label{fig:l22f1}
+\end{figure}
+As shown in Fig.~\ref{fig:l22f1}, the \emph{Landau pole} in QED occurs at high energies, whereas QED has the Landau pole ($1 / g^2 (\Lambda_{QCD}) \to 0$) at low energies.
+In particular, 
+\begin{equation}
+  \boxed{\Lambda_{QCD} = \Lambda_{UV} e^{-4 \pi^2 / g_s^2}}
+\end{equation}
+This is called \emph{dimensional transmutation}, since we are essentially exchanging a dimensionless parameter $g_s$ for a dimensionful parameter $\Lambda_{QCD}$.
+\begin{remark}
+  Expanding $e^{-4 \pi ^2 / g^2_s}$ around $g_s = 0$ does not give a valid Taylor expansion: all derivatives are zero.
+\end{remark}
+
+We see that quarks and gluons are confined into hadrons. This is called the \emph{confinement phase}.
