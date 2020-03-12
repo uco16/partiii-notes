@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{109.36014028bp}%
+    \setlength{\unitlength}{86.02197744bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.74940758)%
+  \begin{picture}(1,0.8973619)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{plaquette.pdf}}%
-    \put(0.15807838,0.01492413){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$y_1 = X$\end{tabular}}}}%
-    \put(0.68046099,0.01985459){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_2 = x + a \hat e_1$\end{tabular}}}}%
-    \put(0.69272028,0.69038684){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_3 = x + a(\hat e_i + \hat e_2)$\end{tabular}}}}%
-    \put(0.16242496,0.66603911){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$y_4$\end{tabular}}}}%
+    \put(0.08548415,0.00822487){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$y_1 = x$\end{tabular}}}}%
+    \put(0.74959159,0.01449298){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_2 = x + a \hat e_1$\end{tabular}}}}%
+    \put(0.80256908,0.87251144){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56249988}\smash{\begin{tabular}[t]{c}$y_3 = x + a(\hat e_i + \hat e_2)$\end{tabular}}}}%
+    \put(0.07357255,0.87086522){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$y_4$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

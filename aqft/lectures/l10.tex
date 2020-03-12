@@ -38,17 +38,17 @@ Equating coefficients, we have
   \delta Z_\phi = Z_\phi - 1, \qquad \delta m^2 = Z_\phi m_0^2 - m^2, \qquad \delta \lambda = Z_\phi^2 \lambda_0 - \lambda .
 \end{equation}
 Of course the Feynman rules for the renormalised Lagrangian $\mathscr{L}_{\text{ren}}$ are the same as for the original Lagrangian $\mathscr{L}_0$ but with the coefficients, $m^2$ and $\lambda$, interpreted as the renormalised ones.
-We need to find the Feynman rules for the counter terms $\mathscr{L}_{\text{ct}}$:
+We need to find the Feynman rules for the counter terms $\mathscr{L}_{\text{ct}}$: Diagrammatically, we treat these as vertices
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
       a -- b[square dot] -- c,
     }; \\
     -p^2 \delta Z_\phi
   \end{gathered}, \qquad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [insertion=1] b -- c,
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- b [crossed dot] -- c,
     }; \\
     -\delta m^2
   \end{gathered}, \qquad
@@ -70,9 +70,9 @@ The 2-point vertex is
 From $\mathscr{L}_{\text{ren}}$, we get $\Pi_1(p^2)$ at one loop just as in \eqref{eq:9-pi}, but with $m^2, \lambda$ interpreted as renormalised quantities of \eqref{eq:10-star}.
 From $\mathscr{L}_{\text{ct}}$, 
 \begin{equation}
-  \Pi_{1, \text{ct}} = AMPUTATED DIAGRAMS = - \delta m^2 - p^2 \delta Z_\phi.
+  \Pi_{1, \text{ct}} = - \delta m^2 - p^2 \delta Z_\phi.
 \end{equation}
-Finite result for $\Pi_{i \text{ren}} = \Pi_1(p^2) + \Pi_{1, \text{ct}}$  is obtained by choosing
+Finite result for $\Pi_{1 \text{, ren}} = \Pi_1(p^2) + \Pi_{1, \text{ct}}$  is obtained by choosing
  \begin{equation}
   \delta Z_\phi = 0 \qquad \text{and} \qquad \delta m^2 = -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right].
 \end{equation}

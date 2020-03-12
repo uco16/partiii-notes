@@ -1,0 +1,163 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 23: March 10}
+
+We also have the gauge loop \eqref{eq:22-gaugeloop}
+\begin{align}
+  \mathfrak{M}_3^{ab \mu \nu} &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a [particle=\(a\text{, } \mu\)] -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, gluon] c -- [half left, looseness=1, gluon, momentum=$p - q$] b,
+      c -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] d [particle=\(b \text{, } \nu\)],
+    };
+  \end{gathered} \\
+  &= \frac{g^2 \mu^{\epsilon}}{2} \int \frac{\dd[d]{p}}{(2 \pi)^d} \frac{1}{p^2 (p - q)^2} f^{acd} f^{bcd} \mathcal{N}^{\mu\nu},
+\end{align}
+where we divided by the symmetry factor $2$, we have $f^{acd} f^{bcd} = C_A \delta^{ab}$, and defined
+\begin{equation}
+  \mathcal{N}^{\mu\nu} = [\delta^{\mu\nu} (q + p)^{\mu} + \delta^{\rho\sigma} (q - 2p)^{\nu}+ \delta^{\rho\mu} (p - 2q)^{\sigma}] + [\delta^{\nu\rho} (q + p)^{\sigma} + \delta^{\rho\sigma} (-q - 2p)^{\nu} + \delta^{\sigma\nu} (p -2q)^{\rho}].
+\end{equation}
+First we want to isolate the loop momenta $p^2$ in the denominator using Feynman's trick
+\begin{equation}
+  \frac{1}{p^2 (p - q)^2} \propto \int_0^1 \dd[]{x} \frac{1}{(l^2 - \Delta)^2},
+\end{equation}
+where $\Delta 0 -x (1 - x)q^2$ and $l = p + qx$ (check).
+We then turn the crank on the numerator.
+\begin{remark}
+  A calculation like this would be too long to ask in an exam.
+\end{remark}
+The end result is of the form
+\begin{equation}
+  \label{eq:23-1}
+  \mathfrak{M}_3^{ab \mu \nu} = \frac{g^2 C_A}{(4 \pi)^{d / 2}} \delta^{ab} \int_0^1 \frac{1}{\Delta^{2 - d / 2}} \left\{ \left[ \Gamma(1 - \frac{d}{2}) f(x) + \Gamma(2 - \frac{d}{2}) g(x) \right] \delta^{\mu\nu} q^2 - \Gamma(2 - \frac{d}{2}) h(x) q^{\mu} q^{\nu} \right\}.
+\end{equation}
+It is not obvious since the $x$-dependence is in the factor, but it turns out that we cannot factor out $(q^2 \delta^{\mu\nu} - q^{\mu} q^{\nu})$, which is what we would like to see for a massless gauge boson.
+This is inconsistent with the Ward identity $q_{\mu} \mathfrak{M}_3^{ab \mu \nu} = 0$.
+It looks like we have developed a massive mode for the boson. However, we know of course that this is not the case. We simply have not yet added the ghost loop amplitude \eqref{eq:22-ghostloop}:
+\begin{align}
+  \mathfrak{M}_{\text{gh}}^{ab \mu \nu} &=
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+      a -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] b -- [ghost, half left, looseness=1, momentum=$p$] c -- [ghost, momentum=$p - q$, half left, looseness=1]b,
+      c -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] d,
+    };
+  \end{gathered} \\
+  &= - (ig)^2 \mu^{\epsilon} C_A \delta^{ab} \int \bdd[d]{p} \frac{p^{\mu} (p - q)^{\nu}}{p^2 (p - q)^2}.
+\end{align}
+Just as for Fermions, we obtain a minus sign for the Grassmann loop.
+After a bit of work (less work than the previous graph), we obtain
+\begin{equation}
+  \mathfrak{M}_{\text{gh}}^{ab \mu \nu} = \frac{g^2 C_a \delta^{ab}}{(4 \pi)^{d / 2}} \int_0^1 \dd[]{x} \frac{1}{\Delta^{2 - d / 2}} \left[ \Gamma(1 - \frac{d}{2}) \widetilde{f}(x) + \Gamma(2 - \frac{d}{2})\widetilde{g}(x) \right] \delta^{\mu\nu} q^2.
+\end{equation}
+Now we can combine this with the result of \eqref{eq:23-1}. After some tricks, we have the sum
+\begin{equation}
+  \label{eq:23-2}
+  \mathfrak{M}_3^{ab \mu \nu} + \mathfrak{M}_{\text{gh}}^{ab \mu \nu} = \frac{g^2 C_a \delta^{ab}}{16 \pi^2} (\delta^{\mu\nu} q^2 - q^{\mu} q^{\nu}) \left[ \frac{5}{3} \left( \frac{2}{\epsilon}  + (\ln \frac{\mu^2}{\Delta}) \text{-term} + \text{(finite)} \right) \right].
+\end{equation}
+(This long calculation is not examinable.)
+Also, rescaling
+\begin{equation}
+  \mathfrak{M}_F^{ab\mu\nu} = \frac{g^2 T_F \delta^{ab}}{16 \pi^2} (\delta^{\mu\nu} q^2 - q^{\mu} q^{\nu}) \left[ - \frac{4}{3} \frac{2}{\epsilon} + \text{log} + \text{finite} \right]
+\end{equation}
+\begin{remark}
+  In dimensional regularisation, the second gauge loop \eqref{eq:22-gaugelooptwo} vanishes
+  \begin{equation}
+    \mathfrak{M}_4^{ab, \mu \nu} = 
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+	a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b -- [gluon, loop, min distance=2cm, in=135, out=45] b -- [gluon, insertion={[size=5pt]0.5}] c [particle=\(\nu \text{, } b\)],
+      };
+    \end{gathered} = 0.
+  \end{equation}
+\end{remark}
+
+We need a counterterm to renormalise the divergence \eqref{eq:23-2}
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [gluon, insertion={[size=5pt]0.5}] b [square dot] -- [gluon, insertion={[size=5pt]0.5}] c,
+    };
+  \end{gathered}
+  = \delta_3 = \frac{g^2}{16 \pi^2} \frac{2}{\epsilon} \left[ \frac{5}{3} c_A - \frac{4}{3} T_F n_f \right].
+\end{equation}
+For every different type of fermion in the theory we get essentially the same diagram, which is why we just added the multiplicative factor $n_f$, which is the number of fermions (flavour).
+
+\subsection*{Renormalised Lagrangian}%
+
+If we unpack the whole Lagrangian into individual terms, all of which in principle can be renormalised separately, we obtain
+\begin{multline}
+  \mathscr{L} = \frac{1}{4} Z_3 (\partial_{\mu} A_{\nu}^{a} - \partial_{\nu} A_{\mu}^{a})^2 + \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a})^2
+  + Z_{3g} g f^{abc} (\partial_{\mu} A_{\nu}^{a}) A_{\mu}^{b} A_{\nu}^{c} + \frac{1}{4} Z_{4g} g^2 f^{abe} f^{cde} A_{\mu}^{a} A_{\nu}^{b} A^{\mu, c} A^{\nu, d} \\
+  + Z_{2'} \overline{c}{} \partial^2 c - Z_{1'} g f^{abc} (\partial_{\mu} \overline{c}{}^{a}) A_{\mu}^{b} c^{c} +Z_2 \overline{\psi}{} \cancel{\partial} \psi + Z_{m} m \overline{\psi}{} \psi + Z_1 g \overline{\psi}{} \cancel{A}^{a} T^{a} \psi.
+\end{multline}
+The change to the first term is what we have been calculating in this section. The second term is not renormalised.  The first line is the pure-gauge part of the action, whereas the second line is the ghost part.
+
+\begin{claim}
+  We can define some sort of effective coupling $q_{\text{eff}}^2$ that is equal to the combination
+  \begin{equation}
+    q_{\text{eff}}^2 = \frac{Z_1^2}{Z_2^2 Z_3} g^2 \mu^\epsilon = \frac{Z_{1'}^2}{Z_{2'}^2 Z_3} g^2  \mu^\epsilon = \frac{Z_{3g}^2}{Z_3^3} g^2 \mu^\epsilon = \frac{Z_{4g}}{Z_3^2} g^2 \mu^\epsilon.
+  \end{equation}
+\end{claim}
+In QED, we used gauge invariance to write down the Ward--Takahashi identity. Here we do not have gauge invariance, but we have another kind of symmetry, called \emph{BRST symmetry}, which will help us.
+
+\subsection{\texorpdfstring{$\beta$}{Beta}-Functions and Asymptotic Freedom}%
+
+We obtain the $\beta$-functions from requiring 
+\begin{equation}
+  \mu \dv{\mu} g_{\text{eff}} = 0.
+\end{equation}
+We have $Z_3 = (1 + \delta_3)$.
+Need $\delta_2$ and $\delta_1$ from the diagrams
+\begin{equation}
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, small, layered layout] {
+      a -- b -- c -- d,
+      b -- [half left, looseness=1.5, gluon] c,
+    }; \\
+    \delta_2
+  \end{gathered}
+  \qquad \& \quad
+  \underbrace{\begin{gathered}
+	       \feynmandiagram[transform shape, scale=0.8][horizontal=a to b, small] {
+	         u -- [gluon] v -- a -- [gluon] b -- v,
+	         c -- a,
+	         b -- d,
+	       };
+	      \end{gathered}
+	      +
+	      \begin{gathered}
+	       \feynmandiagram[transform shape, scale=0.8][horizontal=a to b, small] {
+	         u -- [gluon] v -- [gluon] a -- b -- [gluon] v,
+	         c -- a,
+	         b -- d,
+	       }; \\
+	      \end{gathered}}_{\delta_1}
+\end{equation}
+To write
+\begin{align}
+  \beta(g) &= -\frac{\epsilon}{2} g - g \mu \dv{\mu} \left( \frac{Z_1}{Z_2 Z_3^{1 / 2}} \right) \\
+	   &= g \left[ -\frac{\epsilon}{2} - \mu \dv{\mu} \left( \delta_1 - \delta_2 - \frac{1}{2} \delta_3 \right) \right].
+\end{align}
+where we use L.O. $\beta$-function to write
+\begin{equation}
+  \mu \dv{\mu} g = -\frac{\epsilon}{2} d.
+\end{equation}
+To get
+\begin{equation}
+  \beta(g) = -\frac{\epsilon}{2} -\frac{g^3}{16 \pi^2} \left( \frac{11}{3} c_A - \frac{4}{3} n_f T_F \right).
+\end{equation}
+
+For $SU(3)$ (and fundamental fermions)
+\begin{equation}
+  C_A = N = 3, \qquad T_F = \frac{1}{2}, \qquad d = 4.
+\end{equation}
+\begin{equation}
+  \beta(g) = -\frac{g^3}{16 \pi^2} \left( 11 - \frac{2}{3} n_f \right) \coloneqq -\frac{g^3}{16 \pi^2} \beta_0.
+\end{equation}
+Now $g$ is marginally relevant (for $n_f < 16$). So $g \to \infty$ in the IR.
+Conversely, $g \to 0$ at high energies. This phenomenon is called \emph{asymptotic freedom}.
+Let $\Lambda_{QCD}$ be the \emph{low energy} scale where $g \to \infty$ (at this order)
+\begin{equation}
+  g^2(\mu) = \frac{1}{\beta_0 \ln \frac{\mu^2}{\Lambda_{QCD}^2}}.
+\end{equation}
+This asymptotic freedom is why we use non-Abelian gauge theories to describe the strong interactions.

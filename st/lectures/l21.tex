@@ -116,9 +116,9 @@ We can use our knowledge of the expansion of the $c$ ghosts, which have conforma
 \end{equation}
 we find
 \begin{equation}
-  \langle c(z_1) c(z_2) c(z_3) \rangle = \kappa (z_1 - z_2) (z_2 - z_3) (z_3 - z_1),
+  \langle c(z_1) c(z_2) c(z_3) \rangle = K (z_1 - z_2) (z_2 - z_3) (z_3 - z_1),
 \end{equation}
-where $\kappa = \bra{0} c_{-1} c_0 c_1 \ket{0} = 1$ is our choice of normalisation.
+where $K = \bra{0} c_{-1} c_0 c_1 \ket{0} = 1$ is our choice of normalisation.
 
 We get a similar answer for the $\overline{c}{}$ ghosts.
 Therefore, the ghost bits gives
@@ -134,15 +134,17 @@ So
 \section{Calculations Using the Path Integral}%
 \label{sec:calculating_using_the_path_integral}
 
-We want to compute
+We want to compute the $n$-point function
 \begin{equation}
-  \langle \phi_1 \dots \phi_n \rangle_X = \int \pdd{X} e^{-S[X]} \phi_1 \dots \phi_n.
+  \label{eq:n-pt}
+  \langle \phi_1 \dots \phi_n \rangle_X = \int \pdd{X} e^{-S_P[X]} \phi_1 \dots \phi_n,
 \end{equation}
+where $S_P[X] = -\frac{1}{2\pi \alpha'} \int_{\Sigma} \dd[2]{z} \partial X^{\mu} \overline{\partial}{} X^{\nu} \eta_{\mu\nu}$.
 To do this, we introduce a source term 
 \begin{equation}
   S_J[X] = \int_{\Sigma} \dd[2]{z} X^{\mu} (z, \overline{z}{}) J_{\mu} (z, \overline{z}{})
 \end{equation}
 into the path integral. Consider the (normalised) generating functional
 \begin{equation}
-  Z [J] = Z[0]^{-1} \int \pdd{X} e^{-S[X] - S_J[X]}.
+  Z [J] = Z[0]^{-1} \int \pdd{X} e^{-S_P[X] - S_J[J, X]}.
 \end{equation}

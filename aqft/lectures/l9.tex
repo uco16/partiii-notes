@@ -179,7 +179,7 @@ If we ignore numerical factors, the (connected) $2$-point function, also called 
   \quad + \quad O(\lambda^3)
 \end{equation}
 The first term is the 2-point vertex $G_0$ of the free theory, called the \emph{bare propagator}. Including the interactions $O(\lambda)$ effects the propagator by changing the physical mass away from the \emph{bare mass} $m$, and hence giving rise to \emph{self-energy}.
-The first and last factors common to all diagrams are external propagators, so we define \emph{amputated} or \emph{truncated} graphs by multiplying the external legs by inverse propagators. We denote them then by dotted lines, for example the amputated diagrams of order $\lambda^2$ are shown in Fig.~\ref{fig:l9d1}.
+The first and last factors common to all diagrams are external propagators, so we define \emph{amputated} or \emph{truncated} graphs by multiplying the external legs by inverse propagators. Diagrammatically, an amputated external propagator is marked with a cross. For example the amputated diagrams of order $\lambda^2$ are shown in Fig.~\ref{fig:l9d1}.
 \begin{figure}[tbhp]
   \centering
   \begin{equation}
@@ -193,7 +193,7 @@ The first and last factors common to all diagrams are external propagators, so w
           \draw (c) arc [start angle=180, end angle=-180, radius=0.2cm];
           \vertex[below=0.5cm of c] (d);
           \diagram* {
-  	  (a) -- [dotted] (b) -- (c) --[dotted] (d),
+  	  (a) -- [insertion=0.5] (b) -- (c) --[insertion=0.55] (d),
           };
         \end{feynman}
       \end{tikzpicture}
@@ -209,7 +209,7 @@ The first and last factors common to all diagrams are external propagators, so w
           \draw (d) arc [start angle=180, end angle=-180, radius=0.2cm];
           \vertex[below=0.5cm of b] (c);
           \diagram* {
-            (a) -- [dotted] (c),
+            (a) -- [insertion=0.25, insertion=0.8] (c),
           };
         \end{feynman}
       \end{tikzpicture}
@@ -225,7 +225,7 @@ The first and last factors common to all diagrams are external propagators, so w
           \vertex[below=0.15cm of b, small, dot] (d) {};
           \vertex[below=0.35cm of d] (c);
           \diagram* {
-  	  (a) -- [dotted] (e) -- (d) -- [dotted] (c),
+  	  (a) -- [insertion=0.5] (e) -- (d) -- [insertion=0.5] (c),
           };
         \end{feynman}
       \end{tikzpicture}
@@ -248,7 +248,7 @@ THe other two graphs are $1$-particle irreducible (1PI).
 	  \vertex[blob] (a) {1PI};
 	  \vertex[right=1cm of a] (b);
 	  \diagram* {
-	    (d) -- [dotted] (a) -- [dotted] (b),
+	    (d) -- [insertion=0.5] (a) -- [insertion=0.5] (b),
 	  };
 	\end{feynman}
       \end{tikzpicture}
@@ -334,10 +334,11 @@ which justifies the appellation ``self-energy'' term to $\Pi$; it represents the
 Perturbatively, we can write down the loop expansion in the same way as \eqref{eq:9-complete-propagator}.
 In particular, the $1$-loop contribution is
 \begin{equation}
+  \label{eq:9-ampdiag}
   \Pi_1(p^2) = \quad
   \begin{gathered}
     \feynmandiagram[transform shape, scale=0.5][horizontal=a to b, layered layout] {
-      a -- [dotted] v [small, dot] -- [loop, min distance=2cm, in=+135, out=+45, rmomentum'=$k$] v -- [dotted] b,
+      a -- [insertion=0.5] v [small, dot] -- [loop, min distance=2cm, in=+135, out=+45, rmomentum'=$k$] v -- [insertion=0.5] b,
     };
   \end{gathered}
   \quad
@@ -346,7 +347,7 @@ In particular, the $1$-loop contribution is
 Now in spherical polar coordinates $\dd[4]{k} = k^{3} \dd[]{k} \dd[]{\Omega}$  and in general $\dd[d]{k} = S_d \abs{k}^{d-1} \dd[]{\abs{k}}$  with $S_d = (2 \pi)^{d / 2} / \Gamma(d / 2)$ is the surface area of the unit $d$-sphere, where $\Gamma$ is the Euler-Gamma function.
 We see that this integral diverges.
 To tackle it, we introduce a cutoff  $\Lambda$ and change variables to $x = k^2 / m^2$ so that
- \begin{align}
+\begin{align}
    \Pi_1(p^2) = -\frac{\lambda}{2} \int^{\Lambda} \frac{\bdd[4]{k}}{k^2 +m^2} &= -\frac{\lambda S_4}{4 (2 \pi)^4} \int^{\Lambda^2 / m^2} \frac{x \dd[]{x}}{1 + x}, \\
     &= -\frac{\lambda}{32 \pi^2} \left[ \Lambda^2 - m^2 \ln(1 + \frac{\Lambda^2}{m^2}) \right]. \label{eq:9-pi}
 \end{align}
@@ -356,7 +357,7 @@ The (momentum space) $4$-point function at $1$-loop in $\phi^4$-theory is given 
 \begin{align}
   \widetilde{\Gamma}^{(4)}(p_1, p_2, p_3, p_4) &= \quad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=l to r, layered layout] {
+    \feynmandiagram[transform shape, scale=0.9][horizontal=l to r, layered layout] {
       i -- [rmomentum=$p_1$] l [small, dot] -- [half left, looseness=1, momentum=$k$] r [dot] -- [momentum=$p_3$] f,
       ii -- [rmomentum=$p_2$] l -- [half right, looseness=1, rmomentum'=$k + p_1 + p_2$] r -- [momentum=$p_4$] ff,
     };

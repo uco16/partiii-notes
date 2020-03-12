@@ -1,0 +1,167 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 23: March 10}
+
+\section{Effective Field Theory: Chiral Perturbation Theory}%
+\label{sec:effective_field_theory_chiral_perturbation_theory}
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{c | c c c c c c}
+  quarks & u & d & s & c & b & t \\
+  \hline
+  masses & $1.7$-$3.3$MeV & $4.1$-$5.3$MeV & $104$MeV & $1270$MeV & $46$GeV & $173$GeV \\
+  \end{tabular}
+  \caption{Quark masses. $\Lambda_{QCD}$ lies between the $s$ and $c$ quarks.}
+  \label{tab:l23t1}
+\end{table}
+Consider QCD with only the lightest two quarks
+\begin{equation}
+  \mathscr{L} = -\frac{1}{4} (G_{\mu\nu}^{a})^2 + i \overline{u}{}_L \cancel{D} u_L + i \overline{u}{}_R \cancel{D} u_R + i \overline{d}{} \cancel{D} d_L + i \overline{d}{} \cancel{D} d_R - m_u \overline{u}{}_L u_R - m_d \overline{d}{}_L d_R.
+\end{equation}
+We have kinetic and mass terms for the left-handed and right-handed up and down quarks.
+In the massless limit $m_u, m_d \to 0$, the theory has an approximate global \emph{chiral symmetry}:
+\begin{equation}
+  SU(2)_L \times SU(2)_R \times U(1)_V \times U(1)_A,
+\end{equation}
+where $SU(2)_{L, R}$ act on the left-handed and right-handed respectively, and the $U(1)_{V, A}$ are the phases acting on the up and down quarks. The $U(1)_A$ is anomalous. 
+\begin{equation}
+  \begin{pmatrix}
+  u_L \\
+  d_L \\
+  \end{pmatrix} \to g_L
+  \begin{pmatrix}
+  u_L \\
+  d_L \\
+  \end{pmatrix}, \qquad
+  \begin{pmatrix}
+  u_R \\
+  d_R \\
+  \end{pmatrix} \to g_R
+  \begin{pmatrix}
+  u_R \\
+  d_R \\
+  \end{pmatrix}.
+\end{equation}
+$U(1)_V$ gives the baryon number.
+We will here focus on the chiral part $SU(2)_L \times SU(2)_R$.
+
+We can define generators
+\begin{equation}
+  T_V^a \coloneqq T_L^a + T_R^a \to SU(2)_V, \qquad
+  T_A^a \coloneqq T_L^a - T_R^a \to SU(2)_A.
+\end{equation}
+This will take
+\begin{equation}
+  \begin{pmatrix}
+  u \\
+  d \\
+  \end{pmatrix} \to e^{i (\theta^{a}_V T^{a} + \gamma_5 \theta^{a}_{A} T^{a})} 
+  \begin{pmatrix}
+  u \\
+  d \\
+  \end{pmatrix}.
+\end{equation}
+Here the parameters $\theta_{V, A}^{a}$ generate $SU(2)_{V, A}$ respectively.
+
+\subsection{Chiral Symmetry Breaking}%
+\label{sub:chiral_symmetry_breaking}
+
+Under $SU(2)_A$, a hadron is sent to a hadron with opposite parity but other quantum numbers (charge, \dots) unchanged. In particular, this would make these two hadrons degenerate, which has not been observed. As we have seen in Chapter \ref{cha:broken_symmetries}, this degeneracy can be dealt with if $SU(2)_A$ is spontaneously broken.
+Then, we have chiral symmetry breaking:
+\begin{equation}
+  SU(2)_L \times SU(2)_R \to SU(2)_V,
+\end{equation}
+where we have \emph{isospin} $g$ such that
+\begin{equation}
+  \begin{pmatrix}
+  u \\
+  d \\
+  \end{pmatrix} \to g
+  \begin{pmatrix}
+  u \\
+  d \\
+  \end{pmatrix}.
+\end{equation}
+Note further that since the proton consists of $p = u u d$ and the neutron as $n = u d d$, we have an approximate symmetry in nuclear physics
+\begin{equation}
+  \begin{pmatrix}
+  p \\
+  n \\
+  \end{pmatrix} \to g
+  \begin{pmatrix}
+  p \\
+  n \\
+  \end{pmatrix}.
+\end{equation}
+This approximate symmetry, which is observed in nature, fundamentally arises since the masses of the up and down quarks are very small.
+
+The order parameter of chiral symmetry breaking is
+\begin{equation}
+  \langle \overline{u}{}_L u_R \rangle = \langle \overline{d}{}_L d_R \rangle \neq 0.
+\end{equation}
+\begin{remark}
+  We cannot have a vacuum expectation value of quarks that is non-zero. In fact, only Lorentz scalars (like the Higgs) can have non-zero vacuum expectation value without violating Lorentz invariance.
+\end{remark}
+These are the expectation values of \emph{quark condensates} similar to Cooper pairs $\phi \sim e^- e^-$ in superconductivity.
+In order to describe the spontaneous symmetry breaking, we introduce scalar fields $\Sigma_{ij}$, where $i, j$ are $SU(2)_L \times SU(2)_R$ indices, transforming under $SU(2)_L \times SU(2)_R$ as 
+\begin{equation}
+  \Sigma \to g_L \Sigma g_R^{\dagger}, \qquad \Sigma^{\dagger} \to g_R \Sigma^{\dagger} g_L^{\dagger}.
+\end{equation}
+Effective Lagrangian:
+\begin{equation}
+  \mathscr{L} = \Tr(\partial_{\mu} \Sigma) (\partial^{\mu} \Sigma)^{\dagger} + m^2 \Tr \Sigma \Sigma^{\dagger} - \frac{\lambda}{4} \Tr[\Sigma \Sigma^{\dagger} \Sigma \Sigma^{\dagger}]
+\end{equation}
+\begin{equation}
+  \langle \Sigma_{ij} \rangle = \frac{v}{\sqrt{2}} \mathbb{1}_2, \qquad v = \frac{2m}{\sqrt{\lambda}}.
+\end{equation}
+
+\begin{equation}
+  SU(2)_L \times SU(2)_R \to SU(2)_v.
+\end{equation}
+Contact with quarks: $v \sim \Lambda_{QCD} \sim \langle \overline{u}{} u \rangle^{1 / 3}$ since $[u] = 3 / 2$.
+
+Expand around the vacuum
+\begin{equation}
+  \Sigma(x) = \frac{v + \sigma(x)}{\sqrt{2}} e^{2 i T^{a} \pi^{a} (x) / F_\pi},
+\end{equation}
+where $F_\pi$ was included for dimensional reasons. It turns out that $F_\pi = v$ is the vacuum expectation value.
+Here, $\sigma(x)$ is the massive Higgs field, which is invariant under $SU(2)$.
+The $\pi^{a}(x)$ are the massless Goldstone modes, which transform under the adjoint representation
+\begin{equation}
+  \delta \pi^{a} = -\epsilon^{abc} \theta^{b} \pi^{c}.
+\end{equation}
+
+Now we integrate out the massive $\sigma(x)$, since we are interested in the massless Goldstone modes.
+\begin{remark}
+  Although the maths is the same, the focus here is very different to Chapter \ref{cha:broken_symmetries}, where the Goldstone bosons were eaten by the Higgs, whereas here we want to trace them and find out their low energy theory.
+\end{remark}
+At low energies,
+\begin{equation}
+  U(x) = e^{2 i \pi^{a} T^{a} / F_\pi} = \exp[\frac{i}{F_\pi} 
+  \begin{pmatrix}
+   \pi^0 & \sqrt{2} \pi^- \\
+   \sqrt{2} \pi^+ & -\pi^0 \\
+  \end{pmatrix}
+  ],
+\end{equation}
+where for notational convenience we defined $\pi^0 \coloneqq \pi^3$ and $\pi^{\pm} = \frac{1}{\sqrt{2}} (\pi^1 \pm i \pi^2)$.
+
+The chiral Lagrangian is
+\begin{equation}
+  \mathscr{L}_{\chi} = \frac{F_\pi^2}{4} \Tr[D^{\mu} U (D_{\mu} U)^{\dagger}] + \lambda_1 \Tr[(D^{\mu} U) (D_{\mu} U^{\dagger})]^2 + \dots
+\end{equation}
+Expanding the exponentials in $U$:
+\begin{equation}
+  \mathscr{L}_{\chi} = \frac{1}{2} (\partial_{\mu} \pi^0) (\partial^{\mu} \pi^0) + (\partial_{\mu} \pi^+) (\partial^{\mu} \pi^-)^{\dagger} + \frac{1}{F_\pi^2} \left[ -\frac{1}{3} \pi^0 \pi^0 D_{\mu} \pi^+ D^{\mu} \pi^- + \dots \right] + \dots
+\end{equation}
+This is an expansion in powers of
+\begin{equation}
+  \frac{E}{F_\pi} \sim \frac{E}{\Lambda_{QCD}}
+\end{equation}
+valid for energies $E \ll \Lambda_{QCD}$.
+This is called chiral ($\chi$-)perturbation theory.
+You can check that $\pi^0, \pi^{\pm}$ have the same quantum numbers (charge, etc.) as the pion fields.
+Essentially, pions, which are hadronic composites of quarks, can also be understood as (pseudo-)Goldstone bosons of chiral symmetry.
+
+Looking at the quark mass table \ref{tab:l23t1}, we may wonder what happens with $s$, whose mass is still much lower than $c$.  It turns out that we recover the eightfold way of Gell-Mann. In other words, starting from colour symmetry of QCD, we can use the hierarchy of masses of quarks to explain the origin of the approximate symmetries observed historically.

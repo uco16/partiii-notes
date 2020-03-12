@@ -1,0 +1,114 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Lecture 24: March 12}
+
+\section{BRST Symmetry [Becchi--Rouet--Stora--Tyutin]}%
+\label{sec:brst_symmetry_becchi_rouet_stora_tyutin}
+
+The idea is that we have got the gauge-fixing term $\frac{1}{2\xi} (\partial_{\mu} A^{\mu})^2$. Since it fixes the gauge, it breaks gauge invariance.
+But there is still a remnant global symmetry.
+
+\subsection{Abelian Case}%
+\label{sub:abelian_case}
+
+It is easiest if we strip away the non-Abelian details for a moment and look at QED ($U(1)$ gauge theory).
+The gauge-fixed Lagrangian is
+\begin{equation}
+  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{}(\overline{D}{} + m) \psi + \frac{1}{2 \xi} (\partial_{\mu} A^{\mu})^2 - \overline{c}{} \partial^2 c.
+\end{equation}
+Under the infinitesimal gauge transformation
+\begin{subequations}
+  \label{eq:24-1}
+  \begin{align}
+    \psi &\to \psi + i \alpha \psi \quad \text{or} \quad \delta \psi = i \alpha \psi \\
+    A_{\mu} &\to A_{\mu} + \frac{1}{e} \partial_{\mu} \alpha \quad \text{or} \quad \delta A_{\mu} = \frac{1}{e} \partial_{\mu} \alpha,
+  \end{align}
+\end{subequations}
+where $\alpha = \alpha(x)$. The term
+\begin{equation}
+  (\partial_{\mu} A^{\mu})^2 \to (\partial^{\mu} A_{\mu} + \frac{1}{e} \partial^2 \alpha)^2
+\end{equation}
+is only invariant if $\partial^2 \alpha(x) = 0$.
+\begin{remark}
+  The $\overline{c}{} \partial^2 c$ term in $\mathscr{L}$ leads to equations of motion $\partial^2 = 0 = \partial^2 \overline{c}{}$.
+\end{remark}
+Consider restricting our gauge transformations to $\alpha(x) = \theta c(x)$, where $\theta$ is some $x$-independent Grassmann number.  So if we then also transform
+\begin{equation}
+  \overline{c}{}(x) \to \overline{c}{}(x) - \frac{\theta}{e \xi} \partial^{\mu} A_{\mu}(x), \quad \text{or} \quad \delta \overline{c}{} = -\frac{\theta}{e \xi} \partial^{\mu} A_{\mu}(x)
+\end{equation}
+along with the previous ones \eqref{eq:24-1}, then $\mathscr{L}$ is invariant.
+These are the \emph{BRST transformations of QED}.
+
+\subsection{Non-Abelian Case}%
+\label{sub:non_abelian_case}
+
+\begin{equation}
+  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{}(\cancel{D} + m) \psi + \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a})^2 - \overline{c}{} \partial^{\mu} D_{\mu} c.
+\end{equation}
+We now have to account for the fact that the derivative $D_{\mu} c^{a} = \partial_{\mu} c^{a} + g f^{abc} A_{\mu}^{b} c^{c}$.
+Let $\alpha^{a}(x) = \theta c^{a}(x)$. The BRST transformations are
+\begin{align}
+  \delta \psi_i &= i \theta c^a T^{a}_{ij} \psi_{j} \\
+  \delta A_{\mu}^{a} &= \frac{\theta}{g} D_{\mu}^{ab} c^{b} \\
+  \delta \overline{c}{} &= -\frac{\theta}{g \xi} \partial^{\mu} A^{a}_{\mu}.
+\end{align}
+The $A_{\mu}$ in the covariant derivative contributes a term
+\begin{equation}
+  D_{\mu} c^{a} \to D_{\mu} c^{a} - \theta f^{abc} (D_{\mu} c^{b}) c^{c}.
+\end{equation}
+To cancel this, we need a transformation
+\begin{equation}
+  \delta c^{c} = -\frac{\theta}{2} f^{abc} c^{b} c^{c}
+\end{equation}
+to have $\mathscr{L}$ invariant.
+Thus we have a remnant global symmetry (BRST).
+
+Sometimes it is convenient to introduce an auxilliary (non-dynamical) scalar field $B^{a}(x)$ (Nakanishi--Lautrup).
+\begin{equation}
+  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{} (\cancel{D} + m) \psi - \frac{\xi}{2} (B^{a})^2 + B^{a} \partial^{\mu} A^{a}_{\mu} - \overline{c}{} \partial^{\mu} D_{\mu} c.
+\end{equation}
+We recover the original $\mathscr{L}$ by completing the square and integrating over $\pdd{B}$.
+Now
+\begin{align}
+  \delta \overline{c}{} &= \theta B^{a}. \\
+  \delta B^{a} &= 0.
+\end{align}
+
+\subsection{BRST Cohomology}%
+\label{sub:brst_cohomology}
+
+You can show that two successive transformations leave the fields invariant. That is, let $Q = Q_{\text{BRST}}$ be an operator which gives the transformed fields:
+\begin{align}
+  \psi &\to \psi + \theta Q \psi \\
+  A_{\mu} &\to A_{\mu} + \theta Q A,
+\end{align}
+with $Q^2  =0$ for all fields.
+In other words, the BRST operator is \emph{nilpotent}.
+
+\begin{leftbar}
+  The following is non-examinable, proofs out of scope for this course.
+\end{leftbar}
+
+A nilpotent operator $Q$ divides the Hilbert space $\mathcal{H}$ into subspaces:
+\begin{description}
+  \item[closed states:] those states annihilated by $Q$
+    \begin{equation}
+      Q \ket{\Psi} = 0 \implies \ket{\Psi} \in \mathcal{H}_{\text{closed}}
+    \end{equation}
+  \item[exact states:] states in the image of $Q$
+    \begin{equation}
+      \exists \ket{\Phi} \in \mathcal{H} \text{ s.t. } \ket{\Psi} = Q \ket{\Phi} \implies \ket{\Psi} \in \mathcal{H}_{\text{exact}}
+    \end{equation}
+\end{description}
+Note that $\mathcal{H}_{\text{exact}} \subset \mathcal{H}_{\text{closed}}$: If $\ket{\Psi} \in \mathcal{H}_{\text{exact}}$, then $\exists \ket{\Phi} \in \mathcal{H}$ such that
+\begin{equation}
+  Q \ket{\Psi} = Q^2 \ket{\Phi} \stackrel{Q^2 = 0}{=} 0 \implies \ket{\Psi} \in \mathcal{H}_{\text{closed}}.
+\end{equation}
+Physical states are those in the quotient (or moduli) space
+\begin{equation}
+  \mathcal{H}_{\text{phys}} \coloneqq \frac{\mathcal{H}_{\text{closed}}}{\mathcal{H}_{\text{exact}}}.
+\end{equation}
+This is called \emph{BRST cohomology}.
+
+It turns out that only the 2 transverse polarisations belong to $\mathcal{H}_{\text{phys}}$.
+

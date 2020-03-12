@@ -1,0 +1,122 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 22: March 09}
+
+From this generating functional, we obtain the $n$-point function \eqref{eq:n-pt} by differentiating $n$ times with respect to $J$ and then setting $J =0$.
+We usually take this as a heuristic starting point motivating the development of our theory, but we will never actually take it that seriously, so we do not have to worry much about the proper definitions of, say, the path integral measure.
+
+Let us write $X^{\mu}(z, \overline{z}{}) = x^{\mu} + \widetilde{X}(z, \overline{z}{})$ and similarly $\int \pdd{X} = \int \dd[D]{x} \int \pdd{\widetilde{X}}$. It will also be useful to identify the Green's function for the Polyakov action $S_P[X]$.
+The equation of motion for the $X^{\mu}(z, \overline{z}{})$ is just $\partial \overline{\partial}{} X^{\mu}(z, \overline{z}{}) = \Box X^{\mu}(z, \overline{z}{}) = 0$. The Green's function $G$ for the $2$-dimensional Laplacian satisfies
+\begin{equation}
+  -\frac{1}{\pi \alpha'} = \Box G(z, \overline{z}{}; w, \overline{w}{}) = \delta^2(z - w) = \delta(z - w) \delta(\overline{z}{} - \overline{w}{}).
+\end{equation}
+In the language of quantum field theory, $G$ is also the propagator for the theory.
+For brevity, we can write $G$ as
+\begin{equation}
+  \boxed{G(z, w) = -\frac{\alpha'}{2} \ln \abs{z - w}^2}
+\end{equation}
+In the language of conformal field theory, this is the non-trivial part of the OPE between the $X$'s.
+
+We can write $S_P[X] + S_J[J, X]$ in the following way by integrating by parts
+\begin{equation}
+  \frac{1}{2\pi \alpha'} \int_{\Sigma} \dd[2]{z} X^{\mu} \Box X^{\nu} \eta_{\mu\nu} +  \int_{\Sigma} \dd[2]{z} X^{\mu} J_{\mu}.
+\end{equation}
+Splitting $X^{\mu}(z, \overline{z}{}) = x^{\mu} + \widetilde{X}(z, \overline{z}{})$, this becomes
+\begin{equation}
+  \frac{1}{2\pi \alpha'} \int_{\Sigma} \dd[2]{z} \widetilde{X}^{\mu} \Box \widetilde{X}^{\nu} \eta_{\mu\nu} +  \int_{\Sigma} \dd[2]{z} \widetilde{X}^{\mu} J_{\mu} + x^{\mu} \int_{\Sigma} \dd[2]{z} J_{\mu}.
+\end{equation}
+Let us complete the square in $\widetilde{X}^{\mu}$ by defining
+\begin{equation}
+  Y^{\mu}(z) \coloneqq \widetilde{X}^{\mu}(z) - \int_{\Sigma} \dd[2]{w} G(z, w) J^{\mu}(w),
+\end{equation}
+where we use $z$ everywhere to denote $z, \overline{z}{}$ and similarly for $w$. The action becomes
+\begin{equation}
+  \frac{1}{2\pi \alpha'} \int_{\Sigma} \dd[2]{z} Y^{\mu}(z) \Box Y_{\mu}(z) + \frac{1}{2} \int_{\Sigma \times \Sigma} \dd[2]{z} \dd[2]{w} J^{\mu}(z) G(z, w) J_{\mu}(w) + x^{\mu} \int_{\Sigma} \dd[2]{z} J_{\mu}(z),
+\end{equation}
+It is important to note that the second integral integrates over two copies of the worldsheet, with a Green's function tying together the two currents.
+Noting that $\pdd{\widetilde{X}} = \pdd{Y}$, 
+\begin{equation}
+  Z[J] = Z[0]^{-1} \int \dd[D]{x} \pdd{Y} \exp(-\frac{1}{2\pi \alpha'}) \int_{\Sigma} Y \Box Y - \frac{1}{2} \int \dd[2]{z} \dd[2]{w} J \cdot G \cdot J - x \cdot \int \dd[2]{x} J.
+\end{equation}
+We notice that
+\begin{equation}
+  Z[0] = \int \pdd{Y} \exp(-\frac{1}{2 \pi \alpha'} Y \Box Y).
+\end{equation}
+We are left with
+\begin{equation}
+  \label{eq:22-z}
+  \boxed{Z[J] = \exp(-\frac{1}{2} \int_{\Sigma \times \Sigma} \dd[2]{z} \dd[2]{w} J_{\mu}(z) G(z, w) J^{\mu}(w)) \times \int \dd[D]{x} \exp(x^{\mu} \int_\Sigma J_{\mu}(z) \dd[2]{z})}
+\end{equation}
+This is an exact statement, since we know $G$ exactly in the free theory.
+If we have interacting theories, we could only hope for something like this to leading order.
+In quantum field theory, we would now compute correlation functions of the $X^{\mu}$'s by taking functional integrals:
+\begin{equation}
+\langle X^{\mu_1} (z_1)\dots X^{\mu_n}(z_n) \rangle = \left.\frac{\delta }{\delta J_{\mu_1}(z_1)} \dots \frac{\delta }{\delta J_{\mu}(z_n)} Z[J] \right\rvert_{J = 0}.
+\end{equation}
+But actually this is not something we want to do in string theory. In particular, the $X$'s are not BRST invariant. We are instead interested in the vertex operators.
+
+\subsection{Tachyon Scattering}%
+\label{sub:tachyon_scattering}
+
+Start with the correlation function relating to $n$-Tachyon scattering
+\begin{equation}
+  \langle e^{i k_1 \cdot X(z_1, \overline{z}{}_1)} \dots e^{i k_n \cdot X(z_n, \overline{z}{}_n)} \rangle_X,
+\end{equation}
+where $e^{i k \cdot X}$ has weight $(h, \overline{h}{}) = (\frac{\alpha' k^2}{4}, \frac{\alpha' k^2}{4}) \stackrel{!}{=} (1, 1) \implies k^2 = \frac{4}{\alpha'}$.
+How might we evaluate this correlation function using the generating functional $Z[J]$?
+The correlation function may be written as
+\begin{equation}
+  \langle e^{i k_1 \cdot X(z_1, \overline{z}{}_1)} \dots e^{i k_n \cdot X(z_n, \overline{z}{}_n)} \rangle_X
+  =  \int \pdd{X} e^{-S_P[X] S_J[J, X]},
+\end{equation}
+where
+\begin{equation}
+  S_J[J, X] = -i \sum_{j = 0}^n k_{j \mu} X^{\mu}(z_j, \overline{z}{}_j) = -i \int_\Sigma \dd[2]{z} \sum_{j=1}^n k_{j \mu} X^{\mu}(z, \overline{z}{}) \delta^2 (z - z_j).
+\end{equation}
+This is because all of the objects $e^{i k_j \cdot X(z_j)}$ inserted in the function integral are just functions, which commute and can be combined in the exponential in the usual way.
+
+We can write this as
+\begin{equation}
+  S_J[J, X] = \int_{\Sigma} \dd[2]{z} X^{\mu}(z, \overline{z}{}) J_\mu(z, \overline{z}{}), \qquad \text{with} \quad J_{\mu}(z, \overline{z}{}) = -i \sum_{j=0}^{n} k_{j \mu} \delta^2 (z - z_j).
+  \label{eq:22-star}
+\end{equation}
+In other words, the $n$-point tachyon correlation function is exactly $Z[J]$, where $J_{\mu}(z, \overline{z}{})$ is given by \eqref{eq:22-star}.
+
+Our expression \eqref{eq:22-z} for $Z[J]$ included the term
+\begin{equation}
+  x^{\mu} \int_{\Sigma} \dd[2]{z} J_{\mu}(z, \overline{z}{}) = -i x^{\mu} \int_{\Sigma} \dd[2]{z} \sum_{j = 0}^{n} k_{\mu j} \delta^2(z - z_j) = -i x^{\mu} \left( \sum_{j=0}^{n} k_{j \mu} \right).
+\end{equation}
+So the $x^{\mu}$-part of $Z[J]$ gives
+\begin{equation}
+  \int \dd[D]{x} \exp(-i x^{\mu} \sum_{j=0}^{n} k_{\mu j}) = (2\pi)^D \delta \left( \sum_{j=0}^n k_{j \mu} \right),
+\end{equation}
+which tells us that the total spacetime momentum is \emph{conserved} in this process.
+
+We also want to substitute our expression into the other term
+\begin{equation}
+  \label{eq:22-1}
+  \frac{1}{2} \int_{\mathrlap{\Sigma \times \Sigma}} \dd[2]{z} \dd[2]{w} J_{\mu}(z) G(z, w) J^{\mu}(w) = -\frac{1}{2} \sum_{i \neq j} \int \dd[2]{z} \dd[2]{w} k_{i \mu} \delta^2 (z - z_i) k_{j}^{\mu} \delta^2(w - z_j) \times G(z, w).
+\end{equation}
+We have to be a little careful here. Recall that
+\begin{equation}
+  G(z, w) = -\frac{\alpha'}{2} \ln(z - w),
+\end{equation}
+so $G(z, z)$ does not make sense. In particular, this is why we require that $i \neq j$ in \eqref{eq:22-1}.
+Physically, $z_i$ and $z_j$ label the punctures for the vertex operators, which we shall assume to not lie on the same point.
+In a more careful treatment, it is possible to regularise this expression to get something sensible when $z = w$, but we will be content with just assuming $i \neq j$.
+Then this integral is
+\begin{equation}
+  \dots =-\frac{1}{2} \sum_{i \neq j} k_i \cdot k_j G(z_i, z_j) = -\frac{1}{2} \sum_{i \neq j} k_i \cdot k_j \left( -\frac{\alpha'}{2} \ln \abs{z_i - z_j}^2 \right).
+\end{equation}
+Putting this together, we have that our generating functional contains the interesting term
+\begin{align}
+  \exp(\frac{1}{2} \int_{\mathrlap{\Sigma \times \Sigma}} \dd[2]{z} \dd[2]{w} J_{\mu}(z) G(z, w) J^{\mu}(w)) &= \exp(\frac{1}{2} \sum_{i \neq j} \alpha' k_i \cdot k_j \ln \abs{z_i - z_j}) \\
+  &= \prod_{i \neq j} \abs{z_i - z_j}^{\alpha' k_i \cdot k_j / 2}
+  = \prod_{i > j} \abs{z_i - z_j} ^{\alpha' k_i \cdot k_j}.
+\end{align}
+Finally, we need to think about how to evaluate $k_i \cdot k_j$.
+
+We have that the $X$-dependent part of the scattering amplitude (i.e.~without the ghosts) is
+\begin{equation}
+  \langle e^{i k_1 \cdot X(z_1, \overline{z}{}_1)} \dots e^{i k_n \cdot X(z_n, \overline{z}{}_n)}\rangle_X = (2 \pi)^D \prod_{i > j} \abs{z_{i} - z_{j}}^{\alpha' k_i \cdot k_j} \times \delta^D \left( \sum_{j = 0}^n k_{\mu j} \right).
+\end{equation}

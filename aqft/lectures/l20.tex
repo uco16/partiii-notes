@@ -104,9 +104,13 @@ Therefore, we find that the Casimirs for the fundamental and adjoint representat
 One approach would be to take QED and decorate the Lagrangian with indices that tell us under which representation these transform.
 We will get there. However, we will start from a slightly more geometric approach, involving Wilson lines.
 
+\subsection{Abelian Wilson Lines}%
+\label{sub:abelian_wilson_lines}
+
 Let us revisit QED, with fermions transforming under a local $U(1)$ transformation
 \begin{equation}
-  \psi(x) \mapsto e^{i \alpha(x)} \psi(y) \qquad \overline{\psi}{}(x) \mapsto \overline{\psi}{} (x) e^{-i \alpha(x)}.
+  \label{eq:20-trans}
+  \psi(x) \mapsto e^{i \alpha(x)} \psi(y), \qquad \overline{\psi}{}(x) \mapsto \overline{\psi}{} (x) e^{-i \alpha(x)}.
 \end{equation}
 Then $\overline{\psi}{} \gamma \psi$ is not invariant.
 Consider the derivative in the direction of a unit vector $n^{\mu}$
@@ -124,6 +128,7 @@ We want $D_{\mu} \psi$ to transform in the same ways as $\psi$:
 \end{equation}
 We define a \emph{Wilson line} (a parallel transporter) $W(y, x)$ such that its gauge transformation is
 \begin{equation}
+  \label{eq:20-wilsonline}
   W(y, x) \mapsto e^{i \alpha(y)} W(y, x) e^{-i \alpha(x)}.
 \end{equation}
 With the convention $W(x, x) = 1$, the Wilson line becomes a phase
@@ -138,65 +143,78 @@ We define $D_{\mu}$ such that
 \end{equation}
 Then $\overline{\psi}{} \cancel{D} \psi$ is gauge invariant.
 
-For small $a$, define $A_{\mu}$ in the middle of the Wilson line via
+For infinitesimal $a$, define $A_{\mu}$ in the middle of the Wilson line via
 \begin{equation}
+  \label{eq:20-infwilson}
   W(x + an, x) = \exp[i e a n^{\mu} A_{\mu} (x + \frac{1}{2} an)].
 \end{equation}
-Taking the limit in \eqref{eq:20-1}, we find
+Taking the limit in \eqref{eq:20-1}, we find the \emph{gauge covariant derivative}
 \begin{equation}
   D_{\mu} \psi(x) = [\partial_{\mu} - i e A_{\mu}(x)] \psi(x)
 \end{equation}
-with 
+which by construction transforms in the same way as the field
 \begin{equation}
-  D^{\mu} \psi \mapsto e^{i \alpha(x)} D_{\mu} \psi,
+  D_{\mu} \psi \mapsto e^{i \alpha(x)} D_{\mu} \psi.
 \end{equation}
-from this we can find the gauge transformation of $A_{\mu}$ as
+From this we can find the gauge transformation of $A_{\mu}$ as
 \begin{equation}
+  \label{eq:20-gaugetransform}
   A_{\mu}(x) \mapsto A_{\mu}(x) + \frac{1}{e} \partial_{\mu} \alpha(x).
 \end{equation}
-
-Note that 
+We have seen that if a field has the local transformation law \eqref{eq:20-trans}, then its covariant derivative has the same transformation law. Thus the second covariant derivative of $\psi$, as well as its covariant derivative also transform according to \eqref{eq:20-trans}:
 \begin{align}
   D_{\nu} (D_{\mu} \psi) &\mapsto e^{i \alpha(x)} D_{\nu}(D_{\mu} \psi) \\
-  [D_{\mu}, D_{\nu}] \psi &\mapsto e^{i \alpha(x)} [D_{\mu}, D_{\nu}] \psi.
+  [D_{\mu}, D_{\nu}] \psi &\mapsto e^{i \alpha(x)} [D_{\mu}, D_{\nu}] \psi. \label{eq:20-com}
 \end{align}
-Therefore
+In particular, the commutator is not itself a derivative at all:
+\begin{align}
+  [D_{\mu}, D_{\nu}] \psi &= [\partial_{\mu}, \partial_{\nu}] \psi - i e ([\partial_{\mu}, A_{\nu}] - [\partial_{\nu}, A_{\mu}]) \psi - e^2 [A_{\mu}, A_{\nu}] \psi \\
+			  &= -ie (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) \psi.
+\end{align}
+Since the factor $\psi$ on the right-hand side accounts for the entire phase $e^{i \alpha(x)}$ in the transformation law \eqref{eq:20-com}, the field strength $F_{\mu\nu}$ defined as the curvature of the covariant derivative
 \begin{equation}
-  [D_{\mu}, D_{\nu}] = i e (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) = -i e F_{\mu\nu}
+  [D_{\mu}, D_{\nu}] = -i e (\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}) = i e F_{\mu\nu}
 \end{equation}
-is gauge invariant.
+must be gauge invariant in the case of Abelian gauge theory.
 
-In terms of Wilson lines, $F_{\mu\nu}$ appears from gauge invariant \emph{Wilson loops}, which are closed Wilson lines.
-\begin{example}[plaquette]
-  Take the Wilson loop to be a simple square, called a \emph{plaquette}, as shown in Fig.~\ref{fig:plaquette}
-  \begin{figure}[ht]
+\subsection{Abelian Wilson Loops}%
+\label{sub:abelian_wilson_loops}
+
+Wilson lines need not be infinitesimal and the field $A_{\mu}(x)$ not continuous. Let us reverse the logic of the previous section and start from a connection $A_{\mu}$, assumed to have the transformation law \eqref{eq:20-gaugetransform}. One can then show that the expression
+\begin{equation}
+  \label{eq:20-line}
+  W_C(z, y) = \exp[i e \int_C \dd[]{x^{\mu}} A_{\mu}(x)]
+\end{equation}
+transforms according to the defining relation \eqref{eq:20-wilsonline} if the integral is taken along a path $C$ that runs from $y$ to $z$. Then $W_C(z, y)$ is called the \emph{Wilson line}.
+A \emph{Wilson loop} is a closed Wilson line $W_C(z, z)$, which starts and ends at the same point $y = z$. The Wilson loop $C$ encloses a surface $\Sigma$ as shown in \ref{fig:l20f3}. By Stokes' theorem, we can rewrite the Wilson loop as
+\begin{equation}
+  \label{eq:20-loop}
+  W_C(z, z) = \exp[i e \oint_{C} A_{\mu} \dd[]{x^{\mu}}] = \exp[\frac{i e}{2} \int_\Sigma F_{\mu\nu} \dd[]{\sigma^{\mu\nu}}],
+\end{equation}
+where $\dd[]{\sigma^{\mu\nu}}$ is an area element on the surface $\Sigma$.  We see that the field strength $F_{\mu\nu}$ appears from gauge invariant \emph{Wilson loops}.
+Conversely, since (almost) all gauge-invariant functions of $A_{\mu}$ can be built up from $F_{\mu\nu}$, this suggests that the Wilson loop $W_C(y, y)$ is the most general gauge invariant.
+
+\begin{figure}[tbhp]
+  \centering
+  \begin{minipage}[t]{0.4\columnwidth}
     \centering
-    \inkfig[0.4]{plaquette}
+    \inkfig[0.5]{plaquette}
     \caption{Plaquette}
     \label{fig:plaquette}
-  \end{figure}
-  Then
-  \begin{equation}
-    P_{12} (x) = W(y_1, y_4) W(y_4, y_3) W(y_3, y_2) W(y_2, y_1).
-  \end{equation}
-  Expand about small $a$ gives
-  \begin{equation}
-    P_{12}(x) = 1 - i e a^2 F_{12}(x) + O(a^3).
-  \end{equation}
-\end{example}
-Wilson lines need not be small and the field $A_{\mu}(x)$ continuous:
-\begin{equation}
-  W(z, y) = \exp[i e \int_C \dd[]{x^{\mu}} A_{\mu}(x)]
-\end{equation}
-
-Wilson loop if $y = z$, as shown in \ref{fig:l20f3}.
-\begin{figure}[ht]
-  \centering
-  \inkfig[0.3]{l20f3}
-  \caption{l20f3}
-  \label{fig:l20f3}
+  \end{minipage}%
+  \begin{minipage}[t]{0.4\columnwidth}
+    \centering
+    \inkfig[0.4]{l20f3}
+    \caption{Wilson loop $C$}
+    \label{fig:l20f3}
+  \end{minipage}
 \end{figure}
-Stokes' theorem
-\begin{equation}
-  \oint_{c = \partial \Sigma} A_{\mu} \dd[]{x^{\mu}} = \frac{1}{2} \int_\Sigma F_{\mu\nu} \dd[]{\sigma^{\mu\nu}}
-\end{equation}
+\begin{example}[infinitesimal plaquette]
+  Take the Wilson loop to be a square, called a \emph{plaquette}, as shown in Fig.~\ref{fig:plaquette}.
+  Taking the side length $a$ to be infinitesimal, we can use the infinitesimal expression \eqref{eq:20-infwilson} for the Wilson line to expand the infinitesimal loop
+  \begin{align}
+    P_{12} (x) &= W(y_1, y_4) W(y_4, y_3) W(y_3, y_2) W(y_2, y_1) \\
+    &\approx 1 - i e a^2 F_{12}(x) + O(a^3).
+  \end{align}
+  Since the Wilson loop is gauge invariant, this is another way to view the gauge invariance of $F_{\mu\nu}$ geometrically.
+\end{example}

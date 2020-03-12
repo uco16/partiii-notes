@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{64.93404431bp}%
+    \setlength{\unitlength}{125.29369377bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.81770143)%
+  \begin{picture}(1,0.98469115)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
+    \put(0.48947484,0.44668149){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{14.39726543}\smash{\begin{tabular}[t]{c}$\Sigma = \partial C$\end{tabular}}}}%
+    \put(0.46768384,0.13421774){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$y$\end{tabular}}}}%
+    \put(0.96397137,0.89284562){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{14.39726543}\smash{\begin{tabular}[t]{c}$C$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l20f3.pdf}}%
-    \put(0.42320585,0.41810222){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\Sigma$\end{tabular}}}}%
-    \put(0.41225407,0.03844045){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$y$\end{tabular}}}}%
-    \put(0.68969941,0.67729454){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$C$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{l20f3.pdf}}%
   \end{picture}%
 \endgroup%

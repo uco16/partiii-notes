@@ -94,12 +94,20 @@ Recall the Feynman propagator
 \end{equation}
 The one-loop contribution is
 \begin{equation}
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=b to c, layered layout] {
-      a [large, dot, label=$x_1$] -- [boson] b [small, dot, label=0:$x$] -- [fermion, half left, looseness=1] c [small, dot, label=180:$y$] -- [fermion, half left, looseness=1] b,
-      c --[boson] d [large, dot, label=$x_2$]
-    };
-  \end{gathered}
+  \begin{tikzpicture}
+    \begin{feynman}
+      %\vertex[large, dot, label=0:$x$] (x) {};
+      \vertex[label=$x_1$, large, dot] (a) {};
+      \vertex[right=of a, label=0:$x$, small, dot] (b) {};
+      \vertex[right=of b, label=180:$y$, small, dot] (c) {};
+      \vertex[right=of c, label=$x_2$, large, dot] (d) {};
+      %\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+      \diagram* {
+	(a) -- [boson] (b) -- [fermion, half left, looseness=1] (c) -- [fermion, half left, looseness=1] (b),
+	(c) -- [boson] (d),
+      };
+    \end{feynman}
+  \end{tikzpicture}
 \end{equation}
 This contributes
 \begin{align}
@@ -114,38 +122,38 @@ and we can see that the $(-1)^3 = (-1)$ contributes the minus sign for the fermi
 Quantum corrections to the photon propagator
 \begin{align}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
       a --[boson] b [blob] --[boson] c,
     };
   \end{gathered}
   &=
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
       a -- [boson] b,
     };
   \end{gathered}
   + 
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
       a --[boson] b [blob, label=$1PI$] -- [boson] c,
     };
   \end{gathered}
   + \dots \\
   &= \frac{1}{1 - \Pi(q)},
 \end{align}
-where 
+where we have the truncated diagrams
 \begin{equation}
   \Pi^{\mu\nu}(q) = 
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [boson, dotted] b [blob, label=$1PI$] -- [boson, dotted] c,
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [boson, insertion={[size=4pt]0.5}] b [blob, label=$1PI$] -- [boson, insertion={[size=4pt]0.5}] c,
     };
   \end{gathered}
   = 
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [dotted, boson, edge label=$\mu$, momentum'=$_{\vb{q}}$] b -- [fermion, half left, looseness=1, momentum=$p$] c -- [fermion, half left, looseness=1, momentum=$p - q$] b,
-      c -- [boson, dotted, edge label=$\nu$, momentum'=$q$] d,
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+      a -- [boson, insertion={[size=4pt]0.5}, edge label=$\mu$, momentum'=$_{\vb{q}}$] b -- [fermion, half left, looseness=1, momentum=$p$] c -- [fermion, half left, looseness=1, momentum=$p - q$] b,
+      c -- [boson, insertion={[size=4pt]0.5}, edge label=$\nu$, momentum'=$q$] d,
     };
   \end{gathered}
   + O( \text{2-loop} ).

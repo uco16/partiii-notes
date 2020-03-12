@@ -2,46 +2,104 @@
 % course: aqft
 \lhead{Lecture 21: March 05}
 
-\subsection{Nonabelian Case}%
-\label{sub:nonabelian_case}
+\subsection{Non-Abelian Case}%
+\label{sub:non_abelian}
 
-Take $V(X) \in G$, such as $SU(N)$, in the fundamental representation
-\begin{align}
-  \psi(x) &\to V(x) \psi(x), \\
-  \overline{\psi}{}(x) &\to \overline{\psi}{}(x) V^{\dagger}(x).
-\end{align}
-We have the Wilson line to cancel out differences in transformations at different points
+Both the Wilson line and the Wilson loop can be generalised to the non-Abelian case.
+Take $V(x) \in G$ to be the fundamental representation of the gauge group $G$, such as $SU(N)$, acting on the $n$-plet of fields $\psi$ as
 \begin{equation}
+  \psi(x) \to V(x) \psi(x).
+\end{equation}
+We want to construct the Wilson line that transforms in such a way to cancel out differences in transformations at different points
+\begin{equation}
+  \label{eq:20-nonabelian}
   W(y, x) \to V(y) W(y, x) V^{\dagger}(x)
 \end{equation}
 with normalisation $W(x, x) = \mathbb{1}$, the identity of $G$.
 
-Consider a small Wilson line (small $a$)
+Consider an infinitesimal Wilson line (small $a$)
 \begin{equation}
   W(x + an, x) = 1 + i g a n^{\mu} A_{\mu}^{a} T^{a}.
 \end{equation}
-We use the shorthand $A_{\mu} = A^{a}_{\mu} T^{a}$.
-To find the gauge transformation $A_{\mu}^{a} \to (A'_{\mu})^{a}$, we require that
+
+Using the same methods as before, we find that the associated covariant derivative is
+\begin{equation}
+  D_{\mu} = \partial_{\mu} - i g \mathcal{A}_{\mu},
+\end{equation}
+where we use the shorthand $\mathcal{A}_{\mu} \coloneqq A_{\mu}^{a} T^{a}$ and $T^{a}$ are the generators of the Lie algebra $\mathfrak{g}$.
+To find the form of the gauge transformation $\mathcal{A}_{\mu} \to \mathcal{A}'_{\mu}$, we require as in the Abelian case that the covariant derivative transforms in the same way as the field $\psi$:
 \begin{align}
   D_{\mu}\psi \to D'_{\mu} \psi' &= V D_{\mu} \psi \\
-  (\partial_{\mu} - i g A'_{\mu}) V\psi &= V(\partial_{\mu} - i g A_{\mu} \psi) \\
-  \partial_{\mu} V - i g A'_{\mu} V &= -i g V A_{\mu} \\
-  A'_{\mu} &= V A_{\mu} V^{-1} - \frac{i}{g} (\partial_{\mu} V) V^{-1}.
+  (\partial_{\mu} - i g \mathcal{A}'_{\mu}) V\psi &= V(\partial_{\mu} - i g \mathcal{A}_{\mu} \psi).
 \end{align}
-
-For infinitesimal transformations, we want to expand $V(x)$ in a small parameter $\alpha$
+Solving for $\mathcal{A}'_{\mu}$ gives
+\begin{equation}
+  \mathcal{A}'_{\mu} = V A_{\mu} V^{-1} - \frac{i}{g} (\partial_{\mu} V) V^{-1} = V \left(\frac{i}{g} \stackrel{\leftarrow}{D}_{\mu}\right) V^{-1}.
+\end{equation}
+Under an infinitesimal transformation
+\begin{equation}
+  V(x)= \mathbb{1} + i \alpha^{a}(x) T^{a} + O(\alpha^2),
+\end{equation}
+the fields $\psi$ and $A^{a}_{\mu}$ transform as
 \begin{align}
-  V(x) &= 1 + i \alpha^{a}(x) T^{a} + O(\alpha^2) \\
-  \psi(x) &\to (1 + i \alpha^{a}(x) T^{a})\psi \\
-  A^{a}(x) &\to A^a (x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) + f^{abc} A_{\mu}^{b} (x) \alpha^{c}(x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) \\
+  \psi(x) &\to (\mathbb{1} + i \alpha^{a}(x) T^{a})\psi \\
+  A^{a}_{\mu}(x) &\to A^a_{\mu} (x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) + f^{abc} A_{\mu}^{b} (x) \alpha^{c}(x) + \frac{1}{g} \partial_{\mu} \alpha^{a}(x) \\
 	   &= A^{a}(x) +\frac{1}{g} [\partial_{\mu} \delta^{ac} - i g A^{b}_\mu(x) (\underbrace{-i f^{bac}}_{(T^{b}_{\text{adj}})^{ac}})] \alpha^{c}(x) \\
 	   &\coloneqq A^{a}_{\mu} (x) + \frac{1}{g} D_{\mu}^{ac} \alpha^{c}(x),
 \end{align}
 where we defined the gauge covariant derivative in the adjoint representation as 
 \begin{equation}
-  D_{\mu}^{ac} = \left[ \partial_{\mu} \delta^{ac} - i g A_{\mu}^{b} (T^{b} _{\text{adj}})^{ac} \right].
+  D_{\mu}^{ab} = \left[ \delta^{ab} \partial_{\mu} - i g A_{\mu}^{c} (T^{c} _{\text{adj}})^{ab} \right].
 \end{equation}
 This justifies our previous statement that the gauge fields transform in the adjoint representation.
+
+\subsection{Non-Abelian Wilson Loops}%
+\label{sub:non_abelian_wilson_lines}
+
+\begin{leftbar}
+  Not lectured. Taken from \cite[Chapter 15.3]{peskin}.
+\end{leftbar}
+We want to find the \emph{finite} Wilson line that generalises \eqref{eq:20-line} to the non-Abelian case.
+Since the matrices $M$ do not in general commute at different points, and their exponentials combine non-trivially (according to the Baker--Campbell--Hausdorff formula), it would not be correct to simply replace $A_{\mu} \to A_{\mu}^{a} T^{a}$ in the exponent of the Abelian Wilson line \eqref{eq:20-line}.
+Instead, we must order the matrices in a particular way.
+
+Let $t$ be a parameter of the path $C$, running from $0$ at $x = y$ to $1$ at $x = z$.
+Then we define the Wilson line as the power-series expansion of the exponential, with the matrices in each term ordered so that the higher values of $s$ stand to the left. This prescription is called \emph{path-ordering} and is denoted by the symbol $P$.
+The non-Abelian Wilson line is
+\begin{equation}
+  W_C(z, y) = P \left\{ \exp[i g \int_0^1 \dd[]{t} \dv{x^{\mu}}{t} A^{a}_{\mu}(x(t)) T^{a}] \right\}.
+\end{equation}
+The expression for the non-Abelian Wilson line is analogous to the time-ordered exponential in Dyson's formula for the interaction-picture propagator, which we have met in the \emph{Quantum Field Theory} lectures last term.
+
+Now what is the natural generalisation of the Abelian Wilson loop \eqref{eq:20-loop}?
+Since the matrices do not commute, the Wilson line $W_C(y, y)$ associated with a closed path returning to $y$ is not gauge invariant, but transform as
+\begin{equation}
+  \label{eq:21-wnonabtrans}
+  W_C(y, y) \to V(y) W_C(y, y) V^{-1}(y).
+\end{equation}
+We therefore define the Wilson loop for a non-Abelian gauge theory as the \emph{trace} of the non-Abelian Wilson line around a closed path:
+\begin{equation}
+  \tr W_C(y, y) = \tr P \left\{ \exp[i g \int_0^1 \dd[]{t} \dv{x^{\mu}}{t} A^{a}_{\mu}(x(t)) T^{a}] \right\}.
+\end{equation}
+
+\begin{example}[infinitesimal plaquette (non-Abelian)]
+  Let us again consider the infinitesimal square shown in Fig.~\ref{fig:plaquette}.
+  In this case, it turns out that one finds
+  \begin{equation}
+    P_{12}(x) = W_C(x, x) = 1 + i g a^2 F^{a}_{12} T^{a} + O(a^3),
+  \end{equation}
+  where $F^{a}_{\mu\nu}$ is given by the full non-Abelian expression \eqref{eq:nonabf}.
+  Expanding the transformation law \eqref{eq:21-wnonabtrans} to order $a^2$, one recovers the transformation law \eqref{eq:nonabftrans} for $F^{a}_{\mu\nu}$.
+  
+  For $G =SU(2)$, where $T^{a} = \sigma^{i}$, we can evaluate the Wilson loop $\tr W_C(x, x)$ more explicitly, finding
+  \begin{equation}
+    \tr W_C(x, x) = 2 - \frac{1}{4} g^2 a^2 (F^{a}_{12})^2 + O(a^5).
+  \end{equation}
+  The gauge invariance of $(F^{a}_{\mu\nu})^2$ can therefore be derived from this geometrical argument, just as in the Abelian case.
+\end{example}
+
+\subsection{Non-Abelian Gauge Invariant Lagrangians}%
+\label{sub:gauge_invariant_lagrangians}
 
 We define the field strength tensor through the commutator of the covariant derivatives
 \begin{equation}
@@ -49,13 +107,19 @@ We define the field strength tensor through the commutator of the covariant deri
 \end{equation}
 Then the field strength tensor $F_{\mu\nu}= F_{\mu\nu}^{a} T^{a}$ has components
 \begin{equation}
-  F_{\mu\nu}^{a} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} + g f^{abc} A^{b}_{\mu} A_{\nu}^{c}.
+  \label{eq:nonabf}
+  F_{\mu\nu}^{a} = \partial_{\mu} A_{\nu}^{a} - \partial_{\nu} A_{\mu}^{a} + g f^{abc} A^{b}_{\mu} A_{\nu}^{c}.
 \end{equation}
 Under an infinitesimal transformation,
 \begin{equation}
+  \label{eq:nonabftrans}
   F_{\mu\nu}^{a} \to F_{\mu\nu}^{a} - f^{abc} \alpha^{b} F^{c}_{\mu\nu},
 \end{equation}
-so $F_{\mu\nu}^{a}$ is not gauge invariant! However, $F_{\mu\nu}^{a} (F^{a})^{\mu\nu} = (F^{a})^2$ is gauge-invariant.
+so $F_{\mu\nu}^{a}$ is not gauge invariant! However, 
+\begin{equation}
+  F_{\mu\nu}^{a} (F^{a})^{\mu\nu} = (F^{a})^2
+\end{equation}
+is gauge-invariant.
 We have a Lagrangian
 \begin{align}
   \mathscr{L} &= \underbrace{\frac{1}{4} (F^{a})^2}_{\mathclap{}} + \underbrace{\overline{\psi}{}_{i} \left( \cancel{\partial} \delta_{ij} - i g \cancel{A}^a T^{a}_{ij} + m \delta_{ij} \right) \psi_{j}}_{\mathclap{}} \\
@@ -105,8 +169,8 @@ This generalises to $n$ variables as
 \end{equation}
 In gauge theory, these are really path integrals. The above form means that we can somehow separate the path integral $\pdd{A}$ into the physical fields $x$ and the gauge-equivalent degrees of freedom $y$.
 
-\subsection{Gauge Theory}%
-\label{sub:gauge_theory}
+\subsection{Gauge Theory and Fadeev--Popov Determinant}%
+\label{sub:gauge_theory_and_fp_determinant}
 
 Let us now apply this to gauge field theory. The gauge-fixing condition, generalising $\partial_{\mu} A^{\mu} = 0$ from QED, is
 \begin{equation}

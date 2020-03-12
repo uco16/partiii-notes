@@ -87,7 +87,7 @@ The propagators are:
 The interactions come from writing out $D_{\mu}$ and $F_{\mu\nu}$:
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, small] {
       a [particle=\(\nu \text{, } b\)] -- [gluon, momentum=$p$] b,
       u [particle=\(\mu \text{, } a\)] -- [gluon, momentum=$k$] b,
       d [particle=\(\rho \text{, } c\)] -- [gluon, momentum=$q$] b,
@@ -98,7 +98,7 @@ The interactions come from writing out $D_{\mu}$ and $F_{\mu\nu}$:
 from term $g f^{abc} (\partial_{\mu} A^{a}_{\nu}) A^{\mu, b} A^{\nu, c}$.
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to u] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to u, small] {
       a [particle=\(\nu \text{, } b\)] -- [gluon] b,
       u [particle=\(\mu \text{, } a\)] -- [gluon] b,
       d [particle=\(\rho \text{, } c\)] -- [gluon] b,
@@ -111,7 +111,7 @@ from the $(f^{abc} A_{\mu}^{b} A_{\nu}^{c})(f^{ade} A^{\mu, d} A^{\nu, e})$ term
 Moreover, taking $T_{ij}$ to be in the fundamental representation, we have
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=i to j] {
+    \feynmandiagram[transform shape, scale=1][horizontal=i to j, small] {
       i [particle=\(i\)] -- [fermion] v -- [fermion] j [particle=\(j\)],
       u [particle=\(\mu \text{, }a\)] -- [gluon] v,
     };
@@ -119,7 +119,7 @@ Moreover, taking $T_{ij}$ to be in the fundamental representation, we have
   = ig \gamma^{\mu} T^{a}_{ij},
   \qquad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=i to j] {
+    \feynmandiagram[transform shape, scale=1][horizontal=i to j, small] {
       i [particle=\(b\)] -- [ghost] v -- [ghost, momentum=$p$] j [particle=\(a\)],
       u [particle=$\mu \text{, } c$] -- [gluon] v,
     };
@@ -131,48 +131,47 @@ where the momentum $p^{\mu}$ is the one associated with the outgoing ghost $\ove
 \subsection{Vacuum Polarisation}%
 \label{sub:vacuum_polarisation}
 
-We have $5$ diagrams, all of which are treated as truncated:
+We have $5$ diagrams, all of which are truncated:
 \begin{align}
   &\text{Fermion loop:} & \mathfrak{M}_F^{ab, \mu \nu} &= 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, fermion] c -- [half left, looseness=1, momentum=$p - q$, fermion] b,
-      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+      a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, fermion] c -- [half left, looseness=1, momentum=$p - q$, fermion] b,
+      c -- [gluon, insertion={[size=5pt]0.5}] d [particle=\(\nu \text{, } b\)],
     };
-  \end{gathered} \\
+  \end{gathered} \label{eq:22-fermionloop} \\
   &\text{Gauge loops:} & \mathfrak{M}_3^{ab, \mu \nu} &= 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, gluon] c -- [half left, looseness=1, momentum=$p - q$, gluon] b,
-      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+      a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, gluon] c -- [half left, looseness=1, momentum=$p - q$, gluon] b,
+      c -- [gluon, insertion={[size=5pt]0.5}] d [particle=\(\nu \text{, } b\)],
     };
-  \end{gathered} \\
+  \end{gathered} \label{eq:22-gaugeloop} \\
   & & \mathfrak{M}_4^{ab, \mu \nu} &= 
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [loop, min distance=2cm, in=135, out=45, gluon] b,
-      b -- [gluon] d [particle=\(\nu \text{, } b\)],
-    };
-  \\
+      a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b -- [loop, min distance=2cm, in=135, out=45, gluon] b,
+      b -- [gluon, insertion={[size=5pt]0.5}] d [particle=\(\nu \text{, } b\)],
+    }; \label{eq:22-gaugelooptwo}\\
   &\text{Ghost loop:} & \mathfrak{M}_{\text{gh}}^{ab, \mu \nu} &= 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(\mu \text{, } a\)] -- [gluon] b -- [half left, looseness=1, momentum=$p$, ghost] c -- [half left, looseness=1, momentum=$p - q$, ghost] b,
-      c -- [gluon] d [particle=\(\nu \text{, } b\)],
+      a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, ghost] c -- [half left, looseness=1, momentum=$p - q$, ghost] b,
+      c -- [gluon, insertion={[size=5pt]0.5}] d [particle=\(\nu \text{, } b\)],
     };
-  \end{gathered} \\
+  \end{gathered} \label{eq:22-ghostloop} \\
   &\text{Counterterm:} & \mathfrak{M}_{ct}^{ab, \mu \nu} &=
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(\mu \text{, } a\)] -- [gluon] b [square dot] -- [gluon] c [particle=\(\nu \text{, } b\)],
+      a [particle=\(\mu \text{, } a\)] -- [gluon, insertion={[size=5pt]0.5}] b [square dot] -- [gluon, insertion={[size=5pt]0.5}] c [particle=\(\nu \text{, } b\)],
     };
   \end{gathered}
 \end{align}
 
-The fermion loop is as in QED: Using dimensional regularisation, we have
+The fermion loop \eqref{eq:22-fermionloop} is as in QED: Using dimensional regularisation, we have
 \begin{equation}
   \mathfrak{M}_F^{ab \mu \nu} = - \Tr(T^{a} T^{b}) (ig)^2 \mu^{\epsilon} \int \bdd[d]{p} \frac{\Tr[(-i \cancel{p} + m) \gamma^{\mu} (-i (\cancel{p} - \cancel{q}) \gamma^\nu)]}{[(p - q)^2 + m^2][p^2 + m^2]}.
 \end{equation}
-Now
+Now the generators obey the trace relation
 \begin{equation}
   \Tr(T^{a} T^{b}) = T_F \delta^{ab} = \frac{1}{2} \delta^{ab},
 \end{equation}

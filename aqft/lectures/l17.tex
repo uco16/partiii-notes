@@ -77,14 +77,21 @@ where $Z_1 = Z_e Z_2 \sqrt{Z_3}$. Let $Z_k \coloneqq 1 + \delta Z_k$, with $k = 
     \delta Z_e = -\frac{1}{2} \delta Z_3.
   \end{equation}
 \end{remark}
-Thus we look at the counterterm diagram, which gives a new 2-pt interaction:
+Thus we look at the counterterm diagram, which gives a new 2-point interaction:
 \begin{align}
   S_{\text{ct}} &\supset \int \dd[4]{x} \frac{\delta S_3}{4} F^2,\\
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [dotted, boson] b [small, square dot] -- [dotted, boson] c,
-    };
-  \end{gathered}
+  \begin{tikzpicture}
+    \begin{feynman}
+      %\vertex[large, dot, label=0:$x$] (x) {};
+      \vertex (a) {};
+      \vertex[right=of a, square dot] (b) {};
+      \vertex[right=of b] (c) {};
+      %\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+      \diagram* {
+	(a) -- [boson, insertion={[size=5pt]0.5}] (b) -- [boson, insertion={[size=5pt]0.5}] (c),
+      };
+    \end{feynman}
+  \end{tikzpicture}
   &= - [k^2 \delta^{\mu\nu} - (1 - \xi) k^{\mu} k^{\nu}] \delta Z_3,
 \end{align}
 where $\xi = 0,1$ in Landau / Feynman gauge respectively.
@@ -95,19 +102,26 @@ In the $\overline{\text{MS}}{}$ scheme,
 \end{equation}
 Now $\int_0^1 \dd{x} (1 - x) x = \frac{1}{6}$, so $(\Pi_1^{\mu\nu}(q))_{\text{ren}}$, calculated in the ``renormalised perturbation theory'' yields:
 \begin{equation}
-  (\Pi_1^{\mu\nu}(q))_{\text{ren}} = 
+  [\Pi_1^{\mu\nu}(q)]_{\text{ren}} = 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [boson, dotted] b [small, dot] -- [fermion, half left, looseness=1, edge label=$\Pi_1(q^2)\rvert_{g(\mu)}$] c [small, dot] -- [fermion, half left, looseness=1] b,
-      c -- [boson, dotted] e,
+      a -- [boson, insertion={[size=5pt]0.5}] b [small, dot] -- [fermion, half left, looseness=1, edge label=$\Pi_1(q^2)\rvert_{g(\mu)}$] c [small, dot] -- [fermion, half left, looseness=1] b,
+      c -- [boson, insertion={[size=5pt]0.5}] e,
     };
   \end{gathered}
   + 
-  \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [boson, dotted] b [small, square dot] -- [boson, dotted] c,
-    };
-  \end{gathered}
+  \begin{tikzpicture}
+    \begin{feynman}
+      %\vertex[large, dot, label=0:$x$] (x) {};
+      \vertex (a) {};
+      \vertex[right=of a, square dot] (b) {};
+      \vertex[right=of b] (c) {};
+      %\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+      \diagram* {
+	(a) -- [boson, insertion={[size=5pt]0.5}] (b) -- [boson, insertion={[size=5pt]0.5}] (c),
+      };
+    \end{feynman}
+  \end{tikzpicture}
 \end{equation}
 with 
 \begin{equation}

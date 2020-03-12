@@ -1,0 +1,163 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 14: March 09}
+
+\chapter{Fibre Bundles and Connections}%
+\label{cha:fibre_bundles_and_connections}
+
+\begin{leftbar}
+  Exams: answer two out of three questions. He lectured from 2012-2016.
+  Exam revision class in April.
+\end{leftbar}
+
+We will introduce some rather formal mathematics to show that we can also think of Yang--Mills theory as a theory of connections on principal bundles with gauge group $G$ as the fibre.
+
+\section{Fibre Bundles}%
+\label{sec:fibre_bundles}
+
+Without getting into the definitions just yet, let us give a bit more of an overview.
+\emph{Fibre bundles} are manifolds that locally look like a product of manifolds.
+Examples include the cylinder $S^1 \times \mathbb{R}$ and the Möbius band, which are illustrated in Fig.~\ref{fig:fibre-bundles}.
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{fibre-bundles}
+  \caption{Fibre bundles over $B = S^1$ with a fibre $\mathbb{R}$.}
+  \label{fig:fibre-bundles}
+\end{figure}
+These are locally equivalent, but globally different, since the Möbius band has a half twist while the cylinder is the trivial bundle. The Möbius band is non-trivial. 
+
+\begin{definition}[fibre bundle]
+  A \emph{fibre bundle} $\{E, \pi, B, F, G\}$ is a structure consisting of:
+  \begin{itemize}
+    \item a manifold $E$, called the \emph{total space} of the bundle,
+    \item a smooth map $\pi \colon E \to B$, called the \emph{projection}, where
+    \item $B$, called the \emph{base space} is also a manifold
+    \item $\forall x \in B$, $\exists U_{\alpha} \subset B$ s.t.~$x \in U_{\alpha}$ and $\exists$ diffeomorphism 
+      \begin{equation}
+	\phi_{\alpha} \colon U_{\alpha} \times F \to \pi^{-1}(U_{\alpha}), \qquad \text{s.t.} \pi(\phi_{\alpha}(x, f)) = x,
+      \end{equation}
+      where $(x, f) \subset U_{\alpha} \times F$.
+      The manifold (!) $F$ is called a \emph{fibre} and $\phi_{\alpha}$ are called \emph{trivialisations}.
+    \item transition functions: for $x \in U_{\alpha} \cap U_{\beta}$,
+      \begin{equation}
+        \phi_{\alpha\beta} \coloneqq \phi^{-1}_{\alpha} \circ \phi_{\beta} \colon F \to F,
+      \end{equation}
+      which are elements $\phi_{\alpha\beta} \in G$, where the Lie group $G$ is called the \emph{structure group} of $E$.
+      \begin{enumerate}[1)]
+	\item $\phi_{\alpha\alpha} = \text{Id}$ (no summation over $\alpha$)
+	\item cocycle relation: for $x \in U_{\alpha} \cap U_{\beta} \cap U_{\gamma}$,
+	  \begin{equation}
+	    \phi_{\alpha\beta} \phi_{\beta\gamma} = \phi_{\alpha\gamma}.
+	  \end{equation}
+      \end{enumerate}
+  \end{itemize}
+\end{definition}
+
+For the example above, the total spaces $E$ are the cylinder and the Möbius band, the base space $B$ is a circle.
+The fibre $F$ in both cases is a real line $\mathbb{R}$.
+
+\begin{definition}[principal bundle]
+  A \emph{principal bundle} has $F = G$, and the Lie group $G$ acts on $F$ by left-translations.
+\end{definition}
+\begin{definition}[vector bundle]
+  A \emph{vector bundle} has $F = \mathbb{R}^n$ (real vector bundle) or $F = \mathbb{C}^n$ (complex vector bundle) and $G = GL(n, \mathbb{R})$ or $GL(n, \mathbb{C})$.
+\end{definition}
+\begin{definition}[trivial bundle]
+  A \emph{trivial bundle} has $E = B \times F$.
+\end{definition}
+
+\begin{example}[tangent bundle]
+  This is an example of a bundle that we have already met. The \emph{tangent bundle}
+  \begin{align}
+    &\text{total space:} & E &= TB = \bigcup_{x} T_x B, \\
+    &\text{fibre:} & F_x &= \pi^{-1}(x) = \mathbb{R}^n, \\
+    & & E &= \{x, \vb{v}\} \qquad (\text{position}, \text{velocity}), \\
+    &\text{group:} & G &= GL(n, \mathbb{R}).
+  \end{align}
+\end{example}
+\begin{example}[magnetic monopole bundle]
+  The \emph{magnetic monopole bundle} is an example of a principal bundle:
+  \begin{align}
+    &\text{base manifold:} & B &= S^2 = U_+ \cap U_-, \\
+    &\text{fibre:} & F &= U(1), \\
+  \end{align}
+  with coordinate $e^{i \psi}$. Local coordinates $(\theta, \phi)$ on $S^2$
+  \begin{equation}
+    0 \leq \theta \leq \pi, \qquad 0 \leq \phi \leq 2\pi.
+  \end{equation}
+  \begin{figure}[tbhp]
+    \centering
+    \inkfig[0.3]{l14f2}
+    \caption{}
+    \label{fig:l14f2}
+  \end{figure}
+  The base manifold is covered by the open sets $U_+, U_-$ shown in Fig.~\ref{fig:l14f2}.
+  \begin{align}
+    U_+ \times U(1):& \qquad (\theta, \phi, e^{i \psi_+}) \\
+    U_- \times U(1):& \qquad (\theta, \phi, e^{i \psi_-}),
+  \end{align}
+  on $U_+ \cap U_-$, 
+  \begin{equation}
+    e^{i \psi_-} = e^{i n \phi} e^{i \psi_+}.
+  \end{equation}
+  Then $n$ must be an integer for $E$ to be a manifold.
+  In fact, the \emph{monopole number} $n$ classifies $U(1)$ principal bundles over $S^2$.
+  \begin{itemize}
+    \item $n = 0$, $E = S^2 \times S^1$ (trivial bundle)
+    \item $n = 1$, $E = S^3 \times S^1$ (Hopf fibration)
+  \end{itemize}
+\end{example}
+
+\section{Hopf Fibration}%
+\label{sec:hopf_fibration}
+
+There are two descriptions of the Hopf fibration
+\begin{enumerate}[1.]
+  \item Let us take $E = SU(2)$, then
+    \begin{equation}
+      B = \frac{SU(2)}{U(1)} \simeq S^2,
+    \end{equation}
+    where $U(1) \subset SU(2)$ diagonal.
+    Let us think of $S^3$ as
+    \begin{equation}
+      S^3 = \left\{ (z_1, z_2) \in \mathbb{C}^2 \suchthat \abs{z_1}^2 + \abs{z_2}^2 = 1 \right\}.
+    \end{equation}
+    We take the right action of $S^1$ on $SU(2)$ to be
+    \begin{equation}
+      (z_1, z_2) \to (z_1 e^{i \alpha}, z_2 e^{i \alpha}).
+    \end{equation}
+    Since the sum of the norms is still the same, this maps from $S^3 \to S^3$.
+    This fixes the ratio
+    \begin{equation}
+      \frac{z_1}{z_2} \in \mathbb{C P}^1 \simeq S^2.
+    \end{equation}
+  \item Any complex line
+    \begin{equation}
+      A_1 z_2 + A_2 z_2 = 0
+    \end{equation}
+    through $0 \in \mathbb{C}^2$, which can be seen as a two-dimensional plane in $\mathbb{R}^4$, intersects $S^3 \subset \mathbb{C}^2 \simeq \mathbb{R}^4$ in a circle $S^1$, which we take to be the fibre over a point $[z_2, z_2] \in \mathbb{C P}^1 \simeq S^2$.
+\end{enumerate}
+
+\section{Section}%
+\label{sec:section}
+
+\begin{definition}[section]
+  A \emph{section} $s$ of a bundle $\pi \colon E \to B$ is a map $s \colon B \to E$ such that $\pi \circ s = \text{Id}$.
+\end{definition}
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{l14f3}
+  \caption{A section $s$ of a bundle.}
+  \label{fig:l14f3}
+\end{figure}
+
+\begin{claim}
+  A principal bundle is trivial iff it admits a global section.
+\end{claim}
+\begin{proof}
+  Suppose $s = s(x)$ is this section.
+  Then $\forall p \in G_x \simeq \pi^{-1}(x)$ may be represented as $p = s(x) R_{g(p)}$, where $R_{g(p)}$ is the right action of $G$ on $G_x$ moving $S(x)$ to $p$.
+  \begin{equation}
+    E = \left\{x = \pi(p), g_8p\right\} \in B \times G.
+  \end{equation}
+\end{proof}

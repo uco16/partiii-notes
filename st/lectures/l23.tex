@@ -1,0 +1,135 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 23: March 11}
+
+\subsection{Examples}%
+\label{sub:examples}
+
+\begin{description}
+  \item[n = 3:]  For tachyons, $k_i^2 = 4 / \alpha'$. Noting that momentum conservation gives $k_1^{\mu} + k_2^{\mu} + k_3^{\mu} = 0$, we use
+    \begin{equation}
+      (-k_3)^2 = (k_1 + k_2)^2 = k_1^2 + k_2^2 + 2 k_1 \cdot k_2
+    \end{equation}
+    to rewrite the dot product
+    \begin{equation}
+      \alpha' k_1 \cdot k_2 = \frac{\alpha'}{2} (k_3^2 - k_1^2 - k_2^2) = \frac{\alpha'}{2} \left(-\frac{4}{\alpha'}\right) = -2.
+    \end{equation}
+    Since there is nothing special about particles 1 and 2, we generally find that
+    \begin{equation}
+      \alpha' k_i \cdot k_j = (-1)^{\delta_{ij}} 2.
+    \end{equation}
+    Then
+    \begin{equation}
+      \langle e^{i k_1 \cdot X(z_1, \overline{z}{}_1)} \dots e^{i k_3 \cdot X(z_3, \overline{z}{}_3)} \rangle_X = (2\pi)^D \delta^D\left(\sum_{i=1}^n k_{i\mu}\right) \abs{z_1 - z_2}^{-2} \abs{z_2 - z_3}^{-2} \abs{z_3 - z_1}^{-2}.
+    \end{equation}
+    The ghost contribution was $\abs{z_1 - z_2}^{2} \abs{z_2 - z_3}^{2} \abs{z_3 - z_1}^{2}$, so we have
+    \begin{equation}
+      A_3 = g_c(2\pi)^D \delta^D \left( \sum_{i=1}^{3} k_{\mu i} \right).
+    \end{equation}
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{l23f1}
+  \caption{}
+  \label{fig:l23f1}
+\end{figure}
+  \item[n=4:] This is called the \emph{Virasoro--Shapiro Amplitude}.
+    For simplicity, we shall set $z_1 = 0, z_2 = 1$, and $z_3 = \lambda \to \infty$. We also have $z_4 = z$, which we cannot fix.
+    \begin{equation}
+      \left\langle \prod_{i=1}^{3} c(z_{i}) \overline{c}{}(\overline{z}{}_i) \right\rangle_{b, c} \prod_{i < j} \abs{z_i - z_j}^{\alpha' k_i \cdot k_j} = \abs{\lambda}^{\alpha (k_1 + k_2 + k_4) \cdot k_3 + 4} \abs{z}^{\alpha' k_1 \cdot k_4} \abs{1 - z}^{\alpha' k_2 \cdot k_4},
+    \end{equation}
+    where we have used momentum conservation. As before, the $k_i \cdot k_j$ terms cancel out for $i, j = 1, 2, 3$ and only the dot products with $k_4$ remain.
+    Note further that
+    \begin{equation}
+      \alpha' (k_1 + k_2 + k_4) \cdot k_3 + 4 = -\alpha' k_4^2 + 4 = 0.
+    \end{equation}
+    The $\lambda$-dependence drops out, leaving
+    \begin{equation}
+      A_4 = g_c^2 \bdelta^{26}(\sum_{i=1}^{4} k_{i \mu}) \int \dd[2]{z} \abs{z}^{\alpha' k_1 \cdot k_4} \abs{1 - z}^{\alpha' k_2 \cdot k_4}.
+    \end{equation}
+    \begin{leftbar}
+      You should be happy reproducing something like this in the exam, but the following should not be committed to memory.
+    \end{leftbar}
+    From a field theory point of view, we might imagine that we are looking at a scattering amplitude like on the eft-hand side of Fig.~\ref{fig:l23f2}. Unlike the $3$-point amplitude however, this field theory point of view does not capture the physics on the string worldsheet on the right.
+  \begin{figure}[tbhp]
+    \centering
+    \begin{minipage}[t]{0.5\columnwidth}
+      \centering
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b, small] {
+        a -- c [small, dot, label=$g_c^2$] -- b,
+       d -- c -- e,
+      };
+      \caption{}
+      \label{fig:l23f3}
+    \end{minipage}%
+    \begin{minipage}[t]{0.5\columnwidth}
+      \centering
+      \inkfig[0.4]{l23f2}
+      \caption{}
+      \label{fig:l23f2}
+    \end{minipage}
+  \end{figure}
+  We introduce Mandelstram variables
+  \begin{equation}
+    s = -(k_1 + k_2)^2, \qquad t = -(k_1 + k_3)^2, \qquad u = -(k_1 + k_4)^2,
+  \end{equation}
+  and 
+  \begin{equation}
+    \alpha(s) = -1 - \frac{\alpha'}{4} s, \qquad \text{etc.}
+  \end{equation}
+  We also introduce the $\Gamma$-function
+  \begin{equation}
+    \Gamma(a) = \int_0^\infty x^{a - 1} e^{-x} \dd[]{x}.
+  \end{equation}
+  Then
+  \begin{equation}
+    \boxed{A_n = g_c^2 \bdelta^{26}(\sum_{i=1}^{4} k_{\mu i}) \frac{\Gamma(\alpha(s)) \Gamma(\alpha(??)) \Gamma(\alpha(u))}{\Gamma(\alpha(t) + \alpha(u)) \Gamma(\alpha(s) + \alpha(u) ) \Gamma(\alpha(s) + \alpha(t))}}
+  \end{equation}
+\end{description}
+
+\subsection*{Comments}%
+
+$s, t, u$-permutation invariant: historically, this lead to \emph{dual models} in the description of strong interactions.
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{l23f4}
+  \caption{}
+  \label{fig:l23f4}
+\end{figure}
+There is no fundamental difference in string theory between $s, t$, and $u$ amplitudes. We can deform them into each other.  The problem was that in intermediate states you always found gravitons inevitably creeping into the theory.
+
+\subsection{Scattering of Massless States}%
+\label{sub:scattering_of_massless_states}
+
+Vertex operators of the form
+\begin{equation}
+  V = g_c \int_{\Sigma} \dd[2]{z} \epsilon_{\mu\nu} \partial X^{\mu} \overline{\partial}{} X^{\nu} e^{i k \cdot X}.
+\end{equation}
+We can write
+\begin{equation}
+  i \partial X^{\mu} (z_{j}) e^{i k_{j} \cdot X(z_j, \overline{z}{}_j)} = \left[ \frac{\partial }{\partial \rho_{\mu j}} \exp(i \int_{\Sigma} \dd[2]{z} \delta^2(z - z_j) (k_{j \mu} + \rho_{j \nu} \frac{\partial }{\partial z}) X^{\nu}(z, \overline{z}{})) \right]_{\rho_j = 0}
+\end{equation}
+or
+\begin{equation}
+  \partial X^{\mu}_j \overline{\partial}{}X^{\nu}_j e^{i k \cdot X_j} = \left.\left[ -\frac{\partial^2}{\partial \partial \rho_\mu \partial \overline{\rho}{}_{\nu}} \exp(i \int_{\Sigma} \dd[2]{z} \delta^2 (z - z_j) \left( k_{\lambda j} + \rho_{\lambda j} \frac{\partial }{\partial z} + \overline{\rho}{}_{\lambda j} \frac{\partial }{\partial \overline{z}{}} \right) X^{\lambda}(z, \overline{z}{})) \right]\right\rvert_{\rho_i = \overline{\rho}{}_i = 0}.
+\end{equation}
+If we define a current
+\begin{equation}
+  \label{eq:23-1}
+  J_{\mu} (z, \overline{z}{}) = -i \sum_{j=i}^{n} \delta^2 (z - z_j) \left( k_{\mu j} + \rho_{\mu j} \frac{\partial }{\partial z} + \overline{\rho}{}_{\mu j} \frac{\partial }{\partial \overline{z}{}} \right)
+\end{equation}
+then the scattering amplitude for $n$ such massless states is
+\begin{equation}
+  A_n \sim g^{n-2}_c \left[ \prod_{i=1}^{n} \epsilon^{(i)}_{\mu \nu} \frac{\partial^2}{\partial \rho_j \partial\overline{\rho}{}_j} \exp(\frac{1}{2} \int_{\Sigma \times \Sigma} \dd[2]{z} \dd[2]{w}) J_{\lambda}(z, \overline{z}{}) J^{\lambda}(w, \overline{w}{}) G(z, w) \right]_{\rho = \overline{\rho} = 0},
+ \end{equation}
+where 
+\begin{equation}
+  G(z, w) = -\frac{\alpha'}{2} \ln(z - w) - \frac{\alpha'}{2} \ln(\overline{z}{} - \overline{w}{}).
+\end{equation}
+
+The current \eqref{eq:23-1} involves derivatives of $z$ and also derivatives of $\overline{z}{}$.
+However, since $G$ splits these, it is useful to define a chiral current $j_{\mu}(z)$, which only takes derivatives with respect to $z$
+\begin{equation}
+  j_{\mu}(z) = -i \sum_{i=1}^{n} \delta^2 (z - z_i) \left( \frac{1}{2} k_{\mu i} + \rho_{\mu i} \frac{\partial }{\partial z} \right)
+\end{equation}
+and $\overline{j}{}_{\mu}(\overline{z}{})$ defined similarly.
+The factor of $\frac{1}{2}$ is coming in since we get equal contributions of $j$ and $\overline{j}{}$ in that sector so that $J_{\mu}(z, \overline{z}{}) = j_{\mu}(z) + \overline{j}{}_{\mu}(\overline{z}{})$.

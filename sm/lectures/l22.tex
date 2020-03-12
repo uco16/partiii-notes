@@ -6,7 +6,7 @@
 \label{cha:strong_interactions}
 
 \section{Introduction}%
-\label{sec:introduction}
+\label{sec:strong-introduction}
 
 So far, we have seen electroweak interactions, which go through the phase transition
 \begin{equation}
@@ -36,8 +36,8 @@ Another argument is that leptons, which have no colour, do not interact with str
 It is therefore natural to consider a gauge theory based on the three colours (Greenberg; Nambu and Han).
 
 Since we have three colours, the options for the gauge group are $SO(3)$, $SU(3)$, and $U(3)$.
-In the case of $SO(3)$; we have $q \overline{q}{}$, and $q q$. These have non-integer charges, which we do not want.
-For $U(3) = SU(3) \times U(1)$, we obtain long-range interactions, which we do not want.
+In the case of $SO(3)$; we have $q \overline{q}{}$, and $q q$. These have non-integer charges, which we do not want. The $qq$ would be a colour-charged object, which we do not observe.
+For $\mathfrak{u}(3) = \mathfrak{su}(3) \times \mathfrak{u}(1)$, we obtain long-range interactions, which we do not want.
 Therefore, we are left with $SU(3)_c$.
 
 In experiments of deep inelastic scattering (DIS) $e^- p \to e^- p + \dots$, we have the following diagrams at progressively higher energies.
@@ -182,7 +182,7 @@ Typical vertices include
   \qquad
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-      i -- [egde label=$q_i$] a [small, dot, label=$\Gamma^{a}_{ij}$] -- [edge label=$q_j$] f,
+      i -- [edge label=$q_i$] a [small, dot, label=$\Gamma^{a}_{ij}$] -- [edge label=$q_j$] f,
       a -- [gluon] b,
     };
   \end{gathered}
@@ -241,11 +241,12 @@ Recall that in QED the $\beta$-function was
   \caption{}
   \label{fig:l22f1}
 \end{figure}
-As shown in Fig.~\ref{fig:l22f1}, the \emph{Landau pole} in QED occurs at high energies, whereas QED has the Landau pole ($1 / g^2 (\Lambda_{QCD}) \to 0$) at low energies.
+As shown in Fig.~\ref{fig:l22f1}, the \emph{Landau pole} in QED occurs at high energies, whereas QCD has the Landau pole ($1 / g^2 (\Lambda_{QCD}) \to 0$) at low energies.
 In particular, 
 \begin{equation}
   \boxed{\Lambda_{QCD} = \Lambda_{UV} e^{-4 \pi^2 / g_s^2}}
 \end{equation}
+Inserting measured parameters, we find $\Lambda_{QCD} \simeq 200$MeV.
 This is called \emph{dimensional transmutation}, since we are essentially exchanging a dimensionless parameter $g_s$ for a dimensionful parameter $\Lambda_{QCD}$.
 \begin{remark}
   Expanding $e^{-4 \pi ^2 / g^2_s}$ around $g_s = 0$ does not give a valid Taylor expansion: all derivatives are zero.

@@ -45,9 +45,18 @@ Let us briefly collect a few mathematical results.
   You will not be asked to prove these or even have these at hand in the exam.
 \end{remark}
 
-Let us now return to the amputated diagram DIAGRAM
+\subsection{One-Loop Renormalisation}%
+\label{sub:one_loop_renormalisation}
+
+Let us now return to the amputated diagram \eqref{eq:9-ampdiag}, writing $\lambda = g \mu^\epsilon$:
 \begin{equation}
-  \Pi_1(p^2) = - \frac{g \mu^\epsilon}{2} \int_{\mathbb{R}^d}^{}\frac{\bdd[d]{k}}{k^2+ m^2} = -\frac{g \mu^\epsilon}{2} \frac{S_d}{(2\pi)^d} \int_{0}^{\infty}\frac{k^{d-1} \dd[]{k}}{k^2 + m^2},
+  \Pi_1(p^2) = \quad
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=0.5][horizontal=a to b, layered layout] {
+      a -- [insertion=0.5] v [small, dot] -- [loop, min distance=2cm, in=+135, out=+45, rmomentum'=$k$] v -- [insertion=0.5] b,
+    };
+  \end{gathered}
+  \quad = - \frac{g \mu^\epsilon}{2} \int_{\mathbb{R}^d}^{}\frac{\bdd[d]{k}}{k^2+ m^2} = -\frac{g \mu^\epsilon}{2} \frac{S_d}{(2\pi)^d} \int_{0}^{\infty}\frac{k^{d-1} \dd[]{k}}{k^2 + m^2},
 \end{equation}
 where $k = \abs{\vb{k}}$ is the norm of the $d$-dimensional vector $\vb{k}$.
 The integral can be performed by changing integration variables $u = m^2 / (k^2 + m^2)$

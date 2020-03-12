@@ -1,0 +1,105 @@
+% lecture notes by Umut Özer
+% course: susy
+\lhead{Lecture 16: March 10}
+
+\section{The \texorpdfstring{$\beta$}{beta}-function of a NLSM}%
+\label{sec:the_beta_function_of_a_nlsm}
+
+Let us consider a scale transformation $\delta_{\mu\nu} \to \lambda^2 \delta_{\mu\nu}$, $\lambda \in \mathbb{R}^+$, with $\delta_{\mu\nu}$ the (flat) worldsheet metric. This induces transformations $\gamma^{\mu} \mapsto \lambda^{-1} \gamma^{\mu}$ (since $\gamma^{\mu}$ obey the Clifford algebra $\left\{\gamma^{\mu}, \gamma^{\nu}\right\} = 2 \delta^{\mu\nu}$) and $\sqrt{\delta} \dd[2]{x} \mapsto \lambda^2 \sqrt{\delta} \dd[2]{x}$. In $d$ dimensions, $[z] = (d - 2) / 2$, whereas $[\psi] = (d - 1) /2$, so in $d = 2$, $z \mapsto z$ and $\psi \mapsto \lambda^{-1 / 2} \psi$ under these scalings. Hence the NSLM action
+\begin{equation}
+  S[z, \psi] = \int g_{a \overline{b}{}} \partial^{\mu} \overline{z}{}^{\overline{b}{}} \partial_{\mu} z^{a} + i g_{a \overline{b}{}} \overline{\psi}{}^{\overline{b}{}} (\cancel{\nabla} \psi)^{a} + R_{a \overline{b}{} c \overline{d}{}} \psi^{a}_{+} \psi^{c}_- \overline{\psi}{}^{\overline{b}{}}_- \overline{\psi}{}^{\overline{d}{}}_+ \dd[2]{x}
+\end{equation}
+is classically scale invariant. As usual in QFT, this classical invariance may be broken at the quantum level by $\beta$-functions. 
+
+Let us look just at a non-supersymmetric NLSM with action
+\begin{equation}
+  S[\phi] = \frac{1}{2} \int_\Sigma g_{ij}(\phi) \partial^{\mu} \phi^{i} \partial_{\mu} \phi^{j} \dd[2]{\phi},
+\end{equation}
+where $\phi$ are coordinates on some Riemannian target space $(M, g)$.
+We use Riemann normal coordinates to describe perturbations around a constant map $\phi \colon \Sigma \to \phi_0 \in M$. In the neighbourhood of this classical solutions, we write $\phi = \phi_0 + \delta \phi$, where the metric is
+\begin{equation}
+  g_{ij} (\phi_0 + \delta \phi) = \delta_{ij} - \frac{1}{3} R_{ikjl} (\phi_0) \delta \phi^{k} \delta\phi^{l} + \mathcal{O}(\delta \phi^3),
+\end{equation}
+where $\delta_{ij}$ is the flat metric at $\phi_0 \in M$.
+When we do this, out action becomes
+\begin{equation}
+  S[\phi + \delta \phi] = \int \biggl[ \frac{1}{2} \underbrace{\delta_{ij} \partial^{\mu} \delta \phi^{i} \partial_{\mu} \delta \phi^{j}}_{\text{canonical kinetic term}} - \frac{1}{6} \underbrace{R_{ikjl} (\phi_0)}_{\text{couplings}} \underbrace{\delta \phi^{k} \delta\phi^{l} \partial^{\mu} \delta\phi^{i} \partial_{\mu} \delta \phi^{j}}_{\text{vertices among fluctuations}} + \dots \biggr] \dd[2]{x}
+\end{equation}
+The simplest quantity to study is the RG flow of the kinetic term obtained from the $2$-point function of the fluctuations, i.e.~$\langle \delta \phi^{i}(x) \delta\phi^{j}(y) \rangle$ is the exact (position space) propagator and therefore the inverse of the quantum corrected kinetic term.
+To 1-loop accuracy the diagrams contributing to this are
+\begin{align}
+  \langle \delta \phi^{i} (x) \delta\phi^{j}(y) \rangle^{\text{1-loop}} &= \int \bdd[2]{k} \frac{e^{i k \cdot (x - y)}}{k^2} \left[ \delta^{ij} + \frac{1}{3} \int \bdd[2]{p} \frac{1}{p^2} R^{ij}(\phi_0) \right] \\
+  &= 
+  \begin{gathered}
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+      a [particle=\(x\)] -- [momentum=$k$] b [particle=\(y\)],
+    };
+  \end{gathered}
+   + 
+   \begin{gathered}
+     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+       a -- b [small, dot, label=270:$R^{ikjl}(\phi_0)$] -- [rmomentum'=$p$, loop, min distance=2cm, in=135, out=45] b -- c,
+     };
+   \end{gathered}.
+\end{align}
+As usual, the loop integral diverges. We regularise by imposing UV and IR cutoffs
+\begin{equation}
+  \int_{\mu \leq \abs{p} \leq \Lambda} \frac{\bdd[2]{p}}{p^2} = \frac{1}{2 \pi} \int_{\mu}^{\Lambda} \frac{p \dd[]{p}}{p^2} = \frac{1}{2 \pi}  \ln(\frac{\Lambda}{\mu}).
+\end{equation}
+We absorb the divergence with a counterterm, so include
+\begin{equation}
+  \delta g_{ij}(\Lambda) = -\frac{1}{6 \pi} R_{ij}(\phi_0) \ln(\frac{\Lambda}{\mu})
+\end{equation}
+for some arbitrary renormalisation scale $\lambda$.
+The renormalised metric is the metric we began with plus the quantum corrections we generated, together with the counterterm
+\begin{align}
+  g_{ij}(\lambda, \mu) &= \underbrace{\delta_{ij}}_{\text{classical}} + \underbrace{\frac{1}{6 \pi} R_{ij}(\phi_0) \ln \frac{\Lambda}{\mu}}_{\text{1-loop}} \underbrace{- \frac{1}{6 \pi} R_{ij}(\phi_0) \ln \frac{\Lambda}{\mu}}_{\text{counterterm}} \\
+		       &= \delta_{ij} + \frac{1}{6 \pi} R_{ij}(\phi_0) \ln( \frac{\Lambda}{\mu}).
+\end{align}
+The renormalised metric now depends on our RG scale $\lambda$. In particular, 
+\begin{equation}
+  \beta_{ij} = \lambda \dv{g_{ij}(\lambda, \mu)}{\lambda} = \frac{1}{6 \pi} R_{ij}(\phi_0).
+\end{equation}
+Hence our NLSM is asymptotically free if $R_{ij} > 0$ (like for a sphere) and scale invariant (at least to 1-loop) if $R_{ij} = 0$ (vacuum Einstein equations).
+Else, it is only an effective low energy theory if $R_{ij} < 0$.
+\begin{remark}
+  We are looking at the $\beta$-functions for \emph{wavefunction renormalisation} here. We absorb this into the field and the interaction term then obtains inverses of this. This is why $R_{ij} > 0$ here is the asymptotically free case. Compare this to QCD, where the $\beta$-function of the \emph{couplings} is negative in the asymptotically free case.
+\end{remark}
+Although the numerical factors are slightly different, we have the same result in our $\mathcal{N} = (2,2)$ NLSM.
+(Actually if $R_{a \overline{b}{}} = 0$, i.e.~a Ricci flat Kähler manifold (Calabi--Yau), this receives no quantum corrections until 4-loops.)
+
+\section{U(1) Anomalies}%
+\label{sec:u_1_anomalies}
+
+$\mathcal{N} = (2,2)$ supersymmetry relates these $\beta$-functions / scale invariance to possible anomalies in the $U(1)_{A / V}$ transformations (in the absence of a superpotential)
+\begin{align}
+  U(1)_V &\colon \Phi(x^{\pm}, \theta^{\pm}, \overline{\theta}{}^{\pm}) \mapsto \Phi(x^{\pm}, e^{-i \beta} \theta^{\pm}, e^{+ i \beta} \overline{\theta}{}^{\pm}), \qquad (W = 0) \\
+  U(1)_A &\colon \Phi(x^{\pm}, \theta^{\pm}, \overline{\theta}{}^{\pm}) \mapsto \Phi(x^{\pm}, e^{\mp i \alpha} \theta^{\pm}, e^{\pm i \alpha} \overline{\theta}{}^{\pm}).
+\end{align}
+While these are symmetries of our action, the may not preserve the path integral measure.
+
+To investigate, consider first a theory of single Dirac fermion coupled to an Abelian gauge field $A$, with action $S[\psi] = \int_{T^2} i \overline{\psi}{} \cancel{D} \psi = i \int_{T^2} \overline{\psi}{}_+ D_- \psi_+ + \overline{\psi}{} D_+ \psi_-$, where we choose $\psi_{\pm}$ to each be periodic around both cycles of the torus $T^2$.
+Classically, this is invariant under global transformations 
+\begin{equation}
+  \psi_{\pm} \mapsto e^{-i (\beta \pm \alpha)} \psi_{\pm}, \qquad \overline{\psi}{}_{\pm} \mapsto e^{i (\beta \pm \alpha)} \overline{\psi}{}_{\pm}.
+\end{equation}
+The path integral measure $[\pdd{\psi}]$ tells us to integrate over all modes of $\psi_{\pm}$ and $\overline{\psi}{}_{\pm}$. Transformations of the non-zero modes cancel each other out, but there may be a mismatch from the zero modes.
+Complex conjugation on $T^2$ exchanges $\psi_+ \to \overline{\psi}{}_-$, because it both changes the charge of the field (fermion to anti-fermion) but also changes the chirality.
+This is because it changes $ \frac{\partial }{\partial w} \mapsto \frac{\partial }{\partial \overline{w}{}}$, which changes $D_+ \to D_-$ and therefore $\psi_+ \to \psi_-$.
+Hence, the number of $\psi_\mp$ zero modes is equal to the number of $\overline{\psi}{}_\pm$ zero modes.
+Thus, we find that although $U(1)_V$ cannot be anomalous, we can have a $U(1)_A$ anomaly where
+\begin{align}
+  [\pdd{\psi}] \mapsto e^{2 i k \alpha} [\pdd{\psi}], \qquad \text{where} \quad k &= \dim(\ker D_{\overline{\omega}{}}) - \dim (\ker D_\omega) \\
+										  &= \text{ind}(\cancel{D}).
+\end{align}
+On a torus, we have that the index is equal to the \emph{instanton number}
+\begin{equation}
+  \text{ind}(\cancel{D}) = \int_{T^2} \left.\hat{A}(T^2) \wedge \frac{F}{2 \pi} \right\rvert_{\text{2-form}} = \int_{T^2} \frac{F}{2 \pi}.
+\end{equation}
+Hence, $U(1)_A$ is anomalous if the background field $A$ has non-zero instanton number.
+In our $\mathcal{N} = (2, 2)$ NLSM, the anomaly again comes from the fermion zero modes.
+We now have a mismatch
+\begin{equation}
+  k = \text{ind}(\cancel{\nabla}) = \int_{T^2} \hat{A} (T^2) c_1 (z^* T^{1, 0} M) = \frac{i}{2 \pi} \int \tr(\mathcal{R}),
+\end{equation}
+the trace of the curvature $2$-form on the target.

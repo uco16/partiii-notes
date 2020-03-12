@@ -1,0 +1,186 @@
+% lecture notes by Umut Özer
+% course: sm
+\lhead{Lecture 24: March 12}
+
+\chapter{The Standard Model and its Limitations}%
+\label{cha:the_standard_model_and_its_limitations}
+
+\section{The SM Lagrangian}%
+\label{sec:the_sm_lagrangian}
+
+Let us put it all together.
+\begin{description}
+  \item[Gauge Fields ($\lambda = \pm 1$):] the gauge group is
+    \begin{equation}
+      \begin{gathered}
+	SU(3)_c \times \frac{SU}{2}_L \times U(1)_Y \\
+	G_{\mu}^{a} \quad \underbrace{W_{\mu}^{\hat{a}}, B_{\mu}}_{W_{\mu}^{\pm}, Z_\mu^0, A_\mu}
+      \end{gathered}
+    \end{equation}
+    \begin{equation}
+      \mathscr{L}_{\text{gauge}} = -\frac{1}{4} (G^{a}_{\mu\nu})^2 -\frac{1}{4} (W^{a}_{\mu\nu})^2 - \frac{1}{4} (B_{\mu\nu})^2 + \theta_3 G^{a}_{\mu\nu} \widetilde{G}^{a \mu\nu} + \theta_{W} W^{\hat{a}}_{\mu\nu} \widetilde{W}^{\hat{a} \mu \nu} - \theta_{B} B_{\mu\nu} \widetilde{B}^{\mu\nu},
+    \end{equation}
+    Kinetic and self interactions for $G^{a}_{\mu\nu}, W^{\hat{a}}_{\mu\nu}$.
+    Here, $\widetilde{G}^{a \mu \nu} \coloneqq \frac{1}{2} \epsilon^{\mu\nu\rho\sigma} G^{a}_{\rho\sigma}$.
+  \item[Matter Fields ($\lambda = \pm \frac{1}{2}$):]
+    \begin{equation}
+      Q_L^{i} = \left\{
+      \begin{pmatrix}
+	u_L \\
+	d_L \\
+      \end{pmatrix}, 
+      \begin{pmatrix}
+	c_L \\
+	s_L \\
+      \end{pmatrix}, 
+      \begin{pmatrix}
+	t_L \\
+	d_L \\
+      \end{pmatrix}, 
+      \right\} \dots
+    \end{equation}
+
+    \begin{equation}
+      \mathscr{L}^{\text{fermions}} = \mathscr{L}^{\text{fermions}}_{\text{kinetic}} + \mathscr{L}_{\text{Yukawa}}
+    \end{equation}  
+    \begin{equation}
+      \mathscr{L}_{\text{kinetic}}^{\text{fermions}} = i \overline{Q}{}_L^{i} \cancel{D} Q_L^{i} + i \overline{u}{}_R^{i} \cancel{D} u_R^{i} + i \overline{d}{}_R \cancel{D} d_{R i} + i \overline{L}{}^{i} \cancel{D} L_L^{i} + i \overline{e}{}_R^{i} \cancel{D} e_R + (i \overline{\nu}{}_R^{i} \cancel{D}\nu_R^{i})^*
+    \end{equation}
+    where the gauge covariant derivative is
+    \begin{equation}
+      D_{\mu} = \partial_{\mu} - i g_s G_{\mu}^{a} T^{a} - i g W_{\mu}^{\hat{a}} T^{\hat{a}} - i g' B_{\mu} Y.
+    \end{equation}
+    The $g, g'$ are relate to $e, \theta_w$ and $W_{\mu}^{\hat{a}}, B_{\mu}$ are related to $W_{\mu}^{\pm}, Z^0_{\mu}, A_{\mu}$.
+    \begin{equation}
+      L_{\text{Yukawa}} = - y^{d}_{ij} \overline{Q}{}^{i}_{L} H d_R^{j} - y^{u}_{ij} \overline{Q}{}^{i}_{L} \widetilde{H} u^{j}_{R} - y^{e}_{ij} \overline{L}{}^{i}_{L} H e^{j}_{R} - (y^{\nu}_{ij} \overline{L}{}^{i} \widetilde{H} \nu_{R})^* + \text{h.c.}
+    \end{equation}
+  \item[Higgs:] $H = (1, 2, \frac{1}{2}) = 
+    \begin{pmatrix}
+    H_+ \\
+    H_0 \\
+    \end{pmatrix} $
+    \begin{equation}
+      \mathscr{L}_{\text{Higgs}} = D_{\mu} H D^{\mu} H^{\dagger} + m^2 \abs{H}^2 - \lambda \abs{H}^4,
+    \end{equation}
+    where $m^2, \lambda$ are related to the VEV $\langle H \rangle = v, m_h$.
+\end{description}
+The total standard model Lagrangian is the sum of all these
+\begin{equation}
+  \mathscr{L}_{\text{SM}} = \mathscr{L}_{\text{gauge}} + \mathscr{L}_{\text{kinetic}}^{\text{fermions}} + \mathscr{L}_{\text{Yukawa}} + \mathscr{L}_{\text{Higgs}},
+\end{equation}
+which is renormalisable.
+\begin{description}
+  \item[Gravity:] We can also couple this to gravity
+    \begin{equation}
+      \mathscr{L}_{\text{SM}} \to \sqrt{g} \left( \mathscr{L}_{\text{SM}} + \Lambda + R + O(R^2) \right),
+    \end{equation}
+    where in $\mathscr{L}_{\text{SM}}$, we also change $D_{\mu} \to \mathcal{D}_{\mu}$ the gravity covariant derivatives.
+    This is an effective field theory, valid at $E \ll M_{\text{pl}} = \sqrt{\frac{\hbar c}{G}} \sim 10^{1?}$GeV.
+  \item[Arbitrary (free) parameters:] listed in Tab.~\ref{tab:parameters}.
+    \begin{table}[htpb]
+      \centering
+      \begin{tabular}{c c c c}
+       &  & Physical & Number \\
+      Gauge & $g_s, g, g' \text{ and } \theta_3, \theta_w, \theta_B $ & $e, \theta_W, M_W$ & $3 + 3$ \\
+      Higgs & $m^2, \lambda$ & $m_h, v$ & 2 \\
+      Yukawa Couplings & $y^{u}_{ij}, y^{d}_{ij}, y^{e}_{ij}, (y^{\nu}_{ij})^*$ & $m^{u}_{i}, m^{d}_{i}, m^{e}_{i} $ & 9 \\
+       &  & $V_{\text{CKM}}$ & 4 \\
+        &  & $U_{PMNS}$ & 6 \\
+	&  &  $(m^{\nu}_{i}, M^{\nu}_{i})^*$ & \\
+      \end{tabular}
+      \caption{}
+      \label{tab:parameters}
+    \end{table}
+\end{description}
+
+\section{Open Questions}%
+\label{sec:open_questions}
+
+\begin{enumerate}[(i)]
+  \item Fundamental: UV completion for couplings to gravity.
+  \item Strong coupling regimes: 
+    \begin{itemize}
+      \item Perturbative expansions (Feynman diagrams) are in $O(g^2)$, valid for $g^2 \ll 1$.
+      \item Mathematically rigorous proof of confinement.
+    \end{itemize}
+  \item Naturalness. Writing $\mathscr{L}_{\text{SM}} = \sum c_i \mathcal{O}_i$, where $[c_i] + [\mathcal{O}_i] = 4$.
+    \begin{itemize}
+      \item An operator of dimension $[\mathcal{O}] = 0$ is the cosmological constant $\Lambda$, which represents the vacuum energy: $R_{\mu\nu} + \frac{1}{2} R g_{\mu\nu} = \langle T_{\mu\nu} \rangle + g_{\mu\nu} \Lambda$.
+	The observed $\Lambda \sim (10^{-3}\text{ev})^4$. But quantum corrections suggest an infinite vacuum energy. (Worst case is $M_{\text{pl}}^4$. This is a factor $10^{123}$ different!)
+      \item An operator $[\mathcal{O}] = 2$ is the Higgs $m^2 \abs{H}^2$.
+	We have
+	\begin{equation}
+	  \begin{gathered}
+	    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
+	      a [particle=\(H\)] -- [scalar, insertion=0.47, edge label=$m^2$] b [particle=\(H\)],
+	    };
+	  \end{gathered}
+	\end{equation}
+	This gets quantum corrections
+	\begin{equation}
+	  \begin{gathered}
+	    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+	      a -- [scalar] b -- [half left, looseness=1, edge label=$M$] c -- [half left, looseness=1]b,
+	      c -- [scalar] d,
+	    };
+	  \end{gathered} + \dots
+	  \qquad M^2 \sim \int^{??} \frac{\bdd[4]{k}}{k^2}
+	\end{equation}
+	We need to keep $m \ll M$. How? (Tuning of $~15$ orders of magnitude.)
+      \item There are no operators of mass dimension $[\mathcal{O}] = 3$.
+      \item For $[\mathcal{O}] = 4$, we have terms $\theta_W, \theta_B$ that can be rotated away, but 
+	\begin{equation}
+	  \theta_3 G^{a}_{\mu\nu} \widetilde{G}^{a \mu \nu}
+	\end{equation}
+	is in fact generated. It gives an electric dipole moment of the neutron, which is not observed. Thus puts an upper bound on it $\theta_3 < 10^{-10}$. Explaining this is called the \emph{Strong CP problem}.
+      \item Neutrino masses
+	\begin{equation}
+	  y^{\nu} \overline{L}{} H \nu_R + M \nu_R \nu_R.
+	\end{equation}
+	We find that $M \gg 100$GeV and $[\mathcal{O}] = 3$. The question of how neutrinos obtain masses is still an open problem.
+    \end{itemize}
+  \item Flavour: Why are there so many free parameters in $\mathscr{L}_{\text{Yukawa}}$ and huge hierarchy of masses.
+\end{enumerate}
+
+\section{Beyond the Standard Model}%
+\label{sec:beyond_the_standard_model}
+
+The whole of the standard model was built up from the assumptions of Poincaré invariance and quantum mechanics.
+How to we go beyond the standard model? There are multiple approaches that people are taking:
+\begin{enumerate}[(i)]
+  \item Top down (Quantum gravity, etc)
+
+    Also, supersymmetry: We have seen all of the helicities, except $\lambda = \pm 3 / 2$, which does show up in supersymmetric theories.
+    It also addresses the hierarchy problem, since fermions and bosons cancel
+    \begin{equation}
+      \begin{gathered}
+        \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+          a -- [scalar] b -- [half left, looseness=1] c -- [half left, looseness=1]b,
+	  c -- [scalar] d,
+        }; \\
+	\text{fermions}
+      \end{gathered}
+      + 
+      \begin{gathered}
+        \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
+          a -- [scalar] b --[scalar] c,
+	  b -- [loop, min distance=2cm, in=135, out=45] b,
+        }; \\
+	\text{bosons}
+      \end{gathered}
+       = 0.
+    \end{equation}
+  \item Model Building (add more gauge symmetries $~$GUT, more particles, \dots)
+  \item Bottom-up Approaches:
+    \begin{itemize}
+      \item SM EFT
+	\begin{equation}
+	  \mathscr{L}_{\text{SM}} = c_i \mathcal{O}_i = \mathscr{L}_{\text{SM}}^{\text{renormalisable}} + \frac{\kappa}{M} \mathcal{O}_5 + \left( \frac{\kappa'}{M} \right)^2 \mathcal{O}_6 + \dots
+	\end{equation}
+	We can add non-renormalisable terms as long as we work within energies $E \ll M$.
+	In particular, in dimension $5$ there is only one operator $\mathcal{O}_5: \frac{L L H H }{M}$. This is nice because if $\langle H \rangle \neq 0$, we obtain $\left( \frac{v^2}{M} \right) L L$, giving a mass term for the $\nu$'s for $M \sim 10^{14}$GeV.
+
+	In dimension $6$, we have $\mathcal{O}_3: 63$ operators. We have $4$ terms $\frac{qqql}{M^2}$, which violate baryon number $B$. This gives proton decay $p \to \pi^0 + e^+$, and $M \geq 10^{15}$GeV.
+    \end{itemize}
+  \item Amplitudes: Forget about a Lagrangian, and only work with amplitudes that are consistent with our assumptions of unitarity, locality, etc. From these amplitudes we can reproduce all of the amplitudes in the standard model, and even go beyond.
+\end{enumerate}

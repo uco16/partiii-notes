@@ -125,7 +125,7 @@ with self-energy $\Sigma(p)$ given by the truncated diagram
   \Sigma(p) = 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
-      a -- [fermion, dotted] b [blob, label=$1PI$] -- [fermion, dotted] c,
+      a -- [fermion, insertion=0.2] b [blob, label=$1PI$] -- [fermion, insertion=0.8] c,
     };
   \end{gathered}.
 \end{equation}
@@ -134,7 +134,7 @@ At 1-loop order,
   \Sigma_1(p) &=
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][small, horizontal=b to c, layered layout] {
-      a -- [fermion, dotted] b[small, dot] -- [fermion] c[small, dot] -- [fermion, dotted] d,
+      a -- [fermion, insertion=0.2] b[small, dot] -- [fermion] c[small, dot] -- [fermion, insertion=0.8] d,
       b -- [boson, half left, looseness=1] c,
     };
   \end{gathered} \\

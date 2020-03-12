@@ -125,13 +125,14 @@ From this we can read off the EM propagator
     };
   \end{gathered}.
 \end{equation}
-The vertex is
+The vertex between a fermion-antifermion pair $\overline{\psi}{}, \psi$ and a photon $A_{\mu}$ is
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b] {
-      a -- [fermion] v -- [fermion] b,
-      c -- [boson] v, 
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, small] {
+      a -- [fermion] v [small, dot] -- [fermion] b,
+      c [particle=\(\mu\)] -- [boson] v, 
     };
   \end{gathered}
+  = -i e \gamma^{\mu}
 \end{equation}
-which corresponds to the interaction Lagrangian $\mathscr{L} = \overline{\psi}{} (ie \cancel{A}) \psi$.
+which corresponds to the interaction Lagrangian $\mathscr{L} = \overline{\psi}{} (ie \gamma^{\mu} A_{\mu}) \psi$ term, which comes from expanding out the covariant derivative term $\overline{\psi}{}\cancel{D} \psi$.

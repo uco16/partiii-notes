@@ -1,0 +1,99 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 15: March 11}
+
+\section{The Connection and Curvature on Principal Bundles}%
+\label{sec:the_connection_and_curvature_on_principal_bundles}
+
+\begin{definition}[connection]
+  The \emph{connection} on a principal bundle $(E, B, \pi, G)$ is a $\mathfrak{g}$-valued 1-form $\omega$ whose vertical (fibre) component is the Maurer--Cartan 1-form on $G$.
+\end{definition}
+In local coordinates,
+\begin{equation}
+  \omega = \gamma^{-1} (A + d) \gamma,
+\end{equation}
+where $A$ is a $\mathfrak{g}$-valued $1$-form $B$ on $\gamma \in G$ (fibre bundle).
+
+Say $U, U'$ are overlapping open sets on $B$, $g_{U U'} = g$ is the transition function acting on $G$ by left multiplication, i.e.~$\gamma' = g \gamma$.
+
+On $U \cap U'$.
+\begin{equation}
+  \gamma^{-1} (A + d) \gamma = (\gamma')^{-1} (A' + d) \gamma'.
+\end{equation}
+Let us compute the right-hand side:
+\begin{equation}
+  \gamma^{-1} g^{-1} A' g \gamma + \underbrace{\gamma^{-1} g^{-1} (d g \cdot \gamma + g d \gamma)}_{\gamma^{-1} g^{-1} d g \gamma + \gamma^{-1} d \gamma}.
+\end{equation}
+Comparing this to the left-hand side, the term $\gamma^{-1} d \gamma$ cancels. We are left with
+\begin{equation}
+  \gamma^{-1} A \gamma = \gamma^{-1} (g^{-1} A' g + g^{-1} d g) \gamma.
+\end{equation}
+From this we obtain
+\begin{equation}
+  \boxed{A' = g A g^{-1} - dg \cdot g^{-1}}
+\end{equation}
+In other words, $A, A'$ are related by a gauge transformation \eqref{eq:12-gauge-transformation} on $B$.
+
+\begin{definition}[curvature]
+  The \emph{curvature} $\Omega$ of a connection $\omega$ is a $\mathfrak{g}$-valued $2$-form on $E$ defined by
+  \begin{equation}
+    \Omega = d \omega + \omega \wedge \omega.
+  \end{equation}
+\end{definition}
+Working in a local trivialisation,
+\begin{align}
+  \Omega &= d (\gamma^{-1} A \gamma + \gamma^{-1} d \gamma) + \omega \wedge \omega \\
+  &= -\gamma^{-1} d \gamma \gamma^{-1} \wedge A \gamma + \gamma^{-1} d A \gamma - \gamma^{-1} A \wedge d \gamma - \gamma^{-1} d \gamma \gamma^{-1} \wedge d \gamma \nonumber \\
+  &\qquad + \gamma^{-1} A \gamma \wedge \gamma^{-1} A \gamma + \gamma^{-1} A \gamma \wedge \gamma^{-1} d \gamma + \gamma^{-1} d \gamma \wedge \gamma^{-1} A \gamma + \gamma^{-1} d \gamma \wedge \gamma^{-1} d \gamma \\
+  &= \gamma^{-1} (d A + A \wedge A) \gamma = \gamma^{-1} F \gamma,
+\end{align}
+where $F = dA + A \wedge A$ is a $\mathfrak{g}$-valued $2$-form on $B$.
+The curvature $\Omega$ does not have the vertical (fibre) component.
+
+Writing $\Omega = (\gamma')^{-1} F' \gamma'$ gives
+\begin{equation}
+  \boxed{F' = g F g^{-1}}
+\end{equation}
+The base-components of both $\omega$ and $\Omega$ are related by gauge transformations \eqref{eq:12-gauge-transformation}.
+
+Let $\gamma \colon U \to G$ be any local section, $\gamma =\gamma(x)$, where $x \in U \subset B$.
+This can be used to pull back $\omega$ and $\Omega$ from the total space $E$ to the base space $B$.
+\begin{equation}
+  A = \gamma^* (\omega), \qquad F = \gamma^* (\Omega).
+\end{equation}
+The $A$ and $F$ defined this way are called the \emph{gauge potential} and \emph{gauge field} respectively.
+This reveals the bundle-theoretic origin of gauge transformations.
+In physics we only work with the base space and say that the gauge potential is only defined locally up to gauge transformation. 
+We see now that this gauge ambiguity is an artefact of an ambiguity in the choice of section on the fibre structure. A gauge transformation on $B$ is the same as a change of section of $E$.
+In particular, if the bundle $E$ is non-trivial, then a global section does not exist, and the gauge potential can only be defined locally.
+
+Given a connection $\omega$, we can split the tangent bundle $T E$ into vertical and horizontal sub-bundles
+\begin{equation}
+  T E = H(E) \oplus V(E),
+\end{equation}
+where $H(E), V(E)$ are defined as
+\begin{equation}
+  H(E) = \left\{X \in TE \suchthat X \rightharpoonup \omega = 0\right\}.
+\end{equation}
+A basis of $H(E)$ (in a trivialisation) is
+\begin{equation}
+  H(E) = \text{Span}\left\{D_a\right\}, \qquad D_a = \frac{\partial }{\partial x^{a}} - A \indices{_a^{\alpha}} R_{\alpha}, \qquad 
+  \begin{gathered}
+    a = 1, \dots, \dim B \\
+    \alpha = 1, \dots, \dim \mathfrak{g}
+  \end{gathered}
+\end{equation}
+where $x^{a}$ are local coordinates on $U$ and $R_{\alpha}$ are right-invariant vector fields on $G$ with
+\begin{equation}
+  [R_{\alpha}, R_{\beta}] = -f\indices{_{\alpha\beta}^{\gamma}} R_{\gamma}.
+\end{equation}
+The curvature is an obstruction to integrability in $H(E)$.
+\begin{exercise}
+  Compute the Lie bracket
+  \begin{equation}
+    [D_{a}, D_{b}] = -F\indices{_{ab}^{\alpha}} R_{\alpha}.
+  \end{equation}
+  (Use $[T_{\alpha}, T_{\beta}] = f\indices{_{\alpha\beta}^{\gamma}} T_{\gamma}$ and the component form of the pull-back.)
+  The right-hand side belongs to the vertical component.
+\end{exercise}
+Other texts define the connection from the splitting above and then recover the $1$-form from it.
