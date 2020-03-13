@@ -18,7 +18,7 @@
 \begin{claim}[Cartan's Magic Formula]
   On differential forms, we can use the Leibniz rule to show that
   \begin{equation}
-    \mathcal{L}_V \Omega = d(\iota_V \Omega) + \iota_V (d\Omega) = d (V \rightharpoonup \Omega) + V \rightharpoonup d\Omega.
+    \mathcal{L}_V \Omega = d(\iota_V \Omega) + \iota_V (d\Omega) = d (V \intprod \Omega) + V \intprod d\Omega.
   \end{equation}
 \end{claim}
 \begin{definition}[]
@@ -37,12 +37,12 @@
 \begin{definition}[contraction]
   We write a \emph{contraction} as
   \begin{equation}
-    \frac{\partial }{\partial x^{i}} \rightharpoonup dx^{j} = \iota_{\frac{\partial }{\partial x^{i}}} dx^{j} = \delta\indices{_{i}^{j}}.
+    \frac{\partial }{\partial x^{i}} \intprod dx^{j} = \iota_{\frac{\partial }{\partial x^{i}}} dx^{j} = \delta\indices{_{i}^{j}}.
   \end{equation}
 \end{definition}
 For a general vector field $V$ and one-form $ \Omega$, we have
 \begin{equation}
-\iota_V \Omega = V \rightharpoonup \Omega = V^{i} \frac{\partial }{\partial x^{i}} \rightharpoonup \Omega_j dx^{j} = V^{i} \Omega_{j} \delta\indices{^{j}_{i}} = V^{i} \Omega_{i}.
+\iota_V \Omega = V \intprod \Omega = V^{i} \frac{\partial }{\partial x^{i}} \intprod \Omega_j dx^{j} = V^{i} \Omega_{j} \delta\indices{^{j}_{i}} = V^{i} \Omega_{i}.
 \end{equation}
 \begin{remark}
   No metric is needed to define contraction.
@@ -118,7 +118,7 @@ Left-invariant vector fields form a basis of $\mathfrak{g}$, meaning that $\dim(
 
 \begin{claim}
   Let $\{L_{\alpha}\}$, $\alpha = 1, \dots, \dim \mathfrak{g}$ be a basis of left invariant vector fields with $ [L_{\alpha}, L_{\beta}] = \sum_\gamma f\indices{_{\alpha\beta}^{\gamma}}L_{\gamma}$.
-  Let $\sigma^{\alpha}$ be a dual basis of left-invariant one-forms, meaning that $ L_{\alpha} \rightharpoonup \sigma^{\beta} = \delta\indices{_{\alpha}^{\beta}}$.
+  Let $\sigma^{\alpha}$ be a dual basis of left-invariant one-forms, meaning that $ L_{\alpha} \intprod \sigma^{\beta} = \delta\indices{_{\alpha}^{\beta}}$.
   Then
   \begin{equation}
     d\sigma^{\alpha} + \frac{1}{2} f\indices{^{\alpha}_{\beta\gamma}} \sigma^{\beta} \wedge \sigma^{\gamma} = 0 \label{eq:4-star}.

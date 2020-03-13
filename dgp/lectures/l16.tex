@@ -1,0 +1,88 @@
+% lecture notes by Umut Özer
+% course: dgp
+\lhead{Lecture 16: March 13}
+
+\section{Back to Yang--Mills}%
+\label{sec:back_to_yang_mills}
+
+Recall that the boundary conditions at $r \to \infty$ ensure that the components $A_{a} \sim -\partial_{a} g \cdot g^{-1} + O(\frac{1}{r^2})$ are in pure gauge.  We have the map $g \colon S_{\infty}^3 \to SU(2)$, from which we obtained the instanton number as its degree.
+
+There is a theorem by Uhlenbeck that relates boundary conditions on $\mathbb{R}^4$ to solutions to YM extended to $S^4 = \mathbb{R}^4 \cup \left\{\infty\right\}$.
+We have seen something similar for sigma models, in the case of $\mathbb{R}^2$ to $S^2$.
+\begin{theorem}[Uhlenbeck (1984?)]
+  For any instanton on $\mathbb{R}^4$, $\exists c$ principal $SU(2)$ bundle with connection $\omega$ over $S^4$ such that pull backs of $\omega$ to $S^4$ stereographically project to $\mathbb{R}^4$.
+\end{theorem}
+\begin{leftbar}
+  Although any bundle over $\mathbb{R}^4$ is trivial (since the base space is contractible), principal bundles over $S^4$, which is non-contractible, will in general be non-trivial. Thus the Yang--Mills bundle $E \to S^4$ can be non-trivial. We will show that they are classified by the instanton number.
+\end{leftbar}
+\begin{proof}
+  Let us cover $S^4$ with two open sets:
+  \begin{equation}
+    U_+ = S^4 - \left\{N = (0,0,0,1)\right\}, \qquad
+    U_- = S^4 - \left\{S = (0,0,0,-1)\right\}.
+  \end{equation}
+  We then have a stereographic projection
+  \begin{equation}
+    f_{\pm} \colon U_{pm} \to \mathbb{R}^4.
+  \end{equation}
+  \begin{figure}[tbhp]
+    \centering
+    \inkfig[0.4]{l16f1}
+    \caption{Open sets covering $S^4$.}
+    \label{fig:l16f1}
+  \end{figure}
+  Let us now consider two different open sets $U_{\pm}^{\epsilon}$ shown in Fig.~\ref{fig:l16f1}.
+  In this case $U_+^\epsilon$ covers the upper half of the sphere through to $-\epsilon$ under the equator. $U_-^\epsilon$ covers the other half, up to $+\epsilon$ above the equator.
+  They intersect in a range $(-\epsilon, \epsilon)$ around the equator.
+  Taking $\epsilon$ infinitesimal, then 
+  \begin{equation}
+    U_+^{\epsilon} \cap U_-^{\epsilon} = S^3 \times (-\epsilon, \epsilon).
+  \end{equation}
+  Now take 
+  \begin{equation}
+    \gamma_{\pm} \colon U_{\pm}^{\epsilon} \to E.
+  \end{equation}
+  We then have a connection on $E$:
+  \begin{equation}
+    \omega = 
+    \begin{cases}
+      \gamma_+^{-1} (A_+ + d) \gamma_+, & \text{on } \pi^{-1}(U_+^3)  \\
+      \gamma_-^{-1} (A_- + d) \gamma_-, & \text{on } \pi^{-1}(U_-^3)  \\
+    \end{cases}, \qquad
+    \Omega = d \omega + \omega \wedge \omega = \left\{
+      \begin{matrix}
+        \gamma_+^{-1} F_+ \psi_+ \\
+        \gamma_-^{-1} ??\\
+      \end{matrix}
+    \right.
+  \end{equation}
+  and $A_+, A_-$ are $\mathfrak{g}$-valued $1$-forms on $U_+, U_-$.
+  \begin{equation}
+    \gamma_- = g \gamma_+, \qquad A_- = g A_+ g^{-1} - d g \cdot g^{-1}.
+  \end{equation}
+  This is the gauge transformation on $S^4$.
+  And so
+  \begin{align}
+    k &= -\frac{1}{8 \pi^2} \int_{S^4} \tr(\Omega \wedge \Omega) \\
+      &= -\frac{1}{8 \pi^2} \left[ \int_{U_+^{\epsilon}} \tr(F_+ \wedge F_+) + \int_{U_-^{\epsilon}} \tr(F_- \wedge F_-) \right].
+  \end{align}
+  Taking the limit $\epsilon \to 0$, we have
+  \begin{equation}
+    k = -\frac{1}{8 \pi^2} \left[ \int_{S^3} \tr(F_+ \wedge A_+ - \frac{1}{3} A_+^3) - \int_{S^3} \tr(F_- \wedge A_- - \frac{1}{3} A_-^3) \right],
+  \end{equation}
+  where the minus sign in the second term arises since the $S^3$-boundary of $U_-^{\epsilon}$ has the opposite orientation of $U_+^{\epsilon}$.
+  \begin{exercise}
+    Show that this equals
+    \begin{equation}
+      k = -\frac{1}{8 \pi^2} \int_{S^3} \tr(\frac{1}{3} (dg \cdot g^{-1})^3) - d(A_+ \wedge dg \cdot d^{-1}).
+    \end{equation}
+  \end{exercise}
+  Now the second summand is a boundary term, which vanishes since $\partial S^3 = \emptyset$. (It arose as the boundary of $U_{\pm}^{\epsilon}$ and the boundary of a boundary is empty.)
+  \begin{equation}
+    k =-\frac{1}{24 \pi^2} \int_{S^3} \tr(dg \cdot g^{-1})^3 \in \mathbb{Z}.
+  \end{equation}
+  Here, $g$ has a different interpretation as before ($\mathbb{R}^4$ calculation).
+  Now it is a transition function for $(E, B = S^4, \pi, G)$.
+\end{proof}
+
+We obtain topological information about / a topological invariant for $(E, B = S^4, \pi, G)$. This is the starting point for Donaldson's work on four-manifolds.
