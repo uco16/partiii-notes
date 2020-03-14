@@ -10,40 +10,43 @@ Let us couple an external source to the photon following Maxwell's equation
   \label{eq:16-maxwell}
   \partial^{\nu} F^{\nu\mu} = J^{\mu}.
 \end{equation}
-Then the generating functional is
+Then the generating functional whose Euler--Lagrange equations give these equations of motion is
 \begin{equation}
-  \mathcal{Z}_0[J] = \int \pdd{A} \exp{- \int \dd[4]{x} [F_{\mu\nu} F^{\mu\nu} + J^{\mu} A_{\mu}]}.
+  \mathcal{Z}_0[J] = \int \pdd{A} \exp{- \int \dd[4]{x} [F_{\mu\nu} F^{\mu\nu} + J^{\mu} A_{\mu}]} = \int \pdd{A} e^{-S_g[A, J]}
 \end{equation}
-Let us check that this is gauge invariant.
-Define the gauge transformation to be $A_{\mu}(x) \to A'_{\mu}(x) = A_{\mu}(x) - \partial_{\mu} \alpha(x)$\footnote{Compared to the \emph{Standard Model} course, we are absorbing the factor of $\frac{1}{e}$ into $\alpha(x)$.}
-, we have
-\begin{align}
-  \int \dd[4]{x} J^{\mu} (A'_{\mu} - A_{\mu}) &= \int \dd[4]{x} J^{\mu}(\partial_{\mu} \alpha) \\
-					      &= \int \dd[4]{x} \partial_{\mu} (J^{\mu} \alpha ) - \int \dd[4]{x} (\partial_{\mu} J^{\mu})\alpha = 0,
-\end{align}
-where the first term is a boundary term, which vanishes for suitable behaviour at $\abs{x} \to \infty$, and the second term vanishes by conservation of the current (evident from Maxwell's equation \eqref{eq:16-maxwell}):
-\begin{equation}
-  \partial_{\mu} J^{\mu} = \partial_{\mu} \partial_{\nu} F^{\mu\nu} = 0,
-\end{equation}
-Since $F^{\mu\nu} = - F^{\nu\mu}$.
+\begin{claim}
+  This action $S_g$ is gauge invariant.
+\end{claim}
+\begin{proof}
+  Define the gauge transformation to be $A_{\mu}(x) \to A'_{\mu}(x) = A_{\mu}(x) - \partial_{\mu} \alpha(x)$\footnote{Compared to the \emph{Standard Model} course, we are absorbing the factor of $\frac{1}{e}$ into $\alpha(x)$.}
+  , we have
+  \begin{align}
+    \int \dd[4]{x} J^{\mu} (A'_{\mu} - A_{\mu}) &= \int \dd[4]{x} J^{\mu}(\partial_{\mu} \alpha) \\
+						&= \int \dd[4]{x} \partial_{\mu} (J^{\mu} \alpha ) - \int \dd[4]{x} (\partial_{\mu} J^{\mu})\alpha = 0,
+  \end{align}
+  where the first term is a boundary term, which vanishes for suitable behaviour at $\abs{x} \to \infty$, and the second term vanishes by conservation of the current (evident from Maxwell's equation \eqref{eq:16-maxwell}):
+  \begin{equation}
+    \partial_{\mu} J^{\mu} = \partial_{\mu} \partial_{\nu} F^{\mu\nu} = 0,
+  \end{equation}
+  Since $F^{\mu\nu} = - F^{\nu\mu}$.
+\end{proof}
 
 The Fourier transform of the action is
 \begin{equation}
   S_g[A, J] = \frac{1}{2} \int \bdd[4]{k} \left[ A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k) + J^{\mu}(-k) A_{\mu}(k) + J^{\mu}(k) A_{\mu}(-k) \right].
 \end{equation}
-Consider field gauge-equivalent to $A_{\mu}(k) = 0$: The action vanishes and $e^{-S_g} = 1$. Therefore, we have an apparent divergence $\int \pdd{A} \cdot 1$.
 
-From the condition of position space gauge invariance, we get
+However, this path integral formulation of QED has a problem: Consider the field configurations $A^{(0)}$ that are gauge-equivalent to $A_{\mu}(k) = 0$. The action vanishes and $e^{-S_g} = 1$. Therefore, we have an apparent divergence in the photon generating functional $\mathcal{Z}_0[J] \supset \int \pdd{A^{(0)}} \cdot 1$.
+
+From the position-space gauge invariance, we get the momentum space condition
 \begin{equation}
-  A_{\mu}(x) = \partial_{\mu} \alpha(x) \to A_{\mu}(k) = k_{\mu} \alpha(k).
+  A_{\mu}(x) = \partial_{\mu} \alpha(x) \quad \to \quad A_{\mu}(k) = k_{\mu} \alpha(k).
 \end{equation}
-
-Define the ($4 \times 4$) projection matrix
+Define the $4 \times 4$ matrix
 \begin{align}
-  P^{\mu\nu}(k) &= \delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2},
+  P^{\mu\nu}(k) &= \delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2}.
 \end{align}
-which obeys $ P\indices{^{\mu}_{\nu}} (k) P^{\nu\rho}(k) = P^{\mu\rho}(k)$.
-Its eigenvalues are either $0$ or $1$.
+This is a \emph{projection matrix}, which obeys $ P\indices{^{\mu}_{\nu}} (k) P^{\nu\rho}(k) = P^{\mu\rho}(k)$, so its eigenvalues are either $0$ or $1$.
 The $k_{\nu}$ are the zero-eigenvectors
 \begin{equation}
   P^{\mu\nu}(k) k_{\nu} = 0

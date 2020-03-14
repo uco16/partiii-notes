@@ -88,36 +88,46 @@ In Euclidean spacetime, $\{\gamma_{\mu}, \gamma_{\nu}\} = 2 \delta_{\mu\nu}$ and
   \end{equation}
 \end{example}
 
-\section{Fermionic Feynman Rules}%
-\label{sec:fermionic_feynman_rules}
+\section{QED Feynman Rules}%
+\label{sec:qed_feynman_rules}
 
-Let us first find the Feynman propagator for the fermions.  We go to momentum space with Fourier convention
+\subsection*{Electron Propagator}%
+
+Let us first find the Feynman propagator for the fermionic electrons $\psi$. We go to momentum space with Fourier convention
 \begin{equation}
   \psi(x) = \int \bdd[4]{p} e^{i p \cdot x} \psi(p),
 \end{equation}
 where, instead of using another symbol, we distinguish the field $\psi(x)$ from its modes $\psi(p)$ by keeping the argument explicit.
-The free part of the fermion (electron) action is
+The free part of the fermion action is
 \begin{equation}
   \label{eq:15-f}
   S_f[\psi, \overline{\psi}{}] = \int \bdd[4]{p} \overline{\psi} (-p) (i \cancel{p} + m) \psi(p).
 \end{equation}
 Introducing fermionic charges $\eta, \overline{\eta}{}$, the (momentum space) generating functional is
 \begin{align}
-  \mathcal{Z} [\eta, \overline{\eta}{}] &= \int \pdd{\phi} \pdd{\overline{\psi}{}} \exp{ - \int \bdd[4]{p} \left[ \overline{\psi}{}(i \cancel{p} + m) \psi - \overline{\eta}{} \psi + \overline{\psi}{} \eta \right] } \\
+  \mathcal{Z} [\eta, \overline{\eta}{}] &= \int \pdd{\psi} \pdd{\overline{\psi}{}} \exp{ - \int \bdd[4]{p} \left[ \overline{\psi}{}(i \cancel{p} + m) \psi - \overline{\eta}{} \psi + \overline{\psi}{} \eta \right] } \\
 					&= \mathcal{Z}[0, 0] e^{-\int \overline{\eta}{}(i \cancel{p} + m)^{-1} \eta}.
 \end{align}
 The free propagator is therefore 
 \begin{equation}
   G_F(p) = \left.\frac{\delta^2 \mathcal{Z}}{\delta \overline{\eta}{} \delta \eta}\right\rvert_{\eta, \overline{\eta}{} = 0} = \frac{1}{i \cancel{p} + m}.
 \end{equation}
-We see that we could have just read off the propagator to be the inverse of the operator acting on the quadratic part of the Fouier-transformed action \eqref{eq:15-f}.
-In the same way, the EM propagator is obtained by Fourier-transforming the associated action
+We see that we could have just read off the propagator to be the inverse of the operator acting on the quadratic part of the Fourier-transformed action \eqref{eq:15-f}.
+
+\subsection*{Photon Propagator}%
+
+In the same way, the electromagnetic photon propagator is obtained from the Fourier-integral representation of the associated action
 \begin{align}
   S_{EM} [A] &= \frac{1}{4} \int \dd[4]{x} F_{\mu\nu} F^{\mu\nu} \\
-	  &= \frac{1}{2} \int \bdd[4]{k} A_{\mu}(-k) (k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}) A_{\nu}(k).
+	     &= -\frac{1}{2} \int \dd[4]{x} A_{\mu}(x) [\delta^{\mu\nu} \partial^2 - \partial^{\mu} \partial^{\nu}] A_{\nu}(x) \\
+	  &= \frac{1}{2} \int \bdd[4]{k} A_{\mu}(-k) [k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}] A_{\nu}(k),
+	  \label{eq:15-ft}
 \end{align}
+where we integrated by parts in the second line after using $F_{\mu\nu} F^{\mu\nu} = 2 [\partial_{\mu} A_{\nu} \partial^{\mu} A^{\nu} - \partial_{\mu} A_{\nu} \partial^{\nu} A^{\mu}]$.
+In going to the third sign, we pick up another minus sign due to the two factors of $i$ brought down by the derivatives.
 From this we can read off the EM propagator
 \begin{equation}
+  \label{eq:15-prop}
   D^{\mu\nu}(k) = \frac{1}{k^2} (\delta^{\mu\nu} - \frac{k^{\mu} k^{\nu}}{k^2}) = 
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
@@ -125,6 +135,32 @@ From this we can read off the EM propagator
     };
   \end{gathered}.
 \end{equation}
+\begin{leftbar}
+  \begin{remark}
+    It turns out that there is a subtlety here that was brushed under the rug in lectures:
+    As explained above, we should really look at the \emph{inverse} of the operator $k^2 \delta^{\mu\nu} - k^{\mu} k^{\nu}$ acting on the quadratic part of the Fourier-transformed action \eqref{eq:15-ft}.
+    This means we want $D^{\mu\nu}(k)$ such that
+    \begin{equation}
+      \label{eq:15-dinv}
+      (k^2 \delta_{\mu\nu} - k_{\mu} k_{\nu}) D^{\nu\rho}(k) = \delta\indices{_{\mu}^{\rho}}.
+    \end{equation}
+    However, this equation has no solution since the $4 \times 4$ matrix $(k^2 \delta_{\mu\nu} - k_{\mu} k_{\nu})$ is singular \cite[Sec.~9.4]{peskin}.
+    Equivalently, the expression \eqref{eq:15-ft} vanishes whenever $A_{\mu}(k) = k_{\mu} \alpha(k)$ for any scalar function $\alpha(k)$. For all these functions, the integrand of $\int \pdd{A} e^{-S[A]}$ is $1$ and therefore the path integral is divergent (there is no Gaussian damping).
+    In fact, this difficulty arises due to gauge invariance: the functional integral is divergent because we are redundantly integrating over a continuous infinity of physically equivalent field configurations, with the troublesome modes being those for which $A_{\mu}(x) = \frac{1}{e} \partial_{\mu} \alpha(x)$, i.e.~those that are gauge-equivalent to $A_{\mu}(x) = 0$.
+    This redundancy can be eliminated by \emph{Faddeev--Popov gauge fixing}. To not be repetitive, this is explained for the more general non-Abelian case in Sec.~\ref{sec:fadeev_popov_gauge_fixing}. The upshot of this gauge-fixing procedure will be that we obtain a sensible photon propagator by including an extra term $-(\partial^{\mu} A_{\mu})^2 / 2 \xi$ \eqref{eq:22-gf} to the Lagrangian, so that \eqref{eq:15-dinv} becomes
+    \begin{equation}
+      [k^2 \delta_{\mu\nu} - (1-\frac{1}{\xi} k_{\mu} k_{\nu})] D^{\nu\rho}(k) = \delta\indices{_{\mu}^{\rho}},
+    \end{equation}
+    which is indeed invertible and has the solution
+    \begin{equation}
+      D^{\mu\nu}(k) = \frac{1}{k^2} \left( \delta^{\mu\nu} - (1-\xi) \frac{k^{\mu} k^{\nu}}{k^2} \right).
+    \end{equation}
+    When making computations, we may choose a specific value for $\xi$. In \eqref{eq:15-prop}, we used $\xi = 0$, which is called \emph{Landau gauge}. The \emph{Feynman gauge} $\xi = 1$ is also commonly used, and sometimes the \emph{Yennie gauge} $\xi = 3$ makes an appearance.
+  \end{remark}
+\end{leftbar}
+
+\subsection*{QED Vertex}%
+
 The vertex between a fermion-antifermion pair $\overline{\psi}{}, \psi$ and a photon $A_{\mu}$ is
 \begin{equation}
   \begin{gathered}
