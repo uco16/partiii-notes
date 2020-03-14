@@ -40,34 +40,72 @@ In the case of $SO(3)$; we have $q \overline{q}{}$, and $q q$. These have non-in
 For $\mathfrak{u}(3) = \mathfrak{su}(3) \times \mathfrak{u}(1)$, we obtain long-range interactions, which we do not want.
 Therefore, we are left with $SU(3)_c$.
 
-In experiments of deep inelastic scattering (DIS) $e^- p \to e^- p + \dots$, we have the following diagrams at progressively higher energies.
-
+In experiments of \emph{deep inelastic scattering} (DIS) $e^- p \to e^- p + \dots$, we have the following diagrams at progressively higher energies:
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
-      a -- [fermion] v --[fermion] b,
-      v -- [boson] x,
-      c --[fermion] x --[fermion] d,
-    };
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\vertex[large, dot, label=0:$x$] (x) {};
+	\vertex (a) {$e^-$};
+	\vertex[right=4em of a] (b) ;
+	\vertex[right=3.5em of b] (c) {$e^-$};
+	\vertex[below=of b] (d) ;
+	\vertex[right=3.5em of d] (e) {$p$};
+	\vertex[left=3.5em of d] (f) {$p$};
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (a) -- [fermion] (b) -- [fermion] (c),
+      (b) -- [boson] (d),
+      (f) -- [fermion] (d) -- [fermion] (e),
+	};
+      \end{feynman}
+    \end{tikzpicture}
   \end{gathered}
-  \xrightarrow{\text{higher energies}}
+  \xrightarrow[\text{energy}]{\text{higher}}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
-      a [particle=\(e^-\)] -- [fermion] v --[fermion] b [particle=\(e^-\)],
-      v -- [boson] x,
-      c [particle=\(p\)] --[fermion] x --[fermion] d [particle=\(p\)],
-      x -- [scalar] e [particle=\(\pi^0\)],
-    };
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\vertex[large, dot, label=0:$x$] (x) {};
+	\vertex (a) {$e^-$};
+	\vertex[right=4em of a] (b) ;
+	\vertex[right=3.5em of b] (c) {$e^-$};
+	\vertex[below=of b] (d) ;
+	\vertex[right=3.5em of d] (e) {$p$};
+	\vertex[below=2em of e] (g) {$\pi^0$};
+	\vertex[left=3.5em of d] (f) {$p$};
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (a) -- [fermion] (b) -- [fermion] (c),
+      (b) -- [boson] (d),
+      (f) -- [fermion] (d) -- [fermion] (e),
+      (d) -- [scalar] (g),
+	};
+      \end{feynman}
+    \end{tikzpicture}
   \end{gathered}
-  \xrightarrow{\text{higher energies}}
+  \xrightarrow[\text{energy}]{\text{higher}}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][vertical=v to x, layered layout] {
-      a [particle=\(e^-\)] -- [fermion] v --[fermion] b [particle=\(e^-\)],
-      v -- [boson] x,
-      c [particle=\(p\)] --[fermion] x --[fermion] d [particle=\(p\)],
-      x -- [scalar] e [particle=\(\pi^0\)],
-      x -- f [particle=\(\text{hadrons}\)],
-    };
+    \begin{tikzpicture}
+      \begin{feynman}
+	%\vertex[large, dot, label=0:$x$] (x) {};
+	\vertex (a) {$e^-$};
+	\vertex[right=4em of a] (b) ;
+	\vertex[right=3.5em of b] (c) {$e^-$};
+	\vertex[below=of b] (d) ;
+	\vertex[right=3.5em of d] (e) {$p$};
+	\vertex[left=3.5em of d] (f) {$p$};
+	\vertex[below=2em of e] (g) {$\pi^0$};
+	\vertex[below=2em of g] (h) {hadrons};
+	%\draw (b) arc [start angle=180, end angle=-180, radius=0.2cm];
+	\diagram* {
+      (a) -- [fermion] (b) -- [fermion] (c),
+      (b) -- [boson] (d),
+      (f) -- [fermion] (d) -- [fermion] (e),
+      (d) -- [scalar] (g),
+      (d) -- (h),
+	};
+      \end{feynman}
+    \end{tikzpicture}
   \end{gathered}
 \end{equation}
 The first diagram is essentially elastic, whereas the higher energy diagram are inelastic. In these, the protons are behaving as if they had constituents, called \emph{partons} (Feynman). The components seemed to behave more and more free at higher energies. It turns out that these partons were not just quarks, but quarks and gluons.
@@ -166,14 +204,14 @@ The field strength of the corresponding gluon is
 Typical vertices include
 \begin{equation}
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout, small] {
       a -- [gluon] b [small, dot, label=$f^{abc}$] -- [gluon] c,
       b -- [gluon] d,
     };
   \end{gathered}
   \qquad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+    \feynmandiagram[transform shape, scale=1][small, horizontal=a to c, layered layout, small] {
       a -- [gluon] b [small, dot] -- [gluon] c,
       b -- [gluon] d,
       e --[gluon] b,
@@ -181,8 +219,8 @@ Typical vertices include
   \end{gathered}
   \qquad
   \begin{gathered}
-    \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-      i -- [edge label=$q_i$] a [small, dot, label=$\Gamma^{a}_{ij}$] -- [edge label=$q_j$] f,
+    \feynmandiagram[transform shape, scale=1][horizontal=a to b, small] {
+      i -- [fermion, edge label=$q_i$] a [small, dot, label=50:$\Gamma^{a}_{ij}$] -- [fermion, edge label=$q_j$] f,
       a -- [gluon] b,
     };
   \end{gathered}
@@ -192,9 +230,9 @@ For example, we have gluon exchange
 \begin{equation}
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-      i -- a [small, dot, label=$T^{a}_{ij}$] -- f,
+      i -- [fermion] a [small, dot, label=$T^{a}_{ij}$] --[fermion] f,
       a -- [gluon] b [small, dot, label=$T^{a}_{kl}$],
-      e -- b -- g,
+      e -- [fermion] b --[fermion] g,
     };
   \end{gathered}
   \qquad \propto T^{a}_{ji} T^{a}_{kl}
@@ -211,13 +249,13 @@ We have the vacuum polarisation diagram
 \begin{equation}
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a -- [gluon] b -- [half left, looseness=1] r -- [half left, looseness=1] b,
+      a -- [gluon] b -- [half left, looseness=1, fermion] r -- [fermion, half left, looseness=1] b,
       r -- [gluon] e,
     };
   \end{gathered},
 \end{equation}
 where the loop is given by quarks.
-The gauge coupling $g_s$ is energy dependent, described by the $\beta$-function
+The gauge coupling $g_s$ is energy-dependent, described by the $\beta$-function
 \begin{equation}
   \beta(\alpha_s) = \mu \dv{\alpha_s}{\mu}, \qquad \alpha_s = \frac{g_s^2}{4 \pi},
 \end{equation}

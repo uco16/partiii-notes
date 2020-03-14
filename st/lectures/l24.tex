@@ -1,0 +1,203 @@
+% lecture notes by Umut Özer
+% course: st
+\lhead{Lecture 24: March 13}
+
+If we write $X^{\mu}(z, \overline{z}{}) = X^{\mu}(z) + \overline{X}{}^{\mu}(\overline{z}{})$, the amplitude `factorises'
+\begin{multline}
+  A_{n} = g_c^{n-2} \abs{z_1 - z_2}^2 \abs{z_2 - z_3}^2 \abs{z_3 - z_1}^2 \delta^{26}\left( \sum_{j=0}^{n} k_{j \mu} \right) \\
+  \times \int \left[ \prod_{i=4}^{n} \dd[2]{z_i} \right] \left( \prod_{i=1}^{n} \epsilon^{(i)}_{\mu_i \nu_i} \right) \left\langle \prod_{j=1}^{n} \partial X^{\mu_j} e^{i k_j \cdot X(z_j)} \right\rangle\left\langle \prod_{j=1}^{n} \overline{\partial}{} X^{\nu_j} e^{i k_j \cdot \overline{X}{}(\overline{z}{}_j)} \right\rangle
+\end{multline}
+As usual we focus on the holomorphic sector. The antiholomorphic sector is just its carbon copy with bars on the relevant quantities.
+
+We have
+\begin{equation}
+  \label{eq:24-1}
+  \left\langle \prod_{j=1}^{n} \partial X^{\mu_j} e^{i k_j \cdot X(z_j)} \right\rangle = \frac{1}{i^n} \left[ \frac{\partial^n}{\partial \rho_1 \cdots \partial \rho_n} \exp(-\frac{\alpha'}{4} \int_{\Sigma} \dd[2]{z} \dd[2]{w} j_{\mu}(z) j^{\mu}(w) \ln(z - w)) \right]_{\rho_i = 0}.
+\end{equation}
+It is helpful to introduce
+\begin{align}
+  W[j] &= \exp(-\frac{\alpha'}{4} \int_{\Sigma} \dd[2]{z} \dd[2]{w} j_{\mu}(z) j^{\mu}(w) \ln(z - w)) \\
+       &= \exp(\frac{\alpha'}{4} \sum_{i \neq j} \left( \frac{1}{2} k_{i \mu} + \rho_{i \mu} \frac{\partial }{\partial z_i} \right)\left( \frac{1}{2} k_{j}^{\mu} + \rho_{j}^{\mu} \frac{\partial }{\partial z_j} \right) \ln(z_i - z_j)) \\
+       &= \left( \prod_{i < j} \abs{z_i - z_j}^{\alpha' k_i \cdot k_j} \right) \exp( \frac{\alpha'}{2} \sum_{i < j} \frac{\rho_i \cdot \rho_j}{(z_i - z_j)^2} + \frac{\alpha'}{2} \sum_{i \neq j} \frac{k_i \cdot \rho_j}{z_i - z_j}).
+       \label{eq:24-2}
+\end{align}
+This gives us an unpleasant but tractable generating functional $W[j]$, which we can differentiate with respect to $\rho_i$. Setting $\rho_i =0$ then gives \eqref{eq:24-1}:
+\begin{equation}
+  \left\langle \prod_{j=1}^{n} \partial X^{\mu_j} e^{i k_j \cdot X(z_j)} \right\rangle = \frac{1}{i^n} \left[ \frac{\partial^n W[j]}{\partial \rho_1 \dots \partial \rho_n} \right]_{\rho_j =0}.
+\end{equation}
+We thus have a recipe to calculate scattering amplitudes of any number of particles such as gravitons.
+
+\begin{example}[3-point graviton amplitude]
+  Let us consider graviton scattering with $n = 3$.
+  If all three particles are gravitons, which are massless and have $k^2 = 0$, then
+  \begin{equation}
+    \alpha' k_1 \cdot k_2 = \frac{\alpha'}{2} (k_1 + k_2)^2 = \frac{\alpha'}{2} (-k_3)^2 = 0.
+  \end{equation}
+  Therefore the first term in the expression \eqref{eq:24-2} for $W[j]$ is
+  \begin{equation}
+    \left( \prod_{i < j} \abs{z_i - z_j}^{\alpha' k_i \cdot k_j} \right) = 1.
+  \end{equation}
+  With a bit of work (problem sheet) one finds
+  \begin{equation}
+    \left\langle \prod_{j=1}^3 \partial X^{\mu_j} e^{i k_j \cdot X(z_j)} \right\rangle (\frac{\alpha'}{2})^2 \frac{T^{\mu_1 \mu_2 \mu_3}}{(z_1 - z_2)(z_2 - z_3) (z_3 - z_1)}.
+  \end{equation}
+  We obtain the now-familiar factor $(z_1 - z_2)(z_2 - z_3)(z_3 - z_1)$ in the denominator. The antiholomorphic sector gives a similar factor conjugated. Together, these cancel the contribution from the ghost sector.
+  The object in the numerator is
+  \begin{equation}
+    \label{eq:stringycorrections}
+    T^{\mu_1 \mu_2 \mu_3} = \eta^{\mu_1 \mu_2} k_2^{\mu_3} + \eta^{\mu_2 \mu_3} k_3^{\mu_1} + \eta^{\mu_3 \mu_1} k_1^{\mu_2} + \frac{\alpha'}{2} k_3^{\mu_1} k_1^{\mu_2} k_2^{\mu_3}.
+  \end{equation}
+  The final term, which is first order in the string length $\alpha'$, is a \emph{stringy correction} to the corresponding result obtained at tree level from the Einstein equations.
+\end{example}
+
+\section{1-Loop Amplitude}%
+\label{sec:loop_amplitudes}
+
+So far, we have considered tree level amplitudes. What would differ if we look at loops?
+At one-hole order, we would need a Green's function which has periodicity in the two directions of the torus.
+Moreover, the moduli space is non-trivial, so we need to integrate over the distinct complex structures of the torus. Finally, we would introduce a $(\mu_I \suchthat b)$ factor, where $\mu_I$ relates to the complex structure deformations. The point is that this is UV finite in a way that GR cannot be when discussing perturbations around flat space.
+
+\chapter{Strings on Tori}%
+\label{cha:strings_on_tori}
+
+\begin{leftbar}
+  Non-examinable.
+\end{leftbar}
+
+Let us think about the possibility of spacetime not being flat, but instead having a non-trivial topology.
+Imagine the spacetime has a circle direction:
+\begin{equation}
+  X \colon \Sigma \to \mathbb{M}^{D-1} \times S^1_{R},
+\end{equation}
+where $\mathbb{M}^{D-1}$ is $(D-1)$-dimensional Minkowski spacetime and $S^1_{R}$ is a circle of radius $R$.
+
+It is at this point at which we see some quite dramatic divergences between what string theory and quantum field theory would predict.  This is an actual qualitative difference, rather than the qualitative difference in the stringy corrections of \eqref{eq:stringycorrections}.
+
+Write $X^{\mu} = (X^i, X)$, where $X \sim X + 2 \pi R$ is the circle coordinate.
+We treat these two sectors in isolation, with metric
+\begin{equation}
+  \eta_{\mu\nu} = 
+  \begin{pmatrix}
+   \eta_{ij} & 0 \\
+   0 & 1 \\
+  \end{pmatrix}
+\end{equation}
+and action
+\begin{equation}
+  S = \frac{1}{2\pi \alpha'} \int \eta_{ij} \partial X^{i} \overline{\partial}{} X^{j} + \frac{1}{2 \pi \alpha'} \int \partial X \overline{\partial}{} X.
+\end{equation}
+
+For closed strings, we discussed the periodicity condition $X(\sigma + 2 \pi, \tau) = X(\sigma, \tau)$.
+However, if we have a non-trivial topology, we might have strings wrapping around the circular dimension as well:
+\begin{equation}
+  X(\sigma + 2 \pi, \tau) = X(\sigma, \tau) + 2\pi R m, \qquad m \in \mathbb{Z},
+\end{equation}
+where $m \in \mathbb{Z}$ is the winding number. This is illustrated in Fig.
+\begin{figure}[tbhp]
+  \centering
+  \inkfig[0.5]{l24f1}
+  \caption{Strings with winding number $m$.}
+  \label{fig:l24f1}
+\end{figure}
+Unlike a particle, the string can probe the topology of the spacetime. It knows not only about what happens locally but also globally!
+Winding may be computed from
+\begin{equation}
+  2 \pi R m = \oint \dd[]{X} = \oint \dd[]{z} \partial X + \oint \dd[]{\overline{z}{}} \overline{\partial}{} X \sim \alpha_0 - \overline{\alpha}{}_0
+\end{equation}
+
+Just as in a field theory, the centre of mass momentum is quantised
+\begin{equation}
+  p = \frac{n}{R}.
+\end{equation}
+The momentum is
+\begin{equation}
+  p = \frac{1}{2\pi \alpha'} \oint (\dd[]{z} \partial X - \dd[]{\overline{z}{}} \overline{\partial}{}X) \sim \alpha_0 + \overline{\alpha}{}_0.
+\end{equation}
+This means it makes sense to talk about \emph{chiral} and \emph{antichiral momenta}.
+Let us introduce
+\begin{equation}
+  p_L = \frac{n}{R} + m \frac{R}{\alpha'} = \sqrt{\frac{2}{\alpha'}} \alpha_0, \qquad
+  p_R = \frac{n}{R} - m \frac{R}{\alpha'} = \sqrt{\frac{2}{\alpha'}}\overline{ \alpha}{}_0.
+\end{equation}
+Define
+\begin{align}
+  X(z) &= x_L - i \frac{\alpha'}{2} p_L \ln (z) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{\alpha_n}{n} z^{-n} \\
+  \overline{X}{}(\overline{z}{}) &= x_R - i \frac{\alpha'}{2} p_R \ln (\overline{z}{}) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{\overline{\alpha}{}_n}{n} \overline{z}{}^{-n}.
+\end{align}
+We can then continue with our derivations as we did at the beginning of the course.
+In particular, the physical state conditions are:
+\begin{subequations}
+  \label{eq:physstatecond}
+  \begin{equation}
+    M^2 = \frac{n^2}{R^2} + \frac{m^2 R^2}{\alpha'{}^2} + \frac{2}{\alpha'} (N + \overline{N}{} -2)
+  \end{equation}
+  \begin{equation}
+    0 = nm + N - \overline{N}{}.
+  \end{equation}
+\end{subequations}
+
+\section{Massless Sector}%
+\label{sec:massless_sector}
+
+For a generic radius $R$: ($n = m  = 0$)
+\begin{equation}
+  \alpha^{i}_{-1} \overline{\alpha}{}^{j}_{-1} \ket{k}, \qquad g_{ij}, B_{ij}, \phi
+\end{equation}
+\begin{equation}
+  (\alpha^{i}_{-1} \alpha_{-1} \pm \alpha_{-1} \alpha^{i}_{-1}) \ket{k} \qquad g_{i}, B_j
+\end{equation}
+If you do not notice the circle (say for small $R$), these look like massless vector fields.
+\begin{equation}
+  \alpha_{-1} \alpha_{-1} \ket{k}
+\end{equation}
+changes size of $S'_R$.
+Field theory would reproduce the same thing, there is nothing new here. (This is the Kaluza--Klein approach to dimensional reduction.)
+
+\section{Symmetry Enhancement}%
+\label{sec:symmetry_enha}
+
+Take $R^2 = \alpha'$. Then we have a whole load of other states which at this magic radius become massless:
+\begin{align}
+  n &= m = \pm 1, N = 0, \overline{N}{} = 1 \\
+  n &= -m = \pm 1, N = 1, \overline{N}{} = 0 \\
+  n &= \pm 2, m = N = \overline{N}{} = 0 \\
+  m &= \pm 2, n = N = \overline{N}{} = 0.
+\end{align}
+Some of these states have non-trivial winding number and therefore do not have an analogue in quantum field theory.
+This means that there are new $(1, 0)$ and $(0, 1)$ operators appearing when $R = \sqrt{\alpha'}$.
+\begin{align}
+  K^1(z) &= \cos(\frac{2}{\alpha'} X(z)) \\
+  K^2(z) &= \sin(\frac{2}{\alpha'} X(z)) \\
+  K^3(z) &= \frac{i}{\sqrt{\alpha'}} \partial X(z).
+\end{align}
+These all have $h = 1$. There are similar expressions for the anti-chiral analogues.
+These $K^m(z)$ have very non-trivial OPE:
+\begin{equation}
+  K^m(z) K^n(w) = \frac{\delta^{mn} / 2}{(z - w)^2} + \frac{i \epsilon^{mnp}}{z - w} K^{p}(w) + \dots
+\end{equation}
+The zero modes satisfy the Lie algebra for $\mathfrak{su}(2)$:
+\begin{equation}
+  \boxed{[K_0^{m}, K^{n}_0] = i \epsilon^{mnp} K^{p}_0}  \qquad K^{m}_0 = \oint_{z = 0} \dv{\dd[]{z}}{2\pi i} K^{m}(z).
+\end{equation}
+This is a gauge symmetry appearing. This is a sort of stringy Higgs mechanism:
+Moving away from the perfect radius $R = \sqrt{\alpha'}$, the symmetry is broken. However, a $\mathbb{Z}_2 \subset SU(2)$ symmetry remains.
+
+\section{T-Duality}%
+\label{sec:t_duality}
+
+The physical state conditions \eqref{eq:physstatecond} stay the same under a transformation
+\begin{equation}
+  m \leftrightarrow n, \qquad R \leftrightarrow \frac{\alpha'}{R}.
+\end{equation}
+However, it turns out the all of the theory is invariant under this if we also exchange:
+\begin{equation}
+  X(z) \to - X(z), \qquad \overline{X}(\overline{z}{}) = \overline{X}{}(\overline{z}{}).
+\end{equation}
+
+\begin{equation}
+  X \colon \Sigma \to M_D \times S^1_R \equiv \widetilde{X} \colon \Sigma \to M_D \times S^1_{\alpha'/R}.
+\end{equation}
+\begin{equation}
+  X(z, \overline{z}{}) = \overline{X}{}(\overline{z}{}) + X(z), \qquad \widetilde{X}(z, \overline{z}{}) = \overline{X}{}(\overline{z}{}) - X(z).
+\end{equation}
+In other words, a closed bosonic string cannot tell whether it lives on a circle of radius $R$ or a radius $\alpha' / R$. They do not make the distinction of geometry and topology in the same way as we do.
