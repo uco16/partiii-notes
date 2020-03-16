@@ -2,19 +2,23 @@
 % course: aqft
 \lhead{Lecture 22: March 07}
 
-\subsection{Fadeev--Popov Ghost Fields}%
+\subsection{Faddeev--Popov Ghost Fields}%
 \label{sub:fadeev_popov_ghost_fields}
 
-We write the Fadeev--Popov determinant as the integral over the \emph{spinless} Grassmann fields $c, \overline{c}{}$
+We write the Faddeev--Popov determinant as a functional integral over a new set of \emph{spinless} Grassmann fields $c, \overline{c}{}$
 \begin{equation}
   \label{eq:22-1}
-  \det \frac{\delta G^{a}(x)}{\delta \alpha^{b}(y)} \propto \int \pdd{c} \pdd{\overline{c}{}} e^{-S_{\text{gh}}},
+  \det(\frac{\delta G^{a}(x)}{\delta \alpha^{b}(y)}) = \det(\frac{1}{g} \partial^{\mu} D_{\mu}) = \int \pdd{c} \pdd{\overline{c}{}} \exp[-\int \dd[4]{x} \overline{c}{}^{a}(-\partial^{\mu} D_{\mu}^{ab}) c^{b}],
 \end{equation}
-with ghost action and Lagrangian
+which adds to the Lagrangian the term
 \begin{equation}
-  S_{\text{gh}} = \int \dd[4]{x} \mathscr{L}_{\text{gh}}, \qquad \mathscr{L}_{\text{gh}} = -\overline{c}{}^{a} \partial^{\mu} D_{\mu} ^{ab} c^{b}.
+  \mathscr{L}_{\text{gh}} = -\overline{c}{}^{a} \partial^{\mu} D_{\mu} ^{ab} c^{b}.
 \end{equation}
 Since this Lagrangian is the adjoint derivative, we see that $c, \overline{c}{}$ have to transform in the adjoint representation.
+To give the correct identity, $c$ and $\overline{c}{}$ must be anticommuting fields that are scalars under Lorentz transformation, meaning that the quantum excitations of these fields have the wrong relation between spin and statistics to be physical particles.
+Nevertheless, we can treat these excitations as additional particles, called \emph{Faddeev--Popov ghosts}, in the computation of Feynman diagrams.
+We will see that this is a completely benign trick since the unphysical $c$-fields, which violate the spin-statistics theorem, will end up not contributing to any scattering amplitudes.
+
 We can integrate by parts to have an equivalent Lagrangian
 \begin{align}
   \mathscr{L}_{\text{gh}} &= \partial^{\mu} \overline{c}{}^{a} D^{ab}_{\mu} c^{b} \\
@@ -22,9 +26,7 @@ We can integrate by parts to have an equivalent Lagrangian
 			  &= \partial^{\mu} \overline{c}{}^{a} \partial_{\mu} c^{a} - g f^{abc} A_{\mu} ^{c} (\partial^{\mu} \overline{c}{}^{a}) c^{b}
 \end{align}
 which gives the same action $S_{\text{gh}}$.
-In addition to the kinetic term, this gives the interaction vertex between the $c$ ghosts and the gauge field $A$.
-Although \eqref{eq:22-1} is just a mathematical trick, we will treat the ghosts as genuine fields in the Feynman diagrams. Moreover, we will see that this is a completely benign trick since the unphysical $c$-fields, which violate the spin-statistics theorem, will end up not contributing to any scattering amplitudes.
-
+The first term gives the ghost propagator while the second term gives the interaction vertex between the $c$ ghosts and the gauge field $A$.
 For $U(1)$, the structure constants $f^{abc} = 0$ vanish. So the ghosts decouple and are not needed.
 
 \subsection{Gauge Fixing}%
@@ -52,13 +54,15 @@ with
   S_{\text{gf}} = \int \dd[4]{x} \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a})^2.
 \end{equation}
 
-\section{One-Loop Renormalisation}%
-\label{sec:one_loop_renormalisation}
+\section{Feynman Rules for Fermions, Gauge Bosons, and Ghosts}%
+\label{sec:feynman_rules_for_fermions_and_gauge_bosons_and_ghosts}
 
 Our Lagrangian has three different kinds of fields: gauge, fermion, and ghost
 \begin{equation}
-  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{} (\cancel{D} + m) \psi + \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a}) ^2 + \partial_{\mu} c^{a} \partial^{\mu} \overline{c}{}^{a} - g f^{abc} A_{\mu}^{c} \partial^{\mu} \overline{c}{}^{a} c^{b}.
+  \label{eq:l-nonab}
+  \mathscr{L} = \frac{1}{4} (F^{a}_{\mu\nu})^2 + \overline{\psi}{} (\cancel{D} + m) \psi + \frac{1}{2 \xi} (\partial^{\mu} A_{\mu}^{a}) ^2 + \partial_{\mu} c^{a} \partial^{\mu} \overline{c}{}^{a} - g f^{abc} A_{\mu}^{c} \partial^{\mu} \overline{c}{}^{a} c^{b}.
 \end{equation}
+%where the index $a$ is summed over the generators of the gauge group $G$, and the fermion multiplet $\psi$ belongs to an irreducible representation $r$ of $G$.
 
 The propagators are:
 \begin{align}
@@ -76,10 +80,10 @@ The propagators are:
     };
   \end{gathered}
   &= \frac{1}{k^2} \left( \delta^{\mu\nu} - (1 - \xi) \frac{k^{\mu} k^{\nu}}{k^2} \right)\delta^{ab} \\
-  &\text{Ghosts} & 
+  &\text{Ghosts} & \label{eq:gh-prop}
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b] {
-      a [particle=\(a\)] -- [ghost, momentum=$q$] b [particle=\(b\)],
+      a [particle=\(a\)] -- [charged ghost, momentum=$q$] b [particle=\(b\)],
     };
   \end{gathered}
   &= \frac{\delta^{ab}}{q^2} \quad \text{(massless)}
@@ -87,6 +91,7 @@ The propagators are:
 
 The interactions come from writing out $D_{\mu}$ and $F_{\mu\nu}$:
 \begin{equation}
+  \label{eq:3-boson-vertex}
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, small] {
       a [particle=\(\nu \text{, } b\)] -- [gluon, momentum=$p$] b,
@@ -97,7 +102,7 @@ The interactions come from writing out $D_{\mu}$ and $F_{\mu\nu}$:
   = -g f^{abc} \left[ \delta^{\mu\nu} (k - p)^{\rho} + \delta^{\nu\rho} (p - q)^{\mu} + \delta^{\rho\mu} (q - k)^{\nu} \right],
 \end{equation}
 from term $g f^{abc} (\partial_{\mu} A^{a}_{\nu}) A^{\mu, b} A^{\nu, c}$.
-\begin{equation}
+\begin{align}
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to u, small] {
       a [particle=\(\nu \text{, } b\)] -- [gluon] b,
@@ -106,9 +111,15 @@ from term $g f^{abc} (\partial_{\mu} A^{a}_{\nu}) A^{\mu, b} A^{\nu, c}$.
       e [particle=\(\sigma \text{, } d\)] -- [gluon] b,
     };
   \end{gathered}
-  = -g^2 \left[ f^{abc} f^{cde} (\delta^{\mu\rho} \delta^{\nu\sigma} - \delta^{\mu\sigma} \sigma^{\nu\rho}) + \text{2 permutations} \right],
-\end{equation}
-from the $(f^{abc} A_{\mu}^{b} A_{\nu}^{c})(f^{ade} A^{\mu, d} A^{\nu, e})$ term.
+  = 
+  \begin{aligned}
+      -g^2 \bigl[ &f^{eab} f^{ecd} (\delta^{\mu\rho} \delta^{\nu\sigma} - \delta^{\mu\sigma} \delta^{\nu\rho}) \\
+    		&f^{ace} f^{bde} (\delta^{\mu\nu} \delta^{\rho\sigma} - \delta^{\mu\sigma} \delta^{\nu\rho}) \\
+    		& f^{ade} f^{bce} (\delta^{\mu\nu} \delta^{\rho\sigma} - \delta^{\mu\rho} \delta^{\nu\sigma})
+      \bigr],
+  \end{aligned}
+\end{align}
+from the $\frac{1}{4} g^2 (f^{abc} A_{\mu}^{b} A_{\nu}^{c})(f^{ade} A^{\mu, d} A^{\nu, e})$ term.
 Moreover, taking $T_{ij}$ to be in the fundamental representation, we have
 \begin{equation}
   \begin{gathered}
@@ -121,18 +132,56 @@ Moreover, taking $T_{ij}$ to be in the fundamental representation, we have
   \qquad
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=i to j, small] {
-      i [particle=\(b\)] -- [ghost] v -- [ghost, momentum=$p$] j [particle=\(a\)],
+      i [particle=\(b\)] -- [charged ghost] v -- [charged ghost, momentum=$p$] j [particle=\(a\)],
       u [particle=$\mu \text{, } c$] -- [gluon] v,
     };
   \end{gathered}
   = -g f^{abc} p^{\mu},
 \end{equation}
 where the momentum $p^{\mu}$ is the one associated with the outgoing ghost $\overline{c}{}$.
+\begin{remark}
+  All of these vertices involve the same coupling constant $g$.
+  In fact, the coupling constants of all three nonlinear terms in the Yang--Mills Lagrangian must be equal in order to preserve the Ward identity and avoid the production of bosons with unphysical polarisation states.
+  Conversely, the non-Abelian gauge symmetry guarantees that these couplings are equal, giving a consistent theory of physical vector particle interactions \cite[pp.~508]{peskin}.
+\end{remark}
+
+
+\section{One-Loop Renormalisation}%
+\label{sec:one_loop_renormalisation}
+
+\begin{leftbar}
+  The Lagrangian \eqref{eq:l-nonab} of non-Abelian gauge theory contains no interactions of dimension higher than $4$ and is therefore renormalisable, meaning that the divergences can be removed by a finite number of counterterms.
+
+  However, as in QED, the gauge symmetry implies restrictions on the divergences.
+  In QED, the Ward identity implies the relation
+  \begin{equation}
+    \label{eq:16.57}
+    q^{\mu} \left( 
+      \begin{gathered}
+        \feynmandiagram[transform shape, scale=1][small, horizontal=a to b, layered layout] {
+          a -- [boson] b [blob] -- [boson] c,
+        };
+      \end{gathered}
+    \right) = 0,
+  \end{equation}
+  which in turn implies that the photon self-energy diagrams have the structure
+  \begin{equation}
+    \label{eq:16.58}
+    \begin{gathered}
+      \feynmandiagram[transform shape, scale=1][horizontal=a to b, small, layered layout] {
+        a --[boson] b [blob] -- [boson] c,
+      };
+    \end{gathered}
+    = (q^2 \delta^{\mu\nu} - q^{\mu} q^{\nu}) \Pi(q^2).
+  \end{equation}
+  The only divergence possible is a logarithmically divergent contribution to $\Pi(q^2)$.
+  In non-Abelian gauge theories, \eqref{eq:16.57} still holds and therefore the self-energy again has the Lorentz structure \eqref{eq:16.58}, although the contributions and cancellations ins this vacuum polarisation diagram are much more complex.
+\end{leftbar}
 
 \subsection{Vacuum Polarisation}%
 \label{sub:vacuum_polarisation}
 
-We have $5$ diagrams, all of which are truncated:
+Our aim will be to show \eqref{eq:16.58} and calculate the gauge boson self-energy $\Pi(q^2)$. At one-loop order, we have $5$ diagrams contributing, all of which are truncated:
 \begin{align}
   &\text{Fermion loop:} & \mathfrak{M}_F^{ab, \mu \nu} &= 
   \begin{gathered}
@@ -172,11 +221,18 @@ The fermion loop \eqref{eq:22-fermionloop} is as in QED: Using dimensional regul
 \begin{equation}
   \mathfrak{M}_F^{ab \mu \nu} = - \Tr(T^{a} T^{b}) (ig)^2 \mu^{\epsilon} \int \bdd[d]{p} \frac{\Tr[(-i \cancel{p} + m) \gamma^{\mu} (-i (\cancel{p} - \cancel{q}) \gamma^\nu)]}{[(p - q)^2 + m^2][p^2 + m^2]}.
 \end{equation}
-Now the generators obey the trace relation
+Now the generators of the fundamental representation of $SU(N)$ obey the trace relation
 \begin{equation}
-  \Tr(T^{a} T^{b}) = T_F \delta^{ab} = \frac{1}{2} \delta^{ab},
+  \Tr(T^{a} T^{b}) = T_F \delta^{ab} = \frac{1}{2} \delta^{ab}.
 \end{equation}
-the rest is as in QED.
+\begin{leftbar}
+  For a general semi-simple Lie algebra with Hermitian generators, the representation matrices $t^{a}_r$ in the irreducible representation $r$ can be normalised such that
+  \begin{equation}
+    \tr(t^{a}_r t^{b}_r) = C(r) \delta^{ab},
+  \end{equation}
+  where $C(r)$ is a constant for each representation $r$ \cite[Sec.~15.4]{peskin}.
+\end{leftbar}
+The rest is as in QED.
 \begin{equation}
   \mathfrak{M}_{F}^{ab \mu \nu} = -\frac{1}{2} \delta^{ab} \left( q^2 \delta^{\mu\nu} - q^{\mu} q^{\nu} \right) \frac{g^2}{2 \pi^2} \int_0^1 \dd[]{x} x(1 - x) \left[ \frac{2}{\epsilon} - \gamma + \ln( \frac{4 \pi \mu^2}{\Delta}) \right]
 \end{equation}

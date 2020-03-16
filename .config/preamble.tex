@@ -23,8 +23,19 @@
 
 \usepackage{tikz}
 %\usetikzlibrary{calc}
-\usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{tikz-cd}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{
+  % custom keys
+  charged ghost/.style={
+    /tikzfeynman/ghost,
+    /tikzfeynman/with arrow=0.5,
+  },
+  anti charged ghost/.style={
+    /tikzfeynman/ghost,
+    /tikzfeynman/with reversed arrow=0.5,
+  },
+}
 
 % GILLES CASTELs inkscape-figure
 % https://github.com/gillescastel/inkscape-figures
