@@ -7,26 +7,27 @@ We also have the gauge loop \eqref{eq:22-gaugeloop}
   \mathfrak{M}_3^{ab \mu \nu} &=
   \begin{gathered}
     \feynmandiagram[transform shape, scale=1][horizontal=a to b, layered layout] {
-      a [particle=\(a\text{, } \mu\)] -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, gluon] c -- [half left, looseness=1, gluon, momentum=$p - q$] b,
+      a [particle=\(a\text{, } \mu\)] -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] b -- [half left, looseness=1, momentum=$p$, gluon, edge label'=$c \text{, } \tau$] c -- [edge label'=$d \text{, }\sigma$, half left, looseness=1, gluon, momentum=$p - q$] b,
       c -- [gluon, momentum=$q$, insertion={[size=5pt]0.5}] d [particle=\(b \text{, } \nu\)],
     };
   \end{gathered} \\
-  &= \frac{g^2 \mu^{\epsilon}}{2} \int \frac{\dd[d]{p}}{(2 \pi)^d} \frac{1}{p^2 (p - q)^2} f^{acd} f^{bcd} \mathcal{N}^{\mu\nu},
+  &= \frac{g^2 \mu^{\epsilon}}{2} \int \frac{\dd[d]{p}}{(2 \pi)^d} \frac{1}{p^2 (p - q)^2} f^{adc} f^{cdb} \mathcal{N}^{\mu\nu},
 \end{align}
-where we divided by the symmetry factor $2$, we have $f^{acd} f^{bcd} = C_A \delta^{ab}$, and defined
-\begin{equation}
-  \mathcal{N}^{\mu\nu} = [\delta^{\mu\nu} (q + p)^{\mu} + \delta^{\rho\sigma} (q - 2p)^{\nu}+ \delta^{\rho\mu} (p - 2q)^{\sigma}] + [\delta^{\nu\rho} (q + p)^{\sigma} + \delta^{\rho\sigma} (-q - 2p)^{\nu} + \delta^{\sigma\nu} (p -2q)^{\rho}].
-\end{equation}
-First we want to isolate the loop momenta $p^2$ in the denominator using Feynman's trick
+where we divided by the symmetry factor $2$, and defined
+\begin{multline}
+  \mathcal{N}^{\mu\nu} = [\delta^{\mu\sigma} (2q + p)^{\tau} + \delta^{\sigma\tau} (2p-q)^{\mu} + \delta^{\tau\mu} ( - p - q)^{\sigma}] \\
+  \times [\delta^{\tau\sigma} (2p - q)^{\nu} + \delta^{\sigma\nu} (2q - p)^{\tau} + \delta^{\nu\tau} (-q-p)^{\sigma} ]
+\end{multline}
+First we want to isolate the loop momentum $p^2$ in the denominator using Feynman's trick
 \begin{equation}
   \frac{1}{p^2 (p - q)^2} \propto \int_0^1 \dd[]{x} \frac{1}{(l^2 - \Delta)^2},
 \end{equation}
-where $\Delta 0 -x (1 - x)q^2$ and $l = p + qx$ (check).
+where $l = p + qx$ and $\Delta = -x (1 - x)q^2$.
 We then turn the crank on the numerator.
 \begin{remark}
   A calculation like this would be too long to ask in an exam.
 \end{remark}
-The end result is of the form
+With $f^{acd} f^{bcd} = C_A \delta^{ab}$, the end result is of the form
 \begin{equation}
   \label{eq:23-1}
   \mathfrak{M}_3^{ab \mu \nu} = \frac{g^2 C_A}{(4 \pi)^{d / 2}} \delta^{ab} \int_0^1 \frac{1}{\Delta^{2 - d / 2}} \left\{ \left[ \Gamma(1 - \frac{d}{2}) f(x) + \Gamma(2 - \frac{d}{2}) g(x) \right] \delta^{\mu\nu} q^2 - \Gamma(2 - \frac{d}{2}) h(x) q^{\mu} q^{\nu} \right\}.

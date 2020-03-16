@@ -1,0 +1,138 @@
+% lecture notes by Umut Özer
+% course: aqft
+\lhead{Appendix}
+
+\begin{appendices}
+  
+\chapter{Variational Calculus}%
+\label{apx:variational_calculus}
+
+\section{Variations of the Lagrangian}%
+\label{sec:variations_of_the_lagrangian}
+
+Let us make a bit more precise what we mean when we talk about the variations of the functional $\mathscr{L}$ with respect to the function $\phi$.  Say we have a small variation $\phi \to \phi + \delta \phi$.  Then, for a Lagrangian $\mathscr{L}(x) = \mathscr{L}[\phi(x), \partial \phi(x)]$, we have the variation
+\begin{equation}
+  \delta \mathscr{L}(x) = \left.\frac{\partial \mathscr{L}}{\partial \phi}\right\rvert_x \delta \phi(x) + \left. \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \right\rvert_{x} \partial_{\mu} (\delta \phi(x)).
+  \label{eq:19-star}
+\end{equation}
+From this we write
+\begin{equation}
+  \frac{\delta \mathscr{L}(x)}{\delta \phi(y)} = \left. \frac{\delta \mathscr{L}}{\delta \phi} \right\rvert_{x} \delta^{(4)} (y - x) + \left. \frac{\delta \mathscr{L}}{\delta (\partial _{\mu} \phi)} \right\rvert_{x} \partial_{\mu} \delta^{(4)} (y - x).
+\end{equation}
+
+\section{Variations of the Action}%
+\label{sec:variations_of_the_action}
+
+The action is given by the integral $S[\phi] = \int \dd[4]{x} \mathscr{L}[\phi(x), \partial_{\mu} \phi(x)]$. We say that $S[\phi]$ is a functional, since it depends only on the function $\phi(x)$, not on the position $x$ itself.  The functional derivative of $S$ with respect to $\phi(y)$ is defined by the associated variation \eqref{eq:19-star} of the function $\mathscr{L}$ under the integral:
+\begin{align}
+  \frac{\delta S [\phi]}{\delta \phi(y)} &= \int \dd[4]{x} \frac{\delta \mathscr{L}(x)}{\delta \phi(y)} \\
+				      &= \int \dd[4]{x} \left[ \left. \frac{\partial \mathscr{L}}{\partial \phi} \right\rvert_{x} \delta^{(4)} (x - y) 
+				      + \left. \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \right\rvert_{x}  \partial_{\mu} \delta^{(4)}(x - y) \right] \\
+				      &= \left. \frac{\partial \mathscr{L}}{\delta \phi} \right\rvert_{y} - \left. \partial_{\mu} \left( \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \right) \right\rvert_{y}, \label{eq:19-svar}
+\end{align}
+where we integrated by parts in the second line to deal with the derivative of the delta function.
+\begin{remark}
+  The functional derivative is again a function of the coordinate $y$.
+\end{remark}
+This is familiar from classical field theory, where the equations of motion are such as to minimise the action $S$. This requires the left-hand side to vanish, giving the Euler--Lagrange equations. In quantum field theory the action is not exactly minimised, and the Schwinger--Dyson equations allow us to quantify this.
+
+\section{Relation to Schwinger--Dyson}%
+\label{sec:relation_to_schwinger_dyson}
+
+Let us now insert \eqref{eq:19-svar} back into \eqref{eq:19-star}.  We obtain
+\begin{align}
+  \delta \mathscr{L} &= \left[ \partial_{\mu} \left( \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \right) + \frac{\delta S}{\delta \phi} \right] \delta\phi 
+  + \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \partial_{\mu} (\delta\phi) \\
+			 &= \partial_{\mu} \left( \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \delta\phi \right) + \frac{\delta S}{\delta \phi} \delta\phi \label{eq:19-pent} \\
+			 &= \partial_{\mu} j^{\mu} + \frac{\delta S}{\delta \phi} \delta \phi, 
+			 \label{eq:19-cur}
+\end{align}
+where we identified the Noether current
+\begin{equation}
+  j^{\mu} = \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \delta \phi.
+\end{equation}
+We can then rearrange \eqref{eq:19-pent} to obtain the functional derivative of $S$ in terms of the functional derivative of $\mathscr{L}$:
+\begin{equation}
+  \frac{\delta S}{\delta \phi} = \frac{\delta \mathscr{L}}{\delta \phi} - \partial_{\mu} \left( \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \right).
+\end{equation}
+Moreover, from \eqref{eq:19-cur} we can see that if $\delta \mathscr{L} = 0$ under a transformation $\phi \to \phi + \delta \phi$, then
+\begin{equation}
+  \label{eq:apx-cur}
+  \frac{\delta S}{\delta \phi} \delta \phi = -\partial_{\mu} j^{\mu}.
+\end{equation}
+
+\chapter{Loop Integral Identities}%
+\label{apx:loop_integral_identities}
+
+To evaluate loop integrals, we often deal with exactly the same tricks. We list them here for convenience. We have added useful identities from \cite[Apx.~B]{schwartz} to the ones given in class.
+
+\section{Euler's Gamma and Beta Functions}%
+\label{sec:gamma_function}
+
+\begin{description}
+  \item[Euler-$\Gamma$ function:]
+    Use, for $\alpha > 0$, the analytic continuation of the factorial
+    \begin{equation}
+      \Gamma(\alpha) = \int_0^\infty \dd[]{x} x^{\alpha -1} e^{-x}, \qquad 
+      \alpha \Gamma(\alpha) = \Gamma(\alpha + 1), \qquad 
+      \Gamma(1) = 1, \qquad 
+      \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}.
+    \end{equation}
+    This has the series expansion
+    \begin{equation}
+      \ln \Gamma(\alpha + 1) = -\gamma \alpha - \sum_{k=2}^{\infty} (-1)^k \frac{1}{k} \zeta(k),
+    \end{equation}
+    where $\gamma = \gamma_E \approx 0.577216$  is the Euler--Mascheroni constant and $\zeta(k) = \sum_{n=1}^{\infty} \frac{1}{n^k}$ is the Riemann $\zeta$-function.
+    Usually we exponentiate this
+    \begin{equation}
+      \Gamma(\epsilon) = \frac{1}{\epsilon} - \gamma + O(\epsilon).
+    \end{equation}
+
+  \item[Euler-beta function:]
+    \begin{equation}
+      B(s, t) = \int_{0}^{1}\dd[]{x} u^{s-1} (1-u)^{t-1} = \frac{\Gamma(s) \Gamma(t)}{\Gamma(s + t)}.
+    \end{equation}
+
+  \item[Surface area $S_d$ of a unit $d$-sphere:]
+    For integer dimension $d \in \mathbb{N}$, we can do $d$ Gaussian integrals and convert to polar coordinates
+    \begin{equation}
+      (\sqrt{\pi})^d = \int_{\mathbb{R}^d} \prod_{i=1}^d \dd[]{x_i} e^{-x_i^2} = S_d \int_0^{\infty} \dd[]{r} r^{d-1} e^{-r^2} = \frac{1}{2} S_d \, \Gamma(\frac{d}{2}).
+    \end{equation}
+    For non-integer $d \in \mathbb{C}$, we define $S_d$ via analytic continuation as
+    \begin{equation}
+      \label{eq:apx-sd}
+      S_d = \frac{2 \pi^{d / 2}}{\Gamma(\flatfrac{d}{2})}.
+    \end{equation}
+\end{description}
+\begin{remark}
+  You will not be asked to prove these or even have these at hand in the exam.
+\end{remark}
+
+
+\section{Feynman Parameters}%
+\label{sec:feynman_parameters}
+
+\begin{equation}
+  \frac{1}{A B} = \int_0^1 \frac{\dd[]{x}}{[A + (B - A) x]^2} = \int_0^1 \dd[]{x} \dd[]{y} \frac{\delta(x + y - 1)}{[x A + y B]^2}
+\end{equation}
+We often use these to complete the square in the denominator. For example
+\begin{align}
+  \int \frac{\bdd[4]{k}}{k^2 (k - p)^2} &= \int \bdd[4]{k} \int_0^1 \frac{\dd[]{x}}{[k^2 + k [(k - p)^2 - k^2]]^2} \\
+					&= \int_0^1 \dd[]{x} \frac{\bdd[4]{k}}{[(k - xp)^2 - \Delta]^2},
+\end{align}
+where $\Delta = - p^2 x (1 - x)$. We can then shift $k \to k + xp$, leaving an integral that only depends on $k^2$.
+
+\section{Scalar Integrals}%
+\label{sec:scalar_integrals}
+
+Once we have manipulated the loop integrals so that they are only functions of the magnitude of the momentum, we use
+\begin{equation}
+  \int \dd[d]{k} = S_d \int k^{d - 1} \dd[]{k},
+\end{equation}
+where $S_d$ is given in \eqref{eq:apx-sd}.
+The resulting integrals over the (as usual Euclidean) momenta are evaluated as
+\begin{equation}
+  \int \dd[]{k} \frac{k^a}{(k^2 + \Delta)^b} = \Delta^{\frac{a + 1}{2} - b} \frac{\Gamma \left( \frac{a + 1}{2} \right) \Gamma \left( b - \frac{a + 1}{2} \right)}{2 \Gamma(b)}.
+\end{equation}
+
+\end{appendices}

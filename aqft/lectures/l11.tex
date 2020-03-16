@@ -7,43 +7,7 @@ Thus our action is
   S = \int \dd[d]{x} \left[ \frac{1}{2} (\partial \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{g \mu^\epsilon}{4!} \gamma^4 \right].
 \end{equation}
 
-\subsection{Mathematical Notes}%
-\label{sub:mathematical_notes}
-
-Let us briefly collect a few mathematical results.
-\begin{description}
-  \item[Surface area $S_d$ of a unit sphere in $d$ dimensions:]
-    For integer $d$, we can do $d$ Gaussian integrals and convert to polar coordinates
-    \begin{equation}
-      (\sqrt{\pi})^d = \int_{\mathbb{R}^d} \prod_{i=1}^d \dd[]{x_i} e^{-x_i^2} = S_d \int_0^{\infty} \dd[]{r} r^{d-1} e^{-r^2} = \frac{1}{2} S_d \, \Gamma(\frac{d}{2}).
-    \end{equation}
-    For non-integer $d \in \mathbb{C}$, we define $S_d$ via analytic continuation as
-    \begin{equation}
-      S_d = \frac{2 \pi^{d / 2}}{\Gamma(\frac{d}{2})}.
-    \end{equation}
-  \item[Analytic continuation of the $\Gamma$-function:]
-    Use, for $\alpha > 0$
-    \begin{equation}
-      \Gamma(\alpha) = \int_0^\infty \dd[]{x} x^{\alpha -1} e^{-x} \qquad \alpha \Gamma(\alpha) = \Gamma(\alpha + 1), \qquad 
-      \Gamma(1) = 1, \qquad \Gamma(\frac{1}{2}) = \sqrt{\pi}.
-    \end{equation}
-  \item[Expansion of the $\Gamma$-function:]
-    \begin{equation}
-      \ln \Gamma(\alpha + 1) = -\gamma \alpha - \sum_{k=2}^{\infty} (-1)^k \frac{1}{k} \zeta(k),
-    \end{equation}
-    where $\gamma = \gamma_E \approx 0.577216$  is the Euler--Mascheroni constant and $\zeta(k) = \sum_{n=1}^{\infty} \frac{1}{n^k}$ is the Riemann $\zeta$-function.
-    Usually we exponentiate this
-    \begin{equation}
-      \Gamma(\epsilon) = \frac{1}{\epsilon} - \gamma + O(\epsilon).
-    \end{equation}
-  \item[Euler-beta function:]
-    \begin{equation}
-      B(s, t) = \int_{0}^{1}\dd[]{x} u^{s-1} (1-u)^{t-1} = \frac{\Gamma(s) \Gamma(t)}{\Gamma(s + t)}.
-    \end{equation}
-\end{description}
-\begin{remark}
-  You will not be asked to prove these or even have these at hand in the exam.
-\end{remark}
+Refer to Appendix \ref{apx:loop_integral_identities} for the mathematical results used in this section.
 
 \subsection{One-Loop Renormalisation}%
 \label{sub:one_loop_renormalisation}

@@ -14,7 +14,7 @@ But there is still a remnant global symmetry.
 It is easiest if we strip away the non-Abelian details for a moment and look at QED ($U(1)$ gauge theory).
 The gauge-fixed Lagrangian is
 \begin{equation}
-  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{}(\overline{D}{} + m) \psi + \frac{1}{2 \xi} (\partial_{\mu} A^{\mu})^2 - \overline{c}{} \partial^2 c.
+  \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{}(\cancel{D} + m) \psi + \frac{1}{2 \xi} (\partial_{\mu} A^{\mu})^2 - \overline{c}{} \partial^2 c.
 \end{equation}
 Under the infinitesimal gauge transformation
 \begin{subequations}
@@ -30,7 +30,7 @@ where $\alpha = \alpha(x)$. The term
 \end{equation}
 is only invariant if $\partial^2 \alpha(x) = 0$.
 \begin{remark}
-  The $\overline{c}{} \partial^2 c$ term in $\mathscr{L}$ leads to equations of motion $\partial^2 = 0 = \partial^2 \overline{c}{}$.
+  The $\overline{c}{} \partial^2 c$ term in $\mathscr{L}$ leads to equations of motion $\partial^2 c = 0 = \partial^2 \overline{c}{}$.
 \end{remark}
 Consider restricting our gauge transformations to $\alpha(x) = \theta c(x)$, where $\theta$ is some $x$-independent Grassmann number.  So if we then also transform
 \begin{equation}
@@ -63,14 +63,14 @@ To cancel this, we need a transformation
 to have $\mathscr{L}$ invariant.
 Thus we have a remnant global symmetry (BRST).
 
-Sometimes it is convenient to introduce an auxilliary (non-dynamical) scalar field $B^{a}(x)$ (Nakanishi--Lautrup).
+Sometimes it is convenient to introduce an auxiliary (non-dynamical) scalar field $B^{a}(x)$ (Nakanishi--Lautrup).
 \begin{equation}
   \mathscr{L} = \frac{1}{4} (F^{a})^2 + \overline{\psi}{} (\cancel{D} + m) \psi - \frac{\xi}{2} (B^{a})^2 + B^{a} \partial^{\mu} A^{a}_{\mu} - \overline{c}{} \partial^{\mu} D_{\mu} c.
 \end{equation}
 We recover the original $\mathscr{L}$ by completing the square and integrating over $\pdd{B}$.
 Now
 \begin{align}
-  \delta \overline{c}{} &= \theta B^{a}. \\
+  \delta \overline{c}{}^{a} &= \theta B^{a}. \\
   \delta B^{a} &= 0.
 \end{align}
 
@@ -86,7 +86,7 @@ with $Q^2  =0$ for all fields.
 In other words, the BRST operator is \emph{nilpotent}.
 
 \begin{leftbar}
-  The following is non-examinable, proofs out of scope for this course.
+  The following is non-examinable, proofs are out of scope for this course.
 \end{leftbar}
 
 A nilpotent operator $Q$ divides the Hilbert space $\mathcal{H}$ into subspaces:

@@ -187,17 +187,16 @@ One integral is divergent: it turns out that this requires $\delta Z_1 = \delta 
 \chapter{Symmetries and Path Integrals}%
 \label{cha:symmetries_and_path_integrals}
 
-%In classical field theory, the Euler--Lagrange equations are derived by requiring the action be stationary under variations $\phi(x) \to \phi(x) + \epsilon(x)$, where $\epsilon(x)$ is an arbitrary function.
-%Let us now investigate how the derivation is modified in the quantum theory.\footnote{For reference, this discussion seems to follow \cite[Cha.~14.7]{schwartz}.}
+In classical field theory, the Euler--Lagrange equations are derived by requiring the action be stationary under variations $\phi(x) \to \phi(x) + \epsilon(x)$, where $\epsilon(x)$ is an arbitrary function.
+Let us now investigate how the derivation is modified in the quantum theory.\footnote{For reference, this discussion seems to follow \cite[Cha.~14.7]{schwartz}.}
 
 \section{Schwinger--Dyson Equations for Scalars}%
 \label{sec:schwinger_dyson_equations_and_scalars}
 
-Consider a massless scalar field $\phi = \phi(x)$ with action
+Consider a free, massless scalar field $\phi = \phi(x)$ with action
 \begin{equation}
-  S = \frac{1}{2} \int \dd[4]{y} \partial_{\mu} \phi \partial^{\mu} \phi = -\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi.
+  S[\phi] = \frac{1}{2} \int \dd[4]{y} \partial_{\mu} \phi \partial^{\mu} \phi = -\frac{1}{2} \int \dd[4]{y} \phi \partial^2 \phi.
 \end{equation}
-
 We first consider the 1-point function
 \begin{equation}
   \label{eq:18-1pt}
@@ -241,6 +240,4 @@ Moreover, as the path integral does not depend on $z$ except through the field i
 \begin{equation}
   \partial_z^2 \langle \phi(z) \phi(x) \rangle = -\delta^{4} (z - x).
 \end{equation}
-In other words, the Schwinger--Dyson equation for the 2-point function in a free scalar field theory simply reproduces the Green's function equation for the Feynman propagator.
-In general, these Schwinger--Dyson equations are related to classical equations of motion and additional contact terms.
-These contact terms indicate how the quantum field theory deviates from the corresponding classical field theory.
+In other words, the Schwinger--Dyson equation for the 2-point function in a free scalar field theory simply reproduces the Green's function equation for the Feynman propagator.  In general, these Schwinger--Dyson equations are related to classical equations of motion and additional contact terms.  These contact terms indicate how the quantum field theory deviates from the corresponding classical field theory.
