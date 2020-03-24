@@ -61,7 +61,7 @@ Moreover, from \eqref{eq:19-cur} we can see that if $\delta \mathscr{L} = 0$ und
   \frac{\delta S}{\delta \phi} \delta \phi = -\partial_{\mu} j^{\mu}.
 \end{equation}
 
-\chapter{Loop Integral Identities}%
+\chapter{Identities for Loop Integrals and Dimensional Regularisation}%
 \label{apx:loop_integral_identities}
 
 To evaluate loop integrals, we often deal with exactly the same tricks. We list them here for convenience. We have added useful identities from \cite[Apx.~B]{schwartz} to the ones given in class.
@@ -87,6 +87,11 @@ To evaluate loop integrals, we often deal with exactly the same tricks. We list 
     \begin{equation}
       \Gamma(\epsilon) = \frac{1}{\epsilon} - \gamma + O(\epsilon).
     \end{equation}
+    In loop calculations, the following term often appears 
+    \begin{equation}
+      \frac{\Gamma(2 - \frac{d}{2})}{(4 \pi)^{d / 2}} \left( \frac{1}{\Delta} \right)^{2 - \frac{d}{2}} = \frac{1}{(4 \pi)^2} \left( \frac{2}{\epsilon} - \ln \Delta - \gamma + \ln(4 \pi) + O(\epsilon) \right), \qquad \cite[\text{Eq.~(A.52)}]{peskin}
+    \end{equation}
+    with $\epsilon = 4 - d$.
 
   \item[Euler-beta function:]
     \begin{equation}
@@ -108,19 +113,20 @@ To evaluate loop integrals, we often deal with exactly the same tricks. We list 
   You will not be asked to prove these or even have these at hand in the exam.
 \end{remark}
 
-
-\section{Feynman Parameters}%
+\section{Denominator: Feynman Parameters}%
 \label{sec:feynman_parameters}
 
-\begin{equation}
-  \frac{1}{A B} = \int_0^1 \frac{\dd[]{x}}{[A + (B - A) x]^2} = \int_0^1 \dd[]{x} \dd[]{y} \frac{\delta(x + y - 1)}{[x A + y B]^2}
-\end{equation}
-We often use these to complete the square in the denominator. For example
+Feynman parameters are a set of mathematical identities:
 \begin{align}
-  \int \frac{\bdd[4]{k}}{k^2 (k - p)^2} &= \int \bdd[4]{k} \int_0^1 \frac{\dd[]{x}}{[k^2 + k [(k - p)^2 - k^2]]^2} \\
-					&= \int_0^1 \dd[]{x} \frac{\bdd[4]{k}}{[(k - xp)^2 - \Delta]^2},
+  \frac{1}{A B} &= \int_0^1 \frac{\dd[]{x}}{[A + (B - A) x]^2} = \int_0^1 \dd[]{x} \dd[]{y} \frac{\delta(x + y - 1)}{[x A + y B]^2} \\
+  \frac{1}{ABC} &= \int_0^1 \dd[]{x} \dd[]{y} \dd[]{z} \delta(x + y + z - 1) \frac{2}{[xA + y B + z C]^3}.
 \end{align}
-where $\Delta = - p^2 x (1 - x)$. We can then shift $k \to k + xp$, leaving an integral that only depends on $k^2$.
+We often use these to complete the square in the denominator of the loop integrals. For example
+\begin{align}
+  \int \frac{\bdd[4]{k}}{k^2 (k - p)^2} &= \int \bdd[4]{k} \int_0^1 \frac{\dd[]{x}}{[k^2 + [(k - p)^2 - k^2] x]^2} \\
+					&= \int_0^1 \dd[]{x} \frac{\bdd[4]{k}}{[(k - xp)^2 + \Delta]^2},
+\end{align}
+where $\Delta = p^2 x (1 - x)$. We can then shift $k \to k + xp$, leaving an integral that only depends on $k^2$.
 
 \section{Scalar Integrals}%
 \label{sec:scalar_integrals}
@@ -134,13 +140,23 @@ The resulting integrals over the (as usual Euclidean) momenta are evaluated as
 \begin{equation}
   \int \dd[]{k} \frac{k^a}{(k^2 + \Delta)^b} = \Delta^{\frac{a + 1}{2} - b} \frac{\Gamma \left( \frac{a + 1}{2} \right) \Gamma \left( b - \frac{a + 1}{2} \right)}{2 \Gamma(b)}.
 \end{equation}
-In particular, the most useful loop integrals are 
+In particular, the most useful loop integrals are, to order $\epsilon = 4 - d$:
 \begin{subequations}
   \label{eq:loop-identities}
   \begin{align}
-    \int \bdd[d]{l} \frac{1}{(l^2 + \Delta)^b} &= \frac{1}{(4 \pi)^{d / 2}} \frac{\Gamma(b - \frac{d}{2})}{\Gamma(b)} \left( \frac{1}{\Delta} \right)^{b - \frac{d}{2}} \qquad \cite[\text{Eq.~(7.85)}]{peskin} \\
-    \int \bdd[d]{l} \frac{l^2}{(l^2 + \Delta)^b} &= \frac{1}{(4 \pi)^{d / 2}} \frac{d}{2} \frac{\Gamma(b - \frac{d}{2} - 1)}{\Gamma(b)} \left( \frac{1}{\Delta} \right)^{b - \frac{d}{2} - 1}.
+    \int \bdd[d]{l} \frac{1}{(l^2 + \Delta)^2} & \sim \frac{1}{(4 \pi)^{2}} \left[ \frac{2}{\epsilon} - \ln \Delta + \dots \right] \\
+      \int \bdd[d]{l} \frac{l^2}{(l^2 + \Delta)^2} & \sim \frac{1}{(4\pi)^2} \left[ \frac{2}{\epsilon} - \ln \Delta + \dots \right] \times (-2 \Delta).
   \end{align}
 \end{subequations}
+
+\section{Clifford Algebra}%
+\label{sec:clifford_algebra}
+
+In $d = 4 - \epsilon$, the contraction identities for the $\gamma$-matrices are \cite[Eq.~(7.89)]{peskin}
+\begin{align}
+  \gamma^{\mu} \gamma^{\nu} \gamma_{\mu} &= - (2 - \epsilon) \gamma^{\nu}  \\
+  \gamma^{\mu} \gamma^{\nu} \gamma^{\rho} \gamma_{\mu} &= 4 \delta^{\nu\rho} - \epsilon \gamma^{\nu} \gamma^{\rho} \\
+  \gamma^{\mu} \gamma^{\nu} \gamma^{\rho} \gamma^{\sigma} \gamma_{\mu} &= -2 \gamma^{\sigma} \gamma^{\rho} \gamma^{\nu} + \epsilon \gamma^{\nu} \gamma^{\rho} \gamma ^{\sigma}.
+\end{align}
 
 \end{appendices}

@@ -2,7 +2,7 @@
 % course: susy
 \lhead{Lecture 12: February 25}
 
-\chapter{SUSY QFT in \texorpdfstring{$d = 2$}{Two Dimensions}}%
+\chapter{Supersymmetric QFT in \texorpdfstring{$d = 2$}{Two Dimensions}}%
 \label{cha:susy_qft_in_two_dimensions}
 
 Consider $\mathbb{R}^2$ with coordinates $(t, x) = (x^0, x^1)$ and metric $\eta = \text{diag}(+, -)$.
@@ -24,7 +24,7 @@ We have worldsheet Lorentz transformations
 so $\text{Lorentz} \simeq SO(1, 1)$, which is Abelian.
 Hence, its irreps are $1$-dimensional. In particular, Dirac spinors have $2^{d / 2} = 2$ components, but chiral spinors\footnote{We are in even dimension, so we can define a chirality matrix $\gamma$ as in \eqref{eq:chirality}.} have just one component $\psi_+$ or $\psi_-$ transforming as $\psi_{\pm} \mapsto e^{\pm \gamma / 2} \psi_{\pm}$.
 
-\section{\texorpdfstring{$\mathcal{N} = (2, 2)$}{2, 2} Superspace}%
+\section{\texorpdfstring{$\mathcal{N} = (2, 2)$}{2, 2} Superspace and Superfields}%
 \label{sec:2_2_superspace}
 
 Let $\mathbb{R}^{2 \mid 4}$ be the superspace with 10 coordinates $(x^{\pm}, \theta^{\pm}, \overline{\theta}{}^{\pm})$, where $x^{\pm} =  x^0 \pm x^1$, $\overline{\theta}{}^{\pm} = (\theta^{\pm})^*$ and $\theta^{\pm} \mapsto e^{\pm \gamma / 2} \theta^{\pm}$ under $SO(1, 1)$ transformations.
@@ -128,13 +128,13 @@ Using these, we find (exercise)
 \end{align}
 In particular, again the highest term $\theta^+, \theta^- F(x^{\pm})$ transforms only by a total derivative.
 
-\section{Supersymmetric Actions}%
-\label{sec:supersymmetric_actions}
+\subsection{Supersymmetric Actions in \texorpdfstring{$d = 2$}{Two Dimensions}}%
+\label{sub:supersymmetric_actions}
 
 There are two basic ways of constructing any supersymmetric action in two dimensions.
 
-\subsection{Using Real Superfields}%
-\label{sub:using_real_superfields}
+\subsubsection*{Using Real Superfields}%
+%\label{sub:using_real_superfields}
 
 We use the observation that the highest terms in real or chiral superfields transform only by total derivatives $\partial_{\pm} ( \dots )$ to construct manifestly supersymmetric actions.
 Let $K(F, \Phi, \overline{\Phi}{})$ be a real function of real superfields $F^i$ and chiral superfields $\Phi^a$.
@@ -147,8 +147,8 @@ Only the top-component---the term that has all four $\theta$'s in the expansion-
 Because the top-component $K(F, \Phi, \overline{\Phi}{})\rvert_{\theta^2 \overline{\theta}{}^2}$ only changes by a total bosonic derivative, the action is supersymmetric (up to boundary terms).
 $K$ is called the \emph{Kähler potential}, and $\int K \dd[2]{x} \dd[4]{\theta}$ is called a \emph{$D$-term}.
 
-\subsection{Using Chiral Superfields}%
-\label{sub:using_chiral_superfields}
+\subsubsection*{Using Chiral Superfields}%
+%\label{sub:using_chiral_superfields}
 
 Alternatively, let $W(\Phi)$ be a holomorphic function, so $W(\Phi)$ is itself a chiral superfield.
 The integral over the full superspace would just vanish, since it does not depend on $\overline{\theta}{}$.
@@ -166,8 +166,8 @@ Our generic action will take the form
   + \biggl[\int_{\mathbb{R}^{2 \mid 2}_c} W \dd[2]{x} \dd[2]{\theta} + \int \overline{W}{} \dd[2]{x} \dd[2]{\overline{\theta}}\biggr].
 \end{equation}
 
-\section{The Wess--Zumino Model}%
-\label{sec:the_wess_zumino_model}
+\subsection{The Wess--Zumino Model}%
+\label{sub:the_wess_zumino_model}
 
 This is a theory of a single chiral superfield $\Phi$, where the Kähler potential is 
 \begin{equation}
@@ -279,7 +279,7 @@ This leaves $\theta^2 \overline{\theta}{}^2$ invariant, so is a symmetry of $\in
   If the superpotential is just a monomial $W(\Phi) = c \phi^k$, choosing $\Phi$ to have charge $q = k / 2$ will balance the transformation incurred by the $\theta^+ \theta^-$.
 \end{example}
 
-\subsection*{Vacuum Moduli Space}%
+\subsection{Vacuum Moduli Spaces}%
 
 Our scalar potential $V(\phi) = \abs{W'(\phi)}^2$ (or more generally $ V(\phi^a) = \sum_a \abs{\frac{\partial W}{\partial \phi^a}}^2$ for several superfields) is positive definite. However, we knwo from the supersymmetry algebra that supersymmetric states all have $\bra{\Omega} H \ket{\Omega} \geq 0$.
 In particular, the ground state of this $(1 + 1)$-dimensional QFT must have non-negative energy. This in the vacuum, we require $\phi(x, t) = \phi_0$, where $\phi_0$ is a critical point the superpotential.
