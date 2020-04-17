@@ -5,16 +5,15 @@
 \section{Nonlinear Sigma Models}%
 \label{sec:nonlinear_sigma_models}
 
-This is a theory of maps $x \colon [0, \beta] \to (M, g)$  to a Riemannian manifold.
-\begin{figure}[tbhp]
+A \emph{nonlinear sigma model} (NLSM) is a theory of maps $x \colon [0, \beta] \to (M, g)$  to a Riemannian manifold.
+As illustrated in Fig.~\ref{fig:l9f1} the target space $M$, in which we worldline lives, may now be curved.
+\begin{figure}[bth]
   \centering
-  \def\svgwidth{0.5\columnwidth}
+  \def\svgwidth{0.6\columnwidth}
   \input{lectures/l9f1.pdf_tex}
   \caption{A map $x\colon [0, \beta] \to (M, g)$.}
   \label{fig:l9f1}
 \end{figure}
-As illustrated in Fig.~\ref{fig:l9f1} the target space $M$, in which we worldline lives, may now be curved.
-
 The natural action in the bosonic case is
 \begin{equation}
   S[x] = \frac{1}{2} g (\dot{x}, \dot{x}) \dd[]{\tau} = \frac{1}{2} \int g_{ab} \dot{x}^{a} \dot{x}^{b} \dd[]{\tau}
@@ -28,21 +27,18 @@ We can try to quantise as usual by finding the canonical momenta
 \begin{equation}
   p_a = \frac{\delta L}{\delta \dot{x}^a} = g_{ab}(x) \dot{x}^b
 \end{equation}
-and then imposing canonical commutation relations
-\begin{equation}
-  [\hat{p}_a, \hat{x}^b] = i \delta^{b}_a.
-\end{equation}
+and then imposing the canonical commutation relations $[\hat{p}_a, \hat{x}^b] = i \delta^{b}_a$.
 If we represent the Hilbert space as $\mathscr{H} = L^2 (M, \sqrt{g} \dd[n]{x})$, then the momentum operator is a derivative operator $\hat{p}_a = -i \frac{\partial }{\partial x^a}$.
 However, the Hamiltonian is ambiguous:
-classically, $H = \dot{x}^a p_a - L = \frac{1}{2} g^{ab}(x) p_a p_b$, but we have to decide how to order the $p$'s vs the $x$'s in the curved metric $g^{ab}(x)$.
+classically, $H = \dot{x}^a p_a - L = \frac{1}{2} g^{ab}(x) p_a p_b$, but we have to decide how to order the $p$'s in relation to the $x$'s in the curved metric $g^{ab}(x)$.
 Once we turn $p$ into a derivative operator all these choices of positioning matter.
-There are a number of things we could require.
+There are a number of reasonable assumptions we could make to determine this: We could ask that $\hat{H}$\dots
 \begin{itemize}
-  \item $\hat{H}$ is at most second order in derivatives acting on $\mathscr{H}$.
-  \item We could ask that $\hat{H}$ is compatible with $\text{Diff}(M)$, so that $\hat{H}$ is some sort of covariant operator.
-  \item Reduces to the usual Laplacian $-\frac{1}{2} \partial^{a} \partial_{a}$ in flat space when $g = \delta$.
+  \item \dots is at most second order in derivatives acting on $\mathscr{H}$,
+  \item \dots is compatible with $\text{Diff}(M)$, so that $\hat{H}$ is some sort of covariant operator,
+  \item \dots reduces to the usual Laplacian $-\frac{1}{2} \partial^{a} \partial_{a}$ in flat space when $g = \delta$.
 \end{itemize}
-However, these conditions are obeyed by the covariant Laplacian \emph{plus} any multiple of the scalar curvature: 
+However, these conditions do not uniquely determine $\hat{H}$; they are obeyed by the covariant Laplacian \emph{plus} any multiple of the scalar curvature: 
 \begin{equation}
   \label{eq:9-r}
   \hat{H} \Psi = - \frac{1}{2} \nabla^a \nabla_a \Psi + \alpha R \Psi = -\frac{1}{\sqrt{g}} \partial_{a} (\sqrt{g} g^{ab} \partial_b \Psi) + \alpha R \Psi,

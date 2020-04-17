@@ -1,7 +1,11 @@
 % lecture notes by Umut Özer
 % course: symmetries
 \lhead{Lecture 5: October 19}
-In this course, we are interested in classifying Lie groups and Lie algebras. We have isomorphisms and homeomorphisms, maps which preserve group and manifold structure respectively.
+
+\section{Isomorphisms}%
+\label{sec:isomorphisms}
+
+In this course, we are interested in classifying Lie groups and Lie algebras \emph{up to isomorphism}. These isomorphisms are maps which preserve both the group and manifold structure respectively.
 
 \begin{definition}[isomorphism]
   Two Lie groups $G$ and $G'$ are \emph{isomorphic} $(G \simeq G')$ if there exists a one-to-one smooth map $J : G \to G'$ such that for all $g_1, g_2 \in G$, we have $J(g_1 g_2) = J(g_1) J(g_2)$.
@@ -9,26 +13,43 @@ In this course, we are interested in classifying Lie groups and Lie algebras. We
 
 Let us look at some low-dimensional examples of unitary groups:
 \begin{example}[$G = U(1)$]
-  Let $U(1) = \left\{ z \in \mathbb{C} \mid \abs{z} = 1 \right\}$. A general element $z = e^{i \theta}$ of $G = U(1)$, parametrised by $\theta \in \mathbb{R}$ with identification $\theta \sim \theta + 2\pi$, corresponds to a unique element
+  Let $U(1) = \left\{ z \in \mathbb{C} \mid \abs{z} = 1 \right\}$. A general element $z = e^{i \theta} \in G = U(1)$ is parametrised by $\theta \in \mathbb{R}$ with identification $\theta \sim \theta + 2\pi$. Now we define the map
+  \begin{equation}
+    \begin{gathered}
+      J \colon \\
+      \qquad
+    \end{gathered}
+    \begin{gathered}
+      U(1) \\
+      z(\theta)
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      \to \\
+      \mapsto
+    \end{gathered}
+    \quad
+    \begin{gathered}
+      SO(2) \\
+      M(\theta),
+    \end{gathered}
+  \end{equation}
+  where
   \begin{equation}
     M(\theta) =
     \begin{pmatrix}
      \cos\theta & -\sin\theta \\
      \sin\theta & \cos\theta \\
-    \end{pmatrix}
-  \end{equation}
-  of $G' = SO(2)$ via the map
-  \begin{equation}
-    \begin{split}
-      J \colon U(1) &\to SO(2) \\
-      z(\theta) = e^{i\theta} &\mapsto M(\theta).
-    \end{split}
+   \end{pmatrix} \in G' = SO(2).
   \end{equation}
   The map $J$ is one-to-one and
   \begin{equation}
-    J(z(\theta_1) z(\theta_2)) = M(\theta_1 + \theta_2) = M(\theta_1) M(\theta_2) = J(z(\theta_1)) J(z(\theta_2)).
+    J[z(\theta_1) z(\theta_2)] = M(\theta_1 + \theta_2) = M(\theta_1) M(\theta_2) = J(z(\theta_1)) J[z(\theta_2)].
   \end{equation}
-  This implies that $U(1) \simeq SO(2)$.
+  This means that $J$ is an isomorphism and
+  \begin{equation}
+    U(1) \simeq SO(2).
+  \end{equation}
 \end{example}
 
 \begin{example}[$G = SU(2)$]
@@ -36,12 +57,15 @@ Let us look at some low-dimensional examples of unitary groups:
   \begin{equation}
     a_0^2 + a_1^2 + a_2^2 + a_3^2 = 1.
   \end{equation}
-  This implies that $M(SU(2)) \simeq S^3 \subset \mathbb{R}^4$.
-  Since 
+  This implies that the underlying manifold of $SU(2)$ is $S^3 \subset \mathbb{R}^4$.
+  The fundamental group of this manifold is
   \begin{equation}
-    \pi_1(SU(2)) \simeq \left\{ 1 \right\}, \qquad \pi_1(SO(3)) = \mathbb{R}_2,
+    \pi_1(SU(2)) = \left\{ 1 \right\}
   \end{equation}
-  this means that $SU(2) \not\simeq SO(3)$.
+  whereas we had $\pi_1(SO(3)) = \mathbb{Z}_2$ from \eqref{eq:so3-fund}. This means that the two Lie groups cannot be isomorphic:
+  \begin{equation}
+    SU(2) \not\simeq SO(3).
+  \end{equation}
 \end{example}
 
 \chapter{Lie Algebras}%
@@ -52,10 +76,10 @@ Let us look at some low-dimensional examples of unitary groups:
   \begin{equation}
     [\bullet, \bullet]\colon \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}
   \end{equation}
-  with the following properties for all $X, Y, Z \in \mathfrak{g}$:
+  with the following properties for all $X, Y, Z \in \mathfrak{g}$, and for all coefficients $\alpha, \beta \in F$:
   \begin{enumerate}
-    \item Anti-symmetry: $[X, Y] = -[Y, X]$.
-    \item (Bi-)linearity: $[\alpha X + \beta Y, Z] = \alpha[X, Z] + \beta [Y, Z]$, for all coefficients $\alpha, \beta \in F$.
+    \item Anti-symmetry: $[X, Y] = -[Y, X]$,
+    \item (Bi-)linearity: $[\alpha X + \beta Y, Z] = \alpha[X, Z] + \beta [Y, Z]$,
     \item Jacobi identity: $[X, [Y, Z] ] + [Y, [Z, X] ] + [Z, [X, Y] ] = 0$.
   \end{enumerate}
 \end{definition}
@@ -101,11 +125,7 @@ We write
   [T^a, T^b] = f \indices{^a^b_c} T^c .
 \end{equation}
 The \emph{structure constants} $f \indices{^{ab}_c} \in F$ therefore define the Lie algebra, and two Lie algebras are isomorphic if they have the same structure constants.
-Note however, that structure constants are basis dependent. We will want to find a way to classify Lie algebras that is independent of our choice of basis.
-
-\section{Structure Constants}%
-\label{sec:structure_constants}
-
+Note however, that structure constants are basis dependent. We will eventually want to find a way to classify Lie algebras that is independent of our choice of basis.
 Let $f \indices{^a^b_c} \in F$, $a, b, c = 1, \ldots, \dim(\mathfrak{g})$ be structure constants of a Lie algebra $\mathfrak{g}$.
 The axioms of Lie algebras then imply
 \begin{description}

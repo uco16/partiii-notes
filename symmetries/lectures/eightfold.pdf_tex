@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{295.27600128bp}%
+    \setlength{\unitlength}{263.06834842bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,31 +50,26 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.47065831)%
+  \begin{picture}(1,0.58530034)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{eightfold.pdf}}%
-    \put(0.85556735,0.214986){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$J$\end{tabular}}}}%
+    \put(0.94364948,0.34297053){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$I$\end{tabular}}}}%
+    \put(0.7489845,0.51684523){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$p$\end{tabular}}}}%
+    \put(0.48350676,0.51604352){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$n$\end{tabular}}}}%
+    \put(0.39591824,0.34111474){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^-$\end{tabular}}}}%
+    \put(0.85734013,0.34590261){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^+$\end{tabular}}}}%
+    \put(0.5123727,0.17484522){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Xi^-$\end{tabular}}}}%
+    \put(0.74900325,0.17340525){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Xi^0$\end{tabular}}}}%
+    \put(0.6413256,0.33769451){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^0$\end{tabular}}}}%
+    \put(0.08465797,0.1424604){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s=-2$\end{tabular}}}}%
+    \put(0.07902532,0.31169093){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s=-1$\end{tabular}}}}%
+    \put(0.08757824,0.48605345){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s = 0$\end{tabular}}}}%
+    \put(0.61500765,0.00948838){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = -1$\end{tabular}}}}%
+    \put(0.86589276,0.01233989){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = 0$\end{tabular}}}}%
+    \put(0.97437237,0.17138372){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = 1$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{eightfold.pdf}}%
-    \put(0.66730464,0.397073){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$p$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{eightfold.pdf}}%
-    \put(0.45648492,0.39707271){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$n$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{eightfold.pdf}}%
-    \put(0.31678516,0.28785309){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^-$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{eightfold.pdf}}%
-    \put(0.77906445,0.28785309){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^+$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{eightfold.pdf}}%
-    \put(0.47172491,0.1710135){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Xi^-$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{eightfold.pdf}}%
-    \put(0.68254456,0.16973059){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Xi^0$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{eightfold.pdf}}%
-    \put(0.49966479,0.28785279){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Sigma^0$\end{tabular}}}}%
-    \put(0.0772519,0.13789006){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s=-2$\end{tabular}}}}%
-    \put(0.07040552,0.25229317){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s=-1$\end{tabular}}}}%
-    \put(0.07802552,0.36659302){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$s = 0$\end{tabular}}}}%
-    \put(0.5580848,0.00845343){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = -1$\end{tabular}}}}%
-    \put(0.76128449,0.0313136){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = 0$\end{tabular}}}}%
-    \put(0.92171652,0.07549308){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$q = 1$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=9]{eightfold.pdf}}%
+    \put(0.55579649,0.28067506){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\Lambda^0$\end{tabular}}}}%
+    \put(0.62641154,0.54832164){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$Y$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

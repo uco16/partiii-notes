@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{309.64535387bp}%
+    \setlength{\unitlength}{294.48576169bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.46256617)%
+  \begin{picture}(1,0.48637823)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{tangentspace.pdf}}%
-    \put(0.14631153,0.36054735){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathcal{G}$\end{tabular}}}}%
+    \put(0.1023652,0.37910767){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$G$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{tangentspace.pdf}}%
-    \put(0.27930504,0.19749855){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$C$\end{tabular}}}}%
+    \put(0.24220498,0.20766541){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$C$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{tangentspace.pdf}}%
-    \put(0.68654008,0.14407896){\color[rgb]{1,0.4,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\mathcal{T}_p(\mathcal{G})$\end{tabular}}}}%
+    \put(0.67040373,0.15149588){\color[rgb]{1,0.4,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$T_p(G)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{tangentspace.pdf}}%
-    \put(0.71815524,0.26548911){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$p$\end{tabular}}}}%
-    \put(0.79333924,0.30870195){\color[rgb]{0.50196078,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V_c$\end{tabular}}}}%
+    \put(0.70364638,0.27915601){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$p$\end{tabular}}}}%
+    \put(0.78270072,0.32459337){\color[rgb]{0.50196078,0,0.50196078}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V_c$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

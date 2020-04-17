@@ -40,9 +40,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.4453124"
-     inkscape:cx="344.99897"
-     inkscape:cy="967.98818"
+     inkscape:zoom="2.4926313"
+     inkscape:cx="227.15165"
+     inkscape:cy="981.4026"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -50,11 +50,11 @@
      width="2100mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
+     inkscape:window-width="960"
      inkscape:window-height="1011"
      inkscape:window-x="0"
      inkscape:window-y="32"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:pagecheckerboard="false"
      borderlayer="false"
      inkscape:showpageshadow="true"
@@ -109,12 +109,12 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="63.999996"
-       y="62.000004"
+       y="61.470837"
        id="text33"><tspan
          sodipodi:role="line"
          id="tspan31"
          x="63.999996"
-         y="62.000004"
+         y="61.470837"
          style="stroke-width:0.26458332px">$S$</tspan></text>
     <text
        xml:space="preserve"
@@ -177,14 +177,14 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="91.999992"
-       y="38"
+       style="font-style:normal;font-weight:normal;font-size:0.35277778px;line-height:6.61458302px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="93.587494"
+       y="38.529167"
        id="text1202"><tspan
          sodipodi:role="line"
          id="tspan1200"
-         x="91.999992"
-         y="38"
-         style="font-size:1.41111112px;stroke-width:0.26458332px">$(-\epsilon, \epsilon)$</tspan></text>
+         x="93.587494"
+         y="38.529167"
+         style="font-size:0.35277778px;stroke-width:0.26458332px">$(-\epsilon, \epsilon)$</tspan></text>
   </g>
 </svg>

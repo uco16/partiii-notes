@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'l16f1.pdf' (pdf, eps, ps)
+%% Accompanies image file 'quarks.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{146.62467434bp}%
+    \setlength{\unitlength}{495.95276081bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.97416292)%
+  \begin{picture}(1,0.40881099)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{l16f1.pdf}}%
-    \put(0.40187899,0.91198248){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$N$\end{tabular}}}}%
-    \put(0.39148646,0.01202848){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$S$\end{tabular}}}}%
-    \put(0.74983495,0.8211935){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$S^4$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{l16f1.pdf}}%
-    \put(0.39148646,0.23379024){\color[rgb]{1,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$U_-^\epsilon$\end{tabular}}}}%
-    \put(0.39148646,0.6977742){\color[rgb]{0,0,1}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$U_+^\epsilon$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{l16f1.pdf}}%
-    \put(0.96349163,0.45555208){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{18.74999809}\smash{\begin{tabular}[t]{c}$(-\epsilon, \epsilon)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{quarks.pdf}}%
+    \put(0.24712449,0.37144757){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$Y$\end{tabular}}}}%
+    \put(0.39943625,0.21491679){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$I$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{quarks.pdf}}%
+    \put(0.29677079,0.26016286){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$u$\end{tabular}}}}%
+    \put(0.12360378,0.2647073){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$d$\end{tabular}}}}%
+    \put(0.23682544,0.11626027){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$s$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{quarks.pdf}}%
+    \put(0.81958485,0.37144757){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$Y$\end{tabular}}}}%
+    \put(0.97492141,0.21491682){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$I$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{quarks.pdf}}%
+    \put(0.80736988,0.28443764){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\overline{s}$\end{tabular}}}}%
+    \put(0.87350954,0.14419516){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\overline{d}$\end{tabular}}}}%
+    \put(0.68747524,0.14407311){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$\overline{u}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

@@ -40,16 +40,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.379566"
-     inkscape:cx="241.43415"
-     inkscape:cy="733.87796"
+     inkscape:zoom="5.0908504"
+     inkscape:cx="428.35388"
+     inkscape:cy="640.42616"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="960"
      inkscape:window-height="983"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="32"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
@@ -63,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -87,7 +87,7 @@
          id="tspan1271"
          x="57.816002"
          y="100.69352"
-         style="stroke-width:0.26458332px">$\mathcal{G}$</tspan></text>
+         style="stroke-width:0.26458332px">$G$</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 63.499999,117.08333 c 0,0 15.875,-13.22916 26.458333,-10.58333 10.583338,2.64583 -2.645833,29.10417 13.229168,10.58333 15.875,-18.52083 23.8125,-7.9375 29.10416,-2.64583"
@@ -122,7 +122,7 @@
          id="tspan1283"
          x="116.82841"
          y="124.33966"
-         style="fill:#ff6600;stroke-width:0.26458332px">$\mathcal{T}_p(\mathcal{G})$</tspan></text>
+         style="fill:#ff6600;stroke-width:0.26458332px">$T_p(G)$</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#800080;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
        d="m 121.28634,106.63779 12.44472,3.66775"

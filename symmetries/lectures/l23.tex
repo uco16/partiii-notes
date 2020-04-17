@@ -2,87 +2,72 @@
 % course: symmetries
 \lhead{Lecture 23: December 03}
 
-\section{Irreps of \texorpdfstring{$A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$}{the Complexified Lie Algebra of SU(3)}}%
-\label{sec:irreps_of_lie_algebra_of_su_3_}
+\section{Irreducible Representations of \texorpdfstring{$A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$}{the Complexified Lie Algebra of SU(3)}}%
+\label{sec:irreducible representations_of_lie_algebra_of_su_3_}
 
-Recall that the highest weight of an $\mathfrak{su}(2)$ representation determines the dimension of that representation.
-For each integral highest weight
-\begin{equation}
-  \Lambda = \Lambda_1 \omega_{(1)} + \Lambda_2 \omega_{(2)}, \qquad
-  \begin{gathered}
-    \Lambda_1, \Lambda_2 \in \mathbb{Z} \\
-    \Lambda_1, \Lambda_2 \geq 0
-  \end{gathered}
-\end{equation}
-where $(\Lambda_1, \Lambda_2)$ are the Dynkin labels of the representation, we get an irrep $R_{(\Lambda_1, \Lambda_2)}$ with dimension 
-\begin{equation}
-  \dim(R_{(\Lambda_1, \Lambda_2)}) = \frac{1}{2} (\Lambda_1 + 1) (\Lambda_2 + 1) (\Lambda_1 + \Lambda_2 + 2).
-\end{equation}
-This formula is symmetric under interchange of $\Lambda_1 \leftrightarrow \Lambda_2$ .
-This means that if $\Lambda_1 \neq \Lambda_2$, then we get pairs of representations. 
-\begin{equation}
-  R_{(\Lambda_2, \Lambda_1)} = \overline{R}_{(\Lambda_1, \Lambda_2)}.
-\end{equation}
-Using the formula to compute the $A_2$  irreps of lowest dimension, we obtain Table~\ref{tab:23-1}.
+Recall that the highest weight of an irreducible $\mathfrak{sl}(2)$ representation determines the dimension of that representation. The same is true for representations of $A_2$.
+\begin{claim}
+  For each highest weight $ \Lambda = \Lambda_1 \omega_{(1)} + \Lambda_2 \omega_{(2)}$ where $(\Lambda_1, \Lambda_2) \in \mathbb{N}_0^2$ are the Dynkin labels of the representation, we get an irreducible representation $R_{(\Lambda_1, \Lambda_2)}$ with dimension 
+  \begin{equation}
+    \dim(R_{(\Lambda_1, \Lambda_2)}) = \frac{1}{2} (\Lambda_1 + 1) (\Lambda_2 + 1) (\Lambda_1 + \Lambda_2 + 2).
+  \end{equation}
+\end{claim}
+\begin{corollary}
+  This formula is symmetric under interchange of $\Lambda_1 \leftrightarrow \Lambda_2$.  This means that whenever $\Lambda_1 \neq \Lambda_2$, then we get pairs of representations
+  \begin{equation}
+    R_{(\Lambda_2, \Lambda_1)} = \overline{R}_{(\Lambda_1, \Lambda_2)}.
+  \end{equation}
+\end{corollary}
+Using the formula to compute the $A_2$  irreducible representations of lowest dimension, we obtain Table~\ref{tab:23-1}. Commonly, the irreducible representations are referred to by their dimension, written in a bold font. For instance, we denote the fundamental and anti-fundamental representations of $A_2$ as $R_{(1, 0)} = \boldsymbol 3$ and $R_{(0,1)} = \overline{\boldsymbol 3}{}$ respectively.
 
-\begin{table}[htpb]
+\begin{table}[tbhp]
   \centering
   \begin{tabular}{ c | c  c }
-    Irrep & dim & name \\
+    $A_2$ irrep & dim & name \\
     \hline
-    $R_{(0,0)}$ & $1$ & trivial \\
-    $R_{(1, 0)}$ & 3 & fundamental \\
-    $R_{(0, 1)} = \overline{R}_{(1, 0)}$ & $\overline{3}{}$ & anti-fundamental \\
-    $R_{(2, 0)}$ & 6 &  \\
-    $R_{(0, 2)} = \overline{R}_{(2, 0)}$ & $\overline{6}{}$ &  \\
-    $R_{(1, 1)}$ & $8$ & adjoint \\
-    $R_{(3, 1)}$ & 10 & \\
-    $R_{(0, 3)} = \overline{R}_{(3, 0)}$ & $\overline{10}{}$ &  \\
+    $R_{(0,0)}$ & $\boldsymbol1$ & trivial \\
+    $R_{(1, 0)}$ & $\boldsymbol 3$ & fundamental \\
+    $R_{(0, 1)} = \overline{R}_{(1, 0)}$ & $\overline{\boldsymbol 3}{}$ & anti-fundamental \\
+    $R_{(2, 0)}$ & $\boldsymbol 6$ &  \\
+    $R_{(0, 2)} = \overline{R}_{(2, 0)}$ & $\overline{\boldsymbol 6}{}$ &  \\
+    $R_{(1, 1)}$ & $\boldsymbol 8$ & adjoint \\
+    $R_{(3, 0)}$ & $\boldsymbol{10}$ & \\
+    $R_{(0, 3)} = \overline{R}_{(3, 0)}$ & $\overline{\boldsymbol{10}}{}$ &  \\
   \end{tabular}
-  \caption{$A_2$ irreps of lowest dimension}
+  \caption{Irreducible representations (irreps) of $A_2$ with lowest dimensions.}
   \label{tab:23-1}
 \end{table} 
 
-In particular, since $\dim(A_2) = \dim(\mathfrak{su}_{\mathbb{C}}(3)) = 8$, the eight dimensional representation $R_{(1,1)}$ is the natural candidate to be the adjoint representation.
-
+Since $\dim(A_2) = \dim(\mathfrak{su}_{\mathbb{C}}(3)) = 8$, the eight dimensional representation $R_{(1,1)} = \boldsymbol 8$ is the natural candidate to be the adjoint representation.
 \begin{figure}[tbhp]
   \centering
   \def\svgwidth{0.4\columnwidth}
   \input{lectures/l23f1.pdf_tex}
-  \caption{The weight lattice for the $R_{(1, 1)}$ representation of $A_2$. Applyig the step-down operators to the highest weight $\omega_1 + \omega_2 = \alpha + \beta$ gives the $\abs{S_{(1, 1)}} = 8$ weights.}
+  \caption{The weight lattice for the $R_{(1, 1)}$ representation of $A_2$. Applying the step-down operators to the highest weight $\omega_1 + \omega_2 = \alpha + \beta$ gives the $\abs{S_{(1, 1)}} = 8$ weights.}
   \label{fig:l23f1}
 \end{figure}
-Starting from the highest weight vector and successively apply the step down operator algorithm, we recover the other roots.
-This is shown in Figure \ref{fig:l23f1}.
-This is where our discussion comes back to the discussion of the \emph{eightfold way} in \ref{sec:key-idea}.
-
-In particular, the weights of the adjoint representation are the roots. From the diagram, we see that the weight set is 
+Starting from the highest weight vector $\omega_1 + \omega_2$ and successively applying the step down operator algorithm, we recover the other roots.  This is shown in Figure \ref{fig:l23f1}. The weights of the adjoint representation are the roots. From the diagram, we see that the weight set, expressed in terms of simple roots $\alpha$ and $\beta$, is 
 \begin{equation}
-  S_{(1, 1)} = \left\{ \omega_1 + \omega_2 = \alpha + \beta, \alpha, \beta, 0, -\alpha, -\beta, -(\alpha + \beta) \right\}
+  \label{eq:23-weights}
+  S_{(1, 1)} = \left\{\alpha + \beta, \alpha, \beta, 0, -\alpha, -\beta, -(\alpha + \beta) \right\}.
 \end{equation}
-if we translate the Dynkin labels into weights of the simple roots.
-
-The representation space is just the Lie algebra itself: the step generators and two Cartan elements
+The representation space is just the Lie algebra itself, generated by the step operators and two Cartan elements
 \begin{equation}
-  \mathfrak{g} = \left\{ E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{\beta}, E^{\alpha+ \beta}, E^{-(\alpha + \beta)}, H^1, H^2 \right\}
+  A_2 = \operatorname{span}\left\{ E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{\beta}, E^{\alpha+ \beta}, E^{-(\alpha + \beta)}, H^1, H^2 \right\}.
 \end{equation}
-the weights you get correspond to the generator of the algebra itself, so $R_{(1, 1)}$ is indeed the adjoint representation.
-In particular, the weight $(0, 0)$ has multiplicity two.
-So the dimension of the adjoint representation is $\dim(R_{(1,1)}) = 8$.
+Since $\dim R_{(1, 1)} = 8$, and the 6 roots are non-degenerate by Claim \ref{cl:non-deg}, the weight $(0, 0)$ must have multiplicity two, corresponding to the two Cartan elements $H^1$ and $H^2$. The weights \eqref{eq:23-weights} correspond to the generators of the Lie algebra, so $R_{(1, 1)}$ is indeed the adjoint representation. 
 
 \section{Tensor Products Revisited}%
 \label{sec:tensor_products_revisited}
 
 The representation of a composite system, say of two particles, is given by the tensor product of the individual particle representations.
 
-Let $R_{\Lambda}$ and $R_{\Lambda'}$  be irreps of the simple complex Lie algebra $\mathfrak{g}$ .
-The corresponding representation spaces are $V_\Lambda$ and  $V_{\Lambda'}$ , where $\Lambda$ and  $\Lambda'$ denote the highest weight of the weight sets $S_{\Lambda}, S_{\Lambda'} \in \mathfrak{h}_{\mathbb{R}}^*$.
+Let $R_{\Lambda}$ and $R_{\Lambda'}$  be irreducible representations of the simple complex Lie algebra $\mathfrak{g}$. The corresponding representation spaces are $V_\Lambda$ and  $V_{\Lambda'}$, where $\Lambda$ and $\Lambda'$ denote the highest weight of the weight sets $S_{\Lambda}, S_{\Lambda'} \subset \mathfrak{h}_{\mathbb{R}}^*$.
 The representation space is a direct sum of subspaces corresponding to each weight
  \begin{equation}
-  V_{\Lambda} = \bigoplus_{\lambda \in S_\Lambda} V_{\lambda}
+  V_{\Lambda} = \bigoplus_{\lambda \in S_\Lambda} V_{\lambda}.
 \end{equation}
-
-We defined in Sec.~\ref{sec:tensor_product} the tensor product of two arbitrary representations.
+In Sec.~\ref{sub:tensor_product} we defined the tensor product of two arbitrary representations.
 
 \begin{claim}
   If $\lambda \in S_\Lambda$ and $\lambda' \in S_{\Lambda'}$, then $\lambda + \lambda' \in \mathcal{L}_\omega [\mathfrak{g}]$ is a weight of the tensor product representation $R_{\Lambda} \oplus R_{\Lambda'}$.
@@ -101,56 +86,73 @@ We defined in Sec.~\ref{sec:tensor_product} the tensor product of two arbitrary 
   \end{align}
 \end{proof}
 
-For finite, simple complex $\mathfrak{g}$.
+For finite, simple, complex $\mathfrak{g}$, the tensor product representation is reducible:
 \begin{equation}
   R_{\Lambda} \otimes R_{\Lambda'} = \bigoplus_{\Lambda'' \in \mathcal{L}_\omega} \mathcal{N}_{\Lambda, \Lambda'}^{\Lambda''} R_{\Lambda''}.
 \end{equation}
 
 \begin{example}[$\mathfrak{g} = A_2$]
-  Have $R_{(1, 0)} \otimes R_{(1, 0)}$. The weight set is $S_{(1, 0)} = \{\omega_1, \omega_2 - \omega_1, -\omega_2\}$. Then
+  Have $R_{(1, 0)} \otimes R_{(1, 0)}$. The weight set is $S_{(1, 0)} = \{\omega_1, \omega_2 - \omega_1, -\omega_2\}$. Keeping track of the degeneracy of weights, here in particular $\omega_2$ and $-\omega_1$, we first find the sum of the weight sets and then decompose it:
   \begin{align}
-    S_{(1, 0) \otimes (1, 0)} &= S_{(1, 0)} \mathop{\text{``+''}} S_{1, 0} = \left\{ 2 \omega_1, \omega_2, \omega_2, \omega_1 - \omega_2, \omega_1 - \omega_2, -\omega_1-\omega_1, -2\omega_1 - 2\omega_2, -2\omega_2 \right\} \\
+    S_{(1, 0) \otimes (1, 0)} &= \left\{ 2 \omega_1, \omega_2, \omega_2, \omega_1 - \omega_2, \omega_1 - \omega_2, -\omega_1, -\omega_1, -2\omega_1 - 2\omega_2, -2\omega_2 \right\} \\
     &= \left\{ 2\omega_1, \omega_2, \omega_1 - \omega_2, -\omega_1, -2\omega_1 -2\omega_2, -2\omega_2 \right\} \cup \left\{ \omega_2, \omega_1 - \omega_2, -\omega_1 \right\} \\
     &= S_{(2, 0)} \cup S_{(0, 1)}
   \end{align}
-  We therefore have
-  \begin{equation}
-    R_{(1, 0)} \otimes R_{(1, 0)} = R_{(2, 0)} \oplus R_{(0, 1)}.
-  \end{equation}
-  Indeed, the dimensions work out since $3 \times 3 = 6 + 3$.
+  This decomposition of the weight set implies that $R_{(1, 0)} \otimes R_{(1, 0)} = R_{(2, 0)} \oplus R_{(0, 1)}$.  In the dimensional notation of Table \ref{tab:23-1}, this translates into $\boldsymbol 3 \otimes \boldsymbol 3 = \boldsymbol 6 \oplus \overline{\boldsymbol 3}{}$, which makes it obvious that the dimensions work out.
 \end{example}
+
+\subsection{Strong Interactions, Quarks and the Eightfold Way}%
+\label{sub:strong_interactions_and_the_eightfold_way}
+
+\begin{leftbar}
+  Not lectured. Taken from Prof.~Manton's notes.
+\end{leftbar}
+This is where our discussion comes back to the observation of the \emph{eightfold way} from Sec.~\ref{sub:degeneracy_of_the_spectrum}.
+Each of the weights corresponds to a particle, which transform according to the $SU(3)_{\text{flavour}}$ approximate symmetry. Since the rank of $A_2$ is $2$, these particles are simultaneous eigenstates of two quantum numbers, which we choose to be \emph{isospin} $I = H^1 / 2$ and \emph{hypercharge} $Y = (H^1 + 2 H^2) / 3$. Electric charge is related to these by $Q = I + Y / 2$. Particles in irreducible representations have approximately the same mass, and related strong interactions.
+The particles transforming under the fundamental representation $\boldsymbol 3$ of flavour $SU(3)$ are the quarks $q$, while antiquarks $\overline{q}{}$ are in $\overline{\boldsymbol 3}{}$. This is shown in Fig.~\ref{fig:quarks}.
+
+\begin{figure}[btph]
+  \centering
+  \def\svgwidth{0.9\columnwidth}
+  \input{lectures/quarks.pdf_tex}
+  \caption{The quarks $q$ transform under $\boldsymbol 3$ and anti-quarks $\overline{q}{}$ under $\overline{\boldsymbol 3}{}$ of flavour $SU(3)$.}
+  \label{fig:quarks}
+\end{figure}
+
+All other hadrons, such as the mesons $q \overline{q}{}$ and the baryons $qqq$, are multi-quark states and can be obtained by tensor products.  In particular, the particles in the \emph{eightfold way} of Fig.~\ref{fig:eightfold} are the baryon octet $\boldsymbol 8$, which arises in the decomposition of $qqq \simeq \boldsymbol 3 \otimes \boldsymbol 3 \otimes \boldsymbol 3 = \boldsymbol{10} \oplus \boldsymbol 8 \oplus \boldsymbol 8 \oplus \boldsymbol 1$, alongside the baryon decuplet $\boldsymbol{10}$.
+The $SO(3)$ gauge invariance of physical states in QCD explains why only colour singlets $\boldsymbol 3 \otimes \overline{\boldsymbol 3}{}$ ($q \overline{q}{}$), $\boldsymbol 3 \otimes \boldsymbol 3 \otimes \boldsymbol 3$ ($q q q$), and $\overline{\boldsymbol 3}{} \otimes \overline{\boldsymbol 3}{} \otimes \overline{\boldsymbol 3}{}$ ($\overline{q}{} \overline{q}{} \overline{q}{}$) are observed, but does not tell us why colour singlets of $qq \overline{q}{} \overline{q}{}$ or $qq qq qq$ states are not observed.
 
 \chapter{Gauge Theory}%
 \label{cha:gauge_theory}
 
 We will assume that most of the basics of Abelian gauge theory have been covered in other courses. We will develop these quickly and then move on to non-Abelian gauge theories.
 
-Gauge theories have other kinds of symmetries we have been dealing with; they are redundancies in the way we describe our system.
+Gauge theories have other kinds of symmetries than those that we have been dealing with; they are redundancies in the way we describe our system.
 
 \section{Electromagnetism}%
 \label{sec:electromagnetism}
 
 The classic example is the gauge invariance of electromagnetism. Consider a field
 \begin{equation}
-  a_{\mu} = 
+  \mathcal{A}_{\mu} = 
   \begin{cases}
     \Phi, & \mu = 0 \\
     A_{i}, & \mu = i = 1, 2, 3
   \end{cases}
 \end{equation}
-Gauge transformations are $a_{\mu} \to a_{\mu} + \partial_{\mu} \alpha$, where $\alpha = \alpha(\vb{x}, t)$ and leave the fields invariant.
-In particular, they leave the field strength tensor $f_{\mu\nu} = \partial_{\mu} a_{\nu} - \partial_{\nu} a_{\mu}$ invariant.
+Gauge transformations are $\mathcal{A}_{\mu} \to \mathcal{A}_{\mu} + \partial_{\mu} \alpha$, where $\alpha = \alpha(\vb{x}, t)$ and leave the fields invariant.
+In particular, they leave the field strength tensor $\mathcal{F}_{\mu\nu} = \partial_{\mu} \mathcal{A}_{\nu} - \partial_{\nu} \mathcal{A}_{\mu}$ invariant.
 
 The Lagrangian is
 \begin{equation}
-  \mathcal{L}_{\text{EM}} = -\frac{1}{4 g^2} f^{\mu\nu} f_{\mu\nu}
+  \mathcal{L}_{\text{EM}} = -\frac{1}{4 g^2} \mathcal{F}^{\mu\nu} \mathcal{F}_{\mu\nu}
 \end{equation}
 
 We will work with a redefined gauge potential, which is imaginary, and field strength tensor
 \begin{equation}
-  A_{\mu} = -i a_{\mu} \qquad F_{\mu\nu} = -i f_{\mu\nu}.
+  A_{\mu} = -i \mathcal{A}_{\mu} \qquad F_{\mu\nu} = -i \mathcal{F}_{\mu\nu}.
 \end{equation}
-We will use this to reconcile it with the fact that the gauge field naturally lives in the Lie algebra of the symmetry group, which we represented by complex numbers $e^{i \theta} \in \mathbb{C}$ .
+We will use this to reconcile it with the fact that the gauge field naturally lives in the Lie algebra of the symmetry group, which we represented by complex numbers $e^{i \theta} \in \mathbb{C}$.
 
 \subsection{Coupling to Matter}%
 \label{sub:coupling_to_matter}
@@ -159,7 +161,6 @@ Define a complex scalar field $\phi \colon \mathbb{R}^3 \to \mathbb{C}$ with the
 \begin{equation}
   \mathcal{L}_\phi = \partial_{\mu} \phi^* \partial^{\mu} \phi - W(\phi \phi^*).
 \end{equation}
-
 Choosing the potential $W$ to only depend on the modulus makes sure that this Lagrangian is invariant under a global $U(1)$ symmetry:
 \begin{equation}
   \begin{gathered}
@@ -168,10 +169,9 @@ Choosing the potential $W$ to only depend on the modulus makes sure that this La
   \end{gathered}
   \qquad g = \exp(i \delta) \in U(1), \quad \delta \in [0, 2\pi].
 \end{equation}
-
 Consider now the infinitesimal symmetry generator
 \begin{equation}
-  g = \exp(\epsilon X) \simeq (1 + \epsilon X + O(\epsilon^2))
+  g = \exp(\epsilon X) \simeq 1 + \epsilon X + O(\epsilon^2).
 \end{equation}
 Working close to the identity element means taking $\epsilon \ll 1$. Moreover, $X \in \mathfrak{u}(1) \simeq i \mathbb{R}$.
 We write the infinitesimal symmetry transformation as 
@@ -186,10 +186,4 @@ We write the infinitesimal symmetry transformation as
     \delta_X \phi^* = -\epsilon X \phi^*.
   \end{gathered}
 \end{equation}
-
-We define \emph{symmetry} to mean that  under this transformation, the variation 
-\begin{equation}
-  \label{eq:symmetry}
-  \boxed{\delta_X \mathcal{L} = 0} 
-\end{equation}
-of the Lagrangian vanishes. 
+We say that this transformation is a \emph{symmetry} if the variation $\delta_X \mathcal{L}$ of the Lagrangian vanishes. 

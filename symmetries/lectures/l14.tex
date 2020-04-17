@@ -51,31 +51,30 @@ and find the highest weight of the remainder $\widetilde{R}_{\Lambda, \Lambda'}$
   For $SU(2)$ this is essentially the whole story.
 \end{exercise}
 
-\chapter{Cartan Classification}%
+\chapter{The Cartan Classification}%
 \label{cha:cartan_classification}
 
-Our ultimate aim of this chapter will be to classify all finite-dimensional simple complex Lie algebras $\mathfrak{g}$ (Cartan 1894). However, before we can do this we will have to build up some machinery.
+Our ultimate aim of this chapter will be to classify all finite-dimensional simple complex Lie algebras $\mathfrak{g}$ as was done by Cartan in 1894. In order to do this, we will have to build up some mathematical machinery.
 
 \section{The Killing Form}%
 \label{sec:the_killing_form}
 
-We can specify an inner product on $\mathbb{R}^3$, by mapping $\vb{u}, \vb{v} \to \vb{u} \cdot \vb{v}$. 
-Similarly, we might specify this scalar product by giving a metric such as $u_i, v_j \to \delta^{ij} u_i v_j$.
+We can specify an inner product on $\mathbb{R}^3$, by mapping $(\vb{u}, \vb{v}) \to \vb{u} \cdot \vb{v}$. 
+Similarly, we might specify this scalar product by giving a metric such as $(u_i, v_j) \to \delta^{ij} u_i v_j$.
 
 \begin{definition}[Inner Product]
-  Given a vector space $V$ over $F = \mathbb{R}$ or $\mathbb{C}$, an \emph{inner product} is a bilinear, symmetric map $i: V \times V \to F$.
+  Given a vector space $V$ over $F = \mathbb{R}$ or $\mathbb{C}$, an \emph{inner product} is a bilinear, symmetric map $i\colon V \times V \to F$.
 \end{definition}
 
-\begin{definition}[]
-  We say that $i$ is \emph{non-degenerate} if $\forall v \in V, v \neq 0$ there is a $w \in V$ such that the inner product $i(v, w) \neq 0$.
+\begin{definition}[non-degenerate]
+  We say that an inner product $i$ is \emph{non-degenerate} if for all non-zero $v \in V$ there exists some $w \in V$ such that the inner product $i(v, w) \neq 0$.
 \end{definition}
 \begin{leftbar}
   \begin{remark}
     This amounts to saying that there is no vector which is orthogonal to itself and all other vectors in the vector space.
   \end{remark}
 \end{leftbar}
-Is there a `natural' inner product that we can write down on a Lie algebra $\mathfrak{g}$?
-Yes! This is the \emph{Killing form}.
+There a `natural' inner product that we can write down on a Lie algebra $\mathfrak{g}$ called the \emph{Killing form}.
 \begin{definition}[]
   The \emph{Killing form} $\kappa$ of a Lie algebra $\mathfrak{g}$ over a field $F$ is the map
   \begin{equation}
@@ -100,27 +99,24 @@ Yes! This is the \emph{Killing form}.
   \end{equation}
 \end{definition}
 Let us find out what this means explicitly in components.
-The action of the inner $ad$-map composition is
+The action of the inner $ad$-map composition on an element $Z \in \mathfrak{g}$ is
 \begin{equation}
-  \begin{split}
-    (ad_X \circ ad_Y) \colon \mathfrak{g} \ &\to\  \mathfrak{g} \\
-    Z \ &\mapsto\  [X,[Y, Z]].
-  \end{split}
+  (ad_X \circ ad_Y)(Z) =  [X,[Y, Z]].
 \end{equation}
-Choose a basis $\left\{ T^a \right\}$, where $a = 1, \dots, D=\dim(\mathfrak{g})$, for the Lie algebra $\mathfrak{g}$. 
+Now choose a basis $\left\{ T^a \right\}$, where $a = 1, \dots, D=\dim(\mathfrak{g})$, for the Lie algebra $\mathfrak{g}$. 
 We then know that by definition of the structure constants $f \indices{^{ab}_c}$, we have $[T^a, T^b] = f \indices{^{ab}_c} T^c$.
-Expanding the elements of the Lie algebra in terms of this basis, we see that
+Expanding the elements $X, Y,$ and $Z$ of the Lie algebra in terms of this basis, we see that
 \begin{align}
   [X, [Y, Z]] &= X_a Y_b Z_c [T^a, [T^b, T^c]] \\
 	      &= X_a Y_b Z_c f \indices{^{ad}_e} f \indices{^{bc}_d} T^e \\
 	      &= M(X, Y) \indices{^a_e} Z_c T^e
 \end{align}
-with $M(X, Y) \indices{^c_e} = X_a Y_b f \indices{^{ad}_e} f^{bc_d}$. This is the explicit form of the inner $ad$-map composition.
+with $M(X, Y) \indices{^c_e} = X_a Y_b f \indices{^{ad}_e} f\indices{^{bc}_{d}}$. This is the explicit form of the inner $ad$-map composition.
 To find the explicit map defined by the Killing form, we take the trace of this:
 \begin{equation}
   \kappa(X, Y) = \Tr_D [M(X, Y)] = \kappa^{ab} X_a Y_b,
 \end{equation}
-where, concretely, the Killing form is given by
+which means that the components of the Killing form are
 \begin{equation}
   \boxed{\kappa^{ab} = f^{ad}_c f^{bc}_d}
 \end{equation}
@@ -145,6 +141,6 @@ Now what does `natural' mean?
 		      &= \Tr(ad_X \circ ad_Y \circ ad_Z) - \Tr(ad_X \circ ad_Z \circ ad_Y) \\
 		      &= \Tr(ad_X \circ ad_Y \circ ad_Z) - \Tr(ad_Y \circ ad_X \circ ad_Z) \\
 		      &= \Tr(ad_{[X, Y]} \circ ad_Z) \\
-		      &= \kappa([X, Y], Z)
+		      &= \kappa([X, Y], Z).
   \end{align}
 \end{proof}

@@ -24,12 +24,13 @@ Let us see how the full algebra is generated. Consider first
     0 & \text{else}
   \end{cases}
 \end{equation}
+Applying $\text{ad}_{e^i_+}$ again, we get
 \begin{equation}
-  [e_+^{i}, [e_+^{i}, e_+^{j}]] \propto e^{\alpha_{(j)} + 2 \alpha_{(i)}} \quad \text{if } \alpha_{(j)} + 2 \alpha_{(i)} \in \Phi
+  [e_+^{i}, [e_+^{i}, e_+^{j}]] \propto e^{\alpha_{(j)} + 2 \alpha_{(i)}} \qquad \text{if } \alpha_{(j)} + 2 \alpha_{(i)} \in \Phi
 \end{equation}
-Repeatedly applying the braket, we find 
+Repeatedly applying the bracket, we find 
 \begin{equation}
-  (ad_{e_+^{i}})^n e^{j}_{+} = \underbrace{[e_+^{i}, \dots [e_+^{i}, [e_+^{i},}_{\mathclap{n \text{ times}}} e_+^{j}]]] \propto e^{\alpha_{(j)} + n \alpha_{(i)}} \quad \text{if } \alpha_{(j)} + n \alpha_{(i)} \in \Phi
+  (\text{ad}_{e_+^{i}})^n e^{j}_{+} = \underbrace{[e_+^{i}, \dots [e_+^{i}, [e_+^{i},}_{\mathclap{n \text{ times}}} e_+^{j}]]] \propto e^{\alpha_{(j)} + n \alpha_{(i)}} \qquad \text{if } \alpha_{(j)} + n \alpha_{(i)} \in \Phi
 \end{equation}
 Hence, by the Chevally-Serre relations, $\alpha_{(j)} + n \alpha_{(i)} \in \Phi$ if and only if $n < 1 - A^{ji} = l_{ij}$.
 
@@ -45,19 +46,16 @@ Starting with generators corresponding with the simple roots, we generate other 
 \end{claim}
 If this is true, then to classify Lie algebras, we want to find out about these Cartan matrices.
 
-\subsection{Constraints on Cartan Matrix}%
+\subsection{Constraints on the Cartan Matrix}%
 \label{sub:constraints_on_cartan_matrix}
 
-\begin{equation}
-  A^{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})} \in \mathbb{Z}
-\end{equation}
-
+The Cartan matrix $ A^{ij} = 2\frac{(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})} \in \mathbb{Z} $ has the following properties:
 \begin{enumerate}[a)]
   \item $A^{ii} = 2$ for $i = 1, \dots, r$
   \item $A^{ij} = 0 \iff A^{ji} = 0$; zeros on the off-diagonal come in pairs
   \item Claim \ref{cl:19-iii} tells us that $A^{ij} \in \mathbb{Z}_{\leq 0}$ for $i \neq j$
   \item $\det A > 0$
-  \item $\mathfrak{g}$ is simple $\implies$ A is irreducible, meaning it is not block diagonal
+  \item $\mathfrak{g}$ is simple $\implies$ A is irreducible, meaning it is not block diagonal:
     \begin{equation}
       A \neq 
       \begin{pmatrix}
@@ -167,7 +165,7 @@ We want to represent the data of the Cartan matrix in a way that is invariant un
 Dynkin diagrams the data contained in the Cartan matrix in diagrammatic form.
 \begin{enumerate}[]
   \item Draw a node for each $\alpha_{(i)} \in \Phi_S$, $i = 1, \dots, r$.
-\item Join nodes $\alpha_{(i)}$ and $\alpha_{(j)}$ with $\text{max}(\abs{A}^{ij}, \abs{A}^{ji}) \in \{0, 1, 2, 3\}$ lines
+\item Join nodes $\alpha_{(i)}$ and $\alpha_{(j)}$ with $\text{max}(\abs{A}^{ij}, \abs{A}^{ji}) \in \{0, 1, 2, 3\}$ lines.
   \item If roots have different lengths, then draw an array from long to short\footnote{This distinction makes sense since there can only be two different simple root lengths.}.
 \end{enumerate}
 If we relabel the points in the diagram, we get the same diagram. The process of enumerating the roots of the Lie algebra comes down to enumerating Dynkin diagrams.
@@ -175,7 +173,7 @@ The classification of Cartan matrices / Dynkin diagrams satisfying constraints a
 
 \newcommand*{\Dynk}[2]{#1_{#2} & \dynkin{#1}{#2}}
 
-Let us translate what we learned at the level of the Cartan matrix for ranks $r = 1,2$ into diagrams.
+Let us translate what we learned at the level of the Cartan matrix for ranks $r = 1,2$ into diagrams:
 \[ \begin{array}{ll}
   r = 1 & \dynkin{A}{1} \\
   r = 2 & \dynkin{A}{2}
@@ -199,18 +197,9 @@ In 1894, Cartan showed that the diagrams are classified into infinite families l
   \end{array} \]
 \begin{leftbar}
   \begin{note}
-    We have not talked about the symplectic group $SP(2N)$ in this course.
+    We have not talked about the symplectic group $Sp(2N)$ in this course.
   \end{note}
 \end{leftbar}
-For $n = 1$, we have $A_1 \simeq B_1 \simeq C_1$, corresponding to the fact that
-\begin{equation}
-  \mathfrak{su}_{\mathbb{C}}(2) \simeq \mathfrak{so}_{\mathbb{C}}(3) \simeq \mathfrak{sp}_{\mathbb{C}}(2)
-\end{equation}
-For $n = 2$, we have $B_2 \simeq C_2$  and thus
-\begin{equation}
-  \mathfrak{so}_{\mathbb{C}}(5) \simeq \mathfrak{sp}_{\mathbb{C}}(4)
-\end{equation}
-For $n = 3$, $D_3 \simeq A_3$, meaning that
-\begin{equation}
-  \mathfrak{so}_{\mathbb{C}}(6) \simeq \mathfrak{su}_{\mathbb{C}}(4).
-\end{equation}
+For $n = 1$, we have $A_1 \simeq B_1 \simeq C_1$, corresponding to the fact that $ \mathfrak{su}_{\mathbb{C}}(2) \simeq \mathfrak{so}_{\mathbb{C}}(3) \simeq \mathfrak{sp}_{\mathbb{C}}(2)$.
+For $n = 2$, we have $B_2 \simeq C_2$  and thus $ \mathfrak{so}_{\mathbb{C}}(5) \simeq \mathfrak{sp}_{\mathbb{C}}(4)$.
+For $n = 3$, $D_3 \simeq A_3$, meaning that $ \mathfrak{so}_{\mathbb{C}}(6) \simeq \mathfrak{su}_{\mathbb{C}}(4)$.

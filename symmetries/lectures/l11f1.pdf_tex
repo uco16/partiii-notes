@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{142.96824063bp}%
+    \setlength{\unitlength}{352.28902246bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,29 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.15767089)%
+  \begin{picture}(1,0.19566356)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.24622356,1.09639686){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.70454538}\smash{\begin{tabular}[t]{c}basis vectors\end{tabular}}}}%
-    \put(0.86737595,1.0992144){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.70454538}\smash{\begin{tabular}[t]{c}weight\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l11f1.pdf}}%
-    \put(0.39194251,0.95388444){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_\Lambda$\end{tabular}}}}%
-    \put(0.40777513,0.48223506){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 2}$\end{tabular}}}}%
-    \put(0.41826698,0.01204664){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 4}$\end{tabular}}}}%
-    \put(0.870488,0.9442651){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda$\end{tabular}}}}%
-    \put(0.87573385,0.46688642){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda - 2$\end{tabular}}}}%
-    \put(0.865242,0.0104913){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$\Lambda - 4$\end{tabular}}}}%
+    \put(0.06022748,0.16880844){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_\Lambda$\end{tabular}}}}%
+    \put(0.32415435,0.17115576){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 2}$\end{tabular}}}}%
+    \put(0.59480542,0.17009245){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75}\smash{\begin{tabular}[t]{c}$v_{\Lambda - 4}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{l11f1.pdf}}%
+    \put(0.45836942,0.09357132){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(E_-)$\end{tabular}}}}%
+    \put(0.19012682,0.09363357){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(E_-)$\end{tabular}}}}%
+    \put(0.19691956,0.18488029){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(E_+)$\end{tabular}}}}%
+    \put(0.46516517,0.18488029){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(E_+)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{l11f1.pdf}}%
+    \put(0.05681592,0.03568498){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$R(H)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{l11f1.pdf}}%
+    \put(0.32496241,0.03183301){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(H)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{l11f1.pdf}}%
+    \put(0.59006417,0.0314602){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(H)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{l11f1.pdf}}%
+    \put(0.7632157,0.11036751){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\cdots$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{l11f1.pdf}}%
+    \put(0.94190941,0.03696887){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250012}\smash{\begin{tabular}[t]{c}$R(H)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{l11f1.pdf}}%
+    \put(0.94182162,0.17009245){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{3.75000024}\smash{\begin{tabular}[t]{c}$v_{-\Lambda}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

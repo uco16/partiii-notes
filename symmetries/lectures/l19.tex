@@ -2,7 +2,7 @@
 % course: symmetries
 \lhead{Lecture 19: November 23}
 
-\begin{definition}[]
+\begin{definition}[height]
   The \emph{height} of a root is the perpendicular distance from the hyperplane, see Fig.~\ref{fig:l18f2}.
 \end{definition}
 
@@ -24,7 +24,7 @@
   \end{equation}
 \end{claim}
 \begin{proof}
-  The $\alpha$-string passing through $\beta$ is is $ S_{\alpha, \beta} = \left\{ \beta + n \alpha \in \Phi, \ n \in \mathbb{Z}, \ n_- \leq n \leq n_+ \right\} $ with $n_+ \geq 0$ and $n_- \leq 0$.
+  The $\alpha$-string passing through $\beta$ is $ S_{\alpha, \beta} = \left\{ \beta + n \alpha \in \Phi, \ n \in \mathbb{Z}, \ n_- \leq n \leq n_+ \right\} $ with $n_+ \geq 0$ and $n_- \leq 0$.
   Now Eq.~\eqref{eq:17-15} implies that $(n_+ + n_-) = -\frac{2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{Z}$. From Claim~\ref{claim:19-1}, the difference $\beta - \alpha \not \in \Phi$ is not a root. Therefore the value $n = -1$ is not allowed, and since the root string is unbroken, we must have $n_- = 0$.
   Again from \eqref{eq:17-15}, we have
   \begin{equation}
@@ -38,7 +38,7 @@
 \end{proof}
 \begin{corollary}
   \label{cl:19-iii}
-  From \eqref{eq:19-20}, we find that the inner product of simple roots is zero or negative\footnote{This means that their angle $\theta_{\alpha, \beta} \geq \frac{\pi}{2}$ is right or obtuse.}
+  From \eqref{eq:19-20}, we find that the inner product of simple roots is zero or negative\footnote{This means that their angle $\theta_{\alpha, \beta} \geq {\pi} / {2}$ is right or obtuse.}
   \begin{equation}
     (\alpha, \beta) \leq 0 \qquad \forall \alpha, \beta \in \Phi_S
   \end{equation}
@@ -108,25 +108,28 @@ Finally, to form a basis, we need to make sure that there are enough of them:
   \end{equation}
 \end{corollary}
 
-\section{The Chevalley Basis}%
-\label{sec:chevalley_basis}
+\section{The Cartan Matrix}%
+\label{sec:the_cartan_matrix}
 
 \begin{definition}[]
   The inner products between the simple roots are encoded in the \emph{Cartan matrix}
   \begin{equation}
-    \boxed{A^{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})}} \qquad i,j = 1, \dots, r
+    \label{eq:cartan-matrix}
+    A^{ij} = 2\frac{(\alpha_{(i)}, \alpha_{(j)})}{(\alpha_{(j)}, \alpha_{(j)})}.
   \end{equation}
 \end{definition}
 
-Now we know from our discussion at the beginning of Section \ref{sec:lie_algebra_of_su_2_subalgebra} that for each simple root $\alpha_{(i)}$ , we have an associated $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra with genearators
+Now we know from our discussion at the beginning of Section \ref{sec:sl_2_subalgebras} that for each simple root $\alpha_{(i)}$ we have an associated $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra with generators
 \begin{equation}
   \left\{ h^{i} = h^{\alpha_{(i)}}, \quad e^{i}_{\pm} = e^{\pm \alpha_{(i)}} \right\}, \qquad i = 1, \dots, r.
 \end{equation}
 The corresponding brackets \eqref{eq:17-11} become
-\begin{alignbox}
-  [h^{i}, h^{j}] &= 0 \\
-  [h^{i}, e^{j}_\pm] &= \pm A^{ji} e^{j}_\pm \qquad \text{(no summation)} \\
-  [e_+^{i}, e^{j}_-] &= \delta^{ij} h^{i}
-\end{alignbox}
+\begin{simplebox}
+  \begin{align}
+    [h^{i}, h^{j}] &= 0 \\
+    [h^{i}, e^{j}_\pm] &= \pm A^{ji} e^{j}_\pm \qquad \text{(no summation)} \\
+    [e_+^{i}, e^{j}_-] &= \delta^{ij} h^{i}
+  \end{align}
+\end{simplebox}
 This is the \emph{Chevalley basis}.
 We will see that we can restrain the Cartan matrix very heavily, and that any finite-dimensional simple Lie algebra is \emph{uniquely} determined by its Cartan matrix.

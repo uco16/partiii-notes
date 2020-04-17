@@ -1,20 +1,29 @@
 % lecture notes by Umut Özer
 % course: symmetries
 \lhead{Lecture 17: November 19}
-Therefore, if $\alpha + \beta \in \Phi$, $\alpha + \beta \neq 0$,
+Therefore, if $\alpha + \beta \in \Phi$, then
  \begin{equation}
-   [E^{\alpha}, E^{\beta}] =
-   \begin{cases}
-     N_{\alpha, \beta} E^{\alpha + \beta} & \text{if } \alpha + \beta \in \Phi \\
-     0 & \text{otherwise} \\
-   \end{cases}
+   [E^{\alpha}, E^{\beta}] = N_{\alpha, \beta} E^{\alpha + \beta},
 \end{equation}
-
-If $\alpha + \beta = 0$, then
+where $N_{\alpha, \beta}$ is a proportionality constant.
+On the other hand, if $\alpha + \beta = 0$, then
  \begin{equation}
-   [H^{i}, [E^{\alpha} , E^{-a}]]  =0 \quad \forall i = 1, \dots, r \quad\implies\quad [E^{\alpha} , E^{-\alpha}] \in \mathfrak{h}.
+   [H^{i}, [E^{\alpha} , E^{-a}]]  =0,  \quad \forall i = 1, \dots, r.
 \end{equation}
-We will define an element
+Since the Cartan subalgebra is maximal, this means that $[E^{\alpha} , E^{-\alpha}] \in \mathfrak{h}$.
+\begin{leftbar}
+  Since the restriction of $\kappa$ to the Cartan subalgebra $\mathfrak{h}$ is non-degenerate as well, we can use it to identify the spaces $\mathfrak{h}$ and $\mathfrak{h}^*$. In particular, we will associate to any root $\alpha$ an element $H^{\alpha}$ of $\mathfrak{h}$, which up to normalisation $c_{\alpha}$ is unique, such that
+  \begin{equation}
+    \label{eq:norm}
+    \alpha(H) = c_{\alpha} \kappa(H^{\alpha}, H),
+  \end{equation}
+  for all $H \in \mathfrak{h}$.
+  The non-degenerate inner product on $\mathfrak{h}^*$ is then defined
+  \begin{equation}
+    (\alpha, \beta) \coloneqq c_{\alpha} c_{\beta} \kappa(H^{\alpha}, H^{\beta}) = c_{\beta} \alpha(H^{\beta}).
+  \end{equation}
+\end{leftbar}
+We will fix the normalisation by defining
 \begin{equation}
   H^{\alpha} \coloneqq \frac{[E^{\alpha} , E^{-\alpha}]}{\kappa ( E^{\alpha} , E^{-\alpha})}.
 \end{equation}
@@ -22,92 +31,75 @@ Consider the Killing form $\kappa(H^{\alpha} , H)$ for all $H \in \mathfrak{h}$.
 \begin{align}
   \kappa(H^{\alpha} , H) &= \frac{1}{\kappa(E^{\alpha} , E^{-\alpha})} \kappa([E^{\alpha} , E^{-\alpha} ], H) \\
 			 &\stackrel{\eqref{eq:killing-invariance}}{=} \frac{1}{\kappa(E^{\alpha}, E^{-\alpha})} \kappa (E^{\alpha}, [E^{-\alpha}, H]) \\
-			 &\stackrel{\eqref{eq:16-3}}{=} \alpha(H) \cancel{\frac{\kappa(E^{\alpha}, E^{-\alpha})}{\kappa(E^{\alpha}, E^{-\alpha})}}.
+			 &\stackrel{\eqref{eq:16-3}}{=} \alpha(H) \cancel{\frac{\kappa(E^{\alpha}, E^{-\alpha})}{\kappa(E^{\alpha}, E^{-\alpha})}}. \label{eq:17-star}
 \end{align}
-Thus, this element solves
-\begin{equation}
-  \label{eq:17-star}
-  \kappa(H^{\alpha}, H) = \alpha(H) \quad \forall H \in \mathfrak{h}.
-\end{equation}
+\begin{leftbar}
+  Thus, this element solves \eqref{eq:norm} with normalisation $c_{\alpha} = 1$.
+\end{leftbar}
 
-In components, $H^{\alpha} = c\indices{_{i}^{\alpha}} H^{i}$, where $H = c_{i} H^{i} \in \mathfrak{h}$.
-Using \eqref{eq:17-star}, we have that $\kappa^{ij} c\indices{_{i}^{\alpha}} c\indices{_{j}} = \alpha^{j} c_{j}$ $\implies \kappa^{ij} c\indices{_{i}^{\alpha}}  = \alpha^{j}$ $\implies c\indices{_{i}^{\alpha}} = (\kappa^{-1})_{ij} \alpha^{j}$
+In components, $H^{\alpha} = c\indices{^{\alpha}_i} H^{i}$, where $H = c_{i} H^{i} \in \mathfrak{h}$.
+Using \eqref{eq:17-star}, we have that $\kappa^{ij} c\indices{^{\alpha}_i} c\indices{_{j}} = \alpha^{j} c_{j}$ $\implies \kappa^{ij} c\indices{^{\alpha}_{i}}  = \alpha^{j}$. Therefore we find that the components are $c\indices{^{\alpha}_{i}} = (\kappa^{-1})_{ij} \alpha^{j}$ and
 \begin{equation}
   \label{eq:17-7}
-  \implies \boxed{H^{\alpha} = c\indices{_{i}^{\alpha}} H^{i} = (\kappa^{-1})_{i} \alpha^{j} H^{i}}.
+  H^{\alpha} = c\indices{^{\alpha}_{i}} H^{i} = (\kappa^{-1})_{i} \alpha^{j} H^{i}.
 \end{equation}
 
-\subsection*{Cartan-Weyl basis}%
+In summary, the Cartan-Weyl basis is $\left\{ H^{i} \mid i = 1 \dots, r\right\} \cup \left\{ E^{\alpha} \suchthat \alpha \in \Phi \subset \mathfrak{h}^* \right\}$, with Lie brackets
+\begin{subequations}
+  \begin{align}
+    [H^{i}, H^{j}] &= 0, \\
+  [H^{i}, E^{\alpha}] &= \alpha^{i} E^{\alpha},\\
+    [E^{\alpha}, E^{\beta}] &= 
+    \begin{cases}
+      N_{\alpha, \beta} E^{\alpha + \beta} & \alpha + \beta \in \Phi \\
+      \kappa(E^{\alpha}, E^{-\alpha}) H^{\alpha} & \alpha + \beta = 0 \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{align}
+\end{subequations}
 
-\begin{equation}
-  \left\{ H^{i}, E^{\alpha} \mid i = i, \dots, r \quad \alpha \in \Phi \subset \mathfrak{h}^* \right\}
-\end{equation}
-Brackets:
-\begin{align}
-  [H^{i}, H^{j}] &= 0 \quad \forall i, {j} = 1, \dots, r \\
-  [H^{i}, E^{\alpha}] &= \alpha^{i} E^{\alpha} \quad \forall \in \Phi \\
-  [E^{\alpha}, E^{\beta}] &= 
-  \begin{cases}
-    N_{\alpha, \beta} E^{\alpha + \beta} & \alpha + \beta \in \Phi \\
-    \kappa(E^{\alpha}, E^{-\alpha}) H^{\alpha} & \alpha + \beta = 0 \\
-    0 & \text{otherwise}.
-  \end{cases}
-\end{align}
+\subsection{The Chevalley Basis}%
+\label{sub:the_chevalley_basis}
 
 To simplify this further, consider the brackets of $H^{\alpha} \in \mathfrak{h}$ defined above. For all $\alpha, \beta \in \Phi$,
  \begin{align}
    [H^{\alpha}, E^{\beta}] &\stackrel{\eqref{eq:17-7}}{=} (\kappa^{-1})_{ij} \alpha^{j} [H^{j}, E^{\beta}] \\
 			   &\stackrel{\eqref{eq:16-2}}{=} (\kappa^{-1})_{ij} \alpha^{i} \beta^{j} E^{\beta} \\
-			   &\stackrel{\eqref{eq:16-6}}= (\alpha, \beta) E^{\beta}
+			   &\stackrel{\eqref{eq:16-6}}= (\alpha, \beta) E^{\beta}.
 \end{align}
-Now $\forall \alpha \in \Phi$, we can define
+Now $\forall \alpha \in \Phi$, we can define a new normalisation
 \begin{equation}
-  e^{\alpha} = \sqrt{\frac{2}{(\alpha, \alpha)\kappa(E^{\alpha}, E^{-\alpha})}} E^{\alpha}, \qquad 
-  h^{\alpha} = \frac{2}{(\alpha, \alpha)} H^{\alpha}.
+  e^{\alpha} \coloneqq \sqrt{\frac{2}{(\alpha, \alpha)\kappa(E^{\alpha}, E^{-\alpha})}} E^{\alpha}, \qquad 
+  h^{\alpha} \coloneqq \frac{2}{(\alpha, \alpha)} H^{\alpha}.
 \end{equation}
-We have not proven that $(\alpha, \alpha) \neq 0$, but this is true (see for example Fuchs \& Schweigert pp.87).
-Now we have the algebra in its final form: $\forall \alpha, \beta \in \Phi$, 
+\begin{remark}
+  We will show in Sec.~\ref{sec:real_geometry_of_roots} that $(\alpha, \alpha) \neq 0$ for any root $\alpha$, so that division by $(\alpha, \alpha)$ does not cause any problems.
+\end{remark}
+Now we have the algebra in its final form: The \emph{Chevalley basis} is the set $\left\{e^\alpha, h^\alpha \suchthat\right\}$, together with the following brackets:
 \begin{subequations} \label{eq:17-10}
-  \begin{gatherbox}
-    [h^{\alpha}, h^{\beta}] = 0, \qquad
-    [h^{\alpha}, e^{\beta}] = \frac{2 (\alpha, \beta) e^{\beta}}{(\alpha, \alpha)}, \\
-    [e^{\alpha}, e^{\beta}] = 
+  \begin{align}
+    [h^{\alpha}, h^{\beta}] &= 0, \\
+    [h^{\alpha}, e^{\beta}] &= \frac{2 (\alpha, \beta) e^{\beta}}{(\alpha, \alpha)}, \\
+    [e^{\alpha}, e^{\beta}] &= 
     \begin{cases}
       n_{\alpha, \beta} e^{\alpha + \beta} & \alpha + \beta \in \Phi \\
       h^{\alpha} & \alpha + \beta = 0 \\
-      0 & \text{otherwise},
+      0 & \text{otherwise}.
     \end{cases}
-  \end{gatherbox}
+  \end{align}
 \end{subequations}
-where $(\alpha, \beta) = (\kappa^{-1})_{ij} \alpha^{i} \beta^{j}$ and $n_{\alpha\beta}$ are undetermined constants.
+The inner product is $(\alpha, \beta) = (\kappa^{-1})_{ij} \alpha^{i} \beta^{j}$, and $n_{\alpha\beta}$ are undetermined constants.
 
-\section*{Appendix II}%
+\section{\texorpdfstring{$\mathfrak{sl}(2)_{\alpha}$}{sl(2)} Subalgebras}%
+\label{sec:sl_2_subalgebras}
 
-\begin{definition}[]
-  A real Lie algebra $\mathfrak{g}_{\mathbb{R}}$ is of \emph{compact type} if there is a basis for which the Killing form is negative definite
-  \begin{equation}
-    \kappa^{ab} = -\kappa \delta^{ab}, \qquad \kappa \in \mathbb{R}^+
-  \end{equation}
-\end{definition}
-
-\begin{theorem}[]
-  Every complex semi-simple Lie algebra $\mathfrak{g}$ of finite dimension has a real form $\mathfrak{g}_{\mathbb{R}}$ of compact type.
-\end{theorem}
-
-\begin{exercise}
-  Show that $\mathfrak{g} = \mathfrak{g}_1 \oplus \mathfrak{g}_2 \oplus \dots \oplus \mathfrak{g}_n$, where $\mathfrak{g}_i$ for $i = 1, \dots, n$ are simple.
-\end{exercise}
-
-
-\section{\texorpdfstring{$\mathfrak{su}(2)$}{Lie algebra of SU(2)} subalgebra}%
-\label{sec:lie_algebra_of_su_2_subalgebra}
-
-We know from Claim \ref{claim:16-inverse-root-is-root} that $\alpha \in \Phi \iff -\alpha \in \Phi$. Hence for each pair $\pm \alpha \in \Phi$, we have a subalgebra of $\mathfrak{g}$ with basis $\left\{ h^{\alpha}, e^{\alpha}, e^{-\alpha} \right\}$. From \eqref{eq:17-10}, we find the brackets
+We know from Claim \ref{claim:16-inverse-root-is-root} that $\alpha$ is a root if and only if $-\alpha$ is also a root. Hence for each pair $\pm \alpha \in \Phi$, we have a subalgebra of $\mathfrak{g}$ with basis $\left\{ h^{\alpha}, e^{\alpha}, e^{-\alpha} \right\}$. From \eqref{eq:17-10}, we find the brackets
 \begin{equation}
   \label{eq:17-11}
-  [h^{\alpha}, e^{\pm \alpha}] = \pm 2 e^{\pm \alpha} \qquad [e^{\alpha}, e^{-\alpha}] = h\alpha,
+  [h^{\alpha}, e^{\pm \alpha}] = \pm 2 e^{\pm \alpha}, \qquad 
+  [e^{\alpha}, e^{-\alpha}] = h\alpha,
 \end{equation}
-which are the same relations as \eqref{eq:L(su2)} for $\mathfrak{su}_{\mathbb{C}}(2)$.
+which are the same relations as \eqref{eq:L(su2)} for $\mathfrak{su}_{\mathbb{C}}(2) \simeq \mathfrak{sl}(2, \mathbb{C})$.
 This subalgebra is called $\mathfrak{sl}(2)_{\alpha}$. We have one such $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra for each root.
 
 \subsection{Consequences: `Root Strings'}%

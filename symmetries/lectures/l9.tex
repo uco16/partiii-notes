@@ -58,7 +58,7 @@ Therefore, $\mathfrak{g}$ determines $G$ in some neighbourhood of the identity (
 \end{example}
 
 \section{SU(2) vs SO(3)}%
-\label{sec:su_2_vs_so_3_}
+\label{sec:su_2_vs_so_3}
 
 We know that the Lie algebras have the same structure constants, meaning that they are isomorphic:
 \begin{equation}
@@ -113,10 +113,10 @@ where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$
   For a \emph{Lie group} $G$, a representation $D$ is a group representation in the sense above, but the map $D$ must be smooth.
 \end{definition}
 \begin{definition}[]
-  For a \emph{Lie algebra} $\mathfrak{g}$, a \emph{representation} $d$ is a map $d: \mathfrak{g} \to \text{Mat}_n(F)$ that preserves the structure of the Lie algebra. In particular, for all $X_1, X_2 \in \mathfrak{g}$ and $\alpha, \beta \in F$ we have
+  For a \emph{Lie algebra} $\mathfrak{g}$, a \emph{representation} $R$ is a map $R: \mathfrak{g} \to \text{Mat}_n(F)$ that preserves the structure of the Lie algebra. In particular, for all $X_1, X_2 \in \mathfrak{g}$ and $\alpha, \beta \in F$ we have
   \begin{enumerate}
-    \item $[d(X_1), d(X_2)] = d([X_1, X_2])$
-    \item $d(\alpha X_1 + \beta X_2) = \alpha d(X_1) + \beta d(X_2)$
+    \item $[R(X_1), R(X_2)] = R([X_1, X_2])$
+    \item $R(\alpha X_1 + \beta X_2) = \alpha R(X_1) + \beta R(X_2)$
   \end{enumerate}
 \end{definition}
 \begin{leftbar}
@@ -128,7 +128,7 @@ where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$
   The \emph{dimension} of a representation is the dimension $n$ of the matrices.
 \end{definition}
 \begin{definition}[]
-  Matrices act on a vector space $V \simeq F^n$ known as \emph{representation space}.
+  The representation matrices act on a vector space $V \simeq F^n$ known as the \emph{representation space} or \emph{$\mathfrak{g}$-module}.
 \end{definition}
 \begin{leftbar}
   \begin{remark}
@@ -136,26 +136,21 @@ where $S^3_+$ is the upper hemisphere $x_3 \geq 0$. Note that $S^+_3 \simeq B_3$
   \end{remark}
 \end{leftbar}
 
-\begin{claim}
-  There is a direct relation between representations of a Lie group $G$ and of elements in the Lie algebra $\mathfrak{g}$.
-  Take a representation $D$ of a matrix Lie group $G$. Note that in general, $n = \dim D \neq \dim G = m$. We will construct a corresponding representation of the Lie algebra.
-  To do this, we use again the correspondence between tangent vectors and curves.
-  For $X \in \mathfrak{g}$, define a curve $C_X \colon I \in \mathbb{R} \to G$ that maps $t \mapsto g_X(t)$. We then expand $g_X(t) \simeq \mathbb{1}_n + t X + \dots$ and define the representation $d$ of the Lie algebra as
-  \begin{equation}
-    d(X) = \dv{}{t} \left. \left( D(g(t)) \right) \right\rvert_{t=0} \in \text{Mat}_n(F).
-  \end{equation}
-
-  %2 Nov l10
-  Map the curve onto $D(g(t)) \in GL(n, F) \subset \text{Mat}_n(F)$ in the space of matrices.
+There is a direct relation between the representations of Lie groups and Lie algebras.
+Take a representation $D$ of a matrix Lie group $G$. Note that in general, $\dim D \neq \dim G$. We will construct a corresponding representation of the Lie algebra.
+To do this, we use again the correspondence between tangent vectors and curves.
+For $X \in \mathfrak{g}$, define a curve $C_X \colon I \subset \mathbb{R} \to G$ that maps $t \mapsto g_X(t)$. 
+We then expand $g_X(t) \simeq \mathbb{1}_n + t X + O(t^2)$ and map the curve onto $D(g_X (t)) \in GL(n, F) \subset \text{Mat}_n(F)$ in the space of matrices.
   We then Taylor expand this around the origin to give
   \begin{equation}
     D(g(t)) = D(\mathbb{1}_m) + \left.\dv{D(g(t))}{t}\right\rvert_{t = 0} t + O(t^2).
   \end{equation}
-  We have of course $D(\mathbb{1}_m) = \mathbb{1}_n$. Moreover, we define 
+  We have of course $D(\mathbb{1}_m) = \mathbb{1}_n$. 
+\begin{claim}
+  For a representation $D$ of $G$, we then obtain a representation $R$ of $\mathfrak{g}$ as
   \begin{equation}
-    d(X) \coloneqq \left.\dv{D(g(t))}{t}\right\rvert_{t=0} \qquad \forall X \in \mathfrak{g}.
+    R(X) \coloneqq \left.\dv{D(g(t))}{t}\right\rvert_{t=0}, \qquad \forall X \in \mathfrak{g}.
   \end{equation}
-  This provides a representation of $\mathfrak{g}$.
 \end{claim}
 
 

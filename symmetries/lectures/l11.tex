@@ -3,9 +3,9 @@
 \lhead{Lecture 11: November 05}
 If we change the basis of the representation, the matrices change, but we still have the same representation. This motivates the following definition:
 \begin{definition}[]
-  Two representations $R_1$ and $R_2$ of $\mathfrak{g}$ are \emph{isomorphic}, $R_1 \simeq R_2$, if there exists an invertible matrix $S$ such that for all $X \in \mathfrak{g}$.
+  Two representations $R_1$ and $R_2$ of $\mathfrak{g}$ are \emph{isomorphic}, $R_1 \simeq R_2$, if there exists an invertible matrix $S$ such that for all $X \in \mathfrak{g}$
   \begin{equation}
-    R_2(X) = S R_1 (X) S^{-1}
+    R_2(X) = S R_1 (X) S^{-1}.
   \end{equation}
 \end{definition}
 \begin{definition}[]
@@ -24,7 +24,7 @@ If we change the basis of the representation, the matrices change, but we still 
   An \emph{irreducible} representation $R$ of $\mathfrak{g}$ has no non-trivial invariant subspaces.
 \end{definition}
 
-\section{Representation theory of \texorpdfstring{$\mathscr{L}(SU(2))$}{the Lie algebra of SU(2)}}%
+\section{Representation Theory of \texorpdfstring{$\mathscr{L}(SU(2))$}{the Lie Algebra of SU(2)}}%
 \label{sec:representation_theory_of_texorpdfstring}
 
 \subsection{Cartan Basis}%
@@ -36,27 +36,28 @@ Then
   \mathscr{L}(SU(2)) = \text{Span}_{\mathbb{R}} \left\{ T^a \mid a = 1,2,3 \right\}.
 \end{equation}
 Now, consider what happens when we change to a new (complex) basis:
-\begin{align}
-  H &= \sigma_3 =
+\begin{equation}
+  H = \sigma_3 =
   \begin{pmatrix}
    1 & 0 \\
    0 & -1 \\
-  \end{pmatrix} \\
-  E_+ &= = \frac{1}{2} (\sigma_1 + i \sigma_2) = 
+  \end{pmatrix}, \qquad
+  E_+ = \frac{1}{2} (\sigma_1 + i \sigma_2) = 
   \begin{pmatrix}
    0 & 1 \\
    0 & 0 \\
-  \end{pmatrix} \\
-  E_- &= \frac{1}{2} (\sigma_1 - i\sigma_2) =
+  \end{pmatrix}, \qquad
+  E_- = \frac{1}{2} (\sigma_1 - i\sigma_2) =
   \begin{pmatrix}
    0 & 0 \\
    1 & 0 \\
   \end{pmatrix}.
-\end{align}
+\end{equation}
+This is called the \emph{Cartan basis}.
 Note that for $X \in \mathscr{L}(SU(2))$, we have $X = -X^{\dagger}$.
 Thus if $X = X_H H + H_+ E^+ + X_- E^-$, then $X_H = i \mathbb{R}$ and $X_+ = -(X_-)^*$.
 
-This is called the \emph{Cartan basis}, which defines a \emph{complexification} of the Lie algebra:
+Let us now allow not only real but also complex coefficients of the generators $T^a$. This defines the \emph{complexification} of the Lie algebra:
 \begin{equation}
   \mathscr{L}_{\mathbb{C}} (SU(2)) = \text{Span}_{\mathbb{C}} \left\{ T^a \mid a = 1,2,3 \right\}.
 \end{equation}
@@ -65,7 +66,7 @@ Often we refer to $H$ as the \emph{Cartan element} of the basis, while $E_{\pm}$
 These matrices satisfy the same commutation relations as we are used to from angular momentum:
 \begin{equation}
   \label{eq:L(su2)}
-  [H, E_{\pm}] = \pm 2 E_{\pm} \qquad [E_+, E_-] = H.
+  [H, E_{\pm}] = \pm 2 E_{\pm}, \qquad [E_+, E_-] = H.
 \end{equation}
 The relation $[H, E_{\pm}]$ implies that 
 \begin{equation}
@@ -74,17 +75,19 @@ The relation $[H, E_{\pm}]$ implies that
 while $ad_H(H) = 0$ corresponds to the statement that $[H, H] = 0$.
 Thus, in the Cartan basis, $\left\{ H, E_+, E_- \right\}$ are eigenvectors of
 \begin{equation}
-  ad_H \colon \mathscr{L}(SU(2)) \to \mathscr{L}(SU(2))
+  \text{ad}_H \colon \mathscr{L}(SU(2)) \to \mathscr{L}(SU(2))
 \end{equation}
-with eigenvectors $\left\{ 0, +2, -2 \right\}$. We sometimes refer to these as \emph{roots} of the Lie algebra $\mathscr{L}(SU(2))$.
+with eigenvectors $\left\{ 0, +2, -2 \right\}$. 
+
+We refer to the non-zero eigenvalues as \emph{roots} of the Lie algebra $\mathscr{L}(SU(2))$.
 \begin{leftbar}
   \begin{remark}
-    From now on, we will write $\mathscr{L}(SU(2)) = \mathfrak{su}(2)$.
+    From now on, we will write $\mathscr{L}(SU(2)) = \mathfrak{su}(2)$ and $\mathscr{L}_\mathbb{C}(SU(2)) = \mathfrak{su}_{\mathbb{C}}(2)$.
   \end{remark}
 \end{leftbar}
 
 Consider a representation $R$ of $\mathfrak{su}(2)$ with representation space $V$. $H$ is diagonal, assume $R(H)$ is diagonalisable. This is equivalent to saying that the representation space $V$ is spanned by the eigenvectors of $R(H)$.
-We will introduce those eigenvectors by their eigenvectors $\lambda \in \mathbb{C}$:
+We will introduce those eigenvectors by their eigenvalues $\lambda \in \mathbb{C}$:
 \begin{equation}
   R(H) v_\lambda = \lambda v_\lambda.
 \end{equation}
@@ -118,9 +121,9 @@ Later on, we will also use the fact there needs to be a lowest weight as well fo
 
 \begin{figure}[tbhp]
   \centering
-  \def\svgwidth{0.3\columnwidth}
+  \def\svgwidth{0.9\columnwidth}
   \input{lectures/l11f1.pdf_tex}
-  \caption{}
+  \caption{The action of the $\mathfrak{su}_{\mathbb{C}}(2)$ representation matrices on basis vectors $v_{\lambda}$ of weight $\lambda$ in the representation space $V$.}
   \label{fig:l11f1}
 \end{figure}
 
@@ -199,7 +202,7 @@ If $R$ is irreducible, then this is indeed the case; the remaining basis must be
       \begin{equation}
         S_{\Lambda} = \left\{ -\Lambda, -\Lambda + 2, \dots, \Lambda - 2, \Lambda \right\} \subset \mathbb{Z}.
       \end{equation}
-      Hence, the dimension of the irrep is $\dim(R_\Lambda) = \Lambda + 1$.
+      Hence, the dimension of the irrep labelled by $\Lambda$ is $\dim(R_\Lambda) = \Lambda + 1$.
   \end{description}
   In perfoming this proof, we determined the structure of the irreducible representation of $\mathfrak{su}(2)$.
 \end{proof}

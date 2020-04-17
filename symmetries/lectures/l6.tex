@@ -12,27 +12,23 @@ These appear to be very different objects. We will now relate these two concepts
 \label{sec:preliminaries}
 
 Let $M$ be a smooth manifold of dimension $D$. Pick a point $p \in M$.
-Because of the manifold structure, we can introduce a coordinate chart $\left\{ x^i \in \mathbb{R} \right\}$, $i = i, \ldots, D$ in some region $\mathcal{P} \subset M$.
+Because of the manifold structure, we can introduce a coordinate chart $\left\{ x^i \in \mathbb{R} \right\}$, with $i = i, \ldots, D$, in some region $\mathcal{P} \subset M$.
 Without loss of generality, we can choose the coordinates such that the point $p$ corresponds to the origin $x^i = 0$, $\forall i$.
 
-\begin{definition}[tangent space]
-  The \emph{tangent space} $T_p M$ to $M$ at $p$ is a $D$-dimensional vector space spanned by differential operators $\left\{ \pdv{}{x^j} \right\}$, $i = 1, \ldots, D$ acting on functions $f: M \to \mathbb{R}$.
-\end{definition}
-
-\begin{definition}[tangent vector]
-  An element of the tangent space is called a \emph{tangent vector}. We can expand every tangent vector $V$ as a linear combination of the differential operators
+\begin{definition}
+  The \emph{tangent space} $T_p M$ to $M$ at $p$ is a $D$-dimensional vector space spanned by differential operators $\left\{ \pdv*{}{x^j} \right\}$ acting on functions $f \colon M \to \mathbb{R}$.
+  An element of the tangent space is called a \emph{tangent vector}. 
+  We can expand every tangent vector $V$ as a linear combination of the differential operators
   \begin{equation}
     V = v^i \pdv{}{x^i} \in T_p  M,
   \end{equation}
   where the real coefficients $v^i \in \mathbb{R}$ are called the \emph{components} of $V$.
-  This decomposition tells us that tangent vectors act on a function $f = f(x)$ as
-  \begin{equation}
-    V \cdot f = v^i \left.\pdv{f(x)}{x^i} \right\rvert_{x = 0}
-  \end{equation}
-  where the evaluation at $x = 0$ signifies that we are dealing with a tangent space at point $p$, which is at the origin of our coordinates.
 \end{definition}
-
-%F1: Manifold blob with line/curve on it
+This decomposition tells us that tangent vectors act on a function $f = f(x)$ as
+\begin{equation}
+  V \cdot f = v^i \left.\pdv{f(x)}{x^i} \right\rvert_{x = 0}
+\end{equation}
+where the evaluation at $x = 0$ signifies that we are dealing with a tangent space at point $p$, which is at the origin of our coordinates.
 
 \begin{definition}[smooth curve]
   A \emph{smooth curve} $C$ on a manifold $M$ is a smooth map from an interval $I \in \mathbb{R}$ to $M$.
@@ -43,8 +39,6 @@ Without loss of generality, we can choose the coordinates such that the point $p
   We will work with curves in which the coordinates $\{ x^i (t) \}$ are continuous and differentiable at least once.
   Moreover, we choose coordinates in which $x^i(0) = 0$, $\forall i = 1, \ldots, D$.
 \end{definition}
-
-%modifies F1 to have a point p and tangent vector to curve at that point
 \begin{figure}[htpb]
   \centering
   \def\svgwidth{0.3\columnwidth}
@@ -56,16 +50,16 @@ Now consider a curve $C\colon I \to M$ passing through the point $p$ at $x^i(0) 
 \begin{equation}
   V_c = \dot x^i(0) \pdv{}{x^i} \in T_p M,
 \end{equation}
-where the derivatives with respect to the parameter $t$ are denoted $\dot x^i(t) = \dv{x^i(t)}{t}$.
+where the derivatives with respect to the parameter $t$ are denoted $\dot x^i(t) = \dv*{x^i(t)}{t}$.
 Intuitively, in a physical picture where $C$ is the trajectory of the particle, parametrised by a time coordinate $t$, the tangent vector $V_c \in T_p M$ corresponds to the velocity vector at $t = 0$.
 Every smooth curve has a tangent vector at every point it passes through.
 This construction will also work for the end points of the parameter interval.
 % F2 path with heavy dots at the end, $I = [0, L]$ written next to it
 
-\section{The Lie Algebra \texorpdfstring{$\mathscr{L}(G) = \mathfrak{g}$}{of group G}}%
+\section{The Lie Algebra \texorpdfstring{$\mathscr{L}(G) = \mathfrak{g}$}{of G}}%
 \label{sec:the_lie_algebra_of_G}
 
-Let $G$ be a Lie group of dimension $D$. Recall that Lie groups are also manfolds; we will apply the definitions above to examine certain tangent spaces on the manifold structure of $G$. Let $\left\{ \theta^i \right\}$, $i = 1, \ldots, D$, be a set of coordinates in some coordinate patch $\mathcal{P}$ containing the identity $e \in \mathcal{P} \subset G$.
+Let $G$ be a Lie group of dimension $D$. Recall that Lie groups are also manfolds; we will apply the definitions above to examine certain tangent spaces on the manifold structure of $G$. Let $\left\{ \theta^i \right\}$, with $i = 1, \ldots, D$, be a set of coordinates in some coordinate patch $\mathcal{P}$ containing the identity $e \in \mathcal{P} \subset G$.
 These coordinates allow us to parametrise any element $g \in \mathcal{P}$ as $g = g(\theta) \in G$. The statement that the coordinates are taken to be centered at the identity $e$ translates to $g(0) = e$.
 
 % F3 figure just as in notes
@@ -97,7 +91,7 @@ These coordinates allow us to parametrise any element $g \in \mathcal{P}$ as $g 
     \end{split}
   \end{equation}
   The map $f$ is injective and linear.
-  This allows us to identify the tangent space $T_n F$ spanned by $ \left\{ \left. \pdv{g(\theta)}{\theta^i}\right\rvert_{\theta = 0}\right\}$, $i = 1, \ldots, D$.
+  This allows us to identify the tangent space $T_e G$ with the subset of $\text{Mat}_n(F)$ spanned by $ \left\{ \left. \pdv*{g(\theta)}{\theta^i}\right\rvert_{\theta = 0} \suchthat i = 1, \ldots, D \right\}$.
   Due to this identification with matrices, the \emph{matrix commutator}, defined for any two $X, Y \in T_e G$ as
   \begin{equation}
     [X, Y] \coloneqq XY - YX,

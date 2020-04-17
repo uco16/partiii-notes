@@ -2,7 +2,7 @@
 % course: symmetries
 \lhead{Lecture 21: November 28}
 
-\begin{definition}[]
+\begin{definition}[level]
   The \emph{level} of a root is the weight in its root string expansion.
 \end{definition}
 
@@ -16,70 +16,61 @@ The Cartan matrix determines\footnote{up to choice of one vector (such as $\alph
 We have the same picture as in Fig.~\ref{fig:l18f1}.
 The remaining roots are found by constructing root strings. As we know from Claim \ref{cl:19-ii}, the length of the $\alpha_{(i)}$-string through $\alpha_{(j)}$ is $ l_{ij} = 1 - A_{ji} \in \mathbb{N}^+$.
 
-\begin{example}[$\mathfrak{g} = A_2$]
-  \dynkin{A}{2} \quad $\mathfrak{g} \simeq \mathfrak{su}_{\mathbb{C}}(3)$ \par
-  The Cartan matrix is $A = 
-  \begin{pmatrix}
-   2 & -1 \\
-   -1 & 2 \\
-  \end{pmatrix} $, from which we can read off that $\mathfrak{g}$  has two simple roots $\alpha, \beta$ with
-   \begin{equation}
-     \frac{2(\alpha, \beta)}{(\alpha, \alpha)} = \frac{2(\beta, \alpha)}{(\beta, \beta)} = -1
-  \end{equation}
-  Therefore, $\abs{\alpha} = \abs{\beta}$ and $\cos(\theta_{\alpha, \beta}) = -\frac{1}{2} \implies \theta = \frac{2\pi}{3}$. This geometry is illustrated in Fig.~\ref{fig:l21f1}.
+\subsection{Root System for \texorpdfstring{$A_2$}{A2}}%
+\label{sub:root_system_for_A2}
 
-  \begin{figure}[tbhp]
-    \centering
-    \def\svgwidth{0.3\columnwidth}
-    \input{lectures/l21f1.pdf_tex}
-    \caption{The simple roots of $A_2$ obey $\abs{\alpha} = \abs{\beta}$.}
-    \label{fig:l21f1}
-  \end{figure}
+Let $\mathfrak{g} = A_2 = \mathfrak{su}_{\mathbb{C}}(3)$. The Dynkin diagram for $A_2$ is \dynkin{A}{2}, which encodes that the Cartan matrix is $A = 
+\begin{pmatrix}
+ 2 & -1 \\
+ -1 & 2 \\
+\end{pmatrix} $. In other words, $A_2$ has two simple roots $\alpha, \beta$ with
+ \begin{equation}
+   \frac{2(\alpha, \beta)}{(\alpha, \alpha)} = \frac{2(\beta, \alpha)}{(\beta, \beta)} = -1.
+\end{equation}
+Therefore, the roots have the same length $\abs{\alpha} = \abs{\beta}$ and $\cos(\theta_{\alpha, \beta}) = -{1} / {2}$, which means that the angle between the two simple roots is $\theta = {2\pi}/ {3}$. This geometry is illustrated in Fig.~\ref{fig:l21f1}.
 
-  To find the remaining roots we use that
-  \begin{itemize}
-    \item $\alpha, \beta \in \Phi_S \implies \pm (\alpha - \beta) \not \in \Phi$ 
-    \item the length of the $\alpha$-string through $\beta$  is \begin{equation}
-	l_{\alpha, \beta} = 1 - 2 \frac{(\alpha, \beta)}{(\alpha, \alpha)} = 2
-    \end{equation}  
-    and the length of the $\beta$-string through $\alpha$ is 
-      \begin{equation}
-	l_{\beta, \alpha} = 1 - 2 \frac{(\beta, \alpha)}{(\beta, \beta)} = 2
-    \end{equation}  
-    So $\beta + n \alpha, \alpha + n' \beta \in \Phi$ only for $n, n' \in \left\{ 0, 1 \right\}$
-    \item $\alpha, \beta, \alpha + \beta \in \Phi$ and $-\alpha, -\beta, -(\alpha + \beta) \in \Phi$
-    \item the $\alpha$- and $\beta$-strings through $\alpha + \beta$ (and vice-versa) yield no additional roots
-  \end{itemize}
-  The new root has squared length
-  \begin{align}
-    (\alpha + \beta, \alpha + \beta) &= (\alpha, \alpha) + (\beta, \beta) + 2 (\alpha, \beta) \\
-				     &= (\alpha, \alpha) [1 + 1 - 1] = (\alpha, \alpha)
-  \end{align}
+\begin{figure}[tb]
+  \centering
+  \def\svgwidth{0.3\columnwidth}
+  \input{lectures/l21f1.pdf_tex}
+  \caption{The simple roots of $A_2$ obey $\abs{\alpha} = \abs{\beta}$.}
+  \label{fig:l21f1}
+\end{figure}
 
-  \subsection*{Root system for $A_2$}%
-  The root set is
-  \begin{equation}
-    \Phi = \left\{ \pm \alpha, \pm \beta, \pm (\alpha + \beta) \right\},
-  \end{equation}
-  where all the roots have the same length
-  \begin{equation}
-    \abs{\alpha} = \abs{\beta} = \abs{\alpha + \beta}.
-  \end{equation}
-  This is illustrated in \ref{fig:l21f2}.
-  \begin{figure}[tbhp]
-    \centering
-    \def\svgwidth{0.4\columnwidth}
-    \input{lectures/l21f2.pdf_tex}
-    \caption{The root system of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$.}
-    \label{fig:l21f2}
-  \end{figure}
-
-  The CW basis for $A_2$ is:
-  \begin{equation}
-    \left\{ H^1, H^2, E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{-\beta}, E^{\alpha + \beta}, E^{-(\alpha + \beta)} \right\}
-  \end{equation}
-  Since $\mathfrak{g} = A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, we have $\dim \mathfrak{g} = 3^2 - 1 = 8$, as expected.
-\end{example}  
+To find the remaining roots we use the following facts about roots and root strings that we proved earlier:
+\begin{enumerate}
+  \item For $\alpha, \beta \in \Phi_S$ the difference $\pm (\alpha - \beta) \not \in \Phi$.
+  \item The length of the $\alpha$-string through $\beta$  is \begin{equation}
+      l_{\alpha, \beta} = 1 - 2 \frac{(\alpha, \beta)}{(\alpha, \alpha)} = 2
+  \end{equation}  
+  and the length of the $\beta$-string through $\alpha$ is 
+    \begin{equation}
+      l_{\beta, \alpha} = 1 - 2 \frac{(\beta, \alpha)}{(\beta, \beta)} = 2,
+  \end{equation}  
+  so $\beta + n \alpha$ and $\alpha + n' \beta$ are roots for $n, n' \in \left\{ 0, 1 \right\}$. So we find that other than $\alpha$ and $\beta$, we also have $\alpha + \beta \in \Phi$.
+  \item If $\alpha \in \Phi$, then $-\alpha \in \Phi$.  This means that we also have $-\alpha, -\beta, -(\alpha + \beta) \in \Phi$.
+  \item The $\alpha$- and $\beta$-strings through $\alpha + \beta$ (and vice-versa) yield no additional roots.
+\end{enumerate}
+The new root $\alpha + \beta$ has squared length
+\begin{align}
+  (\alpha + \beta, \alpha + \beta) &= (\alpha, \alpha) + (\beta, \beta) + 2 (\alpha, \beta) \\
+				   &= (\alpha, \alpha) [1 + 1 - 1] = (\alpha, \alpha)
+\end{align}
+In summary, the root set is
+\begin{equation}
+  \Phi = \left\{ \pm \alpha, \pm \beta, \pm (\alpha + \beta) \right\},
+\end{equation}
+where all the roots have the same length $\abs{\alpha} = \abs{\beta} = \abs{\alpha + \beta}$.
+This is illustrated in \ref{fig:l21f2}.
+\begin{figure}[tbhp]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l21f2.pdf_tex}
+  \caption{The root system of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$.}
+  \label{fig:l21f2}
+\end{figure}
+The CW basis for $A_2$ is $\left\{ H^1, H^2, E^{\alpha}, E^{-\alpha}, E^{\beta}, E^{-\beta}, E^{\alpha + \beta}, E^{-(\alpha + \beta)} \right\}$.
+Since $\mathfrak{g} = A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, we have $\dim \mathfrak{g} = 3^2 - 1 = 8$, as expected.
 
 \begin{exercise}
   Find the root system of $B_2$.
@@ -151,7 +142,7 @@ We likewise consider the action of step operators $R(E^{\alpha})$ , with root $\
 \end{align}
 \begin{leftbar}
   \begin{note}
-    This is similar to how we solve the QHO with step operators in quantum mechanics, showing that $a \ket{n}$ is an eigenvalue of $H$ with energy $n - 1$.
+    This is similar to how we solve the quantum harmonic oscillator with step operators, showing that $a \ket{n}$ is an eigenvalue of $H$ with energy $n - 1$.
   \end{note}
 \end{leftbar}
 Thus, for all vectors $v \in V_\lambda$, we find that
@@ -164,26 +155,21 @@ Thus, for all vectors $v \in V_\lambda$, we find that
 \end{equation}
 
 Recall that for $\mathfrak{su}_{\mathbb{C}}(2)$, the weights were all integers.
-Here, we can use again the fact that the Lie algebra contains a lot of $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebras.
-This allows us to say something precise about the weights.
-
-Consider the action of $\mathfrak{sl}(2)_\alpha$ of a particular $\mathfrak{su}_{\mathbb{C}}(2)$  subalgebra
-with generators
-\begin{equation}
-  \{R(h^\alpha), \quad R(e^{\alpha}), \quad R(e^{-\alpha}) \} 
-\end{equation}
-on $V$.
+Here, we can use again the fact that the Lie algebra contains a lot of $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebras.  This allows us to say something precise about the weights:
+Consider the action of $\mathfrak{sl}(2)_\alpha$ of a particular $\mathfrak{su}_{\mathbb{C}}(2)$ subalgebra
+with generators $R(h^\alpha)$ and $R(e^{\pm\alpha})$ on $V$.
 Representation matrices obey the  $\mathfrak{su}_{\mathbb{C}}(2)$  commutation relations
-\begin{align}
-  [R(h^\alpha), R(e^{\pm \alpha})] &= \pm 2 R(e^{\pm \alpha}) \\
-  [R(e^{+\alpha}), R(e^{- \alpha})] &= R(h^\alpha) \\
-\end{align}
-
+\begin{subequations}
+  \begin{align}
+    [R(h^\alpha), R(e^{\pm \alpha})] &= \pm 2 R(e^{\pm \alpha}) \\
+    [R(e^{+\alpha}), R(e^{- \alpha})] &= R(h^\alpha).
+  \end{align}
+\end{subequations}
 Each generator defines a linear map $V \to V$.
-This means that $V$ is a representation space for some representation of $\mathfrak{sl}(2)_\alpha$ ($R_\alpha$ is finite-dimensional but not necessarily  irreducible).
+This means that $V$ is a representation space for some representation of $\mathfrak{sl}(2)_\alpha$. (The representation $R_\alpha$ is finite-dimensional but not necessarily  irreducible).
 Recall the definition 
 \begin{equation}
-  h^\alpha = \frac{2}{(\alpha, \alpha)} H^\alpha \qquad H^\alpha = (\kappa^{-1})_{ij} \alpha^{i} H^{j}
+  h^\alpha = \frac{2}{(\alpha, \alpha)} H^\alpha, \qquad H^\alpha = (\kappa^{-1})_{ij} \alpha^{i} H^{j}
 \end{equation}
 Using linearity, we have that $\forall v \in V_{\lambda}$,
 \begin{align}

@@ -114,42 +114,43 @@ We conclude that if $\chi^{a} = N\indices{^{a}_{b}} \psi^{b}$ , then $\dd[n]{\ch
 \subsection{Bosonic Theory}%
 \label{sub:bosonic_theory}
 
-In $d = 0$, our whole universe is just a single point  $M = \left\{ \text{pt} \right\}$ . So a bosonic field is just a map $x \colon M \to \mathbb{R} \simeq \left\{ \text{pt} \right\} \to \mathbb{R}$ , which is nothing else than a real variable.
+A zero-dimensional universe is nothing but a single point $M = \left\{ \text{pt} \right\}$. So a bosonic field is just a map $x \colon \left\{ \text{pt} \right\} \to \mathbb{R}$, which is simply a real variable.
 With $n$ such real fields, the space of all field configurations is $\mathcal{C} = \mathbb{R}^n$ .
-The path-integral measure $[\pdd{X}]$  is just the usual Lebesgue measure $\dd[n]{x}$. 
-Then the partition function becomes $Z = \int_{\mathbb{R}^n} e^{- {S}(x) / \hbar} \dd[n]{x}$, where $S \colon \mathbb{R}^n \to \mathbb{R}$ is the action.
+The path-integral measure $\pdd{x}$ is just the usual Lebesgue measure $\dd[n]{x}$. 
+Then the partition function is
+\begin{equation}
+  Z = \int_{\mathbb{R}^n} e^{- {S}(x) / \hbar} \dd[n]{x}, 
+\end{equation}
+where $S \colon \mathbb{R}^n \to \mathbb{R}$ is the action.
 \begin{leftbar}
   Compare this with today's lecture on \emph{Advanced Quantum Field Theory}.
 \end{leftbar}
-
-There cannot be any kinetic terms since the universe is just a point and there cannot be anything we differentiate with respect to.
-However, we can have a mass term and maybe some sort of interaction such as
+There cannot be any kinetic terms since the universe is just a point and there is no time parameter that we could differentiate with respect to.
+However, we can have a quadratic mass term and higher interaction terms. For example, the action for a particle with mass $m$ and a quartic interaction $\lambda$ is
 \begin{equation}
-  S(x^{i}) = \frac{m_2}{2} \delta_{ij} x^{i} x^{j} + \frac{\lambda^{ijkl}}{4} x^{i} x^{j} x^{k} x^{l}.
+  S(x^{i}) = \frac{m}{2} \delta_{ij} x^{i} x^{j} + \frac{\lambda^{ijkl}}{4} x^{i} x^{j} x^{k} x^{l}.
 \end{equation}
-Now in $d = 0$ this is a finite-dimensional integral.
-But nonetheless, it is a difficult integral! Expanding the action to quadratic order around its stationary point, we can find that in the limit  $\hbar \to 0^+$, the integral is asymptotic to
+Now in $d = 0$, the partition function $Z$ is given by a finite-dimensional integral, but nevertheless it is already quite difficult! Expanding the action to quadratic order around its stationary point, we can find that in the limit  $\hbar \to 0^+$, the integral is asymptotic to
  \begin{equation}
    \int_{\mathbb{R}^n} e^{-S(x) / \hbar} \dd[n]{x} \sim (2 \pi \hbar)^{n / 2} \frac{e^{-S(x_*)}}{(\det \partial_{i} \partial_{j} S)^{1 / 2}\rvert_{x = x_*}}
    \left(  1 + \hbar A_1 + \hbar^2 A_2 + \dots \right), \qquad (\text{steepest descent})
 \end{equation}
 where $x_*$ is a minimum of  $S(x)$ .
-
 This is complicated! And approximate (zero radius of convergence)! 
 \begin{remark}
-  In the whole of the QFT course we basically just computed different numerators of this.  In AQFT we will go on to loop diagrams and compute the denominator as well as the first order expansion.
-  If you end up doing a PhD in the wrong area, you might compute higher and higher terms. But what is even the point? This series doesn't even converge!
+  In the whole of the \emph{Quantum Field Theory} course last term, we basically just computed different numerators of this. In \emph{Advanced Quantum Field Theory} we will go on to loop diagrams and compute the denominator as well as the first order expansion.
+  If you end up doing a PhD in the wrong area, you might compute higher and higher terms. But what is the point? This series doesn't even converge!
 \end{remark}
 
 \subsection{Fermionic Theory}%
 \label{sub:fermionic_theory}
 
-Let us now consider a purely fermionic theory. We need at least two fermions.
+Let us now consider a purely fermionic theory. To construct a bosonic action, we need at least two fermions.
 Take $S = A \psi^1 \psi^2$.
 \begin{equation}
   Z = \int e^{-S (\psi) / \hbar} \dd[2]{\psi} = \int \left( 1 - \frac{A}{\hbar} \psi^1 \psi^2 \right) \dd[2]{\psi} = - \frac{A}{\hbar}.
 \end{equation}
-More generally, for $2m$  fermions $\psi^{a}$  and antisymmetric matrix $A_{ab}$ ,
+More generally, for $2m$  fermions $\psi^{a}$  and antisymmetric matrix $A_{ab}$,
 \begin{align}
   Z &= \int e^{-\frac{A_{ab}}{2 \hbar} \psi^a \psi^{b}} \dd[2m]{\psi} = \sum_{k = 0}^{\infty} \frac{(-1)^k}{(2 \hbar)^k k!} \int (A_{ab} \psi^{a} \psi^{b})^k \dd[2m]{\psi}  \\
     &= \frac{(-1)^m}{(2 \hbar)^{m} m!} \epsilon^{a_1 b_1 \dots a_m b_m} A_{a_1 b_1 } \dots A_{a_m b_m} \\
@@ -163,7 +164,7 @@ More generally, for $2m$  fermions $\psi^{a}$  and antisymmetric matrix $A_{ab}$
   \end{equation}
 \end{definition}
 \begin{exercise}
-  For antisymmetric A, show that $(\text{Pfaff } A)^2 = \det A$.
+  For antisymmetric matrices $A$, show that $(\text{Pfaff } A)^2 = \det A$.
 \end{exercise}
 This means that the Gaussian integral \eqref{eq:2-g} can be written as $\pm \sqrt{\det A}$.
 \begin{leftbar}

@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{157.38336223bp}%
+    \setlength{\unitlength}{150.59847977bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,14 +50,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.51430282)%
+  \begin{picture}(1,0.78996468)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l12f1.pdf}}%
-    \put(0.54061966,0.45637302){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V(\phi) = \abs{W'}^2$\end{tabular}}}}%
-    \put(0.83281897,0.14609948){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\phi$\end{tabular}}}}%
-    \put(0.53007639,0.02711103){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$0$\end{tabular}}}}%
-    \put(0.28607494,0.03313607){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$-m / \lambda$\end{tabular}}}}%
+    \put(0.40941593,0.72365358){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$V(\phi) = \abs{W'(\phi)}^2$\end{tabular}}}}%
+    \put(0.9167856,0.15976542){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$\phi$\end{tabular}}}}%
+    \put(0.60910906,0.008183){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$0$\end{tabular}}}}%
+    \put(0.25582971,0.0301453){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$-m / \lambda$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{l12f1.pdf}}%
   \end{picture}%
 \endgroup%

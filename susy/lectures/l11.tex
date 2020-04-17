@@ -69,22 +69,23 @@ Hence $\text{ind}(\cancel{\nabla}) = 0$ whenever $\dim(M) = 4 k + 2$.
 \subsection{Coupling to a Vector Bundle}%
 \label{sub:coupling_to_a_vector_bundle}
 
-We may wish to describe a charged spinor (electron!) moving on $M$.
+We may wish to describe a charged spinor (for example an electron) moving on $M$.
 To do this (in the Abelian case), we modify the action to include a coupling to a gauge field $A_a (x)$ on $M$.
 \begin{equation}
   S[x, \psi] = \int \left[ \frac{1}{2} g(\dot{x}, \dot{x}) + \frac{i}{2} g(\psi, \nabla_\tau \psi) + i A_a (x) \dot{x}^{a} + \frac{1}{2} F_{ab}(x) \psi^{a} \psi^{b} \right] \dd[]{\tau},
 \end{equation}
-where $F = dA = \frac{1}{2} (\partial_{a} A_b - \partial_{b} A_a) dx^{a} \wedge dx^{b}$ is the EM fieldstrength, pulled back to the worldline.
+where $F = dA = \frac{1}{2} (\partial_{a} A_b - \partial_{b} A_a) dx^{a} \wedge dx^{b}$ is the Maxwell fieldstrength, pulled back to the worldline.
 The bosonic term involves $\dot{x}$, so modifies the momentum operator $p_{a} = g_{ab} \dot{x}^{b} + i A_a + \text{ferms}$.
-Upon quantisation, the supercharge 
+Upon quantisation, the supercharge is
 \begin{equation}
-  Q = i g_{ab} \psi^{a} \dot{x}^{b} \to \gamma^{i} e\indices{^{a}_{i}} (\partial_{a} + (\omega_a)_{ij} \Sigma^{ij} + i A_).
+  Q = i g_{ab} \psi^{a} \dot{x}^{b} 
+  \quad\longrightarrow \quad \gamma^{i} e\indices{^{a}_{i}} (\partial_{a} + (\omega_a)_{ij} \Sigma^{ij} + i A_).
 \end{equation}
 The insertion 
 \begin{equation}
   \exp(-i \oint_{S^1} A_a(x (\tau)) \dv{x^{a}}{\tau} \dd[]{\tau})
 \end{equation}
-is the holonomy / Wilson line around $x(S^1)$, i.e.~the \emph{phase} a charged particle would acquire as it travels around a loop $x(S^1) \subset M$.
+is called the \emph{holonomy} or \emph{Wilson line} around $x(S^1)$, i.e.~the \emph{phase} a charged particle would acquire as it travels around a loop $x(S^1) \subset M$.
 
 \begin{wrapfigure}{R}{0.3\columnwidth}
   \centering

@@ -5,13 +5,13 @@
 \section{A Free Particle on a Circle}%
 \label{sec:a_free_particle_on_a_circle}
 
-Let $S[x] = \oint \frac{1}{2} \dot{x} \dd[]{\tau}$ be the action for a free particle, where $x(\tau) \sim x(\tau) + 2\pi R$ , so the target space is $S^1_{2\pi R}$ .
+Let $S[x] = \oint \frac{1}{2} \dot{x} \dd[]{\tau}$ be the action for a free particle, where $x(\tau) \sim x(\tau) + 2\pi R$, so the target space is $S^1_{2\pi R}$ .
 The Hamiltonian for this free particle is, after canonical quantisation
 \begin{equation}
   \hat{H} = -\frac{1}{2} \frac{\partial^2}{\partial x^2},
 \end{equation}
 the Laplacian on a circle.
-Consequently, a basis of $\hat{H}$-eigenstates is $\phi_n(x) = e^{\flatfrac{i n x}{R}}$ , where $n \in \mathbb{Z}$ , with corresponding $\hat{H}$ -eigenvalues $E_n = \flatfrac{n^2}{2R^2}$.
+Consequently, a basis of $\hat{H}$-eigenstates is $\phi_n(x) = e^{\flatfrac{i n x}{R}}$, where $n \in \mathbb{Z}$, with corresponding $\hat{H}$ -eigenvalues $E_n = \flatfrac{n^2}{2R^2}$.
 Quantisation arises here because the target space is compact.
 Thus the partition function is
 \begin{equation}
@@ -28,7 +28,7 @@ In our case,
 \begin{equation}
   Z(\beta) = \sum_{n\in \mathbb{Z}} e^{-\frac{\beta n^2}{2R^2}} = \sqrt{\frac{2\pi R^2}{\beta}} \sum_{m\in \mathbb{Z}} e^{-2 \pi^2 m^2 R^2 / \beta}.
 \end{equation}
-Let us now recompute this using a path integral over all continuous maps $S'_\beta \to S'_{2\pi R}$ . Such maps are classified by their winding number $m \in \mathbb{Z}$ , as illustrated in Fig.~\ref{fig:l6f1}.
+Let us now recompute this using a path integral over all continuous maps $x\colon S^1_\beta \to S^1_{2\pi R}$. Such maps are classified by their winding number $m \in \mathbb{Z}$, as illustrated in Fig.~\ref{fig:l6f1}.
 \begin{figure}[tbhp]
   \centering
   \def\svgwidth{0.4\columnwidth}
@@ -40,13 +40,20 @@ We can write this set of maps as the disjoint union
 \begin{equation}
   \text{Maps}(S^1, S^1) = \bigsqcup_{m \in \mathbb{Z}} \text{Maps}_m (S^1, S^1).
 \end{equation}
-We take the path integral to include a sum $\sum_{m \in \mathbb{Z}}$ over these different topological sectors.
-To do this, let $x(\tau) = y(\tau) + \flatfrac{2 \pi R m \tau}{\beta}$, where $y(\tau + \beta) = y(\tau)$ is periodic, so $\oint \dot{y}(\tau) \dd[]{\tau} = 0$.
+We take the path integral to include a sum $\sum_{m \in \mathbb{Z}}$ over all possible winding sectors.
+\begin{equation}
+  Z(b) = \sum_{m = -\infty}^{\infty} \int \pdd{x_m} e^{-S(x_m)},
+\end{equation}
+where $x_m$ is a map of winding number $m$, meaning that $x_m(\beta) = x(0) + R m$. It is convenient to write
+\begin{equation}
+  x(\tau) = y(\tau) + \flatfrac{2 \pi R m \tau}{\beta},
+\end{equation}
+where $y(\tau + \beta) = y(\tau)$ is a  periodic function, so $\oint \dot{y}(\tau) \dd[]{\tau} = 0$.
 Then
 \begin{equation}
   \int \pdd{x} e^{-S[x]} = \sum_{m \in \mathbb{Z}} \int \pdd{y} e^{-S[y + 2 \pi R m \tau / \beta]}.
 \end{equation}
-For winding number $m$ , the action is
+For winding number $m$, the action is
 \begin{equation}
   S_m[x] = \frac{2 m^2 \pi^2 R^2}{\beta} -\frac{1}{2} \oint_{S^1_\beta} y \ddot y \dd[]{\tau}.
 \end{equation}
@@ -119,7 +126,7 @@ The Hilbert space is spanned by states ($\abs{\{\psi^a\}} = n$)
 \begin{equation}
   \{\ket{0}, \hat{\overline{\psi}}_a \ket{0}, \hat{\overline{\psi}}_a \hat{\overline{\psi}}_b \ket{0}, \dots, \hat{\overline{\psi}}_{a_1} \dots \hat{\overline{\psi}}_{a_n} \ket{0} \}.
 \end{equation}
-We can split the Hilbert space $\mathscr{H}$  into $\mathscr{H} = \mathscr{H}_B \oplus \mathscr{H}_F$ , where $\mathscr{H}_B$  ($\mathscr{H}_F$) contain states with an even (odd) number of $\hat{\overline{\psi}}$'s.
+We can split the Hilbert space $\mathscr{H}$  into $\mathscr{H} = \mathscr{H}_B \oplus \mathscr{H}_F$, where $\mathscr{H}_B$  ($\mathscr{H}_F$) contain states with an even (odd) number of $\hat{\overline{\psi}}$'s.
 
 We also have
  \begin{equation}

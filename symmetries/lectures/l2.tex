@@ -2,50 +2,6 @@
 
 A particle with a definite spin defines a vector space with a certain dimension.
 The angular momentum operators in QM often act on finite dimensional vector spaces.
-\begin{example}[$\mathbb{C}^2$]
-The Hilbert space $\mathbb{C}^2$ is spanned by
-\begin{equation}
-  \ket{\uparrow} =
-  \begin{pmatrix}
-  1 \\
-  0 \\
-  \end{pmatrix},
-  \qquad
-  \ket{\downarrow}
-  \begin{pmatrix}
-  0 \\
-  1 \\
-  \end{pmatrix}
-\end{equation}
-  They correspond to the $2d$ representation $\mathscr{L}(SO(3))$. In place of the angular momentum operators, we have 3 $2\times 2$ matrices $\Sigma_i$, $i = 1,2,3$, which obey the same commutation relations
-  \begin{equation}
-    \left\langle \Sigma_i , \Sigma_i \right\rangle = i \hbar \Sigma_k.
-  \end{equation}
-  The Lie algebra is appearing again in a way in which its generators / basis vectors are represented by the Pauli matrices $\sigma_i$:
-  \begin{equation}
-    \Sigma_i = \frac{1}{2} \hbar \sigma_i.
-  \end{equation}
-  Recall that the Pauli matrices are
-  \begin{equation}
-    \sigma_x = 
-    \begin{pmatrix}
-     0 & 1 \\
-     1 & 0 \\
-    \end{pmatrix}
-    \qquad
-    \sigma_y = 
-    \begin{pmatrix}
-     0 & -i \\
-     i & 0 \\
-    \end{pmatrix}
-    \qquad
-    \sigma_z = 
-    \begin{pmatrix}
-     1 & 0 \\
-     0 & -1 \\
-    \end{pmatrix}
-  \end{equation}
-\end{example}
 
 \begin{definition}[Representation]
   A \emph{representation} of a Lie algebra $\mathscr{L}(G)$ is a map
@@ -62,18 +18,64 @@ The Hilbert space $\mathbb{C}^2$ is spanned by
   \end{remark}
 \end{leftbar}
 
+\begin{example}[$\mathbb{C}^2$]
+The Hilbert space $\mathbb{C}^2$ is spanned by two vectors
+\begin{equation}
+  \ket{\uparrow} =
+  \begin{pmatrix}
+  1 \\
+  0 \\
+  \end{pmatrix},
+  \qquad
+  \ket{\downarrow} =
+  \begin{pmatrix}
+  0 \\
+  1 \\
+  \end{pmatrix}.
+\end{equation}
+  On this representation space, we can build a two-dimensional representation of $\mathscr{L}(SO(3))$: In place of the angular momentum operators $\hat{L}_i$, we take three $2\times 2$ matrices $\Sigma_i$, with $i = 1,2,3$, which obey the same commutation relations 
+  \begin{equation}
+    \left[ \Sigma_i , \Sigma_i \right] = i \hbar \Sigma_k,
+  \end{equation}
+  analogous to \eqref{eq:ang-mom-com}.
+  The Lie algebra is appearing again in a way in which its generators (basis vectors) are represented by the Pauli matrices $\sigma_i$:
+  \begin{equation}
+    \Sigma_i = \frac{1}{2} \hbar \sigma_i.
+  \end{equation}
+  Recall that the Pauli matrices are
+  \begin{equation}
+    \sigma_x = 
+    \begin{pmatrix}
+     0 & 1 \\
+     1 & 0 \\
+    \end{pmatrix},
+    \qquad
+    \sigma_y = 
+    \begin{pmatrix}
+     0 & -i \\
+     i & 0 \\
+    \end{pmatrix},
+    \qquad
+    \sigma_z = 
+    \begin{pmatrix}
+     1 & 0 \\
+     0 & -1 \\
+    \end{pmatrix}.
+  \end{equation}
+\end{example}
+
+\subsection{Degeneracy of the Spectrum}%
+\label{sub:degeneracy_of_the_spectrum}
+
 In Quantum mechanics, a rotational symmetry manifests itself in the commutation relation
 \begin{equation}
-  \left\langle \hat{\mathcal{H}}, \hat L_i \right\rangle = 0
+  \left[ \hat{H}, \hat L_i \right] = 0
 \end{equation}
-with the Hamiltonian $\mathcal{H}$. The fact that the angular momentum generators, which move you around in the Hilbert space, commute with the Hamiltonian means that states in any representation of $\mathscr{L}(SO(3))$ have the same energy.
+with the Hamiltonian $\hat H$. The fact that the angular momentum generators, which move you around in the Hilbert space, commute with the Hamiltonian means that states in any representation of $\mathscr{L}(SO(3))$ have the same energy.
 
 \begin{example}[]
 The spin vectors $\ket{\uparrow}$ and $\ket{\downarrow}$ have the same energy in a rotationally invariant system.
 \end{example}
-
-\section{Key Idea}%
-\label{sec:key-idea}
 
 The degeneracies in the spectrum of a quantum system are effectively determined by the representations of the (global) symmetry group.
 This can be seen as a tool for which we do not yet know the underlying symmetry and the Lagrangian.
@@ -82,56 +84,45 @@ This can be seen as a tool for which we do not yet know the underlying symmetry 
 Strongly interacting particles have an observed degeneracy which led Gell-Mann to postulate the approximate symmetry $G = SU(3)$ of $3\times 3$ complex, unitary matrices with unit determinant.
 This is where group theory really took off in physics.
 
-It was observed that there were sets of particles in the accelerators with approximately the same energy. Their interaction was characterised by conserved charges which could be assigned to integer values.
+It was observed that there were sets of particles in the accelerators with approximately the same energy. Their interaction was characterised by conserved charges which could be assigned to integer values.  The particular pattern is illustrated in Fig~\ref{fig:eightfold}.
 
-  The particular pattern is illustrated in Fig~\ref{fig:eightfold}.
-
-  \begin{figure}[htpb]
-    \centering
-    \def\svgwidth{0.5\columnwidth}
-    \input{lectures/eightfold.pdf_tex}
-    \caption{The ``eightfold way'' showing the approximate octet formed by the spin-$\frac{1}{2}$ baryons.}
-    \label{fig:eightfold}
-  \end{figure}
+\begin{figure}[htpb]
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \input{lectures/eightfold.pdf_tex}
+  \caption{The \emph{eightfold way} showing the approximate octet formed by the spin-$\flatfrac{1}{2}$ baryons of strangeness $s$, electric charge $q$, hypercharge $Y$, and isospin $I$.}
+  \label{fig:eightfold}
+\end{figure}
 This turned out to be precisely explained by the mathematics of Lie groups and Lie algebras, and gives us the main tool of organising structures in particle physics.
 \end{example} 
 
-\begin{definition}[Global symmetries]
-  \emph{Global} symmetries can be understood as operators in some Hilbert space which commute with the Hamiltonian.
-  These include the spacetime symmtries, which fit into the pattern of non-Abelian Lie-groups:
+\subsection{Types of Symmetries}%
+\label{sub:types_of_symmetries}
+
+\begin{description}
+  \item[Global Symmetries:] 
+  Global symmetries can be understood as operators in some Hilbert space which commute with the Hamiltonian.
+  These include the spacetime symmetries, which fit into the pattern of non-Abelian Lie-groups:
+  Rotations are modelled by $SO(3)$, whereas Lorentz transformations form the group $SO(3, 1)$. Together with translations, these form the Poincaré group.  However, the Poincar\'e group is not a simple Lie group. 
+  \item[Internal Symmetries:]
+  Moreover, we also have the \emph{internal} symmetries like the $SU(3)$ \emph{flavour symmetry}, which is the approximate symmetry of strong interactions.
+  Advancements in particle physics have often hinged on the idea of enlarging the symmetry group. This is where the interaction between mathematics and physics also really took off: There are powerful theorems which prevent the combination of the global and internal symmetry groups, in the context of ordinary Lie algebras.
+  Physicists then started to relax the constraints of Lie algebras, which led to \emph{supersymmetry}.
+\item[Gauge Symmetries:]
+  The other topic which we will talk about is \emph{Gauge symmetry}. This is not really a symmetry since it does not obey the definition in the first lecture. It is actually a \emph{redundancy} in the mathematical description of the physics.
+  Examples of gauge symmetries are
   \begin{itemize}
-    \item Rotations $SO(3)$
-    \item Lorentz transformations $SO(3, 1)$
-    \item Poincar\'e group (+ translations)
+    \item phase of the wavefunction: $\psi \to e^{i\delta} \psi$
+    \item electromagnetism: $\vb{A} \to \vb{A} + \grad \chi$, where $\chi$ is some arbitrary scalar function.
   \end{itemize}
-  However, the Poincar\'e group is not a simple Lie group. 
-\end{definition}
-Moreover, we also have the \emph{internal} symmetries
-\begin{itemize}
-  \item flavour symmetry (approximate symmetry of strong interactions)
-  \item baryon number
-  \item lepton number
-\end{itemize}
-Advancements in particle physics have often hinged on the idea of enlarging the symmetry group. This is where the interaction between mathematics and physics also really took off: There are powerful theorems which prevent the combination of the global and internal symmetry groups, in the context of ordinary Lie algebras.
-Physicists then started to relax the constraints of Lie algebras, which led to \emph{supersymmetry}.
-
-\subsection*{Gauge Symmetries}%
-\label{sub:gauge_symmetries}
-
-The other topic which we will talk about is \emph{Gauge symmetry}. This is not really a symmetry since it does not obey the definition in the first lecture. It is actually a \emph{redundancy} in the mathematical description of the physics.
-Examples of gauge symmetries are
-\begin{itemize}
-  \item phase of the wavefunction: $\psi \to e^{i\delta} \psi$
-  \item electromagnetism: $\vb{A} \to \vb{A} + \grad \chi$, where $\chi$ is some arbitrary scalar function.
-\end{itemize}
-These transformations, constituting the Gauge group, do not affect any physical quantities.
-\begin{leftbar}
-  \begin{remark}
-    In QFT, as far as we know, only Gauge theories can describe in a consistent, renormalisable way the interaction of spin-$1$ particles.
-  \end{remark}
-\end{leftbar}
-
-The Standard Model is a particular type of Gauge theory with $G_{SM} = SO(3) \times SU(2) \times U(1)$.
+  These transformations, constituting the Gauge group, do not affect any physical quantities.
+  \begin{leftbar}
+    \begin{remark}
+      In QFT, as far as we know, only Gauge theories can describe in a consistent, renormalisable way the interaction of spin-$1$ particles.
+    \end{remark}
+  \end{leftbar}
+  The Standard Model is a particular type of Gauge theory with $G_{SM} = SO(3) \times SU(2) \times U(1)$.
+\end{description}
 
 \chapter{Lie Groups}%
 \label{cha:lie_groups}
@@ -140,7 +131,7 @@ The Standard Model is a particular type of Gauge theory with $G_{SM} = SO(3) \ti
 \label{sec:definitions}
 
 \begin{definition}[Manifold]
-  A manifold $\mathcal{M}$ is a space that locally looks like Euclidean space. For each coordinate patch $\mathcal{P}$, there is a bijective map $\phi_\mathcal{P}: \mathcal{P} \leftrightarrow \mathbb{R}^n$. 
+  A manifold $\mathcal{M}$ is a space that locally looks like Euclidean space. For each coordinate patch $\mathcal{P}$, there is a bijective map $\phi_\mathcal{P}\colon \mathcal{P} \leftrightarrow \mathbb{R}^n$. 
   \begin{figure}[htbp]
     \centering
     \def\svgwidth{0.6\columnwidth}
@@ -160,35 +151,31 @@ The definition of the manifold allows us to introduce coordinates $\left\{ \thet
 In the patch $\mathcal{P}$, the group elements depend continuously on the coordinates $\left\{ \theta^i \right\}$.
 WLOG, we can choose coordinates in which identity element lies at the origin: $g(0) = e$.
 
-\section{Compatibility of Group and Manifold Structures}%
+\subsection{Compatibility of Group and Manifold Structures}%
 
-\subsection{Multiplication}%
-\label{sub:multiplication}
+\begin{description}
+  \item[Multiplication:] The group operation of multiplication will define a map on the manifold. Since this map has to be smooth, it will have to be composed of continuous differentiable functions in the coordinate systems.
 
-The group operation of multiplication will define a map on the manifold. Since this map has to be smooth, it will have to be composed of continuous differentiable functions in the coordinate systems.
+  By closure of the group, and assuming that multiplication gives us another element in the same patch:
+  \begin{equation}
+    g(\theta) g(\theta') = g(\varphi) \in G
+  \end{equation}
+  \begin{leftbar}
+    \begin{remark}
+      In general it is not necessarily the case that the new group element will be in the same coordinate patch $\mathcal{P}$. In that case, we will have to make use of the transition functions.
+    \end{remark}
+  \end{leftbar}
+  This defines a map $G \times G \to G$ from a pair of group elements to a third.
+  We can express this map in coordinates as $\varphi^i = \varphi^i(\theta, \theta'): \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}^d$.
+  In terms of these coordinates, the condition of \emph{compatibility} between a group operation and a manifold structure simply means that these maps $\varphi^i$ have to be continuous and differentiable.
 
-By closure of the group, and assuming that multiplication gives us another element in the same patch:
-\begin{equation}
-  g(\theta) g(\theta') = g(\varphi) \in G
-\end{equation}
-\begin{leftbar}
-  \begin{remark}
-    In general it is not necessarily the case that the new group element will be in the same coordinate patch $\mathcal{P}$. In that case, we will have to make use of the transition functions.
-  \end{remark}
-\end{leftbar}
-This defines a map $G \times G \to G$ from a pair of group elements to a third.
-We can express this map in coordinates as $\varphi^i = \varphi^i(\theta, \theta'): \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}^d$.
-In terms of these coordinates, the condition of \emph{compatibility} between a group operation and a manifold structure simply means that these maps $\varphi^i$ have to be continuous and differentiable.
-
-\subsection{Inversion}%
-\label{sub:inversion}
-
-Group inversion also defines a smooth map, this time from $G$ to itself.
-For all elements $g(\theta) \in G$, where $\theta$ describes the position in the coordinate patch $\mathcal{P}$, the group axioms imply that there exists an inverse element $g^{-1}(\theta)$. Assuming that this is still in the same coordinate patch, we can write this as $g^{-1}(\theta) = g(\widetilde \theta)$. If it is not, we simply apply the relevant transition function.
-\begin{equation}
-  g(\theta) g(\widetilde \theta) = g(\widetilde \theta) g(\theta) = e
-\end{equation}
-In coordinates, $\widetilde \theta^i = \widetilde \theta^i(\theta)$ have to be continuous and differentiable.
+  \item[Inversion:] Group inversion also defines a smooth map, this time from $G$ to itself.
+  For all elements $g(\theta) \in G$, where $\theta$ describes the position in the coordinate patch $\mathcal{P}$, the group axioms imply that there exists an inverse element $g^{-1}(\theta)$. Assuming that this is still in the same coordinate patch, we can write this as $g^{-1}(\theta) = g(\widetilde \theta)$. If it is not, we simply apply the relevant transition function.
+  \begin{equation}
+    g(\theta) g(\widetilde \theta) = g(\widetilde \theta) g(\theta) = e
+  \end{equation}
+  In coordinates, $\widetilde \theta^i = \widetilde \theta^i(\theta)$ have to be continuous and differentiable.
+\end{description}
 
 \begin{example}[]
   The simplest possible example of a Lie group is $G = (\mathbb{R}^D, +)$.

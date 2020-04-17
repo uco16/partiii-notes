@@ -2,42 +2,42 @@
 % course: symmetries
 \lhead{Lecture 18: November 21}
 
-In the Cartan-Weyl basis,
-\begin{equation}
-  [H^{i}, E^{\delta}] = \delta^{i} E^{\delta}, \qquad \forall \delta \in \Phi, \forall i = 1, \dots, r,
-\end{equation}
-the Killing form components are
-\begin{align}
-  \kappa^{ij} &= \kappa(H^{i}, H^{j}) = \frac{1}{\mathcal{N}} \Tr[ad_{H^{i}} \circ ad_{H^{j}}] \\
-   &= \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} \delta^{i} \delta^{j},
-\end{align}
-where $\mathcal{N} \in \mathbb{R}$ is a normalisation constant.
-Hence for $\alpha, \beta \in \Phi$, where we raise and lower indices with the Killing form, 
-\begin{align}
-  (\alpha, \beta) &= \alpha^{i} \beta^{j}(\kappa^{-1})_{ij} = \alpha_{i} \beta^{i} = \alpha_{i} \beta_{j} \kappa^{ij} \\
-		  &= \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} \alpha_{i} \delta^{i} \delta^{j} \beta_{j} = \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} (\alpha, \delta) (\beta,\delta) \label{eq:18-17}
-\end{align}
-From \eqref{eq:17-15}, we have
-\begin{equation}
-  R_{\alpha, \beta} = \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{Z} \subset \mathbb{R}.
-\end{equation}
-Moreover, from \eqref{eq:18-17}, this is
-\begin{equation}
-  \frac{2}{(\beta, \beta)} = \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} R_{\alpha, \delta} R_{\beta, \delta} \in \mathbb{R}
-\end{equation}
-This gives a series of implications: For all $\alpha, \beta \in \Phi$ we have
-\begin{equation}
-  N \in \mathbb{R} \implies \text{LHS} \in \mathbb{R} \implies \text{RHS} \in \mathbb{R}
-  \implies (\beta, \beta) \in \mathbb{R} \implies \boxed{(\alpha, \beta) \in \mathbb{R}}
-\end{equation}
+\begin{claim}
+  The inner product of any two roots $\alpha, \beta \in \Phi$ is real:
+  \begin{equation}
+    (\alpha, \beta) \in \mathbb{R}.
+  \end{equation}
+\end{claim}
+\begin{proof}
+  In the Cartan-Weyl basis, the Killing form components are
+  \begin{align}
+    \kappa^{ij} &= \kappa(H^{i}, H^{j}) = \frac{1}{\mathcal{N}} \Tr[ad_{H^{i}} \circ ad_{H^{j}}] \\
+     &= \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} \delta^{i} \delta^{j},
+  \end{align}
+  where $\mathcal{N} \in \mathbb{R}$ is a real normalisation constant.
+  Hence for $\alpha, \beta \in \Phi$, where we raise and lower indices with the Killing form, 
+  \begin{align}
+    (\alpha, \beta) &= \alpha^{i} \beta^{j}(\kappa^{-1})_{ij} = \alpha_{i} \beta^{i} = \alpha_{i} \beta_{j} \kappa^{ij} \\
+		    &= \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} \alpha_{i} \delta^{i} \delta^{j} \beta_{j} = \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} (\alpha, \delta) (\beta,\delta) \label{eq:18-17}
+  \end{align}
+  From \eqref{eq:17-15}, we have integers
+  \begin{equation}
+    m_{\alpha, \beta} = \frac{2 (\alpha, \beta)}{(\alpha, \alpha)} \in \mathbb{Z} \subset \mathbb{R}.
+  \end{equation}
+  Therefore, dividing \eqref{eq:18-17} by $4 / [(\alpha, \alpha) (\beta, \beta)]$ we get
+  \begin{equation}
+    \frac{2 m_{\alpha, \beta}}{(\beta, \beta)} = \frac{1}{\mathcal{N}} \sum_{\delta \in \Phi} m_{\alpha, \delta} R_{\beta, \delta} \in \mathbb{R}.
+  \end{equation}
+  Therefore, $(\beta, \beta) \in \mathbb{R}$ for all roots $\beta \in \Phi$. So from \eqref{eq:17-15}, we also find that $ (\alpha, \beta) \in \mathbb{R}$.
+\end{proof}
 
-\section{Real geometry of roots}%
+\section{Real Geometry of Roots}%
 \label{sec:real_geometry_of_roots}
 
-Recall that roots $\alpha \in \Phi$ are elements of $\mathfrak{h}^*$, the dual of the CSA $\mathfrak{h} \in \mathfrak{g}$.
+Recall that roots $\alpha \in \Phi$ are elements of $\mathfrak{h}^*$, the dual of the Cartan subalgebra $\mathfrak{h} \in \mathfrak{g}$.
 
 \begin{claim}
-  In fact, the roots span $\mathfrak{h}^*$,
+  In fact, the roots span $\mathfrak{h}^*$:
   \begin{equation}
     \mathfrak{h}^* = \text{Span}_{\mathbb{C}}\left\{\alpha \in \Phi\right\}.
   \end{equation}
@@ -70,7 +70,7 @@ The coefficients $\beta^i $ solve
 From the fact that $(\alpha, \beta) \in \mathbb{R}$, we can immediately infer that $\beta^i \in \mathbb{R}$.
 This is the same as saying that the root $\beta$ actually lives in the real subspace $\mathfrak{h}^*_{\mathbb{R}}$:
 \begin{equation}
-  \boxed{\beta \in \mathfrak{h}^*_{\mathbb{R}} \qquad \forall\beta \in \Phi}
+  \boxed{\beta \in \mathfrak{h}^*_{\mathbb{R}}, \qquad \forall\beta \in \Phi}
 \end{equation}
 
 Consider now the inner product of two arbitrary elements $\lambda, \mu \in \mathfrak{h}^*_{\mathbb{R}}$.
@@ -85,12 +85,10 @@ From \eqref{eq:18-17}, we have the length of a vector as
 \end{equation}
 As a result of the non-degeneracy of the inner product $\kappa$, we have thus
 \begin{equation}
-  \abs{\lambda}^2 = 0 \iff (\lambda, \delta) = 0 \quad \forall \delta \in \Phi \iff \lambda = 0.
+  \abs{\lambda}^2 \coloneqq (\lambda, \lambda) = 0 \iff (\lambda, \delta) = 0 \quad \forall \delta \in \Phi \iff \lambda = 0.
 \end{equation}
 
-\subsection*{Summary}%
-
-The roots $\alpha \in \Phi$ live in the \emph{real vector space} $\mathfrak{h}^*_{\mathbb{R}} \simeq \mathbb{R}^r$, where $r = \text{Rank}(\mathfrak{g})$, equipped with a \emph{Euclidean inner product}:
+In summary, the roots $\alpha \in \Phi$ live in the \emph{real vector space} $\mathfrak{h}^*_{\mathbb{R}} \simeq \mathbb{R}^r$, where $r = \text{Rank}(\mathfrak{g})$, equipped with a \emph{Euclidean inner product}:
 For all vectors $\lambda, \mu \in \mathfrak{h}^*_{\mathbb{R}}$, 
 \begin{enumerate}
   \item $(\lambda, \mu) \in \mathbb{R}$ 
@@ -124,6 +122,7 @@ The \emph{angle} $\theta_{\alpha, \beta} \in [0, \pi]$ is constrained by quantis
 \end{subequations}
 Multiplying \eqref{eq:19a} $\times$ \eqref{eq:19b}, we find that $4 \cos^2 \theta_{\alpha, \beta} \in \mathbb{Z}$, which implies that
 \begin{equation}
+  \label{eq:18-angles}
   \cos\theta_{\alpha, \beta} = \pm \frac{1}{2} \sqrt{n}.
 \end{equation}
 Solutions to this can only be found for $n \in \left\{ 0, 1, 2, 3, 4 \right\}$ and are enumerated in Table \ref{tab:18-1}.
@@ -131,16 +130,16 @@ Solutions to this can only be found for $n \in \left\{ 0, 1, 2, 3, 4 \right\}$ a
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
-    $n$ & sign & $\theta$ &  \\
+    $n$ & sign & possible angles $\theta$ & root relation \\
     \hline
-    $0$ & $\pm$ & $\theta = \frac{\pi}{2}$ & $(\alpha, \beta) = 0$ \\
+    $0$ & $\pm$ & ${\pi} / {2}$ & $(\alpha, \beta) = 0$ \\
     $4$ & $+$ & $0$ & $\alpha = \beta$ \\
 	& $-$ & $\pi$ & $\alpha = -\beta$ \\
     1, 2, 3 & $+$ & $\pi / 6, \pi/4, \pi/3$ & $(\alpha, \beta) > 0$ \\
 	    & $-$ & $2\pi/3, 3 \pi/4, 5 \pi / 6$ & $(\alpha, \beta) <0$ \\
     \hline
   \end{tabular}
-  \caption{}
+  \caption{Possible angles and signs of the inner product between two roots $\alpha$ and $\beta$ according to \eqref{eq:18-angles}.}
   \label{tab:18-1}
 \end{table}
 
@@ -148,42 +147,37 @@ Solutions to this can only be found for $n \in \left\{ 0, 1, 2, 3, 4 \right\}$ a
   Show that if $\alpha \in \Phi$, then  $k \alpha \in \Phi$ only for  $k = \pm 1$.
 \end{exercise}
 
-\begin{figure}[tbph]
-  \centering
-  \def\svgwidth{0.5\columnwidth}
-  \input{lectures/l18f2.pdf_tex}
-  \caption{In $\mathbb{R}^2$ we can find an $\mathbb{R}^{2-1}$-dimensional line, which separates the positive from the negative roots.}
-  \label{fig:l18f2}
-\end{figure}
-
 \section{Simple Roots}%
 \label{sec:simple_roots}
 
+\begin{figure}[tbph]
+  \centering
+  \def\svgwidth{0.4\columnwidth}
+  \input{lectures/l18f2.pdf_tex}
+  \caption{In $\mathbb{R}^2$ we can choose a line to separate the positive from the negative roots.}
+  \label{fig:l18f2}
+\end{figure}
 
 The root system is some finite set of root vectors living in $\mathbb{R}^r$. If $\beta \in \Phi$, then so is  $-\beta \in \Phi$.
 This motivates the following definition. 
-We choose some plane in $\mathfrak{h}^*_{\mathbb{R}}$ of dimension  $\mathbb{R}^{r-1}$ in which none of the root vectors lie, such as illustrated in %F2
-for the case of $\mathbb{R}^2$.
-
-We can always find such a plane since there are finitely many roots, but a continuous infinity of choices of such a plane.
-This divides the roots into positive and negative roots
-\begin{equation}
-  \Phi = \Phi_+ \cup \Phi_-.
-\end{equation}
-This satisfies
-\begin{enumerate}
-  \item $\alpha \in \Phi_+ \iff -\alpha \in \Phi_-$
-  \item if $\alpha + \beta \in \Phi$ and $\alpha, \beta \in \Phi_+$, then $\alpha + \beta \in \Phi_+$
-  \item if $\alpha, \beta \in \Phi_-$ and $\alpha + \beta \in \Phi$, then $\alpha + \beta \in \Phi_-$
-\end{enumerate}
-\begin{definition}[]
-  A \emph{simple root} is a positive roots that cannot be written as a sum of two positive roots.
+\begin{definition}[positive roots]
+  We choose some plane in $\mathfrak{h}^*_{\mathbb{R}}$ of dimension  $\mathbb{R}^{r-1}$ in which none of the root vectors lie, such as illustrated in \ref{fig:l18f2} for the case of $\mathbb{R}^2$.
+  We can always find such a plane since there are finitely many roots, but a continuous infinity of choices of such a plane.
+  This divides the roots into positive and negative roots
   \begin{equation}
-    \delta \in \Phi_S \quad \iff \quad
-    \begin{gathered}
-      \delta \in \Phi_+ \\
-      \delta \neq \alpha + \beta \quad \forall \alpha, \beta \in \Phi_+
-    \end{gathered}
+    \Phi = \Phi_+ \cup \Phi_-.
   \end{equation}
 \end{definition}
-We will see that these simple roots form a particularly simple basis of the Cartan-Weyl basis, which we will use to completely determine the Lie algebra.
+Positive and negative roots satisfy the following relations:
+\begin{enumerate}
+  \item $\alpha \in \Phi_+ \iff -\alpha \in \Phi_-$,
+  \item If $\alpha + \beta \in \Phi$ and $\alpha, \beta \in \Phi_{\pm}$, then $\alpha + \beta \in \Phi_{\pm}$.
+\end{enumerate}
+\begin{definition}[simple root]
+  A \emph{simple root} $\delta \in \Phi_S$ is a positive root that cannot be written as a sum of two positive roots:
+  \begin{equation}
+    \delta \in \Phi_S \qquad \iff \qquad
+    \delta \in \Phi_+ \quad \wedge \quad \delta \neq \alpha + \beta \quad \forall \alpha, \beta \in \Phi_+
+  \end{equation}
+\end{definition}
+We will see that these simple roots form a particularly simple version of the Cartan-Weyl basis, which we will use to completely determine the Lie algebra.

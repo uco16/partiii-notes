@@ -17,7 +17,7 @@ Taking $G = SU(2)$, minus the trace is positive definite, so we have the action
 \end{equation}
 Varying with respect to the gauge potential and requiring $\delta S = 0$, we obtain the Yang--Mills equations
 \begin{equation}
-  D \star F = 0.
+  D {\star F} = 0.
 \end{equation}
 We also have the Bianchi identity
 \begin{equation}
@@ -71,7 +71,7 @@ These are
 \end{itemize}
 
 Let us compute the first two Chern forms.
-In $\frac{SU}{2}$ gauge theory,
+In $\mathfrak{su}(2)$ gauge theory,
 \begin{align}
   C_1(F) &= \frac{i}{2 \pi} \Tr(F) = 0 \\
   C_2(F) &= \frac{1}{8 \pi^2} \bigl( \Tr(F \wedge F) - \Tr(F) - \Tr(F) \bigr) = \frac{1}{8 \pi^2} \Tr(F \wedge F).
@@ -128,7 +128,7 @@ We have not yet used the Yang--Mills equations, but we will do so now.
   \end{equation}
   the Yang--Mills action $S$ is bounded from below by $8 \pi^2 c_2$. The boundary is saturated if the anti-self-dual Yang--Mills (ASDYM) equations hold
   \begin{equation}
-    \star F = - F \qquad \text{or} \qquad \left\{
+    {\star F} = - F \qquad \text{or} \qquad \left\{
       \begin{gathered}
         F_{12} = -F_{31} \\
         F_{13} = -F_{42} \\
@@ -142,7 +142,7 @@ We have not yet used the Yang--Mills equations, but we will do so now.
 \end{remark}
 \begin{proof}
   Note $F \wedge F = \star F \wedge \star F$.
-  Then, using that $\star \star F = 1$, write the action as
+  Then, using that ${\star^2 F} = 1$, write the action as
   \begin{equation}
     S = -\frac{1}{2} \int_{\mathbb{R}^4} \Tr[(F + \star F) \wedge \star(F + \star F)] + \int_{\mathbb{R}^4} \Tr(F \wedge F)
   \end{equation}

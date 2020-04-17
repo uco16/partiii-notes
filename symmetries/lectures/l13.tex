@@ -1,27 +1,15 @@
 % lecture notes by Umut Özer
 % course: symmetries
 \lhead{Lecture 13: November 09}
-\section*{Two particle states}%
+\subsection{The Tensor Product Representation}%
+\label{sub:tensor_product}
+
+\subsection*{Two Particle States}%
 
 Let us start with some motivation.
 Assume we have two particles, each occupying a two-particle Hilbert space $\mathcal{H}_i = \left\{ \ket{\uparrow}_i, \ket{\downarrow}_i \right\}$, $i = 1, 2$.
 The two particle states are states like $\ket{\uparrow}_1 \ket{\downarrow}_2$ or $\ket{\uparrow}_1 \ket{\downarrow}_2 - \ket{\downarrow}_1 \ket{\uparrow}_2 \in \mathcal{H}_{12}$.
 To analyse this we will have to think more about how to combine two representations.
-
-\section{Tensor product}%
-\label{sec:tensor_product}
-
-\begin{definition}[]
-  Let $R_1$ and $R_2$ be two representations of $\mathfrak{g}$ on representations spaces $V_1$ and $V_2$ of dimension $d_1$ and $d_2$ respectively.
-  We can define the \emph{direct sum} $R_1 \oplus R_2$ to be the new representation acting on $X \in V_1 \oplus V_2$ as
-  \begin{equation}
-    (R_1 \oplus R_2)(X) = 
-    \begin{pmatrix}
-      R_1(X) & 0 \\
-      0 & R_2(X) \\
-    \end{pmatrix}
-  \end{equation}
-\end{definition}
 
 \begin{definition}[]
   Given two vector spaces $V_1$ and $V_2$, we define the \emph{(tensor) product space}
@@ -51,7 +39,7 @@ To analyse this we will have to think more about how to combine two representati
   Given representations $R_i$, $i = 1, 2$ of $\mathfrak{g}$ with corresponding representation spaces $V_i$, we have, for each element $X$ in the Lie algebra $\mathfrak{g}$, a map $R_i(X) \colon V_i \to V_i$.
   We now define the \emph{tensor product representation} $R_1 \otimes R_2$ with representation space $V_1 \otimes V_2$ which acts on all $X \in \mathfrak{g}$ as
   \begin{equation}
-    \boxed{(R_1 \otimes R_2)(X) = R_1(X) \otimes I_2 + I_1 \otimes R_2(X)}
+    (R_1 \otimes R_2)(X) = R_1(X) \otimes I_2 + I_1 \otimes R_2(X).
   \end{equation}
 \end{definition}
 \begin{leftbar}
@@ -135,7 +123,7 @@ This is useful for us due to the following theorem, which we will not prove in t
   \end{remark}
 \end{leftbar}
 
-\section{Tensor product of \texorpdfstring{$\mathfrak{su}(2)$}{the Lie algebra of SU(2)} representations}%
+\section{Tensor Product of \texorpdfstring{$\mathfrak{su}(2)$}{the Lie Algebra of SU(2)} Representations}%
 \label{sec:tensor_product_of_su2_reps}
 
 Let $R_\Lambda$ and $R_{\Lambda'}$ be irreps of $\mathfrak{su}(2)$ with highest weights $\Lambda, \Lambda' \in \mathbb{N}_0$. Previously, we have found that $\dim(R_\Lambda) = \Lambda + 1$ and $\dim (R_{\Lambda'}) = \Lambda' + 1$.

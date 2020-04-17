@@ -2,43 +2,66 @@
 % course: symmetries
 \lhead{Lecture 22: November 30}
 
-Representation spaces will be spanned by simultaneous eigenvectors of the Cartan generators. These weight-vactors will be a basis for the representation space.
-
-We have established that for any $R$ any weight $\lambda \in S_R$ has to satisfy \eqref{eq:23}.
-This means that we have a nice picture of the allowed weights: they lie on a lattice.
-
-\section{Root and Weight Lattices}%
+\section{Root, Coroots, Weights, and their Lattices}%
 \label{sec:root_and_weight_lattices}
 
-From iv) of simple roots, $\beta \in \Phi \implies \beta = \sum_{i=1}^{r} \beta^{i} \alpha_{(i)}$, where $\beta^{i} \in \mathbb{Z}$.
-This means that all roots lie in
-\begin{definition}[]
-  The \emph{root lattice}
-  \begin{align}
-    \mathcal{L}[\mathfrak{g}] &\coloneqq \left\{ \sum_{i=1}^{r} m^{i} \alpha_{(i)} \suchthat m^{i} \in \mathbb{R},\  i = 1, \dots, r \right\} \\
-      &= \text{Span}_{\mathbb{Z}}\left\{\alpha_{(i)} \suchthat i = 1, \dots, r\right\}.
-  \end{align}
-\end{definition}
+Representation spaces are spanned by a basis of weight-vectors, which are simultaneous eigenvectors of the Cartan generators.  We have established that for any $R$ any weight $\lambda \in S_R$ has to satisfy \eqref{eq:23}.
+This means that we have a nice picture of the allowed weights: they lie on a lattice.
 
-It is then convenient to define the following.
 \begin{definition}[]
-  For each simple root $\alpha_{(i)}$, the \emph{dual root} or \emph{co-root} $\alpha_{(i)}^{\vee}$ is defined\footnote{the upside-down wedge $\vee$ is \texttt{\textbackslash vee} in \LaTeX}
+  For each simple root $\alpha_{(i)}$, the \emph{dual root} or \emph{coroot} $\alpha_{(i)}^{\vee}$ is defined\footnote{the upside-down wedge $\vee$ is \texttt{\textbackslash vee} in \LaTeX}
   \begin{equation}
     \alpha_{(i)}^\vee = \frac{2 \alpha_{(i)}}{(\alpha_{(i)}, \alpha_{(i)})}, \qquad i = 1, \dots, r
   \end{equation}
 \end{definition}
-\begin{definition}[]
-  The \emph{co-root lattice}
+\begin{leftbar}
+  Using coroots, the defining equation \eqref{eq:cartan-matrix} for the Cartan matrix becomes
   \begin{equation}
-    \mathcal{L}^\vee [\mathfrak{g}] = \text{Span}_{\mathbb{Z}}\left\{\alpha_{(i)}^\vee \suchthat i = 1, \dots, r\right\}.
+    A^{ij} \coloneqq (\alpha_{(i)}, \alpha^\vee_{(j)})
+  \end{equation}
+\end{leftbar}
+
+\begin{leftbar}
+  When one considers the root space as consisting of real linear combinations of roots, then the dual space of the root space is called the \emph{weight space}, and its elements are the \emph{weights} of $\mathfrak{g}$. This turns out to be equivalent to our previous the definition of weights as eigenvalues of (representations of) the Cartan subalgebra generators. \cite[Sec.~13.2]{fuchs}
+\end{leftbar}
+
+We can choose the simple coroots $\left\{\alpha_{(i)}^{\vee}\right\}$ as a basis $B$ of the root space.
+\begin{definition}[Dynkin basis]
+  The dual basis $B^*$, often referred to as the \emph{Dynkin basis}, for the weight space $\mathcal{L}^{\vee}{}^* [\mathfrak{g}] = \mathcal{L}_W[\mathfrak{g}]$ is
+  \begin{equation}
+    B^* = \left\{ \omega_{(i)} \suchthat i = 1, 2, \dots, r \right\},
+  \end{equation}
+  where the basis vectors $\omega_{(i)}$ are known as \emph{fundamental weights} and obey
+  \begin{equation}
+    \label{eq:24}
+    (\alpha_{(i)}^\vee, \omega_{(j)}) = \frac{2 (\alpha_{(i)}, \omega_{(j)})}{(\alpha_{(i)}, \alpha_{(i)})} = \delta_{ij}.
   \end{equation}
 \end{definition}
-\begin{definition}[]
-  The \emph{weight-lattice} $\mathcal{L}_W[\mathfrak{g}]$ is dual to the co-root lattice
+\begin{definition}[Dynkin labels]
+  For any weight $\lambda \in S_R \subset \mathcal{L}_W[\mathfrak{g}]$, 
   \begin{equation}
-    \mathcal{L}_W[\mathfrak{g}] \coloneqq (\mathcal{L}^\vee)^*[\mathfrak{g}] = \left\{ \lambda \in \mathfrak{h}^*_{\mathbb{R}} \suchthat (\lambda, \mu) \in \mathbb{Z}, \ \forall \mu \in \mathcal{L}^\vee[\mathfrak{g}] \right\}
+    \lambda = \sum_{i=1}^{r} \lambda^{i} \omega_{(i)} \qquad \lambda^{i} \in \mathbb{Z}, \quad i = 1, \dots, r
   \end{equation}
+  The components $\lambda^{i}$ of a weight $\lambda$ in the Dynkin basis are called \emph{Dynkin labels}.
 \end{definition}
+
+\begin{leftbar}
+  \begin{definition}[lattice]
+    The \emph{lattice} associated to some discrete subset $V_0$ (without accumulation points) of a vector space is the set of all linear combinations of elements of $V_0$ with integral coefficients.
+  \end{definition}
+\end{leftbar}
+
+From Claim \ref{cl:19-4}, we know that all roots $\beta \in \Phi$ are linear combinations of the simple roots, $\beta = \sum_{i=1}^{r} \beta^{i} \alpha_{(i)}$, where $\beta^{i} \in \mathbb{Z}$ are integral coefficients.
+This means that all roots lie in the \emph{root lattice}
+\begin{equation}
+  \mathcal{L}[\mathfrak{g}] \coloneqq \operatorname{span}_{\mathbb{Z}}\left\{ \Phi_s \right\} = \operatorname{span}_{\mathbb{Z}}\left\{ \Phi \right\}.
+\end{equation}
+
+Similarly, the integer span of the simple coroots is the \emph{co-root lattice} $\mathcal{L}^\vee [\mathfrak{g}] $ and the integer span of the fundamental weights the \emph{weight lattice} $\mathcal{L}_w[\mathfrak{g}]$.
+The weight-lattice is the lattice dual (over $\mathbb{Z}$) to the co-root lattice:
+\begin{equation}
+  \mathcal{L}_w[\mathfrak{g}] \coloneqq (\mathcal{L}^\vee[\mathfrak{g}])^* = \left\{ \lambda \in \mathfrak{h}^*_{\mathbb{R}} \suchthat (\lambda, \alpha^\vee) \in \mathbb{Z}, \ \forall \alpha^\vee \in \mathcal{L}^\vee[\mathfrak{g}] \right\}
+\end{equation}
 
 \begin{example}[]
   In solid state physics, the momenta lie in the dual (or reciprocal) lattice of the position lattice.
@@ -47,19 +70,8 @@ It is then convenient to define the following.
 By comparison with \eqref{eq:23}, we can see that if $\lambda \in \mathcal{L}_W[\mathfrak{g}]$ , then $\frac{2 (\alpha_{(i)}, \lambda)}{(\alpha_{(i)}, \alpha_{(i)})} \in \mathbb{Z}$ for $i = 1, \dots, r$.
 The weights of any finite dimensional representation $R$ of $\mathfrak{g}$ lie in $\mathcal{L}_W[\mathfrak{g}]$ .
 
-\begin{definition}[]
-  The dual basis for $\mathcal{L}^{\vee}{}^* [\mathfrak{g}] = \mathcal{L}_W[\mathfrak{g}]$ is
-  \begin{equation}
-    B^* = \left\{ \omega_{(i)} \suchthat i = 1, \dots, r \right\}.
-  \end{equation}
-  The basis vectors $w_{(i)}$ are known as \emph{fundamental weights} and obey
-  \begin{equation}
-    \label{eq:24}
-    (\alpha_{(i)}^\vee, \omega_{(j)}) = \frac{2 (\alpha_{(i)}, \omega_{(j)})}{(\alpha_{(i)}, \alpha_{(i)})} = \delta_{ij}.
-  \end{equation}
-\end{definition}
 
-As simple roots span $\mathfrak{h}^*_{\mathbb{R}}$, we can write
+As the simple roots span $\mathfrak{h}^*_{\mathbb{R}}$, there is some matrix $B$ such that
 \begin{equation}
   \label{eq:22-1}
   \omega_{(i)} = \sum_{j=1}^{r} B_{ij} \alpha_{(j)}.
@@ -100,55 +112,45 @@ This means that the simple roots $\alpha_{(i)}$, and therefore all of the roots,
   \centering
   \def\svgwidth{0.4\columnwidth}
   \input{lectures/l22f1.pdf_tex}
-  \caption{Weight lattice of $A_2$.}
+  \caption{The weight lattice of $A_2$. (It's supposed to be hexagonal.)}
   \label{fig:l22f1}
 \end{figure}
-
-For any weight $\lambda \in S_R \subset \mathcal{L}_W[\mathfrak{g}]$ , 
-\begin{equation}
-  \lambda = \sum_{i=1}^{r} \lambda^{i} \omega_{(i)} \qquad \lambda^{i} \in \mathbb{Z}, \quad i = 1, \dots, r
-\end{equation}
-
-\begin{definition}[]
-  The $\lambda^{i}$ are \emph{Dynkin labels} of weight $\lambda$.
-\end{definition}
 
 \section{Algorithm: Finding the Weight Set}%
 \label{sec:highest_weight_representations}
 
-\subsection*{Highest Weight}%
+\begin{description}
+  \item[Highest weight:] Every finite-dimensional representation $R$  of $\mathfrak{g}$  has a \emph{highest weight} 
+  \begin{equation}
+    \Lambda = \sum_{i=1}^{r} \Lambda^{i} \omega_{(i)} \in S_R \qquad 
+    \begin{gathered}
+      \Lambda^{i} \in \mathbb{Z} \\
+      \Lambda^{i} \geq 0
+    \end{gathered}
+  \end{equation}
+  such that the eigenvector $v_{\Lambda} \in V$, which satisfies $R(H^{i}) v_{\Lambda} = \Lambda^{i} v_{\Lambda}$, has to be annihilated by all the step generators of the positive roots. This is because these increase the weight by taking it further away from the hyperplane that we use to split positive and negative roots.
+  \begin{equation}
+    R(E^{\alpha}) v_{\Lambda} = 0 \qquad \forall\alpha \in \Phi_{+}.
+  \end{equation}
 
-Every finite-dimensional representation $R$  of $\mathfrak{g}$  has a \emph{highest weight} 
-\begin{equation}
-  \Lambda = \sum_{i=1}^{r} \Lambda^{i} \omega_{(i)} \in S_R \qquad 
-  \begin{gathered}
-    \Lambda^{i} \in \mathbb{Z} \\
-    \Lambda^{i} \geq 0
-  \end{gathered}
-\end{equation}
-such that the eigenvector $v_{\Lambda} \in V$, which satisfies $R(H^{i}) v_{\Lambda} = \Lambda^{i} v_{\Lambda}$, has to be annihilated by all the step generators of the positive roots. This is because these increase the weight by taking it further away from the hyperplane that we use to split positive and negative roots.
-\begin{equation}
-  R(E^{\alpha}) v_{\Lambda} = 0 \qquad \forall\alpha \in \Phi_{+}.
-\end{equation}
+  \begin{definition}[]
+    The $\Lambda^{i}$ for the highest weight are the \emph{Dynkin labels} of the representation $R$.
+  \end{definition}
 
-\begin{definition}[]
-  The $\Lambda^{i}$ for the highest weight are the \emph{Dynkin labels} of the representation $R$.
-\end{definition}
+\item[Remaining Weights:]
+  The remaining weights $\lambda \in S_R$ are generated by the \emph{lowering operators}, which are the representatives of the step-down generators $R(E^{-\alpha})$ for $\alpha \in \Phi_{+}$.
+  All remaining weights have the form
+  \begin{equation}
+    \lambda = \Lambda - \mu, \qquad \text{where } \mu = \sum_{i=1}^{r}\mu^{i} \alpha_{(i)}, \quad 0 \leq \mu^{i} \in \mathbb{N} \leq \lambda^{i}
+  \end{equation}
 
-\subsection*{Remaining Weights}%
-
-The remaining weights $\lambda \in S_R$ are generated by the \emph{lowering operators}, which are the representatives of the step-down generators $R(E^{-\alpha})$ for $\alpha \in \Phi_{+}$.
-All remaining weights have the form
-\begin{equation}
-  \lambda = \Lambda - \mu, \qquad \text{where } \mu = \sum_{i=1}^{r}\mu^{i} \alpha_{(i)}, \quad 0 \leq \mu^{i} \in \mathbb{N} \leq \lambda^{i}
-\end{equation}
-
-For any finite dimensional representation of $\mathfrak{g}$.
-If $\lambda = \sum \lambda^{i} \omega_{(i)}$ is a weight, then $\lambda - m_i \alpha_{(i)}$ (no sum) is a weight as well, provided that $0 \leq m_i \in \mathbb{Z} \leq \lambda^{i}$, i.e. only if the associated Dynkin label is positive:
-\begin{equation}
-  \boxed{\lambda = \lambda^{i} \omega_{(i)} \in S_R \implies \lambda - m_i \alpha_{(i)} \in S_R \quad \forall m_i, \lambda^{i} \in \mathbb{N} \text{ s.t. } 0 \leq m_i \leq \lambda^{i}.}
-\end{equation}
-Starting from the highest weight $\Lambda$, we can use this to iteratively find all the remaining weights.
+  For any finite dimensional representation of $\mathfrak{g}$.
+  If $\lambda = \sum \lambda^{i} \omega_{(i)}$ is a weight, then $\lambda - m_i \alpha_{(i)}$ (no sum) is a weight as well, provided that $0 \leq m_i \in \mathbb{Z} \leq \lambda^{i}$, i.e. only if the associated Dynkin label is positive:
+  \begin{equation}
+    \boxed{\lambda = \lambda^{i} \omega_{(i)} \in S_R \implies \lambda - m_i \alpha_{(i)} \in S_R \quad \forall m_i, \lambda^{i} \in \mathbb{N} \text{ s.t. } 0 \leq m_i \leq \lambda^{i}.}
+  \end{equation}
+  Starting from the highest weight $\Lambda$, we can use this to iteratively find all the remaining weights.
+\end{description}
 
 \begin{example}[]
   For the \emph{fundamental representation} $R_{(1, 0)}$ of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, the Dynkin labels are $(\Lambda^1, \Lambda^2) = (1, 0)$.
@@ -172,6 +174,6 @@ Starting from the highest weight $\Lambda$, we can use this to iteratively find 
   \centering
   \def\svgwidth{0.4\columnwidth}
   \input{lectures/l22f2.pdf_tex}
-  \caption{The weights of the fundamental representation $R_{(1, 0)}$ of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, generated by successively applying the algorithm to the highest weight $\Lambda = \omega_{(1)}$.}
+  \caption{The weights of the fundamental representation $R_{(1, 0)} = \boldsymbol 3$ of $A_2 \simeq \mathfrak{su}_{\mathbb{C}}(3)$, generated by successively applying the algorithm to the highest weight $\Lambda = \omega_{(1)}$.}
   \label{fig:l22f2}
 \end{figure}

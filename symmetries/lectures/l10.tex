@@ -2,36 +2,35 @@
 % course: symmetries
 \lhead{Lecture 10: November 02}
 \begin{proof}
-  For any $X_1, X_2 \in \mathscr{L}(G)$, we construct two curves $C_i \colon t \mapsto g_i(t) \in G$, $i = 1, 2$, with starting point $g_1(0) = g_2(0) = \mathbb{1}_m$ and $\dot g_1(0) = X_1$, $\dot g_2(0) = X_2$.
-  As on page 41, define
-  \begin{align}
-    h(t) &= g_1^{-1}(t)g_2^{-1}(t)g_1(t)g_2(t) \in G \\
-	 &= \mathbb{1}_m + t^2 [X_1, X_2] + O(t^3).
-  \end{align}
-  As $D$ is a representation of $G$, we have for all $t$ that
-  \begin{align}
-    D(h) &= D(g_1^{-1} g_2^{-1} g_1 g_2) = D(g_1)^{-1} D(g_2)^{-1} D(g_1) D(g_2) \\
-    D(g_1(t)) &= D(\mathbb{1}_m + t X_1 + \dots) \\
-	      &= D(\mathbb{1}_m) + td(X_1) + O(t^2) \\
-    D(g_2(t)) &= D(\mathbb{1}_n) + td(X_2) + O(t^2)
-  \end{align}
-  Therefore, we have
+  The linearity of the representation follows automatically from the definition, so we only need to show the homomorphism property $[R(X_1), R(X_2)] \stackrel{!}{=} R([X_1, X_2])$.
+  For any pair $X_i \in \mathfrak{g}$, $i = 1, 2$, we construct two curves $g_i \colon I \to G$, starting at the identity $g_1(0) = g_2(0) = \mathbb{1}_m$, such that its tangent vectors at the identity are $\dot g_i(0) = X_i$.
+  We then define a third curve $h \colon I \to G$ by
+  \begin{equation}
+    h(t) = g_1^{-1}(t)g_2^{-1}(t)g_1(t)g_2(t).
+  \end{equation}
+  Expanding $g_i \approx \mathbb{1}_n + t X_i + \dots$, the coefficient of $t$ in the expansion of $h(t)$ vanishes. To second order in $t$, we have
+  \begin{equation}
+    h(t) \approx \mathbb{1}_m + t^2 [X_1, X_2] + \dots.
+  \end{equation}
+  Since the group representation $D$ is by definition linear, we have
   \begin{align}
     D(h(t)) &= D(\mathbb{1}_m + t^2 [X_1, X_2] + O(t^3)) \\
-	    &= D(\mathbb{1}_m) + t^2 \left.\dv[2]{D(h(t))}{t}\right\rvert_{t = 0} + \dots \\
-	    &= \mathbb{1}_n + d([X_1, X_2]) t^2 + \dots \\
-    D(h) &= D(g_1)^{-1} D(g_2)^{-1} D(g_1) D(g_2)
+	    &= \mathbb{1}_n + R([X_1, X_2]) t^2 + O(t^3) \label{eq:10-b} \\
+	    &= D(\mathbb{1}_m) + t^2 \left.\dv[2]{D(h(t))}{t}\right\rvert_{t = 0} + O(t^3)
   \end{align}
-  We then plug in Taylor lens (?) and copare terms at $O(t^2)$ to give
+  But we can also use the homomorphism property of the group representation:
   \begin{equation}
-    d([X_1, X_2]) = [d(X_1), d(X_2)]
+    D(h) = D(g_1^{-1} g_2^{-1} g_1 g_2) = D(g_1)^{-1} D(g_2)^{-1} D(g_1) D(g_2) \label{eq:10-a}.
   \end{equation}
-  The second property of Lie brackets follows automatically from the definition.
+  We then plug in the Taylor expansions for $g_i$ and compare \eqref{eq:10-a} and \eqref{eq:10-b} at $O(t^2)$ to give
+  \begin{equation}
+    R([X_1, X_2]) = [R(X_1), R(X_2)].
+  \end{equation}
 \end{proof}
 \begin{exercise}
-  Let $d$ be a representation of $\mathscr{L}(G)$. For all elements of $G$ of the form $g = \text{Exp}(X)$, with $X \in \mathscr{L}(G)$. Then define
+  Let $R$ be a representation of $\mathscr{L}(G)$. For all elements of $G$ of the form $g = \text{Exp}(X)$, with $X \in \mathscr{L}(G)$. Then define
   \begin{equation}
-    D(g) = D(\text{Exp} X) \coloneqq \text{Exp} (d(X)).
+    D(g) = \operatorname D (\operatorname{Exp} X) \coloneqq \operatorname{Exp} R(X).
   \end{equation}
   Under what circumstances does this give a good representation of $G$?
 \end{exercise}
@@ -39,60 +38,57 @@
 \section{Representations of Lie Algebras}%
 \label{sec:representations_of_lie_algebras}
 
-Let $\mathfrak{g}$ be a Lie algebra of dimension $D$ and let $X \in \mathfrak{g}$.
-For any matrix Lie algebra $\mathfrak{g} = \mathscr{L}(G)$ of some matrix Lie group $G \subset \text{Mat}_n(F)$, we can always write down three canonical representations: For all $X \in \mathfrak{g}$, we define
+For any matrix Lie algebra $\mathfrak{g} = \mathscr{L}(G)$ of some matrix Lie group $G \subset \text{Mat}_n(F)$, we can always write down three canonical representations: For all $X \in \mathfrak{g}$, we define the
 \begin{description}
-  \item[the trivial representation $d_0$] with dimension $\dim(d_0) = 1$ by $d_0(X) = 0$.
-  \item[the fundamental representation $d_f$] with dimension $\dim(d_f) = n$ by $d_f(X) = X$.
-  \item[the adjoint representation $d_{\text{Adj}}$] with dimension $\dim(d_{\text{Adj}}) = \dim( \mathfrak{g}) = D$. To define the adjoint representation $d_{\text{Adj}}(X)$, we first consider the linear map $ad_X$ defined by
+  \item[trivial representation] by mapping everything to the trivial element, $R_0(X) = 0$. The trivial representation has dimension $\dim R_0 = 1$.
+  \item[fundamental representation] by mapping the matrices $X$ to themselves, $R_F(X) = X$. For $n \times n$ matrices, this has dimension $\dim R_F = n$.
+  \begin{leftbar}
+    \begin{remark}
+      The trivial and adjoint representations exist for all Lie algebras, whereas the fundamental representation only makes sense for matrix Lie algebras.
+    \end{remark}
+  \end{leftbar}
+\item[adjoint representation] by mapping each element $X$ to a particular linear map, $R_A(X) = \text{ad}_X$, which is defined as
     \begin{equation}
       \begin{split}
-        ad_X \colon \mathfrak{g} \ &\to\  \mathfrak{g} \\
-	Y \ &\mapsto\  [X,Y]
+        \text{ad}_X \colon \mathfrak{g} \ &\to\  \mathfrak{g} \\
+	Y \ &\mapsto\  [X,Y].
       \end{split}
     \end{equation}
-    $ad_X$ is equivalent to a $D \times D$ matrix. For a choice of basis $B = \left\{ T^a \right\}$, for $a = 1, \dots, D$, we can expand two elements $X, Y \in \mathfrak{g}$ as
-    \begin{equation}
-      X = X_a T^a \qquad Y = Y_a T^a.
-    \end{equation}
-    In particular, as we have seen before, the bracket of $X, Y$ is determined by the bracket of the generators $T^a$
-    \begin{equation}
-      [X, Y] = X_a Y_b [T^a, T^b] = X_a Y_b f \indices{^a^b_c}T^c.
-    \end{equation}
-    Similarly, the $c$\textsuperscript{th} component of $ad_X(Y)$ is
-    \begin{equation}
-      [ad_X(Y)]_c = (R_X)^b_c Y_b \quad \implies \quad \boxed{(R_X) \indices{^b_c} = X_a f \indices{^a^b_c}}.
-    \end{equation}
-    The adjoint representation is then defined for all $X \in \mathfrak{g}$ by
-    \begin{equation}
-      d_{\text{Adj}}(X) = ad_X.
-    \end{equation}
-    More concretely, we can define it in a particular basis as $[d_{\text{Adj}}(X)] \indices{^b_c} = (R_X) \indices{^b_c}.$ 
+    Since the underlying vector space is the Lie algebra $\mathfrak{g}$ itself, the adjoint representation has dimension $\dim d_A = \dim \mathfrak{g}$.
 \end{description}
-\begin{leftbar}
-  \begin{remark}
-    The trivial and adjoint representations exist for all Lie algebras.
-  \end{remark}
-\end{leftbar}
+
+The map $\text{ad}_X$ is equivalent to a $D \times D$ matrix: For a choice of basis $B = \left\{ T^a \right\}$, for $a = 1, \dots, D$, we can expand two elements $X, Y \in \mathfrak{g}$ as
+\begin{equation}
+  X = X_a T^a \qquad Y = Y_a T^a.
+\end{equation}
+In particular, as we have seen before, the bracket of $X, Y$ is determined by the bracket of the generators $T^a$
+\begin{equation}
+  \text{ad}_X(Y) = [X, Y] = X_a Y_b [T^a, T^b] = X_a Y_b f \indices{^a^b_c}T^c.
+\end{equation}
+Therefore, the $c$\textsuperscript{th} component of $\text{ad}_X(Y)$ is
+\begin{equation}
+  [\text{ad}_X(Y)]_c = (R_X)\indices{^{b}_{c}} Y_b \quad \implies \quad \boxed{(R_X) \indices{^b_c} = X_a f \indices{^a^b_c}}.
+\end{equation}
+More concretely, we can define it in a particular basis as $[R_{\text{Adj}}(X)] \indices{^b_c} = (R_X) \indices{^b_c}.$ 
 \begin{claim}
   We want to show that the adjoint representation is indeed a representation.
   Let us check the defining properties of a representation.
   For all $X, Y \in \mathfrak{g}$, we must have
   \begin{equation}
     \label{eq:l10star}
-    [d_{\text{Adj}}(X), d_{\text{Adj}}(Y)] = d_{\text{Adj}}([X, Y])
+    [R_{\text{Adj}}(X), R_{\text{Adj}}(Y)] = R_{\text{Adj}}([X, Y])
   \end{equation}
 \end{claim}
 \begin{proof}
-  We have $d_{\text{Adj}}(X) = ad_X$ and $d_{\text{Adj}}(Y) = ad_Y$.
+  We have $R_{\text{Adj}}(X) = ad_X$ and $R_{\text{Adj}}(Y) = ad_Y$.
   Hence, for all elements $Z \in \mathfrak{g}$ of the Lie algebra, we have
   \begin{align}
-    \bigl(d_{\text{Adj}}(X) \circ d_{\text{Adj}}(Y) \bigr)(Z) &= [X, [Y, Z]] \\
-    \bigl(d_{\text{Adj}}(Z) \circ d_{\text{Adj}}(Y) \bigr)(X) &= [Z, [Y, X]] \\
+    \bigl( R_{\text{Adj}}(X) \circ R_{\text{Adj}}(Y) \bigr)(Z) &= [X, [Y, Z]] \\
+    \bigl( R_{\text{Adj}}(Z) \circ R_{\text{Adj}}(Y) \bigr)(X) &= [Z, [Y, X]] \\
   \end{align}
   Subtracting these two, we get
   \begin{equation}
-    [d_{\text{Adj}}(X), d_{\text{Adj}}(Y)](Z) = [X, [Y, Z]] - [Y, [X, Z]]
+    [R_{\text{Adj}}(X), R_{\text{Adj}}(Y)](Z) = [X, [Y, Z]] - [Y, [X, Z]]
   \end{equation}
   This is the left hand side of \eqref{eq:l10star}. Subtracting the right hand side we get
   \begin{align}
@@ -103,3 +99,17 @@ For any matrix Lie algebra $\mathfrak{g} = \mathscr{L}(G)$ of some matrix Lie gr
   We see that Jacobi identity of the Lie algebra therefore ensures that the Lie algebra has an adjoint representation on itself.
   Property two of the Lie algebra is satisfied since $ad_X$ is linear in $X$.
 \end{proof}
+
+\begin{leftbar}
+  \begin{remark}
+    Let $g = \exp(t X)$ for some $X \in \mathfrak{g}$. Let $v \in V$ be a vector. Then the representation
+    \begin{equation}
+      D(g) v = g v g^{-1}
+    \end{equation}
+    of the Lie group $G$ induces the adjoint representation of the Lie algebra $\mathfrak{g}$ on $V$; differentiating both sides with respect to $t$ and evaluating at $t = 0$ gives
+    \begin{equation}
+      R(X) v = [X, v].
+    \end{equation}
+  \end{remark}
+\end{leftbar}
+
