@@ -2,8 +2,8 @@
 % course: st
 \lhead{Lecture 9: February 07}
 
-\section{Fadeev--Popov Determinant}%
-\label{sec:fadeev_popov_determinant}
+\section{Faddeev--Popov Determinant}%
+\label{sec:faddeev_popov_determinant}
 
 Our goal will be to find some effective way to make sense of the path integral. When integrating over the worldsheet metrics, we want to count each physical metric only once, and avoid overcounting from to diffeomorphism and Weyl equivalence.
 
@@ -12,11 +12,11 @@ In other words, we heuristically want to mod out the equivalences of physical st
   \label{eq:9-1}
   Z[0] = \frac{1}{\abs{\text{Diff} \times \text{Weyl}}} \int \pdd{X} \pdd{h} e^{i S[h, X]}
 \end{equation}
-\begin{definition}[Fadeev--Popov determinant]
-  To that end, we will introduce the \emph{Fadeev--Popov} (FP) determinant $\Delta_{\text{FP}}$, defined by
+\begin{definition}[Faddeev--Popov determinant]
+  To that end, we will introduce the \emph{Faddeev--Popov} (FP) determinant $\Delta_{\text{FP}}$, defined by
   \begin{equation}
     \label{eq:9-2}
-    1 = \Delta_{\text{FP}}[h] \int_{\mathrlap{M_g}} \dd[3]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \delta[h - \hat{h}] \prod_{\substack{i = 1 \\ a = 1, 2}}^k \delta(v^a (\hat{\sigma}_i))
+    1 = \Delta_{\text{FP}}[h] \int_{\mathrlap{M_g}} \dd[s]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \delta[h - \hat{h}] \prod_{\substack{i = 1 \\ a = 1, 2}}^k \delta(v^a (\hat{\sigma}_i))
   \end{equation}
   where $M_g$ is the integral over all Riemann surfaces of genus $g$ and the delta-functional
   \begin{equation}
@@ -38,8 +38,8 @@ We need to fix the CKG ($\text{Diff} \cap \text{Weyl}$).
 
 Let us put \eqref{eq:9-2} into \eqref{eq:9-1}:
 \begin{align}
-  Z[0] &= \frac{1}{\text{Diff} \times \text{Weyl}} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a(\sigma_i)) \int_{M_g} \dd[3]{t} \int \pdd{X} \pdd{h} \delta[h - \hat{h}] \Delta_{\text{FP}} e^{i S[h, X]} \\
-       &= \frac{1}{\text{Diff} \times \text{Weyl}} \int \pdd{X} \int_{M_g} \dd[3]{t} \left( \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a (\hat\sigma_i)) \right) e^{i S[\hat{h}, X]} \Delta_{\text{FP}}[\hat{h}].
+  Z[0] &= \frac{1}{\text{Diff} \times \text{Weyl}} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a(\sigma_i)) \int_{M_g} \dd[s]{t} \int \pdd{X} \pdd{h} \delta[h - \hat{h}] \Delta_{\text{FP}} e^{i S[h, X]} \\
+       &= \frac{1}{\text{Diff} \times \text{Weyl}} \int \pdd{X} \int_{M_g} \dd[s]{t} \left( \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\omega} \pdd{v} \prod_{a, i} \delta(v^a (\hat\sigma_i)) \right) e^{i S[\hat{h}, X]} \Delta_{\text{FP}}[\hat{h}].
 \end{align}
 In the parentheses, we have
 \begin{equation}
@@ -51,21 +51,21 @@ In the parentheses, we have
 We find a more respectable starting point
 \begin{equation}
   \label{eq:9-3}
-  Z[0] = \frac{1}{\abs{CKG}} \int_{M_g} \dd[3]{t} \int \pdd{X} e^{i S[X, \hat{h}]} \Delta_{\text{FP}}[\hat{h}].
+  Z[0] = \frac{1}{\abs{CKG}} \int_{M_g} \dd[s]{t} \int \pdd{X} e^{i S[X, \hat{h}]} \Delta_{\text{FP}}[\hat{h}].
 \end{equation}
 This looks much more reasonable. The conformal Killing group is finite-dimensional. 
 For this to be a good starting point for the quantisation of the theory, we have to think a bit more about $\Delta_{\text{FP}}[\hat{h}]$ .
 
-\section{A Field Theory Representation for \texorpdfstring{$\Delta_{\text{FP}}$}{the Fadeev--Popov Determinant}}%
+\section{A Field Theory Representation for \texorpdfstring{$\Delta_{\text{FP}}$}{the Faddeev--Popov Determinant}}%
 \label{sec:a_field_theory_representation_for_FP}
 
-Inverting \eqref{eq:9-2}, we find that the inverse of the Fadeev--Popov determinant is
+Inverting \eqref{eq:9-2}, we find that the inverse of the Faddeev--Popov determinant is
 \begin{equation}
-  \Delta_{\text{FP}}^{-1}[\hat{h}] = \int_{\mathrlap{M_g}} \dd[3]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\overline{\omega}{}} \pdd{v} \delta[\delta h ] \prod_{a, i} \delta(v^a(\hat{\sigma}_i)).
+  \Delta_{\text{FP}}^{-1}[\hat{h}] = \int_{\mathrlap{M_g}} \dd[s]{t} \int_{\mathrlap{\text{Diff} \times \text{Weyl}}} \pdd{\overline{\omega}{}} \pdd{v} \delta[\delta h ] \prod_{a, i} \delta(v^a(\hat{\sigma}_i)).
 \end{equation}
 Let us find an integral expression for the $\delta$-function(al)s by introducing auxiliary fields $\beta_{ab}(\sigma, \tau)$ and $2k$ elements $\xi^i_a$:
 \begin{equation}
-  \Delta^{-1}_{\text{FP}}[\hat{h}] =\int_{\mathrlap{M_g}} \dd[3]{t} \int \pdd{v} \pdd{\overline{\omega}{}} \pdd{\beta} \dd[2k]{{\xi}} \exp(i (\beta \mid Pv + 2 \overline{\omega}{} h + t^I \mu_I) + i \sum_{i=1}^{k} \xi^i_a \delta(v^a(\hat{\sigma}_i))),
+  \Delta^{-1}_{\text{FP}}[\hat{h}] =\int_{\mathrlap{M_g}} \dd[s]{t} \int \pdd{v} \pdd{\overline{\omega}{}} \pdd{\beta} \dd[2k]{{\xi}} \exp(i (\beta \mid Pv + 2 \overline{\omega}{} h + t^I \mu_I) + i \sum_{i=1}^{k} \xi^i_a \delta(v^a(\hat{\sigma}_i))),
 \end{equation}
 where the inner product is defined as
 \begin{equation}
@@ -102,7 +102,7 @@ Similarly, we replace all the fields we integrate over in $\Delta_{\text{FP}}^{-
 Just like $\beta_{ab}$, we take $b_{ab}$ to be traceless also.
 With these Grassmann fields in place, we take $\Delta_{\text{FP}}[\hat{h}]$ to be given by
 \begin{equation}
-  \Delta_{\text{FP}}[\hat{h}] = \int \dd[3]{\zeta} \pdd{c} \pdd{b} \dd[2k]{\eta} \exp[i (b \mid Pc + \zeta^I \mu_I + i \sum_{i=1}^{\kappa} \eta\indices{^{i}_{a}} c^a(\hat{\sigma}_i))],
+  \Delta_{\text{FP}}[\hat{h}] = \int \dd[s]{\zeta} \pdd{c} \pdd{b} \dd[2k]{\eta} \exp[i (b \mid Pc + \zeta^I \mu_I + i \sum_{i=1}^{\kappa} \eta\indices{^{i}_{a}} c^a(\hat{\sigma}_i))],
 \end{equation}
 where $\kappa = \abs{\text{CKG}}$.
 We can do these finite-dimensional integrals.
@@ -116,7 +116,7 @@ The $\eta\indices{^{i}_{a}}$  integral gives
 \begin{equation}
   \prod_{\substack{a= i, ? \\i = 1, \dots, \kappa}} \delta(c^a(\hat{\sigma}_i))  = \prod_{i, a} c^a(\hat{\sigma}_i).
 \end{equation}
-The expression for the Fadeev--Popov determinant becomes rather simple
+The expression for the Faddeev--Popov determinant becomes rather simple
 \begin{equation}
   \boxed{\Delta_{\text{FP}}[\hat{h}] = \int \pdd{c} \pdd{b} e^{i S[b, c]} \prod_{I = 1}^s (b \mid \mu_I) \prod_{i, a} c^a (\hat{\sigma}_i)}
 \end{equation}
