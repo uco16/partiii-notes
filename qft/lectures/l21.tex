@@ -49,7 +49,7 @@ The Dirac part for the fermion $\mathcal{L}_D = \overline{\psi} (i \cancel{\part
 This yields a conserved current  $j^{\mu} = \overline{\psi} \gamma^{\mu} \psi$ .
 Our \texttt{QED} Lagrangian is the sum of the photon and Dirac part
 \begin{equation}
-  \mathcal{L}_{\text{QED}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline{\psi} (i \cancel{\partial} - m)\psi - e \overline{\psi}_{\alpha} \eta^{\mu}_{\alpha\beta} A_{\mu} \psi_{\beta}.
+  \mathcal{L}_{\text{QED}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline{\psi} (i \cancel{\partial} - m)\psi - e \overline{\psi}_{\alpha} (\gamma^{\mu})_{\alpha\beta} A_{\mu} \psi_{\beta}.
 \end{equation}
 As always, we get $i$  times the interaction Lagrangian for the vertex.
 The Feynman rule associated with this vertex is
@@ -58,7 +58,7 @@ The Feynman rule associated with this vertex is
     a [particle=\(\alpha\)] -- [anti fermion] b -- [boson] c [particle=\(\mu\)],
     b -- [anti fermion] d [particle=\(\beta\)],
   };
-  \sim - i \epsilon (\eta^{\mu})_{\alpha\beta}
+  \sim - i \epsilon (\gamma^{\mu})_{\alpha\beta}
 \end{equation}
 
 Previously, to cancel unphysical polarisations, it was crucial that we had gauge invariance. Do we still have it?

@@ -30,8 +30,8 @@
   The final expression is covariant, and so holds in all coordinate systems.
 \end{proof}
 
-\section{Parallel Transport}%
-\label{sec:parallel_transport}
+\subsection{Parallel Transport}%
+\label{sub:parallel_transport}
 
 The general story is that differentiation requires us to compare the vectors at two `neighbouring' points. But these points have different tangent spaces, and we cannot simply add vectors in these different tangent spaces.
 The connection allows us to define a map between vector spaces that live at different points. This map is called \emph{parallel transport}.
@@ -73,8 +73,8 @@ The connection allows us to define a map between vector spaces that live at diff
   \end{remark}
 \end{leftbar}
 
-\section{Geodesics}%
-\label{sec:geodesics}
+\subsection{Geodesics}%
+\label{sub:geodesics}
 
 \begin{definition}
   A \emph{geodesic} is a curve tangent to $X \in \mathfrak{X}(\mathcal{M})$ that is parallel transported along itself: it obeys $\nabla_{X}X = 0$.
@@ -99,7 +99,7 @@ The geodesic equation also arises as the equation of motion from the action
 \label{sec:normal_coordinates}
 
 \begin{claim}[Riemann Normal Coordinates]
-  We can always find \emph{normal coordinates} such that at a point $p \in \mathcal{M}$, 
+  For any point $p \in \mathcal{M}$, we can always find \emph{normal coordinates} in which the metric components are
   \begin{equation}
     g_{\mu\nu}(p) = \delta_{\mu\nu} \quad \text{and} \quad g_{\mu\nu, \rho}(p) = 0.
   \end{equation}

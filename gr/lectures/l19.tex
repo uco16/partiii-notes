@@ -130,11 +130,11 @@ This is one of the differences between general relativity and other field theori
 
 We will solve the Einstein equations perturbatively, working in `almost inertial coordinates'.
 \begin{definition}[]
-  \emph{Almost inertial coordinates} hold for spacetimes, which in some sense are close to Minkowski space:
+  \emph{Almost inertial coordinates} hold for spacetimes that are 'close' to Minkowski space in the sense that the metric can be written
   \begin{equation}
     g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu},
   \end{equation}
-  where $\eta_{\mu\nu} \ll 1$.
+  where $\eta_{\mu\nu}$ is the Minkowski metric and $h_{\mu\nu} \ll 1$.
 \end{definition}
 \begin{leftbar}
   \begin{note}
@@ -143,6 +143,8 @@ We will solve the Einstein equations perturbatively, working in `almost inertial
 \end{leftbar}
 We think of gravity as a `spin-2' field $h_{\mu\nu}$ propagating in Minkowski space. To that end, we will raise and lower indices using the Minkowski metric $\eta_{\mu\nu}$, rather than $g_{\mu\nu}$.
 \begin{example}[]
-  $h^{\mu\nu} = \eta^{\mu\rho} \eta^{\nu\sigma} h_{\rho\sigma}$.
+  Raising the indices of the perturbation $h_{\mu\nu}$ gives
+  \begin{equation}
+    h^{\mu\nu} = \eta^{\mu\rho} \eta^{\nu\sigma} h_{\rho\sigma}.
+  \end{equation}
 \end{example}
-We will then construct a theory.

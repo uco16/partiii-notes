@@ -26,7 +26,7 @@ As we go on we will half-see what this means. In some sense we will deal with sl
   \label{fig:l22f1}
 \end{figure}
 
-Consider some interesting region $\Sigma$ of space with an extend $d$, illustrated in Figure \ref{fig:l22f1} in which  $T_{\mu\nu} \neq 0$ . This could be two neutron stars orbiting each other.
+Consider some interesting region $\Sigma$ of space with an extent $d$ in which  $T_{\mu\nu} \neq 0$, illustrated in Figure \ref{fig:l22f1}. For instance, this could be two neutron stars orbiting each other.
 Then there is a whole bunch of empty space $r \gg d$  between us and $\Sigma$.
 \begin{leftbar}
   \begin{note}
@@ -44,7 +44,7 @@ with $t_{\text{ret}} = t - \abs{\vb{x} - \vb{x}'}$.
   This derivative $\partial_0$ is with respect to $t$, not $t_{\text{ret}}$.
 \end{remark}
 
-The equation \eqref{eq:22-1} was derived in \texttt{dD} gauge. And this solution indeed obeys the \texttt{dD} gauge condition provided that $\partial_{\mu} T^{\mu\nu} = 0$ .
+The equation \eqref{eq:22-1} was derived in \texttt{dD} gauge. And this solution indeed obeys the \texttt{dD} gauge condition provided that $\partial_{\mu} T^{\mu\nu} = 0$.
 
 For $r \gg d$, 
 \begin{align}
@@ -78,8 +78,8 @@ To solve this integral, we perform the same manipulations as in electromagnetism
   T^{ij} &= \partial_{k} (T^{ik} x^{j}) - (\partial_{k} T^{ik})x_{j} \\
 	 &= \partial_{k} (T^{ik} x^{j}) + \partial_0 T^{0i} x^{j},
 \end{align}
-where we rewrote the second term by using the fact that the energy-momentum tensor is conserved $\partial_{\mu} T^{\mu\nu} = 0$ .
-Symmetrising over $i$  and $j$ , 
+where we rewrote the second term by using the fact that the energy-momentum tensor is conserved $\partial_{\mu} T^{\mu\nu} = 0$.
+Symmetrising over $i$  and $j$, 
 \begin{align}
   T^{0(i} x^{j)} &= \frac{1}{2}\partial_{k} ( T^{0k} x^{i} x^{j}) - \frac{1}{2} (\partial_{k} T^{0k}) x^{i} x^{j} \\
   &= \frac{1}{2}\partial_{k} (T^{0k} x^{i} x^{j}) + \frac{1}{2} \partial_0 T^{00} x^{i} x^{j},
@@ -116,17 +116,17 @@ $I_{ij}$ is the \emph{quadrupole} of the energy distribution in the region $\Sig
 \end{leftbar}
 
 \begin{example}[Binary System]
-  Consider two objects, each with mass $M$ , in a circular orbit in the $(x-y)$ -plane at distance $R$. 
-  This is illustrated in \ref{fig:l22f2}.
+  Consider two objects, each with mass $M$, in a circular orbit in the $(x-y)$-plane at distance $R$. 
+  This is illustrated in Fig.~\ref{fig:l22f2}.
   \begin{figure}[tbhp]
     \centering
     \def\svgwidth{0.4\columnwidth}
     \input{lectures/l22f2.pdf_tex}
-    \caption{}
+    \caption{Binary system.}
     \label{fig:l22f2}
   \end{figure}
 
-  Newtonian gravity gives $\omega^2 = \frac{2 G M }{R^3}$ . Viewed as point particles, 
+  Newtonian gravity gives $\omega^2 = \frac{2 G M }{R^3}$. Viewed as point particles, 
   \begin{equation}
     T^{00}(\vb{x}, t) = M \delta(z) \left[ \delta(x - \frac{1}{2} R \cos(\omega t)) \delta(y - \frac{1}{2} R \sin(\omega t)) + \delta(x + \frac{1}{2} R \cos(\omega t)) \delta(y + \frac{1}{r} R \sin(\omega t)) \right]
   \end{equation}
@@ -153,14 +153,17 @@ $I_{ij}$ is the \emph{quadrupole} of the energy distribution in the region $\Sig
   \end{equation}
   This combination of polarisation is called \emph{circular polarisation} as in the case of light.
   We get circularly polarised gravitational waves travelling in the $z$-direction.
-  Use $\omega^2 =\frac{2 GM}{R^3}$ to find the magnitude $\abs{h_{ij}} \sim \frac{G^2M^2}{R r}$.
+  Use $\omega^2 =\frac{2 GM}{R^3}$ to find the magnitude 
+  \begin{equation}
+    \abs{h_{ij}} \sim \frac{G^2M^2}{R r}.
+  \end{equation}
 
   This is what you measure in LIGO.
-  For light, what you measure is the square of the amplitude, meaning that you can only see as $~\frac{1}{r^2}$ far. As you start to improve LIGO, you start to see much further out than with optical telescopes!
+  For light, what you measure is the square of the amplitude, meaning that you can only see as $\sim\flatfrac{1}{r^2}$ far. As you start to improve LIGO, you start to see much further out than with optical telescopes!
 
   To get a `large' magnitude $h_{ij}$, we need compact objects nearby.
   The most compact objects are black holes. The closest they can come is the \emph{Schwarzschild radius} $R_S = 2 G M$. Neutron stars are not wildly different from this.
 
-  As these objects approach, the size of the gravitational wave that we will see is given by $\abs{h_{ij}} \sim \frac{GM}{r}$.
+  As these objects approach, the size of the gravitational wave that we will see is given by $\abs{h_{ij}} \sim \flatfrac{GM}{r}$.
   A black hole of a few solar masses ($R_S \sim 10$km) in our neighbouring Andromeda galaxy ($r \sim 10^{18}$km) gives a gravitational wave strength of $\abs{h_{ij}} \sim 10^{-17}$.
 \end{example}

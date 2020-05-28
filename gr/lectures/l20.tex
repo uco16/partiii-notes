@@ -6,7 +6,7 @@
 \label{sec:linearised_theory}
 
 We want to build the theory of the linear ripples $h_{\mu\nu}$.
-We work to leading order in $h_{\mu\nu}$. We have the inverse metric
+Since the components $h_{\mu\nu} \ll 1$ of the perturbation are small, we work to leading order in $h_{\mu\nu}$. Then the inverse of the metric $g_{\mu\nu}$ is
 \begin{equation}
   g^{\mu\nu} = \eta^{\mu\nu} - h^{\mu\nu},
 \end{equation}
@@ -20,7 +20,7 @@ and the Riemann tensor is
   R\indices{^{\sigma}_{\rho\mu\nu}} &= \partial_{\mu} \Gamma^{\sigma}_{\nu\rho} - \partial_{\nu} \Gamma^{\sigma}_{\mu\nu} + \underbrace{\Gamma^{\lambda}_{\nu\rho} \Gamma^{\sigma}_{\mu\lambda} - \Gamma^{\lambda}_{\mu\rho} \Gamma^{\sigma}_{\nu\lambda}}_{\mathclap{O(h^2)}}. \\
 				    &= \frac{1}{2} \eta^{\sigma\lambda} (\partial_{\mu} \partial_{\rho} h_{\nu\lambda} - \partial_{\mu} \partial_{\lambda} h_{\nu\rho} - \partial_{\nu} \partial_{\rho} h_{\mu\lambda} + \partial_{\nu} \partial_{\lambda} h_{\mu\rho}).
 \end{align}
-It is very easy working in linearised theory; all the hard stuff disappears.
+Working in the linearised theory is very easy; all the hard stuff disappears.
 The Ricci tensor is
 \begin{equation}
   \label{eq:20-riem}
@@ -28,13 +28,9 @@ The Ricci tensor is
 \end{equation}
 and finally the Ricci scalar is
 \begin{equation}
-  R = \partial^{\mu} \partial^{\nu} h_{\mu\nu} - \Box h.
+  R = \partial^{\mu} \partial^{\nu} h_{\mu\nu} - \Box h,
 \end{equation}
-We have introduced two new objects
-\begin{align}
-  \Box &= \partial_{\mu} \partial^{\mu} \\
-  h &= h_{\mu}^{\mu} = \eta^{\mu\nu} h_{\mu\nu}.
-\end{align}
+where $\Box = \partial_{\mu} \partial^{\mu}$ is the d'Alambertian and $h = h\indices{^{\mu}_{\mu}} = \eta^{\mu\nu} h_{\mu\nu}$ is the trace of the perturbation.
 
 Finally, the Einstein tensor
 \begin{equation}
@@ -42,7 +38,7 @@ Finally, the Einstein tensor
 \end{equation}
 This obeys the linearised Bianchi identity $\partial_{\mu} G^{\mu\nu} = 0$ , which is the equation of motion in the absence of matter.
 
-In this case, we did not start with the action. However, we could have start with an action which does derive this equation of motion.
+In this case, we did not start with the action. However, there also exists an action that encodes this equation of motion.
 
 \subsection{The Fierz-Pauli Action}%
 \label{sub:the_fierz_pauli_action}
@@ -52,7 +48,7 @@ The Einstein equation $G_{\mu\nu} = 8 \pi G T_{\mu\nu}$  follows from the follow
   S_{\text{FP}} = \int \dd[4]{x} \frac{1}{8\pi G} \left[ - \frac{1}{4} \partial_{\rho} h_{\mu\nu} \partial^{\rho} h^{\mu\nu} + \frac{1}{2} \partial_{\rho} h_{\mu\nu} \partial^{\nu} h^{\rho\mu} + \frac{1}{4} \partial_{\mu} h \partial^{\mu} h - \frac{1}{2} \partial_{\nu} h^{\mu\nu} \partial_{\mu} h \right] + h_{\mu\nu} T^{\mu\nu}
 \end{equation}
 
-The claim is twofold: if we vary this action w.r. t $h$ , we get the Einstein equation. The hard part of the claim is that $S_{\text{FP}}$  arises from the Einstein-Hilbert action $S_{\text{EH}}$  by expanding to $O(h^2)$ .
+The claim is twofold: Firstly, varying this action with respect to the perturbation $h_{\mu\nu}$ yields the Einstein equation. Secondly --- and this is the hard part of the claim --- the Fierz--Pauli action $S_{\text{FP}}$ arises from the Einstein-Hilbert action $S_{\text{EH}}$ by expanding to second order in the perturbation.
 
 In particular, we have to include a lot of the second order terms (for example in the Riemann tensor).
 
@@ -99,20 +95,25 @@ We use gauge symmetry to choose a gauge; we pick \emph{de Donder \texttt{(dD)} g
 This is analogous to Lorentz gauge $\partial_{\mu} A^{\mu} = 0$ in electromagnetism.
 
 \begin{remark}
-  In the full non-linear theory, the generalisation of \texttt{dD} is something quite elegant: $g^{\mu\nu} \Gamma^{\rho}_{\mu\nu} = 0$.
-
-  These are both 4 equations. Notice that it not a tensor equation! But this is exactly what you want for gauge fixing.
-
-  In \texttt{dD} gauge, the linearised Einstein equations become
+  In the full non-linear theory, the generalisation of \texttt{dD} is something quite elegant: 
   \begin{equation}
-    \Box h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} \Box h = -16 \pi G T_{\mu\nu}
+    g^{\mu\nu} \Gamma^{\rho}_{\mu\nu} = 0.
   \end{equation}
-  \begin{definition}[]
-    Define $\overline{h}_{\mu\nu} = h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} h$ 
-  \end{definition}
-  We then have $\overline{h} = \eta_{\mu\nu} \overline{h}^{\mu\nu} = -h$ and so $h_{\mu\nu} = \overline{h}_{\mu\nu} - \frac{1}{2} \overline{h}\eta_{\mu\nu}$. 
-  And \begin{equation}\Box \overline{h}_{\mu\nu} = - 16 \pi G T^{\mu\nu}.\end{equation}
+  These are both 4 equations. Notice that it not a tensor equation! But this is exactly what you want for gauge fixing.
 \end{remark}
+
+In \texttt{dD} gauge, the linearised Einstein equations become
+\begin{equation}
+  \Box h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} \Box h = -16 \pi G T_{\mu\nu}
+\end{equation}
+\begin{definition}[]
+  Define $\overline{h}_{\mu\nu} = h_{\mu\nu} - \frac{1}{2} \eta_{\mu\nu} h$ 
+\end{definition}
+We then have $\overline{h} = \eta_{\mu\nu} \overline{h}^{\mu\nu} = -h$ and so $h_{\mu\nu} = \overline{h}_{\mu\nu} - \frac{1}{2} \overline{h}\eta_{\mu\nu}$. 
+And 
+\begin{equation}
+  \Box \overline{h}_{\mu\nu} = - 16 \pi G T_{\mu\nu}.
+\end{equation}
 
 \subsection{The Newtonian Limit}%
 \label{sub:the_newtonian_limit}
@@ -163,13 +164,16 @@ There are wave solutions in GR obeying
 \begin{equation}
   \Box \overline{h} _{\mu\nu} = 0.
 \end{equation}
-
-The solution is $\overline{h}_{\mu\nu} = \Re(H_{\mu\nu} e_{i k_{\rho} x^{\rho}})$, where $H_{\mu\nu}$ is a complex, symmetric matrix that tells us about the polarisation of the gravitational waves.
+The solution is 
+\begin{equation}
+  \overline{h}_{\mu\nu} = \Re(H_{\mu\nu} e^{i k_{\rho} x^{\rho}}), \label{eq:20-ansatz}
+\end{equation}
+where $H_{\mu\nu}$ is a complex, symmetric matrix that tells us about the polarisation of the gravitational waves.
 This solves the wave equation providing $k_{\mu} k^{\mu} = 0$. In other words, the wavevector of these waves is null, which means that gravitational waves travel at the speed of light.
 
 To derive this equation, we had to be in \texttt{dD} gauge. We have to make sure that this solution agrees with that gauge choice.
 \begin{claim}
-  This satisfies \texttt{dD} gauge $\partial_{\mu} \overline{h}_{\mu\nu} = 0$, provided that $k^{\mu} H_{\mu\nu} = 0$.
+  The ansatz \eqref{eq:20-ansatz} satisfies the de Donder gauge condition $\partial^{\mu} \overline{h}_{\mu\nu} = 0$ provided that $k^{\mu} H_{\mu\nu} = 0$.
 \end{claim}
 
 \begin{remark}

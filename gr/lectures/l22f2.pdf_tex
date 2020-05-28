@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{184.1104066bp}%
+    \setlength{\unitlength}{248.64257621bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,10 +50,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.67770469)%
+  \begin{picture}(1,0.69678809)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{l22f2.pdf}}%
-    \put(0.47021541,0.41014113){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$R$\end{tabular}}}}%
+    \put(0.4923313,0.39245624){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.56250024}\smash{\begin{tabular}[t]{c}$R$\end{tabular}}}}%
+    \put(0.95246849,0.33331218){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$M$\end{tabular}}}}%
+    \put(0.04755508,0.33331218){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.5625}\smash{\begin{tabular}[t]{c}$M$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

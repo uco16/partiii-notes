@@ -11,9 +11,9 @@ This is a subtle subject; the definition of energy in GR is problematic.
 To put this into perspective, we might recall how we did this calculation in Maxwell theory.
 In electromagnetism, we compute the power by integrating the momentum carried away (or equivalently the energy flux) by the electromagnetic field through at two-sphere.
 \begin{equation}
-  \mathcal{P} = \int_{S^2} \dd[2]{S_i} T^{0i}.
+  \mathcal{P} = \int_{S^2} \dd[2]{S_i} T^{0i},
 \end{equation}
-$T^{0i}$ is the \emph{Poynting vector}.
+where $T^{0i}$ is the \emph{Poynting vector}.
 
 We need to defined the analogue of the Poynting vector for gravitational waves.
 We define an energy-momentum tensor $t_{\mu\nu}$ for the gravitational field, which, in the linearised theory, should obey the conservation law
@@ -29,7 +29,7 @@ A correct treatment this has to work asymptotically. This is called \emph{Bondi 
 We will do things in a more hand-wavy and sloppy way.
 This is because we only really care about order-of-magnitude estimates.
 
-There is an obvious approach to defining $t^{\mu\nu}$. From the Fiatz-Pauli action, which can be viewed as a theory of the field $h_{\mu\nu}$ in a flat $\mathbb{M}^4$background, we can calculate the Noether current for translations in exactly the same way as you would for any other quantum field theory.
+There is an obvious approach to defining $t^{\mu\nu}$. From the Fierz-Pauli action, which can be viewed as a theory of the field $h_{\mu\nu}$ in a flat $\mathbb{M}^4$background, we can calculate the Noether current for translations in exactly the same way as you would for any other quantum field theory.
 
 The result with neither be symmetric in $\mu, \nu$, nor gauge invariant.
 This is not a surprise; the same thing happens for Maxwell theory; however for Maxwell theory we can add terms that give us both. For the Fierz-Pauli action, we can only add a term that makes it symmetric---we can not get gauge invariance.
@@ -45,11 +45,11 @@ The energy density is going to be of the form
 \end{equation}
 For wave solutions, the gradient term $\nabla h^{\mu\nu} \cdot \nabla h^{\mu\nu}$contributes to the same.
 
-Previously, we had the solutions $\overline{h}_{ij} = \frac{2G}{r} \ddot{I}_{ij}$. This is not in \texttt{TT} gauge. If we but it in this form, we get
+Previously, we had the solutions $\overline{h}_{ij} = \flatfrac{2G}{r} \ddot{I}_{ij}$. This is not in \texttt{TT} gauge. If we put it in this form, we get
 \begin{equation}
   h_{ij} \sim \frac{G}{r} \ddot{\mathcal{Q}}_{ij},
 \end{equation}
-with $\mathcal{Q}_{ij} = I_{ij} - \frac{1}{3} I_{kk} \delta_{ij}$is the traceless part of the quadrupole.
+where $\mathcal{Q}_{ij} = I_{ij} - \frac{1}{3} I_{kk} \delta_{ij}$ is the traceless part of the quadrupole.
 This suggests that the energy density in gravitational waves far from the source is
 \begin{equation}
   t^{00} \sim \frac{G}{r^2} \dddot{\mathcal{Q}}_{ij}^2.
@@ -81,11 +81,11 @@ In fact, the correct result is $\mathcal{P} = \frac{G}{5} \dddot{Q}^2_{ij}$, usi
 
 \begin{example}[]
   A binary system, two objects that are orbiting each other, with centrifugal force $\omega^2 R \sim GM / R^2$.
-  The quadrupole $\mathcal{Q} \sim M R^2$.This means that the third time derivative goes like $\dddot{\mathcal{Q}} \sim \omega^3 M R^2$. The power emitted is
+  The quadrupole $\mathcal{Q} \sim M R^2$. This means that the third time derivative goes like $\dddot{\mathcal{Q}} \sim \omega^3 M R^2$. The power emitted is
   \begin{equation}
     \mathcal{P} \sim G \dddot{\mathcal{Q}}^2 \sim \frac{G^4M^5}{R^5}.
   \end{equation}
-  Since we want actual numbers, we have to put $c$ back in. The above formula is actually correct, however, the Schwarzschild radius for a black hole has a factor $R_S = \frac{2GM}{c^2}$. 
+  Since we want actual numbers, we have to put $c$ back in. The above formula is actually correct, however, the Schwarzschild radius for a black hole has a factor $R_S = \flatfrac{2GM}{c^2}$. 
   \begin{equation}
     \label{eq:23-1}
     \mathcal{P} = \left(\frac{R_s}{R}\right)^5 L_{\text{planck}},
